@@ -2,9 +2,9 @@
 
 Execute Phase 2: Database architecture, data models, and relationships.
 
-## Instructions for Claude
+## Instructions for Copilot
 
-Read Phase 2 from `.ai-bootstrap/prompts/backend.md` and execute the Data Architecture questionnaire.
+Read Phase 2 from `.ai-bootstrap/prompts/backend.md` and execute the Data Architecture questionnaire within GitHub Copilot Chat.
 
 **Time Estimate:** 15-20 minutes
 

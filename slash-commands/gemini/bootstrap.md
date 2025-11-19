@@ -2,9 +2,9 @@
 
 Execute the complete 7-phase interactive documentation generation for this backend project.
 
-## Instructions for Copilot
+## Instructions for Gemini
 
-You are GitHub Copilot Chat helping the user craft comprehensive, production-ready documentation for their backend project.
+You are Google Gemini Code guiding the user through comprehensive, production-ready documentation for their backend project.
 
 **Master Prompt Location:** `{PROJECT_ROOT}/.ai-bootstrap/prompts/backend.md`
 
@@ -12,6 +12,7 @@ You are GitHub Copilot Chat helping the user craft comprehensive, production-rea
 
 1. **Read the master prompt** from `.ai-bootstrap/prompts/backend.md` completely
 2. **Execute ALL 7 phases** in exact order:
+
    - Phase 1: Discovery & Business (15-20 min)
    - Phase 2: Data Architecture (15-20 min)
    - Phase 3: System Architecture (15-20 min)
@@ -39,7 +40,7 @@ You are GitHub Copilot Chat helping the user craft comprehensive, production-rea
 ### After Completion
 
 1. Generate all 13 documents
-2. Refresh Copilot-specific guidance (`.github/copilot-instructions.md` and slash commands) if new insights emerge
+2. Refresh Gemini-specific guidance (update `.gemini/commands` if new workflows emerge)
 3. Validate no placeholders remain
 4. Provide summary and next steps
 

@@ -2,9 +2,9 @@
 
 Execute Phase 5: Code quality rules, naming conventions, and development practices.
 
-## Instructions for Claude
+## Instructions for Copilot
 
-Read Phase 5 from `.ai-bootstrap/prompts/backend.md` and execute the Code Standards questionnaire.
+Read Phase 5 from `.ai-bootstrap/prompts/backend.md` and execute the Code Standards questionnaire within GitHub Copilot Chat.
 
 **Time Estimate:** 15-20 minutes
 

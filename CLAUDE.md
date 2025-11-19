@@ -35,8 +35,7 @@ ai-bootstrap/
 │   ├── cursor/
 │   └── copilot/
 ├── scripts/
-│   ├── init.sh                # Initialization script
-│   └── setup-ai.sh            # AI tool setup
+│   └── init.sh                # Initialization helper
 ├── package.json
 ├── tsconfig.json
 ├── README.md                  # Project documentation
@@ -48,6 +47,7 @@ ai-bootstrap/
 ## ⚙️ Common Commands
 
 ### Development
+
 ```bash
 # Development mode with ts-node (no build required)
 npm run dev init . --ai claude
@@ -63,6 +63,7 @@ npm test
 ```
 
 ### Testing Changes Locally
+
 ```bash
 # Build first
 npm run build
@@ -82,6 +83,7 @@ rm -rf test-folder
 ```
 
 ### Package Distribution
+
 ```bash
 # Prepare for publishing (runs build automatically)
 npm run prepare
@@ -118,23 +120,26 @@ npm run prepare
 **Entry Point:** `src/cli.ts` (shebang for CLI execution)
 
 **Module System:**
+
 - TypeScript compiles to CommonJS (`module: "commonjs"` in tsconfig.json)
-- Uses `import.meta.url` with `fileURLToPath` to resolve paths in ES module style
+- Uses `__dirname`-based path resolution to copy assets
 - Target: ES2020 with Node.js >=18.0.0
 
 **Commands:**
+
 - `init [path] [--ai <tool>]` - Initialize AI Bootstrap in project
 - `check` - Verify if project is initialized and show config
 
 **Dependencies:**
+
 - `commander` - CLI framework
 - `inquirer` - Interactive prompts
 - `chalk` - Terminal colors
 - `ora` - Loading spinners
 - `fs-extra` - Enhanced file operations
-- `yaml` - YAML parsing (for potential future configs)
 
 **CLI Flow:**
+
 1. User runs `ai-bootstrap init .`
 2. Check if already initialized (`.ai-bootstrap/` exists)
 3. Prompt for AI tool selection if not provided via `--ai` flag
@@ -142,8 +147,8 @@ npm run prepare
 5. Write config.json with version, aiTools, timestamps
 6. Copy templates from package to project
 7. Copy master prompts (backend.md)
-8. Copy scripts (init.sh, setup-ai.sh) and chmod on Unix
-9. Setup slash commands in tool-specific directories:
+8. Copy the helper script `init.sh`
+9. Set up slash commands in tool-specific directories:
    - Claude → `.claude/commands/`
    - Cursor → `.cursor/commands/`
    - Copilot → `.github/copilot-commands/`
@@ -151,6 +156,7 @@ npm run prepare
 10. Display next steps and available commands
 
 **Package Structure:**
+
 - Binary entry point: `dist/cli.js` (from `src/cli.ts`)
 - Files included in npm package: `dist/`, `prompts/`, `templates/`, `slash-commands/`, `scripts/`
 - Users install globally: `npm install -g ai-bootstrap`
@@ -160,6 +166,7 @@ npm run prepare
 **Location:** `templates/` (13 markdown templates)
 
 **Templates Overview:**
+
 - `AGENT.template.md` - Universal AI config
 - `ai-instructions.template.md` - Tech stack & rules
 - `project-brief.template.md` - Business context
@@ -170,13 +177,16 @@ npm run prepare
 - `.env.example.template` - Environment variables
 
 **Placeholder Format:** `{{VARIABLE_NAME}}`
+
 - Examples: `{{PROJECT_NAME}}`, `{{PROJECT_DESCRIPTION}}`, `{{TARGET_USERS}}`
 
 **Advanced Placeholders (Not currently implemented but documented):**
+
 - Conditionals: `{{#IF_CONDITION}}...{{/IF_CONDITION}}`
 - Loops: `{{#EACH ITEM}}{{ITEM_PROPERTY}}{{/EACH}}`
 
 **Generation Process:**
+
 1. AI assistant reads `prompts/backend.md` (7-phase questionnaire)
 2. Collects user responses across all phases
 3. Reads template files from `.ai-bootstrap/templates/`
@@ -190,6 +200,7 @@ npm run prepare
 ### Structure
 
 **7 Phases:**
+
 1. Discovery & Business (15-20 min)
 2. Data Architecture (15-20 min)
 3. System Architecture (15-20 min)
@@ -199,6 +210,7 @@ npm run prepare
 7. Operations + Tools (10 min)
 
 **Each Phase:**
+
 - Clear objective
 - Interactive questions
 - Recommendations (⭐🔥⚡🏆 markers)
@@ -206,6 +218,7 @@ npm run prepare
 - Phase summary for confirmation
 
 **Final Step:**
+
 - Generate all 13 documents
 - Fill templates with gathered information
 - Validate completeness
@@ -218,6 +231,7 @@ npm run prepare
 ### TypeScript Configuration
 
 **Strict Mode:** Enabled in tsconfig.json
+
 - `strict: true` - All strict type checking options
 - `forceConsistentCasingInFileNames: true`
 - `skipLibCheck: true` - Skip type checking of declaration files
@@ -226,6 +240,7 @@ npm run prepare
 - `sourceMap: true` - Generate source maps for debugging
 
 **Type Safety:**
+
 - No `any` types without explicit justification
 - Explicit return types for functions
 - Interfaces for object shapes
@@ -249,6 +264,7 @@ npm run prepare
 ### Error Handling
 
 **Current Patterns:**
+
 - Try-catch blocks around all I/O operations
 - `ora` spinners show success/fail states
 - `chalk.red()` for error messages, `chalk.yellow()` for warnings
@@ -257,13 +273,14 @@ npm run prepare
 - Validate `--ai` flag against known tools
 
 **Example:**
+
 ```typescript
 try {
-  const spinner = ora('Creating structure...').start();
+  const spinner = ora("Creating structure...").start();
   await fs.ensureDir(path);
-  spinner.succeed('Created structure');
+  spinner.succeed("Created structure");
 } catch (error) {
-  spinner.fail('Failed to create structure');
+  spinner.fail("Failed to create structure");
   throw error;
 }
 ```
@@ -294,6 +311,7 @@ try {
 ### Testing Changes
 
 **For CLI Changes:**
+
 ```bash
 npm run build
 npm run dev init test-folder --ai claude
@@ -306,6 +324,7 @@ rm -rf test-folder
 ```
 
 **For Template Changes:**
+
 1. Make changes to template files
 2. Rebuild: `npm run build`
 3. Initialize in test project
@@ -313,6 +332,7 @@ rm -rf test-folder
 5. Verify generated documents look correct
 
 **For Prompt Changes:**
+
 1. Edit `prompts/backend.md`
 2. Rebuild and initialize test project
 3. Run through full 7-phase questionnaire
@@ -351,6 +371,7 @@ rm -rf test-project
 **Scopes:** cli, templates, prompts, commands, docs
 
 **Example:**
+
 ```
 feat(cli): add interactive AI tool selection
 
@@ -365,31 +386,30 @@ Closes #42
 
 ## 📚 Key Files Reference
 
-| File | Lines | Purpose | When to Edit |
-|------|-------|---------|--------------|
-| `src/cli.ts` | ~329 | CLI entry point, all commands, file operations | Adding commands, changing initialization logic |
-| `prompts/backend.md` | Large | 7-phase master questionnaire | Improving questions, adding phases, changing flow |
-| `templates/*.template.md` | 13 files | Document templates with placeholders | Enhancing generated docs, changing structure |
-| `templates/AGENT.template.md` | Core | Universal AI config aggregator | Changing AI tool integration |
-| `slash-commands/{tool}/*.md` | 8/tool | Bootstrap command definitions | Modifying command behavior for specific AI tools |
-| `scripts/init.sh` | Bash | Initialization script | Changing setup automation |
-| `scripts/setup-ai.sh` | Bash | AI tool setup script | Adding new AI tool support |
-| `package.json` | Config | Dependencies, scripts, bin config | Changing commands, adding dependencies |
-| `tsconfig.json` | Config | TypeScript compilation settings | Changing target, module system |
-| `README.md` | Docs | User-facing documentation | User-facing changes, features |
+| File                          | Lines    | Purpose                                        | When to Edit                                      |
+| ----------------------------- | -------- | ---------------------------------------------- | ------------------------------------------------- |
+| `src/cli.ts`                  | ~329     | CLI entry point, all commands, file operations | Adding commands, changing initialization logic    |
+| `prompts/backend.md`          | Large    | 7-phase master questionnaire                   | Improving questions, adding phases, changing flow |
+| `templates/*.template.md`     | 13 files | Document templates with placeholders           | Enhancing generated docs, changing structure      |
+| `templates/AGENT.template.md` | Core     | Universal AI config aggregator                 | Changing AI tool integration                      |
+| `slash-commands/{tool}/*.md`  | 8/tool   | Bootstrap command definitions                  | Modifying command behavior for specific AI tools  |
+| `scripts/init.sh`             | Bash     | Initialization script                          | Changing setup automation                         |
+| `package.json`                | Config   | Dependencies, scripts, bin config              | Changing commands, adding dependencies            |
+| `tsconfig.json`               | Config   | TypeScript compilation settings                | Changing target, module system                    |
+| `README.md`                   | Docs     | User-facing documentation                      | User-facing changes, features                     |
 
 ### Key Functions in src/cli.ts
 
-| Function | Purpose | Parameters |
-|----------|---------|------------|
-| `selectAITool()` | Interactive AI tool selection or validate --ai flag | `providedTool?: string` |
-| `checkIfInitialized()` | Check if .ai-bootstrap exists | `targetPath: string` |
-| `createBootstrapStructure()` | Create folders and config.json | `targetPath: string, aiTools: string[]` |
-| `copyTemplates()` | Copy templates/ to project | `targetPath: string` |
-| `copyPrompts()` | Copy prompts/ to project | `targetPath: string` |
-| `setupSlashCommands()` | Install slash commands for selected tools | `targetPath: string, aiTools: string[]` |
-| `copyScripts()` | Copy scripts and chmod | `targetPath: string` |
-| `initializeProject()` | Main init orchestration | `targetPath: string, aiTool?: string` |
+| Function                     | Purpose                                             | Parameters                              |
+| ---------------------------- | --------------------------------------------------- | --------------------------------------- |
+| `selectAITool()`             | Interactive AI tool selection or validate --ai flag | `providedTool?: string`                 |
+| `checkIfInitialized()`       | Check if .ai-bootstrap exists                       | `targetPath: string`                    |
+| `createBootstrapStructure()` | Create folders and config.json                      | `targetPath: string, aiTools: string[]` |
+| `copyTemplates()`            | Copy templates/ to project                          | `targetPath: string`                    |
+| `copyPrompts()`              | Copy prompts/ to project                            | `targetPath: string`                    |
+| `setupSlashCommands()`       | Install slash commands for selected tools           | `targetPath: string, aiTools: string[]` |
+| `copyScripts()`              | Copy scripts and chmod                              | `targetPath: string`                    |
+| `initializeProject()`        | Main init orchestration                             | `targetPath: string, aiTool?: string`   |
 
 ---
 
@@ -397,25 +417,27 @@ Closes #42
 
 ### Path Resolution Strategy
 
-**Challenge:** CLI is installed globally but needs to copy files from package
-**Solution:** Use `import.meta.url` and `fileURLToPath` to find package location
+**Challenge:** CLI is installed globally but needs to copy files from the package
+**Solution:** Use `__dirname` to resolve the packaged assets relative to `dist/cli.js`
 
 ```typescript
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const templatesSource = path.join(__dirname, '..', 'templates');
+const ROOT_DIR = path.resolve(__dirname, "..");
+const templatesSource = path.join(ROOT_DIR, "templates");
 ```
 
 This works because:
+
 1. `dist/cli.js` is compiled output
 2. `__dirname` points to `dist/`
-3. `..` navigates to package root
-4. Package includes `templates/`, `prompts/`, etc. in npm bundle
+3. `ROOT_DIR` normalizes the package root
+4. The npm bundle includes `templates/`, `prompts/`, etc.
 
 ### File Operations
 
 **Library:** `fs-extra` (enhanced fs with promises)
 
 **Common Patterns:**
+
 - `fs.pathExists(path)` - Check if file/folder exists
 - `fs.ensureDir(path)` - Create directory recursively
 - `fs.copy(src, dest)` - Copy files/folders
@@ -426,6 +448,7 @@ This works because:
 ### AI Tool Mapping
 
 **Tool → Configuration Location:**
+
 - `claude` → `.claude/commands/`
 - `cursor` → `.cursor/commands/`
 - `copilot` → `.github/copilot-commands/`
@@ -439,6 +462,7 @@ This works because:
 **Location:** `.ai-bootstrap/core/config.json`
 
 **Schema:**
+
 ```json
 {
   "version": "1.0.0",
@@ -458,6 +482,7 @@ This enables future frontend/full-stack bootstrap support.
 ### Vision
 
 Transform project ideas into production-ready, AI-assisted development environments through:
+
 1. **Comprehensive documentation** - 13 interconnected documents
 2. **AI-agnostic approach** - Works with all AI tools
 3. **Interactive experience** - Guide users through decisions
@@ -467,6 +492,7 @@ Transform project ideas into production-ready, AI-assisted development environme
 ### Testing Philosophy
 
 Every change should be tested with the **full bootstrap flow**:
+
 1. Initialize a test project
 2. Run `/bootstrap` command in AI tool
 3. Verify generated documents are correct
@@ -476,18 +502,21 @@ Every change should be tested with the **full bootstrap flow**:
 ### Extensibility Considerations
 
 **Adding a new AI tool:**
+
 1. Add to `AI_TOOLS` array in `src/cli.ts`
 2. Add case in `setupSlashCommands()` for folder mapping
 3. Create `slash-commands/{tool}/` with 8 command files
 4. Update README.md with tool-specific instructions
 
 **Adding a new phase:**
+
 1. Add phase to `prompts/backend.md`
 2. Create `/bootstrap-phase{N}.md` for each AI tool
 3. Update template placeholders if needed
 4. Test full questionnaire flow
 
 **Adding a new template:**
+
 1. Create `templates/{name}.template.md`
 2. Add placeholders like `{{VARIABLE}}`
 3. Update `prompts/backend.md` to gather needed info

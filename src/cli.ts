@@ -6,7 +6,9 @@ import chalk from 'chalk';
 import ora from 'ora';
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import { fileURLToPath } from 'url';
+import ejs from 'ejs';
+
+const ROOT_DIR = path.resolve(__dirname, '..');
 
 const program = new Command();
 
@@ -115,19 +117,45 @@ async function createBootstrapStructure(targetPath: string, aiTools: string[]): 
   }
 }
 
-async function copyTemplates(targetPath: string): Promise<void> {
-  const spinner = ora('Copying templates...').start();
-
+async function renderTemplates(targetPath: string, projectData: { name: string; description: string }): Promise<void> {
+  const spinner = ora('Generando documentación desde templates...').start();
   try {
-    const __dirname = path.dirname(fileURLToPath(import.meta.url));
-    const templatesSource = path.join(__dirname, '..', 'templates');
+    const templatesSource = path.join(ROOT_DIR, 'templates');
     const templatesTarget = path.join(targetPath, '.ai-bootstrap', 'templates');
+    await fs.ensureDir(templatesTarget);
 
-    await fs.copy(templatesSource, templatesTarget);
+    // Buscar todos los .template.md en templates y subcarpetas
+    const walk = async (dir: string): Promise<string[]> => {
+      let files: string[] = [];
+      for (const entry of await fs.readdir(dir)) {
+        const fullPath = path.join(dir, entry);
+        const stat = await fs.stat(fullPath);
+        if (stat.isDirectory()) {
+          files = files.concat(await walk(fullPath));
+        } else if (entry.endsWith('.template.md')) {
+          files.push(fullPath);
+        }
+      }
+      return files;
+    };
+    const templateFiles = await walk(templatesSource);
 
-    spinner.succeed('Templates copied');
+    for (const templateFile of templateFiles) {
+      const relPath = path.relative(templatesSource, templateFile).replace('.template.md', '.md');
+      const destPath = path.join(templatesTarget, relPath);
+      await fs.ensureDir(path.dirname(destPath));
+      const templateContent = await fs.readFile(templateFile, 'utf8');
+      // Renderizar con EJS, dejando {{PLACEHOLDER}} para todo lo que no sea name/description
+      const rendered = ejs.render(templateContent, {
+        PROJECT_NAME: projectData.name,
+        PROJECT_DESCRIPTION: projectData.description,
+        PLACEHOLDER: '{{PLACEHOLDER}}'
+      }, { delimiter: '?' });
+      await fs.writeFile(destPath, rendered, 'utf8');
+    }
+    spinner.succeed('Documentación generada desde templates');
   } catch (error) {
-    spinner.fail('Failed to copy templates');
+    spinner.fail('Error al generar documentación');
     throw error;
   }
 }
@@ -136,8 +164,7 @@ async function copyPrompts(targetPath: string): Promise<void> {
   const spinner = ora('Copying master prompts...').start();
 
   try {
-    const __dirname = path.dirname(fileURLToPath(import.meta.url));
-    const promptsSource = path.join(__dirname, '..', 'prompts');
+    const promptsSource = path.join(ROOT_DIR, 'prompts');
     const promptsTarget = path.join(targetPath, '.ai-bootstrap', 'prompts');
 
     await fs.copy(promptsSource, promptsTarget);
@@ -153,8 +180,7 @@ async function setupSlashCommands(targetPath: string, aiTools: string[]): Promis
   const spinner = ora('Setting up slash commands...').start();
 
   try {
-    const __dirname = path.dirname(fileURLToPath(import.meta.url));
-    const slashCommandsSource = path.join(__dirname, '..', 'slash-commands');
+    const slashCommandsSource = path.join(ROOT_DIR, 'slash-commands');
 
     for (const tool of aiTools) {
       const commandsSource = path.join(slashCommandsSource, tool);
@@ -194,8 +220,7 @@ async function copyScripts(targetPath: string): Promise<void> {
   const spinner = ora('Copying setup scripts...').start();
 
   try {
-    const __dirname = path.dirname(fileURLToPath(import.meta.url));
-    const scriptsSource = path.join(__dirname, '..', 'scripts');
+    const scriptsSource = path.join(ROOT_DIR, 'scripts');
     const scriptsTarget = path.join(targetPath, '.ai-bootstrap', 'scripts');
 
     await fs.copy(scriptsSource, scriptsTarget);
@@ -231,7 +256,6 @@ async function initializeProject(targetPath: string, aiTool?: string): Promise<v
           default: false
         }
       ]);
-
       if (!reinitialize) {
         console.log(chalk.blue('Initialization cancelled'));
         return;
@@ -241,11 +265,27 @@ async function initializeProject(targetPath: string, aiTool?: string): Promise<v
     // Select AI tools
     const aiTools = await selectAITool(aiTool);
 
+    // Pedir datos mínimos del proyecto
+    const { projectName, projectDescription } = await inquirer.prompt([
+      {
+        type: 'input',
+        name: 'projectName',
+        message: 'Nombre del proyecto:',
+        default: 'Mi Proyecto AI'
+      },
+      {
+        type: 'input',
+        name: 'projectDescription',
+        message: 'Descripción breve:',
+        default: 'Proyecto inicializado con AI Bootstrap'
+      }
+    ]);
+
     console.log(chalk.cyan('\n📦 Initializing AI Bootstrap...\n'));
 
     // Create structure
     await createBootstrapStructure(targetPath, aiTools);
-    await copyTemplates(targetPath);
+    await renderTemplates(targetPath, { name: projectName, description: projectDescription });
     await copyPrompts(targetPath);
     await copyScripts(targetPath);
     await setupSlashCommands(targetPath, aiTools);

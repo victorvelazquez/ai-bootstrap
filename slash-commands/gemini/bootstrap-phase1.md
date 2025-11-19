@@ -2,9 +2,9 @@
 
 Execute Phase 1 of the documentation generation: Business context and project scope.
 
-## Instructions for Copilot
+## Instructions for Gemini
 
-Read Phase 1 from `.ai-bootstrap/prompts/backend.md` and execute the Discovery & Business questionnaire within GitHub Copilot Chat.
+Read Phase 1 from `.ai-bootstrap/prompts/backend.md` and execute the Discovery & Business questionnaire inside Gemini Code.
 
 **Time Estimate:** 15-20 minutes
 
@@ -24,7 +24,7 @@ Read Phase 1 from `.ai-bootstrap/prompts/backend.md` and execute the Discovery &
 
 - Summarize all gathered information
 - Get user confirmation
-- Store responses for document generation (will generate documents after all phases complete)
+- Store responses for document generation (documents are generated after all phases complete)
 
 ---
 

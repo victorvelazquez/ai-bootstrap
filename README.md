@@ -1,5 +1,7 @@
 # AI Bootstrap
 
+[![CI Status](https://github.com/yourusername/ai-bootstrap/actions/workflows/nodejs.yml/badge.svg?branch=main)](https://github.com/yourusername/ai-bootstrap/actions/workflows/nodejs.yml)
+
 > Transform your project idea into a comprehensive, AI-ready backend with professional documentation in 90 minutes.
 
 ---
@@ -59,6 +61,7 @@ ai-bootstrap init .
 ```
 
 **This will:**
+
 - Ask you which AI tool you'll use (Claude/Cursor/Copilot/Gemini/All)
 - Create `.ai-bootstrap/` hidden folder
 - Copy master prompts and templates
@@ -70,6 +73,7 @@ ai-bootstrap init .
 **Option A: Using Slash Command (Recommended)**
 
 Open your AI tool and run:
+
 ```
 /bootstrap
 ```
@@ -77,6 +81,7 @@ Open your AI tool and run:
 **Option B: Manual**
 
 Tell your AI assistant:
+
 ```
 Read .ai-bootstrap/prompts/backend.md and execute the 7-phase questionnaire
 ```
@@ -124,35 +129,35 @@ my-awesome-api/
 
 ### Core Documents (4)
 
-| Document | Purpose | Read By |
-|----------|---------|---------|
-| `AGENT.md` | Universal AI configuration, aggregator | All AI tools |
-| `ai-instructions.md` | Tech stack, NEVER/ALWAYS rules | All AI assistants |
-| `project-brief.md` | Business context, objectives, scope | AI + stakeholders |
-| `README.md` | Project overview, setup instructions | Developers |
+| Document             | Purpose                                | Read By           |
+| -------------------- | -------------------------------------- | ----------------- |
+| `AGENT.md`           | Universal AI configuration, aggregator | All AI tools      |
+| `ai-instructions.md` | Tech stack, NEVER/ALWAYS rules         | All AI assistants |
+| `project-brief.md`   | Business context, objectives, scope    | AI + stakeholders |
+| `README.md`          | Project overview, setup instructions   | Developers        |
 
 ### Technical Docs (6)
 
-| Document | Purpose |
-|----------|---------|
-| `docs/architecture.md` | System architecture, design patterns |
-| `docs/data-architecture.md` | Database schema, relationships |
-| `docs/code-standards.md` | Naming conventions, quality rules |
-| `docs/testing.md` | Testing strategy, coverage requirements |
-| `docs/operations.md` | Deployment, monitoring, runbooks |
-| `docs/contributing.md` | Development setup, workflow |
+| Document                    | Purpose                                 |
+| --------------------------- | --------------------------------------- |
+| `docs/architecture.md`      | System architecture, design patterns    |
+| `docs/data-architecture.md` | Database schema, relationships          |
+| `docs/code-standards.md`    | Naming conventions, quality rules       |
+| `docs/testing.md`           | Testing strategy, coverage requirements |
+| `docs/operations.md`        | Deployment, monitoring, runbooks        |
+| `docs/contributing.md`      | Development setup, workflow             |
 
 ### Specifications (2)
 
-| Document | Purpose |
-|----------|---------|
-| `specs/security.md` | Authentication, authorization, compliance |
-| `specs/configuration.md` | Environment variables, external services |
+| Document                 | Purpose                                   |
+| ------------------------ | ----------------------------------------- |
+| `specs/security.md`      | Authentication, authorization, compliance |
+| `specs/configuration.md` | Environment variables, external services  |
 
 ### Configuration (1)
 
-| File | Purpose |
-|------|---------|
+| File           | Purpose                       |
+| -------------- | ----------------------------- |
 | `.env.example` | Environment variable template |
 
 ---
@@ -166,6 +171,7 @@ ai-bootstrap init . --ai claude
 ```
 
 **Features:**
+
 - `.clauderules` configuration
 - Slash commands in `.claude/commands/`
 - Plan mode optimized workflow
@@ -177,6 +183,7 @@ ai-bootstrap init . --ai cursor
 ```
 
 **Features:**
+
 - `.cursorrules` configuration
 - Slash commands in `.cursor/commands/`
 - Fast iteration support
@@ -188,6 +195,7 @@ ai-bootstrap init . --ai copilot
 ```
 
 **Features:**
+
 - `.github/copilot-instructions.md` configuration
 - Copilot workspace instructions
 - GitHub workflow integration
@@ -274,6 +282,7 @@ uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 ```
 
 **Spec-Kit adds:**
+
 - `/constitution` - Load project rules
 - `/specify` - Define what to build
 - `/plan` - Define how to build
@@ -378,6 +387,11 @@ your-project/
 │   ├── bootstrap-phase1.md
 │   └── ... (7 phase commands)
 │
+├── .gemini/commands/          # If Gemini selected
+│   ├── bootstrap.md
+│   ├── bootstrap-phase1.md
+│   └── ... (7 phase commands)
+│
 ├── AGENT.md                   # Generated after /bootstrap
 ├── .clauderules              # Generated after /bootstrap
 ├── ai-instructions.md        # Generated after /bootstrap
@@ -430,4 +444,3 @@ MIT License - See [LICENSE](LICENSE) for details.
 **Transform your idea into a production-ready backend with AI Bootstrap** 🚀
 
 **Made with ❤️ for the developer community**
-
