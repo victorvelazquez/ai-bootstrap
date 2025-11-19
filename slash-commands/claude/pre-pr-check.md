@@ -74,8 +74,11 @@ Execute each step sequentially. After each step, ask the user if they want to co
 
 **Actions:**
 
-- Execute full test suite
-- Generate coverage report
+- **Unit Tests:** Execute isolated component/function tests
+- **Integration Tests:** Test module interactions and API endpoints
+- **E2E Tests:** Run end-to-end user flow scenarios (if applicable)
+- **Security Tests:** Verify authentication, authorization, and vulnerability scans
+- Generate comprehensive coverage report
 - Highlight failed tests or low coverage areas
 - Suggest additional test cases if needed
 - Verify minimum coverage threshold is met

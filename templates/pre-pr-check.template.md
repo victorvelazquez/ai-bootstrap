@@ -70,14 +70,26 @@ Run a mini security audit (input validation, secrets, permissions, etc.).
 
 ### Step 5: Run Tests 🧪
 
-Execute all tests and show coverage report.
+Execute all test suites and show coverage report.
 
 **Actions:**
 
-- Execute full test suite
-- Generate coverage report
+- **Unit Tests:** Execute isolated component/function tests
+- **Integration Tests:** Test module interactions and API endpoints
+- **E2E Tests:** Run end-to-end user flow scenarios (if applicable)
+- **Security Tests:** Verify authentication, authorization, and vulnerability scans
+- Generate comprehensive coverage report
 - Highlight failed tests or low coverage areas
 - Suggest additional test cases if needed
+- Verify minimum coverage thresholds are met
+
+**Test Commands (adapt to your project):**
+```bash
+npm run test:unit          # Unit tests
+npm run test:integration   # Integration tests
+npm run test:e2e          # E2E tests
+npm test                  # All tests
+```
 
 **After completion, ask:** "Continue to Conventional Commit?"
 
