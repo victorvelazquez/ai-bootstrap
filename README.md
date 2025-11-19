@@ -1,8 +1,42 @@
 # AI Bootstrap
 
-[![CI Status](https://github.com/yourusername/ai-bootstrap/actions/workflows/nodejs.yml/badge.svg?branch=main)](https://github.com/yourusername/ai-bootstrap/actions/workflows/nodejs.yml)
+[![CI Status](https://github.com/victorvelazquez/ai-bootstrap/actions/workflows/nodejs.yml/badge.svg?branch=main)](https://github.com/victorvelazquez/ai-bootstrap/actions/workflows/nodejs.yml)
 
-> Transform your project idea into a comprehensive, AI-ready backend with professional documentation in 90 minutes.
+## English
+Transform your idea into a production-ready, AI-documented backend in minutes.
+
+AI Bootstrap is an interactive CLI that generates 13 professional documents for backend projects, guiding users (or AI agents) through 7 key phases: business, architecture, security, standards, testing, and operations. Compatible with Claude, Copilot, Cursor, Gemini, and any AI assistant.
+
+- 🚀 Complete, interconnected documentation
+- 🤖 Multi-AI support and slash commands
+- ⚡ Easy installation and usage
+- 🛡️ Quality, security, and best practices by default
+- ⏱️ Save 10-20 hours per project
+
+Quick Start:
+```bash
+npm install -g ai-bootstrap
+ai-bootstrap init .
+```
+
+---
+
+## Español
+Transforma tu idea en un backend listo para producción y documentado para IA en minutos.
+
+AI Bootstrap es un CLI interactivo que genera 13 documentos profesionales para proyectos backend, guiando al usuario (o agente AI) por 7 fases clave: negocio, arquitectura, seguridad, estándares, testing y operaciones. Compatible con Claude, Copilot, Cursor, Gemini y cualquier asistente AI.
+
+- 🚀 Documentación completa y conectada
+- 🤖 Soporte multi-AI y comandos slash
+- ⚡ Instalación y uso en 2 pasos
+- 🛡️ Calidad, seguridad y buenas prácticas garantizadas
+- ⏱️ Ahorra 10-20 horas por proyecto
+
+Guía rápida:
+```bash
+npm install -g ai-bootstrap
+ai-bootstrap init .
+```
 
 ---
 
@@ -427,8 +461,8 @@ MIT License - See [LICENSE](LICENSE) for details.
 
 ## 💬 Support
 
-- **Issues:** [GitHub Issues](https://github.com/yourusername/ai-bootstrap/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/yourusername/ai-bootstrap/discussions)
+- **Issues:** [GitHub Issues](https://github.com/victorvelazquez/ai-bootstrap/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/victorvelazquez/ai-bootstrap/discussions)
 - **Email:** support@ai-bootstrap.dev (if applicable)
 
 ---
