@@ -26,11 +26,11 @@
     "project-setup",
     "cli"
   ],
-  "author": "Victor",
+  "author": "Victor Velazquez <victorvelazqueza@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/ai-bootstrap.git"
+    "url": "https://github.com/victorvelazquez/ai-bootstrap.git"
   },
   "engines": {
     "node": ">=18.0.0"
