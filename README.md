@@ -487,7 +487,6 @@ MIT License - See [LICENSE](LICENSE) for details.
 ## 💬 Support
 
 - **Issues:** [GitHub Issues](https://github.com/victorvelazquez/ai-bootstrap/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/victorvelazquez/ai-bootstrap/discussions)
 - **Email:** support@ai-bootstrap.dev (if applicable)
 
 ---

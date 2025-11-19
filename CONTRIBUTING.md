@@ -444,7 +444,6 @@ Include:
 ## 💬 Community
 
 - **Issues**: [GitHub Issues](https://github.com/victorvelazquez/ai-bootstrap/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/victorvelazquez/ai-bootstrap/discussions)
 - **Email**: victorvelazqueza@gmail.com
 
 ## 📄 License
@@ -463,7 +462,7 @@ Contributors will be:
 
 - Check [README.md](README.md)
 - Check [CLAUDE.md](CLAUDE.md) for architecture
-- Open a [Discussion](https://github.com/victorvelazquez/ai-bootstrap/discussions)
+- Open an [Issue](https://github.com/victorvelazquez/ai-bootstrap/issues)
 - Ask in your PR or issue
 
 ---
