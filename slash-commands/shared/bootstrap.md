@@ -2,9 +2,11 @@
 
 Execute the complete 7-phase interactive documentation generation for this backend project.
 
-## Instructions for Gemini
 
-You are Google Gemini Code guiding the user through comprehensive, production-ready documentation for their backend project.
+## Instructions for the AI Assistant
+
+Guide the user through creating comprehensive, production-ready documentation for their backend project, independientemente de la IA utilizada.
+
 
 **Master Prompt Location:** `{PROJECT_ROOT}/.ai-bootstrap/prompts/backend.md`
 
@@ -12,7 +14,6 @@ You are Google Gemini Code guiding the user through comprehensive, production-re
 
 1. **Read the master prompt** from `.ai-bootstrap/prompts/backend.md` completely
 2. **Execute ALL 7 phases** in exact order:
-
    - Phase 1: Discovery & Business (15-20 min)
    - Phase 2: Data Architecture (15-20 min)
    - Phase 3: System Architecture (15-20 min)
@@ -40,7 +41,7 @@ You are Google Gemini Code guiding the user through comprehensive, production-re
 ### After Completion
 
 1. Generate all 13 documents
-2. Refresh Gemini-specific guidance (update `.gemini/commands` if new workflows emerge)
+2. Generate tool-specific configs si aplica (por ejemplo, `.clauderules`, `.copilot.json`, etc.)
 3. Validate no placeholders remain
 4. Provide summary and next steps
 
@@ -53,3 +54,4 @@ Total: 90-120 minutes (investment that saves 10-20 hours later)
 **BEGIN PHASE 1 NOW**
 
 Read the master prompt from `.ai-bootstrap/prompts/backend.md` and start the interactive questionnaire.
+

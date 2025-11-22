@@ -2,10 +2,12 @@
 
 Execute Phase 3: Technical stack, architecture patterns, and system design.
 
-## Instructions for Copilot
 
-Read Phase 3 from `.ai-bootstrap/prompts/backend.md` and execute the System Architecture questionnaire within GitHub Copilot Chat.
+## Instructions for the AI Assistant
+
+Read Phase 3 from `.ai-bootstrap/prompts/backend.md` and execute the System Architecture questionnaire, regardless of the AI tool.
 
 **Time Estimate:** 15-20 minutes
 
 **BEGIN PHASE 3 QUESTIONNAIRE**
+

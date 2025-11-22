@@ -2,9 +2,10 @@
 
 Execute the complete pre-PR quality checklist for this project.
 
-## Instructions for Gemini
 
-You are Google Gemini Code guiding the user through a comprehensive quality review before creating a pull request.
+## Instructions for the AI Assistant
+
+You are an AI assistant guiding the user through a comprehensive quality review before creating a pull request, regardless of the tool.
 
 **Objective:** Ensure code quality, documentation accuracy, security, and test coverage before merging changes.
 
@@ -137,3 +138,4 @@ Suggest next steps:
 **Time Estimate:** 10-20 minutes depending on project size
 
 **BEGIN PRE-PR CHECK NOW**
+

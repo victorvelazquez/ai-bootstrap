@@ -199,46 +199,51 @@ async function setupSlashCommands(targetPath: string, aiTools: string[]): Promis
   const spinner = ora('Setting up slash commands...').start();
 
   try {
-    const slashCommandsSource = path.join(ROOT_DIR, 'slash-commands');
+    const sharedSource = path.join(ROOT_DIR, 'slash-commands', 'shared');
+    const files = await fs.readdir(sharedSource);
 
     for (const tool of aiTools) {
-      const commandsSource = path.join(slashCommandsSource, tool);
-      let commandsTarget: string | undefined = undefined;
-
-      switch (tool) {
-        case 'claude':
-          commandsTarget = path.join(targetPath, '.claude', 'commands');
-          break;
-        case 'cursor':
-          commandsTarget = path.join(targetPath, '.cursor', 'commands');
-          break;
-        case 'gemini':
-          commandsTarget = path.join(targetPath, '.gemini', 'commands');
-          break;
-        case 'copilot':
-          // Solo prompts para copilot
-          break;
-        default:
-          continue;
-      }
-
-      if (await fs.pathExists(commandsSource)) {
-        if (tool === 'copilot') {
-          // Solo copiar a .github/prompts con sufijo .prompt.md
-          const promptsTarget = path.join(targetPath, '.github', 'prompts');
-          await fs.ensureDir(promptsTarget);
-          const files = await fs.readdir(commandsSource);
-          for (const file of files) {
-            if (file.endsWith('.md')) {
-              const srcFile = path.join(commandsSource, file);
-              const base = file.replace(/\.md$/, '');
-              const destFile = path.join(promptsTarget, `${base}.prompt.md`);
-              await fs.copyFile(srcFile, destFile);
-            }
+      if (tool === 'copilot') {
+        // Copilot: prompts en .github/prompts con sufijo .prompt.md
+        const promptsTarget = path.join(targetPath, '.github', 'prompts');
+        await fs.ensureDir(promptsTarget);
+        for (const file of files) {
+          if (file.endsWith('.md')) {
+            const srcFile = path.join(sharedSource, file);
+            const base = file.replace(/\.md$/, '');
+            const destFile = path.join(promptsTarget, `${base}.prompt.md`);
+            await fs.copyFile(srcFile, destFile);
           }
-        } else if (commandsTarget) {
-          await fs.ensureDir(commandsTarget);
-          await fs.copy(commandsSource, commandsTarget);
+        }
+      } else if (tool === 'claude') {
+        const commandsTarget = path.join(targetPath, '.claude', 'commands');
+        await fs.ensureDir(commandsTarget);
+        for (const file of files) {
+          if (file.endsWith('.md')) {
+            const srcFile = path.join(sharedSource, file);
+            const destFile = path.join(commandsTarget, file);
+            await fs.copyFile(srcFile, destFile);
+          }
+        }
+      } else if (tool === 'cursor') {
+        const commandsTarget = path.join(targetPath, '.cursor', 'commands');
+        await fs.ensureDir(commandsTarget);
+        for (const file of files) {
+          if (file.endsWith('.md')) {
+            const srcFile = path.join(sharedSource, file);
+            const destFile = path.join(commandsTarget, file);
+            await fs.copyFile(srcFile, destFile);
+          }
+        }
+      } else if (tool === 'gemini') {
+        const commandsTarget = path.join(targetPath, '.gemini', 'commands');
+        await fs.ensureDir(commandsTarget);
+        for (const file of files) {
+          if (file.endsWith('.md')) {
+            const srcFile = path.join(sharedSource, file);
+            const destFile = path.join(commandsTarget, file);
+            await fs.copyFile(srcFile, destFile);
+          }
         }
       }
     }
