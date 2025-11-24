@@ -34,6 +34,9 @@ Describe in 2-3 sentences:
 - Who are the users?
 - What is the core value proposition?
 - What makes this project necessary?
+
+Example:
+"A backend for a fitness tracking mobile app used by gym-goers (users). It allows users to log workouts, track progress over time, and share achievements with friends (value). This project is necessary to replace our legacy spreadsheet-based system and support our new iOS app launch."
 ```
 
 **1.2 Project Name & Description**
@@ -74,19 +77,25 @@ Your objectives:
 
 **1.5 Scope Definition**
 ```
-What is IN SCOPE for this project? (Features to include)
+What is IN SCOPE? (What we are building NOW)
+- Features that MUST be in the initial version (MVP)
+- Core functionality required for launch
 
-List 5-10 main features/capabilities:
--
--
--
+Example (for a To-Do App):
+- User registration and login
+- Create, read, update, delete tasks (CRUD)
+- Mark tasks as completed
+- Due dates for tasks
 
-What is OUT OF SCOPE? (Features explicitly NOT included)
+What is OUT OF SCOPE? (What we are NOT building now)
+- Features for future versions (v2, v3)
+- Nice-to-have ideas that are not critical yet
+- Things we explicitly decided NOT to do
 
-List 3-5 features that are NOT part of this project:
--
--
--
+Example (for a To-Do App):
+- Mobile app (we are building web only first)
+- Sharing tasks with friends (v2 feature)
+- AI task prioritization (too complex for MVP)
 ```
 
 **1.6 Constraints**
@@ -102,21 +111,37 @@ F) 🔐 Security - High security requirements
 G) ⚡ Performance - Strict latency/throughput requirements
 
 For each selected, provide details:
+
+Example:
+- Time: Must launch MVP by Q3 2024
+- Compliance: Must be GDPR compliant as we serve EU users
 ```
 
 **1.7 Success Metrics**
 ```
-How will you measure success? Define 3-5 KPIs:
+How will you measure success?
 
-Technical metrics:
-- Response time < __ms
-- Uptime > __%
-- Error rate < __%
+1. Expected Users:
+   - Initial launch: __ users
+   - Year 1 goal: __ users
 
-Business metrics:
-- Active users: __
-- Transactions/day: __
-- Revenue impact: __
+2. Performance Targets:
+   - Response time: < __ ms
+   - Uptime: __ %
+
+3. Business Goals:
+   - [Goal 1]
+   - [Goal 2]
+
+⭐ Standard for MVP:
+- Users: 1,000 initial / 10,000 Year 1
+- Response time: < 500ms (API), < 100ms (DB)
+- Uptime: 99.9% (Standard cloud SLA)
+
+🏆 Standard for Production/Scale:
+- Users: 100,000+ active
+- Response time: < 200ms (API), < 50ms (DB)
+- Uptime: 99.99% (High Availability)
 ```
 
 ### Phase 1 Output
@@ -194,16 +219,25 @@ Your relationships:
 
 **2.4 Data Volume Estimates**
 ```
-Estimated data volumes (Year 1):
+Estimated data volume (Year 1):
 
-- Total records per main entity: __
-- Growth rate: __% per month
-- Average record size: __ KB
-- Total storage estimate: __ GB
+- Total records: [Low (<10k) / Medium (10k-1M) / High (>1M)]
+- Growth rate: [Slow / Moderate / Fast]
 
-Any large binary data (files, images)?
-A) Yes - Using [S3/Azure Blob/GCS/Local filesystem]
-B) No - Only structured data
+Data Complexity (Record Size):
+A) 📄 Low - Mostly text data (JSON, strings)
+B) 🖼️ Medium - Some images/documents (blobs, small files)
+C) 🎥 High - Heavy media/large files (video, audio, raw data)
+
+⭐ Standard for MVP:
+- Records: Low (<10k)
+- Growth: Moderate
+- Complexity: Low (mostly text)
+
+🏆 Standard for Production/Scale:
+- Records: High (>1M)
+- Growth: Fast
+- Complexity: Medium/High (includes media/files)
 ```
 
 **2.5 Data Retention**
@@ -274,11 +308,13 @@ Define the technical stack, architecture patterns, and system design.
 ```
 Which backend framework will you use?
 
-Node.js:
-A) ⭐ NestJS - Recommended (TypeScript, structured, enterprise-ready)
-B) 🔥 Express.js - Popular (minimal, flexible, lightweight)
-C) ⚡ Fastify - Modern (high performance, schema validation)
-D) Hapi.js - Enterprise (configuration-driven)
+Node.js (JavaScript):
+A) 🔥 Express.js - Popular (minimal, flexible, lightweight)
+B) Hapi.js - Enterprise (configuration-driven)
+
+TypeScript (Node.js):
+C) ⭐ NestJS - Recommended (structured, enterprise-ready, decorators)
+D) ⚡ Fastify - Modern (high performance, schema validation)
 
 Python:
 E) ⭐ FastAPI - Recommended (modern, fast, auto-docs)
@@ -289,11 +325,24 @@ Java:
 H) 🏆 Spring Boot - Enterprise standard
 I) Quarkus - Modern (cloud-native, fast startup)
 
+Go:
+J) ⚡ Gin - Popular (fast, minimalist)
+K) Echo - Feature-rich (middleware, routing)
+L) Fiber - Express-like (high performance)
+
+Rust:
+M) ⚡ Actix-web - High performance (async, type-safe)
+N) Rocket - Developer-friendly (macros, type-safe)
+O) Axum - Modern (tokio-based, ergonomic)
+
+Kotlin:
+P) Ktor - Native Kotlin (coroutines, DSL)
+Q) Spring Boot - Java interop (Kotlin support)
+
 Other:
-J) Go (Gin, Echo, Fiber)
-K) Ruby (Rails)
-L) PHP (Laravel)
-M) C# (.NET Core)
+R) Ruby (Rails)
+S) PHP (Laravel)
+T) C# (.NET Core)
 
 Your choice: __
 Why?
@@ -353,6 +402,14 @@ Type system:
 A) ⭐ Strongly typed - TypeScript, Java, Go (Recommended for large projects)
 B) Dynamically typed - JavaScript, Python, Ruby
 C) Gradually typed - Python with type hints
+
+Package Manager:
+A) ⭐ npm - Standard, comes with Node
+B) 🔥 pnpm - Fast, disk efficient
+C) ⚡ yarn - Popular alternative
+D) 🚀 bun - Ultra fast (if using Bun runtime)
+E) 🐍 pip/poetry (Python)
+F) ☕ Maven/Gradle (Java)
 ```
 
 **3.5 Key Dependencies**
@@ -445,6 +502,11 @@ List any third-party APIs/services:
 - Analytics: [Google Analytics, Mixpanel, etc.]
 - Monitoring: [Sentry, Datadog, New Relic, etc.]
 - Other: __
+
+Example:
+- Payment: Stripe for processing credit cards
+- Email: AWS SES for transactional emails
+- Maps: Google Maps API for store locator
 ```
 
 ### Phase 3 Output
@@ -1598,10 +1660,21 @@ A) Yes - All of them ⭐
 B) Yes - Critical ones only (deployment, runbooks)
 C) Later - Start without docs
 
-API documentation tool:
-A) ⭐ Swagger/OpenAPI (auto-generated)
-B) Postman collections
-C) Markdown docs
+API documentation strategy:
+
+A) ⭐ Code-First (Recommended)
+   - Generate docs from code (Swagger/OpenAPI decorators)
+   - Always in sync with code
+   - Tools: @nestjs/swagger, FastAPI docs
+
+B) 📝 Design-First
+   - Write openapi.yaml manually first
+   - Generate code from spec
+   - Better for large teams/contracts
+
+C) 📄 Manual
+   - Write Markdown/Notion docs
+   - Hard to keep in sync (Not recommended)
 ```
 
 **7.11 Optional: Spec-Kit Integration**
@@ -1747,6 +1820,7 @@ When executing this master prompt:
 
 - [ ] Execute phases 1-7 in exact order
 - [ ] Ask ALL questions in each phase (don't skip)
+- [ ] Ask questions ONE BY ONE (wait for answer)
 - [ ] Wait for user response before proceeding
 - [ ] Provide recommendations (⭐🔥⚡🏆)
 - [ ] Offer multiple choice where applicable
