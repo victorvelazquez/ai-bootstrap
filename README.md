@@ -14,12 +14,16 @@ AI Bootstrap is an interactive CLI that generates 13 professional documents for 
 - 🛡️ Quality, security, and best practices by default
 - ⏱️ Save 10-20 hours per project
 
+
 Quick Start:
 
 ```bash
 npm install -g ai-bootstrap
 ai-bootstrap init .
 ```
+
+Open your favorite AI tool (Claude, Copilot, Cursor, Gemini, etc.) and type the command `/bootstrap` as a message or slash command.
+This will start an interactive questionnaire: when finished, you will have all your backend’s professional, connected documentation generated automatically in minutes.
 
 ---
 
@@ -35,12 +39,16 @@ AI Bootstrap es un CLI interactivo que genera 13 documentos profesionales para p
 - 🛡️ Calidad, seguridad y buenas prácticas garantizadas
 - ⏱️ Ahorra 10-20 horas por proyecto
 
+
 Guía rápida:
 
 ```bash
 npm install -g ai-bootstrap
 ai-bootstrap init .
 ```
+
+Abre tu herramienta AI favorita (Claude, Copilot, Cursor, Gemini, etc.) y escribe el comando `/bootstrap` como mensaje o slash command.
+Esto iniciará un cuestionario interactivo: al finalizar, tendrás toda la documentación profesional y conectada de tu backend generada automáticamente en minutos.
 
 ---
 
@@ -56,12 +64,16 @@ AI Bootstrap é uma CLI interativa que gera 13 documentos profissionais para pro
 - 🛡️ Qualidade, segurança e melhores práticas garantidas
 - ⏱️ Economize 10-20 horas por projeto
 
+
 Guia rápido:
 
 ```bash
 npm install -g ai-bootstrap
 ai-bootstrap init .
 ```
+
+Abra sua ferramenta de IA favorita (Claude, Copilot, Cursor, Gemini, etc.) e digite o comando `/bootstrap` como mensagem ou slash command.
+Isso iniciará um questionário interativo: ao finalizar, toda a documentação profissional e conectada do seu backend será gerada automaticamente em minutos.
 
 ---
 
