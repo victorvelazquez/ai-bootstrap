@@ -259,6 +259,7 @@ If corrections needed, specify which section.
 Once confirmed, generate:
 
 **1. `project-brief.md`**
+
 - Use template: `.ai-bootstrap/templates/project-brief.template.md`
 - Fill with all Phase 1 information
 - Write to project root
@@ -274,6 +275,7 @@ C) 🔄 Regenerate with changes (tell me what to modify)
 ```
 
 **If user selects B:**
+
 ```
 Perfect. Please edit project-brief.md and type "ready" when you're done.
 I'll re-read the file to update my context before continuing.
@@ -503,6 +505,48 @@ Data Patterns: [selected patterns with brief details]
 
 Is this correct? (Yes/No)
 ```
+
+---
+
+### 📄 Generate Phase 2 Documents
+
+**Before starting generation:**
+
+```
+📖 Loading context from previous phases...
+✅ Re-reading project-brief.md
+```
+
+Once confirmed, generate:
+
+**1. `docs/data-model.md`**
+
+- Use template: `.ai-bootstrap/templates/docs/data-model.template.md`
+- Fill with all Phase 2 entity and relationship information
+- Include entity catalog, relationships, data patterns
+
+```
+✅ Generated: docs/data-model.md
+
+📝 Please review this document. Do you need to make any corrections?
+
+A) ✅ Looks perfect, continue to Phase 3
+B) 📝 I'll edit it now (I'll wait)
+C) 🔄 Regenerate with changes (tell me what to modify)
+```
+
+**If user selects B:**
+
+```
+Perfect. Please edit docs/data-model.md and type "ready" when you're done.
+I'll re-read the file to update my context before continuing.
+```
+
+Then execute: `read_file('docs/data-model.md')` to refresh context.
+
+---
+
+**Proceed to Phase 3 only after document is validated.**
 
 ---
 
@@ -895,6 +939,56 @@ Is this correct? (Yes/No)
 
 ---
 
+### 📄 Generate Phase 3 Documents
+
+**Before starting generation:**
+
+```
+📖 Loading context from previous phases...
+✅ Re-reading project-brief.md
+✅ Re-reading docs/data-model.md
+```
+
+Once confirmed, generate:
+
+**1. `docs/architecture.md`**
+
+- Use template: `.ai-bootstrap/templates/docs/architecture.template.md`
+- Fill with system architecture, patterns, tech stack
+- Include architecture diagram (mermaid format)
+
+**2. `ai-instructions.md`**
+
+- Use template: `.ai-bootstrap/templates/ai-instructions.template.md`
+- Fill with tech stack, framework, language, key dependencies
+- Include NEVER/ALWAYS rules specific to chosen stack
+
+```
+✅ Generated: docs/architecture.md
+✅ Generated: ai-instructions.md
+
+📝 Please review these documents. Do you need to make any corrections?
+
+A) ✅ Look perfect, continue to Phase 4
+B) 📝 I'll edit them now (I'll wait)
+C) 🔄 Regenerate with changes (tell me what to modify)
+```
+
+**If user selects B:**
+
+```
+Perfect. Please edit the documents and type "ready" when you're done.
+I'll re-read all files to update my context before continuing.
+```
+
+Then execute: `read_file()` for both documents to refresh context.
+
+---
+
+**Proceed to Phase 4 only after documents are validated.**
+
+---
+
 ## PHASE 4: Security & Authentication (15-20 min)
 
 > **Order for this phase:** 4.1 → 4.2 → 4.3 → 4.4 → 4.5 → 4.6 → 4.7 → 4.8 → 4.9 → 4.10
@@ -1186,6 +1280,54 @@ Audit Logging: [events logged + retention + storage]
 
 Is this correct? (Yes/No)
 ```
+
+---
+
+### 📄 Generate Phase 4 Documents
+
+**Before starting generation:**
+
+```
+📖 Loading context from previous phases...
+✅ Re-reading project-brief.md
+✅ Re-reading docs/data-model.md
+✅ Re-reading docs/architecture.md
+✅ Re-reading ai-instructions.md
+```
+
+Once confirmed, generate:
+
+**1. `specs/security.md`**
+
+- Use template: `.ai-bootstrap/templates/specs/security.template.md`
+- Fill with all security policies, authentication, authorization
+
+**2. Update `ai-instructions.md`**
+
+- Add security rules to NEVER/ALWAYS sections
+- Add authentication/authorization patterns
+
+```
+✅ Generated: specs/security.md
+✅ Updated: ai-instructions.md (security rules added)
+
+📝 Please review these documents. Do you need to make any corrections?
+
+A) ✅ Look perfect, continue to Phase 5
+B) 📝 I'll edit them now (I'll wait)
+C) 🔄 Regenerate with changes (tell me what to modify)
+```
+
+**If user selects B:**
+
+```
+Perfect. Please edit the documents and type "ready" when you're done.
+I'll re-read all files to update my context before continuing.
+```
+
+---
+
+**Proceed to Phase 5 only after documents are validated.**
 
 ---
 
@@ -1709,7 +1851,6 @@ Example roles: Tech Lead, release manager, PR author, documentation team, etc.
 ### Phase 5 Output
 
 ```
-
 📋 PHASE 5 SUMMARY:
 
 Formatting: [indentation, quotes, line length, formatter + linter]
@@ -1725,8 +1866,55 @@ Git: [commit format (conventional/simple), branch naming convention]
 Versioning: [scheme (SemVer/Date), migration strategy, changelog method, responsibility]
 
 Is this correct? (Yes/No)
+```
+
+---
+
+### 📄 Generate Phase 5 Documents
+
+**Before starting generation:**
 
 ```
+📖 Loading context from previous phases...
+✅ Re-reading project-brief.md
+✅ Re-reading docs/architecture.md
+✅ Re-reading ai-instructions.md
+✅ Re-reading specs/security.md
+```
+
+Once confirmed, generate:
+
+**1. `docs/code-standards.md`**
+
+- Use template: `.ai-bootstrap/templates/docs/code-standards.template.md`
+- Fill with all code quality rules, naming conventions, formatting
+
+**2. Update `ai-instructions.md`**
+
+- Add code style rules to formatting section
+- Add complexity limits and testing requirements
+
+```
+✅ Generated: docs/code-standards.md
+✅ Updated: ai-instructions.md (code standards added)
+
+📝 Please review these documents. Do you need to make any corrections?
+
+A) ✅ Look perfect, continue to Phase 6
+B) 📝 I'll edit them now (I'll wait)
+C) 🔄 Regenerate with changes (tell me what to modify)
+```
+
+**If user selects B:**
+
+```
+Perfect. Please edit the documents and type "ready" when you're done.
+I'll re-read all files to update my context before continuing.
+```
+
+---
+
+**Proceed to Phase 6 only after documents are validated.**
 
 ---
 
@@ -1990,7 +2178,6 @@ B) ⚠️ Warning only - Allow with justification
 ### Phase 6 Output
 
 ```
-
 📋 PHASE 6 SUMMARY:
 
 Testing Framework: [Jest/pytest/JUnit + assertion library + mocking library] (6.1)
@@ -2003,8 +2190,44 @@ Test Organization: [co-located/separate folder + naming pattern (should/it/free-
 CI/CD Testing: [when tests run (commit/PR/deploy/nightly) + quality gates (pass/coverage/lint) + gate behavior (block/warn)] (6.7)
 
 Is this correct? (Yes/No)
+```
+
+---
+
+### 📄 Generate Phase 6 Documents
+
+**Before starting generation:**
+```
+📖 Loading context from previous phases...
+✅ Re-reading docs/code-standards.md
+✅ Re-reading ai-instructions.md
+```
+
+Once confirmed, generate:
+
+**1. `docs/testing.md`**
+- Use template: `.ai-bootstrap/templates/docs/testing.template.md`
+- Fill with testing strategy, tools, coverage targets, automation
 
 ```
+✅ Generated: docs/testing.md
+
+📝 Please review this document. Do you need to make any corrections?
+
+A) ✅ Looks perfect, continue to Phase 7
+B) 📝 I'll edit it now (I'll wait)
+C) 🔄 Regenerate with changes (tell me what to modify)
+```
+
+**If user selects B:**
+```
+Perfect. Please edit the document and type "ready" when you're done.
+I'll re-read all files to update my context before continuing.
+```
+
+---
+
+**Proceed to Phase 7 only after document is validated.**
 
 ---
 
@@ -2420,7 +2643,6 @@ Your choice: \_\_
 ### Phase 7 Output
 
 ```
-
 📋 PHASE 7 SUMMARY:
 
 Deployment Environment: [cloud/PaaS/on-premises/container-orchestration + platform choice + rationale] (7.1)
@@ -2436,8 +2658,54 @@ Documentation & Runbooks: [what will be created (deployment guide/runbooks/diagr
 Spec-Kit Integration: [yes/no + if yes, installation command] (7.11)
 
 Is this correct? (Yes/No)
+```
+
+---
+
+### 📄 Generate Phase 7 Documents
+
+**Before starting generation:**
+```
+📖 Loading context from previous phases...
+✅ Re-reading docs/testing.md
+✅ Re-reading ai-instructions.md
+```
+
+Once confirmed, generate:
+
+**1. `docs/operations.md`**
+- Use template: `.ai-bootstrap/templates/docs/operations.template.md`
+- Fill with deployment, monitoring, alerting, backup, scaling
+
+**2. `specs/configuration.md`**
+- Use template: `.ai-bootstrap/templates/specs/configuration.template.md`
+- Fill with environment variables, secrets management, feature flags
+
+**3. `.env.example`**
+- List all environment variables needed
+- Include comments explaining each variable
 
 ```
+✅ Generated: docs/operations.md
+✅ Generated: specs/configuration.md
+✅ Generated: .env.example
+
+📝 Please review these documents. Do you need to make any corrections?
+
+A) ✅ Look perfect, continue to final checkpoint
+B) 📝 I'll edit them now (I'll wait)
+C) 🔄 Regenerate with changes (tell me what to modify)
+```
+
+**If user selects B:**
+```
+Perfect. Please edit the documents and type "ready" when you're done.
+I'll re-read all files to update my context before continuing.
+```
+
+---
+
+**Proceed to final generation only after documents are validated.**
 
 ---
 
@@ -2451,7 +2719,7 @@ Is this correct? (Yes/No)
 We have successfully generated the following documents across all phases:
 
 ✅ project-brief.md (Phase 1)
-✅ docs/data-model.md (Phase 2)  
+✅ docs/data-model.md (Phase 2)
 ✅ docs/architecture.md (Phase 3)
 ✅ ai-instructions.md (Phase 3)
 ✅ specs/security.md (Phase 4)
@@ -2469,6 +2737,7 @@ B) 📝 I need to review/edit some documents (I'll wait)
 ```
 
 **If user selects B:**
+
 ```
 Perfect. Please review and edit any documents you need to change.
 When you're done, type "ready" and I'll re-read ALL documents
@@ -2518,28 +2787,33 @@ Generating...
 For EACH final document:
 
 **1. `docs/business-flows.md`**
+
 - Use template: `.ai-bootstrap/templates/docs/business-flows.template.md`
 - Fill with business flows from Phase 1
 - Generate mermaid diagrams for each flow
 
 **2. `docs/api.md`**
+
 - Use template: `.ai-bootstrap/templates/docs/api.template.md`
 - Auto-generate CRUD endpoints for each entity from Phase 2
 - Apply API conventions from Phase 3 (question 3.5)
 - Include authentication, pagination, error formats
 
 **3. `docs/contributing.md`**
+
 - Use template: `.ai-bootstrap/templates/docs/contributing.template.md`
 - Fill with git workflow, commit format from Phase 5
 - Include setup instructions from Phase 3 & 7
 
 **4. `README.md`**
+
 - Use template: `.ai-bootstrap/templates/README.template.md`
 - **CRITICAL:** This aggregates info from ALL phases
 - Re-read ALL previously generated docs before filling
 - Include quick start, tech stack, deployment info
 
 **5. `AGENT.md`**
+
 - Use template: `.ai-bootstrap/templates/AGENT.template.md`
 - **CRITICAL:** This is the master index
 - Lists ALL 15 documents with descriptions
