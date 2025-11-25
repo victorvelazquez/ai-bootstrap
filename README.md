@@ -6,7 +6,7 @@
 
 Transform your idea into a production-ready, AI-documented backend in minutes.
 
-AI Bootstrap is an interactive CLI that generates 13 professional documents for backend projects, guiding users (or AI agents) through 7 key phases: business, architecture, security, standards, testing, and operations. Compatible with Claude, Copilot, Cursor, Gemini, and any AI assistant.
+AI Bootstrap is an interactive CLI that generates 15 professional documents for backend projects, guiding users (or AI agents) through 7 key phases: business, architecture, security, standards, testing, and operations. Compatible with Claude, Copilot, Cursor, Gemini, and any AI assistant.
 
 - 🚀 Complete, interconnected documentation
 - 🤖 Multi-AI support and slash commands
@@ -30,7 +30,7 @@ This will start an interactive questionnaire: when finished, you will have all y
 
 Transforma tu idea en un backend listo para producción y documentado para IA en minutos.
 
-AI Bootstrap es un CLI interactivo que genera 13 documentos profesionales para proyectos backend, guiando al usuario (o agente AI) por 7 fases clave: negocio, arquitectura, seguridad, estándares, testing y operaciones. Compatible con Claude, Copilot, Cursor, Gemini y cualquier asistente AI.
+AI Bootstrap es un CLI interactivo que genera 15 documentos profesionales para proyectos backend, guiando al usuario (o agente AI) por 7 fases clave: negocio, arquitectura, seguridad, estándares, testing y operaciones. Compatible con Claude, Copilot, Cursor, Gemini y cualquier asistente AI.
 
 - 🚀 Documentación completa y conectada
 - 🤖 Soporte multi-AI y comandos slash
@@ -54,7 +54,7 @@ Esto iniciará un cuestionario interactivo: al finalizar, tendrás toda la docum
 
 Transforme sua ideia em um backend pronto para produção e documentado para IA em minutos.
 
-AI Bootstrap é uma CLI interativa que gera 13 documentos profissionais para projetos backend, guiando o usuário (ou agente de IA) por 7 fases-chave: negócios, arquitetura, segurança, padrões, testes e operações. Compatível com Claude, Copilot, Cursor, Gemini e qualquer assistente de IA.
+AI Bootstrap é uma CLI interativa que gera 15 documentos profissionais para projetos backend, guiando o usuário (ou agente de IA) por 7 fases-chave: negócios, arquitetura, segurança, padrões, testes e operações. Compatível com Claude, Copilot, Cursor, Gemini e qualquer assistente de IA.
 
 - 🚀 Documentação completa e interconectada
 - 🤖 Suporte multi-IA e comandos slash
@@ -76,7 +76,7 @@ Isso iniciará um questionário interativo: ao finalizar, toda a documentação 
 
 ## 🎯 What is AI Bootstrap?
 
-AI Bootstrap is an interactive CLI tool that generates **13 comprehensive documentation files** for your backend project through a guided 7-phase questionnaire. It creates the foundation for AI-assisted development with any AI tool (Claude, Copilot, Cursor, Gemini, etc.).
+AI Bootstrap is an interactive CLI tool that generates **15 comprehensive documentation files** for your backend project through a guided 7-phase questionnaire. It creates the foundation for AI-assisted development with any AI tool (Claude, Copilot, Cursor, Gemini, etc.).
 
 **The Problem:** Starting a new backend project requires hours of documentation setup. Without proper docs, AI assistants work inefficiently and make inconsistent decisions.
 
@@ -87,7 +87,7 @@ AI Bootstrap is an interactive CLI tool that generates **13 comprehensive docume
 ## ✨ Features
 
 - 🤖 **AI-Agnostic** - Works with Claude, Copilot, Cursor, Gemini, any AI tool
-- 📚 **13 Professional Documents** - Complete documentation architecture
+- 📚 **15 Professional Documents** - Complete documentation architecture
 - ⚡ **Interactive Questionnaires** - 7 phases with smart recommendations
 - 🎯 **AGENT.md Standard** - Universal AI configuration file
 - 💡 **Slash Commands** - Easy execution with `/bootstrap`
@@ -161,14 +161,14 @@ The AI will guide you through 7 phases:
 1. **Discovery & Business** (15-20 min) - What problem are you solving?
 2. **Data Architecture** (15-20 min) - Database design and entities
 3. **System Architecture** (15-20 min) - Tech stack and patterns
-4. **Security & Auth** (15-20 min) - Authentication and compliance
+4. **Security & Authentication** (15-20 min) - Authentication and compliance
 5. **Code Standards** (15-20 min) - Quality rules and conventions
-6. **Testing** (10 min) - Testing strategy and coverage
-7. **Operations** (10 min) - Deployment and monitoring
+6. **Testing Strategy** (10 min) - Testing strategy and coverage
+7. **Operations & Deployment** (10 min) - Deployment and monitoring
 
-### 5. Generated Documents ✅
+### 5. Generated Documents (15) ✅
 
-After completion, you'll have:
+After completion, tendrás 15 artefactos listos:
 
 ```
 my-awesome-api/
@@ -179,11 +179,13 @@ my-awesome-api/
 ├── project-brief.md           # Business context
 ├── docs/
 │   ├── architecture.md        # System architecture
-│   ├── data-architecture.md   # Database design
+│   ├── data-model.md          # Entity catalog & data contracts
 │   ├── code-standards.md      # Code quality rules
-│   ├── testing.md            # Testing strategy
-│   ├── operations.md         # Deployment procedures
-│   └── contributing.md       # Contribution guidelines
+│   ├── testing.md             # Testing strategy
+│   ├── operations.md          # Deployment procedures
+│   ├── business-flows.md      # Core workflows & diagrams
+│   ├── api.md                 # API conventions & endpoints
+│   └── contributing.md        # Contribution guidelines
 ├── specs/
 │   ├── security.md           # Security policies
 │   └── configuration.md      # Environment config
@@ -204,16 +206,18 @@ my-awesome-api/
 | `project-brief.md`   | Business context, objectives, scope    | AI + stakeholders |
 | `README.md`          | Project overview, setup instructions   | Developers        |
 
-### Technical Docs (6)
+### Technical Docs (8)
 
-| Document                    | Purpose                                 |
-| --------------------------- | --------------------------------------- |
-| `docs/architecture.md`      | System architecture, design patterns    |
-| `docs/data-architecture.md` | Database schema, relationships          |
-| `docs/code-standards.md`    | Naming conventions, quality rules       |
-| `docs/testing.md`           | Testing strategy, coverage requirements |
-| `docs/operations.md`        | Deployment, monitoring, runbooks        |
-| `docs/contributing.md`      | Development setup, workflow             |
+| Document                 | Purpose                                    |
+| ------------------------ | ------------------------------------------ |
+| `docs/architecture.md`   | System architecture, design patterns       |
+| `docs/data-model.md`     | Detailed entity catalog, ownership rules   |
+| `docs/code-standards.md` | Naming conventions, quality rules          |
+| `docs/testing.md`        | Testing strategy, coverage requirements    |
+| `docs/operations.md`     | Deployment, monitoring, runbooks           |
+| `docs/business-flows.md` | Business workflows, process diagrams       |
+| `docs/api.md`            | API conventions, CRUD endpoints, contracts |
+| `docs/contributing.md`   | Development setup, workflow                |
 
 ### Specifications (2)
 
@@ -326,7 +330,7 @@ Each AI tool gets its specific config (`.clauderules`, `.cursorrules`, etc.) tha
 ### AI Bootstrap Approach (✅ With AI Bootstrap)
 
 - ⏱️ 90-120 minutes interactive setup
-- 📚 13 interconnected professional documents
+- 📚 15 interconnected professional documents
 - 🤖 AI assistants work with full context
 - 🎯 Consistent architecture and code quality
 - ✅ Fewer bugs, faster development
@@ -446,7 +450,7 @@ your-project/
 │   │   └── config.json        # Bootstrap configuration
 │   ├── prompts/
 │   │   └── backend.md         # 7-phase master prompt
-│   ├── templates/             # 13 document templates
+│   ├── templates/             # 15 document templates
 │   ├── scripts/               # Setup scripts
 │   └── slash-commands/        # Commands for each AI tool
 │

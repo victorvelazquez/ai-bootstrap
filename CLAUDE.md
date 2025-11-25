@@ -22,11 +22,12 @@ ai-bootstrap/
 │   └── cli.ts                 # Main CLI application
 ├── prompts/
 │   └── backend.md             # 7-phase master questionnaire
-├── templates/                 # 13 document templates
+├── templates/                 # 15 document templates
 │   ├── AGENT.template.md
 │   ├── ai-instructions.template.md
+│   ├── copilot-instructions.template.md
 │   ├── project-brief.template.md
-│   ├── docs/                  # 6 templates
+│   ├── docs/                  # 8 templates
 │   ├── specs/                 # 2 templates
 │   ├── README.template.md
 │   └── .env.example.template
@@ -170,7 +171,7 @@ npm run prepare
 - `AGENT.template.md` - Universal AI config
 - `ai-instructions.template.md` - Tech stack & rules
 - `project-brief.template.md` - Business context
-- `docs/` (6 templates) - architecture, data-architecture, code-standards, testing, operations, contributing
+- `docs/` (6 templates) - architecture, data-model, code-standards, testing, operations, contributing
 - `specs/` (2 templates) - security, configuration
 - `README.template.md` - Project readme
 - `copilot-instructions.template.md` - Copilot-specific
@@ -204,10 +205,10 @@ npm run prepare
 1. Discovery & Business (15-20 min)
 2. Data Architecture (15-20 min)
 3. System Architecture (15-20 min)
-4. Security & Auth (15-20 min)
+4. Security & Authentication (15-20 min)
 5. Code Standards (15-20 min)
-6. Testing (10 min)
-7. Operations + Tools (10 min)
+6. Testing Strategy (10 min)
+7. Operations & Deployment (10 min)
 
 **Each Phase:**
 
@@ -219,7 +220,7 @@ npm run prepare
 
 **Final Step:**
 
-- Generate all 13 documents
+- Generate all 15 documents
 - Fill templates with gathered information
 - Validate completeness
 - Provide next steps

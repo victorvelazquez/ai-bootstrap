@@ -2,7 +2,7 @@
 
 **YOU ARE AN EXPERT TECHNICAL ARCHITECT AND DOCUMENTATION SPECIALIST.**
 
-Your mission is to guide the user through creating **comprehensive, production-ready documentation** for their backend project through an interactive 7-phase questionnaire.
+Your mission is to guide the user through creating **comprehensive, production-ready documentation** for their backend project through an interactive questionnaire that follows the dependency-aware order specified below.
 
 ## Important Instructions
 
@@ -15,18 +15,24 @@ Your mission is to guide the user through creating **comprehensive, production-r
    - 🏆 **Enterprise** - Best for large-scale projects
 4. **Use multiple choice when possible** - Give 3-4 options (A, B, C, D)
 5. **Validate completeness** - Ensure all critical information is gathered
-6. **Generate documents at the end** - After all phases complete, generate all 13 documents
+6. **Generate documents at the end** - After all phases complete, generate all 15 documents
 
 ---
 
 ## PHASE 1: Discovery & Business (15-20 min)
 
-### Objective
-Understand the business context, problem domain, and project scope.
+> **Order for this phase:** 1.1 → 1.2 → 1.3 → 1.4 → 1.5 → 1.6 → 1.7 → 1.8
 
-### Questions to Ask
+**1.1 Project Name & Description**
 
-**1.1 Project Overview**
+```
+What is the project name?
+
+Provide a short description (1 sentence) for README and package.json
+```
+
+**1.2 Project Overview**
+
 ```
 What problem does this backend system solve?
 
@@ -39,14 +45,8 @@ Example:
 "A backend for a fitness tracking mobile app used by gym-goers (users). It allows users to log workouts, track progress over time, and share achievements with friends (value). This project is necessary to replace our legacy spreadsheet-based system and support our new iOS app launch."
 ```
 
-**1.2 Project Name & Description**
-```
-What is the project name?
-
-Provide a short description (1 sentence) for README and package.json
-```
-
 **1.3 Target Users**
+
 ```
 Who will use this system? Select all that apply:
 
@@ -60,6 +60,7 @@ E) 📱 Mobile/Web apps - Backend for frontend
 ```
 
 **1.4 Business Objectives**
+
 ```
 What are the top 3 measurable objectives for this project?
 
@@ -76,29 +77,91 @@ Your objectives:
 ```
 
 **1.5 Scope Definition**
-```
-What is IN SCOPE? (What we are building NOW)
-- Features that MUST be in the initial version (MVP)
-- Core functionality required for launch
 
-Example (for a To-Do App):
-- User registration and login
-- Create, read, update, delete tasks (CRUD)
-- Mark tasks as completed
-- Due dates for tasks
+```
+First, what type of system are you building? (This helps suggest common features)
+
+A) 🛒 E-commerce/Marketplace
+B) 📱 SaaS/B2B Platform
+C) 📊 CRM/ERP/Business Tool
+D) 🎮 Social/Community Platform
+E) 📋 Content Management
+F) 🏦 FinTech/Payment
+G) 🏥 Healthcare/Booking
+H) 📚 Education/Learning
+I) 🔧 DevTools/API Platform
+J) Other: __
+
+Your choice: __
+
+---
+
+What is IN SCOPE? (What we are building NOW)
+
+Select common features for your type (or add custom):
+
+🛒 E-commerce common features:
+□ User authentication (register/login)
+□ Product catalog with search/filters
+□ Shopping cart
+□ Checkout and payment processing
+□ Order management
+□ Inventory tracking
+□ Admin dashboard
+
+📱 SaaS common features:
+□ User authentication with SSO
+□ Multi-tenant organization/workspace management
+□ Role-based access control (RBAC)
+□ Subscription and billing
+□ Dashboard and analytics
+□ API access
+□ Admin panel
+
+📊 CRM/Business Tool common features:
+□ User/team management
+□ Contact/customer database
+□ Activity tracking and logging
+□ Reporting and analytics
+□ Integrations (email, calendar, etc.)
+□ Search and filters
+□ Export functionality
+
+🎮 Social/Community common features:
+□ User profiles
+□ Posts/content creation
+□ Feed/timeline
+□ Comments and reactions
+□ Follow/friend system
+□ Notifications
+□ Moderation tools
+
+⭐ Custom features (add your specific ones):
+-
+-
+-
+
+---
 
 What is OUT OF SCOPE? (What we are NOT building now)
-- Features for future versions (v2, v3)
-- Nice-to-have ideas that are not critical yet
-- Things we explicitly decided NOT to do
 
-Example (for a To-Do App):
-- Mobile app (we are building web only first)
-- Sharing tasks with friends (v2 feature)
-- AI task prioritization (too complex for MVP)
+Common things to defer:
+□ Mobile native apps (building web/API first)
+□ Advanced analytics/ML features
+□ Third-party integrations (v2)
+□ White-label/multi-branding
+□ Internationalization (i18n)
+□ Advanced automation/workflows
+□ Video/live streaming features
+
+⭐ Custom out-of-scope items:
+-
+-
+-
 ```
 
 **1.6 Constraints**
+
 ```
 What constraints does this project have? Select all that apply:
 
@@ -118,6 +181,7 @@ Example:
 ```
 
 **1.7 Success Metrics**
+
 ```
 How will you measure success?
 
@@ -144,8 +208,33 @@ How will you measure success?
 - Uptime: 99.99% (High Availability)
 ```
 
+**1.8 Main Business Flows**
+
+> Note: If you omit any common flow or functionality, the AI will suggest and document typical processes relevant to your system type, based on best practices and common use cases.
+
+```
+List the main business flows of the system (e.g., sales, inventory update, invoicing, user registration).
+
+For each flow, you can add a brief description (optional).
+
+If you wish, you can specify the main steps of any flow (numbered format). If you do not specify them, the AI will deduce typical steps based on the name and description.
+
+Example:
+- Sales: Process of purchasing products by the customer.
+  1. Customer selects products
+  2. Order is created
+  3. Inventory is updated
+  4. Invoice is generated
+- Inventory: Automatic stock update after each sale.
+- Invoicing: Invoice generation after purchase.
+
+The AI will automatically generate flow diagrams (mermaid) for each documented process.
+```
+
 ### Phase 1 Output
+
 After gathering all information, confirm:
+
 ```
 📋 PHASE 1 SUMMARY:
 
@@ -157,6 +246,7 @@ In Scope: [5-10 features]
 Out of Scope: [3-5 features]
 Constraints: [list with details]
 Success Metrics: [KPIs]
+Business Flows: [list of main flows]
 
 Is this correct? (Yes/No)
 If corrections needed, specify which section.
@@ -166,12 +256,14 @@ If corrections needed, specify which section.
 
 ## PHASE 2: Data Architecture (15-20 min)
 
-### Objective
-Design the database architecture, data models, and relationships.
+> **Order for this phase:** 2.1 → 2.2 → 2.3 → 2.4 → 2.5 → 2.6 → 2.7
 
-### Questions to Ask
+### Objective
+
+Design the database model, entities, and relationships.
 
 **2.1 Database Type**
+
 ```
 What type of database will you use? (Can select multiple)
 
@@ -185,39 +277,114 @@ Why this choice?
 ```
 
 **2.2 Core Data Entities**
+
 ```
-What are the main data entities/tables in your system?
+Based on your system type (from Phase 1, question 1.5), here are common entities:
 
-List 5-15 core entities with brief description:
+🛒 E-commerce typical entities:
+□ User - System users with authentication
+□ Product - Items available for purchase
+□ Category - Product categorization
+□ Cart - Shopping cart items
+□ Order - Customer orders
+□ OrderItem - Individual items in an order
+□ Payment - Payment transactions
+□ Address - Shipping/billing addresses
+□ Review - Product reviews and ratings
+□ Inventory - Stock tracking
 
-Example:
-- User: System users with authentication
-- Product: Items available for purchase
-- Order: Customer orders with line items
-- Payment: Payment transactions
+📱 SaaS typical entities:
+□ User - System users
+□ Organization - Tenant/workspace
+□ Team - Groups within organizations
+□ Role - Access control roles
+□ Permission - Granular permissions
+□ Subscription - Billing plans
+□ Invoice - Payment records
+□ ApiKey - API access credentials
+□ AuditLog - Activity tracking
 
-Your entities:
+📊 CRM typical entities:
+□ User - System users
+□ Contact - Customers/leads
+□ Company - Organizations
+□ Deal - Sales opportunities
+□ Activity - Calls, emails, meetings
+□ Task - To-do items
+□ Note - Free-form notes
+□ Document - Attachments
+
+🎮 Social typical entities:
+□ User - Platform users
+□ Profile - User profiles
+□ Post - Content/publications
+□ Comment - Post comments
+□ Like/Reaction - Engagement
+□ Follow - User connections
+□ Notification - User alerts
+□ Message - Direct messages
+□ Group - Communities
+
+---
+
+Select relevant entities from above OR list your custom entities:
+
 1.
 2.
 3.
+4.
+5.
 ...
+
+(Include brief description for custom entities)
 ```
 
 **2.3 Relationships**
+
 ```
-For each entity pair, describe relationships:
+Common relationship patterns (select what applies to your entities):
 
-Example:
-- User → Order: One-to-Many (one user can have many orders)
-- Order → Product: Many-to-Many (via OrderItem join table)
+⭐ One-to-Many (most common):
+□ User → Order (one user has many orders)
+□ User → Post (one user creates many posts)
+□ Organization → User (one org has many users)
+□ Category → Product (one category contains many products)
+□ Order → OrderItem (one order has many line items)
+□ Post → Comment (one post has many comments)
+□ Other: __
 
-Your relationships:
+⭐ Many-to-Many (via join table):
+□ Order ↔ Product (via OrderItem)
+□ User ↔ Role (via UserRole)
+□ Post ↔ Tag (via PostTag)
+□ User ↔ User (Follow/Friend via UserFollow)
+□ Course ↔ Student (via Enrollment)
+□ Other: __
+
+⭐ One-to-One (less common):
+□ User → Profile (one user has one profile)
+□ User → UserSettings (one user has one settings record)
+□ Order → Payment (one order has one payment)
+□ Other: __
+
+⭐ Polymorphic (one entity relates to multiple types):
+□ Comment → (Post | Photo | Video) - comments on different content types
+□ Attachment → (Task | Email | Note) - files attached to different entities
+□ Activity → (User | Organization | Deal) - activities linked to various objects
+□ Other: __
+
+---
+
+Your specific relationships (list main ones):
 -
 -
 -
+
+(Format: EntityA → EntityB: Relationship type - description)
 ```
 
 **2.4 Data Volume Estimates**
+
 ```
 Estimated data volume (Year 1):
 
@@ -241,6 +408,7 @@ C) 🎥 High - Heavy media/large files (video, audio, raw data)
 ```
 
 **2.5 Data Retention**
+
 ```
 Data retention policies:
 
@@ -253,6 +421,7 @@ For each entity that has special retention needs, specify:
 ```
 
 **2.6 Data Migration**
+
 ```
 Is this a new system or replacing an existing one?
 
@@ -267,6 +436,7 @@ If migration needed:
 ```
 
 **2.7 Critical Data Patterns**
+
 ```
 Select data patterns that apply:
 
@@ -283,6 +453,7 @@ For each selected, provide brief detail:
 ```
 
 ### Phase 2 Output
+
 ```
 📋 PHASE 2 SUMMARY:
 
@@ -292,7 +463,7 @@ Relationships: [key relationships]
 Data Volume: [estimates]
 Retention: [policies]
 Migration: [strategy if applicable]
-Patterns: [selected patterns]
+Data Patterns: [selected patterns with brief details]
 
 Is this correct? (Yes/No)
 ```
@@ -301,10 +472,16 @@ Is this correct? (Yes/No)
 
 ## PHASE 3: System Architecture (15-20 min)
 
+> **Order for this phase:** 3.1 → 3.2 → 3.3 → 3.4 → 3.5 → 3.6 → 3.7 → 3.8 → 3.9 → 3.10
+
 ### Objective
+
 Define the technical stack, architecture patterns, and system design.
 
+> **Note:** At the end of this phase, the AI will automatically generate a system architecture diagram in mermaid format, based on your answers. This diagram will be included in the docs/architecture.md document.
+
 **3.1 Backend Framework**
+
 ```
 Which backend framework will you use?
 
@@ -348,7 +525,30 @@ Your choice: __
 Why?
 ```
 
-**3.2 Architecture Pattern**
+**3.2 Language & Version**
+
+```
+Primary programming language and version:
+
+Language: **
+Version: ** (e.g., Node 20, Python 3.11, Java 21)
+
+Type system:
+A) ⭐ Strongly typed - TypeScript, Java, Go (Recommended for large projects)
+B) Dynamically typed - JavaScript, Python, Ruby
+C) Gradually typed - Python with type hints
+
+Package Manager:
+A) ⭐ npm - Standard, comes with Node
+B) 🔥 pnpm - Fast, disk efficient
+C) ⚡ yarn - Popular alternative
+D) 🚀 bun - Ultra fast (if using Bun runtime)
+E) 🐍 pip/poetry (Python)
+F) ☕ Maven/Gradle (Java)
+```
+
+**3.3 Architecture Pattern**
+
 ```
 What architecture pattern will you follow?
 
@@ -364,17 +564,23 @@ C) 🔥 MVC (Popular, traditional)
    - Model-View-Controller separation
    - Good for traditional web apps
 
-D) ⚡ Microservices (Modern, complex)
-   - Multiple independent services
-   - Best for large-scale systems
+D) 📦 Modular Monolith (Modern, scalable)
+   - Single deployment with independent modules
+   - Easier than microservices, more structured than monolith
+   - Good middle ground for growing applications
 
-E) Other: __
+E) ⚡ Microservices (Modern, complex)
+   - Multiple independent services
+   - Best for large-scale distributed systems
+
+F) Other: __
 
 Your choice: __
 Why this pattern?
 ```
 
-**3.3 API Style**
+**3.4 API Style**
+
 ```
 What API style will you expose?
 
@@ -391,28 +597,70 @@ B) Header versioning (Accept: application/vnd.api.v1+json)
 C) No versioning yet (will add when needed)
 ```
 
-**3.4 Language & Version**
-```
-Primary programming language and version:
+**3.5 API Reference (Automated)**
 
-Language: __
-Version: __ (e.g., Node 20, Python 3.11, Java 21)
+````
+The AI will automatically generate standard CRUD endpoints for each entity defined in Phase 2.
 
-Type system:
-A) ⭐ Strongly typed - TypeScript, Java, Go (Recommended for large projects)
-B) Dynamically typed - JavaScript, Python, Ruby
-C) Gradually typed - Python with type hints
+Please answer the following questions to define the global API conventions (these will apply to all endpoints unless otherwise specified):
 
-Package Manager:
-A) ⭐ npm - Standard, comes with Node
-B) 🔥 pnpm - Fast, disk efficient
-C) ⚡ yarn - Popular alternative
-D) 🚀 bun - Ultra fast (if using Bun runtime)
-E) 🐍 pip/poetry (Python)
-F) ☕ Maven/Gradle (Java)
-```
+**A) Authentication and Access Control**
+1. Do all CRUD endpoints require authentication?
+  A) ⭐ Yes, all endpoints require authentication (recommended)
+  B) Only some (specify which ones)
+  C) No authentication required
 
-**3.5 Key Dependencies**
+2. Which roles can access each CRUD operation?
+  - GET (list): [admin, manager, user]
+  - GET (detail): [admin, manager, user]
+  - POST (create): [admin, manager, user]
+  - PUT (update): [admin, manager]
+  - DELETE (delete): [admin]
+  (Standard example: admin, manager, user. Adjust as needed.)
+
+**B) Listing and Filter Conventions**
+3. Which pagination scheme do you prefer?
+  A) ⭐ offset/limit (recommended)
+  B) cursor-based
+  C) No pagination
+
+4. Which filter and sorting fields will be supported by default?
+  - Filters: [id, name, date, etc.]
+  - Sorting: [field, asc/desc]
+
+**C) Error and Response Structure**
+5. What error response format will be used?
+  A) Standard JSON:
+  ```json
+  {
+   "error": "Descriptive message",
+   "code": 400,
+   "details": {}
+  }
+  ```
+
+  B) Other (specify)
+
+6. Which fields will be included in the default successful response?
+  - data, meta (pagination), links, etc.
+
+**D) Relationships and Expansions**
+7. Allow expanding relationships (include/expand)?
+  A) ⭐ Yes, support `include` parameter (recommended)
+  B) No, flat data only
+
+**E) Custom Endpoint Example**
+8. If you want to customize an endpoint (e.g., add special logic, validations, or unique parameters), describe the case here:
+
+- [Brief description, example endpoint, parameters, special logic]
+
+---
+
+The AI will use these conventions to automatically document all CRUD endpoints for each entity in api.md. If you need additional or custom endpoints, you can add them manually later.
+````
+
+**3.6 Key Dependencies**
+
 ```
 What major libraries/tools will you use?
 
@@ -439,10 +687,10 @@ D) Framework built-in
 
 Other critical libraries:
 -
--
 ```
 
-**3.6 Caching Strategy**
+**3.7 Caching Strategy**
+
 ```
 Will you use caching?
 
@@ -457,7 +705,8 @@ If using cache:
 - Cache invalidation strategy? (TTL, manual, event-driven)
 ```
 
-**3.7 Background Jobs**
+**3.8 Background Jobs**
+
 ```
 Do you need background/async jobs?
 
@@ -475,7 +724,8 @@ If yes, common job types:
 - Other: __
 ```
 
-**3.8 File Storage**
+**3.9 File Storage**
+
 ```
 How will you handle file uploads?
 
@@ -491,25 +741,101 @@ If storing files:
 - Storage quota estimate: __ GB
 ```
 
-**3.9 External Integrations**
+**3.10 External Integrations**
+
 ```
 Will you integrate with external services?
 
-List any third-party APIs/services:
-- Payment gateway: [Stripe, PayPal, Square, etc.]
-- Email service: [SendGrid, SES, Mailgun, etc.]
-- SMS: [Twilio, etc.]
-- Analytics: [Google Analytics, Mixpanel, etc.]
-- Monitoring: [Sentry, Datadog, New Relic, etc.]
-- Other: __
+Select all that apply:
+
+💳 Payment Providers:
+□ Stripe - Credit cards, subscriptions ⭐
+□ PayPal - Popular payment method
+□ Square - POS and online payments
+□ Mercado Pago - Latin America
+□ Other: __
+
+📧 Email Services:
+□ AWS SES - Cost-effective, scalable ⭐
+□ SendGrid - Feature-rich, analytics
+□ Mailgun - Developer-friendly
+□ Postmark - Transactional focus
+□ Resend - Modern, simple API ⚡
+□ Other: __
+
+📱 SMS/Messaging:
+□ Twilio - SMS, WhatsApp, voice ⭐
+□ AWS SNS - Simple notifications
+□ MessageBird - Multi-channel
+□ Other: __
+
+☁️ Cloud Storage:
+□ AWS S3 - Object storage standard ⭐
+□ Google Cloud Storage
+□ Azure Blob Storage
+□ Cloudflare R2 - S3-compatible, no egress fees ⚡
+□ Other: __
+
+📊 Analytics:
+□ Google Analytics - Web analytics
+□ Mixpanel - Product analytics ⭐
+□ Segment - Data pipeline
+□ PostHog - Open-source analytics ⚡
+□ Amplitude - Behavioral analytics
+□ Other: __
+
+🔍 Monitoring/Error Tracking:
+□ Sentry - Error tracking ⭐
+□ Datadog - Full observability 🏆
+□ New Relic - APM
+□ LogRocket - Session replay
+□ Other: __
+
+🗺️ Maps/Location:
+□ Google Maps API
+□ Mapbox
+□ OpenStreetMap
+□ Other: __
+
+🔐 Authentication:
+□ Auth0 - Identity platform 🏆
+□ Clerk - Modern auth ⚡
+□ Supabase Auth - Open-source
+□ Firebase Auth - Google ecosystem
+□ Other: __
+
+🤖 AI/ML Services:
+□ OpenAI API - GPT models
+□ Anthropic Claude - AI assistant
+□ Google Gemini - Multimodal AI
+□ AWS Bedrock - Managed AI
+□ Other: __
+
+📞 Communication:
+□ Slack - Team notifications
+□ Discord - Community integration
+□ Webhooks - Custom integrations
+□ Other: __
+
+🔄 Other Integrations:
+□ GitHub/GitLab API
+□ Calendar (Google/Outlook)
+□ CRM (Salesforce, HubSpot)
+□ Accounting (QuickBooks, Xero)
+□ Other: __
+
+---
+
+For each selected, briefly describe the use case:
 
 Example:
-- Payment: Stripe for processing credit cards
-- Email: AWS SES for transactional emails
-- Maps: Google Maps API for store locator
+- Stripe: Process credit card payments for subscriptions
+- AWS SES: Send transactional emails (order confirmations, password resets)
+- Sentry: Track and alert on production errors
 ```
 
 ### Phase 3 Output
+
 ```
 📋 PHASE 3 SUMMARY:
 
@@ -517,6 +843,8 @@ Framework: [name + version]
 Language: [name + version]
 Architecture: [pattern]
 API Style: [REST/GraphQL/gRPC]
+API Versioning: [strategy]
+API Conventions: [auth, pagination, error format, expansions]
 Database: [from Phase 2]
 ORM: [name]
 Validation: [library]
@@ -524,7 +852,7 @@ Auth: [method]
 Caching: [strategy]
 Background Jobs: [yes/no + method]
 File Storage: [strategy]
-External Services: [list]
+External Services: [list with use cases]
 
 Is this correct? (Yes/No)
 ```
@@ -533,38 +861,48 @@ Is this correct? (Yes/No)
 
 ## PHASE 4: Security & Authentication (15-20 min)
 
+> **Order for this phase:** 4.1 → 4.2 → 4.3 → 4.4 → 4.5 → 4.6 → 4.7 → 4.8 → 4.9 → 4.10
+
 ### Objective
+
 Define security policies, authentication, authorization, and compliance requirements.
 
 **4.1 Authentication Method**
+
 ```
 How will users authenticate?
 
 A) ⭐ JWT (JSON Web Tokens) - Recommended for APIs
-   - Stateless, scalable
-   - Access + Refresh token pattern
+
+- Stateless, scalable
+- Access + Refresh token pattern
 
 B) 🔥 Session-based - Traditional web apps
-   - Server-side sessions
-   - Cookie-based
+
+- Server-side sessions
+- Cookie-based
 
 C) ⚡ OAuth 2.0 / OpenID Connect - External providers
-   - "Sign in with Google/GitHub/etc."
-   - Delegated authentication
+
+- "Sign in with Google/GitHub/etc."
+- Delegated authentication
 
 D) 🏆 Multi-factor (MFA) - Enterprise security
-   - OTP, SMS, authenticator app
-   - Required or optional?
+
+- OTP, SMS, authenticator app
+- Required or optional?
 
 E) API Keys - Service-to-service
-   - Simple, stateless
-   - Limited use cases
+
+- Simple, stateless
+- Limited use cases
 
 Your choice: __
 Why?
 ```
 
 **4.2 JWT Configuration (if using JWT)**
+
 ```
 JWT token configuration:
 
@@ -585,61 +923,61 @@ Token claims to include:
 ```
 
 **4.3 Authorization Model**
+
 ```
 How will you manage permissions?
 
 A) ⭐ Role-Based Access Control (RBAC)
-   - Users have roles (admin, user, moderator, etc.)
-   - Roles have permissions
-   - Simple and common
+- Users have roles (admin, user, moderator, etc.)
+- Roles have permissions
+- Simple and common
 
 B) 🏆 Attribute-Based Access Control (ABAC)
-   - Fine-grained based on attributes
-   - Complex rules
-   - Enterprise use cases
+- Fine-grained based on attributes
+- Complex rules
+- Enterprise use cases
 
 C) 🔒 Resource-based (Ownership)
-   - Users can only access their own resources
-   - Simple projects
+- Users can only access their own resources
+- Simple projects
 
 D) 🌐 Multi-tenant with role hierarchy
-   - Organization → Teams → Users
-   - Complex enterprise systems
+- Organization → Teams → Users
+- Complex enterprise systems
 
 Your choice: __
 
 List the roles you'll need:
 -
 -
--
 
 List key permissions:
--
 -
 -
 ```
 
 **4.4 Password Policy**
+
 ```
 Password requirements:
 
 A) ⭐ Recommended Policy
-   - Minimum 8 characters
-   - At least 1 uppercase, 1 lowercase, 1 number
-   - Special characters encouraged but not required
-   - No maximum length limit
-   - Hash with bcrypt (12 rounds) or argon2
+- Minimum 8 characters
+- At least 1 uppercase, 1 lowercase, 1 number
+- Special characters encouraged but not required
+- No maximum length limit
+- Hash with bcrypt (12 rounds) or argon2
 
 B) 🏆 Strong Policy (Enterprise)
-   - Minimum 12 characters
-   - Uppercase, lowercase, number, special char required
-   - Password expiration every 90 days
-   - Password history (can't reuse last 5)
+- Minimum 12 characters
+- Uppercase, lowercase, number, special char required
+- Password expiration every 90 days
+- Password history (can't reuse last 5)
 
 C) 🔓 Simple Policy
-   - Minimum 6 characters
-   - No complexity requirements
-   - Good for low-risk apps
+- Minimum 6 characters
+- No complexity requirements
+- Good for low-risk apps
 
 Your choice: __
 
@@ -650,16 +988,17 @@ C) scrypt - Good alternative
 ```
 
 **4.5 Rate Limiting**
+
 ```
 Will you implement rate limiting?
 
 A) ⭐ Yes - Recommended for all public APIs
 
 Rate limits by endpoint type:
-- Authentication endpoints: __ requests per __ (e.g., 5 per 15 min)
-- Public read endpoints: __ requests per __ (e.g., 100 per minute)
-- Write endpoints: __ requests per __ (e.g., 30 per minute)
-- Admin endpoints: __ requests per __ (e.g., 1000 per minute)
+- Authentication endpoints: ** requests per ** (e.g., 5 per 15 min)
+- Public read endpoints: ** requests per ** (e.g., 100 per minute)
+- Write endpoints: ** requests per ** (e.g., 30 per minute)
+- Admin endpoints: ** requests per ** (e.g., 1000 per minute)
 
 Rate limiting strategy:
 A) IP-based
@@ -673,6 +1012,7 @@ C) API Gateway (AWS, Kong, etc.)
 ```
 
 **4.6 CORS Policy**
+
 ```
 CORS (Cross-Origin Resource Sharing) configuration:
 
@@ -683,7 +1023,6 @@ C) ⚠️ Wildcard (*) - Allow all (NOT recommended for production)
 
 Your allowed origins:
 -
--
 
 Allowed methods: [GET, POST, PUT, PATCH, DELETE, OPTIONS]
 Credentials: [true/false] - Allow cookies/auth headers
@@ -691,6 +1030,7 @@ Max age: __ seconds (cache preflight)
 ```
 
 **4.7 Data Encryption**
+
 ```
 Encryption requirements:
 
@@ -707,7 +1047,6 @@ C) No encryption - Low-risk data only
 Fields to encrypt:
 -
 -
--
 
 Encryption method:
 A) AES-256-GCM (symmetric)
@@ -716,44 +1055,46 @@ C) Application-level encryption
 ```
 
 **4.8 Security Headers**
+
 ```
 Which security headers will you implement?
 
 A) ✅ All recommended headers (use helmet.js or equivalent)
-   - Content-Security-Policy
-   - X-Frame-Options: DENY
-   - X-Content-Type-Options: nosniff
-   - Strict-Transport-Security (HSTS)
-   - X-XSS-Protection
+- Content-Security-Policy
+- X-Frame-Options: DENY
+- X-Content-Type-Options: nosniff
+- Strict-Transport-Security (HSTS)
+- X-XSS-Protection
 
 B) Basic headers only
 C) None (not recommended)
 ```
 
 **4.9 Compliance Requirements**
+
 ```
 Do you have compliance requirements?
 
 A) 🌍 GDPR (EU data privacy)
-   - Right to access data
-   - Right to deletion
-   - Data portability
-   - Consent management
+- Right to access data
+- Right to deletion
+- Data portability
+- Consent management
 
 B) 🏥 HIPAA (Healthcare)
-   - PHI protection
-   - Audit logs
-   - Encryption requirements
+- PHI protection
+- Audit logs
+- Encryption requirements
 
 C) 💳 PCI-DSS (Payment cards)
-   - Never store CVV
-   - Tokenize card numbers
-   - Secure transmission
+- Never store CVV
+- Tokenize card numbers
+- Secure transmission
 
 D) 🏢 SOC 2 (Enterprise SaaS)
-   - Security controls
-   - Audit trails
-   - Access controls
+- Security controls
+- Audit trails
+- Access controls
 
 E) 🇺🇸 CCPA (California privacy)
 F) None
@@ -764,45 +1105,48 @@ For each selected, list specific requirements:
 ```
 
 **4.10 Logging & Audit Trail**
+
 ```
 What security events will you log?
 
 A) ✅ Authentication events
-   - Login success/failure
-   - Password changes
-   - Account creation
+- Login success/failure
+- Password changes
+- Account creation
 
 B) ✅ Authorization events
-   - Permission denied
-   - Role changes
+- Permission denied
+- Role changes
 
 C) ✅ Data access
-   - Sensitive data views
-   - Exports/downloads
+- Sensitive data views
+- Exports/downloads
 
 D) ✅ Data modifications
-   - Create/Update/Delete operations
-   - Who, what, when
+- Create/Update/Delete operations
+- Who, what, when
 
 Log retention: __ days (recommended: 90+ days)
 Log storage: [Database / File system / External service (CloudWatch, Datadog)]
 ```
 
 ### Phase 4 Output
+
 ```
 📋 PHASE 4 SUMMARY:
 
 Authentication: [method]
-JWT Config: [if applicable]
+JWT Config: [if applicable - access/refresh token lifetimes, algorithm, storage]
 Authorization: [RBAC/ABAC/etc.]
 Roles: [list]
-Password Policy: [requirements]
-Rate Limiting: [yes/no + limits]
-CORS: [origins]
-Encryption: [in-transit + at-rest]
+Permissions: [key permissions defined]
+Password Policy: [requirements and hashing algorithm]
+Rate Limiting: [yes/no + limits by endpoint type]
+CORS: [origins, methods, credentials, max-age]
+Encryption: [in-transit + at-rest + fields to encrypt]
 Security Headers: [list]
-Compliance: [requirements]
-Audit Logging: [events logged]
+Compliance: [requirements with specific controls]
+Audit Logging: [events logged + retention + storage]
 
 Is this correct? (Yes/No)
 ```
@@ -811,10 +1155,14 @@ Is this correct? (Yes/No)
 
 ## PHASE 5: Code Standards (15-20 min)
 
+> **Order for this phase:** 5.1 → 5.2 → 5.3 → 5.4 → 5.5 → 5.6 → 5.7 → 5.8 → 5.9 → 5.10 → 5.11
+
 ### Objective
+
 Establish code quality rules, naming conventions, and development practices.
 
 **5.1 Code Style & Formatting**
+
 ```
 Formatting preferences:
 
@@ -840,14 +1188,29 @@ Trailing commas:
 A) ⭐ Yes - ES5+ compatible, cleaner diffs
 B) No
 
-Formatter:
-A) ⭐ Prettier - Auto-format on save
-B) ESLint only
-C) EditorConfig
-D) Manual formatting
+Formatter & Linter:
+A) ⭐ Prettier + ESLint - Recommended combination
+   - Prettier: Auto-format on save (style/formatting)
+   - ESLint: Code quality and error detection
+   - Use eslint-config-prettier to avoid conflicts
+
+B) ESLint only - With formatting rules
+   - Handles both linting and formatting
+   - More config overhead
+
+C) Prettier only - Formatting without linting
+   - Fast, opinionated formatting
+   - No code quality checks
+
+D) EditorConfig only - Basic cross-editor consistency
+
+E) Manual formatting - Not recommended
+
+Your choice: __
 ```
 
 **5.2 Naming Conventions**
+
 ```
 Naming style by type:
 
@@ -878,63 +1241,214 @@ A) ✅ is/has/can prefix - isActive, hasPermission, canEdit
 ```
 
 **5.3 File Organization**
+
+> **Note:** The AI will adapt the following examples to match your selected language/framework from Phase 3 (questions 3.1 and 3.2). File extensions, naming conventions, and folder names will be automatically adjusted.
+
 ```
 Project structure approach:
 
-A) ⭐ Feature-based - Group by feature/module
-   ```
-   src/
-     users/
-       user.controller.ts
-       user.service.ts
-       user.repository.ts
-       user.dto.ts
-       user.entity.ts
-     orders/
-       order.controller.ts
-       ...
-   ```
+A) ⭐ Feature-based (Modular) - Recommended for most projects
 
-B) Layer-based - Group by type
-   ```
-   src/
-     controllers/
-       user.controller.ts
-       order.controller.ts
-     services/
-       user.service.ts
-       order.service.ts
-     repositories/
-       ...
-   ```
+Group by feature/module with subfolders for organization:
 
-C) Hybrid - Mix of both
+[DYNAMIC EXAMPLE - AI will adapt based on your stack]
+
+TypeScript/NestJS example:
+src/
+  modules/
+    users/
+      dto/
+        create-user.dto.ts
+        update-user.dto.ts
+      entities/
+        user.entity.ts
+      users.controller.ts
+      users.service.ts
+      users.repository.ts
+      users.module.ts
+    orders/
+      dto/
+      entities/
+      orders.controller.ts
+  common/
+    guards/
+    interceptors/
+  config/
+
+Python/FastAPI example:
+src/
+  modules/
+    users/
+      schemas/
+        user_create.py
+        user_update.py
+      models/
+        user.py
+      users_controller.py
+      users_service.py
+      users_repository.py
+    orders/
+      schemas/
+      models/
+  common/
+    dependencies/
+    middleware/
+
+Java/Spring Boot example:
+src/main/java/com/myapp/
+  modules/
+    users/
+      dto/
+        CreateUserDto.java
+        UpdateUserDto.java
+      domain/
+        User.java
+      UsersController.java
+      UsersService.java
+      UsersRepository.java
+    orders/
+  common/
+    config/
+    security/
+
+Go example:
+src/
+  modules/
+    users/
+      models/
+        user.go
+      handlers/
+        user_handler.go
+      services/
+        user_service.go
+      repositories/
+        user_repository.go
+    orders/
+  common/
+    middleware/
+
+C#/.NET Core example:
+src/
+  Modules/
+    Users/
+      DTOs/
+        CreateUserDto.cs
+        UpdateUserDto.cs
+      Entities/
+        User.cs
+      UsersController.cs
+      UsersService.cs
+      UsersRepository.cs
+    Orders/
+      DTOs/
+      Entities/
+  Common/
+    Middleware/
+    Extensions/
+
+Benefits: Scalable, easy to find related code, clear module boundaries
+
+---
+
+B) 🏆 Feature-based (Flat) - Simple projects
+
+Flat structure within each feature (AI will adapt naming):
+
+src/
+  users/
+    user_controller
+    user_service
+    user_repository
+    user_dto
+    user_entity
+  orders/
+    order_controller
+    order_service
+    ...
+
+Benefits: Simpler, fewer folders, good for small projects
+
+---
+
+C) Layer-based (Traditional) - Legacy style
+
+Group by technical layer/type (AI will adapt naming):
+
+src/
+  controllers/
+    user_controller
+    order_controller
+  services/
+    user_service
+    order_service
+  repositories/
+    user_repository
+    order_repository
+  entities/
+    user_entity
+    order_entity
+  dto/
+    create_user_dto
+    create_order_dto
+
+Benefits: Clear separation by type, familiar for MVC developers
+Drawbacks: Hard to see feature boundaries, files scattered
+
+---
+
+D) Hybrid - Domain + Shared layers
+
+Modules for features + shared technical folders (AI will adapt):
+
+src/
+  modules/
+    users/
+      (feature code)
+    orders/
+      (feature code)
+  shared/
+    services/
+    utils/
+  infrastructure/
+    database/
+    cache/
 
 Your choice: __
+Why?
+
+---
+
+After you select, the AI will generate the exact folder structure with proper:
+- File extensions (.ts, .py, .java, .go)
+- Naming conventions (camelCase, snake_case, PascalCase)
+- Framework-specific folders (dto vs schemas, entities vs models vs domain)
+- Common patterns for your chosen stack
 ```
 
 **5.4 Import Organization**
+
 ```
 Import ordering:
 
 A) ⭐ Recommended order:
-   1. External libraries (react, express, etc.)
-   2. Internal modules (@/services, @/utils)
-   3. Relative imports (./user.dto, ../shared)
-   4. Types/Interfaces
-   5. Styles/Assets
+1.  External libraries (react, express, etc.)
+2.  Internal modules (@/services, @/utils)
+3.  Relative imports (./user.dto, ../shared)
+4.  Types/Interfaces
+5.  Styles/Assets
 
 B) Alphabetical
 C) No specific order
 
 Path aliases:
 A) ✅ Yes - Use @ for src root
-   - import { UserService } from '@/services/user.service';
+- import { UserService } from '@/services/user.service';
 
 B) No - Use relative paths only
 ```
 
 **5.5 TypeScript/Type Rules**
+
 ```
 (Skip if not using TypeScript)
 
@@ -956,19 +1470,20 @@ C) Mix both as needed ⭐
 ```
 
 **5.6 Error Handling**
+
 ```
 Error handling strategy:
 
 A) ⭐ Try-catch with custom error classes
-   - Centralized error handler
-   - HTTP error mapping
-   - Detailed error messages
+- Centralized error handler
+- HTTP error mapping
+- Detailed error messages
 
 B) Error codes/enums
-   - Consistent error codes across app
+- Consistent error codes across app
 
 C) Result pattern
-   - Never throw, return Result<T, Error>
+- Never throw, return Result<T, Error>
 
 Your approach: __
 
@@ -979,23 +1494,24 @@ C) Errors + warnings
 
 Error responses to client:
 A) ⭐ Detailed in dev, generic in production
-   - Dev: Full stack trace
-   - Prod: Error code + user-friendly message
+- Dev: Full stack trace
+- Prod: Error code + user-friendly message
 
 B) Always detailed
 C) Always generic
 ```
 
 **5.7 Comments & Documentation**
-```
+
+````
 When to comment:
 
 A) ⭐ Recommended approach:
-   - Complex business logic
-   - Non-obvious solutions
-   - TODOs and FIXMEs
-   - Public APIs (JSDoc/Docstrings)
-   - Configuration decisions
+- Complex business logic
+- Non-obvious solutions
+- TODOs and FIXMEs
+- Public APIs (JSDoc/Docstrings)
+- Configuration decisions
 
 B) Minimal comments - Self-documenting code only
 C) Extensive comments - Every function
@@ -1016,12 +1532,15 @@ Example:
 async function calculateMonthlyTotal(
   userId: string,
   includeDiscounts: boolean
-): Promise<number>
-```
+): Promise<number>;
 ```
 
+````
+
 **5.8 Testing Standards**
+
 ```
+
 Test coverage requirements:
 
 Minimum coverage:
@@ -1031,6 +1550,7 @@ C) 50%+ - Minimum acceptable
 D) No requirement
 
 What to test:
+
 - ✅ Services/Business logic - 80%+ coverage
 - ✅ Controllers/Routes - 60%+ coverage
 - ✅ Utilities/Helpers - 90%+ coverage
@@ -1045,10 +1565,13 @@ Mocking strategy:
 A) ⭐ Mock external dependencies (DB, APIs)
 B) Integration tests with real DB
 C) Mix: Unit tests mock, integration tests don't
+
 ```
 
 **5.9 Code Complexity Limits**
+
 ```
+
 Code quality metrics:
 
 Function length:
@@ -1070,32 +1593,39 @@ Nesting depth:
 A) ⭐ Max 3 levels
 B) Max 4 levels
 C) No limit
+
 ```
 
 **5.10 Git Commit Standards**
-```
+
+````
+
 Commit message format:
 
 A) ⭐ Conventional Commits
-   ```
-   <type>(<scope>): <subject>
 
-   <body>
+```
 
-   <footer>
-   ```
-   Types: feat, fix, docs, style, refactor, test, chore
+<type>(<scope>): <subject>
 
-   Example:
-   ```
-   feat(auth): add JWT refresh token rotation
+<body>
 
-   - Implement token rotation on every refresh
-   - Store refresh tokens in Redis
-   - Add expiration cleanup job
+<footer>
+```
 
-   Closes #123
-   ```
+Types: feat, fix, docs, style, refactor, test, chore
+
+Example:
+
+```
+feat(auth): add JWT refresh token rotation
+
+- Implement token rotation on every refresh
+- Store refresh tokens in Redis
+- Add expiration cleanup job
+
+Closes #123
+```
 
 B) Simple descriptive messages
 C) No standard
@@ -1104,35 +1634,78 @@ Branch naming:
 A) ⭐ feature/description, bugfix/description, hotfix/description
 B) Your initials + description (e.g., jd/add-auth)
 C) No standard
+
+````
+
+**5.11 Versioning & Changelog**
+
+```
+
+Versioning policy:
+
+What versioning scheme will you use?
+A) ⭐ SemVer (Major.Minor.Patch) (recommended)
+B) Date (YYYY.MM.DD)
+C) Other: \_\_
+
+Migration strategy:
+How will you handle breaking changes and migrations?
+A) ⭐ Document in the changelog and provide migration scripts (recommended)
+B) Only document changes
+C) Other: \_\_
+
+Changelog:
+How will you document and communicate changes?
+A) ⭐ CHANGELOG.md in the repository (recommended)
+B) Releases on GitHub/GitLab
+C) Notes in documentation
+D) Other: \_\_
+
+Who will be responsible for updating the changelog?
+A) ⭐ Tech Lead (recommended)
+B) Author of the change (who does the PR)
+C) Documentation team
+D) Other: \_\_
+Example roles: Tech Lead, release manager, PR author, documentation team, etc.
+
 ```
 
 ### Phase 5 Output
+
 ```
+
 📋 PHASE 5 SUMMARY:
 
-Formatting: [indentation, quotes, line length, formatter]
-Naming: [files, classes, functions, variables style]
-File Organization: [feature-based / layer-based / hybrid]
-Imports: [ordering, path aliases]
-Type Rules: [strict mode, no any, etc.]
-Error Handling: [strategy, logging]
-Comments: [when to comment, doc style]
-Testing: [coverage %, what to test]
-Complexity: [limits on functions, cyclomatic complexity]
-Git: [commit format, branch naming]
+Formatting: [indentation, quotes, line length, formatter + linter]
+Naming: [files, classes, functions, variables, constants, interfaces style]
+File Organization: [feature-based / layer-based / hybrid + rationale]
+Imports: [ordering strategy, path aliases]
+Type Rules: [strict mode, rules applied, type preferences]
+Error Handling: [strategy, logging approach, client response format]
+Comments: [when to comment, doc style (JSDoc/Docstrings/JavaDoc)]
+Testing: [coverage % target, what to test, file naming, mocking strategy]
+Complexity: [function length, cyclomatic complexity, parameters, nesting depth limits]
+Git: [commit format (conventional/simple), branch naming convention]
+Versioning: [scheme (SemVer/Date), migration strategy, changelog method, responsibility]
 
 Is this correct? (Yes/No)
+
 ```
 
 ---
 
 ## PHASE 6: Testing Strategy (10 min)
 
+> **Order for this phase:** 6.1 → 6.2 → 6.3 → 6.4 → 6.5 → 6.6 → 6.7
+
 ### Objective
+
 Define testing approach, tools, and quality gates.
 
 **6.1 Testing Framework**
+
 ```
+
 Which testing tools will you use?
 
 JavaScript/TypeScript:
@@ -1150,126 +1723,130 @@ Java:
 H) ⭐ JUnit 5 + Mockito
 I) TestNG
 
-Your choice: __
+Your choice: \_\_
 
-Assertion library: __
-Mocking library: __
+Assertion library: **
+Mocking library: **
+
 ```
 
 **6.2 Test Types**
+
 ```
+
 Which test types will you implement?
 
 A) ✅ Unit Tests
-   - Test individual functions/methods in isolation
-   - Fast, numerous
-   - Mock all dependencies
+
+- Test individual functions/methods in isolation
+- Fast, numerous
+- Mock all dependencies
 
 B) ✅ Integration Tests
-   - Test multiple components together
-   - Database, external APIs
-   - Slower but more realistic
+
+- Test multiple components together
+- Database, external APIs
+- Slower but more realistic
 
 C) ✅ E2E (End-to-End) Tests
-   - Test full user flows
-   - API endpoints from request to response
-   - Tool: Supertest (Node.js), pytest with TestClient (Python)
+
+- Test full user flows
+- API endpoints from request to response
+- Tool: Supertest (Node.js), pytest with TestClient (Python)
 
 D) 🏆 Contract Tests (Advanced)
-   - Verify API contracts between services
-   - Tool: Pact
+
+- Verify API contracts between services
+- Tool: Pact
 
 E) ⚡ Load/Performance Tests
-   - Tool: Artillery, K6, JMeter
 
-Selected: __
+- Tool: Artillery, K6, JMeter
+
+Selected: \_\_
 
 Pyramid distribution:
+
 - 70% Unit tests
 - 20% Integration tests
 - 10% E2E tests
-(Adjust as needed)
+  (Adjust as needed)
+
 ```
 
 **6.3 Test Database**
+
 ```
+
 How will you handle database in tests?
 
 A) ⭐ In-memory database
-   - SQLite for testing, PostgreSQL for prod
-   - Fast, isolated
+
+- SQLite for testing, PostgreSQL for prod
+- Fast, isolated
 
 B) 🏆 Docker test database
-   - Same DB as production
-   - More realistic
-   - Tool: Testcontainers
+
+- Same DB as production
+- More realistic
+- Tool: Testcontainers
 
 C) 🔄 Shared test database
-   - One DB for all tests
-   - Reset between test suites
+
+- One DB for all tests
+- Reset between test suites
 
 D) 🎭 Mock database
-   - Mock all DB calls
-   - Fastest, but less realistic
 
-Your choice: __
+- Mock all DB calls
+- Fastest, but less realistic
+
+Your choice: \_\_
 
 Test data strategy:
 A) ⭐ Factories/Fixtures - Generate test data programmatically
 B) Seed files - Load from JSON/SQL files
 C) Inline - Create data in each test
+
 ```
 
-**6.4 CI/CD Testing**
-```
-When will tests run?
+**6.4 Test Data Management**
 
-A) ✅ On every commit (pre-commit hook)
-B) ✅ On pull request (GitHub Actions, GitLab CI)
-C) ✅ Before deploy (staging pipeline)
-D) Nightly (comprehensive test suite)
-
-Selected: __
-
-Quality gates:
-- ✅ All tests must pass
-- ✅ Coverage must be >= __% (from Phase 5)
-- ✅ No linting errors
-- ⚡ Performance benchmarks met (optional)
-
-Failing a quality gate:
-A) ⭐ Block merge/deploy - Force fix
-B) ⚠️ Warning only - Allow with justification
 ```
 
-**6.5 Test Data Management**
-```
 How will you create test data?
 
 A) ⭐ Factory pattern
-   - Libraries: factory_boy (Python), Fishery (TypeScript)
-   - Generate realistic data on demand
+
+- Libraries: factory_boy (Python), Fishery (TypeScript)
+- Generate realistic data on demand
 
 B) Fixtures
-   - Predefined test data
-   - Loaded before tests
+
+- Predefined test data
+- Loaded before tests
 
 C) Faker
-   - Random realistic data
-   - Library: @faker-js/faker, Faker (Python)
 
-Your approach: __
+- Random realistic data
+- Library: @faker-js/faker, Faker (Python)
+
+Your approach: \_\_
 
 Example test data needs:
+
 - Users with various roles
 - Products with different states
 - Orders in different stages
 - Payment records
 - [Add your specific needs]
+
 ```
 
-**6.6 Mocking Strategy**
+**6.5 Mocking Strategy**
+
 ```
+
 What will you mock?
 
 A) ✅ External APIs - Third-party services
@@ -1285,36 +1862,47 @@ B) Library - MSW (Mock Service Worker), nock
 C) Test doubles - Stubs, spies, mocks
 
 When NOT to mock:
+
 - Internal business logic
 - Simple utilities
 - Value objects
+
 ```
 
-**6.7 Test Organization**
+**6.6 Test Organization**
+
 ```
+
 Test file structure:
 
 A) ⭐ Co-located with source
-   ```
-   src/
-     users/
-       user.service.ts
-       user.service.spec.ts
-   ```
+
+```
+
+src/
+users/
+user.service.ts
+user.service.spec.ts
+
+```
 
 B) Separate test directory
-   ```
-   src/users/user.service.ts
-   tests/users/user.service.test.ts
-   ```
+
+```
+
+src/users/user.service.ts
+tests/users/user.service.test.ts
+
+````
 
 Test naming:
+
 ```typescript
-describe('UserService', () => {
-  describe('createUser', () => {
-    it('should create a new user with valid data', async () => {
+describe("UserService", () => {
+  describe("createUser", () => {
+    it("should create a new user with valid data", async () => {
       // Arrange
-      const userData = { email: 'test@example.com', name: 'Test' };
+      const userData = { email: "test@example.com", name: "Test" };
 
       // Act
       const result = await userService.createUser(userData);
@@ -1324,7 +1912,7 @@ describe('UserService', () => {
       expect(result.email).toBe(userData.email);
     });
 
-    it('should throw error when email is duplicated', async () => {
+    it("should throw error when email is duplicated", async () => {
       // ...
     });
   });
@@ -1335,77 +1923,119 @@ Naming pattern:
 A) ⭐ "should [expected behavior] when [condition]"
 B) "it [expected behavior]"
 C) Free-form
+
+````
+
+**6.7 CI/CD Testing**
+
+```
+When will tests run?
+
+A) ⭐ On every commit (pre-commit hook) - Catch issues early
+B) 🔥 On pull request (GitHub Actions, GitLab CI) - Most popular, prevents broken merges
+C) ⭐ Before deploy (staging pipeline) - Recommended safety check
+D) Nightly (comprehensive test suite) - For slow/extensive tests
+
+Selected: __
+
+Quality gates:
+
+- ✅ All tests must pass
+- ✅ Coverage must be >= __% (from Phase 5)
+- ✅ No linting errors
+- ⚡ Performance benchmarks met (optional)
+
+Failing a quality gate:
+A) ⭐ Block merge/deploy - Force fix
+B) ⚠️ Warning only - Allow with justification
+
 ```
 
 ### Phase 6 Output
+
 ```
+
 📋 PHASE 6 SUMMARY:
 
-Testing Framework: [Jest/pytest/etc.]
-Test Types: [unit, integration, e2e]
-Test Distribution: [pyramid percentages]
-Test Database: [in-memory/Docker/mock]
-Test Data: [factories/fixtures/faker]
-Mocking: [what to mock, strategy]
-CI/CD: [when tests run, quality gates]
-Coverage Target: [% from Phase 5]
-Test Organization: [co-located / separate]
+Testing Framework: [Jest/pytest/JUnit + assertion library + mocking library] (6.1)
+Test Types: [unit/integration/e2e/contract/load - selected types] (6.2)
+Test Distribution: [pyramid percentages: 70/20/10 or custom] (6.2)
+Test Database: [in-memory/Docker/shared/mock + initial data strategy from 6.3] (6.3)
+Test Data Management: [factories/fixtures/faker approach + specific test data needs] (6.4)
+Mocking Strategy: [what to mock (APIs/DB/files/time/email/payments) + approach (manual/library/test-doubles)] (6.5)
+Test Organization: [co-located/separate folder + naming pattern (should/it/free-form)] (6.6)
+CI/CD Testing: [when tests run (commit/PR/deploy/nightly) + quality gates (pass/coverage/lint) + gate behavior (block/warn)] (6.7)
 
 Is this correct? (Yes/No)
+
 ```
 
 ---
 
 ## PHASE 7: Operations & Deployment (10 min)
 
+> **Order for this phase:** 7.1 → 7.2 → 7.3 → 7.4 → 7.5 → 7.6 → 7.7 → 7.8 → 7.9 → 7.10 → 7.11
+
 ### Objective
+
 Define deployment, monitoring, and operational practices.
 
 **7.1 Deployment Environment**
+
 ```
+
 Where will you deploy?
 
 A) ⭐ Cloud Platform
-   - AWS (ECS, Fargate, Lambda, EC2)
-   - Google Cloud (Cloud Run, GKE, Compute Engine)
-   - Azure (App Service, AKS, VMs)
+
+- AWS (ECS, Fargate, Lambda, EC2)
+- Google Cloud (Cloud Run, GKE, Compute Engine)
+- Azure (App Service, AKS, VMs)
 
 B) 🔥 Platform-as-a-Service (PaaS)
-   - Heroku
-   - Railway
-   - Render
-   - Fly.io
-   - Vercel (for APIs)
+
+- Heroku
+- Railway
+- Render
+- Fly.io
+- Vercel (for APIs)
 
 C) 🏢 On-Premises
-   - Company servers
-   - Private cloud
+
+- Company servers
+- Private cloud
 
 D) 🐳 Container Orchestration
-   - Kubernetes (GKE, EKS, AKS)
-   - Docker Swarm
-   - Nomad
 
-Your choice: __
+- Kubernetes (GKE, EKS, AKS)
+- Docker Swarm
+- Nomad
+
+Your choice: \_\_
 Why?
+
 ```
 
 **7.2 Containerization**
-```
+
+````
+
 Will you use Docker?
 
 A) ⭐ Yes - Dockerize application
-   - Multi-stage build
-   - Optimized image size
-   - Docker Compose for local dev
+
+- Multi-stage build
+- Optimized image size
+- Docker Compose for local dev
 
 B) No - Deploy directly
 
 If yes:
-Base image: __
-Estimated image size: __ MB
+Base image: **
+Estimated image size: ** MB
 
 Example stack (local development):
+
 ```yaml
 services:
   app:
@@ -1416,37 +2046,46 @@ services:
   redis:
     image: redis:7
 ```
-```
+
+````
 
 **7.3 Environment Strategy**
+
 ```
+
 How many environments will you have?
 
 A) ⭐ Three environments
-   - Development (local)
-   - Staging (pre-production, QA)
-   - Production (live)
+
+- Development (local)
+- Staging (pre-production, QA)
+- Production (live)
 
 B) 🏆 Four+ environments
-   - Development
-   - Testing (automated tests)
-   - Staging
-   - Production
+
+- Development
+- Testing (automated tests)
+- Staging
+- Production
 
 C) 🚀 Two environments
-   - Development
-   - Production
 
-Your choice: __
+- Development
+- Production
+
+Your choice: \_\_
 
 Environment configuration:
 A) ✅ Environment variables (.env files)
 B) ✅ Config service (AWS Secrets Manager, Vault)
 C) ✅ Feature flags (LaunchDarkly, Unleash)
+
 ```
 
 **7.4 CI/CD Pipeline**
+
 ```
+
 CI/CD platform:
 
 A) ⭐ GitHub Actions - If using GitHub
@@ -1457,9 +2096,10 @@ E) Travis CI
 F) AWS CodePipeline
 G) Azure DevOps
 
-Your choice: __
+Your choice: \_\_
 
 Pipeline stages:
+
 1. ✅ Checkout code
 2. ✅ Install dependencies
 3. ✅ Lint
@@ -1474,10 +2114,13 @@ Auto-deploy strategy:
 A) ⭐ Auto-deploy to staging, manual approval for production
 B) 🚀 Auto-deploy to production (main branch)
 C) Manual deploy for all environments
+
 ```
 
 **7.5 Monitoring & Logging**
-```
+
+````
+
 Monitoring tools:
 
 Application Performance Monitoring (APM):
@@ -1488,45 +2131,51 @@ D) ⚡ OpenTelemetry + Grafana - Open source
 E) AWS CloudWatch
 F) None yet
 
-Your choice: __
+Your choice: \_\_
 
 Logging:
 A) ⭐ Centralized logging
-   - Winston/Pino (Node.js) → CloudWatch/Datadog
-   - Python logging → ELK Stack
+
+- Winston/Pino (Node.js) → CloudWatch/Datadog
+- Python logging → ELK Stack
 
 B) Basic console logs
 
 C) Structured JSON logging ⭐
-   ```json
-   {
-     "level": "info",
-     "timestamp": "2024-01-15T10:30:00Z",
-     "userId": "123",
-     "action": "user.login",
-     "ip": "192.168.1.1",
-     "message": "User logged in successfully"
-   }
-   ```
 
-Your logging strategy: __
+```json
+{
+  "level": "info",
+  "timestamp": "2024-01-15T10:30:00Z",
+  "userId": "123",
+  "action": "user.login",
+  "ip": "192.168.1.1",
+  "message": "User logged in successfully"
+}
+```
+
+Your logging strategy: \_\_
 
 Metrics to track:
+
 - ✅ Request rate (requests/sec)
 - ✅ Error rate (% of failed requests)
 - ✅ Response time (p50, p95, p99)
 - ✅ Database query time
 - ✅ Cache hit rate
 - ✅ CPU/Memory usage
-- Custom business metrics: __
-```
+- Custom business metrics: \_\_
+
+````
 
 **7.6 Alerts**
+
 ```
+
 When should you be alerted?
 
-A) ✅ Error rate > __% (e.g., 1%)
-B) ✅ Response time > __ms (e.g., 1000ms)
+A) ✅ Error rate > **% (e.g., 1%)
+B) ✅ Response time > **ms (e.g., 1000ms)
 C) ✅ 5xx errors (server errors)
 D) ✅ Service down (health check failure)
 E) ✅ Database connection failures
@@ -1539,87 +2188,108 @@ B) 🔥 Slack/Discord
 C) ⚡ PagerDuty/Opsgenie (on-call)
 D) SMS (critical only)
 
-Your preferences: __
+Your preferences: \_\_
 
 On-call rotation:
 A) Yes - Using [PagerDuty/Opsgenie]
 B) No - Monitor during business hours
+
 ```
 
 **7.7 Backup & Disaster Recovery**
+
 ```
+
 Backup strategy:
 
 Database backups:
 A) ⭐ Automated daily backups
-   - Retention: 30 days
-   - Point-in-time recovery
+
+- Retention: 30 days
+- Point-in-time recovery
 
 B) 🏆 Continuous backups
-   - Every hour
-   - 90 days retention
+
+- Every hour
+- 90 days retention
 
 C) Manual backups weekly
 
-Your strategy: __
-Retention period: __ days
+Your strategy: **
+Retention period: ** days
 
 Disaster recovery:
-- Recovery Time Objective (RTO): __ (how fast to restore)
-- Recovery Point Objective (RPO): __ (acceptable data loss)
+
+- Recovery Time Objective (RTO): \_\_ (how fast to restore)
+- Recovery Point Objective (RPO): \_\_ (acceptable data loss)
 
 Example:
+
 - RTO: 1 hour (service restored within 1 hour)
 - RPO: 15 minutes (lose max 15 min of data)
+
 ```
 
 **7.8 Scaling Strategy**
+
 ```
+
 How will you handle growth?
 
 A) ⭐ Horizontal scaling - Add more instances
-   - Load balancer distributes traffic
-   - Stateless application design
+
+- Load balancer distributes traffic
+- Stateless application design
 
 B) Vertical scaling - Bigger instances
-   - Increase CPU/RAM
-   - Simpler but limited
+
+- Increase CPU/RAM
+- Simpler but limited
 
 C) ⚡ Auto-scaling - Automatic based on load
-   - Scale up during high traffic
-   - Scale down to save costs
-   - Metrics: CPU > 70%, requests > threshold
 
-Your strategy: __
+- Scale up during high traffic
+- Scale down to save costs
+- Metrics: CPU > 70%, requests > threshold
+
+Your strategy: \_\_
 
 Expected load:
-- Initial: __ requests/minute
-- Year 1: __ requests/minute
-- Peak traffic: __x normal load
+
+- Initial: \_\_ requests/minute
+- Year 1: \_\_ requests/minute
+- Peak traffic: \_\_x normal load
 
 Database scaling:
 A) Read replicas - Scale reads
 B) Sharding - Split data across DBs
 C) Vertical scaling - Bigger DB instance
 D) Not needed yet
+
 ```
 
 **7.9 Health Checks**
-```
+
+````
+
 Health check endpoints:
 
 A) ✅ /health - Basic liveness
-   - Returns 200 OK if app is running
+
+- Returns 200 OK if app is running
 
 B) ✅ /health/ready - Readiness check
-   - Returns 200 OK if app can handle traffic
-   - Checks: DB connected, Redis connected, etc.
+
+- Returns 200 OK if app can handle traffic
+- Checks: DB connected, Redis connected, etc.
 
 C) ✅ /health/live - Liveness check
-   - Returns 200 OK if app is alive
-   - Load balancer uses this
+
+- Returns 200 OK if app is alive
+- Load balancer uses this
 
 Example response:
+
 ```json
 {
   "status": "healthy",
@@ -1633,27 +2303,33 @@ Example response:
 }
 ```
 
-Your health check endpoints: __
-```
+Your health check endpoints: \_\_
+
+````
 
 **7.10 Documentation & Runbooks**
+
 ```
+
 Operational documentation:
 
 A) ✅ Deployment guide - How to deploy
 B) ✅ Runbooks - How to handle incidents
-   - Database connection failure → steps to diagnose/fix
-   - High CPU usage → steps to investigate
-   - Service down → recovery procedure
+
+- Database connection failure → steps to diagnose/fix
+- High CPU usage → steps to investigate
+- Service down → recovery procedure
 
 C) ✅ Architecture diagrams
-   - System architecture
-   - Data flow
-   - Infrastructure diagram
+
+- System architecture
+- Data flow
+- Infrastructure diagram
 
 D) ✅ API documentation
-   - Swagger/OpenAPI
-   - Auto-generated from code
+
+- Swagger/OpenAPI
+- Auto-generated from code
 
 Will you create these?
 A) Yes - All of them ⭐
@@ -1661,27 +2337,33 @@ B) Yes - Critical ones only (deployment, runbooks)
 C) Later - Start without docs
 
 API documentation strategy:
-
 A) ⭐ Code-First (Recommended)
-   - Generate docs from code (Swagger/OpenAPI decorators)
-   - Always in sync with code
-   - Tools: @nestjs/swagger, FastAPI docs
+
+- Generate docs from code (Swagger/OpenAPI decorators)
+- Always in sync with code
+- Tools: @nestjs/swagger, FastAPI docs
 
 B) 📝 Design-First
-   - Write openapi.yaml manually first
-   - Generate code from spec
-   - Better for large teams/contracts
+
+- Write openapi.yaml manually first
+- Generate code from spec
+- Better for large teams/contracts
 
 C) 📄 Manual
-   - Write Markdown/Notion docs
-   - Hard to keep in sync (Not recommended)
+
+- Write Markdown/Notion docs
+- Hard to keep in sync (Not recommended)
+
 ```
 
 **7.11 Optional: Spec-Kit Integration**
+
 ```
+
 Would you like to install GitHub Spec-Kit?
 
 Spec-Kit adds structured development workflow:
+
 - /constitution - Load project constitution
 - /specify - Define what to build
 - /plan - Define how to build
@@ -1690,31 +2372,35 @@ Spec-Kit adds structured development workflow:
 - /checklist - Verify completeness
 
 A) ✅ Yes - Install Spec-Kit (Recommended)
-   - I'll run: uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+
+- I'll run: uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 
 B) ❌ No - Just AI Bootstrap documentation
 
-Your choice: __
+Your choice: \_\_
+
 ```
 
 ### Phase 7 Output
+
 ```
+
 📋 PHASE 7 SUMMARY:
 
-Deployment: [platform]
-Containerization: [yes/no, Docker setup]
-Environments: [dev/staging/prod]
-CI/CD: [platform, pipeline stages]
-Monitoring: [tools, metrics]
-Logging: [strategy, structured/unstructured]
-Alerts: [conditions, channels]
-Backup: [strategy, retention]
-Scaling: [horizontal/vertical/auto]
-Health Checks: [endpoints]
-Documentation: [what will be created]
-Spec-Kit: [yes/no]
+Deployment Environment: [cloud/PaaS/on-premises/container-orchestration + platform choice + rationale] (7.1)
+Containerization: [yes/no + Docker setup (base image, size, compose stack)] (7.2)
+Environments: [number of environments (dev/staging/prod) + config approach (env vars/secrets/feature flags)] (7.3)
+CI/CD Pipeline: [platform (GitHub Actions/GitLab CI/etc.) + pipeline stages + auto-deploy strategy] (7.4)
+Monitoring & Logging: [APM tool + logging strategy (centralized/structured JSON) + metrics to track] (7.5)
+Alerts: [alert conditions (error rate/response time/5xx/etc.) + channels (email/Slack/PagerDuty) + on-call rotation] (7.6)
+Backup & Disaster Recovery: [backup strategy + retention period + RTO/RPO targets] (7.7)
+Scaling Strategy: [horizontal/vertical/auto-scaling + expected load + database scaling approach] (7.8)
+Health Checks: [endpoints (/health, /health/ready, /health/live) + checks performed] (7.9)
+Documentation & Runbooks: [what will be created (deployment guide/runbooks/diagrams/API docs) + API doc strategy (code-first/design-first)] (7.10)
+Spec-Kit Integration: [yes/no + if yes, installation command] (7.11)
 
 Is this correct? (Yes/No)
+
 ```
 
 ---
@@ -1724,32 +2410,36 @@ Is this correct? (Yes/No)
 After completing all 7 phases and confirming all information is correct:
 
 ```
+
 🎉 EXCELLENT! All information collected.
 
-Now generating 13 documents:
+Now generating 15 documents:
 
 1. AGENT.md - Universal AI configuration
 2. ai-instructions.md - AI rules and workflow
 3. project-brief.md - Business context
-4. docs/architecture.md - System architecture
-5. docs/data-architecture.md - Database design
-6. docs/code-standards.md - Code quality rules
-7. docs/testing.md - Testing strategy
-8. docs/operations.md - Deployment and ops
-9. docs/contributing.md - How to contribute
-10. specs/security.md - Security policies
-11. specs/configuration.md - Environment config
-12. README.md - Project overview
-13. .env.example - Environment variables template
+4. README.md - Project overview
+5. docs/architecture.md - System architecture
+6. docs/data-model.md - Detailed entity catalog
+7. docs/code-standards.md - Code quality rules
+8. docs/testing.md - Testing strategy
+9. docs/operations.md - Deployment and ops
+10. docs/business-flows.md - Business process flows and diagrams
+11. docs/api.md - API endpoints and conventions reference
+12. docs/contributing.md - Contribution guidelines
+13. specs/security.md - Security policies
+14. specs/configuration.md - Environment config
+15. .env.example - Environment variables template
 
 Generating...
+
 ```
 
 ### Generation Instructions
 
 For EACH document, use the templates in `.ai-bootstrap/templates/` and fill them with information from the 7 phases:
 
-1. **Read template**: `.ai-bootstrap/templates/[document-name].template.md`
+1. **Locate the source template** inside `.ai-bootstrap/templates/`, mirroring the destination path. Examples: `AGENT.template.md`, `docs/data-model.template.md`, `.env.example.template`.
 2. **Replace placeholders** with actual values from phases
 3. **Expand sections** with detailed information gathered
 4. **Write document** to project root or appropriate subfolder
@@ -1758,12 +2448,14 @@ For EACH document, use the templates in `.ai-bootstrap/templates/` and fill them
 ### Special Documents
 
 **AGENT.md**: Acts as aggregator
+
 - Links to other documents
 - Provides quick reference
 - Auto-generated summary of stack and rules
 
 **Tool-specific configs**:
 If AI tool selected was:
+
 - Claude → Create `.clauderules` (references AGENT.md)
 - Cursor → Create `.cursorrules` (references AGENT.md)
 - Copilot → Create `.github/copilot-instructions.md` (references AGENT.md)
@@ -1771,6 +2463,7 @@ If AI tool selected was:
 
 **Framework initialization**:
 If user wants framework initialized:
+
 ```bash
 # Example for NestJS
 nest new . --skip-git --package-manager npm
@@ -1784,13 +2477,21 @@ nest new . --skip-git --package-manager npm
 ```
 ✅ AI Bootstrap Complete!
 
-Generated 13 documents successfully:
+Generated 15 documents successfully:
 - AGENT.md
 - ai-instructions.md
 - project-brief.md
-- 6 docs/* files
-- 2 specs/* files
 - README.md
+- docs/architecture.md
+- docs/data-model.md
+- docs/code-standards.md
+- docs/testing.md
+- docs/operations.md
+- docs/business-flows.md
+- docs/api.md
+- docs/contributing.md
+- specs/security.md
+- specs/configuration.md
 - .env.example
 
 Next steps:
@@ -1826,13 +2527,14 @@ When executing this master prompt:
 - [ ] Offer multiple choice where applicable
 - [ ] Summarize each phase for confirmation
 - [ ] Collect ALL required information
-- [ ] Generate ALL 13 documents
+- [ ] Generate ALL 15 documents
 - [ ] Use templates from `.ai-bootstrap/templates/`
 - [ ] Create tool-specific configs based on AI selection
 - [ ] Validate no placeholders remain
 - [ ] Provide clear next steps
 
 **DO NOT:**
+
 - ❌ Skip questions or phases
 - ❌ Assume answers without asking
 - ❌ Generate documents with incomplete information
@@ -1840,6 +2542,7 @@ When executing this master prompt:
 - ❌ Rush through the process
 
 **ESTIMATED TIME:**
+
 - Phase 1: 15-20 min
 - Phase 2: 15-20 min
 - Phase 3: 15-20 min

@@ -15,11 +15,21 @@
 **⭐ CRITICAL:** Always read `AGENT.md` first for complete context.
 
 **Key Documentation:**
+
 - [`AGENT.md`](../../AGENT.md) - Universal AI configuration
 - [`ai-instructions.md`](../../ai-instructions.md) - Tech stack and rules
+- [`project-brief.md`](../../project-brief.md) - Business context
+- [`README.md`](../../README.md) - Developer onboarding & commands
 - [`docs/architecture.md`](../../docs/architecture.md) - System architecture
+- [`docs/data-model.md`](../../docs/data-model.md) - Entities & relationships
 - [`docs/code-standards.md`](../../docs/code-standards.md) - Coding standards
+- [`docs/testing.md`](../../docs/testing.md) - Testing strategy
+- [`docs/operations.md`](../../docs/operations.md) - Deployment & operations
+- [`docs/business-flows.md`](../../docs/business-flows.md) - Business process flows
+- [`docs/api.md`](../../docs/api.md) - Endpoint conventions
+- [`docs/contributing.md`](../../docs/contributing.md) - Contribution workflow
 - [`specs/security.md`](../../specs/security.md) - Security policies
+- [`specs/configuration.md`](../../specs/configuration.md) - Environment configuration
 
 ---
 
@@ -40,6 +50,7 @@
 **Pattern:** {{ARCHITECTURE_PATTERN}}
 
 **Structure:**
+
 ```
 {{PROJECT_STRUCTURE_BRIEF}}
 ```
@@ -48,12 +59,12 @@
 
 ## 🎨 Code Style
 
-| Setting | Value |
-|---------|-------|
+| Setting     | Value           |
+| ----------- | --------------- |
 | Indentation | {{INDENTATION}} |
-| Quotes | {{QUOTE_STYLE}} |
+| Quotes      | {{QUOTE_STYLE}} |
 | Line Length | {{LINE_LENGTH}} |
-| Formatter | {{FORMATTER}} |
+| Formatter   | {{FORMATTER}}   |
 
 **Auto-format:** {{AUTO_FORMAT_COMMAND}}
 
@@ -76,6 +87,7 @@
 - **Command:** `{{TEST_COMMAND}}`
 
 **Test Pattern:**
+
 ```{{LANGUAGE}}
 {{TEST_PATTERN_EXAMPLE}}
 ```
@@ -124,16 +136,19 @@
 ## 🎯 Code Examples
 
 ### Controller
+
 ```{{LANGUAGE}}
 {{CONTROLLER_EXAMPLE_BRIEF}}
 ```
 
 ### Service
+
 ```{{LANGUAGE}}
 {{SERVICE_EXAMPLE_BRIEF}}
 ```
 
 ### Repository
+
 ```{{LANGUAGE}}
 {{REPOSITORY_EXAMPLE_BRIEF}}
 ```

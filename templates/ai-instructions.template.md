@@ -17,28 +17,33 @@
 ## 🏗️ Tech Stack
 
 ### Backend
+
 - **Framework:** {{FRAMEWORK}} {{FRAMEWORK_VERSION}}
 - **Language:** {{LANGUAGE}} {{LANGUAGE_VERSION}}
 - **Runtime:** {{RUNTIME_VERSION}}
 - **Type System:** {{TYPE_SYSTEM}}
 
 ### Database
+
 - **Primary Database:** {{DATABASE}} {{DATABASE_VERSION}}
 - **ORM:** {{ORM}}
 - **Migrations:** {{MIGRATION_TOOL}}
-{{#IF_CACHE}}- **Cache:** {{CACHE_TYPE}}{{/IF_CACHE}}
+  {{#IF_CACHE}}- **Cache:** {{CACHE_TYPE}}{{/IF_CACHE}}
 
 ### Authentication & Security
+
 - **Auth Method:** {{AUTH_METHOD}}
 - **Password Hashing:** {{PASSWORD_HASH_ALGORITHM}}
 - **Token Strategy:** {{TOKEN_STRATEGY}}
 
 ### Infrastructure
+
 - **Deployment:** {{DEPLOYMENT_PLATFORM}}
 - **Containerization:** {{DOCKER_USAGE}}
 - **CI/CD:** {{CICD_PLATFORM}}
 
 ### Key Libraries
+
 {{KEY_LIBRARIES}}
 
 ---
@@ -58,6 +63,7 @@
 **YOU MUST NEVER:**
 
 ### Code Quality
+
 - ❌ Use `any` type ({{#IF_TYPESCRIPT}}TypeScript{{/IF_TYPESCRIPT}}) - Always use proper types
 - ❌ Leave console.log in production code - Use proper logging
 - ❌ Commit commented-out code - Delete it or use git history
@@ -65,6 +71,7 @@
 - ❌ Skip error handling - Always handle errors appropriately
 
 ### Security
+
 - ❌ Store secrets in code - Use environment variables or secrets manager
 - ❌ Expose sensitive data in logs - Sanitize all logs
 - ❌ Skip input validation - Always validate user input
@@ -72,18 +79,21 @@
 - ❌ Use weak password hashing - Use {{PASSWORD_HASH_ALGORITHM}}
 
 ### Architecture
+
 - ❌ Put business logic in controllers/routes - Keep controllers thin
 - ❌ Access database directly from controllers - Use services/repositories
 - ❌ Mix concerns across layers - Respect layer boundaries
 - ❌ Create circular dependencies - Design proper dependency flow
 
 ### Data
-- ❌ Use SELECT * in production - Specify columns explicitly
+
+- ❌ Use SELECT \* in production - Specify columns explicitly
 - ❌ Query databases in loops (N+1) - Use joins or batch queries
 - ❌ Forget database transactions for multi-step operations
 - ❌ Ignore database indexes - Index frequently queried columns
 
 ### Testing
+
 - ❌ Skip tests for new features - Write tests first or alongside code
 - ❌ Mock internal business logic - Only mock external dependencies
 - ❌ Commit failing tests - All tests must pass before commit
@@ -97,6 +107,7 @@
 **YOU MUST ALWAYS:**
 
 ### Code Quality
+
 - ✅ Use TypeScript strict mode ({{#IF_TYPESCRIPT}}enabled{{/IF_TYPESCRIPT}})
 - ✅ Follow naming conventions from `docs/code-standards.md`
 - ✅ Write self-documenting code with clear names
@@ -105,6 +116,7 @@
 - ✅ Limit cyclomatic complexity to {{MAX_COMPLEXITY}}
 
 ### Security
+
 - ✅ Validate all inputs with {{VALIDATION_LIBRARY}}
 - ✅ Sanitize data before database queries
 - ✅ Use parameterized queries (prevent SQL injection)
@@ -113,6 +125,7 @@
 - ✅ Log security events (failed logins, permission denials)
 
 ### Architecture
+
 - ✅ Follow {{ARCHITECTURE_PATTERN}} pattern strictly
 - ✅ Use dependency injection
 - ✅ Keep controllers thin (delegate to services)
@@ -120,6 +133,7 @@
 - ✅ Implement proper error handling with custom error classes
 
 ### Data
+
 - ✅ Use transactions for multi-table operations
 - ✅ Implement soft deletes if configured ({{#IF_SOFT_DELETES}}enabled{{/IF_SOFT_DELETES}})
 - ✅ Add created_at/updated_at timestamps
@@ -127,6 +141,7 @@
 - ✅ Add indexes for foreign keys and frequently queried fields
 
 ### Testing
+
 - ✅ Write unit tests for all services (target: {{UNIT_TEST_COVERAGE}}%+ coverage)
 - ✅ Write integration tests for critical flows
 - ✅ Mock external dependencies (APIs, email, payments)
@@ -134,6 +149,7 @@
 - ✅ Run tests before every commit
 
 ### API
+
 - ✅ Version APIs ({{API_VERSIONING_STRATEGY}})
 - ✅ Use proper HTTP status codes
 - ✅ Return consistent error response format
@@ -147,30 +163,35 @@
 ## 🔄 Development Workflow
 
 ### 1. Before Starting a Task
+
 - Read relevant documentation (architecture, security, code standards)
 - Understand business requirements
 - Check for existing similar implementations
 - Plan approach before coding
 
 ### 2. While Coding
+
 - Follow TDD if possible (test-first development)
 - Commit frequently with conventional commits
 - Write clear, descriptive commit messages
 - Keep commits focused (one logical change per commit)
 
 ### 3. Before Committing
+
 - Run linter: `{{LINT_COMMAND}}`
 - Run tests: `{{TEST_COMMAND}}`
 - Check test coverage meets minimum ({{MIN_COVERAGE}}%)
 - Review your own code changes
 
 ### 4. Code Review
+
 - Self-review before requesting review
 - Address all review comments
 - Update tests if logic changes
 - Update documentation if behavior changes
 
 ### 5. Deployment
+
 - Follow deployment procedures in `docs/operations.md`
 - Update CHANGELOG.md
 - Test in staging before production
@@ -249,13 +270,17 @@ When there are trade-offs, prioritize in this order:
 ## 📚 Key Documentation Files
 
 - `project-brief.md` - Business context and objectives
+- `README.md` - Developer setup, commands, repo structure
 - `docs/architecture.md` - System architecture and patterns
-- `docs/data-architecture.md` - Database schema and relationships
+- `docs/data-model.md` - Database schema and relationships
 - `docs/code-standards.md` - Detailed coding standards
 - `docs/testing.md` - Testing strategy and requirements
 - `docs/operations.md` - Deployment and operational procedures
+- `docs/business-flows.md` - Business processes and diagrams
+- `docs/api.md` - API conventions and endpoint catalogue
 - `specs/security.md` - Security policies and compliance
 - `specs/configuration.md` - Environment configuration
+- `docs/contributing.md` - Development setup, workflow
 
 ---
 
@@ -271,6 +296,7 @@ See `.env.example` for all required environment variables.
 ## 🛡️ Security Checklist
 
 Before every feature:
+
 - [ ] Input validation implemented with {{VALIDATION_LIBRARY}}
 - [ ] Authentication required (if applicable)
 - [ ] Authorization checked (role/permission)
@@ -286,21 +312,25 @@ Before every feature:
 ## 🎨 Code Style Examples
 
 ### Controller Example ({{FRAMEWORK}})
+
 ```{{LANGUAGE}}
 {{CONTROLLER_EXAMPLE}}
 ```
 
 ### Service Example
+
 ```{{LANGUAGE}}
 {{SERVICE_EXAMPLE}}
 ```
 
 ### Repository Example
+
 ```{{LANGUAGE}}
 {{REPOSITORY_EXAMPLE}}
 ```
 
 ### DTO Example
+
 ```{{LANGUAGE}}
 {{DTO_EXAMPLE}}
 ```

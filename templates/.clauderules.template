@@ -25,12 +25,17 @@ This file contains Claude Code-specific preferences and workflows.
 1. `AGENT.md` - Universal AI configuration (READ FIRST)
 2. `ai-instructions.md` - Tech stack, rules, workflow
 3. `project-brief.md` - Business context
-4. `docs/architecture.md` - System architecture
-5. `docs/data-architecture.md` - Database design
-6. `docs/code-standards.md` - Code quality standards
-7. `docs/testing.md` - Testing strategy
-8. `specs/security.md` - Security policies
-9. `specs/configuration.md` - Environment config
+4. `README.md` - Developer onboarding & commands
+5. `docs/architecture.md` - System architecture
+6. `docs/data-model.md` - Database design
+7. `docs/code-standards.md` - Code quality standards
+8. `docs/testing.md` - Testing strategy
+9. `docs/operations.md` - Deployment & operational procedures
+10. `docs/business-flows.md` - Business process flows and diagrams
+11. `docs/api.md` - API reference and conventions
+12. `docs/contributing.md` - Contribution workflow
+13. `specs/security.md` - Security policies
+14. `specs/configuration.md` - Environment config
 
 ---
 

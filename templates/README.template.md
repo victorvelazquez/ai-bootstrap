@@ -117,7 +117,9 @@ The application will be available at `{{DEV_URL}}`
 ## 📚 Documentation
 
 - [Architecture](docs/architecture.md) - System architecture and design patterns
-- [Data Architecture](docs/data-architecture.md) - Database schema and relationships
+- [Data Model](docs/data-model.md) - Database schema and relationships
+- [Business Flows](docs/business-flows.md) - Main business processes and flowcharts
+- [API Reference](docs/api.md) - Endpoints and conventions
 - [Code Standards](docs/code-standards.md) - Coding conventions and quality rules
 - [Testing](docs/testing.md) - Testing strategy and requirements
 - [Operations](docs/operations.md) - Deployment and operational procedures
