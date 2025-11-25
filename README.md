@@ -6,11 +6,12 @@
 
 Transform your idea into a production-ready, AI-documented backend in minutes.
 
-AI Bootstrap is an interactive CLI that generates 15 professional documents for backend projects, guiding users (or AI agents) through 7 key phases: business, architecture, security, standards, testing, and operations. Compatible with Claude, Copilot, Cursor, Gemini, and any AI assistant.
+AI Bootstrap is an interactive CLI that generates 15 professional documents for backend projects (new or existing), guiding users (or AI agents) through 7 key phases: business, architecture, security, standards, testing, and operations. Compatible with Claude, Copilot, Cursor, Gemini, and any AI assistant.
 
 - 🚀 Complete, interconnected documentation
 - 🤖 Multi-AI support and slash commands
 - ⚡ Easy installation and usage
+- 🔍 Smart detection for existing projects (50-60% faster!)
 - 🛡️ Quality, security, and best practices by default
 - ⏱️ Save 10-20 hours per project
 
@@ -30,11 +31,12 @@ This will start an interactive questionnaire: when finished, you will have all y
 
 Transforma tu idea en un backend listo para producción y documentado para IA en minutos.
 
-AI Bootstrap es un CLI interactivo que genera 15 documentos profesionales para proyectos backend, guiando al usuario (o agente AI) por 7 fases clave: negocio, arquitectura, seguridad, estándares, testing y operaciones. Compatible con Claude, Copilot, Cursor, Gemini y cualquier asistente AI.
+AI Bootstrap es un CLI interactivo que genera 15 documentos profesionales para proyectos backend (nuevos o existentes), guiando al usuario (o agente AI) por 7 fases clave: negocio, arquitectura, seguridad, estándares, testing y operaciones. Compatible con Claude, Copilot, Cursor, Gemini y cualquier asistente AI.
 
 - 🚀 Documentación completa y conectada
 - 🤖 Soporte multi-AI y comandos slash
 - ⚡ Instalación y uso en 2 pasos
+- 🔍 Detección inteligente para proyectos existentes (50-60% más rápido!)
 - 🛡️ Calidad, seguridad y buenas prácticas garantizadas
 - ⏱️ Ahorra 10-20 horas por proyecto
 
@@ -54,11 +56,12 @@ Esto iniciará un cuestionario interactivo: al finalizar, tendrás toda la docum
 
 Transforme sua ideia em um backend pronto para produção e documentado para IA em minutos.
 
-AI Bootstrap é uma CLI interativa que gera 15 documentos profissionais para projetos backend, guiando o usuário (ou agente de IA) por 7 fases-chave: negócios, arquitetura, segurança, padrões, testes e operações. Compatível com Claude, Copilot, Cursor, Gemini e qualquer assistente de IA.
+AI Bootstrap é uma CLI interativa que gera 15 documentos profissionais para projetos backend (novos ou existentes), guiando o usuário (ou agente de IA) por 7 fases-chave: negócios, arquitetura, segurança, padrões, testes e operações. Compatível com Claude, Copilot, Cursor, Gemini e qualquer assistente de IA.
 
 - 🚀 Documentação completa e interconectada
 - 🤖 Suporte multi-IA e comandos slash
 - ⚡ Instalação e uso em 2 passos
+- 🔍 Detecção inteligente para projetos existentes (50-60% mais rápido!)
 - 🛡️ Qualidade, segurança e melhores práticas garantidas
 - ⏱️ Economize 10-20 horas por projeto
 
@@ -76,11 +79,15 @@ Isso iniciará um questionário interativo: ao finalizar, toda a documentação 
 
 ## 🎯 What is AI Bootstrap?
 
-AI Bootstrap is an interactive CLI tool that generates **15 comprehensive documentation files** for your backend project through a guided 7-phase questionnaire. It creates the foundation for AI-assisted development with any AI tool (Claude, Copilot, Cursor, Gemini, etc.).
+AI Bootstrap is an interactive CLI tool that generates **15 comprehensive documentation files** for your backend project (new or existing) through a guided 7-phase questionnaire. It creates the foundation for AI-assisted development with any AI tool (Claude, Copilot, Cursor, Gemini, etc.).
 
-**The Problem:** Starting a new backend project requires hours of documentation setup. Without proper docs, AI assistants work inefficiently and make inconsistent decisions.
+**The Problem:** Starting a new backend project requires hours of documentation setup. Existing projects often lack proper AI-ready documentation. Without proper docs, AI assistants work inefficiently and make inconsistent decisions.
 
-**The Solution:** AI Bootstrap asks you the right questions and generates professional, interconnected documentation that guides AI assistants (and human developers) throughout your project lifecycle.
+**The Solution:** 
+- **New Projects:** AI Bootstrap asks you the right questions and generates professional documentation from scratch.
+- **Existing Projects:** AI Bootstrap analyzes your code, README, and configs to pre-populate answers, saving 50-60% of time.
+
+The result is interconnected documentation that guides AI assistants (and human developers) throughout your project lifecycle.
 
 ---
 
@@ -89,11 +96,12 @@ AI Bootstrap is an interactive CLI tool that generates **15 comprehensive docume
 - 🤖 **AI-Agnostic** - Works with Claude, Copilot, Cursor, Gemini, any AI tool
 - 📚 **15 Professional Documents** - Complete documentation architecture
 - ⚡ **Interactive Questionnaires** - 7 phases with smart recommendations
+- 🔍 **Smart Context Detection** - Analyzes existing projects and pre-populates answers
 - 🎯 **AGENT.md Standard** - Universal AI configuration file
 - 💡 **Slash Commands** - Easy execution with `/bootstrap`
 - 🔧 **Backend-Focused** - Optimized for backend/API projects
 - 🎓 **Educational** - Learn best practices while building
-- ⏱️ **90-120 Minutes** - One-time investment, 10-20 hours saved
+- ⏱️ **Time Efficient** - 90-120 min (new) or 35-70 min (existing projects)
 
 ---
 
@@ -154,8 +162,17 @@ Tell your AI assistant:
 Read .ai-bootstrap/prompts/backend.md and execute the 7-phase questionnaire
 ```
 
-### 4. Answer Questions (90-120 minutes)
+### 4. Answer Questions
 
+**For Existing Projects:**
+The AI will first analyze your project (Phase 0) and pre-populate answers from:
+- AI instruction files (copilot-instructions.md, .clauderules, AGENT.md, etc.)
+- README.md, package.json, and code structure
+- Detected frameworks, entities, and dependencies
+
+You'll only answer what's missing or needs confirmation. **Time: 35-70 minutes** (50-60% faster!)
+
+**For New Projects:**
 The AI will guide you through 7 phases:
 
 1. **Discovery & Business** (15-20 min) - What problem are you solving?
@@ -165,6 +182,8 @@ The AI will guide you through 7 phases:
 5. **Code Standards** (15-20 min) - Quality rules and conventions
 6. **Testing Strategy** (10 min) - Testing strategy and coverage
 7. **Operations & Deployment** (10 min) - Deployment and monitoring
+
+**Time: 90-120 minutes**
 
 ### 5. Generated Documents (15) ✅
 
@@ -299,19 +318,27 @@ After initialization, you can use these commands in your AI tool:
 
 ## 💡 How It Works
 
-### 1. Master Prompt System
+### 1. Smart Context Detection (Phase 0)
+
+For existing projects, AI Bootstrap automatically:
+- Detects AI instruction files (copilot-instructions.md, .clauderules, .cursorrules, AGENT.md, etc.)
+- Analyzes README.md, package.json, and project structure
+- Identifies framework, language, database, and entities from code
+- Pre-populates answers to save you time
+
+### 2. Master Prompt System
 
 The `.ai-bootstrap/prompts/backend.md` file contains a comprehensive questionnaire that guides AI assistants through gathering all necessary information.
 
-### 2. Template-Based Generation
+### 3. Template-Based Generation
 
-Templates in `.ai-bootstrap/templates/` use placeholders (e.g., `{{PROJECT_NAME}}`) that get filled based on your answers.
+Templates in `.ai-bootstrap/templates/` use placeholders (e.g., `{{PROJECT_NAME}}`) that get filled based on your answers or detected information.
 
-### 3. AGENT.md Aggregator
+### 4. AGENT.md Aggregator
 
 The `AGENT.md` file acts as a universal entry point that all AI tools can read. It points to detailed documentation and provides quick reference.
 
-### 4. Tool-Specific Configs
+### 5. Tool-Specific Configs
 
 Each AI tool gets its specific config (`.clauderules`, `.cursorrules`, etc.) that references `AGENT.md` as the source of truth.
 
@@ -329,19 +356,33 @@ Each AI tool gets its specific config (`.clauderules`, `.cursorrules`, etc.) tha
 
 ### AI Bootstrap Approach (✅ With AI Bootstrap)
 
+**New Projects:**
 - ⏱️ 90-120 minutes interactive setup
 - 📚 15 interconnected professional documents
 - 🤖 AI assistants work with full context
 - 🎯 Consistent architecture and code quality
 - ✅ Fewer bugs, faster development
 
+**Existing Projects:**
+- ⏱️ 35-70 minutes (50-60% faster with smart detection!)
+- 📚 Same 15 professional documents
+- 🔍 Automatic analysis of existing code/docs
+- 📝 Only answer what's missing
+- 🚀 Get AI-ready documentation for legacy projects
+
 ### ROI Calculation
 
+**New Projects:**
 - **Investment:** 2 hours (one-time)
 - **Savings per feature:** 30-60 minutes
 - **Break-even:** After 2-4 features
 - **10 features:** Save 5-10 hours
 - **Entire project:** Save 20-50+ hours
+
+**Existing Projects:**
+- **Investment:** 1 hour (one-time)
+- **Immediate benefit:** Professional AI-ready documentation
+- **Ongoing savings:** Same as new projects (10-20 hours)
 
 ---
 
@@ -426,6 +467,8 @@ ai-bootstrap check
 ### Perfect For
 
 - ✅ Backend developers starting new projects
+- ✅ **Teams with existing codebases needing AI-ready documentation**
+- ✅ **Legacy projects lacking proper documentation**
 - ✅ Teams adopting AI-assisted development
 - ✅ Projects requiring comprehensive documentation
 - ✅ Developers who want to learn best practices
