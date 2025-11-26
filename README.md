@@ -98,11 +98,12 @@ The result is interconnected documentation that guides AI assistants (and human 
 - 📚 **15 Professional Documents** - Complete documentation architecture
 - ⚡ **Interactive Questionnaires** - 7 phases with smart recommendations
 - 🔍 **Smart Context Detection** - Analyzes existing projects and pre-populates answers
-- 🎯 **AGENT.md Standard** - Universal AI configuration file
+- 🎯 **Flexible Scope Selection** - MVP with basic tests (50-70 min), Production-Ready (90-120 min), or Enterprise (120-150 min)
+- 📋 **AGENT.md Standard** - Universal AI configuration file
 - 💡 **Slash Commands** - Easy execution with `/bootstrap`
 - 🔧 **Backend-Focused** - Optimized for backend/API projects
 - 🎓 **Educational** - Learn best practices while building
-- ⏱️ **Time Efficient** - 90-120 min (new) or 35-70 min (existing projects)
+- ⏱️ **Time Efficient** - Adapts to your needs, from quick MVP to comprehensive enterprise docs
 
 ---
 
@@ -183,7 +184,7 @@ The AI will guide you through 7 phases:
 3. **System Architecture** (15-20 min) - Tech stack and patterns
 4. **Security & Authentication** (15-20 min) - Authentication and compliance
 5. **Code Standards** (15-20 min) - Quality rules and conventions
-6. **Testing Strategy** (10 min) - Testing strategy and coverage
+6. **Testing Strategy** (15-25 min) - Testing strategy and coverage (all scopes include tests)
 7. **Operations & Deployment** (10 min) - Deployment and monitoring
 
 **Time: 90-120 minutes**
@@ -362,7 +363,7 @@ Each AI tool gets its specific config (`.clauderules`, `.cursorrules`, etc.) tha
 
 **New Projects:**
 
-- ⏱️ 90-120 minutes interactive setup
+- ⏱️ 50-150 minutes interactive setup (scope-based)
 - 📚 15 interconnected professional documents
 - 🤖 AI assistants work with full context
 - 🎯 Consistent architecture and code quality
@@ -370,7 +371,7 @@ Each AI tool gets its specific config (`.clauderules`, `.cursorrules`, etc.) tha
 
 **Existing Projects:**
 
-- ⏱️ 35-70 minutes (50-60% faster with smart detection!)
+- ⏱️ 25-90 minutes (50-60% faster with smart detection!)
 - 📚 Same 15 professional documents
 - 🔍 Automatic analysis of existing code/docs
 - 📝 Only answer what's missing
@@ -452,7 +453,11 @@ ai-bootstrap check
 1. Have a clear problem statement
 2. Know your approximate tech stack
 3. Understand your users
-4. Set aside 90-120 min (new projects) or 35-70 min (existing projects)
+4. Choose your scope (MVP/Production-Ready/Enterprise)
+5. Set aside time based on your scope:
+   - **MVP (with basic tests):** 50-70 min (new) or 25-40 min (existing)
+   - **Production-Ready:** 90-120 min (new) or 35-70 min (existing)
+   - **Enterprise:** 120-150 min (new) or 50-90 min (existing)
 
 ### During Bootstrap
 

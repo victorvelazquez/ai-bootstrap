@@ -6,9 +6,11 @@ Your mission is to guide the user through creating **comprehensive, production-r
 
 ## Important Instructions
 
-1. **Execute ALL 7 phases in order** - Do not skip any phase
-2. **Ask questions ONE BY ONE** - Do not present multiple questions at once. Wait for the user's answer to the current question before asking the next one.
-3. **Show progress indicator before EVERY question** - Use this format:
+1. **Ask for Project Scope FIRST** - Before Phase 1, ask the user to select: MVP, Production-Ready, or Enterprise
+2. **Adapt questions based on scope** - Skip or simplify questions according to the selected scope level
+3. **Execute ALL applicable phases in order** - Do not skip phases, but adjust depth based on scope
+4. **Ask questions ONE BY ONE** - Do not present multiple questions at once. Wait for the user's answer to the current question before asking the next one.
+5. **Show progress indicator before EVERY question** - Use this format:
    ```
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    📋 Phase [N]: [Phase Name]  |  Question [X]/[Total]  |  Phase Progress: [%]%
@@ -20,14 +22,14 @@ Your mission is to guide the user through creating **comprehensive, production-r
    📋 Phase 1: Discovery & Business  |  Question 3/8  |  Phase Progress: 37%
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    ```
-4. **Provide recommendations** using these markers:
+6. **Provide recommendations** using these markers:
    - ⭐ **Recommended** - Best choice for most projects
    - 🔥 **Popular** - Widely used in industry
    - ⚡ **Modern** - Cutting-edge, newer approach
    - 🏆 **Enterprise** - Best for large-scale projects
-5. **Use multiple choice when possible** - Give 3-4 options (A, B, C, D)
-6. **Validate completeness** - Ensure all critical information is gathered
-7. **Generate documents incrementally** - After each phase, generate corresponding documents with validation
+7. **Use multiple choice when possible** - Give 3-4 options (A, B, C, D)
+8. **Validate completeness** - Ensure all critical information is gathered
+9. **Generate documents incrementally** - After each phase, generate corresponding documents with validation
 
 ---
 
@@ -79,8 +81,21 @@ Let me check if this is an existing project or a new one.
 
 ✅ Detected Files:
 - [List of AI instruction files found]
-- [List of documentation files found]
+- [List of documentation files found with brief status]
+  Example:
+  • README.md ✅
+  • docs/architecture.md ✅ (comprehensive)
+  • docs/api.md ✅ (comprehensive)
+  • docs/security.md ⚠️ (basic/incomplete)
+  • docs/testing.md ❌ (missing)
 - [List of config files found]
+
+📈 Documentation Maturity Level:
+[Analyze detected docs and classify:]
+- 🌱 Minimal: Only README, no structured docs → **Suggest MVP or Production-Ready scope**
+- 🌿 Basic: README + some docs (1-3 files) → **Suggest Production-Ready scope**
+- 🌳 Comprehensive: README + 5+ structured docs → **Suggest Production-Ready or Enterprise scope**
+- 🏢 Enterprise: Complete documentation suite with compliance/governance → **Suggest Enterprise scope**
 
 🔍 Inferred Information:
 - Project Name: [from package.json or README]
@@ -96,9 +111,11 @@ Let me check if this is an existing project or a new one.
 
 ---
 
+💡 Recommended Scope: [MVP/Production-Ready/Enterprise based on maturity level above]
+
 Would you like to:
 
-A) ✅ Use detected information and only answer missing questions
+A) ✅ Use detected information and only answer missing questions (Recommended)
 B) 🔄 Start fresh questionnaire (ignore existing files)
 C) 📝 Review and edit detected information before proceeding
 
@@ -150,7 +167,7 @@ Type 'yes' to continue.
 ✅ Starting fresh questionnaire.
 
 I'll ignore existing files and ask all questions as if this were a new project.
-Proceed directly to Phase 1.
+Proceeding to Project Scope Selection...
 ```
 
 **If user selects C (Review detected info):**
@@ -167,12 +184,150 @@ Framework: [framework] - Correct? (Y/N) If no, provide correct value: __
 
 [After user reviews all fields]
 
-✅ Updated information saved. Proceeding to Phase 1 with corrected data.
+✅ Updated information saved. Proceeding to Project Scope Selection...
 ```
 
 ---
 
-**After Phase 0 completes, proceed to Phase 1 with pre-populated answers where available.**
+**After Phase 0 completes (if applicable), ALWAYS proceed to Project Scope Selection before Phase 1.**
+
+---
+
+## 🎯 PROJECT SCOPE SELECTION
+
+> **This question determines the level of detail for all subsequent phases.**  
+> **Ask this AFTER Phase 0 (if executed), BEFORE Phase 1.**
+
+> **📌 Smart Default Suggestion:**
+>
+> - If Phase 0 detected comprehensive existing docs (architecture.md, security.md, testing.md, etc.) → Suggest **Production-Ready (B)** or **Enterprise (C)**
+> - If Phase 0 detected minimal/basic docs (only README.md or basic setup) → Suggest **MVP (A)** or **Production-Ready (B)**
+> - If Phase 0 was skipped (new project, no existing files) → Suggest **MVP (A)** for prototypes, **Production-Ready (B)** for serious projects
+
+```
+[If existing docs were detected in Phase 0, show:]
+✅ I detected existing documentation in your project:
+[List detected files: architecture.md, security.md, etc.]
+
+Based on what I found, I recommend: [Production-Ready/Enterprise]
+However, you can choose any scope that fits your needs.
+
+[Always show options:]
+
+What type of project documentation do you need?
+
+A) ⭐ MVP / Prototype (50-70 min new, 25-40 min existing) - Lean & Fast + Basic Tests
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Focus: Core functionality + smoke tests
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+   ✅ Includes:
+   • Basic business requirements
+   • Essential data models and relationships
+   • Core tech stack (framework, database, language)
+   • Simple authentication (JWT or sessions)
+   • Basic CORS and password policy
+   • Minimal code standards (formatting, naming)
+   • Basic testing (smoke tests on critical paths, ~15-25% coverage)
+   • Simple deployment (single environment) with CI basics
+
+   ❌ Skips:
+   • Background jobs, message queues
+   • File storage, email/SMS services
+   • Advanced security (encryption, compliance, audit logs)
+   • Rate limiting, security headers
+   • Advanced error handling and logging
+   • Advanced testing (unit, integration, e2e, load testing)
+   • Multi-environment setup, monitoring, scaling
+
+   👉 Recommended for:
+   • Early-stage startups
+   • Proofs of concept
+   • Learning projects
+   • Hackathons
+   • Internal tools
+
+B) 🚀 Production-Ready (90-120 min) - Balanced & Complete
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Focus: Production-grade with best practices
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+   ✅ Includes everything from MVP plus:
+   • Background jobs and message queues
+   • File storage, email/SMS integrations
+   • Comprehensive security (encryption, headers, rate limiting)
+   • Input validation and sanitization
+   • Complete error handling and logging
+   • Comprehensive testing (unit, integration, e2e, 60-80% coverage)
+   • Multi-environment deployment (dev, staging, prod)
+   • Basic monitoring and health checks
+
+   ⚠️ May skip:
+   • Enterprise compliance (GDPR, HIPAA, SOC 2)
+   • Advanced monitoring and alerting
+   • Auto-scaling and disaster recovery
+
+   👉 Recommended for:
+   • Production applications
+   • Funded startups
+   • SaaS products
+   • Customer-facing APIs
+   • Professional projects
+
+C) 🏢 Enterprise / Mission-Critical (120-150 min) - Maximum Detail
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Focus: Enterprise governance and compliance
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+   ✅ Includes everything from Production-Ready plus:
+   • Compliance requirements (GDPR, HIPAA, PCI-DSS, SOC 2)
+   • Comprehensive audit logging and retention
+   • Data encryption (at-rest, in-transit, field-level)
+   • Exhaustive testing (80-95% coverage, contract, load, security tests)
+   • Advanced monitoring, alerting, and observability
+   • Auto-scaling and load balancing strategies
+   • Disaster recovery and backup procedures
+   • Performance optimization and caching strategies
+   • Security incident response plans
+
+   👉 Recommended for:
+   • Large enterprises
+   • Regulated industries (healthcare, finance, government)
+   • Critical infrastructure
+   • Multi-tenant B2B platforms
+   • High-traffic applications
+
+Your choice: __
+```
+
+**Based on selection, the AI will:**
+
+- **MVP (A):** Ask simplified versions of questions, skip optional features
+- **Production-Ready (B):** Ask all standard questions with recommendations
+- **Enterprise (C):** Ask all questions including advanced compliance and governance
+
+**Important: If existing documentation was detected in Phase 0:**
+
+1. **Pre-populate answers** from existing docs where possible
+2. **Skip redundant questions** already answered in detected documentation
+3. **Validate and update** information rather than asking from scratch
+4. **Show what was detected** and ask for confirmation: "I found X in your docs, is this still correct?"
+5. **Fill gaps only** - focus questions on missing information
+
+Example flow for existing project with docs:
+
+```
+✅ From architecture.md, I detected:
+- Framework: NestJS
+- Database: PostgreSQL with Prisma
+- Language: TypeScript 5.3
+
+Is this still accurate? (Y/N)
+[If Y, skip to next section. If N, ask for corrections]
+
+❓ I didn't find information about caching strategy in your docs.
+What caching approach will you use? [Ask question 3.4]
+```
 
 ---
 
@@ -741,7 +896,13 @@ Then execute: `read_file('docs/data-model.md')` to refresh context.
 
 ## PHASE 3: System Architecture (15-20 min)
 
-> **Order for this phase:** 3.1 → 3.2 → 3.3 → 3.4 → 3.5 → 3.6 → 3.7 → 3.8 → 3.9 → 3.10
+> **Order for this phase:** 3.1 → 3.2 → 3.3 → 3.4 → 3.5 → 3.6 → 3.7 → 3.8 → 3.9 → 3.10 → 3.11 → 3.12
+
+> **📌 Scope-based behavior:**
+>
+> - **MVP:** Ask 3.1-3.6 (tech stack essentials) and 3.12 (API structure), skip 3.7-3.11 (advanced features), mark as "TBD"
+> - **Production-Ready:** Ask all questions 3.1-3.12
+> - **Enterprise:** Ask all questions 3.1-3.12 with emphasis on scalability and integrations
 
 > **📌 Note:** If Phase 0 detected framework/language/dependencies, those will be pre-filled. Review and confirm.
 
@@ -911,17 +1072,17 @@ Please answer the following questions to define the global API conventions (thes
 5. How will filters be passed for GET list endpoints?
   A) ⭐ Query parameters (recommended for simple filters)
      Example: GET /users?name=John&status=active&page=1&limit=10
-  
+
   B) POST /search endpoint with body (for complex filters)
      Example: POST /users/search
      Body: { "filters": { "name": "John", "status": "active" }, "page": 1, "limit": 10 }
-  
+
   C) Both (query params for simple, POST /search for complex)
 
 6. For POST/PUT/PATCH endpoints, will you use DTOs for request validation?
   A) ⭐ Yes, strict DTOs with validation (recommended)
   B) Accept raw JSON without strict schema
-  
+
   If yes, validation library: [from Phase 3.6 - class-validator, Zod, Pydantic, Joi]
 
 **C) Error and Response Structure**
@@ -1209,6 +1370,12 @@ Then execute: `read_file()` for both documents to refresh context.
 ## PHASE 4: Security & Authentication (15-20 min)
 
 > **Order for this phase:** 4.1 → 4.2 → 4.3 → 4.4 → 4.5 → 4.6 → 4.7 → 4.8 → 4.9 → 4.10 → 4.11
+
+> **📌 Scope-based behavior:**
+>
+> - **MVP:** Ask 4.1-4.5 only (auth basics + CORS), skip 4.6-4.11 (advanced security), mark as "TBD"
+> - **Production-Ready:** Ask 4.1-4.8 and 4.11, skip or simplify 4.9 (compliance) and 4.10 (audit logging)
+> - **Enterprise:** Ask all questions 4.1-4.11 with emphasis on compliance and audit trails
 
 ### Objective
 
@@ -1614,6 +1781,12 @@ I'll re-read all files to update my context before continuing.
 ## PHASE 5: Code Standards (15-20 min)
 
 > **Order for this phase:** 5.1 → 5.2 → 5.3 → 5.4 → 5.5 → 5.6 → 5.7 → 5.8 → 5.9 → 5.10 → 5.11
+
+> **📌 Scope-based behavior:**
+>
+> - **MVP:** Ask 5.1-5.5 only (formatting, naming, structure, coverage target, Git workflow), skip 5.6-5.11 (advanced practices)
+> - **Production-Ready:** Ask all questions 5.1-5.11
+> - **Enterprise:** Ask all questions 5.1-5.11 with emphasis on governance and documentation
 
 ### Objective
 
@@ -2198,13 +2371,25 @@ I'll re-read all files to update my context before continuing.
 
 ---
 
-## PHASE 6: Testing Strategy (10 min)
+## PHASE 6: Testing Strategy (15-25 min)
 
-> **Order for this phase:** 6.1 → 6.2 → 6.3 → 6.4 → 6.5 → 6.6 → 6.7
+> **Order for this phase:**
+>
+> - **MVP:** 6.1 → 6.2 (smoke tests) → 6.7 (CI basics)
+> - **Production-Ready:** 6.1 → 6.2 → 6.3 → 6.4 → 6.5 → 6.6 → 6.7
+> - **Enterprise:** 6.1 → 6.2 → 6.3 → 6.4 → 6.5 → 6.6 → 6.7 → 6.8 → 6.9
+
+> **📌 Scope-based behavior:**
+>
+> - **MVP:** Ask 6.1 (framework), 6.2 (smoke tests only), 6.7 (CI basics) - **Target: 15-25% coverage**
+> - **Production-Ready:** Ask all questions 6.1-6.7 - **Target: 60-80% coverage**
+> - **Enterprise:** Ask all questions 6.1-6.9 - **Target: 80-95% coverage + contract/load tests**
 
 ### Objective
 
 Define testing approach, tools, and quality gates.
+
+**🚨 Important: All projects require basic testing. Scope determines depth, not whether to test.**
 
 **6.1 Testing Framework**
 
@@ -2237,40 +2422,53 @@ Mocking library: **
 **6.2 Test Types**
 
 ```
+[If MVP scope selected, ask simplified version:]
+
+For MVP, we'll focus on smoke tests (critical path verification).
+Which critical flows should be tested?
+
+Select 3-5 most important endpoints/features:
+A) Authentication (login/register)
+B) Main business operation (e.g., create order, post article)
+C) User profile/account management
+D) Payment processing (if applicable)
+E) Data retrieval (main GET endpoints)
+
+Selected: __
+
+Test approach: Integration tests covering happy path of selected flows
+Coverage target: 15-25%
+Test type: Integration/E2E only (no unit tests required for MVP)
+
+[If Production-Ready or Enterprise scope selected, ask full version:]
 
 Which test types will you implement?
 
 A) ✅ Unit Tests
-
-- Test individual functions/methods in isolation
-- Fast, numerous
-- Mock all dependencies
+   - Test individual functions/methods in isolation
+   - Fast, numerous
+   - Mock all dependencies
 
 B) ✅ Integration Tests
-
-- Test multiple components together
-- Database, external APIs
-- Slower but more realistic
+   - Test multiple components together
+   - Database, external APIs
+   - Slower but more realistic
 
 C) ✅ E2E (End-to-End) Tests
+   - Test full user flows
+   - API endpoints from request to response
+   - Tool: Supertest (Node.js), pytest with TestClient (Python)
 
-- Test full user flows
-- API endpoints from request to response
-- Tool: Supertest (Node.js), pytest with TestClient (Python)
+D) 🏆 Contract Tests (Advanced - Enterprise recommended)
+   - Verify API contracts between services
+   - Tool: Pact
 
-D) 🏆 Contract Tests (Advanced)
+E) ⚡ Load/Performance Tests (Enterprise recommended)
+   - Tool: Artillery, K6, JMeter
 
-- Verify API contracts between services
-- Tool: Pact
-
-E) ⚡ Load/Performance Tests
-
-- Tool: Artillery, K6, JMeter
-
-Selected: \_\_
+Selected: __
 
 Pyramid distribution:
-
 - 70% Unit tests
 - 20% Integration tests
 - 10% E2E tests
@@ -2278,34 +2476,31 @@ Pyramid distribution:
 
 ```
 
-**6.3 Test Database**
+**6.3 Test Database** [Skip if MVP scope]
 
 ```
+[Production-Ready/Enterprise only]
 
 How will you handle database in tests?
 
 A) ⭐ In-memory database
-
-- SQLite for testing, PostgreSQL for prod
-- Fast, isolated
+   - SQLite for testing, PostgreSQL for prod
+   - Fast, isolated
 
 B) 🏆 Docker test database
-
-- Same DB as production
-- More realistic
-- Tool: Testcontainers
+   - Same DB as production
+   - More realistic
+   - Tool: Testcontainers
 
 C) 🔄 Shared test database
-
-- One DB for all tests
-- Reset between test suites
+   - One DB for all tests
+   - Reset between test suites
 
 D) 🎭 Mock database
+   - Mock all DB calls
+   - Fastest, but less realistic
 
-- Mock all DB calls
-- Fastest, but less realistic
-
-Your choice: \_\_
+Your choice: __
 
 Test data strategy:
 A) ⭐ Factories/Fixtures - Generate test data programmatically
@@ -2314,31 +2509,28 @@ C) Inline - Create data in each test
 
 ```
 
-**6.4 Test Data Management**
+**6.4 Test Data Management** [Skip if MVP scope]
 
 ```
+[Production-Ready/Enterprise only]
 
 How will you create test data?
 
 A) ⭐ Factory pattern
-
-- Libraries: factory_boy (Python), Fishery (TypeScript)
-- Generate realistic data on demand
+   - Libraries: factory_boy (Python), Fishery (TypeScript)
+   - Generate realistic data on demand
 
 B) Fixtures
-
-- Predefined test data
-- Loaded before tests
+   - Predefined test data
+   - Loaded before tests
 
 C) Faker
+   - Random realistic data
+   - Library: @faker-js/faker, Faker (Python)
 
-- Random realistic data
-- Library: @faker-js/faker, Faker (Python)
-
-Your approach: \_\_
+Your approach: __
 
 Example test data needs:
-
 - Users with various roles
 - Products with different states
 - Orders in different stages
@@ -2347,9 +2539,10 @@ Example test data needs:
 
 ```
 
-**6.5 Mocking Strategy**
+**6.5 Mocking Strategy** [Skip if MVP scope]
 
 ```
+[Production-Ready/Enterprise only]
 
 What will you mock?
 
@@ -2366,21 +2559,20 @@ B) Library - MSW (Mock Service Worker), nock
 C) Test doubles - Stubs, spies, mocks
 
 When NOT to mock:
-
 - Internal business logic
 - Simple utilities
 - Value objects
 
 ```
 
-**6.6 Test Organization**
+**6.6 Test Organization** [Skip if MVP scope]
 
 ```
+[Production-Ready/Enterprise only]
 
 Test file structure:
 
 A) ⭐ Co-located with source
-
 ```
 
 src/
@@ -2391,7 +2583,6 @@ user.service.spec.ts
 ```
 
 B) Separate test directory
-
 ```
 
 src/users/user.service.ts
@@ -2402,11 +2593,11 @@ tests/users/user.service.test.ts
 Test naming:
 
 ```typescript
-describe("UserService", () => {
-  describe("createUser", () => {
-    it("should create a new user with valid data", async () => {
+describe('UserService', () => {
+  describe('createUser', () => {
+    it('should create a new user with valid data', async () => {
       // Arrange
-      const userData = { email: "test@example.com", name: "Test" };
+      const userData = { email: 'test@example.com', name: 'Test' };
 
       // Act
       const result = await userService.createUser(userData);
@@ -2416,12 +2607,12 @@ describe("UserService", () => {
       expect(result.email).toBe(userData.email);
     });
 
-    it("should throw error when email is duplicated", async () => {
+    it('should throw error when email is duplicated', async () => {
       // ...
     });
   });
 });
-```
+````
 
 Naming pattern:
 A) ⭐ "should [expected behavior] when [condition]"
@@ -2430,9 +2621,24 @@ C) Free-form
 
 ````
 
-**6.7 CI/CD Testing**
+**6.7 CI/CD Testing** [All scopes - simplified for MVP]
 
 ```
+[If MVP scope:]
+For MVP, we'll set up basic CI to run smoke tests.
+
+When will smoke tests run?
+A) ⭐ On pull request (GitHub Actions, GitLab CI) - Recommended
+B) Before deploy only
+
+Selected: __
+
+Quality gate for MVP:
+- ✅ All smoke tests must pass
+- ⚠️ Coverage tracking (no minimum required)
+
+[If Production-Ready or Enterprise scope:]
+
 When will tests run?
 
 A) ⭐ On every commit (pre-commit hook) - Catch issues early
@@ -2445,9 +2651,9 @@ Selected: __
 Quality gates:
 
 - ✅ All tests must pass
-- ✅ Coverage must be >= __% (from Phase 5)
+- ✅ Coverage must be >= __% (15-25% MVP, 60-80% Production, 80-95% Enterprise)
 - ✅ No linting errors
-- ⚡ Performance benchmarks met (optional)
+- ⚡ Performance benchmarks met (optional, Enterprise recommended)
 
 Failing a quality gate:
 A) ⭐ Block merge/deploy - Force fix
@@ -2460,14 +2666,36 @@ B) ⚠️ Warning only - Allow with justification
 ```
 📋 PHASE 6 SUMMARY:
 
+**If MVP scope (A):**
+Testing Framework: [Jest/pytest/JUnit] (6.1)
+Test Types: Smoke tests on critical paths [selected 3-5 critical flows] (6.2)
+Test Approach: Integration/E2E tests covering happy path only (6.2)
+Coverage Target: 15-25% (6.2)
+CI/CD Testing: [on PR/before deploy] + quality gate: all tests must pass (6.7)
+Status: Basic testing implemented for MVP
+
+**If Production-Ready (B):**
 Testing Framework: [Jest/pytest/JUnit + assertion library + mocking library] (6.1)
-Test Types: [unit/integration/e2e/contract/load - selected types] (6.2)
+Test Types: [unit/integration/e2e - selected types] (6.2)
 Test Distribution: [pyramid percentages: 70/20/10 or custom] (6.2)
-Test Database: [in-memory/Docker/shared/mock + initial data strategy from 6.3] (6.3)
+Test Database: [in-memory/Docker/shared/mock + initial data strategy] (6.3)
 Test Data Management: [factories/fixtures/faker approach + specific test data needs] (6.4)
-Mocking Strategy: [what to mock (APIs/DB/files/time/email/payments) + approach (manual/library/test-doubles)] (6.5)
-Test Organization: [co-located/separate folder + naming pattern (should/it/free-form)] (6.6)
-CI/CD Testing: [when tests run (commit/PR/deploy/nightly) + quality gates (pass/coverage/lint) + gate behavior (block/warn)] (6.7)
+Mocking Strategy: [what to mock (APIs/DB/files/time/email/payments) + approach] (6.5)
+Test Organization: [co-located/separate folder + naming pattern] (6.6)
+CI/CD Testing: [when tests run (commit/PR/deploy/nightly) + quality gates (pass/60-80% coverage/lint) + gate behavior (block/warn)] (6.7)
+Status: Comprehensive testing strategy implemented
+
+**If Enterprise (C):**
+Testing Framework: [Jest/pytest/JUnit + assertion library + mocking library] (6.1)
+Test Types: [unit/integration/e2e/contract/load - all types] (6.2)
+Test Distribution: [pyramid percentages: 70/20/10 or custom] (6.2)
+Test Database: [in-memory/Docker/shared/mock + initial data strategy] (6.3)
+Test Data Management: [factories/fixtures/faker approach + specific test data needs] (6.4)
+Mocking Strategy: [what to mock (APIs/DB/files/time/email/payments) + approach] (6.5)
+Test Organization: [co-located/separate folder + naming pattern] (6.6)
+CI/CD Testing: [when tests run (commit/PR/deploy/nightly) + quality gates (pass/80-95% coverage/lint/performance) + gate behavior (block/warn)] (6.7)
+Advanced Testing: Contract tests (Pact), load tests (K6/Artillery), security tests (6.2)
+Status: Exhaustive testing strategy with advanced scenarios
 
 Is this correct? (Yes/No)
 ```
@@ -2489,7 +2717,9 @@ Once confirmed, generate:
 **1. `docs/testing.md`**
 
 - Use template: `.ai-bootstrap/templates/docs/testing.template.md`
-- Fill with testing strategy, tools, coverage targets, automation
+- **If MVP scope:** Fill with basic testing strategy: framework selection, smoke tests on critical paths, coverage 15-25%, basic CI setup. Mark advanced sections as "Not implemented yet - expand when moving to Production-Ready"
+- **If Production-Ready:** Fill with comprehensive testing strategy: framework, unit/integration/e2e tests, 60-80% coverage, test data management, mocking, full CI/CD
+- **If Enterprise:** Fill with exhaustive testing strategy: all Production-Ready items + contract tests, load tests, security tests, 80-95% coverage, performance benchmarks
 
 ```
 ✅ Generated: docs/testing.md
@@ -2517,6 +2747,11 @@ I'll re-read all files to update my context before continuing.
 ## PHASE 7: Operations & Deployment (10 min)
 
 > **Order for this phase:** 7.1 → 7.2 → 7.3 → 7.4 → 7.5 → 7.6 → 7.7 → 7.8 → 7.9 → 7.10 → 7.11
+
+> **📌 Scope-based behavior:**
+> - **MVP:** Ask 7.1-7.4 only (deployment basics), skip 7.5-7.11 (monitoring, scaling, backups), mark as "TBD"
+> - **Production-Ready:** Ask 7.1-7.8, simplify 7.9-7.11 (advanced monitoring and scaling)
+> - **Enterprise:** Ask all questions 7.1-7.11 with emphasis on reliability and disaster recovery
 
 ### Objective
 
@@ -3282,3 +3517,4 @@ This is an investment that will save 10-20 hours over the project lifecycle.
 ---
 
 **BEGIN EXECUTION when user runs `/bootstrap`**
+````
