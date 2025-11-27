@@ -1,45 +1,39 @@
-# Prompt: Publicar nueva versión npm y git
+# Release Workflow
 
-## Pasos para publicar una nueva versión:
+Automatiza la publicación de una nueva versión siguiendo semver y sincronizando npm + git.
 
-1. **Analizar el tipo de cambio y definir la nueva versión:**
+## 1. Determinar nueva versión
 
-   - Leer la versión actual en `package.json` (por ejemplo, 1.0.3).
-   - Determinar el tipo de cambio:
-     - Si es un fix o mejora menor, incrementar el último dígito (patch): `1.0.X+`.
-     - Si es una nueva funcionalidad compatible, incrementar el segundo dígito (minor): `1.X+.0`.
-     - Si hay cambios incompatibles, incrementar el primer dígito (major): `X+.0.0`.
-   - Definir la nueva versión acorde al cambio realizado.
+Lee `package.json` → identifica versión actual → aplica semver:
 
-2. **Actualizar la referencia de versión:**
+- **Patch** (`1.0.X+1`): fixes, mejoras menores
+- **Minor** (`1.X+1.0`): nueva funcionalidad compatible
+- **Major** (`X+1.0.0`): breaking changes
 
-   - Modificar el campo `version` en `package.json`.
-   - Actualizar la versión en las líneas correspondientes de `src/cli.ts` (banner, config, y `.version()`).
-   - Actualizar la versión en `templates/AGENT.template.md` si corresponde.
+## 2. Actualizar referencias de versión
 
-3. **Commit y tag:**
+Archivos a modificar con la nueva versión `X.X.X`:
 
-   - Realizar commit de los cambios de versión:
-     ```sh
-     git add package.json src/cli.ts
-     git commit -m "chore: bump version to X.X.X"
-     ```
-   - Crear el tag correspondiente y subirlo:
-     ```sh
-     git tag vX.X.X
-     git push origin main --tags
-     ```
+- `package.json` → campo `"version"`
+- `src/cli.ts` → banner ASCII, `config.version`, y `.version()`
+- `templates/AGENT.template.md` → si aplica
 
-4. **Publicar en npm:**
+## 3. Commit y tag
 
-   - Ejecutar:
-     ```sh
-     npm publish --access public
-     ```
+```sh
+git add package.json src/cli.ts templates/AGENT.template.md
+git commit -m "chore: bump version to X.X.X"
+git tag vX.X.X
+git push origin main --tags
+```
 
-5. **Verificar:**
-   - Comprobar que la versión está disponible en npm y el tag en GitHub.
+## 4. Publicar en npm
 
----
+```sh
+npm publish --access public
+```
 
-> Reemplaza `X.X.X` por la nueva versión definida según el análisis del cambio.
+## 5. Verificar
+
+- ✅ Versión visible en [npmjs.com/package/ai-bootstrap](https://npmjs.com/package/ai-bootstrap)
+- ✅ Tag `vX.X.X` presente en GitHub releases

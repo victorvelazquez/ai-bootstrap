@@ -1,174 +1,85 @@
-# /pre-pr-check — Final Quality Review Before Pull Request
+# Pre-PR Quality Checklist
 
-Execute the complete pre-PR quality checklist for this project.
+Execute comprehensive quality checks before creating a pull request.
 
-## Instructions for the AI Assistant
-
-You are an AI assistant guiding the user through a comprehensive quality review before creating a pull request, regardless of the tool.
-
-**Objective:** Ensure code quality, documentation accuracy, security, and test coverage before merging changes.
+**Goal:** Verify code quality, docs, security, tests, and commit hygiene.
 
 ---
 
-## Workflow Steps
+## Workflow
 
-Execute each step sequentially. After each step, ask the user to confirm:
+Execute steps sequentially. Ask "Continue? (Y/N)" after each.
 
-- Enter **Y** (yes) to continue to the next step
-- Enter **N** (not) to skip this step and continue the workflow
+| #   | Step         | Actions                                                                         | Command                                  |
+| --- | ------------ | ------------------------------------------------------------------------------- | ---------------------------------------- | ------ | ---------------------------------------- |
+| 1   | **Lint**     | Auto-fix issues, report warnings                                                | `npm run lint:fix`                       |
+| 2   | **Docs**     | Update README/AGENT.md, verify links, check references                          | Manual review + grep search              |
+| 3   | **Deps**     | Check outdated packages, run audit                                              | `npm outdated && npm audit`              |
+| 4   | **Security** | Scan for hardcoded secrets, validate env vars, check common vulns               | `git grep -E '(password                  | secret | api_key)\s*=\s*["\047]'` + manual review |
+| 5   | **Tests**    | Run unit/integration/E2E, generate coverage report                              | `npm test` (or project-specific command) |
+| 6   | **Commits**  | Group changes by type, generate conventional commits                            | Invoke `flow1.commit` prompt             |
+| 7   | **Push**     | Push all commits to remote                                                      | `git push`                               |
+| 8   | **Summary**  | Report results: files modified, test coverage, security status, commits created | Auto-generated report                    |
 
-### Step 1: Lint & Fix 🔍
+### Detailed Actions
 
-**Actions:**
+**1. Lint & Fix**
 
-- Run the project's linting tool
 - Auto-fix correctable issues
 - Report remaining warnings/errors
-- Show summary of fixes applied
 
-**After completion, ask:**
+**2. Docs Update**
 
-- Continue to Docs Update & Maintenance? (Y/N)
-
----
-
-### Step 2: Docs Update & Maintenance 📚
-
-**Actions:**
-
-- Scan for outdated documentation references
-- Update README, AGENT.md, and related docs with recent changes
-- Suggest improvements for incomplete sections
-- Verify links and examples are current
+- Scan for outdated references in `README.md`, `templates/AGENT.template.md`
+- Verify links and examples
 - Check for broken references
 
-**After completion, ask:**
+**3. Dependency Validation**
 
-- Continue to Dependency Validation? (Y/N)
+- Report outdated packages
+- Flag breaking changes (major version bumps)
+- Show security vulnerabilities
 
----
+**4. Security Checklist**
 
-### Step 3: Dependency Validation 📦
+- No hardcoded secrets/API keys
+- Input validation on user-facing functions
+- Auth/authz implementations reviewed
+- No sensitive data in logs
 
-**Actions:**
+**5. Run Tests**
 
-- Check for outdated dependencies
-- Run security audit
-- Suggest safe updates
-- Flag breaking changes or major version updates
-- Report any vulnerabilities found
+- Unit: isolated component tests
+- Integration: module interactions
+- E2E: user flow scenarios (if applicable)
+- Verify minimum coverage threshold
 
-**After completion, ask:**
+**6. Conventional Commits**
 
-- Continue to Security Checklist? (Y/N)
+- Use `/flow1` prompt to analyze and commit changes
+- Groups: `feat`, `fix`, `docs`, `chore`
 
----
+**7. Push**
 
-### Step 4: Security Checklist 🔐
+- Execute `git push` after all commits created
 
-**Actions:**
+**8. Final Summary**
 
-- Verify no hardcoded secrets or API keys in code
-- Check input validation on user-facing functions
-- Review authentication/authorization implementations
-- Scan for common vulnerabilities (SQL injection, XSS, etc.)
-- Validate environment variable usage
-- Check for sensitive data in logs
-
-**After completion, ask:**
-
-- Continue to Run Tests? (Y/N)
-
----
-
-### Step 5: Run Tests 🧪
-
-**Actions:**
-
-- **Unit Tests:** Execute isolated component/function tests
-- **Integration Tests:** Test module interactions and API endpoints
-- **E2E Tests:** Run end-to-end user flow scenarios (if applicable)
-- **Security Tests:** Verify authentication, authorization, and vulnerability scans
-- Generate comprehensive coverage report
-- Highlight failed tests or low coverage areas
-- Suggest additional test cases if needed
-- Verify minimum coverage threshold is met
-
-**After completion, ask:**
-
-- Continue to Conventional Commit? (Y/N)
-
----
-
-### Step 6: Conventional Commit 💾
-
-**Actions:**
-
-- Analyze changed files and group them by type of change:
-  - `feat:` for new features
-  - `fix:` for bug fixes
-  - `docs:` for documentation changes
-  - `chore:` for maintenance tasks
-- Generate a conventional commit for each group of related changes
-- Show the proposed commit messages for review
-- Stage and commit each group
-- Show the hashes of the created commits
-
-**After completion, ask:**
-
-- Continue to Push to Remote? (Y/N)
-
----
-
-### Step 7: Push to Remote 🚀
-
-Push all committed changes to the remote repository.
-
-**Command:**
-
-```bash
-git push
+```
+✅ Steps executed: [list]
+📊 Files modified: [count]
+🧪 Test coverage: [percentage]
+🔐 Security/deps: [status]
+💾 Commits: [hashes]
 ```
 
-**After completion, ask:**
-
-- Show summary of results? (Y/N)
-
 ---
 
-### Step 8: Summary 📊
+## Constraints
 
-**Final Output:**
+- ❌ Never skip requested checks
+- ❌ Never proceed without user confirmation (Y/N)
+- ✅ Stop on critical issues
+- ✅ Provide actionable feedback
 
-- ✅ List all executed steps
-- 📊 Summary of files modified
-- 🧪 Test results and coverage stats
-- 🔐 Security and dependency check results
-- 💾 Commits created (one for each group of related changes)
-
-**Optional:**
-If all checks passed:
-"✅ All quality checks passed! You can now create a pull request if desired."
-
-Suggested next steps (optional):
-
-- Review changes one final time
-- Create a PR with a descriptive title and body (if your workflow requires it)
-- Link related issues
-- Request reviewers
-
----
-
-## Critical Requirements
-
-- ❌ Do NOT skip any requested checks
-- ❌ Do NOT proceed to next step without user confirmation
-- ✅ Provide clear, actionable feedback for each step
-- ✅ Stop immediately if critical issues are found
-- ✅ Ask for guidance if unsure about fixes
-
----
-
-**Time Estimate:** 10-20 minutes depending on project size
-
-**BEGIN PRE-PR CHECK NOW**
+**Estimated time:** 10-20 min
