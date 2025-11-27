@@ -8,7 +8,7 @@ Generate atomic commits automatically following Conventional Commits standard. N
 
 **Use native git commands exclusively** via `run_in_terminal` with `isBackground: false`. VS Code tools are unreliable for change detection.
 
-### 🔍 STEP 1: Detect Changes (Auto)
+### 🔍 Step 1/4: Detect Changes (Auto)
 
 Execute sequentially without confirmation:
 
@@ -21,7 +21,7 @@ git ls-files --others --exclude-standard    # Untracked files
 git diff --cached --stat                     # Staged changes
 ```
 
-### ⚡ STEP 2: Group Changes (Auto)
+### ⚡ Step 2/4: Group Changes (Auto)
 
 Group files by functional relationship using this priority order:
 
@@ -41,7 +41,7 @@ Group files by functional relationship using this priority order:
 - Template changes → check CLI references
 - Script changes → always `chore(config)`
 
-### ✅ STEP 3: Generate Commits (Requires Allow)
+### ✅ Step 3/4: Generate Commits (Requires Allow)
 
 For each group, execute via `run_in_terminal` (user must click Allow):
 
@@ -70,7 +70,7 @@ git add templates/README.template.md && git commit -m "docs(templates): improve 
 git add .github/prompts/flow1.commit.prompt.md && git commit -m "docs(prompts): refactor commit automation workflow"
 ```
 
-### 🚀 STEP 4: Finalize (Mixed)
+### 🚀 Step 4/4: Finalize (Mixed)
 
 ```bash
 # Auto (no confirmation)

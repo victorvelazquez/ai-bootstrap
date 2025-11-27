@@ -1,24 +1,24 @@
 # Release Workflow
 
-Automatiza la publicación de una nueva versión siguiendo semver y sincronizando npm + git.
+Automate publishing a new version following semver and syncing npm + git.
 
-## 1. Determinar nueva versión
+## Step 1/5: Determine Version
 
-Lee `package.json` → identifica versión actual → aplica semver:
+Read `package.json` → identify current version → apply semver:
 
-- **Patch** (`1.0.X+1`): fixes, mejoras menores
-- **Minor** (`1.X+1.0`): nueva funcionalidad compatible
+- **Patch** (`1.0.X+1`): bug fixes, minor improvements
+- **Minor** (`1.X+1.0`): new backward-compatible functionality
 - **Major** (`X+1.0.0`): breaking changes
 
-## 2. Actualizar referencias de versión
+## Step 2/5: Update Version References
 
-Archivos a modificar con la nueva versión `X.X.X`:
+Files to modify with new version `X.X.X`:
 
-- `package.json` → campo `"version"`
-- `src/cli.ts` → banner ASCII, `config.version`, y `.version()`
-- `templates/AGENT.template.md` → si aplica
+- `package.json` → `"version"` field
+- `src/cli.ts` → ASCII banner, `config.version`, and `.version()`
+- `templates/AGENT.template.md` → if applicable
 
-## 3. Commit y tag
+## Step 3/5: Commit and Tag
 
 ```sh
 git add package.json src/cli.ts templates/AGENT.template.md
@@ -27,13 +27,13 @@ git tag vX.X.X
 git push origin main --tags
 ```
 
-## 4. Publicar en npm
+## Step 4/5: Publish to npm
 
 ```sh
 npm publish --access public
 ```
 
-## 5. Verificar
+## Step 5/5: Verify
 
-- ✅ Versión visible en [npmjs.com/package/ai-bootstrap](https://npmjs.com/package/ai-bootstrap)
-- ✅ Tag `vX.X.X` presente en GitHub releases
+- ✅ Version visible at [npmjs.com/package/ai-bootstrap](https://npmjs.com/package/ai-bootstrap)
+- ✅ Tag `vX.X.X` present in GitHub releases

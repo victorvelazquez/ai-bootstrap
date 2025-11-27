@@ -8,62 +8,83 @@ Execute comprehensive quality checks before creating a pull request.
 
 ## Workflow
 
-Execute steps sequentially. Ask "Continue? (Y/N)" after each.
+Execute all steps automatically. Stop only if critical issues are found.
 
-| #   | Step         | Actions                                                                         | Command                                  |
-| --- | ------------ | ------------------------------------------------------------------------------- | ---------------------------------------- | ------ | ---------------------------------------- |
-| 1   | **Lint**     | Auto-fix issues, report warnings                                                | `npm run lint:fix`                       |
-| 2   | **Docs**     | Update README/AGENT.md, verify links, check references                          | Manual review + grep search              |
-| 3   | **Deps**     | Check outdated packages, run audit                                              | `npm outdated && npm audit`              |
-| 4   | **Security** | Scan for hardcoded secrets, validate env vars, check common vulns               | `git grep -E '(password                  | secret | api_key)\s*=\s*["\047]'` + manual review |
-| 5   | **Tests**    | Run unit/integration/E2E, generate coverage report                              | `npm test` (or project-specific command) |
-| 6   | **Commits**  | Group changes by type, generate conventional commits                            | Invoke `flow1.commit` prompt             |
-| 7   | **Push**     | Push all commits to remote                                                      | `git push`                               |
-| 8   | **Summary**  | Report results: files modified, test coverage, security status, commits created | Auto-generated report                    |
+| #   | Step         | Actions                                                                         | Auto              |
+| --- | ------------ | ------------------------------------------------------------------------------- | ----------------- | ------------------------ | --- |
+| 1   | **Lint**     | `npm run lint` → report warnings/errors                                         | ✅                |
+| 2   | **Docs**     | Scan README/templates for outdated refs, broken links                           | ✅                |
+| 3   | **Deps**     | `npm outdated && npm audit` → flag vulns/breaking changes                       | ✅                |
+| 4   | **Security** | Scan for hardcoded secrets: `git grep -E '(password                             | secret            | api_key)\s*=\s*["\047]'` | ✅  |
+| 5   | **Tests**    | `npm test` → verify coverage threshold                                          | ✅                |
+| 6   | **Commits**  | Invoke `/flow1` prompt (auto-groups by type)                                    | ⚠️ Requires Allow |
+| 7   | **Push**     | `git push` after commits                                                        | ⚠️ Requires Allow |
+| 8   | **Summary**  | Report: steps executed, files modified, test coverage, security status, commits | ✅                |
+
+### Output Format
+
+**For each step, display:**
+
+```
+## [emoji] Step [N]/8: [Name]
+[results]
+```
+
+**Example:**
+
+```
+## 🔍 Step 1/8: Lint
+✅ No errors
+
+## 📚 Step 2/8: Docs
+✅ No outdated references
+
+## 📦 Step 3/8: Deps
+⚠️ 2 outdated packages (non-critical)
+✅ 0 vulnerabilities
+```
 
 ### Detailed Actions
 
-**1. Lint & Fix**
+**Step 1/8: Lint**
 
-- Auto-fix correctable issues
-- Report remaining warnings/errors
+- Run `npm run lint`
+- Report warnings/errors
 
-**2. Docs Update**
+**Step 2/8: Docs**
 
-- Scan for outdated references in `README.md`, `templates/AGENT.template.md`
-- Verify links and examples
-- Check for broken references
+- Scan `README.md`, `templates/AGENT.template.md`
+- Check for TODO/FIXME/DEPRECATED
+- Verify links are valid
 
-**3. Dependency Validation**
+**Step 3/8: Deps**
 
-- Report outdated packages
-- Flag breaking changes (major version bumps)
-- Show security vulnerabilities
+- Run `npm outdated && npm audit`
+- Flag breaking changes (major bumps)
+- Report vulnerabilities
 
-**4. Security Checklist**
+**Step 4/8: Security**
 
-- No hardcoded secrets/API keys
-- Input validation on user-facing functions
-- Auth/authz implementations reviewed
-- No sensitive data in logs
+- Scan for hardcoded secrets
+- Check env var usage
+- Verify no sensitive data in logs
 
-**5. Run Tests**
+**Step 5/8: Tests**
 
-- Unit: isolated component tests
-- Integration: module interactions
-- E2E: user flow scenarios (if applicable)
-- Verify minimum coverage threshold
+- Run `npm test`
+- Report pass/fail count
+- Verify coverage threshold
 
-**6. Conventional Commits**
+**Step 6/8: Commits**
 
-- Use `/flow1` prompt to analyze and commit changes
-- Groups: `feat`, `fix`, `docs`, `chore`
+- Invoke `/flow1` prompt
+- Auto-group by type: `feat`, `fix`, `docs`, `chore`
 
-**7. Push**
+**Step 7/8: Push**
 
-- Execute `git push` after all commits created
+- Execute `git push` after commits
 
-**8. Final Summary**
+**Step 8/8: Summary**
 
 ```
 ✅ Steps executed: [list]
@@ -75,11 +96,28 @@ Execute steps sequentially. Ask "Continue? (Y/N)" after each.
 
 ---
 
+## Error Handling
+
+**Stop immediately if:**
+
+- ❌ Lint errors found (not warnings)
+- ❌ Security vulnerabilities detected
+- ❌ Tests fail or coverage below threshold
+- ❌ npm audit shows critical/high vulnerabilities
+
+**Continue if:**
+
+- ⚠️ Lint warnings only (report and continue)
+- ⚠️ Outdated deps with no breaking changes (report and continue)
+- ⚠️ Docs need minor updates (report and continue)
+
+---
+
 ## Constraints
 
-- ❌ Never skip requested checks
-- ❌ Never proceed without user confirmation (Y/N)
-- ✅ Stop on critical issues
-- ✅ Provide actionable feedback
+- ✅ Execute steps 1-5 automatically (no confirmation)
+- ✅ Stop immediately on critical issues
+- ✅ Provide actionable feedback with error details
+- ⚠️ Steps 6-7 require user Allow (git commit/push)
 
-**Estimated time:** 10-20 min
+**Estimated time:** 5-10 min (automatic execution)
