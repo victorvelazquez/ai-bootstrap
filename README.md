@@ -107,6 +107,13 @@ The result is interconnected documentation that guides AI assistants (and human 
 
 ---
 
+## 📋 Prerequisites
+
+- **Node.js:** 18.0.0 or higher ([Download](https://nodejs.org/))
+- **npm:** Included with Node.js
+
+---
+
 ## 📦 Installation
 
 ### npm (Global)
@@ -292,8 +299,21 @@ ai-bootstrap init . --ai copilot
 **Features:**
 
 - `.github/copilot-instructions.md` configuration
+- Slash commands in `.github/prompts/*.prompt.md`
 - Copilot workspace instructions
 - GitHub workflow integration
+
+### Gemini
+
+```bash
+ai-bootstrap init . --ai gemini
+```
+
+**Features:**
+
+- Slash commands in `.gemini/commands/`
+- AI-optimized documentation structure
+- Google AI workflow integration
 
 ### All AI Tools
 
@@ -438,7 +458,17 @@ ai-bootstrap init .
 ai-bootstrap init . --ai claude
 ai-bootstrap init . --ai cursor
 ai-bootstrap init . --ai copilot
+ai-bootstrap init . --ai gemini
 ai-bootstrap init . --ai all
+
+# Initialize with project details (skip prompts)
+ai-bootstrap init . --ai claude --name "My API" --description "REST API for my app"
+
+# Initialize with verbose logging (for debugging)
+ai-bootstrap init . --verbose
+
+# Simulate initialization without writing files
+ai-bootstrap init . --dry-run
 
 # Check if initialized
 ai-bootstrap check
