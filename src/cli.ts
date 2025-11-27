@@ -7,6 +7,7 @@ import ora from 'ora';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import ejs from 'ejs';
+import { assertDirWritable } from './fs-utils';
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 
@@ -46,13 +47,44 @@ const AI_TOOLS: AIToolChoice[] = [
   }
 ];
 
+const PKG_VERSION: string = fs.readJSONSync(path.join(__dirname, '..', 'package.json')).version as string;
+
+const EXIT = {
+  OK: 0,
+  INVALID_ARGS: 2,
+  FS_ERROR: 3
+} as const;
+
+function logVerbose(message: string, verbose?: boolean) {
+  if (verbose) console.log(chalk.gray(message));
+}
+
+function isValidName(value: string): boolean {
+  const v = value.trim();
+  if (v.length < 2 || v.length > 100) return false;
+  return /^[A-Za-z0-9 _\-\.]+$/.test(v);
+}
+
+function isValidDescription(value: string): boolean {
+  const v = value.trim();
+  if (v.length < 2 || v.length > 500) return false;
+  return /^[\p{L}\p{N} \-_,.!?:()]+$/u.test(v);
+}
+
+function fsErrorMessage(e: unknown): string {
+  const anyErr = e as any;
+  const code = anyErr && anyErr.code ? String(anyErr.code) : 'UNKNOWN';
+  const msg = anyErr && anyErr.message ? String(anyErr.message) : String(e);
+  return `${code}: ${msg}`;
+}
+
 async function selectAITool(providedTool?: string): Promise<string[]> {
   if (providedTool) {
     const tool = AI_TOOLS.find(t => t.value === providedTool);
     if (!tool) {
       console.error(chalk.red(`❌ Invalid AI tool: ${providedTool}`));
       console.log(chalk.yellow('Available options: claude, cursor, copilot, gemini, all'));
-      process.exit(1);
+      process.exit(EXIT.INVALID_ARGS);
     }
     return providedTool === 'all'
       ? ['claude', 'cursor', 'copilot', 'gemini']
@@ -76,8 +108,8 @@ async function selectAITool(providedTool?: string): Promise<string[]> {
   console.log('\n');
   console.log(chalk.white('    📂 Project Setup'));
   console.log(chalk.gray('    ────────────────────────────────────────────────────────────────────'));
-  console.log(chalk.gray('    Working Directory: ${process.cwd()}'));
-  console.log(chalk.gray('    Version: 1.0.6'));
+  console.log(chalk.gray(`    Working Directory: ${process.cwd()}`));
+  console.log(chalk.gray(`    Version: ${PKG_VERSION}`));
   console.log('\n');
   console.log(chalk.white('    🤖 Select your AI development tool:'));
   console.log(chalk.gray('    ────────────────────────────────────────────────────────────────────'));
@@ -105,13 +137,18 @@ async function checkIfInitialized(targetPath: string): Promise<boolean> {
   return await fs.pathExists(bootstrapPath);
 }
 
-async function createBootstrapStructure(targetPath: string, aiTools: string[]): Promise<void> {
+async function createBootstrapStructure(targetPath: string, aiTools: string[], dryRun?: boolean, verbose?: boolean): Promise<void> {
   const spinner = ora('Creating .ai-bootstrap structure...').start();
 
   try {
     const bootstrapPath = path.join(targetPath, '.ai-bootstrap');
 
     // Create core directories
+    if (dryRun) {
+      spinner.succeed('Created .ai-bootstrap structure (dry-run)');
+      return;
+    }
+    await assertDirWritable(targetPath);
     await fs.ensureDir(path.join(bootstrapPath, 'core'));
     await fs.ensureDir(path.join(bootstrapPath, 'prompts'));
     await fs.ensureDir(path.join(bootstrapPath, 'templates', 'docs'));
@@ -120,7 +157,7 @@ async function createBootstrapStructure(targetPath: string, aiTools: string[]): 
 
     // Create config file
     const config = {
-      version: '1.0.6',
+      version: PKG_VERSION,
       aiTools: aiTools,
       createdAt: new Date().toISOString(),
       backend: true,
@@ -128,19 +165,25 @@ async function createBootstrapStructure(targetPath: string, aiTools: string[]): 
     };
 
     await fs.writeJSON(path.join(bootstrapPath, 'core', 'config.json'), config, { spaces: 2 });
+    logVerbose(`Wrote ${path.join(bootstrapPath, 'core', 'config.json')}`, verbose);
 
     spinner.succeed('Created .ai-bootstrap structure');
   } catch (error) {
-    spinner.fail('Failed to create structure');
+    spinner.fail(fsErrorMessage(error));
     throw error;
   }
 }
 
-async function renderTemplates(targetPath: string, projectData: { name: string; description: string }): Promise<void> {
+async function renderTemplates(targetPath: string, projectData: { name: string; description: string }, dryRun?: boolean, verbose?: boolean): Promise<void> {
   const spinner = ora('Generating documentation from templates...').start();
   try {
     const templatesSource = path.join(ROOT_DIR, 'templates');
     const templatesTarget = path.join(targetPath, '.ai-bootstrap', 'templates');
+    if (dryRun) {
+      spinner.succeed('Documentation generated from templates (dry-run)');
+      return;
+    }
+    await assertDirWritable(templatesTarget);
     await fs.ensureDir(templatesTarget);
 
     // Find all .template.md files in templates and subfolders
@@ -171,31 +214,38 @@ async function renderTemplates(targetPath: string, projectData: { name: string; 
         PLACEHOLDER: '{{PLACEHOLDER}}'
       }, { delimiter: '?' });
       await fs.writeFile(destPath, rendered, 'utf8');
+      logVerbose(`Rendered ${destPath}`, verbose);
     }
     spinner.succeed('Documentation generated from templates');
   } catch (error) {
-    spinner.fail('Failed to generate documentation');
+    spinner.fail(fsErrorMessage(error));
     throw error;
   }
 }
 
-async function copyPrompts(targetPath: string): Promise<void> {
+async function copyPrompts(targetPath: string, dryRun?: boolean, verbose?: boolean): Promise<void> {
   const spinner = ora('Copying master prompts...').start();
 
   try {
     const promptsSource = path.join(ROOT_DIR, 'prompts');
     const promptsTarget = path.join(targetPath, '.ai-bootstrap', 'prompts');
 
+    if (dryRun) {
+      spinner.succeed('Master prompts copied (dry-run)');
+      return;
+    }
+    await assertDirWritable(promptsTarget);
     await fs.copy(promptsSource, promptsTarget);
+    logVerbose(`Copied prompts to ${promptsTarget}`, verbose);
 
     spinner.succeed('Master prompts copied');
   } catch (error) {
-    spinner.fail('Failed to copy prompts');
+    spinner.fail(fsErrorMessage(error));
     throw error;
   }
 }
 
-async function setupSlashCommands(targetPath: string, aiTools: string[]): Promise<void> {
+async function setupSlashCommands(targetPath: string, aiTools: string[], dryRun?: boolean, verbose?: boolean): Promise<void> {
   const spinner = ora('Setting up slash commands...').start();
 
   try {
@@ -206,43 +256,59 @@ async function setupSlashCommands(targetPath: string, aiTools: string[]): Promis
       if (tool === 'copilot') {
         // Copilot: prompts in .github/prompts with .prompt.md suffix
         const promptsTarget = path.join(targetPath, '.github', 'prompts');
-        await fs.ensureDir(promptsTarget);
+        if (!dryRun) {
+          await assertDirWritable(promptsTarget);
+          await fs.ensureDir(promptsTarget);
+        }
         for (const file of files) {
           if (file.endsWith('.md')) {
             const srcFile = path.join(sharedSource, file);
             const base = file.replace(/\.md$/, '');
             const destFile = path.join(promptsTarget, `${base}.prompt.md`);
-            await fs.copyFile(srcFile, destFile);
+            if (!dryRun) await fs.copyFile(srcFile, destFile);
+            logVerbose(`Installed ${destFile}`, verbose);
           }
         }
       } else if (tool === 'claude') {
         const commandsTarget = path.join(targetPath, '.claude', 'commands');
-        await fs.ensureDir(commandsTarget);
+        if (!dryRun) {
+          await assertDirWritable(commandsTarget);
+          await fs.ensureDir(commandsTarget);
+        }
         for (const file of files) {
           if (file.endsWith('.md')) {
             const srcFile = path.join(sharedSource, file);
             const destFile = path.join(commandsTarget, file);
-            await fs.copyFile(srcFile, destFile);
+            if (!dryRun) await fs.copyFile(srcFile, destFile);
+            logVerbose(`Installed ${destFile}`, verbose);
           }
         }
       } else if (tool === 'cursor') {
         const commandsTarget = path.join(targetPath, '.cursor', 'commands');
-        await fs.ensureDir(commandsTarget);
+        if (!dryRun) {
+          await assertDirWritable(commandsTarget);
+          await fs.ensureDir(commandsTarget);
+        }
         for (const file of files) {
           if (file.endsWith('.md')) {
             const srcFile = path.join(sharedSource, file);
             const destFile = path.join(commandsTarget, file);
-            await fs.copyFile(srcFile, destFile);
+            if (!dryRun) await fs.copyFile(srcFile, destFile);
+            logVerbose(`Installed ${destFile}`, verbose);
           }
         }
       } else if (tool === 'gemini') {
         const commandsTarget = path.join(targetPath, '.gemini', 'commands');
-        await fs.ensureDir(commandsTarget);
+        if (!dryRun) {
+          await assertDirWritable(commandsTarget);
+          await fs.ensureDir(commandsTarget);
+        }
         for (const file of files) {
           if (file.endsWith('.md')) {
             const srcFile = path.join(sharedSource, file);
             const destFile = path.join(commandsTarget, file);
-            await fs.copyFile(srcFile, destFile);
+            if (!dryRun) await fs.copyFile(srcFile, destFile);
+            logVerbose(`Installed ${destFile}`, verbose);
           }
         }
       }
@@ -250,12 +316,12 @@ async function setupSlashCommands(targetPath: string, aiTools: string[]): Promis
 
     spinner.succeed(`Slash commands set up for: ${aiTools.join(', ')}`);
   } catch (error) {
-    spinner.fail('Failed to set up slash commands');
+    spinner.fail(fsErrorMessage(error));
     throw error;
   }
 }
 
-async function initializeProject(targetPath: string, aiTool?: string, projectName?: string, projectDescription?: string): Promise<void> {
+async function initializeProject(targetPath: string, aiTool?: string, projectName?: string, projectDescription?: string, flags?: { dryRun?: boolean; verbose?: boolean }): Promise<void> {
   try {
     // Check if already initialized
     const isInitialized = await checkIfInitialized(targetPath);
@@ -285,6 +351,14 @@ async function initializeProject(targetPath: string, aiTool?: string, projectNam
       .join(' ');
 
     // Request minimal project data only if not provided
+    if (projectName && !isValidName(projectName)) {
+      console.error(chalk.red('Invalid project name'));
+      process.exit(EXIT.INVALID_ARGS);
+    }
+    if (projectDescription && !isValidDescription(projectDescription)) {
+      console.error(chalk.red('Invalid project description'));
+      process.exit(EXIT.INVALID_ARGS);
+    }
     let finalProjectName = projectName;
     let finalProjectDescription = projectDescription || 'TBD - Run /bootstrap to define';
 
@@ -294,7 +368,8 @@ async function initializeProject(targetPath: string, aiTool?: string, projectNam
           type: 'input',
           name: 'projectName',
           message: 'Project name (you can refine it in /bootstrap):',
-          default: inferredName
+          default: inferredName,
+          validate: (input: string) => isValidName(input) || 'Enter 2-100 chars: letters, numbers, space, - _ .'
         }
       ]);
       finalProjectName = answers.projectName;
@@ -303,14 +378,20 @@ async function initializeProject(targetPath: string, aiTool?: string, projectNam
     console.log(chalk.cyan('\n📦 Initializing AI Bootstrap...\n'));
 
     // Create structure
-    await createBootstrapStructure(targetPath, aiTools);
-    await renderTemplates(targetPath, { name: finalProjectName!, description: finalProjectDescription! });
-    await copyPrompts(targetPath);
-    await setupSlashCommands(targetPath, aiTools);
+    await createBootstrapStructure(targetPath, aiTools, flags?.dryRun, flags?.verbose);
+    await renderTemplates(targetPath, { name: finalProjectName!, description: finalProjectDescription! }, flags?.dryRun, flags?.verbose);
+    await copyPrompts(targetPath, flags?.dryRun, flags?.verbose);
+    await setupSlashCommands(targetPath, aiTools, flags?.dryRun, flags?.verbose);
 
-    // Success message
-    console.log(chalk.green('\n✅ AI Bootstrap initialized successfully!\n'));
-    console.log(chalk.white('Next steps:\n'));
+    const modeText = flags?.dryRun ? 'DRY-RUN' : 'WRITE';
+    console.log(chalk.green('\n✅ AI Bootstrap initialized successfully!'));
+    console.log(chalk.white('\nSummary:'));
+    console.log(chalk.gray(`  Project: ${finalProjectName}`));
+    console.log(chalk.gray(`  Version: ${PKG_VERSION}`));
+    console.log(chalk.gray(`  Directory: ${targetPath}`));
+    console.log(chalk.gray(`  Tools: ${aiTools.join(', ')}`));
+    console.log(chalk.gray(`  Mode: ${modeText}`));
+    console.log(chalk.white('\nNext steps:\n'));
 
     const toolsText = aiTools.length === 1 ? aiTools[0] : `${aiTools.slice(0, -1).join(', ')} and ${aiTools[aiTools.length - 1]}`;
 
@@ -338,11 +419,14 @@ async function initializeProject(targetPath: string, aiTool?: string, projectNam
     console.log(chalk.gray('  /bootstrap-phase6       - Testing'));
     console.log(chalk.gray('  /bootstrap-phase7       - Operations + Tools\n'));
 
+    if (flags?.dryRun) {
+      console.log(chalk.yellow('⚠️ Dry-run: no files were written. Run again without --dry-run to apply changes.\n'));
+    }
     console.log(chalk.yellow('💡 Tip: You can run individual phases if you want to work step-by-step\n'));
 
   } catch (error) {
-    console.error(chalk.red('\n❌ Initialization failed:'), error);
-    process.exit(1);
+    console.error(chalk.red('\n❌ Initialization failed:'), fsErrorMessage(error));
+    process.exit(EXIT.FS_ERROR);
   }
 }
 
@@ -350,7 +434,7 @@ async function initializeProject(targetPath: string, aiTool?: string, projectNam
 program
   .name('ai-bootstrap')
   .description('Interactive CLI tool to bootstrap AI-ready projects with comprehensive documentation')
-  .version('1.0.6');
+  .version(PKG_VERSION);
 
 program
   .command('init')
@@ -359,9 +443,12 @@ program
   .option('--ai <tool>', 'AI tool to use (claude, cursor, copilot, gemini, all)')
   .option('--name <name>', 'Project name (skip interactive prompt)')
   .option('--description <desc>', 'Project description (skip interactive prompt)')
+  .option('--verbose', 'Enable verbose logging')
+  .option('--dry-run', 'Simulate without writing files')
   .action(async (targetPath: string, options: { ai?: string; name?: string; description?: string }) => {
     const absolutePath = path.resolve(targetPath);
-    await initializeProject(absolutePath, options.ai, options.name, options.description);
+    const flags = { dryRun: (options as any).dryRun === true, verbose: (options as any).verbose === true };
+    await initializeProject(absolutePath, options.ai, options.name, options.description, flags);
   });
 
 program
@@ -379,6 +466,20 @@ program
       console.log(chalk.gray(`  Version: ${config.version}`));
       console.log(chalk.gray(`  AI Tools: ${config.aiTools.join(', ')}`));
       console.log(chalk.gray(`  Created: ${new Date(config.createdAt).toLocaleString()}`));
+      console.log(chalk.gray(`  Working Dir: ${process.cwd()}`));
+      console.log(chalk.gray(`  Prompts: ${path.join(process.cwd(), '.ai-bootstrap', 'prompts', 'backend.md')}`));
+      console.log(chalk.white('\nNext steps:'));
+      if (config.aiTools.includes('claude')) {
+        console.log(chalk.cyan('  1. Open Claude Code'));
+        console.log(chalk.cyan('  2. Run: /bootstrap'));
+      } else if (config.aiTools.includes('cursor')) {
+        console.log(chalk.cyan('  1. Open Cursor'));
+        console.log(chalk.cyan('  2. Run: /bootstrap'));
+      } else {
+        const toolsText = config.aiTools.length === 1 ? config.aiTools[0] : `${config.aiTools.slice(0, -1).join(', ')} and ${config.aiTools[config.aiTools.length - 1]}`;
+        console.log(chalk.cyan(`  1. Open your AI tool (${toolsText})`));
+        console.log(chalk.cyan('  2. Run: /bootstrap'));
+      }
     } else {
       console.log(chalk.yellow('⚠️  Project is not initialized'));
       console.log(chalk.white('Run: ai-bootstrap init .'));
