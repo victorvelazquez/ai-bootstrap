@@ -1,123 +1,245 @@
 # Pre-PR Quality Checklist
 
-Execute comprehensive quality checks before creating a pull request.
+Execute comprehensive quality checks before creating a pull request. Automate verification of code quality, documentation, security, tests, and commit hygiene.
 
-**Goal:** Verify code quality, docs, security, tests, and commit hygiene.
+**Display Behavior:** Show step title (`## Step N/8: Name`) in your response BEFORE executing commands in that step.
 
 ---
 
-## Workflow
+## Workflow Overview
 
-Execute all steps automatically. Stop only if critical issues are found.
+Execute all steps sequentially. Stop only if critical issues are found.
 
-| #   | Step         | Actions                                                                         | Auto              |
-| --- | ------------ | ------------------------------------------------------------------------------- | ----------------- | ------------------------ | --- |
-| 1   | **Lint**     | `npm run lint` → report warnings/errors                                         | ✅                |
-| 2   | **Docs**     | Scan README/templates for outdated refs, broken links                           | ✅                |
-| 3   | **Deps**     | `npm outdated && npm audit` → flag vulns/breaking changes                       | ✅                |
-| 4   | **Security** | Scan for hardcoded secrets: `git grep -E '(password                             | secret            | api_key)\s*=\s*["\047]'` | ✅  |
-| 5   | **Tests**    | `npm test` → verify coverage threshold                                          | ✅                |
-| 6   | **Commits**  | Invoke `/flow1` prompt (auto-groups by type)                                    | ⚠️ Requires Allow |
-| 7   | **Push**     | `git push` after commits                                                        | ⚠️ Requires Allow |
-| 8   | **Summary**  | Report: steps executed, files modified, test coverage, security status, commits | ✅                |
+| Step | Action       | Commands                    | Requires Allow |
+| ---- | ------------ | --------------------------- | -------------- |
+| 1    | **Lint**     | `npm run lint`              | No             |
+| 2    | **Docs**     | Scan README/templates       | No             |
+| 3    | **Deps**     | `npm outdated`, `npm audit` | No             |
+| 4    | **Security** | `git grep` for secrets      | No             |
+| 5    | **Tests**    | `npm test`                  | No             |
+| 6    | **Commits**  | Invoke flow1 prompt         | Yes            |
+| 7    | **Push**     | `git push origin main`      | Yes            |
+| 8    | **Summary**  | Report results              | No             |
 
-### Output Format
+---
 
-**For each step, display:**
-
-```
-## [emoji] Step [N]/8: [Name]
-[results]
-```
-
-**Example:**
-
-```
 ## 🔍 Step 1/8: Lint
-✅ No errors
+
+```bash
+npm run lint
+```
+
+**Report:**
+
+- Error count
+- Warning count
+- Files with issues
+
+**Example output:**
+
+```
+✅ 0 errors, 2 warnings
+⚠️ src/cli.ts:45 - unused variable 'temp'
+```
+
+---
 
 ## 📚 Step 2/8: Docs
+
+Scan documentation files for quality issues:
+
+**Files to check:**
+
+- `README.md`
+- `templates/AGENT.template.md`
+- `docs/*.md`
+
+**Checks:**
+
+- Search for `TODO`, `FIXME`, `DEPRECATED` markers
+- Verify internal links (files exist)
+- Check for version mismatches
+
+**Example output:**
+
+```
 ✅ No outdated references
+⚠️ Found 1 TODO in README.md line 42
+```
+
+---
 
 ## 📦 Step 3/8: Deps
-⚠️ 2 outdated packages (non-critical)
+
+```bash
+npm outdated
+npm audit
+```
+
+**Report:**
+
+- Outdated packages (current vs latest)
+- Breaking changes (major version bumps)
+- Vulnerabilities (severity levels)
+
+**Example output:**
+
+```
+⚠️ 2 outdated packages:
+  - chalk: 5.6.2 → 5.7.0 (minor)
+  - commander: 14.0.2 → 15.0.0 (major, breaking)
 ✅ 0 vulnerabilities
 ```
 
-### Detailed Actions
+---
 
-**Step 1/8: Lint**
+## 🔐 Step 4/8: Security
 
-- Run `npm run lint`
-- Report warnings/errors
+Scan for hardcoded secrets and sensitive data:
 
-**Step 2/8: Docs**
+```bash
+git grep -E '(password|secret|api_key|token)\s*=\s*["\047][^"\047]+["\047]'
+```
 
-- Scan `README.md`, `templates/AGENT.template.md`
-- Check for TODO/FIXME/DEPRECATED
-- Verify links are valid
+**Checks:**
 
-**Step 3/8: Deps**
+- Hardcoded passwords/secrets
+- API keys in source
+- Sensitive data in logs
 
-- Run `npm outdated && npm audit`
-- Flag breaking changes (major bumps)
-- Report vulnerabilities
-
-**Step 4/8: Security**
-
-- Scan for hardcoded secrets
-- Check env var usage
-- Verify no sensitive data in logs
-
-**Step 5/8: Tests**
-
-- Run `npm test`
-- Report pass/fail count
-- Verify coverage threshold
-
-**Step 6/8: Commits**
-
-- Invoke `/flow1` prompt
-- Auto-group by type: `feat`, `fix`, `docs`, `chore`
-
-**Step 7/8: Push**
-
-- Execute `git push` after commits
-
-**Step 8/8: Summary**
+**Example output:**
 
 ```
-✅ Steps executed: [list]
-📊 Files modified: [count]
-🧪 Test coverage: [percentage]
-🔐 Security/deps: [status]
-💾 Commits: [hashes]
+✅ No hardcoded secrets detected
+❌ Found potential secret in src/config.ts:12
 ```
 
 ---
+
+## 🧪 Step 5/8: Tests
+
+```bash
+npm test
+```
+
+**Report:**
+
+- Pass/fail count
+- Coverage percentage
+- Failed test names
+
+**Example output:**
+
+```
+✅ 24/24 tests passed
+✅ Coverage: 87% (above 80% threshold)
+❌ 2/26 tests failed:
+  - cli.test.ts: "should handle invalid args"
+  - utils.test.ts: "should parse version correctly"
+```
+
+---
+
+## ✅ Step 6/8: Commits
+
+Invoke flow1.commit.prompt.md to generate conventional commits.
+
+**Process:**
+
+1. Detect changes (git status/diff)
+2. Group files by type
+3. Generate commits (requires Allow per commit)
+
+**Expected groups:**
+
+- `feat(cli)`: New features
+- `fix(cli)`: Bug fixes
+- `docs(prompts|templates|readme)`: Documentation
+- `chore(deps|config)`: Maintenance
+
+---
+
+## 🚀 Step 7/8: Push
+
+```bash
+git push origin main
+```
+
+**User must click Allow.** If push fails, suggest resolution.
+
+---
+
+## 📊 Step 8/8: Summary
+
+Provide comprehensive execution report:
+
+```
+## Pre-PR Check Results
+
+✅ Lint: 0 errors, 2 warnings
+✅ Docs: No issues
+⚠️ Deps: 2 outdated (1 major)
+✅ Security: Clean
+✅ Tests: 24/24 passed, 87% coverage
+✅ Commits: 3 created
+  - abc1234 feat(cli): add new command
+  - def5678 docs(readme): update examples
+  - ghi9012 chore(deps): upgrade chalk
+✅ Push: Success
+
+📊 Total time: ~5 min
+```
+
+---
+
+## Execution Model
+
+| Steps | Action           | User Interaction       |
+| ----- | ---------------- | ---------------------- |
+| 1-5   | Run checks       | Automatic              |
+| 6     | Generate commits | Click Allow per commit |
+| 7     | Push to remote   | Click Allow            |
+| 8     | Show summary     | Automatic              |
 
 ## Error Handling
 
-**Stop immediately if:**
+### Critical Errors (Stop Immediately)
 
-- ❌ Lint errors found (not warnings)
-- ❌ Security vulnerabilities detected
-- ❌ Tests fail or coverage below threshold
-- ❌ npm audit shows critical/high vulnerabilities
+- ❌ Lint errors (not warnings)
+- ❌ Test failures
+- ❌ Coverage below threshold
+- ❌ Security vulnerabilities (high/critical)
+- ❌ npm audit critical issues
 
-**Continue if:**
+**Action:** Display error details with file/line numbers and stop execution.
 
-- ⚠️ Lint warnings only (report and continue)
-- ⚠️ Outdated deps with no breaking changes (report and continue)
-- ⚠️ Docs need minor updates (report and continue)
+### Non-Critical Issues (Report and Continue)
 
----
+- ⚠️ Lint warnings
+- ⚠️ Outdated dependencies (no breaking changes)
+- ⚠️ Minor documentation updates needed
+- ⚠️ Low/moderate npm audit warnings
+
+**Action:** Report issues in summary, continue to next step.
 
 ## Constraints
 
-- ✅ Execute steps 1-5 automatically (no confirmation)
-- ✅ Stop immediately on critical issues
-- ✅ Provide actionable feedback with error details
-- ⚠️ Steps 6-7 require user Allow (git commit/push)
+**Prohibited:**
 
-**Estimated time:** 5-10 min (automatic execution)
+- Interactive prompts between steps 1-5
+- Continuing after critical errors
+- Skipping steps
+
+**Required:**
+
+- Sequential execution (1→8)
+- Clear step titles before execution
+- Actionable error messages
+- Complete summary at end
+
+**Estimated Time:** 5-10 minutes (fully automated steps 1-5, 8)
+
+---
+
+**Reference:** Project quality standards  
+**Last Updated:** 2025-11-27

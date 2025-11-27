@@ -1,107 +1,157 @@
 # Conventional Commits Automation
 
-Generate atomic commits automatically following Conventional Commits standard. No interactive prompts.
+Automate atomic commits following Conventional Commits standard. Execute steps sequentially without user interaction except where explicitly required.
+
+**Display Behavior:** Show step title (`## Step N/4: Name`) in your response BEFORE executing commands in that step.
 
 ---
 
-## 🎯 Core Principle
+## 🔍 Step 1/4: Detect Changes
 
-**Use native git commands exclusively** via `run_in_terminal` with `isBackground: false`. VS Code tools are unreliable for change detection.
-
-### 🔍 Step 1/4: Detect Changes (Auto)
-
-Execute sequentially without confirmation:
+Use native git commands via `run_in_terminal` with `isBackground: false`. Execute all commands automatically (read-only operations):
 
 ```bash
-git reset                                    # Clean corrupted index
-git status --porcelain                       # List modified files (M/A/D/R/?? prefix)
-git diff --stat                              # Change statistics
-git diff --unified=1                         # Line-by-line diffs (minimal context)
-git ls-files --others --exclude-standard    # Untracked files
-git diff --cached --stat                     # Staged changes
+git reset
+git status --porcelain
+git diff --stat
+git diff --unified=1
+git ls-files --others --exclude-standard
+git diff --cached --stat
 ```
 
-### ⚡ Step 2/4: Group Changes (Auto)
+**If no changes detected:** Stop execution and inform user "No changes to commit."
 
-Group files by functional relationship using this priority order:
+## ⚡ Step 2/4: Group Changes
 
-| Pattern       | Files                                                      | Type       | Scope          | Example Commit                             |
-| ------------- | ---------------------------------------------------------- | ---------- | -------------- | ------------------------------------------ |
-| **Feature**   | `src/cli.ts` + templates + prompts + slash-commands + docs | `feat`     | `cli`          | `feat(cli): add phase 0 context detection` |
-| **Deps**      | `package.json` + `package-lock.json`                       | `chore`    | `deps`         | `chore(deps): upgrade commander to v14`    |
-| **Config**    | `tsconfig.json`, `scripts/*.sh`, configs                   | `chore`    | `config`       | `chore(config): update build scripts`      |
-| **Refactor**  | `src/utils/*.ts` + usage sites                             | `refactor` | `cli`/`config` | `refactor(cli): extract prompt loader`     |
-| **Templates** | `templates/*.md` (independent)                             | `docs`     | `templates`    | `docs(templates): improve readme format`   |
-| **Prompts**   | `prompts/*.md`, `slash-commands/**`                        | `docs`     | `prompts`      | `docs(prompts): update backend workflow`   |
-| **Docs**      | `README.md`, standalone docs                               | `docs`     | `readme`       | `docs(readme): clarify installation steps` |
+Analyze modified files and group by functional relationship. Create atomic commits per group.
 
-**Dependency Detection:**
+### Grouping Rules (Priority Order)
 
-- CLI changes (`src/cli.ts`) → search for related templates/prompts/commands
-- Template changes → check CLI references
-- Script changes → always `chore(config)`
+**1. Dependencies** → `chore(deps)`
 
-### ✅ Step 3/4: Generate Commits (Requires Allow)
+- `package.json` + `package-lock.json` always together
 
-For each group, execute via `run_in_terminal` (user must click Allow):
+**2. Configuration** → `chore(config)`
+
+- `tsconfig.json`, `scripts/*.sh`, config files
+
+**3. Feature Implementation** → `feat(cli)`
+
+- `src/cli.ts` + related templates/prompts/slash-commands/docs
+
+**4. Refactoring** → `refactor(cli|config)`
+
+- `src/utils/*.ts` + usage sites
+
+**5. Templates** → `docs(templates)`
+
+- `templates/*.md` (each independent unless functionally related)
+
+**6. Prompts** → `docs(prompts)`
+
+- `prompts/*.md`, `slash-commands/**`, `.github/prompts/*.md`
+
+**7. Documentation** → `docs(readme|docs)`
+
+- `README.md`, standalone docs
+
+### Scope Mapping
+
+| File Pattern                                                | Scope       |
+| ----------------------------------------------------------- | ----------- |
+| `src/cli.ts`, `src/utils/*.ts`                              | `cli`       |
+| `package.json`, `package-lock.json`                         | `deps`      |
+| `tsconfig.json`, `scripts/*.sh`                             | `config`    |
+| `templates/*.md`                                            | `templates` |
+| `prompts/*.md`, `slash-commands/**`, `.github/prompts/*.md` | `prompts`   |
+| `README.md`                                                 | `readme`    |
+
+## ✅ Step 3/4: Generate Commits
+
+For each group from Step 2, execute via `run_in_terminal`. **User must click Allow for each commit.**
+
+### Command Pattern
 
 ```bash
 git add <files> && git commit -m "<type>(<scope>): <description>"
 ```
 
-**Format:** `<type>(<scope>): <description>`
+### Message Format
 
-**Types:** `feat|fix|docs|style|refactor|perf|test|chore|ci|revert`
+`<type>(<scope>): <description>`
 
-**Scopes:** `cli|deps|config|templates|prompts|slash-commands|scripts|docs|readme`
+**Valid Types:** `feat|fix|docs|style|refactor|perf|test|chore|ci|revert`
 
-**Rules:**
+**Valid Scopes:** `cli|deps|config|templates|prompts|readme`
 
-- ✅ Imperative mood: "add", "update", "fix" (not "added", "updated")
-- ✅ English only, lowercase start, no period
-- ✅ Max 72 chars
-- ✅ Regex: `^(feat|fix|docs|style|refactor|perf|test|chore|ci|revert)\([a-z-]+\):\s[a-z].{1,68}[^.]$`
+### Validation Rules
 
-**Examples:**
+| Rule           | Valid                  | Invalid                     |
+| -------------- | ---------------------- | --------------------------- |
+| Mood           | `add`, `update`, `fix` | `added`, `updated`, `fixed` |
+| Language       | English only           | Spanish, mixed              |
+| Capitalization | lowercase start        | Uppercase start             |
+| Punctuation    | No period at end       | Ends with `.`               |
+| Length         | Max 72 chars           | 73+ chars                   |
+
+**Regex:** `^(feat|fix|docs|style|refactor|perf|test|chore|ci|revert)\([a-z-]+\):\s[a-z].{1,68}[^.]$`
+
+### Examples
 
 ```bash
 git add package.json package-lock.json && git commit -m "chore(deps): upgrade chalk to v5.6.2"
 git add templates/README.template.md && git commit -m "docs(templates): improve list formatting"
-git add .github/prompts/flow1.commit.prompt.md && git commit -m "docs(prompts): refactor commit automation workflow"
+git add .github/prompts/flow1.commit.prompt.md && git commit -m "docs(prompts): refactor commit automation"
 ```
 
-### 🚀 Step 4/4: Finalize (Mixed)
+## 🚀 Step 4/4: Finalize
+
+### Show commit history (automatic)
 
 ```bash
-# Auto (no confirmation)
 git log --oneline --graph --decorate -n <count>
+```
 
-# Requires Allow
+### Push to remote (requires Allow)
+
+```bash
 git push origin main
 ```
 
----
-
-## ⚠️ Constraints
-
-**Never:**
-
-- Ask which files to group
-- Show interactive menus
-- Use generic scopes ("any", "multiple")
-- Mix types in one commit (`feat` + `fix`)
-- End descriptions with period
-- Write descriptions in Spanish
-
-**Always:**
-
-- Run `git reset` first
-- Use native git commands (not VS Code tools)
-- Auto-execute analysis (no confirmation for reads)
-- Wait for Allow on `git commit` and `git push`
-- Auto-execute `git log` (no confirmation)
+**If push fails:** Show error and suggest resolution (e.g., pull first if behind remote).
 
 ---
 
-**Source:** `docs/contributing.md` § 5.2 + Conventional Commits spec  
-**Updated:** 2025-11-27
+## Execution Model
+
+| Step   | Commands                                              | User Action            |
+| ------ | ----------------------------------------------------- | ---------------------- |
+| Step 1 | `git reset`, `git status`, `git diff`, `git ls-files` | Automatic (read-only)  |
+| Step 2 | Analysis and grouping                                 | Automatic              |
+| Step 3 | `git add` + `git commit`                              | Click Allow per commit |
+| Step 4 | `git log`                                             | Automatic (read-only)  |
+| Step 4 | `git push`                                            | Click Allow            |
+
+## Constraints
+
+**Prohibited:**
+
+- Interactive prompts or menus
+- Generic scopes ("any", "multiple", "various")
+- Mixed types in one commit (`feat` + `fix`)
+- Periods at end of descriptions
+- Spanish language in commit messages
+- VS Code API tools for git operations
+
+**Required:**
+
+- Native git commands via `run_in_terminal`
+- Atomic commits (one logical change per commit)
+- Imperative mood in descriptions
+- English-only messages
+- Conventional Commits compliance
+
+---
+
+**Reference:** `docs/contributing.md` § 5.2 | Conventional Commits Spec  
+**Last Updated:** 2025-11-27
