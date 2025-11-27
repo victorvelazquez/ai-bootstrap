@@ -15,8 +15,9 @@
 ## ✨ Features
 
 {{#EACH FEATURE}}
+
 - **{{FEATURE_NAME}}**: {{FEATURE_DESCRIPTION}}
-{{/EACH}}
+  {{/EACH}}
 
 ---
 
@@ -34,8 +35,9 @@
 ### Prerequisites
 
 {{#EACH PREREQUISITE}}
+
 - {{PREREQUISITE_NAME}} {{PREREQUISITE_VERSION}}
-{{/EACH}}
+  {{/EACH}}
 
 ### Installation
 
@@ -140,8 +142,9 @@ See `.env.example` for all required environment variables.
 
 Critical variables:
 {{#EACH CRITICAL_VAR}}
+
 - `{{VAR_NAME}}` - {{VAR_DESCRIPTION}}
-{{/EACH}}
+  {{/EACH}}
 
 ---
 
@@ -152,6 +155,7 @@ See [docs/operations.md](docs/operations.md) for deployment procedures.
 **Platform:** {{DEPLOYMENT_PLATFORM}}
 
 **Environments:**
+
 - Development: {{DEV_URL}}
 - Staging: {{STAGING_URL}}
 - Production: {{PRODUCTION_URL}}
@@ -179,8 +183,9 @@ See [docs/contributing.md](docs/contributing.md) for contribution guidelines.
 ## 👥 Team
 
 {{#EACH TEAM_MEMBER}}
+
 - **{{MEMBER_NAME}}** - {{MEMBER_ROLE}}
-{{/EACH}}
+  {{/EACH}}
 
 ---
 
@@ -192,4 +197,4 @@ See [docs/contributing.md](docs/contributing.md) for contribution guidelines.
 
 ---
 
-**Generated with** [AI Bootstrap](https://github.com/yourusername/ai-bootstrap) 🚀
+**Generated with** [AI Bootstrap](https://github.com/victorvelazquez/ai-bootstrap) 🚀
