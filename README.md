@@ -271,6 +271,61 @@ my-awesome-api/
 
 ---
 
+## 🔄 Keeping Documentation Updated
+
+As your project evolves, your code changes but your documentation may become out of sync. Use the `/docs-update` command to keep documentation synchronized.
+
+### Command: `/docs-update`
+
+**Purpose:** Detect code changes and automatically update affected documentation files.
+
+**How it works:**
+
+1. Compares current code with last documented state (`.ai-bootstrap/analysis.json`)
+2. Detects changes in endpoints, entities, dependencies, architecture, configuration
+3. Shows report of documents that need updating
+4. Asks for confirmation to update all detected documents
+5. Updates documents incrementally (only changed sections)
+
+**When to use:**
+
+- After adding new API endpoints
+- After modifying database entities
+- After adding new dependencies
+- After changing project structure
+- Periodically (weekly/monthly) to catch any drift
+
+**Usage:**
+
+```
+/docs-update
+```
+
+**Example:**
+
+```
+/docs-update
+
+📊 CAMBIOS DETECTADOS:
+
+🔴 Documentos que requieren actualización:
+- docs/api.md (3 nuevos endpoints)
+- docs/data-model.md (nuevo campo agregado)
+
+¿Actualizar todos los documentos detectados? (Y/N)
+
+> Y
+
+✅ DOCUMENTACIÓN ACTUALIZADA:
+📝 docs/api.md - Agregados 3 nuevos endpoints
+📝 docs/data-model.md - Actualizado con nuevo campo
+✅ analysis.json actualizado
+```
+
+**Note:** The `/docs-update` command reuses the same analysis logic from Phase 0 to detect changes. If `.ai-bootstrap/analysis.json` doesn't exist, it will run a full analysis first.
+
+---
+
 ## 🤖 AI Tool Support
 
 ### Claude Code
@@ -336,7 +391,10 @@ Sets up configuration for all AI tools - maximum compatibility.
 
 After initialization, you can use these commands in your AI tool:
 
+**Documentation Generation:**
+
 - `/bootstrap` - Full 7-phase documentation generation
+- `/bootstrap-phase0` - Context Discovery (existing projects only)
 - `/bootstrap-phase1` - Discovery & Business only
 - `/bootstrap-phase2` - Data Architecture only
 - `/bootstrap-phase3` - System Architecture only
@@ -344,6 +402,10 @@ After initialization, you can use these commands in your AI tool:
 - `/bootstrap-phase5` - Code Standards only
 - `/bootstrap-phase6` - Testing only
 - `/bootstrap-phase7` - Operations + Tools only
+
+**Documentation Maintenance:**
+
+- `/docs-update` - Detect code changes and update documentation automatically
 
 ---
 
@@ -702,20 +764,29 @@ your-project/
 │   ├── core/
 │   │   └── config.json        # Bootstrap configuration
 │   ├── prompts/
-│   │   └── backend.md         # 7-phase master prompt
+│   │   ├── backend.md          # 7-phase master prompt (orchestrator)
+│   │   └── backend/
+│   │       ├── phase-0-context-discovery.md
+│   │       ├── phase-1-business.md
+│   │       ├── ... (phases 2-7)
+│   │       └── docs-update.md  # Documentation update command
 │   ├── templates/             # 15 document templates
 │   ├── scripts/               # Setup scripts
 │   └── slash-commands/        # Commands for each AI tool
 │
 ├── .claude/commands/          # If Claude selected
 │   ├── bootstrap.md
+│   ├── bootstrap-phase0.md
 │   ├── bootstrap-phase1.md
-│   └── ... (7 phase commands)
+│   ├── ... (phases 2-7)
+│   └── docs-update.md
 │
 ├── .gemini/commands/          # If Gemini selected
 │   ├── bootstrap.md
+│   ├── bootstrap-phase0.md
 │   ├── bootstrap-phase1.md
-│   └── ... (7 phase commands)
+│   ├── ... (phases 2-7)
+│   └── docs-update.md
 │
 ├── AGENT.md                   # Generated after /bootstrap
 ├── .clauderules              # Generated after /bootstrap

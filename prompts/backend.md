@@ -70,6 +70,7 @@ Read .ai-bootstrap/prompts/backend/phase-4-security.md and execute only Phase 4
 **Output:** Pre-populated answers, project analysis
 
 **What it does:**
+
 - **Layer 0:** Checks cache (0-2 seconds)
 - **Layer 1:** Fast metadata scan (10-20 seconds) - Detects language, framework, ORM
 - **Layer 2:** Structural analysis (30-90 seconds) - Analyzes directory structure, entities
@@ -86,12 +87,14 @@ Read .ai-bootstrap/prompts/backend/phase-4-security.md and execute only Phase 4
 **File:** `backend/phase-1-business.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
+
 - What problem are you solving?
 - Who are your target users?
 - What are your business objectives?
 - What is your project scope?
 
 **Generates:**
+
 - `project-brief.md`
 - Parts of `AGENT.md`
 
@@ -102,12 +105,14 @@ Read .ai-bootstrap/prompts/backend/phase-4-security.md and execute only Phase 4
 **File:** `backend/phase-2-data-architecture.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
+
 - What entities/models do you need?
 - How are they related?
 - What database will you use?
 - What are the data ownership rules?
 
 **Generates:**
+
 - `docs/data-model.md`
 - Parts of `ai-instructions.md`
 
@@ -118,12 +123,14 @@ Read .ai-bootstrap/prompts/backend/phase-4-security.md and execute only Phase 4
 **File:** `backend/phase-3-system-architecture.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
+
 - What tech stack will you use?
 - How will you structure your code?
 - What external services do you need?
 - How will you handle caching and background jobs?
 
 **Generates:**
+
 - `docs/architecture.md`
 - `docs/business-flows.md`
 - `docs/api.md`
@@ -136,12 +143,14 @@ Read .ai-bootstrap/prompts/backend/phase-4-security.md and execute only Phase 4
 **File:** `backend/phase-4-security.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
+
 - How will users authenticate?
 - What authorization model will you use?
 - What compliance requirements do you have?
 - How will you handle sensitive data?
 
 **Generates:**
+
 - `specs/security.md`
 - Parts of `ai-instructions.md`
 
@@ -152,12 +161,14 @@ Read .ai-bootstrap/prompts/backend/phase-4-security.md and execute only Phase 4
 **File:** `backend/phase-5-code-standards.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
+
 - What naming conventions will you use?
 - How will you handle errors?
 - What logging strategy will you use?
 - What validation approach will you use?
 
 **Generates:**
+
 - `docs/code-standards.md`
 - Parts of `ai-instructions.md`
 
@@ -168,12 +179,14 @@ Read .ai-bootstrap/prompts/backend/phase-4-security.md and execute only Phase 4
 **File:** `backend/phase-6-testing.md`
 **Duration:** 15-25 minutes
 **Key Questions:**
+
 - What types of tests will you write?
 - What coverage targets do you have?
 - How will you structure your tests?
 - What testing tools will you use?
 
 **Generates:**
+
 - `docs/testing.md`
 - Parts of `ai-instructions.md`
 
@@ -184,12 +197,14 @@ Read .ai-bootstrap/prompts/backend/phase-4-security.md and execute only Phase 4
 **File:** `backend/phase-7-operations.md`
 **Duration:** 10 minutes
 **Key Questions:**
+
 - Where will you deploy?
 - How will you handle environments?
 - What monitoring will you use?
 - How will you handle logging and errors?
 
 **Generates:**
+
 - `docs/operations.md`
 - `specs/configuration.md`
 - `.env.example`
@@ -209,6 +224,7 @@ Read .ai-bootstrap/prompts/backend/phase-4-security.md and execute only Phase 4
 ```
 
 **Command:**
+
 ```
 Read .ai-bootstrap/prompts/backend/phase-1-business.md and execute Phase 1
 ```
@@ -230,6 +246,7 @@ Read .ai-bootstrap/prompts/backend/phase-1-business.md and execute Phase 1
 ```
 
 **Command:**
+
 ```
 Read .ai-bootstrap/prompts/backend/phase-0-context-discovery.md and execute Phase 0
 ```
@@ -316,11 +333,48 @@ Before starting Phase 1, you'll select a scope level:
 
 ---
 
+## 🔄 Maintaining Documentation
+
+As your project evolves, your documentation may become out of sync with your code. Use the `/docs-update` command to keep documentation synchronized.
+
+### Command: `/docs-update`
+
+**Purpose:** Detect code changes and automatically update affected documentation files.
+
+**How it works:**
+
+1. Compares current code state with last documented state (`.ai-bootstrap/analysis.json`)
+2. Detects changes in endpoints, entities, dependencies, architecture, configuration
+3. Shows report of documents that need updating
+4. Asks for confirmation to update all detected documents
+5. Updates documents incrementally (only changed sections)
+6. Updates `analysis.json` with new state
+
+**When to use:**
+
+- After adding new API endpoints
+- After modifying database entities
+- After adding new dependencies
+- After changing project structure
+- After adding new environment variables
+- Periodically to ensure documentation stays current
+
+**Usage:**
+
+```
+/docs-update
+```
+
+**For detailed instructions:** Read `.ai-bootstrap/prompts/backend/docs-update.md`
+
+---
+
 ## 📞 Need Help?
 
 - **Issues:** [GitHub Issues](https://github.com/victorvelazquez/ai-bootstrap/issues)
 - **Documentation:** [README.md](../../README.md)
 - **Contributing:** [CONTRIBUTING.md](../../CONTRIBUTING.md)
+- **Maintaining Docs:** Use `/docs-update` command (see AI Bootstrap README for details)
 
 ---
 
@@ -328,9 +382,10 @@ Before starting Phase 1, you'll select a scope level:
 
 - 🆕 **New Project:** Read `backend/phase-1-business.md` to start
 - 📁 **Existing Project:** Read `backend/phase-0-context-discovery.md` to analyze first
+- 🔄 **Update Docs:** Use `/docs-update` command
 
 ---
 
-*Last Updated: 2025-01-20*
-*Version: 2.0 (Modularized)*
-*AI Bootstrap - Transform your idea into production-ready documentation in minutes*
+_Last Updated: 2025-01-20_
+_Version: 2.0 (Modularized)_
+_AI Bootstrap - Transform your idea into production-ready documentation in minutes_

@@ -9,8 +9,9 @@
 ### Prerequisites
 
 {{#EACH PREREQUISITE}}
+
 - {{PREREQUISITE_NAME}} {{PREREQUISITE_VERSION}}
-{{/EACH}}
+  {{/EACH}}
 
 ### Setup
 
@@ -53,15 +54,18 @@ cp .env.example .env
 ## 🌿 Branch Strategy
 
 **Main Branches:**
+
 - `main` - Production code
 - `develop` - Development code (if using GitFlow)
 
 **Feature Branches:**
+
 ```
 {{BRANCH_NAMING_PATTERN}}
 ```
 
 **Examples:**
+
 ```
 feature/add-user-authentication
 bugfix/fix-login-redirect
@@ -91,6 +95,7 @@ hotfix/patch-security-vulnerability
 
 {{#IF CONVENTIONAL_COMMITS}}
 **Example:**
+
 ```
 feat(auth): add JWT refresh token rotation
 
@@ -100,6 +105,7 @@ feat(auth): add JWT refresh token rotation
 
 Closes #123
 ```
+
 {{/IF}}
 
 ---
@@ -120,8 +126,36 @@ Closes #123
 ## 📚 Documentation
 
 {{#EACH DOC_LOCATION}}
+
 - **{{DOC_NAME}}**: `{{DOC_PATH}}`
-{{/EACH}}
+  {{/EACH}}
+
+### Keeping Documentation Updated
+
+As your project evolves, keep documentation synchronized with code changes using the `/docs-update` command.
+
+**When to update documentation:**
+
+- After adding new API endpoints
+- After modifying database entities
+- After adding new dependencies
+- After changing project structure
+- After adding new environment variables
+
+**How to update:**
+
+```
+/docs-update
+```
+
+The command will:
+
+1. Detect changes in your codebase
+2. Show which documents need updating
+3. Ask for confirmation
+4. Automatically update affected documents
+
+**For more information:** See the AI Bootstrap README for detailed usage instructions.
 
 ---
 

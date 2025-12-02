@@ -411,13 +411,15 @@ async function initializeProject(targetPath: string, aiTool?: string, projectNam
 
     console.log(chalk.white('Available slash commands:'));
     console.log(chalk.gray('  /bootstrap              - Full 7-phase documentation generation'));
+    console.log(chalk.gray('  /bootstrap-phase0       - Context Discovery (existing projects)'));
     console.log(chalk.gray('  /bootstrap-phase1       - Discovery & Business'));
     console.log(chalk.gray('  /bootstrap-phase2       - Data Architecture'));
     console.log(chalk.gray('  /bootstrap-phase3       - System Architecture'));
     console.log(chalk.gray('  /bootstrap-phase4       - Security & Auth'));
     console.log(chalk.gray('  /bootstrap-phase5       - Code Standards'));
     console.log(chalk.gray('  /bootstrap-phase6       - Testing'));
-    console.log(chalk.gray('  /bootstrap-phase7       - Operations + Tools\n'));
+    console.log(chalk.gray('  /bootstrap-phase7       - Operations + Tools'));
+    console.log(chalk.gray('  /docs-update            - Update documentation when code changes\n'));
 
     if (flags?.dryRun) {
       console.log(chalk.yellow('⚠️ Dry-run: no files were written. Run again without --dry-run to apply changes.\n'));
