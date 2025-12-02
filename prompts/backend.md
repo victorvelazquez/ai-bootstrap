@@ -718,7 +718,7 @@ What caching approach will you use? [Ask question 3.4]
 
 ## PHASE 1: Discovery & Business (15-20 min)
 
-> **Order for this phase:** 1.1 → 1.2 → 1.3 → 1.4 → 1.5 → 1.6 → 1.7 → 1.8
+> **Order for this phase:** 1.1 → 1.2 → 1.3 → 1.4 → 1.5 → 1.6 → 1.7 → 1.8 → 1.9 → 1.10
 
 > **📌 Note:** If Phase 0 was executed, some questions may already be answered. Skip those and only ask what's missing.
 
@@ -783,10 +783,10 @@ Your objectives:
 3.
 ```
 
-**1.5 Scope Definition**
+**1.5 System Type**
 
 ```
-First, what type of system are you building? (This helps suggest common features)
+What type of system are you building? (This helps suggest common features)
 
 A) 🛒 E-commerce/Marketplace
 B) 📱 SaaS/B2B Platform
@@ -800,12 +800,14 @@ I) 🔧 DevTools/API Platform
 J) Other: __
 
 Your choice: __
+```
 
----
+**1.6 Core Features**
 
-What is IN SCOPE? (What we are building NOW)
+```
+What are the main functionalities your system needs?
 
-Select common features for your type (or add custom):
+Think about what your users will be able to do with your system. You can list them freely, or select from common features suggested below based on your system type.
 
 🛒 E-commerce common features:
 □ User authentication (register/login)
@@ -843,14 +845,28 @@ Select common features for your type (or add custom):
 □ Notifications
 □ Moderation tools
 
-⭐ Custom features (add your specific ones):
+⭐ Your specific features (add any custom functionalities):
 -
 -
 -
+
+List all functionalities your system needs (select from above or add your own):
+```
+
+**1.7 Scope Definition**
+
+```
+Now let's prioritize: What will you build in this first version, and what will you leave for future versions?
+
+This helps us focus the documentation on what you're building now, while noting what comes later.
+
+📋 What will you build in this first version? (Select from the features listed above)
+
+[Show features from question 1.6 and allow selection]
 
 ---
 
-What is OUT OF SCOPE? (What we are NOT building now)
+⏭️ What will you leave for future versions? (What you're NOT building now)
 
 Common things to defer:
 □ Mobile native apps (building web/API first)
@@ -861,13 +877,15 @@ Common things to defer:
 □ Advanced automation/workflows
 □ Video/live streaming features
 
-⭐ Custom out-of-scope items:
+⭐ Other features to defer (add your own):
 -
 -
 -
+
+💡 Tip: It's okay to start simple! You can always expand later. This helps us create focused documentation for your current needs.
 ```
 
-**1.6 Constraints**
+**1.8 Constraints**
 
 ```
 What constraints does this project have? Select all that apply:
@@ -887,7 +905,7 @@ Example:
 - Compliance: Must be GDPR compliant as we serve EU users
 ```
 
-**1.7 Success Metrics**
+**1.9 Success Metrics**
 
 ```
 How will you measure success?
@@ -915,7 +933,7 @@ How will you measure success?
 - Uptime: 99.99% (High Availability)
 ```
 
-**1.8 Main Business Flows**
+**1.10 Main Business Flows**
 
 > Note: If you omit any common flow or functionality, the AI will suggest and document typical processes relevant to your system type, based on best practices and common use cases.
 
@@ -949,8 +967,10 @@ Project: [name]
 Description: [1 sentence]
 Users: [list]
 Objectives: [3 objectives]
-In Scope: [5-10 features]
-Out of Scope: [3-5 features]
+System Type: [E-commerce/SaaS/etc.]
+Core Features: [list of main functionalities]
+First Version Features: [what will be built now]
+Future Features: [what will be deferred]
 Constraints: [list with details]
 Success Metrics: [KPIs]
 Business Flows: [list of main flows]
@@ -1253,6 +1273,7 @@ Once confirmed, generate:
 - Use template: `.ai-bootstrap/templates/docs/data-model.template.md`
 - Fill with all Phase 2 entity and relationship information
 - Include entity catalog, relationships, data patterns
+- Generate entity-relationship diagram (ER diagram) in mermaid format showing all entities and their relationships
 
 ```
 ✅ Generated: docs/data-model.md
@@ -1972,35 +1993,81 @@ C) None (not recommended)
 **4.9 Compliance Requirements**
 
 ```
-Do you have compliance requirements?
+Does your project need to comply with specific regulations or standards?
 
-A) 🌍 GDPR (EU data privacy)
-- Right to access data
-- Right to deletion
-- Data portability
-- Consent management
+Some projects must follow legal requirements or industry standards. If you're not sure, you can select "None" and add compliance requirements later.
 
-B) 🏥 HIPAA (Healthcare)
-- PHI protection
-- Audit logs
-- Encryption requirements
+Select all that apply:
 
-C) 💳 PCI-DSS (Payment cards)
-- Never store CVV
-- Tokenize card numbers
-- Secure transmission
+A) 🌍 GDPR (General Data Protection Regulation)
+   What it is: EU data privacy regulation
+   When it applies: If you process personal data of users in the European Union
+   What it means: Users have rights to access, delete, and export their data
+   Key requirements:
+   - Right to access data (users can request their data)
+   - Right to deletion (users can request data removal)
+   - Data portability (users can export their data)
+   - Consent management (explicit consent for data processing)
+   Example: "We serve users in Germany, so we need GDPR compliance"
 
-D) 🏢 SOC 2 (Enterprise SaaS)
-- Security controls
-- Audit trails
-- Access controls
+B) 🏥 HIPAA (Health Insurance Portability and Accountability Act)
+   What it is: US healthcare data protection law
+   When it applies: If you handle Protected Health Information (PHI) - medical records, health data
+   What it means: Strict rules for protecting patient health information
+   Key requirements:
+   - PHI protection (encryption, access controls)
+   - Audit logs (track who accessed what health data)
+   - Encryption requirements (data must be encrypted)
+   Example: "We're building a telemedicine platform that stores patient records"
 
-E) 🇺🇸 CCPA (California privacy)
-F) None
+C) 💳 PCI-DSS (Payment Card Industry Data Security Standard)
+   What it is: Security standard for credit card processing
+   When it applies: If you process, store, or transmit credit card information
+   What it means: Strict security rules to protect cardholder data
+   Key requirements:
+   - Never store CVV (security code on card)
+   - Tokenize card numbers (use tokens instead of real numbers)
+   - Secure transmission (encrypted connections required)
+   Example: "We process credit card payments directly (not using Stripe/PayPal)"
+
+D) 🏢 SOC 2 (System and Organization Controls 2)
+   What it is: Security and compliance standard for SaaS companies
+   When it applies: If you're selling B2B SaaS and need to prove security to enterprise customers
+   What it means: Documented security controls and processes
+   Key requirements:
+   - Security controls (documented security measures)
+   - Audit trails (logs of all security-relevant actions)
+   - Access controls (who can access what)
+   Example: "We're selling to Fortune 500 companies who require SOC 2 certification"
+
+E) 🇺🇸 CCPA (California Consumer Privacy Act)
+   What it is: California state privacy law
+   When it applies: If you have California users and meet certain thresholds (revenue/users)
+   What it means: California users have privacy rights
+   Key requirements:
+   - Right to know what data is collected
+   - Right to delete data
+   - Right to opt-out of data sales
+   Example: "We have users in California and meet the revenue threshold"
+
+F) None - No specific compliance requirements
+   Select this if you're not sure or don't need compliance yet
 
 Selected: __
 
-For each selected, list specific requirements:
+For each selected, list specific requirements that apply to your project:
+
+Example for GDPR:
+- Must allow users to download all their data in JSON format
+- Must completely delete user data when requested (not just soft delete)
+- Need cookie consent banner for EU users
+- Privacy policy must be accessible and up-to-date
+
+Example for SOC 2:
+- Need 90-day audit log retention
+- Quarterly access control reviews required
+- Security incident response procedures documented
+- Continuous monitoring of administrative actions
 ```
 
 **4.10 Logging & Audit Trail**
@@ -3482,11 +3549,11 @@ B) ✅ Runbooks - How to handle incidents
 - High CPU usage → steps to investigate
 - Service down → recovery procedure
 
-C) ✅ Architecture diagrams
+C) ✅ Architecture diagrams (Mermaid format)
 
-- System architecture
-- Data flow
-- Infrastructure diagram
+- System architecture diagram (mermaid)
+- Data flow diagram (mermaid)
+- Infrastructure diagram (mermaid)
 
 D) ✅ API documentation
 
@@ -3557,7 +3624,7 @@ Alerts: [alert conditions (error rate/response time/5xx/etc.) + channels (email/
 Backup & Disaster Recovery: [backup strategy + retention period + RTO/RPO targets] (7.7)
 Scaling Strategy: [horizontal/vertical/auto-scaling + expected load + database scaling approach] (7.8)
 Health Checks: [endpoints (/health, /health/ready, /health/live) + checks performed] (7.9)
-Documentation & Runbooks: [what will be created (deployment guide/runbooks/diagrams/API docs) + API doc strategy (code-first/design-first)] (7.10)
+Documentation & Runbooks: [what will be created (deployment guide/runbooks/architecture diagrams in mermaid format/API docs) + API doc strategy (code-first/design-first)] (7.10)
 Spec-Kit Integration: [yes/no + if yes, installation command] (7.11)
 
 Is this correct? (Yes/No)
@@ -3676,7 +3743,7 @@ Then execute `read_file()` for ALL previously generated documents.
 
 🎉 Now generating final 5 documents:
 
-1. docs/business-flows.md - Business process flows and diagrams
+1. docs/business-flows.md - Business process flows and mermaid diagrams
 2. docs/api.md - API endpoints and conventions reference
 3. docs/contributing.md - Contribution guidelines
 4. README.md - Project overview (requires all previous context)
