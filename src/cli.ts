@@ -132,12 +132,46 @@ async function selectAITool(providedTool?: string): Promise<string[]> {
     : [selectedTool];
 }
 
+async function selectProjectType(providedType?: string): Promise<'backend' | 'frontend' | 'fullstack'> {
+  // For v1.1.0: Only backend is supported, return hardcoded value
+  // Future releases will enable interactive selection
+  if (providedType) {
+    const valid = ['backend', 'frontend', 'fullstack'];
+    if (!valid.includes(providedType)) {
+      console.error(chalk.red(`❌ Invalid project type: ${providedType}`));
+      console.log(chalk.yellow('Available options: backend (frontend and fullstack coming soon)'));
+      process.exit(EXIT.INVALID_ARGS);
+    }
+    if (providedType !== 'backend') {
+      console.error(chalk.red(`❌ Only 'backend' is supported in this version`));
+      console.log(chalk.yellow('Frontend and fullstack support coming in v1.2.0+'));
+      process.exit(EXIT.INVALID_ARGS);
+    }
+  }
+
+  // v1.1.0: Always return 'backend'
+  return 'backend';
+
+  // Future v1.2.0+: Interactive selection
+  // const answer = await inquirer.prompt([{
+  //   type: 'list',
+  //   name: 'projectType',
+  //   message: 'What type of project are you bootstrapping?',
+  //   choices: [
+  //     { name: '🔧 Backend API/Service', value: 'backend' },
+  //     { name: '🎨 Frontend Application', value: 'frontend' },
+  //     { name: '🚀 Full Stack (Backend + Frontend)', value: 'fullstack' }
+  //   ]
+  // }]);
+  // return answer.projectType;
+}
+
 async function checkIfInitialized(targetPath: string): Promise<boolean> {
   const bootstrapPath = path.join(targetPath, '.ai-bootstrap');
   return await fs.pathExists(bootstrapPath);
 }
 
-async function createBootstrapStructure(targetPath: string, aiTools: string[], dryRun?: boolean, verbose?: boolean): Promise<void> {
+async function createBootstrapStructure(targetPath: string, aiTools: string[], projectType: 'backend' | 'frontend' | 'fullstack' = 'backend', dryRun?: boolean, verbose?: boolean): Promise<void> {
   const spinner = ora('Creating .ai-bootstrap structure...').start();
 
   try {
@@ -155,13 +189,15 @@ async function createBootstrapStructure(targetPath: string, aiTools: string[], d
     await fs.ensureDir(path.join(bootstrapPath, 'templates', 'specs'));
     await fs.ensureDir(path.join(bootstrapPath, 'scripts'));
 
-    // Create config file
+    // Create config file with new projectType field
     const config = {
       version: '1.0.8',
       aiTools: aiTools,
       createdAt: new Date().toISOString(),
-      backend: true,
-      frontend: false
+      projectType: projectType,
+      // Deprecated fields for backward compatibility
+      backend: projectType === 'backend' || projectType === 'fullstack',
+      frontend: projectType === 'frontend' || projectType === 'fullstack'
     };
 
     await fs.writeJSON(path.join(bootstrapPath, 'core', 'config.json'), config, { spaces: 2 });
@@ -174,10 +210,9 @@ async function createBootstrapStructure(targetPath: string, aiTools: string[], d
   }
 }
 
-async function renderTemplates(targetPath: string, projectData: { name: string; description: string }, dryRun?: boolean, verbose?: boolean): Promise<void> {
+async function renderTemplates(targetPath: string, projectData: { name: string; description: string }, projectType: 'backend' | 'frontend' | 'fullstack' = 'backend', dryRun?: boolean, verbose?: boolean): Promise<void> {
   const spinner = ora('Generating documentation from templates...').start();
   try {
-    const templatesSource = path.join(ROOT_DIR, 'templates');
     const templatesTarget = path.join(targetPath, '.ai-bootstrap', 'templates');
     if (dryRun) {
       spinner.succeed('Documentation generated from templates (dry-run)');
@@ -186,7 +221,7 @@ async function renderTemplates(targetPath: string, projectData: { name: string; 
     await assertDirWritable(templatesTarget);
     await fs.ensureDir(templatesTarget);
 
-    // Find all .template.md files in templates and subfolders
+    // Find all .template.md and .template files in a directory and subfolders
     const walk = async (dir: string): Promise<string[]> => {
       let files: string[] = [];
       for (const entry of await fs.readdir(dir)) {
@@ -194,16 +229,39 @@ async function renderTemplates(targetPath: string, projectData: { name: string; 
         const stat = await fs.stat(fullPath);
         if (stat.isDirectory()) {
           files = files.concat(await walk(fullPath));
-        } else if (entry.endsWith('.template.md')) {
+        } else if (entry.endsWith('.template.md') || entry.endsWith('.template')) {
           files.push(fullPath);
         }
       }
       return files;
     };
-    const templateFiles = await walk(templatesSource);
 
-    for (const templateFile of templateFiles) {
-      const relPath = path.relative(templatesSource, templateFile).replace('.template.md', '.md');
+    // Collect template files from shared and project-type-specific directories
+    const templateSources: { source: string; base: string }[] = [];
+
+    // Always include shared templates (e.g., AGENT.md)
+    const sharedSource = path.join(ROOT_DIR, 'templates', 'shared');
+    templateSources.push({ source: sharedSource, base: sharedSource });
+
+    // Include project-type-specific templates (backend for now, frontend in future)
+    if (projectType === 'backend') {
+      const backendSource = path.join(ROOT_DIR, 'templates', 'backend');
+      templateSources.push({ source: backendSource, base: backendSource });
+    }
+    // Future: handle 'frontend' and 'fullstack' cases
+
+    // Walk all source directories and collect template files
+    const allTemplateFiles: { file: string; base: string }[] = [];
+    for (const { source, base } of templateSources) {
+      const files = await walk(source);
+      allTemplateFiles.push(...files.map(file => ({ file, base })));
+    }
+
+    // Render each template
+    for (const { file: templateFile, base } of allTemplateFiles) {
+      const relPath = path.relative(base, templateFile)
+        .replace('.template.md', '.md')
+        .replace('.template', '');
       const destPath = path.join(templatesTarget, relPath);
       await fs.ensureDir(path.dirname(destPath));
       const templateContent = await fs.readFile(templateFile, 'utf8');
@@ -341,6 +399,9 @@ async function initializeProject(targetPath: string, aiTool?: string, projectNam
     // Select AI tools
     const aiTools = await selectAITool(aiTool);
 
+    // Select project type (v1.1.0: hardcoded to 'backend')
+    const projectType = await selectProjectType();
+
     // Infer project name from directory
     const inferredName = path.basename(targetPath)
       .split('-')
@@ -375,8 +436,8 @@ async function initializeProject(targetPath: string, aiTool?: string, projectNam
     console.log(chalk.cyan('\n📦 Initializing AI Bootstrap...\n'));
 
     // Create structure
-    await createBootstrapStructure(targetPath, aiTools, flags?.dryRun, flags?.verbose);
-    await renderTemplates(targetPath, { name: finalProjectName!, description: finalProjectDescription! }, flags?.dryRun, flags?.verbose);
+    await createBootstrapStructure(targetPath, aiTools, projectType, flags?.dryRun, flags?.verbose);
+    await renderTemplates(targetPath, { name: finalProjectName!, description: finalProjectDescription! }, projectType, flags?.dryRun, flags?.verbose);
     await copyPrompts(targetPath, flags?.dryRun, flags?.verbose);
     await setupSlashCommands(targetPath, aiTools, flags?.dryRun, flags?.verbose);
 
