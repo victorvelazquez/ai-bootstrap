@@ -173,6 +173,9 @@ ai-bootstrap init . --type frontend
 
 # For full-stack projects
 ai-bootstrap init . --type fullstack
+
+# For mobile projects
+ai-bootstrap init . --type mobile
 ```
 
 ### 3. Run the Bootstrap Process
@@ -835,7 +838,7 @@ your-project/
 - [x] Backend bootstrap (v1.0)
 - [x] Frontend bootstrap (v1.2.0) ✅
 - [x] Full-stack bootstrap (v1.3.0) ✅
-- [ ] Mobile bootstrap (v1.4.0)
+- [x] Mobile bootstrap (v1.4.0) ✅
 - [ ] Template customization
 - [ ] Multiple language support
 - [ ] VS Code extension
