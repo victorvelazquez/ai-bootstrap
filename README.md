@@ -228,9 +228,9 @@ The AI will guide you through 8 phases:
 
 **Time: 90-120 minutes**
 
-### 5. Generated Documents (15) ✅
+### 5. Generated Documents ✅
 
-After completion, you'll have 15 artifacts ready:
+After completion, you'll have comprehensive documentation ready (number varies by project type):
 
 ```
 my-awesome-api/
@@ -261,50 +261,7 @@ my-awesome-api/
 
 The number and type of documents generated depends on your project type:
 
-### Backend Projects (15 documents)
-
-**Core Documents (4):**
-- `AGENT.md` - Universal AI configuration, aggregator
-- `ai-instructions.md` - Tech stack, NEVER/ALWAYS rules
-- `project-brief.md` - Business context, objectives, scope
-- `README.md` - Project overview, setup instructions
-
-**Technical Docs (8):**
-- `docs/architecture.md` - System architecture, design patterns
-- `docs/data-model.md` - Detailed entity catalog, ownership rules
-- `docs/code-standards.md` - Naming conventions, quality rules
-- `docs/testing.md` - Testing strategy, coverage requirements
-- `docs/operations.md` - Deployment, monitoring, runbooks
-- `docs/business-flows.md` - Business workflows, process diagrams
-- `docs/api.md` - API conventions, CRUD endpoints, contracts
-- `docs/contributing.md` - Development setup, workflow
-
-**Specifications (2):**
-- `specs/security.md` - Authentication, authorization, compliance
-- `specs/configuration.md` - Environment variables, external services
-
-**Configuration (1):**
-- `.env.example` - Environment variable template
-
-### Frontend Projects (10 documents)
-
-**Core Documents (4):**
-- `AGENT.md` - Universal AI configuration, aggregator
-- `ai-instructions.md` - Tech stack, NEVER/ALWAYS rules
-- `project-brief.md` - Business context, objectives, scope
-- `README.md` - Project overview, setup instructions
-
-**Technical Docs (5):**
-- `docs/architecture.md` - System architecture, design patterns
-- `docs/components.md` - Component architecture and patterns
-- `docs/state-management.md` - State management patterns
-- `docs/styling.md` - Styling guidelines and design system
-- `docs/testing.md` - Testing strategy, coverage requirements
-
-**Specifications (1):**
-- `specs/configuration.md` - Environment variables, external services
-
-### Mobile Projects (14 documents)
+### Backend Projects (16 documents)
 
 **Core Documents (4):**
 - `AGENT.md` - Universal AI configuration, aggregator
@@ -314,6 +271,51 @@ The number and type of documents generated depends on your project type:
 
 **Technical Docs (9):**
 - `docs/architecture.md` - System architecture, design patterns
+- `docs/data-model.md` - Detailed entity catalog, ownership rules
+- `docs/code-standards.md` - Naming conventions, quality rules
+- `docs/testing.md` - Testing strategy, coverage requirements
+- `docs/operations.md` - Deployment, monitoring, runbooks
+- `docs/business-flows.md` - Business workflows, process diagrams
+- `docs/api.md` - API conventions, CRUD endpoints, contracts
+- `docs/contributing.md` - Development setup, workflow
+- `docs/spec-kit-integration.md` - Spec-Kit integration guide and document mapping
+
+**Specifications (2):**
+- `specs/security.md` - Authentication, authorization, compliance
+- `specs/configuration.md` - Environment variables, external services
+
+**Configuration (1):**
+- `.env.example` - Environment variable template
+
+### Frontend Projects (11 documents)
+
+**Core Documents (4):**
+- `AGENT.md` - Universal AI configuration, aggregator
+- `ai-instructions.md` - Tech stack, NEVER/ALWAYS rules
+- `project-brief.md` - Business context, objectives, scope
+- `README.md` - Project overview, setup instructions
+
+**Technical Docs (6):**
+- `docs/architecture.md` - System architecture, design patterns
+- `docs/components.md` - Component architecture and patterns
+- `docs/state-management.md` - State management patterns
+- `docs/styling.md` - Styling guidelines and design system
+- `docs/testing.md` - Testing strategy, coverage requirements
+- `docs/spec-kit-integration.md` - Spec-Kit integration guide and document mapping
+
+**Specifications (1):**
+- `specs/configuration.md` - Environment variables, external services
+
+### Mobile Projects (15 documents)
+
+**Core Documents (4):**
+- `AGENT.md` - Universal AI configuration, aggregator
+- `ai-instructions.md` - Tech stack, NEVER/ALWAYS rules
+- `project-brief.md` - Business context, objectives, scope
+- `README.md` - Project overview, setup instructions
+
+**Technical Docs (10):**
+- `docs/architecture.md` - System architecture, design patterns
 - `docs/navigation.md` - Navigation patterns and setup
 - `docs/state-management.md` - State management patterns
 - `docs/offline-strategy.md` - Offline and sync strategy
@@ -322,6 +324,7 @@ The number and type of documents generated depends on your project type:
 - `docs/code-standards.md` - Code standards and conventions
 - `docs/testing.md` - Testing strategy
 - `docs/app-store.md` - App Store configuration
+- `docs/spec-kit-integration.md` - Spec-Kit integration guide and document mapping
 
 **Specifications (2):**
 - `specs/build-configuration.md` - Build and CI/CD configuration
@@ -361,7 +364,10 @@ Fullstack projects combine documentation from both backend and frontend, with fu
 **Configuration (1):**
 - `.env.example` - Combined environment variables
 
-**Total:** ~20 documents (varies based on merge strategy)
+**Integration Guides (1):**
+- `docs/spec-kit-integration.md` - Spec-Kit integration guide and document mapping
+
+**Total:** ~21 documents (varies based on merge strategy)
 
 ---
 
@@ -806,7 +812,7 @@ class User(Base):          # ✅ Entity: User
 **Existing Projects:**
 
 - ⏱️ 25-90 minutes (50-94% faster with smart 3-layer detection!)
-- 📚 Same 15 professional documents
+- 📚 Same 11-16 professional documents (varies by project type)
 - 🔍 Automatic 3-layer analysis of existing code/docs
 - 💾 Intelligent caching: 0 seconds on re-runs
 - 📝 Only answer what's missing (40-60% pre-populated)
