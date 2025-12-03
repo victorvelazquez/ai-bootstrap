@@ -298,6 +298,8 @@ async function renderTemplates(targetPath: string, projectData: { name: string; 
       const rendered = ejs.render(templateContent, {
         PROJECT_NAME: projectData.name,
         PROJECT_DESCRIPTION: projectData.description,
+        PROJECT_TYPE: projectType,
+        GENERATION_DATE: new Date().toISOString().split('T')[0],
         PLACEHOLDER: '{{PLACEHOLDER}}'
       }, { delimiter: '?' });
       await fs.writeFile(destPath, rendered, 'utf8');
