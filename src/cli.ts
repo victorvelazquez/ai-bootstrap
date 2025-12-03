@@ -541,7 +541,8 @@ async function initializeProject(targetPath: string, aiTool?: string, projectTyp
       console.log(chalk.gray('    /frontend-bootstrap-phase4-styling     - Frontend styling & design'));
       console.log(chalk.gray('    /frontend-bootstrap-phase5-standards  - Frontend code standards'));
       console.log(chalk.gray('    /frontend-bootstrap-phase6-testing    - Frontend testing'));
-      console.log(chalk.gray('    /frontend-bootstrap-phase7-deployment - Frontend deployment\n'));
+      console.log(chalk.gray('    /frontend-bootstrap-phase7-deployment - Frontend deployment'));
+      console.log(chalk.gray('    /frontend-docs-update                  - Update frontend documentation\n'));
     } else if (selectedProjectType === 'mobile') {
       if (aiTools.includes('claude')) {
         console.log(chalk.cyan('  1. Open Claude Code'));
