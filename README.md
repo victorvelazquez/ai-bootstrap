@@ -4,9 +4,9 @@
 
 ## English
 
-Transform your idea into a production-ready, AI-documented project (backend, frontend, or full-stack) in minutes.
+Transform your idea into a production-ready, AI-documented project (backend, frontend, full-stack, or mobile) in minutes.
 
-AI Bootstrap is an interactive CLI that generates comprehensive professional documents for backend, frontend, and full-stack projects (new or existing), guiding users (or AI agents) through 7 key phases: business, architecture, security, standards, testing, and operations. Compatible with Claude, Copilot, Cursor, Gemini, and any AI assistant.
+AI Bootstrap is an interactive CLI that generates comprehensive professional documents for backend, frontend, full-stack, and mobile projects (new or existing), guiding users (or AI agents) through 7 key phases: business, architecture, security, standards, testing, and operations. Compatible with Claude, Copilot, Cursor, Gemini, and any AI assistant.
 
 - 🚀 Complete, interconnected documentation
 - 🌍 Universal Support - 12 languages, 60+ frameworks, 35+ ORMs (98% market coverage!)
@@ -30,9 +30,9 @@ This will start an interactive questionnaire: when finished, you will have all y
 
 ## Español
 
-Transforma tu idea en un proyecto listo para producción y documentado para IA en minutos (backend, frontend o full-stack).
+Transforma tu idea en un proyecto listo para producción y documentado para IA en minutos (backend, frontend, full-stack o mobile).
 
-AI Bootstrap es un CLI interactivo que genera documentos profesionales completos para proyectos backend, frontend y full-stack (nuevos o existentes), guiando al usuario (o agente AI) por 7 fases clave: negocio, arquitectura, seguridad, estándares, testing y operaciones. Compatible con Claude, Copilot, Cursor, Gemini y cualquier asistente AI.
+AI Bootstrap es un CLI interactivo que genera documentos profesionales completos para proyectos backend, frontend, full-stack y mobile (nuevos o existentes), guiando al usuario (o agente AI) por 7 fases clave: negocio, arquitectura, seguridad, estándares, testing y operaciones. Compatible con Claude, Copilot, Cursor, Gemini y cualquier asistente AI.
 
 - 🚀 Documentación completa y conectada
 - 🌍 Soporte Universal - 12 lenguajes, 60+ frameworks, 35+ ORMs (¡98% cobertura!)
@@ -82,7 +82,7 @@ Isso iniciará um questionário interativo: ao finalizar, toda a documentação 
 
 ## 🎯 What is AI Bootstrap?
 
-AI Bootstrap is an interactive CLI tool that generates **15 comprehensive documentation files** for your backend project (new or existing) through a guided 7-phase questionnaire. It creates the foundation for AI-assisted development with any AI tool (Claude, Copilot, Cursor, Gemini, etc.).
+AI Bootstrap is an interactive CLI tool that generates comprehensive professional documentation files for your project (backend, frontend, full-stack, or mobile) through a guided 7-phase questionnaire. It creates the foundation for AI-assisted development with any AI tool (Claude, Copilot, Cursor, Gemini, etc.).
 
 **The Problem:** Starting a new backend project requires hours of documentation setup. Existing projects often lack proper AI-ready documentation. Without proper docs, AI assistants work inefficiently and make inconsistent decisions.
 
@@ -155,7 +155,7 @@ ai-bootstrap init .
 **This will:**
 
 - Ask you which AI tool you'll use (Claude/Cursor/Copilot/Gemini/All)
-- Ask for project type (Backend API/Service, Frontend Application, or Full Stack Application)
+- Ask for project type (Backend API/Service, Frontend Application, Full Stack Application, or Mobile Application)
 - Ask for project name (inferred from directory, press Enter to accept)
 - Create `.ai-bootstrap/` hidden folder with templates
 - Copy master prompts and templates
@@ -198,6 +198,9 @@ Read .ai-bootstrap/prompts/backend/bootstrap.md and execute the 7-phase question
 
 # For frontend projects
 Read .ai-bootstrap/prompts/frontend/bootstrap.md and execute the 7-phase questionnaire
+
+# For mobile projects
+Read .ai-bootstrap/prompts/mobile/bootstrap.md and execute the 7-phase questionnaire
 ```
 
 ### 4. Answer Questions
@@ -255,40 +258,77 @@ my-awesome-api/
 
 ## 🎯 Generated Documentation
 
-### Core Documents (4)
+The number and type of documents generated depends on your project type:
 
-| Document             | Purpose                                | Read By           |
-| -------------------- | -------------------------------------- | ----------------- |
-| `AGENT.md`           | Universal AI configuration, aggregator | All AI tools      |
-| `ai-instructions.md` | Tech stack, NEVER/ALWAYS rules         | All AI assistants |
-| `project-brief.md`   | Business context, objectives, scope    | AI + stakeholders |
-| `README.md`          | Project overview, setup instructions   | Developers        |
+### Backend Projects (15 documents)
 
-### Technical Docs (8)
+**Core Documents (4):**
+- `AGENT.md` - Universal AI configuration, aggregator
+- `ai-instructions.md` - Tech stack, NEVER/ALWAYS rules
+- `project-brief.md` - Business context, objectives, scope
+- `README.md` - Project overview, setup instructions
 
-| Document                 | Purpose                                    |
-| ------------------------ | ------------------------------------------ |
-| `docs/architecture.md`   | System architecture, design patterns       |
-| `docs/data-model.md`     | Detailed entity catalog, ownership rules   |
-| `docs/code-standards.md` | Naming conventions, quality rules          |
-| `docs/testing.md`        | Testing strategy, coverage requirements    |
-| `docs/operations.md`     | Deployment, monitoring, runbooks           |
-| `docs/business-flows.md` | Business workflows, process diagrams       |
-| `docs/api.md`            | API conventions, CRUD endpoints, contracts |
-| `docs/contributing.md`   | Development setup, workflow                |
+**Technical Docs (8):**
+- `docs/architecture.md` - System architecture, design patterns
+- `docs/data-model.md` - Detailed entity catalog, ownership rules
+- `docs/code-standards.md` - Naming conventions, quality rules
+- `docs/testing.md` - Testing strategy, coverage requirements
+- `docs/operations.md` - Deployment, monitoring, runbooks
+- `docs/business-flows.md` - Business workflows, process diagrams
+- `docs/api.md` - API conventions, CRUD endpoints, contracts
+- `docs/contributing.md` - Development setup, workflow
 
-### Specifications (2)
+**Specifications (2):**
+- `specs/security.md` - Authentication, authorization, compliance
+- `specs/configuration.md` - Environment variables, external services
 
-| Document                 | Purpose                                   |
-| ------------------------ | ----------------------------------------- |
-| `specs/security.md`      | Authentication, authorization, compliance |
-| `specs/configuration.md` | Environment variables, external services  |
+**Configuration (1):**
+- `.env.example` - Environment variable template
 
-### Configuration (1)
+### Frontend Projects (8 documents)
 
-| File           | Purpose                       |
-| -------------- | ----------------------------- |
-| `.env.example` | Environment variable template |
+**Core Documents (4):**
+- `AGENT.md` - Universal AI configuration, aggregator
+- `ai-instructions.md` - Tech stack, NEVER/ALWAYS rules
+- `project-brief.md` - Business context, objectives, scope
+- `README.md` - Project overview, setup instructions
+
+**Technical Docs (4):**
+- `docs/architecture.md` - System architecture, design patterns
+- `docs/components.md` - Component architecture and patterns
+- `docs/state-management.md` - State management patterns
+- `docs/styling.md` - Styling guidelines and design system
+- `docs/testing.md` - Testing strategy, coverage requirements
+
+**Specifications (1):**
+- `specs/configuration.md` - Environment variables, external services
+
+### Mobile Projects (14 documents)
+
+**Core Documents (4):**
+- `AGENT.md` - Universal AI configuration, aggregator
+- `ai-instructions.md` - Tech stack, NEVER/ALWAYS rules
+- `project-brief.md` - Business context, objectives, scope
+- `README.md` - Project overview, setup instructions
+
+**Technical Docs (9):**
+- `docs/architecture.md` - System architecture, design patterns
+- `docs/navigation.md` - Navigation patterns and setup
+- `docs/state-management.md` - State management patterns
+- `docs/offline-strategy.md` - Offline and sync strategy
+- `docs/permissions.md` - Permissions handling
+- `docs/native-features.md` - Native features integration
+- `docs/code-standards.md` - Code standards and conventions
+- `docs/testing.md` - Testing strategy
+- `docs/app-store.md` - App Store configuration
+
+**Specifications (2):**
+- `specs/build-configuration.md` - Build and CI/CD configuration
+- `specs/deployment.md` - Deployment procedures
+
+### Full-Stack Projects
+
+Full-stack projects combine documentation from both backend and frontend, with full-stack specific templates for common files (README, ai-instructions, project-brief, configuration) that merge both perspectives.
 
 ---
 
