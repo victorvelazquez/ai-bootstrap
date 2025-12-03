@@ -4,9 +4,9 @@
 
 ## English
 
-Transform your idea into a production-ready, AI-documented project (backend, frontend, full-stack, or mobile) in minutes.
+Transform your idea into a production-ready, AI-documented project (backend, frontend, fullstack, or mobile) in minutes.
 
-AI Bootstrap is an interactive CLI that generates comprehensive professional documents for backend, frontend, full-stack, and mobile projects (new or existing), guiding users (or AI agents) through 7 key phases: business, architecture, security, standards, testing, and operations. Compatible with Claude, Copilot, Cursor, Gemini, and any AI assistant.
+AI Bootstrap is an interactive CLI that generates comprehensive professional documents for backend, frontend, fullstack, and mobile projects (new or existing), guiding users (or AI agents) through 8 phases (7 core phases + Phase 0 context discovery): business, architecture, security, standards, testing, and operations. Compatible with Claude, Copilot, Cursor, Gemini, and any AI assistant.
 
 - 🚀 Complete, interconnected documentation
 - 🌍 Universal Support - 12 languages, 60+ frameworks, 35+ ORMs (98% market coverage!)
@@ -30,9 +30,9 @@ This will start an interactive questionnaire: when finished, you will have all y
 
 ## Español
 
-Transforma tu idea en un proyecto listo para producción y documentado para IA en minutos (backend, frontend, full-stack o mobile).
+Transforma tu idea en un proyecto listo para producción y documentado para IA en minutos (backend, frontend, fullstack o mobile).
 
-AI Bootstrap es un CLI interactivo que genera documentos profesionales completos para proyectos backend, frontend, full-stack y mobile (nuevos o existentes), guiando al usuario (o agente AI) por 7 fases clave: negocio, arquitectura, seguridad, estándares, testing y operaciones. Compatible con Claude, Copilot, Cursor, Gemini y cualquier asistente AI.
+AI Bootstrap es un CLI interactivo que genera documentos profesionales completos para proyectos backend, frontend, fullstack y mobile (nuevos o existentes), guiando al usuario (o agente AI) por 8 fases (7 fases principales + Fase 0 descubrimiento de contexto): negocio, arquitectura, seguridad, estándares, testing y operaciones. Compatible con Claude, Copilot, Cursor, Gemini y cualquier asistente AI.
 
 - 🚀 Documentación completa y conectada
 - 🌍 Soporte Universal - 12 lenguajes, 60+ frameworks, 35+ ORMs (¡98% cobertura!)
@@ -82,7 +82,7 @@ Isso iniciará um questionário interativo: ao finalizar, toda a documentação 
 
 ## 🎯 What is AI Bootstrap?
 
-AI Bootstrap is an interactive CLI tool that generates comprehensive professional documentation files for your project (backend, frontend, full-stack, or mobile) through a guided 7-phase questionnaire. It creates the foundation for AI-assisted development with any AI tool (Claude, Copilot, Cursor, Gemini, etc.).
+AI Bootstrap is an interactive CLI tool that generates comprehensive professional documentation files for your project (backend, frontend, fullstack, or mobile) through a guided 8-phase questionnaire (7 core phases + Phase 0 context discovery). It creates the foundation for AI-assisted development with any AI tool (Claude, Copilot, Cursor, Gemini, etc.).
 
 **The Problem:** Starting a new backend project requires hours of documentation setup. Existing projects often lack proper AI-ready documentation. Without proper docs, AI assistants work inefficiently and make inconsistent decisions.
 
@@ -155,7 +155,7 @@ ai-bootstrap init .
 **This will:**
 
 - Ask you which AI tool you'll use (Claude/Cursor/Copilot/Gemini/All)
-- Ask for project type (Backend API/Service, Frontend Application, Full Stack Application, or Mobile Application)
+- Ask for project type (Backend API/Service, Frontend Application, Fullstack Application, or Mobile Application)
 - Ask for project name (inferred from directory, press Enter to accept)
 - Create `.ai-bootstrap/` hidden folder with templates
 - Copy master prompts and templates
@@ -171,7 +171,7 @@ ai-bootstrap init . --type backend
 # For frontend projects
 ai-bootstrap init . --type frontend
 
-# For full-stack projects
+# For fullstack projects
 ai-bootstrap init . --type fullstack
 
 # For mobile projects
@@ -215,8 +215,9 @@ The AI will first analyze your project (Phase 0) and pre-populate answers from:
 You'll only answer what's missing or needs confirmation. **Time: 35-70 minutes** (50-60% faster!)
 
 **For New Projects:**
-The AI will guide you through 7 phases:
+The AI will guide you through 8 phases:
 
+0. **Context Discovery** (optional, existing projects only) - Analyze existing code and docs
 1. **Discovery & Business** (15-20 min) - What problem are you solving?
 2. **Data Architecture** (15-20 min) - Database design and entities
 3. **System Architecture** (15-20 min) - Tech stack and patterns
@@ -285,7 +286,7 @@ The number and type of documents generated depends on your project type:
 **Configuration (1):**
 - `.env.example` - Environment variable template
 
-### Frontend Projects (8 documents)
+### Frontend Projects (10 documents)
 
 **Core Documents (4):**
 - `AGENT.md` - Universal AI configuration, aggregator
@@ -293,7 +294,7 @@ The number and type of documents generated depends on your project type:
 - `project-brief.md` - Business context, objectives, scope
 - `README.md` - Project overview, setup instructions
 
-**Technical Docs (4):**
+**Technical Docs (5):**
 - `docs/architecture.md` - System architecture, design patterns
 - `docs/components.md` - Component architecture and patterns
 - `docs/state-management.md` - State management patterns
@@ -326,9 +327,41 @@ The number and type of documents generated depends on your project type:
 - `specs/build-configuration.md` - Build and CI/CD configuration
 - `specs/deployment.md` - Deployment procedures
 
-### Full-Stack Projects
+### Fullstack Projects
 
-Full-stack projects combine documentation from both backend and frontend, with full-stack specific templates for common files (README, ai-instructions, project-brief, configuration) that merge both perspectives.
+Fullstack projects combine documentation from both backend and frontend, with fullstack-specific templates for common files (README, ai-instructions, project-brief, configuration) that merge both perspectives.
+
+**Core Documents (4):**
+- `AGENT.md` - Universal AI configuration, aggregator
+- `ai-instructions.md` - Combined tech stack (backend + frontend), NEVER/ALWAYS rules
+- `project-brief.md` - Combined business context (backend + frontend)
+- `README.md` - Combined project overview (backend + frontend)
+
+**Backend Technical Docs (8):**
+- `docs/architecture.md` - Backend system architecture
+- `docs/data-model.md` - Backend entity catalog
+- `docs/code-standards.md` - Backend code quality rules
+- `docs/testing.md` - Backend testing strategy
+- `docs/operations.md` - Backend deployment procedures
+- `docs/business-flows.md` - Backend workflows
+- `docs/api.md` - Backend API conventions
+- `docs/contributing.md` - Backend development setup
+
+**Frontend Technical Docs (5):**
+- `docs/components.md` - Frontend component architecture
+- `docs/state-management.md` - Frontend state patterns
+- `docs/styling.md` - Frontend styling guidelines
+- `docs/testing.md` - Frontend testing strategy (may merge with backend)
+- `docs/architecture.md` - Frontend architecture (may merge with backend)
+
+**Specifications (2):**
+- `specs/security.md` - Backend security policies
+- `specs/configuration.md` - Combined environment config (backend + frontend)
+
+**Configuration (1):**
+- `.env.example` - Combined environment variables
+
+**Total:** ~20 documents (varies based on merge strategy)
 
 ---
 
@@ -527,9 +560,9 @@ After initialization, you can use these commands in your AI tool:
 
 **Documentation Generation:**
 
-**Documentation Generation:**
+- `/bootstrap` - Full 8-phase documentation generation
 
-- `/bootstrap` - Full 7-phase documentation generation
+**Backend Projects:**
 - `/bootstrap-phase0-context` - Context Discovery (existing projects only)
 - `/bootstrap-phase1-business` - Discovery & Business only
 - `/bootstrap-phase2-data` - Data Architecture only
@@ -539,13 +572,32 @@ After initialization, you can use these commands in your AI tool:
 - `/bootstrap-phase6-testing` - Testing only
 - `/bootstrap-phase7-operations` - Operations + Tools only
 
+**Frontend Projects:**
+- `/bootstrap-phase0-context` - Context Discovery (existing projects only)
+- `/bootstrap-phase1-discovery` - Discovery & UX only
+- `/bootstrap-phase2-components` - Components & Framework only
+- `/bootstrap-phase3-state` - State Management only
+- `/bootstrap-phase4-styling` - Styling & Design only
+- `/bootstrap-phase5-standards` - Code Standards only
+- `/bootstrap-phase6-testing` - Testing Strategy only
+- `/bootstrap-phase7-deployment` - Deployment only
+
+**Mobile Projects:**
+- `/bootstrap-phase0-context` - Context Discovery (existing projects only)
+- `/bootstrap-phase1-platform` - Platform & Framework Selection only
+- `/bootstrap-phase2-navigation` - Navigation & Architecture only
+- `/bootstrap-phase3-state` - State & Data Management only
+- `/bootstrap-phase4-permissions` - Permissions & Native Features only
+- `/bootstrap-phase5-standards` - Code Standards only
+- `/bootstrap-phase6-testing` - Testing Strategy only
+- `/bootstrap-phase7-deployment` - Deployment only
+
 **Documentation Maintenance:**
 
-- `/docs-update` - Detect code changes and update documentation automatically
-
-**Documentation Maintenance:**
-
-- `/docs-update` - Detect code changes and update documentation automatically
+- `/docs-update` - Detect code changes and update documentation automatically (backend, frontend, mobile)
+- `/backend-docs-update` - Backend-specific docs update (fullstack projects)
+- `/frontend-docs-update` - Frontend-specific docs update (fullstack projects)
+- `/mobile-docs-update` - Mobile-specific docs update
 
 ---
 
@@ -599,7 +651,7 @@ For existing projects, AI Bootstrap uses an intelligent, incremental analysis sy
 
 ### 2. Master Prompt System
 
-The `.ai-bootstrap/prompts/backend/bootstrap.md` file contains a comprehensive questionnaire that guides AI assistants through gathering all necessary information.
+The `.ai-bootstrap/prompts/backend/bootstrap.md` file contains a comprehensive 8-phase questionnaire that guides AI assistants through gathering all necessary information.
 
 ### 3. Template-Based Generation
 
@@ -950,7 +1002,7 @@ your-project/
 
 - [x] Backend bootstrap (v1.0)
 - [x] Frontend bootstrap (v1.2.0) ✅
-- [x] Full-stack bootstrap (v1.3.0) ✅
+- [x] Fullstack bootstrap (v1.3.0) ✅
 - [x] Mobile bootstrap (v1.4.0) ✅
 - [ ] Template customization
 - [ ] Multiple language support
