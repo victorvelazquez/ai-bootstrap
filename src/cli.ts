@@ -133,17 +133,12 @@ async function selectAITool(providedTool?: string): Promise<string[]> {
 }
 
 async function selectProjectType(providedType?: string): Promise<'backend' | 'frontend' | 'fullstack'> {
-  // v1.2.0: Backend and Frontend supported (fullstack coming in v1.3.0)
+  // v1.3.0: Backend, Frontend, and Fullstack supported
   if (providedType) {
     const valid = ['backend', 'frontend', 'fullstack'];
     if (!valid.includes(providedType)) {
       console.error(chalk.red(`❌ Invalid project type: ${providedType}`));
-      console.log(chalk.yellow('Available options: backend, frontend (fullstack coming in v1.3.0)'));
-      process.exit(EXIT.INVALID_ARGS);
-    }
-    if (providedType === 'fullstack') {
-      console.error(chalk.red('❌ \'fullstack\' support coming in v1.3.0'));
-      console.log(chalk.yellow('Please use \'backend\' or \'frontend\' for now'));
+      console.log(chalk.yellow('Available options: backend, frontend, fullstack'));
       process.exit(EXIT.INVALID_ARGS);
     }
     return providedType as 'backend' | 'frontend' | 'fullstack';
@@ -155,7 +150,7 @@ async function selectProjectType(providedType?: string): Promise<'backend' | 'fr
     return 'backend';
   }
 
-  // v1.2.0: Interactive selection for backend/frontend
+  // v1.3.0: Interactive selection for backend/frontend/fullstack
   const answer = await inquirer.prompt([{
     type: 'list',
     name: 'projectType',
@@ -163,7 +158,7 @@ async function selectProjectType(providedType?: string): Promise<'backend' | 'fr
     choices: [
       { name: '🔧 Backend API/Service', value: 'backend' },
       { name: '🎨 Frontend Application', value: 'frontend' },
-      { name: chalk.gray('🚀 Full Stack (coming in v1.3.0)'), value: 'backend', disabled: true }
+      { name: '🚀 Full Stack Application', value: 'fullstack' }
     ]
   }]);
   return answer.projectType;
@@ -255,24 +250,41 @@ async function renderTemplates(targetPath: string, projectData: { name: string; 
       templateSources.push({ source: frontendSource, base: frontendSource });
     } else if (projectType === 'fullstack') {
       // v1.3.0: Copy both backend and frontend templates
+      // Priority: fullstack-specific templates > backend templates > frontend templates
+      const fullstackSource = path.join(ROOT_DIR, 'templates', 'fullstack');
       const backendSource = path.join(ROOT_DIR, 'templates', 'backend');
       const frontendSource = path.join(ROOT_DIR, 'templates', 'frontend');
+      
+      // Check if fullstack templates directory exists
+      const fullstackExists = await fs.pathExists(fullstackSource);
+      if (fullstackExists) {
+        templateSources.push({ source: fullstackSource, base: fullstackSource });
+      }
+      // Backend templates (used as base for conflicts)
       templateSources.push({ source: backendSource, base: backendSource });
+      // Frontend templates (will overwrite only if not in fullstack and not conflicting with backend)
       templateSources.push({ source: frontendSource, base: frontendSource });
     }
 
     // Walk all source directories and collect template files
-    const allTemplateFiles: { file: string; base: string }[] = [];
+    // For fullstack, use a Map to track processed files (priority: fullstack > backend > frontend)
+    const processedFiles = new Map<string, { file: string; base: string }>();
+    
     for (const { source, base } of templateSources) {
       const files = await walk(source);
-      allTemplateFiles.push(...files.map(file => ({ file, base })));
+      for (const file of files) {
+        const relPath = path.relative(base, file)
+          .replace('.template.md', '.md')
+          .replace('.template', '');
+        // Only add if not already processed (first occurrence wins)
+        if (!processedFiles.has(relPath)) {
+          processedFiles.set(relPath, { file, base });
+        }
+      }
     }
 
     // Render each template
-    for (const { file: templateFile, base } of allTemplateFiles) {
-      const relPath = path.relative(base, templateFile)
-        .replace('.template.md', '.md')
-        .replace('.template', '');
+    for (const [relPath, { file: templateFile }] of processedFiles) {
       const destPath = path.join(templatesTarget, relPath);
       await fs.ensureDir(path.dirname(destPath));
       const templateContent = await fs.readFile(templateFile, 'utf8');
@@ -482,31 +494,83 @@ async function initializeProject(targetPath: string, aiTool?: string, projectTyp
 
     const toolsText = aiTools.length === 1 ? aiTools[0] : `${aiTools.slice(0, -1).join(', ')} and ${aiTools[aiTools.length - 1]}`;
 
-    if (aiTools.includes('claude')) {
-      console.log(chalk.cyan('  1. Open Claude Code'));
-      console.log(chalk.cyan('  2. Run: /bootstrap'));
-      console.log(chalk.gray('     This will start the 7-phase interactive setup\n'));
-    } else if (aiTools.includes('cursor')) {
-      console.log(chalk.cyan('  1. Open Cursor'));
-      console.log(chalk.cyan('  2. Run: /bootstrap'));
-      console.log(chalk.gray('     This will start the 7-phase interactive setup\n'));
-    } else {
-      console.log(chalk.cyan(`  1. Open your AI tool (${toolsText})`));
-      console.log(chalk.cyan('  2. Run: /bootstrap'));
-      console.log(chalk.gray('     This will start the 7-phase interactive setup\n'));
-    }
+    if (selectedProjectType === 'fullstack') {
+      if (aiTools.includes('claude')) {
+        console.log(chalk.cyan('  1. Open Claude Code'));
+        console.log(chalk.cyan('  2. Run: /backend-bootstrap (for backend documentation)'));
+        console.log(chalk.cyan('  3. Run: /frontend-bootstrap (for frontend documentation)'));
+        console.log(chalk.gray('     Each will guide you through 7 phases\n'));
+      } else if (aiTools.includes('cursor')) {
+        console.log(chalk.cyan('  1. Open Cursor'));
+        console.log(chalk.cyan('  2. Run: /backend-bootstrap (for backend documentation)'));
+        console.log(chalk.cyan('  3. Run: /frontend-bootstrap (for frontend documentation)'));
+        console.log(chalk.gray('     Each will guide you through 7 phases\n'));
+      } else {
+        console.log(chalk.cyan(`  1. Open your AI tool (${toolsText})`));
+        console.log(chalk.cyan('  2. Run: /backend-bootstrap (for backend documentation)'));
+        console.log(chalk.cyan('  3. Run: /frontend-bootstrap (for frontend documentation)'));
+        console.log(chalk.gray('     Each will guide you through 7 phases\n'));
+      }
 
-    console.log(chalk.white('Available slash commands:'));
-    console.log(chalk.gray('  /bootstrap                    - Full 7-phase documentation generation'));
-    console.log(chalk.gray('  /bootstrap-phase0-context     - Context Discovery (existing projects)'));
-    console.log(chalk.gray('  /bootstrap-phase1-business    - Discovery & Business'));
-    console.log(chalk.gray('  /bootstrap-phase2-data        - Data Architecture'));
-    console.log(chalk.gray('  /bootstrap-phase3-architecture - System Architecture'));
-    console.log(chalk.gray('  /bootstrap-phase4-security    - Security & Auth'));
-    console.log(chalk.gray('  /bootstrap-phase5-standards    - Code Standards'));
-    console.log(chalk.gray('  /bootstrap-phase6-testing     - Testing'));
-    console.log(chalk.gray('  /bootstrap-phase7-operations  - Operations + Tools'));
-    console.log(chalk.gray('  /docs-update                  - Update documentation when code changes\n'));
+      console.log(chalk.white('Available slash commands:'));
+      console.log(chalk.gray('  Backend commands:'));
+      console.log(chalk.gray('    /backend-bootstrap                    - Backend 7-phase documentation generation'));
+      console.log(chalk.gray('    /backend-bootstrap-phase0-context     - Backend context discovery'));
+      console.log(chalk.gray('    /backend-bootstrap-phase1-business    - Backend discovery & business'));
+      console.log(chalk.gray('    /backend-bootstrap-phase2-data        - Backend data architecture'));
+      console.log(chalk.gray('    /backend-bootstrap-phase3-architecture - Backend system architecture'));
+      console.log(chalk.gray('    /backend-bootstrap-phase4-security    - Backend security & auth'));
+      console.log(chalk.gray('    /backend-bootstrap-phase5-standards    - Backend code standards'));
+      console.log(chalk.gray('    /backend-bootstrap-phase6-testing     - Backend testing'));
+      console.log(chalk.gray('    /backend-bootstrap-phase7-operations  - Backend operations + tools'));
+      console.log(chalk.gray('    /backend-docs-update                  - Update backend documentation\n'));
+      console.log(chalk.gray('  Frontend commands:'));
+      console.log(chalk.gray('    /frontend-bootstrap                    - Frontend 7-phase documentation generation'));
+      console.log(chalk.gray('    /frontend-bootstrap-phase0-context    - Frontend context discovery'));
+      console.log(chalk.gray('    /frontend-bootstrap-phase1-discovery  - Frontend discovery & UX'));
+      console.log(chalk.gray('    /frontend-bootstrap-phase2-components  - Frontend components & framework'));
+      console.log(chalk.gray('    /frontend-bootstrap-phase3-state       - Frontend state management'));
+      console.log(chalk.gray('    /frontend-bootstrap-phase4-styling     - Frontend styling & design'));
+      console.log(chalk.gray('    /frontend-bootstrap-phase5-standards  - Frontend code standards'));
+      console.log(chalk.gray('    /frontend-bootstrap-phase6-testing    - Frontend testing'));
+      console.log(chalk.gray('    /frontend-bootstrap-phase7-deployment - Frontend deployment\n'));
+    } else {
+      if (aiTools.includes('claude')) {
+        console.log(chalk.cyan('  1. Open Claude Code'));
+        console.log(chalk.cyan('  2. Run: /bootstrap'));
+        console.log(chalk.gray('     This will start the 7-phase interactive setup\n'));
+      } else if (aiTools.includes('cursor')) {
+        console.log(chalk.cyan('  1. Open Cursor'));
+        console.log(chalk.cyan('  2. Run: /bootstrap'));
+        console.log(chalk.gray('     This will start the 7-phase interactive setup\n'));
+      } else {
+        console.log(chalk.cyan(`  1. Open your AI tool (${toolsText})`));
+        console.log(chalk.cyan('  2. Run: /bootstrap'));
+        console.log(chalk.gray('     This will start the 7-phase interactive setup\n'));
+      }
+
+      console.log(chalk.white('Available slash commands:'));
+      console.log(chalk.gray('  /bootstrap                    - Full 7-phase documentation generation'));
+      console.log(chalk.gray('  /bootstrap-phase0-context     - Context Discovery (existing projects)'));
+      if (selectedProjectType === 'backend') {
+        console.log(chalk.gray('  /bootstrap-phase1-business    - Discovery & Business'));
+        console.log(chalk.gray('  /bootstrap-phase2-data        - Data Architecture'));
+        console.log(chalk.gray('  /bootstrap-phase3-architecture - System Architecture'));
+        console.log(chalk.gray('  /bootstrap-phase4-security    - Security & Auth'));
+        console.log(chalk.gray('  /bootstrap-phase5-standards    - Code Standards'));
+        console.log(chalk.gray('  /bootstrap-phase6-testing     - Testing'));
+        console.log(chalk.gray('  /bootstrap-phase7-operations  - Operations + Tools'));
+      } else {
+        console.log(chalk.gray('  /bootstrap-phase1-discovery   - Discovery & UX'));
+        console.log(chalk.gray('  /bootstrap-phase2-components - Components & Framework'));
+        console.log(chalk.gray('  /bootstrap-phase3-state      - State Management'));
+        console.log(chalk.gray('  /bootstrap-phase4-styling     - Styling & Design'));
+        console.log(chalk.gray('  /bootstrap-phase5-standards   - Code Standards'));
+        console.log(chalk.gray('  /bootstrap-phase6-testing     - Testing'));
+        console.log(chalk.gray('  /bootstrap-phase7-deployment - Deployment'));
+      }
+      console.log(chalk.gray('  /docs-update                  - Update documentation when code changes\n'));
+    }
 
     if (flags?.dryRun) {
       console.log(chalk.yellow('⚠️ Dry-run: no files were written. Run again without --dry-run to apply changes.\n'));
@@ -564,20 +628,44 @@ program
       console.log(chalk.gray(`  Working Dir: ${process.cwd()}`));
       
       // Show correct prompts path based on project type
-      const promptsPath = path.join(process.cwd(), '.ai-bootstrap', 'prompts', projectType, 'bootstrap.md');
-      console.log(chalk.gray(`  Prompts: ${promptsPath}`));
+      if (projectType === 'fullstack') {
+        const backendPromptsPath = path.join(process.cwd(), '.ai-bootstrap', 'prompts', 'backend', 'bootstrap.md');
+        const frontendPromptsPath = path.join(process.cwd(), '.ai-bootstrap', 'prompts', 'frontend', 'bootstrap.md');
+        console.log(chalk.gray(`  Backend Prompts: ${backendPromptsPath}`));
+        console.log(chalk.gray(`  Frontend Prompts: ${frontendPromptsPath}`));
+      } else {
+        const promptsPath = path.join(process.cwd(), '.ai-bootstrap', 'prompts', projectType, 'bootstrap.md');
+        console.log(chalk.gray(`  Prompts: ${promptsPath}`));
+      }
       
       console.log(chalk.white('\nNext steps:'));
-      if (config.aiTools.includes('claude')) {
-        console.log(chalk.cyan('  1. Open Claude Code'));
-        console.log(chalk.cyan('  2. Run: /bootstrap'));
-      } else if (config.aiTools.includes('cursor')) {
-        console.log(chalk.cyan('  1. Open Cursor'));
-        console.log(chalk.cyan('  2. Run: /bootstrap'));
+      if (projectType === 'fullstack') {
+        if (config.aiTools.includes('claude')) {
+          console.log(chalk.cyan('  1. Open Claude Code'));
+          console.log(chalk.cyan('  2. Run: /backend-bootstrap (for backend documentation)'));
+          console.log(chalk.cyan('  3. Run: /frontend-bootstrap (for frontend documentation)'));
+        } else if (config.aiTools.includes('cursor')) {
+          console.log(chalk.cyan('  1. Open Cursor'));
+          console.log(chalk.cyan('  2. Run: /backend-bootstrap (for backend documentation)'));
+          console.log(chalk.cyan('  3. Run: /frontend-bootstrap (for frontend documentation)'));
+        } else {
+          const toolsText = config.aiTools.length === 1 ? config.aiTools[0] : `${config.aiTools.slice(0, -1).join(', ')} and ${config.aiTools[config.aiTools.length - 1]}`;
+          console.log(chalk.cyan(`  1. Open your AI tool (${toolsText})`));
+          console.log(chalk.cyan('  2. Run: /backend-bootstrap (for backend documentation)'));
+          console.log(chalk.cyan('  3. Run: /frontend-bootstrap (for frontend documentation)'));
+        }
       } else {
-        const toolsText = config.aiTools.length === 1 ? config.aiTools[0] : `${config.aiTools.slice(0, -1).join(', ')} and ${config.aiTools[config.aiTools.length - 1]}`;
-        console.log(chalk.cyan(`  1. Open your AI tool (${toolsText})`));
-        console.log(chalk.cyan('  2. Run: /bootstrap'));
+        if (config.aiTools.includes('claude')) {
+          console.log(chalk.cyan('  1. Open Claude Code'));
+          console.log(chalk.cyan('  2. Run: /bootstrap'));
+        } else if (config.aiTools.includes('cursor')) {
+          console.log(chalk.cyan('  1. Open Cursor'));
+          console.log(chalk.cyan('  2. Run: /bootstrap'));
+        } else {
+          const toolsText = config.aiTools.length === 1 ? config.aiTools[0] : `${config.aiTools.slice(0, -1).join(', ')} and ${config.aiTools[config.aiTools.length - 1]}`;
+          console.log(chalk.cyan(`  1. Open your AI tool (${toolsText})`));
+          console.log(chalk.cyan('  2. Run: /bootstrap'));
+        }
       }
     } else {
       console.log(chalk.yellow('⚠️  Project is not initialized'));
