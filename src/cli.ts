@@ -132,16 +132,16 @@ async function selectAITool(providedTool?: string): Promise<string[]> {
     : [selectedTool];
 }
 
-async function selectProjectType(providedType?: string): Promise<'backend' | 'frontend' | 'fullstack'> {
-  // v1.3.0: Backend, Frontend, and Fullstack supported
+async function selectProjectType(providedType?: string): Promise<'backend' | 'frontend' | 'fullstack' | 'mobile'> {
+  // v1.4.0: Backend, Frontend, Fullstack, and Mobile supported
   if (providedType) {
-    const valid = ['backend', 'frontend', 'fullstack'];
+    const valid = ['backend', 'frontend', 'fullstack', 'mobile'];
     if (!valid.includes(providedType)) {
       console.error(chalk.red(`❌ Invalid project type: ${providedType}`));
-      console.log(chalk.yellow('Available options: backend, frontend, fullstack'));
+      console.log(chalk.yellow('Available options: backend, frontend, fullstack, mobile'));
       process.exit(EXIT.INVALID_ARGS);
     }
-    return providedType as 'backend' | 'frontend' | 'fullstack';
+    return providedType as 'backend' | 'frontend' | 'fullstack' | 'mobile';
   }
 
   // If no TTY available (non-interactive mode, e.g., in tests), default to backend
@@ -150,7 +150,7 @@ async function selectProjectType(providedType?: string): Promise<'backend' | 'fr
     return 'backend';
   }
 
-  // v1.3.0: Interactive selection for backend/frontend/fullstack
+  // v1.4.0: Interactive selection for backend/frontend/fullstack/mobile
   const answer = await inquirer.prompt([{
     type: 'list',
     name: 'projectType',
@@ -158,7 +158,8 @@ async function selectProjectType(providedType?: string): Promise<'backend' | 'fr
     choices: [
       { name: '🔧 Backend API/Service', value: 'backend' },
       { name: '🎨 Frontend Application', value: 'frontend' },
-      { name: '🚀 Full Stack Application', value: 'fullstack' }
+      { name: '🚀 Full Stack Application', value: 'fullstack' },
+      { name: '📱 Mobile Application', value: 'mobile' }
     ]
   }]);
   return answer.projectType;
@@ -169,7 +170,7 @@ async function checkIfInitialized(targetPath: string): Promise<boolean> {
   return await fs.pathExists(bootstrapPath);
 }
 
-async function createBootstrapStructure(targetPath: string, aiTools: string[], projectType: 'backend' | 'frontend' | 'fullstack' = 'backend', dryRun?: boolean, verbose?: boolean): Promise<void> {
+async function createBootstrapStructure(targetPath: string, aiTools: string[], projectType: 'backend' | 'frontend' | 'fullstack' | 'mobile' = 'backend', dryRun?: boolean, verbose?: boolean): Promise<void> {
   const spinner = ora('Creating .ai-bootstrap structure...').start();
 
   try {
@@ -195,7 +196,8 @@ async function createBootstrapStructure(targetPath: string, aiTools: string[], p
       projectType: projectType,
       // Deprecated fields for backward compatibility
       backend: projectType === 'backend' || projectType === 'fullstack',
-      frontend: projectType === 'frontend' || projectType === 'fullstack'
+      frontend: projectType === 'frontend' || projectType === 'fullstack',
+      mobile: projectType === 'mobile'
     };
 
     await fs.writeJSON(path.join(bootstrapPath, 'core', 'config.json'), config, { spaces: 2 });
@@ -208,7 +210,7 @@ async function createBootstrapStructure(targetPath: string, aiTools: string[], p
   }
 }
 
-async function renderTemplates(targetPath: string, projectData: { name: string; description: string }, projectType: 'backend' | 'frontend' | 'fullstack' = 'backend', dryRun?: boolean, verbose?: boolean): Promise<void> {
+async function renderTemplates(targetPath: string, projectData: { name: string; description: string }, projectType: 'backend' | 'frontend' | 'fullstack' | 'mobile' = 'backend', dryRun?: boolean, verbose?: boolean): Promise<void> {
   const spinner = ora('Generating documentation from templates...').start();
   try {
     const templatesTarget = path.join(targetPath, '.ai-bootstrap', 'templates');
@@ -264,6 +266,10 @@ async function renderTemplates(targetPath: string, projectData: { name: string; 
       templateSources.push({ source: backendSource, base: backendSource });
       // Frontend templates (will overwrite only if not in fullstack and not conflicting with backend)
       templateSources.push({ source: frontendSource, base: frontendSource });
+    } else if (projectType === 'mobile') {
+      // v1.4.0: Copy mobile templates
+      const mobileSource = path.join(ROOT_DIR, 'templates', 'mobile');
+      templateSources.push({ source: mobileSource, base: mobileSource });
     }
 
     // Walk all source directories and collect template files
@@ -326,7 +332,7 @@ async function copyPrompts(targetPath: string, dryRun?: boolean, verbose?: boole
   }
 }
 
-async function setupSlashCommands(targetPath: string, aiTools: string[], projectType: 'backend' | 'frontend' | 'fullstack' = 'backend', dryRun?: boolean, verbose?: boolean): Promise<void> {
+async function setupSlashCommands(targetPath: string, aiTools: string[], projectType: 'backend' | 'frontend' | 'fullstack' | 'mobile' = 'backend', dryRun?: boolean, verbose?: boolean): Promise<void> {
   const spinner = ora('Setting up slash commands...').start();
 
   try {
@@ -341,6 +347,8 @@ async function setupSlashCommands(targetPath: string, aiTools: string[], project
       // For fullstack, copy both with prefixes
       promptSources.push({ dir: 'backend', prefix: 'backend-' });
       promptSources.push({ dir: 'frontend', prefix: 'frontend-' });
+    } else if (projectType === 'mobile') {
+      promptSources.push({ dir: 'mobile' });
     }
 
     for (const { dir, prefix } of promptSources) {
@@ -534,6 +542,32 @@ async function initializeProject(targetPath: string, aiTool?: string, projectTyp
       console.log(chalk.gray('    /frontend-bootstrap-phase5-standards  - Frontend code standards'));
       console.log(chalk.gray('    /frontend-bootstrap-phase6-testing    - Frontend testing'));
       console.log(chalk.gray('    /frontend-bootstrap-phase7-deployment - Frontend deployment\n'));
+    } else if (selectedProjectType === 'mobile') {
+      if (aiTools.includes('claude')) {
+        console.log(chalk.cyan('  1. Open Claude Code'));
+        console.log(chalk.cyan('  2. Run: /bootstrap'));
+        console.log(chalk.gray('     This will start the 7-phase interactive setup\n'));
+      } else if (aiTools.includes('cursor')) {
+        console.log(chalk.cyan('  1. Open Cursor'));
+        console.log(chalk.cyan('  2. Run: /bootstrap'));
+        console.log(chalk.gray('     This will start the 7-phase interactive setup\n'));
+      } else {
+        console.log(chalk.cyan(`  1. Open your AI tool (${toolsText})`));
+        console.log(chalk.cyan('  2. Run: /bootstrap'));
+        console.log(chalk.gray('     This will start the 7-phase interactive setup\n'));
+      }
+
+      console.log(chalk.white('Available slash commands:'));
+      console.log(chalk.gray('  /bootstrap                    - Full 7-phase documentation generation'));
+      console.log(chalk.gray('  /bootstrap-phase0-context     - Context Discovery (existing projects)'));
+      console.log(chalk.gray('  /bootstrap-phase1-platform    - Platform & Framework Selection'));
+      console.log(chalk.gray('  /bootstrap-phase2-navigation  - Navigation & Architecture'));
+      console.log(chalk.gray('  /bootstrap-phase3-state       - State & Data Management'));
+      console.log(chalk.gray('  /bootstrap-phase4-permissions  - Permissions & Native Features'));
+      console.log(chalk.gray('  /bootstrap-phase5-standards   - Code Standards'));
+      console.log(chalk.gray('  /bootstrap-phase6-testing     - Testing Strategy'));
+      console.log(chalk.gray('  /bootstrap-phase7-deployment  - Store Deployment'));
+      console.log(chalk.gray('  /docs-update                  - Update documentation when code changes\n'));
     } else {
       if (aiTools.includes('claude')) {
         console.log(chalk.cyan('  1. Open Claude Code'));
@@ -594,7 +628,7 @@ program
   .description('Initialize AI Bootstrap in current directory')
   .argument('[path]', 'Target directory (defaults to current directory)', '.')
   .option('--ai <tool>', 'AI tool to use (claude, cursor, copilot, gemini, all)')
-  .option('--type <type>', 'Project type (backend, frontend, fullstack)')
+  .option('--type <type>', 'Project type (backend, frontend, fullstack, mobile)')
   .option('--name <name>', 'Project name (skip interactive prompt)')
   .option('--description <desc>', 'Project description (skip interactive prompt)')
   .option('--verbose', 'Enable verbose logging')
@@ -617,8 +651,8 @@ program
       const config = await fs.readJSON(configPath);
 
       // Detect project type (support both old and new config format)
-      const projectType = config.projectType || (config.backend && !config.frontend ? 'backend' : config.frontend && !config.backend ? 'frontend' : 'backend');
-      const projectTypeDisplay = projectType === 'backend' ? '🔧 Backend' : projectType === 'frontend' ? '🎨 Frontend' : '🚀 Full Stack';
+      const projectType = config.projectType || (config.backend && !config.frontend ? 'backend' : config.frontend && !config.backend ? 'frontend' : config.mobile ? 'mobile' : 'backend');
+      const projectTypeDisplay = projectType === 'backend' ? '🔧 Backend' : projectType === 'frontend' ? '🎨 Frontend' : projectType === 'fullstack' ? '🚀 Full Stack' : projectType === 'mobile' ? '📱 Mobile' : '🔧 Backend';
 
       console.log(chalk.white('\nConfiguration:'));
       console.log(chalk.gray(`  Version: ${config.version}`));

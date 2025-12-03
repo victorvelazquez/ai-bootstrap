@@ -191,4 +191,60 @@ describe('ai-bootstrap CLI', () => {
     expect(output).toContain('/backend-bootstrap');
     expect(output).toContain('/frontend-bootstrap');
   });
+
+  it('initializes mobile project when --type mobile is supplied', () => {
+    execFileSync('node', [
+      CLI_PATH, 'init', tempDir, 
+      '--ai', 'cursor',
+      '--type', 'mobile',
+      '--name', 'Mobile App',
+      '--description', 'Mobile Test Description'
+    ], {
+      cwd: PROJECT_ROOT,
+      stdio: 'pipe'
+    });
+
+    const configPath = path.join(tempDir, '.ai-bootstrap', 'core', 'config.json');
+    expect(fs.existsSync(configPath)).toBe(true);
+
+    const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+    expect(config.aiTools).toEqual(['cursor']);
+    expect(config.projectType).toBe('mobile');
+    expect(config.mobile).toBe(true);
+
+    // Verify mobile prompts are copied
+    const mobilePromptPath = path.join(tempDir, '.cursor', 'commands', 'bootstrap.md');
+    expect(fs.existsSync(mobilePromptPath)).toBe(true);
+
+    // Verify mobile templates are copied (templates are copied directly to templates/, not templates/mobile/)
+    // Templates are processed and .template.md is removed
+    const mobileTemplatePath = path.join(tempDir, '.ai-bootstrap', 'templates', 'README.md');
+    expect(fs.existsSync(mobileTemplatePath)).toBe(true);
+    
+    // Verify mobile-specific template exists
+    const mobileSpecificTemplatePath = path.join(tempDir, '.ai-bootstrap', 'templates', 'docs', 'navigation.md');
+    expect(fs.existsSync(mobileSpecificTemplatePath)).toBe(true);
+  });
+
+  it('reports initialized status via the check command (mobile)', () => {
+    execFileSync('node', [
+      CLI_PATH, 'init', tempDir, 
+      '--ai', 'claude',
+      '--type', 'mobile',
+      '--name', 'Mobile Project',
+      '--description', 'Mobile Description'
+    ], {
+      cwd: PROJECT_ROOT,
+      stdio: 'pipe'
+    });
+
+    const output = execFileSync('node', [CLI_PATH, 'check'], {
+      cwd: tempDir,
+      stdio: 'pipe',
+      encoding: 'utf8'
+    });
+
+    expect(output).toContain('Mobile');
+    expect(output).toContain('mobile');
+  });
 });
