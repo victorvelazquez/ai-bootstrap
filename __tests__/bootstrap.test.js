@@ -2,13 +2,18 @@ const fs = require('fs');
 const path = require('path');
 
 describe('ai-bootstrap templates', () => {
-  it('should include AGENT.template.md in templates/', () => {
-    const agentTemplate = path.resolve(__dirname, '..', 'templates', 'AGENT.template.md');
+  it('should include AGENT.template.md in templates/shared/', () => {
+    const agentTemplate = path.resolve(__dirname, '..', 'templates', 'shared', 'AGENT.template.md');
     expect(fs.existsSync(agentTemplate)).toBe(true);
   });
 
-  it('should include .env.example.template in templates/', () => {
-    const envTemplate = path.resolve(__dirname, '..', 'templates', '.env.example.template');
-    expect(fs.existsSync(envTemplate)).toBe(true);
+  it('should include backend templates', () => {
+    const backendTemplate = path.resolve(__dirname, '..', 'templates', 'backend', 'ai-instructions.template.md');
+    expect(fs.existsSync(backendTemplate)).toBe(true);
+  });
+
+  it('should include frontend templates', () => {
+    const frontendTemplate = path.resolve(__dirname, '..', 'templates', 'frontend', 'ai-instructions.template.md');
+    expect(fs.existsSync(frontendTemplate)).toBe(true);
   });
 });

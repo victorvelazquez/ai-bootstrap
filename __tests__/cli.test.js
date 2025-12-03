@@ -33,7 +33,7 @@ describe('ai-bootstrap CLI', () => {
     }
   });
 
-  it('initializes the bootstrap structure when an AI tool is supplied', () => {
+  it('initializes the bootstrap structure when an AI tool is supplied (backend default)', () => {
     execFileSync('node', [
       CLI_PATH, 'init', tempDir, 
       '--ai', 'copilot',
@@ -49,11 +49,46 @@ describe('ai-bootstrap CLI', () => {
 
     const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
     expect(config.aiTools).toEqual(['copilot']);
+    expect(config.projectType).toBe('backend');
     expect(config.backend).toBe(true);
     expect(config.frontend).toBe(false);
   });
 
-  it('reports initialized status via the check command', () => {
+  it('initializes frontend project when --type frontend is supplied', () => {
+    execFileSync('node', [
+      CLI_PATH, 'init', tempDir, 
+      '--ai', 'cursor',
+      '--type', 'frontend',
+      '--name', 'Frontend App',
+      '--description', 'Frontend Test Description'
+    ], {
+      cwd: PROJECT_ROOT,
+      stdio: 'pipe'
+    });
+
+    const configPath = path.join(tempDir, '.ai-bootstrap', 'core', 'config.json');
+    expect(fs.existsSync(configPath)).toBe(true);
+
+    const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+    expect(config.aiTools).toEqual(['cursor']);
+    expect(config.projectType).toBe('frontend');
+    expect(config.backend).toBe(false);
+    expect(config.frontend).toBe(true);
+
+    // Verify frontend prompts are copied
+    const frontendPromptPath = path.join(tempDir, '.cursor', 'commands', 'bootstrap.md');
+    expect(fs.existsSync(frontendPromptPath)).toBe(true);
+
+    // Verify frontend templates are copied (templates are copied directly to templates/, not templates/frontend/)
+    const frontendTemplatePath = path.join(tempDir, '.ai-bootstrap', 'templates', 'ai-instructions.md');
+    expect(fs.existsSync(frontendTemplatePath)).toBe(true);
+    
+    // Verify frontend-specific template exists
+    const componentsTemplatePath = path.join(tempDir, '.ai-bootstrap', 'templates', 'docs', 'components.md');
+    expect(fs.existsSync(componentsTemplatePath)).toBe(true);
+  });
+
+  it('reports initialized status via the check command (backend)', () => {
     execFileSync('node', [
       CLI_PATH, 'init', tempDir, 
       '--ai', 'claude',
@@ -70,5 +105,27 @@ describe('ai-bootstrap CLI', () => {
         stdio: 'pipe'
       });
     }).not.toThrow();
+  });
+
+  it('reports initialized status via the check command (frontend)', () => {
+    execFileSync('node', [
+      CLI_PATH, 'init', tempDir, 
+      '--ai', 'claude',
+      '--type', 'frontend',
+      '--name', 'Frontend Project',
+      '--description', 'Frontend Description'
+    ], {
+      cwd: PROJECT_ROOT,
+      stdio: 'pipe'
+    });
+
+    const output = execFileSync('node', [CLI_PATH, 'check'], {
+      cwd: tempDir,
+      stdio: 'pipe',
+      encoding: 'utf8'
+    });
+
+    expect(output).toContain('Frontend');
+    expect(output).toContain('frontend');
   });
 });
