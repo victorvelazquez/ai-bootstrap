@@ -135,6 +135,15 @@ npm install -g ai-bootstrap
 uv tool install ai-bootstrap
 ```
 
+**Versión actual:** 1.1.1
+
+**Archivos publicados en npm:**
+- dist/
+- prompts/
+- templates/
+- README.md
+- LICENSE
+
 ---
 
 ## 🚀 Quick Start
@@ -202,6 +211,63 @@ Read .ai-bootstrap/prompts/frontend/bootstrap.md and execute the 7-phase questio
 # For mobile projects
 Read .ai-bootstrap/prompts/mobile/bootstrap.md and execute the 7-phase questionnaire
 ```
+
+## 🛠️ CLI Commands
+
+### Command: `init`
+
+Initialize a new project with AI-ready documentation.
+
+**Syntax:**
+```bash
+ai-bootstrap init [path] [options]
+```
+
+**Arguments:**
+- `[path]` - Target directory (defaults to current directory `.`)
+
+### CLI Flags
+
+| Flag            | Descripción                                               |
+|-----------------|----------------------------------------------------------|
+| --ai <tool>     | Selecciona la herramienta de IA (claude, cursor, copilot, gemini, all) |
+| --type <type>   | Tipo de proyecto (backend, frontend, fullstack, mobile)  |
+| --name <name>   | Nombre del proyecto (omite prompt interactivo)           |
+| --description <desc> | Descripción del proyecto (omite prompt interactivo)  |
+| --verbose       | Activa logging detallado                                 |
+| --dry-run       | Simula sin escribir archivos                             |
+
+> Requiere Node.js >=18.0.0 para ejecutar todos los comandos.
+
+### Ejemplos de uso
+
+```bash
+# Inicializar con herramienta de IA y tipo de proyecto
+ai-bootstrap init . --ai claude --type backend
+
+# Inicializar con nombre y descripción personalizados
+ai-bootstrap init . --name "Mi API" --description "API para gestión de usuarios"
+
+# Simular sin crear archivos
+ai-bootstrap init . --dry-run
+
+# Activar logging detallado
+ai-bootstrap init . --verbose
+
+# Usar todos los flags juntos
+ai-bootstrap init ./my-project --ai copilot --type fullstack --name "Mi App" --description "App completa" --verbose
+```
+
+### Command: `check`
+
+Verify if your project is properly initialized with AI Bootstrap.
+
+**Syntax:**
+```bash
+ai-bootstrap check
+```
+
+---
 
 ### 4. Answer Questions
 
