@@ -264,12 +264,14 @@ The number and type of documents generated depends on your project type:
 ### Backend Projects (16 documents)
 
 **Core Documents (4):**
+
 - `AGENT.md` - Universal AI configuration, aggregator
 - `ai-instructions.md` - Tech stack, NEVER/ALWAYS rules
 - `project-brief.md` - Business context, objectives, scope
 - `README.md` - Project overview, setup instructions
 
 **Technical Docs (9):**
+
 - `docs/architecture.md` - System architecture, design patterns
 - `docs/data-model.md` - Detailed entity catalog, ownership rules
 - `docs/code-standards.md` - Naming conventions, quality rules
@@ -278,43 +280,48 @@ The number and type of documents generated depends on your project type:
 - `docs/business-flows.md` - Business workflows, process diagrams
 - `docs/api.md` - API conventions, CRUD endpoints, contracts
 - `docs/contributing.md` - Development setup, workflow
-- `docs/spec-kit-integration.md` - Spec-Kit integration guide and document mapping
 
 **Specifications (2):**
+
 - `specs/security.md` - Authentication, authorization, compliance
 - `specs/configuration.md` - Environment variables, external services
 
 **Configuration (1):**
+
 - `.env.example` - Environment variable template
 
 ### Frontend Projects (11 documents)
 
 **Core Documents (4):**
+
 - `AGENT.md` - Universal AI configuration, aggregator
 - `ai-instructions.md` - Tech stack, NEVER/ALWAYS rules
 - `project-brief.md` - Business context, objectives, scope
 - `README.md` - Project overview, setup instructions
 
 **Technical Docs (6):**
+
 - `docs/architecture.md` - System architecture, design patterns
 - `docs/components.md` - Component architecture and patterns
 - `docs/state-management.md` - State management patterns
 - `docs/styling.md` - Styling guidelines and design system
 - `docs/testing.md` - Testing strategy, coverage requirements
-- `docs/spec-kit-integration.md` - Spec-Kit integration guide and document mapping
 
 **Specifications (1):**
+
 - `specs/configuration.md` - Environment variables, external services
 
 ### Mobile Projects (15 documents)
 
 **Core Documents (4):**
+
 - `AGENT.md` - Universal AI configuration, aggregator
 - `ai-instructions.md` - Tech stack, NEVER/ALWAYS rules
 - `project-brief.md` - Business context, objectives, scope
 - `README.md` - Project overview, setup instructions
 
 **Technical Docs (10):**
+
 - `docs/architecture.md` - System architecture, design patterns
 - `docs/navigation.md` - Navigation patterns and setup
 - `docs/state-management.md` - State management patterns
@@ -324,9 +331,9 @@ The number and type of documents generated depends on your project type:
 - `docs/code-standards.md` - Code standards and conventions
 - `docs/testing.md` - Testing strategy
 - `docs/app-store.md` - App Store configuration
-- `docs/spec-kit-integration.md` - Spec-Kit integration guide and document mapping
 
 **Specifications (2):**
+
 - `specs/build-configuration.md` - Build and CI/CD configuration
 - `specs/deployment.md` - Deployment procedures
 
@@ -335,12 +342,14 @@ The number and type of documents generated depends on your project type:
 Fullstack projects combine documentation from both backend and frontend, with fullstack-specific templates for common files (README, ai-instructions, project-brief, configuration) that merge both perspectives.
 
 **Core Documents (4):**
+
 - `AGENT.md` - Universal AI configuration, aggregator
 - `ai-instructions.md` - Combined tech stack (backend + frontend), NEVER/ALWAYS rules
 - `project-brief.md` - Combined business context (backend + frontend)
 - `README.md` - Combined project overview (backend + frontend)
 
 **Backend Technical Docs (8):**
+
 - `docs/architecture.md` - Backend system architecture
 - `docs/data-model.md` - Backend entity catalog
 - `docs/code-standards.md` - Backend code quality rules
@@ -351,6 +360,7 @@ Fullstack projects combine documentation from both backend and frontend, with fu
 - `docs/contributing.md` - Backend development setup
 
 **Frontend Technical Docs (5):**
+
 - `docs/components.md` - Frontend component architecture
 - `docs/state-management.md` - Frontend state patterns
 - `docs/styling.md` - Frontend styling guidelines
@@ -358,16 +368,15 @@ Fullstack projects combine documentation from both backend and frontend, with fu
 - `docs/architecture.md` - Frontend architecture (may merge with backend)
 
 **Specifications (2):**
+
 - `specs/security.md` - Backend security policies
 - `specs/configuration.md` - Combined environment config (backend + frontend)
 
 **Configuration (1):**
+
 - `.env.example` - Combined environment variables
 
-**Integration Guides (1):**
-- `docs/spec-kit-integration.md` - Spec-Kit integration guide and document mapping
-
-**Total:** ~21 documents (varies based on merge strategy)
+**Total:** ~20 documents (varies based on merge strategy)
 
 ---
 
@@ -394,12 +403,14 @@ As your project evolves, your code changes but your documentation may become out
 **When to use:**
 
 **Backend:**
+
 - After adding new API endpoints
 - After modifying database entities
 - After adding new dependencies
 - After changing project structure
 
 **Frontend:**
+
 - After adding new components
 - After modifying state management (stores, hooks)
 - After changing styling approach or design tokens
@@ -407,6 +418,7 @@ As your project evolves, your code changes but your documentation may become out
 - After changing project structure
 
 **Mobile:**
+
 - After adding new screens
 - After modifying navigation structure
 - After requesting new permissions
@@ -416,6 +428,7 @@ As your project evolves, your code changes but your documentation may become out
 - After changing project structure
 
 **Fullstack:**
+
 - Run `/backend-docs-update` for backend changes
 - Run `/frontend-docs-update` for frontend changes
 
@@ -569,6 +582,7 @@ After initialization, you can use these commands in your AI tool:
 - `/bootstrap` - Full 8-phase documentation generation
 
 **Backend Projects:**
+
 - `/bootstrap-phase0-context` - Context Discovery (existing projects only)
 - `/bootstrap-phase1-business` - Discovery & Business only
 - `/bootstrap-phase2-data` - Data Architecture only
@@ -579,6 +593,7 @@ After initialization, you can use these commands in your AI tool:
 - `/bootstrap-phase7-operations` - Operations + Tools only
 
 **Frontend Projects:**
+
 - `/bootstrap-phase0-context` - Context Discovery (existing projects only)
 - `/bootstrap-phase1-discovery` - Discovery & UX only
 - `/bootstrap-phase2-components` - Components & Framework only
@@ -589,6 +604,7 @@ After initialization, you can use these commands in your AI tool:
 - `/bootstrap-phase7-deployment` - Deployment only
 
 **Mobile Projects:**
+
 - `/bootstrap-phase0-context` - Context Discovery (existing projects only)
 - `/bootstrap-phase1-platform` - Platform & Framework Selection only
 - `/bootstrap-phase2-navigation` - Navigation & Architecture only
@@ -837,32 +853,6 @@ class User(Base):          # ✅ Entity: User
 - **Caching benefit:** 0 seconds on subsequent runs
 - **Ongoing savings:** Same as new projects (10-20 hours)
 - **Universal:** Works with any of 12 supported languages
-
----
-
-## 🔧 Optional: Spec-Kit Integration
-
-After running `/bootstrap`, you can optionally use [GitHub Spec-Kit](https://github.com/github/spec-kit) for structured feature development:
-
-```bash
-uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
-specify init
-```
-
-**Integration Guide:** See `docs/spec-kit-integration.md` (generated after bootstrap) for complete document mapping and usage instructions.
-
-**Spec-Kit adds:**
-
-- `/speckit.constitution` - Load project rules
-- `/speckit.specify` - Define what to build
-- `/speckit.plan` - Define how to build
-- `/speckit.tasks` - Break into tasks
-- `/speckit.implement` - Generate code
-- `/speckit.checklist` - Verify completeness
-
-**How it works:** The integration guide (`docs/spec-kit-integration.md`) maps each Spec-Kit command to the relevant AI Bootstrap documents, ensuring your Spec-Kit workflows align with your project's architecture, standards, and patterns.
-
-AI Bootstrap + Spec-Kit = **Complete AI-assisted development workflow**
 
 ---
 
