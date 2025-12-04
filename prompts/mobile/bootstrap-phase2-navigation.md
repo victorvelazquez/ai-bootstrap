@@ -319,6 +319,225 @@ C) **No Protection**
 
 ---
 
+#### 🎨 MERMAID NAVIGATION DIAGRAM FORMATS - CRITICAL
+
+**Use these exact formats** for mobile navigation diagrams:
+
+---
+
+##### 1️⃣ Navigation Structure (Tab + Stack Pattern)
+
+Use `graph TD` to show navigation hierarchy:
+
+```mermaid
+graph TD
+    subgraph "App Navigation"
+        ROOT[Root Navigator]
+    end
+
+    subgraph "Tab Navigator"
+        TAB1[Home Tab]
+        TAB2[Search Tab]
+        TAB3[Profile Tab]
+        TAB4[Settings Tab]
+    end
+
+    subgraph "Stack Navigators"
+        subgraph "Home Stack"
+            H1[Home Screen]
+            H2[Product Detail]
+            H3[Cart]
+            H4[Checkout]
+        end
+
+        subgraph "Search Stack"
+            S1[Search Screen]
+            S2[Results]
+            S3[Filter]
+        end
+
+        subgraph "Profile Stack"
+            P1[Profile Screen]
+            P2[Edit Profile]
+            P3[Orders History]
+        end
+    end
+
+    ROOT --> TAB1
+    ROOT --> TAB2
+    ROOT --> TAB3
+    ROOT --> TAB4
+
+    TAB1 --> H1
+    H1 --> H2
+    H2 --> H3
+    H3 --> H4
+
+    TAB2 --> S1
+    S1 --> S2
+    S2 --> S3
+
+    TAB3 --> P1
+    P1 --> P2
+    P1 --> P3
+
+    style ROOT fill:#e3f2fd
+    style TAB1 fill:#e1f5ff
+    style TAB2 fill:#e1f5ff
+    style TAB3 fill:#e1f5ff
+    style TAB4 fill:#e1f5ff
+    style H1 fill:#fff4e6
+    style S1 fill:#fff4e6
+    style P1 fill:#fff4e6
+```
+
+**Use for:** Tab-based apps with nested stacks (Instagram, Twitter pattern)
+
+---
+
+##### 2️⃣ Authentication Flow
+
+Use `graph LR` to show auth-protected navigation:
+
+```mermaid
+graph LR
+    subgraph "Unauthenticated"
+        SPLASH[Splash Screen]
+        ONBOARD[Onboarding]
+        LOGIN[Login Screen]
+        REGISTER[Register Screen]
+    end
+
+    subgraph "Authenticated"
+        MAIN[Main App<br/>Tab Navigator]
+        HOME[Home]
+        PROFILE[Profile]
+    end
+
+    SPLASH -->|First Launch| ONBOARD
+    SPLASH -->|Returning User| CHECK{Authenticated?}
+    ONBOARD --> LOGIN
+    LOGIN --> REGISTER
+    LOGIN -->|Success| MAIN
+    REGISTER -->|Success| MAIN
+
+    CHECK -->|Yes| MAIN
+    CHECK -->|No| LOGIN
+
+    MAIN --> HOME
+    MAIN --> PROFILE
+
+    style SPLASH fill:#e3f2fd
+    style CHECK fill:#fff9c4
+    style MAIN fill:#e8f5e9
+    style LOGIN fill:#fce4ec
+    style REGISTER fill:#fce4ec
+```
+
+**Use for:** Apps with authentication/onboarding flows
+
+---
+
+##### 3️⃣ Deep Linking Routes
+
+Use `graph TD` to show deep link structure:
+
+```mermaid
+graph TD
+    subgraph "Deep Link Routes"
+        ROOT[myapp://]
+    end
+
+    subgraph "Public Routes"
+        PRODUCT[/product/:id]
+        CATEGORY[/category/:slug]
+        PROMO[/promo/:code]
+    end
+
+    subgraph "Protected Routes"
+        ORDER[/order/:id<br/>⚠️ Auth Required]
+        PROFILE_VIEW[/profile/:userId<br/>⚠️ Auth Required]
+    end
+
+    ROOT --> PRODUCT
+    ROOT --> CATEGORY
+    ROOT --> PROMO
+    ROOT --> ORDER
+    ROOT --> PROFILE_VIEW
+
+    PRODUCT -->|Opens| PD[Product Detail Screen]
+    CATEGORY -->|Opens| CL[Category List Screen]
+    ORDER -->|Opens| OD[Order Detail Screen]
+
+    style ROOT fill:#e3f2fd
+    style PRODUCT fill:#e8f5e9
+    style CATEGORY fill:#e8f5e9
+    style PROMO fill:#e8f5e9
+    style ORDER fill:#fce4ec
+    style PROFILE_VIEW fill:#fce4ec
+```
+
+**Use for:** Apps with universal links/app links
+
+---
+
+##### 4️⃣ Screen Hierarchy (Feature-based)
+
+Use `graph TB` to show folder/screen organization:
+
+```mermaid
+graph TB
+    subgraph "Mobile App Structure"
+        subgraph "screens/"
+            subgraph "auth/"
+                A1[LoginScreen.tsx]
+                A2[RegisterScreen.tsx]
+                A3[ForgotPasswordScreen.tsx]
+            end
+
+            subgraph "home/"
+                H1[HomeScreen.tsx]
+                H2[ProductDetailScreen.tsx]
+            end
+
+            subgraph "profile/"
+                P1[ProfileScreen.tsx]
+                P2[EditProfileScreen.tsx]
+                P3[OrdersScreen.tsx]
+            end
+        end
+
+        subgraph "navigation/"
+            NAV[RootNavigator.tsx]
+            TAB[TabNavigator.tsx]
+            STACK[StackNavigators.tsx]
+        end
+    end
+
+    NAV --> TAB
+    TAB --> STACK
+    STACK -.-> H1
+    STACK -.-> P1
+    STACK -.-> A1
+
+    style NAV fill:#e3f2fd
+    style TAB fill:#e1f5ff
+    style STACK fill:#fff4e6
+```
+
+**Use for:** Documenting folder structure and file organization
+
+---
+
+**Diagram Guidelines:**
+- Color code by level (Root=light blue, Tabs=blue, Stacks=orange, Screens=default)
+- Use subgraphs to group related screens
+- Show authentication checks with decision diamonds
+- Include deep link routes with ⚠️ for protected routes
+- Update screen names based on actual app structure
+
+---
+
 ## ✅ Phase 2 Completion
 
 After answering all questions, summarize:

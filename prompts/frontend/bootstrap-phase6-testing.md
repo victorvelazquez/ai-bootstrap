@@ -155,6 +155,72 @@ D) **Testing Trophy** (Kent C. Dodds)
 
 ---
 
+#### 🎨 TESTING PYRAMID VISUALIZATION
+
+**Use this diagram format** to visualize test distribution strategy:
+
+```mermaid
+graph TB
+    subgraph "Testing Pyramid"
+        E2E["🌐 E2E Tests (10%)<br/>Slow, Expensive<br/>Full user flows"]
+        INT["🔗 Integration Tests (20%)<br/>Medium Speed<br/>Component interaction"]
+        UNIT["⚡ Unit Tests (70%)<br/>Fast, Cheap<br/>Individual functions/components"]
+    end
+
+    E2E --> INT
+    INT --> UNIT
+
+    style E2E fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    style INT fill:#fff4e6,stroke:#f57c00,stroke-width:2px
+    style UNIT fill:#e8f5e9,stroke:#388e3c,stroke-width:3px
+
+    classDef note fill:#f5f5f5,stroke:#666,stroke-dasharray: 5 5
+
+    note1["Cost ↑<br/>Speed ↓<br/>Confidence ↑"]:::note
+    note2["Cost ↓<br/>Speed ↑<br/>Confidence varies"]:::note
+
+    E2E -.-> note1
+    UNIT -.-> note2
+```
+
+**Alternative: Testing Trophy (Kent C. Dodds)**
+
+For apps prioritizing integration tests over unit tests:
+
+```mermaid
+graph TB
+    subgraph "Testing Trophy"
+        E2E["🌐 E2E Tests (20%)<br/>Critical user paths"]
+        INT["🔗 Integration Tests (50%)<br/>⭐ Focus here<br/>Component + API interaction"]
+        UNIT["⚡ Unit Tests (30%)<br/>Complex logic only"]
+        STATIC["📝 Static Analysis (Base)<br/>TypeScript + ESLint"]
+    end
+
+    E2E --> INT
+    INT --> UNIT
+    UNIT --> STATIC
+
+    style E2E fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    style INT fill:#fff4e6,stroke:#f57c00,stroke-width:4px
+    style UNIT fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
+    style STATIC fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+```
+
+**When to Use Each Visualization:**
+
+- **Testing Pyramid**: Best for traditional apps, backend-heavy logic, libraries
+- **Testing Trophy**: Best for React apps, user-centric products, component-driven UIs
+
+**Diagram Guidelines:**
+- Color code by test type (E2E=pink, Integration=orange, Unit=green)
+- Show percentages clearly
+- Include speed/cost trade-offs
+- Update percentages based on selected strategy (A, B, C, or D)
+
+---
+
+---
+
 ### Question 6.5: Code Coverage Targets
 
 **What coverage percentage will you target?**

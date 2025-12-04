@@ -370,6 +370,222 @@ Update cancelled. Run `/docs-update` when you're ready to update the documentati
    - Regenerate architecture diagrams when structure changes
    - Use mermaid format for all diagrams
 
+---
+
+## 📊 MOBILE DIAGRAM REGENERATION GUIDELINES
+
+When regenerating mobile diagrams, follow these **critical** formatting rules:
+
+### Navigation Diagrams (navigation.md)
+
+**Diagram Types:** `graph TD`, `graph LR`
+
+**Requirements:**
+1. Show navigation hierarchy (Root → Tab → Stack → Screens)
+2. Use subgraphs to group navigators and screens
+3. Color code by level (Root=light blue, Tabs=blue, Stacks=orange)
+4. Show authentication flows with decision diamonds
+5. Include deep linking routes with ⚠️ for protected routes
+6. Include actual screen names from the codebase
+
+**Quality Checklist:**
+- [ ] Code fence is exactly ` ```mermaid ` (lowercase, no spaces)
+- [ ] All major screens from src/screens/ are represented
+- [ ] Navigation hierarchy is clear (Tab + Stack pattern)
+- [ ] Colors are consistent (Root=#e3f2fd, Tabs=#e1f5ff, Stacks=#fff4e6)
+- [ ] Diagram renders without errors
+- [ ] Screen names match actual file names
+- [ ] Authentication flow shows protected routes
+
+**Example (Tab + Stack Navigation):**
+````markdown
+```mermaid
+graph TD
+    subgraph "App Navigation"
+        ROOT[Root Navigator]
+    end
+
+    subgraph "Tab Navigator"
+        TAB1[Home Tab]
+        TAB2[Profile Tab]
+    end
+
+    subgraph "Stack Navigators"
+        subgraph "Home Stack"
+            H1[Home Screen]
+            H2[Product Detail]
+        end
+
+        subgraph "Profile Stack"
+            P1[Profile Screen]
+            P2[Edit Profile]
+        end
+    end
+
+    ROOT --> TAB1
+    ROOT --> TAB2
+
+    TAB1 --> H1
+    H1 --> H2
+
+    TAB2 --> P1
+    P1 --> P2
+
+    style ROOT fill:#e3f2fd
+    style TAB1 fill:#e1f5ff
+    style H1 fill:#fff4e6
+    style P1 fill:#fff4e6
+```
+````
+
+---
+
+### State Management Diagrams (state-management.md)
+
+**Diagram Types:** `graph LR`, `sequenceDiagram`, `graph TD`
+
+**Requirements:**
+1. Show all state types (Server, Client, Local Storage, Cache)
+2. Label with actual tools used (Redux, TanStack Query, AsyncStorage, etc.)
+3. For sequence diagrams: show complete offline/online flow
+4. For decision trees: show clear Yes/No branches
+5. Include mobile-specific concerns (offline-first, slow networks)
+6. Show cache layers (AsyncStorage, MMKV, WatermelonDB, Realm)
+
+**Quality Checklist:**
+- [ ] Code fence is exactly ` ```mermaid `
+- [ ] All state management tools are documented
+- [ ] Offline/online paths are clearly distinguished
+- [ ] State types are color coded consistently
+- [ ] Sequence diagrams show timing and sync operations
+- [ ] Cache layers are explicitly shown
+- [ ] Decision trees have all paths covered
+
+**Example (Mobile State with Offline):**
+````markdown
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant UI as Screen
+    participant Store as State Manager
+    participant Cache as Local Cache
+    participant API as API Service
+    participant BE as Backend
+
+    U->>UI: Open Product List
+    UI->>Store: Request products
+    Store->>Cache: Check local cache
+
+    alt Cache Hit (Offline Mode)
+        Cache-->>Store: Return cached data
+        Store-->>UI: Display cached products
+        UI-->>U: Show products (stale)
+    end
+
+    alt Online Mode
+        Store->>API: Fetch fresh products
+        API->>BE: GET /api/products
+        BE-->>API: 200 OK + data
+        API-->>Store: Return products
+        Store->>Cache: Update cache
+        Store-->>UI: Display fresh products
+        UI-->>U: Show products (fresh)
+    end
+
+    Note over Cache: Cache valid for 5min
+```
+````
+
+---
+
+### Testing Diagrams (testing.md)
+
+**Diagram Type:** `graph TB`
+
+**Requirements:**
+1. Show testing pyramid (70/20/10 distribution)
+2. Distinguish between device and emulator tests
+3. Include platform-specific tests (iOS/Android)
+4. Show speed/cost trade-offs
+5. Include all test types (Unit, Integration, E2E, Static)
+
+**Quality Checklist:**
+- [ ] Code fence is exactly ` ```mermaid `
+- [ ] Testing pyramid shows correct percentages
+- [ ] Mobile-specific concerns are highlighted (devices, emulators)
+- [ ] Platform-specific tests are distinguished (iOS vs Android)
+- [ ] Speed/cost annotations are included
+- [ ] Cross-platform testing strategy is clear
+
+**Example (Mobile Testing Pyramid):**
+````markdown
+```mermaid
+graph TB
+    subgraph "Mobile Testing Pyramid"
+        E2E["📱 E2E Tests (10%)<br/>Detox/Appium<br/>Slow, Expensive<br/>Full user flows on device"]
+        INT["🔗 Integration Tests (20%)<br/>Component + API<br/>Medium Speed<br/>Screen rendering + navigation"]
+        UNIT["⚡ Unit Tests (70%)<br/>Jest/XCTest<br/>Fast, Cheap<br/>Business logic, hooks, utilities"]
+    end
+
+    E2E --> INT
+    INT --> UNIT
+
+    style E2E fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    style INT fill:#fff4e6,stroke:#f57c00,stroke-width:2px
+    style UNIT fill:#e8f5e9,stroke:#388e3c,stroke-width:3px
+```
+````
+
+---
+
+### Common Formatting Rules (ALL Mobile Diagrams)
+
+**CRITICAL - Code Fence Syntax:**
+```
+✅ CORRECT: ```mermaid
+❌ WRONG:   ```Mermaid (capital M)
+❌ WRONG:   ``` mermaid (extra space)
+```
+
+**Color Coding Standards (Mobile):**
+- Root Navigator: `#e3f2fd` (very light blue)
+- Tab Navigator: `#e1f5ff` (light blue)
+- Stack Navigator: `#fff4e6` (light orange)
+- Screens: default or specific colors
+- Protected Routes: `#fce4ec` (light pink)
+- Server State: `#e1f5ff` (light blue)
+- Client State: `#fff4e6` (light orange)
+- Local Storage: `#e8f5e9` (light green)
+- Cache: `#f3e5f5` (light purple)
+- E2E Tests: `#fce4ec` (light pink)
+- Integration Tests: `#fff4e6` (light orange)
+- Unit Tests: `#e8f5e9` (light green)
+
+**Validation Steps:**
+1. Test diagram at https://mermaid.live/ before saving
+2. Verify all screen/component names match actual codebase
+3. Check that arrows flow in logical direction (top-down, left-right)
+4. Confirm colors are applied consistently
+5. Ensure diagram is readable (not too crowded)
+6. Verify platform-specific considerations are included
+
+**When Updating Existing Diagrams:**
+1. Read current diagram first
+2. Identify added/removed/modified screens or components
+3. Maintain existing styling and layout patterns
+4. Update relationships based on code changes
+5. Verify entire diagram still renders after changes
+
+**Mobile-Specific Considerations:**
+- Always show offline/online paths for state diagrams
+- Include cache layers (AsyncStorage, MMKV, WatermelonDB, Realm)
+- Distinguish between iOS and Android when platform-specific
+- Show device vs emulator distinction in testing diagrams
+- Include deep linking routes in navigation diagrams
+- Highlight authentication flows and protected routes
+
+---
+
 5. **Error Handling:**
    - If document doesn't exist, create it following template
    - If analysis.json is corrupted, regenerate it

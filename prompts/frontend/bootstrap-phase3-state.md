@@ -449,6 +449,156 @@ F) **Combined Approach**
 
 ---
 
+#### 🎨 MERMAID STATE MANAGEMENT DIAGRAM FORMATS - CRITICAL
+
+**Use these exact formats** for state management diagrams mentioned in documentation:
+
+---
+
+##### 1️⃣ State Categories & Store Organization
+
+Use `graph LR` to show different state types and their tools:
+
+````markdown
+```mermaid
+graph LR
+    subgraph "State Types"
+        SS[Server State<br/>TanStack Query<br/>React Query]
+        CS[Client State<br/>Zustand/Redux<br/>Context]
+        US[URL State<br/>React Router<br/>Query Params]
+        FS[Form State<br/>React Hook Form<br/>Formik]
+        LS[Local State<br/>useState<br/>useReducer]
+    end
+
+    subgraph "Components"
+        C1[ProductList]
+        C2[UserProfile]
+        C3[SearchPage]
+        C4[CheckoutForm]
+        C5[DropdownMenu]
+    end
+
+    SS -.->|products, users| C1
+    SS -.->|user data| C2
+    CS -.->|theme, auth| C1
+    CS -.->|auth| C2
+    US -.->|search query| C3
+    FS -.->|form data| C4
+    LS -.->|isOpen| C5
+
+    style SS fill:#e1f5ff
+    style CS fill:#fff4e6
+    style US fill:#e8f5e9
+    style FS fill:#fce4ec
+    style LS fill:#f3e5f5
+```
+````
+
+**Use for:** Deciding where to store state, showing state architecture, documenting state tools
+
+---
+
+##### 2️⃣ Data Flow Sequence (API to UI)
+
+Use `sequenceDiagram` to show step-by-step data flow:
+
+````markdown
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant C as Component
+    participant S as Store/Hook
+    participant API as API Service
+    participant BE as Backend
+
+    U->>C: Click "Load Products"
+    C->>S: useProducts() hook
+    S->>API: fetchProducts()
+    API->>BE: GET /api/products
+    BE-->>API: 200 OK + data
+    API-->>S: Return products[]
+    S->>S: Update cache
+    S-->>C: products data
+    C->>U: Render UI
+
+    Note over S: TanStack Query<br/>caches for 5min
+
+    U->>C: Click "Add to Cart"
+    C->>S: addToCart(productId)
+    S->>S: Update client state
+    S-->>C: cart updated
+    C->>U: Show cart badge
+```
+````
+
+**Use for:** Showing request/response cycles, async operations, state updates, caching behavior
+
+---
+
+##### 3️⃣ State Location Decision Tree
+
+Use `graph TD` to help developers choose where to store state:
+
+````markdown
+```mermaid
+graph TD
+    A[New State Needed] --> B{From Server?}
+    B -->|Yes| C[Use TanStack Query<br/>Server State<br/>Auto-caching]
+    B -->|No| D{Shared Across<br/>Components?}
+    D -->|Yes| E{Needs to<br/>Persist?}
+    E -->|Yes| F[Use Zustand +<br/>localStorage<br/>Client State]
+    E -->|No| G[Use Zustand or<br/>Context<br/>Client State]
+    D -->|No| H{In URL?}
+    H -->|Yes| I[Use React Router<br/>searchParams<br/>URL State]
+    H -->|No| J{Form Data?}
+    J -->|Yes| K[Use React Hook Form<br/>Form State]
+    J -->|No| L[Use useState/useReducer<br/>Local Component State]
+
+    style C fill:#e1f5ff
+    style F fill:#fff4e6
+    style G fill:#fff4e6
+    style I fill:#e8f5e9
+    style K fill:#fce4ec
+    style L fill:#f3e5f5
+```
+````
+
+**Use for:** Decision-making guide, onboarding new developers, documenting state strategy
+
+---
+
+**Best Practices for State Management Diagrams:**
+
+1. **Use Sequence Diagrams for Time-Based Flows:**
+   - Show async operations step-by-step
+   - Include caching behavior
+   - Document timing (e.g., "caches for 5min")
+
+2. **Use Graph Diagrams for Relationships:**
+   - State categories and their connections
+   - Decision trees for choosing state location
+   - Component-to-store relationships
+
+3. **Color Code by State Type:**
+   - Server State: `#e1f5ff` (light blue)
+   - Client State: `#fff4e6` (light orange)
+   - URL State: `#e8f5e9` (light green)
+   - Form State: `#fce4ec` (light pink)
+   - Local State: `#f3e5f5` (light purple)
+
+4. **Include Tool Names:** Always specify actual tools (TanStack Query, Zustand, React Hook Form, etc.)
+
+5. **Show Data Flow Direction:** Use solid arrows for data flow, dotted for state updates
+
+**Common Formatting Rules:**
+- Code fence: ` ```mermaid ` (lowercase, no spaces, three backticks)
+- Use `sequenceDiagram` for API calls and async flows
+- Use `graph TD` for decision trees
+- Use `graph LR` for category relationships
+- Preview at https://mermaid.live/ before saving
+
+---
+
 ## 📊 Phase 3 Summary
 
 ```

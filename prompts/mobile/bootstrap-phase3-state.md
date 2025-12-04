@@ -365,6 +365,194 @@ C) **No Background Refresh**
 
 ---
 
+#### 🎨 MERMAID STATE MANAGEMENT DIAGRAM FORMATS - CRITICAL
+
+**Use these exact formats** for mobile state management diagrams:
+
+---
+
+##### 1️⃣ Mobile State Architecture (Server + Client + Local)
+
+Use `graph LR` to show different state types:
+
+```mermaid
+graph LR
+    subgraph "State Types"
+        SERVER[Server State<br/>Redux Toolkit Query<br/>TanStack Query]
+        CLIENT[Client State<br/>Redux/Zustand]
+        LOCAL[Local Storage<br/>AsyncStorage<br/>MMKV]
+        CACHE[Cache<br/>WatermelonDB<br/>Realm]
+    end
+
+    subgraph "Mobile App Components"
+        S1[Home Screen]
+        S2[Profile Screen]
+        S3[Product List]
+        S4[Cart Screen]
+    end
+
+    SERVER -.->|products, users| S3
+    SERVER -.->|user profile| S2
+    CLIENT -.->|cart items, theme| S1
+    CLIENT -.->|auth token| S2
+    LOCAL -.->|user preferences| S1
+    CACHE -.->|offline data| S3
+    CACHE -.->|synced items| S4
+
+    style SERVER fill:#e1f5ff
+    style CLIENT fill:#fff4e6
+    style LOCAL fill:#e8f5e9
+    style CACHE fill:#f3e5f5
+```
+
+**Use for:** Mobile apps with offline-first strategy
+
+---
+
+##### 2️⃣ Data Flow with Offline Support
+
+Use `sequenceDiagram` to show complete data sync cycle:
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant UI as Screen
+    participant Store as State Manager
+    participant Cache as Local Cache
+    participant API as API Service
+    participant BE as Backend
+
+    U->>UI: Open Product List
+    UI->>Store: Request products
+    Store->>Cache: Check local cache
+
+    alt Cache Hit (Offline Mode)
+        Cache-->>Store: Return cached data
+        Store-->>UI: Display cached products
+        UI-->>U: Show products (stale)
+    end
+
+    alt Online Mode
+        Store->>API: Fetch fresh products
+        API->>BE: GET /api/products
+        BE-->>API: 200 OK + data
+        API-->>Store: Return products
+        Store->>Cache: Update cache
+        Store-->>UI: Display fresh products
+        UI-->>U: Show products (fresh)
+    end
+
+    Note over Cache: Cache valid for 5min
+
+    U->>UI: Add to cart (Offline)
+    UI->>Store: Add item to cart
+    Store->>Cache: Save to pending queue
+    Store-->>UI: Optimistic update
+    UI-->>U: Show cart updated
+
+    Note over Store,API: When online detected
+    Store->>API: Sync pending items
+    API->>BE: POST /api/cart/add
+    BE-->>API: 201 Created
+    API-->>Store: Confirm sync
+    Store->>Cache: Clear pending queue
+```
+
+**Use for:** Apps with offline support and data synchronization
+
+---
+
+##### 3️⃣ State Decision Tree (Mobile-Specific)
+
+Use `graph TD` to help developers choose state strategy:
+
+```mermaid
+graph TD
+    A[New State Needed] --> B{From Backend?}
+    B -->|Yes| C{Needs Offline?}
+    C -->|Yes| D[Use Cache + Server State<br/>WatermelonDB + RTK Query]
+    C -->|No| E[Use Server State Only<br/>TanStack Query]
+
+    B -->|No| F{Persist Across<br/>App Restarts?}
+    F -->|Yes| G[Use AsyncStorage<br/>or MMKV<br/>+ Client State]
+    F -->|No| H{Shared Across<br/>Screens?}
+
+    H -->|Yes| I[Use Global State<br/>Redux/Zustand]
+    H -->|No| J{Complex Logic?}
+
+    J -->|Yes| K[Use useReducer<br/>Local State]
+    J -->|No| L[Use useState<br/>Simple Local State]
+
+    style D fill:#e1f5ff
+    style E fill:#e1f5ff
+    style G fill:#e8f5e9
+    style I fill:#fff4e6
+    style K fill:#fce4ec
+    style L fill:#fce4ec
+```
+
+**Use for:** Decision-making guide for mobile state strategy
+
+---
+
+##### 4️⃣ Redux Architecture (Mobile Pattern)
+
+Use `graph TB` to show Redux structure for mobile:
+
+```mermaid
+graph TB
+    subgraph "Mobile App"
+        SCREEN[Screen Components]
+    end
+
+    subgraph "Redux Store"
+        SLICE1[Auth Slice<br/>user, token]
+        SLICE2[Cart Slice<br/>items, total]
+        SLICE3[Settings Slice<br/>theme, language]
+        RTK[RTK Query<br/>API endpoints]
+    end
+
+    subgraph "Side Effects"
+        MIDDLEWARE[Redux Middleware]
+        PERSIST[Redux Persist<br/>AsyncStorage]
+    end
+
+    subgraph "Backend"
+        API[REST API]
+    end
+
+    SCREEN -->|dispatch| SLICE1
+    SCREEN -->|dispatch| SLICE2
+    SCREEN -->|useSelector| SLICE3
+    SCREEN -->|useQuery| RTK
+
+    RTK -->|fetch| API
+
+    SLICE1 --> MIDDLEWARE
+    SLICE2 --> MIDDLEWARE
+    MIDDLEWARE --> PERSIST
+
+    PERSIST -.->|save| LOCAL[(AsyncStorage)]
+
+    style SCREEN fill:#e3f2fd
+    style RTK fill:#e1f5ff
+    style PERSIST fill:#e8f5e9
+    style LOCAL fill:#f3e5f5
+```
+
+**Use for:** Redux-based mobile apps with persistence
+
+---
+
+**Diagram Guidelines:**
+- Show offline/online paths clearly
+- Include cache layers (AsyncStorage, MMKV, WatermelonDB)
+- Use sequence diagrams for sync flows
+- Color code: Server=blue, Client=orange, Local=green, Cache=purple
+- Include mobile-specific considerations (slow networks, offline-first)
+
+---
+
 ## ✅ Phase 3 Completion
 
 After answering all questions, summarize:

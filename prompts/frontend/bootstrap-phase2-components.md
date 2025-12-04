@@ -217,6 +217,245 @@ D) **Hybrid** (Mix of Atomic + Feature-based)
 
 ---
 
+#### 🎨 MERMAID COMPONENT DIAGRAM FORMATS - CRITICAL
+
+**Use these exact formats** for frontend component diagrams mentioned in documentation:
+
+---
+
+##### 1️⃣ Component Hierarchy (Atomic Design)
+
+Use `graph TD` to show component organization from pages down to atoms:
+
+````markdown
+```mermaid
+graph TD
+    subgraph "Pages"
+        P1[HomePage]
+        P2[ProductPage]
+        P3[CheckoutPage]
+    end
+
+    subgraph "Organisms"
+        H[Header]
+        HG[HeroSection]
+        PL[ProductList]
+        CF[CheckoutForm]
+        F[Footer]
+    end
+
+    subgraph "Molecules"
+        N[NavBar]
+        S[SearchBar]
+        PC[ProductCard]
+        FI[FormInput]
+    end
+
+    subgraph "Atoms"
+        B[Button]
+        I[Input]
+        L[Logo]
+        IC[Icon]
+    end
+
+    P1 --> H
+    P1 --> HG
+    P1 --> F
+    P2 --> H
+    P2 --> PL
+    P2 --> F
+    P3 --> H
+    P3 --> CF
+    P3 --> F
+
+    H --> N
+    H --> L
+    HG --> S
+    PL --> PC
+    CF --> FI
+
+    N --> B
+    S --> I
+    S --> B
+    PC --> B
+    PC --> IC
+    FI --> I
+    FI --> L
+
+    style P1 fill:#e1f5ff
+    style P2 fill:#e1f5ff
+    style P3 fill:#e1f5ff
+    style H fill:#fff4e6
+    style F fill:#fff4e6
+    style N fill:#e8f5e9
+    style B fill:#fce4ec
+```
+````
+
+**Use for:** Showing component organization, Atomic Design hierarchy, composition patterns
+
+---
+
+##### 2️⃣ Component Tree with Props/Events
+
+Use `graph LR` to show parent-child relationships and data flow:
+
+````markdown
+```mermaid
+graph LR
+    subgraph "Parent Component"
+        P[UserDashboard]
+    end
+
+    subgraph "Child Components"
+        H[UserHeader]
+        PR[UserProfile]
+        AF[ActivityFeed]
+        S[Sidebar]
+    end
+
+    subgraph "Grandchild Components"
+        A[Avatar]
+        E[EditButton]
+        AI[ActivityItem]
+    end
+
+    P -->|user: User| H
+    P -->|user: User| PR
+    P -->|activities: Activity[]| AF
+    P -->|menuItems: MenuItem[]| S
+
+    H --> A
+    H --> E
+    AF --> AI
+
+    E -.->|onEdit(userId)| P
+    AI -.->|onLike(activityId)| AF
+    AF -.->|onUpdate()| P
+
+    style P fill:#e1f5ff
+    style H fill:#fff4e6
+    style PR fill:#fff4e6
+    style AF fill:#fff4e6
+    style S fill:#fff4e6
+```
+````
+
+**Notation:**
+- Solid arrow `-->|prop: Type|` = Props passed down
+- Dotted arrow `-.->|event(args)|` = Events bubbled up
+- Group related components in subgraphs
+
+**Use for:** Documenting data flow, props drilling, event handling patterns
+
+---
+
+##### 3️⃣ Component File Organization
+
+Use `graph TB` to show file/folder structure:
+
+````markdown
+```mermaid
+graph TB
+    subgraph "src/components/"
+        subgraph "pages/"
+            HP[HomePage.tsx]
+            PP[ProductPage.tsx]
+        end
+
+        subgraph "organisms/"
+            H[Header/]
+            PL[ProductList/]
+        end
+
+        subgraph "molecules/"
+            N[NavBar/]
+            PC[ProductCard/]
+        end
+
+        subgraph "atoms/"
+            B[Button/]
+            I[Input/]
+        end
+    end
+
+    HP -.-> H
+    HP -.-> PL
+    H -.-> N
+    PL -.-> PC
+    PC -.-> B
+
+    style pages fill:#e1f5ff
+    style organisms fill:#fff4e6
+    style molecules fill:#e8f5e9
+    style atoms fill:#fce4ec
+```
+````
+
+**Use for:** Showing folder structure, import relationships, file organization patterns
+
+---
+
+##### 4️⃣ Application Routing Structure
+
+Use `graph TD` to show route hierarchy:
+
+````markdown
+```mermaid
+graph TD
+    ROOT[/ Root Layout] --> PUBLIC[Public Routes]
+    ROOT --> AUTH[Protected Routes]
+
+    PUBLIC --> HOME[/]
+    PUBLIC --> LOGIN[/auth/login]
+    PUBLIC --> REGISTER[/auth/register]
+    PUBLIC --> RESET[/auth/reset-password]
+
+    AUTH --> DASH[/dashboard]
+    AUTH --> PROF[/profile]
+    AUTH --> SETTINGS[/settings]
+
+    DASH --> OVERVIEW[/dashboard/overview]
+    DASH --> ANALYTICS[/dashboard/analytics]
+    DASH --> REPORTS[/dashboard/reports]
+
+    PROF --> VIEW[/profile/:userId]
+    PROF --> EDIT[/profile/:userId/edit]
+
+    SETTINGS --> ACCOUNT[/settings/account]
+    SETTINGS --> PREFS[/settings/preferences]
+
+    style ROOT fill:#e1f5ff
+    style PUBLIC fill:#e8f5e9
+    style AUTH fill:#fff4e6
+```
+````
+
+**Use for:** Documenting route structure, showing protected routes, nested routing patterns
+
+---
+
+**Best Practices for Component Diagrams:**
+
+1. **Color Code by Abstraction Level:**
+   - Pages/Routes: `#e1f5ff` (light blue)
+   - Organisms: `#fff4e6` (light orange)
+   - Molecules: `#e8f5e9` (light green)
+   - Atoms: `#fce4ec` (light pink)
+
+2. **Use Subgraphs:** Group related components by type or feature
+3. **Show Relationships:** Use solid arrows for composition, dotted for communication
+4. **Label Props:** Include TypeScript types when helpful (`user: User`, `items: Product[]`)
+5. **Keep It Readable:** Avoid overcrowding, use clear naming
+
+**Common Formatting Rules:**
+- Code fence: ` ```mermaid ` (lowercase, no spaces, three backticks)
+- Start Mermaid syntax at column 0 (no indentation before code block)
+- Use consistent colors across diagrams
+- Preview at https://mermaid.live/ before saving
+
+---
+
 ## Question 2.5: Component Library
 
 **Question:** Will you use a component library?

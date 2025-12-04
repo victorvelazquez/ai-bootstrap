@@ -196,6 +196,114 @@ C) **Heavy Integration**
 
 ---
 
+#### 🎨 MOBILE TESTING PYRAMID VISUALIZATION
+
+**Use this diagram format** to visualize mobile test distribution strategy:
+
+```mermaid
+graph TB
+    subgraph "Mobile Testing Pyramid"
+        E2E["📱 E2E Tests (10%)<br/>Detox/Appium<br/>Slow, Expensive<br/>Full user flows on device"]
+        INT["🔗 Integration Tests (20%)<br/>Component + API<br/>Medium Speed<br/>Screen rendering + navigation"]
+        UNIT["⚡ Unit Tests (70%)<br/>Jest/XCTest<br/>Fast, Cheap<br/>Business logic, hooks, utilities"]
+    end
+
+    E2E --> INT
+    INT --> UNIT
+
+    style E2E fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    style INT fill:#fff4e6,stroke:#f57c00,stroke-width:2px
+    style UNIT fill:#e8f5e9,stroke:#388e3c,stroke-width:3px
+
+    classDef note fill:#f5f5f5,stroke:#666,stroke-dasharray: 5 5
+
+    note1["Run on Real Devices/Emulators<br/>Test platform-specific behavior<br/>Slow feedback (minutes)"]:::note
+    note2["Test screen components<br/>Navigation flows<br/>API integration<br/>Medium feedback"]:::note
+    note3["Test pure functions<br/>Redux reducers<br/>Utilities, validators<br/>Fast feedback (seconds)"]:::note
+
+    E2E -.-> note1
+    INT -.-> note2
+    UNIT -.-> note3
+```
+
+**Mobile-Specific Testing Layers:**
+
+```mermaid
+graph TB
+    subgraph "Mobile Test Types"
+        E2E_LAYER["E2E Layer<br/>Detox, Maestro, Appium"]
+        SCREEN_LAYER["Screen Tests<br/>React Native Testing Library<br/>Flutter Widget Tests"]
+        COMPONENT_LAYER["Component Tests<br/>Rendering, Props, Events"]
+        LOGIC_LAYER["Unit Tests<br/>Hooks, Utils, State Logic"]
+        STATIC_LAYER["Static Analysis<br/>TypeScript, ESLint"]
+    end
+
+    E2E_LAYER --> SCREEN_LAYER
+    SCREEN_LAYER --> COMPONENT_LAYER
+    COMPONENT_LAYER --> LOGIC_LAYER
+    LOGIC_LAYER --> STATIC_LAYER
+
+    DEVICES["Real Devices<br/>iOS + Android"]
+    EMULATORS["Emulators/Simulators<br/>Fast feedback"]
+
+    E2E_LAYER -.->|Run on| DEVICES
+    SCREEN_LAYER -.->|Run on| EMULATORS
+
+    style E2E_LAYER fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    style SCREEN_LAYER fill:#fff4e6,stroke:#f57c00,stroke-width:2px
+    style COMPONENT_LAYER fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
+    style LOGIC_LAYER fill:#e1f5ff,stroke:#1976d2,stroke-width:2px
+    style STATIC_LAYER fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+```
+
+**Platform-Specific Testing Considerations:**
+
+```mermaid
+graph LR
+    subgraph "Cross-Platform Mobile Testing"
+        SHARED[Shared Business Logic<br/>Unit Tests (Jest)]
+        RN_SCREEN[React Native<br/>Screen Tests]
+        FLUTTER_WIDGET[Flutter<br/>Widget Tests]
+    end
+
+    subgraph "Platform Tests"
+        IOS_E2E[iOS E2E<br/>XCUITest/Detox]
+        ANDROID_E2E[Android E2E<br/>Espresso/Detox]
+    end
+
+    SHARED --> RN_SCREEN
+    SHARED --> FLUTTER_WIDGET
+
+    RN_SCREEN --> IOS_E2E
+    RN_SCREEN --> ANDROID_E2E
+
+    FLUTTER_WIDGET --> IOS_E2E
+    FLUTTER_WIDGET --> ANDROID_E2E
+
+    style SHARED fill:#e8f5e9
+    style RN_SCREEN fill:#e1f5ff
+    style FLUTTER_WIDGET fill:#e1f5ff
+    style IOS_E2E fill:#fce4ec
+    style ANDROID_E2E fill:#fff4e6
+```
+
+**When to Use Each Diagram:**
+
+- **Testing Pyramid**: Best for understanding test distribution strategy
+- **Mobile Test Types**: Best for showing all testing layers including emulators/devices
+- **Cross-Platform**: Best for React Native/Flutter apps with shared logic
+
+**Diagram Guidelines:**
+- Color code by test type (E2E=pink, Integration=orange, Unit=green)
+- Show device vs emulator distinction
+- Include platform-specific considerations (iOS/Android)
+- Highlight speed/cost trade-offs
+- Update percentages based on selected strategy (A, B, or C)
+
+---
+
+---
+
 ### Question 6.7: Code Coverage Targets
 
 **What code coverage targets will you set?**
