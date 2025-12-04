@@ -46,6 +46,12 @@
 
 **Component Organization:** {{COMPONENT_ORGANIZATION}}
 
+**UI Framework:** {{UI_FRAMEWORK}}
+
+**Dark Mode:** {{DARK_MODE_STRATEGY}}
+
+**Internationalization:** {{I18N_STRATEGY}}
+
 ---
 
 ## 🔑 Key Features

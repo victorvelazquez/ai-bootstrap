@@ -26,6 +26,13 @@
 - **Minimum iOS:** {{MIN_IOS_VERSION}}
 - **Minimum Android:** {{MIN_ANDROID_VERSION}} (API {{MIN_ANDROID_API}})
 
+### UI/UX Framework
+
+- **UI Framework:** {{UI_FRAMEWORK}}
+- **Dark Mode:** {{DARK_MODE_STRATEGY}}
+- **Internationalization:** {{I18N_STRATEGY}} ({{I18N_LIBRARY}})
+- **Image Management:** {{IMAGE_MANAGEMENT_STRATEGY}} ({{IMAGE_OPTIMIZATION_LIBRARY}})
+
 ### Navigation
 
 - **Navigation Library:** {{NAVIGATION_LIBRARY}}
@@ -35,9 +42,10 @@
 ### State Management
 
 - **State Solution:** {{STATE_MANAGEMENT}}
-- **Data Fetching:** {{DATA_FETCHING}}
+- **HTTP Client:** {{HTTP_CLIENT_LIBRARY}}
 - **Storage:** {{STORAGE_SOLUTION}}
 - **Offline Strategy:** {{OFFLINE_STRATEGY}}
+- **Network Error Handling:** {{NETWORK_ERROR_HANDLING}}
 
 ### Native Features
 
