@@ -102,7 +102,7 @@ The result is interconnected documentation that guides AI assistants (and human 
 - 🗄️ **35+ ORMs Supported** - Prisma, TypeORM, Eloquent, Hibernate, Entity Framework, GORM, and 29+ more
 - 📊 **98% Market Coverage** - Works with virtually any backend stack
 - 🤖 **AI-Agnostic** - Works with Claude, Copilot, Cursor, Gemini, any AI tool
-- 📚 **15 Professional Documents** - Complete documentation architecture
+- 📚 **Professional Documentation** - Complete architecture (17 docs for backend, 12 for frontend, 14 for mobile, 5 for fullstack)
 - ⚡ **3-Layer Smart Detection** - Layer 1 (15s), Layer 2 (60s), Layer 3 (optional deep analysis)
 - 🔍 **Intelligent Caching** - Instant re-runs with change detection (0 seconds on unchanged projects)
 - 🎯 **Flexible Scope Selection** - MVP with basic tests (50-70 min), Production-Ready (90-120 min), or Enterprise (120-150 min)
@@ -231,14 +231,14 @@ ai-bootstrap init [path] [options]
 
 ### CLI Flags
 
-| Flag                 | Type     | Descripción                                                            |
-| -------------------- | -------- | ---------------------------------------------------------------------- |
-| --ai <tool>          | REQUIRED | Selecciona la herramienta de IA (claude, cursor, copilot, gemini, all) |
-| --type <type>        | Optional | Tipo de proyecto (backend, frontend, fullstack, mobile)                |
-| --name <name>        | Optional | Nombre del proyecto (omite prompt interactivo)                         |
-| --description <desc> | Optional | Descripción del proyecto (omite prompt interactivo)                    |
-| --verbose            | Optional | Activa logging detallado                                               |
-| --dry-run            | Optional | Simula sin escribir archivos                                           |
+| Flag                 | Type                          | Descripción                                                            |
+| -------------------- | ----------------------------- | ---------------------------------------------------------------------- |
+| --ai <tool>          | Required (prompts if omitted) | Selecciona la herramienta de IA (claude, cursor, copilot, gemini, all) |
+| --type <type>        | Optional                      | Tipo de proyecto (backend, frontend, fullstack, mobile)                |
+| --name <name>        | Optional                      | Nombre del proyecto (omite prompt interactivo)                         |
+| --description <desc> | Optional                      | Descripción del proyecto (omite prompt interactivo)                    |
+| --verbose            | Optional                      | Activa logging detallado                                               |
+| --dry-run            | Optional                      | Simula sin escribir archivos                                           |
 
 > Requiere Node.js >=18.0.0 para ejecutar todos los comandos.
 
@@ -289,6 +289,20 @@ ai-bootstrap --version
 # Show help for specific command
 ai-bootstrap init --help
 ```
+
+### Available Workflow Commands (Backend)
+
+After initialization, use these commands in your AI tool:
+
+| Command           | Purpose                            | Time        |
+| ----------------- | ---------------------------------- | ----------- |
+| `/feature`        | Create/modify/refactor features    | 15-20 min   |
+| `/fix`            | Fix bugs (auto-detects complexity) | 3-15 min    |
+| `/work`           | Manage work in progress            | Interactive |
+| `/review`         | Multi-aspect code review           | 5 min       |
+| `/refactor-quick` | Quick refactorings                 | 3-5 min     |
+
+See [Workflow Commands](#-workflow-commands-backend-projects) for details.
 
 ---
 
@@ -787,6 +801,7 @@ AI-Bootstrap includes workflow commands for structured backend development inspi
 - ✅ Works with Claude, Cursor, Copilot, Gemini
 
 **Example workflow:**
+
 ```bash
 # Morning: Start new feature
 /feature "Real-time notifications API"
@@ -853,6 +868,30 @@ For existing projects, AI Bootstrap uses an intelligent, incremental analysis sy
 - ✅ Intelligent caching with change detection
 - ✅ Pre-populates 40-60% of questionnaire answers
 - ✅ Supports 12 languages, 60+ frameworks, 35+ ORMs
+
+### Generated Documentation by Project Type
+
+**Backend Projects (17 documents):**
+
+- 7 shared files: AGENT.md, ai-instructions.md, project-brief.md, README.md, .clauderules, .cursorrules, .env.example
+- 8 docs: api.md, architecture.md, business-flows.md, code-standards.md, contributing.md, data-model.md, operations.md, testing.md
+- 2 specs: configuration.md, security.md
+
+**Frontend Projects (12 documents):**
+
+- 3 shared files: ai-instructions.md, project-brief.md, README.md
+- 9 docs: api-integration.md, components.md, error-handling.md, operations.md, performance.md, pwa.md, state-management.md, styling.md, testing.md
+- 2 specs: accessibility.md, configuration.md, security.md
+
+**Mobile Projects (14 documents):**
+
+- 4 shared files: AGENT.md, ai-instructions.md, project-brief.md, README.md
+- 10 docs: app-store.md, architecture.md, native-features.md, navigation.md, offline-strategy.md, permissions.md, state-management.md, testing.md, build-configuration.md, deployment.md
+
+**Fullstack Projects (5 documents):**
+
+- 3 shared files: ai-instructions.md, project-brief.md, README.md
+- 2 specs: configuration.md
 
 ### 2. Master Prompt System
 
@@ -1150,10 +1189,14 @@ your-project/
 │   │       ├── bootstrap-phase5-standards.md    # Code Standards
 │   │       ├── bootstrap-phase6-testing.md      # Testing
 │   │       ├── bootstrap-phase7-operations.md   # Operations & Deployment
-│   │       └── docs-update.md                   # Documentation update command
-│   ├── templates/             # 15 document templates
-│   ├── scripts/               # Setup scripts
-│   └── slash-commands/        # Commands for each AI tool
+│   │       ├── docs-update.md                   # Documentation update command
+│   │       ├── feature.md                       # Feature development workflow
+│   │       ├── fix.md                           # Bug fix workflow
+│   │       ├── review.md                        # Code review workflow
+│   │       ├── refactor-quick.md                # Quick refactor workflow
+│   │       └── work.md                          # Work management
+│   ├── templates/             # Document templates (count varies by type)
+│   └── scripts/               # Setup scripts
 │
 ├── .claude/commands/          # If Claude selected
 │   ├── bootstrap.md
