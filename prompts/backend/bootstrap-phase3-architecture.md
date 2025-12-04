@@ -16,6 +16,117 @@ Define the technical stack, architecture patterns, and system design.
 
 > **Note:** At the end of this phase, the AI will automatically generate a system architecture diagram in mermaid format, based on your answers. This diagram will be included in the docs/architecture.md document.
 
+---
+
+#### 🎨 MERMAID ARCHITECTURE DIAGRAM FORMAT - CRITICAL
+
+**Use this exact format** for system architecture diagrams:
+
+````markdown
+```mermaid
+graph TD
+    Client[Client Application<br/>React/Mobile/Web]
+    LB[Load Balancer<br/>Nginx/ALB]
+    API[API Gateway<br/>Node.js/Express]
+    Auth[Auth Service<br/>JWT/OAuth]
+    Business[Business Logic Layer]
+    DB[(Primary Database<br/>PostgreSQL)]
+    Cache[(Redis Cache<br/>Session & Data)]
+    Queue[Message Queue<br/>RabbitMQ/SQS]
+    Storage[File Storage<br/>S3/MinIO]
+    Email[Email Service<br/>SendGrid/SES]
+    Monitor[Monitoring<br/>Prometheus/DataDog]
+
+    Client -->|HTTPS| LB
+    LB -->|Forward| API
+    API -->|Verify Token| Auth
+    API -->|Business Rules| Business
+    Business -->|Query/Write| DB
+    Business -->|Cache Check| Cache
+    Business -->|Async Tasks| Queue
+    Business -->|Upload/Download| Storage
+    Queue -->|Send Email| Email
+    API -->|Metrics| Monitor
+    Business -->|Logs| Monitor
+
+    style Client fill:#e1f5ff
+    style API fill:#fff4e1
+    style Auth fill:#ffe1e1
+    style DB fill:#e1ffe1
+    style Cache fill:#f0e1ff
+    style Queue fill:#ffe1f5
+```
+````
+
+**Diagram Types:**
+- `graph TD` = Top-Down flow (recommended for most architectures)
+- `graph LR` = Left-Right flow (good for linear pipelines)
+- `graph BT` = Bottom-Top (less common)
+- `graph RL` = Right-Left (less common)
+
+**Node Shapes:**
+- `[Square Brackets]` = Services, applications, components
+- `[(Cylinder)]` = Databases, persistent storage
+- `([Rounded])` = Start/End points
+- `{Diamond}` = Decision points
+- `[[Double Square]]` = Subroutines
+- `[/Parallelogram/]` = Input/Output
+
+**Styling:**
+- Use `<br/>` for line breaks in node labels
+- Apply styles with: `style NodeName fill:#colorcode`
+- Label connections: `A -->|Label Text| B`
+- Use consistent colors for component types
+
+**Common Architecture Patterns:**
+
+```mermaid
+graph TD
+    subgraph "Client Layer"
+        Web[Web App]
+        Mobile[Mobile App]
+    end
+
+    subgraph "API Layer"
+        Gateway[API Gateway]
+        Auth[Auth Service]
+    end
+
+    subgraph "Business Layer"
+        Service1[User Service]
+        Service2[Order Service]
+        Service3[Payment Service]
+    end
+
+    subgraph "Data Layer"
+        DB[(PostgreSQL)]
+        Cache[(Redis)]
+    end
+
+    Web --> Gateway
+    Mobile --> Gateway
+    Gateway --> Auth
+    Gateway --> Service1
+    Gateway --> Service2
+    Service2 --> Service3
+    Service1 --> DB
+    Service2 --> DB
+    Service3 --> DB
+    Service1 --> Cache
+    Service2 --> Cache
+```
+
+**Best Practices:**
+- Group related components using `subgraph`
+- Show external services (Email, SMS, Payment gateways)
+- Include monitoring and logging components
+- Label protocols on connections (HTTPS, gRPC, WebSocket)
+- Use consistent naming conventions
+
+**Validation:** Preview at https://mermaid.live/ before committing
+
+---
+
 **3.1 Backend Framework**
 
 ```

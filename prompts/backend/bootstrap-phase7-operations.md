@@ -387,6 +387,280 @@ C) 📄 Manual
 
 ```
 
+---
+
+#### 🎨 MERMAID OPERATIONS DIAGRAM FORMATS - CRITICAL
+
+**Use these exact formats** for operational and infrastructure diagrams mentioned in question 7.10:
+
+---
+
+##### 1️⃣ System Architecture Diagram (Deployment View)
+
+Use `graph TD` to show deployed system components with scaling and redundancy:
+
+````markdown
+```mermaid
+graph TD
+    subgraph "Production Environment"
+        subgraph "Load Balancer Layer"
+            LB1[Load Balancer 1]
+            LB2[Load Balancer 2]
+        end
+
+        subgraph "Application Layer"
+            App1[API Server 1<br/>4 vCPU, 8GB RAM]
+            App2[API Server 2<br/>4 vCPU, 8GB RAM]
+            App3[API Server 3<br/>4 vCPU, 8GB RAM]
+        end
+
+        subgraph "Data Layer"
+            Primary[(Primary DB<br/>PostgreSQL 15)]
+            Replica1[(Read Replica 1)]
+            Replica2[(Read Replica 2)]
+            Cache[Redis Cluster<br/>3 Nodes]
+        end
+
+        subgraph "Message Queue"
+            Queue[RabbitMQ Cluster<br/>3 Nodes]
+        end
+    end
+
+    Internet[Internet] -->|HTTPS| LB1
+    Internet -->|HTTPS| LB2
+    LB1 --> App1
+    LB1 --> App2
+    LB2 --> App2
+    LB2 --> App3
+
+    App1 -->|Write| Primary
+    App2 -->|Write| Primary
+    App3 -->|Write| Primary
+
+    App1 -->|Read| Replica1
+    App2 -->|Read| Replica2
+    App3 -->|Read| Replica1
+
+    App1 -->|Cache| Cache
+    App2 -->|Cache| Cache
+    App3 -->|Cache| Cache
+
+    App1 -->|Async Jobs| Queue
+    App2 -->|Async Jobs| Queue
+    App3 -->|Async Jobs| Queue
+
+    Primary -.->|Replication| Replica1
+    Primary -.->|Replication| Replica2
+
+    style Internet fill:#e1f5ff
+    style Primary fill:#e1ffe1
+    style Cache fill:#f0e1ff
+    style Queue fill:#ffe1f5
+```
+````
+
+**Use for:** Showing deployed infrastructure, scaling configuration, redundancy, high availability
+
+---
+
+##### 2️⃣ Data Flow Diagram (Request Flow)
+
+Use `flowchart LR` to show how data moves through the system step-by-step:
+
+````markdown
+```mermaid
+flowchart LR
+    User[User Request] -->|1. HTTPS POST| LB[Load Balancer]
+    LB -->|2. Route| API[API Server]
+    API -->|3. Validate JWT| Auth[Auth Service]
+    Auth -->|4. Token Valid| API
+
+    API -->|5. Check Cache| Cache[(Redis Cache)]
+    Cache -->|6. Cache Miss| API
+
+    API -->|7. Query| DB[(PostgreSQL)]
+    DB -->|8. Data| API
+
+    API -->|9. Store in Cache| Cache
+    API -->|10. Enqueue Job| Queue[Message Queue]
+
+    Queue -->|11. Process| Worker[Background Worker]
+    Worker -->|12. Send Email| Email[Email Service]
+
+    API -->|13. JSON Response| User
+
+    style User fill:#e1f5ff
+    style Cache fill:#f0e1ff
+    style DB fill:#e1ffe1
+    style Email fill:#fff4e1
+```
+````
+
+**Use for:** Documenting request/response cycles, async processing flows, numbered execution steps
+
+---
+
+##### 3️⃣ Infrastructure Diagram (Cloud Resources)
+
+Use `graph TB` with subgraphs to show cloud infrastructure and network topology:
+
+````markdown
+```mermaid
+graph TB
+    subgraph "AWS Cloud - Production (us-east-1)"
+        subgraph "VPC (10.0.0.0/16)"
+            subgraph "Public Subnet (10.0.1.0/24)"
+                ALB[Application Load Balancer]
+                NAT[NAT Gateway]
+            end
+
+            subgraph "Private Subnet 1 (10.0.10.0/24)"
+                ECS1[ECS Cluster<br/>Auto Scaling Group]
+                App1[Container: API<br/>Fargate Task]
+                App2[Container: API<br/>Fargate Task]
+            end
+
+            subgraph "Private Subnet 2 (10.0.20.0/24)"
+                RDS[(RDS PostgreSQL<br/>Multi-AZ)]
+                ElastiCache[ElastiCache Redis<br/>Cluster Mode]
+            end
+
+            subgraph "Private Subnet 3 (10.0.30.0/24)"
+                SQS[Amazon SQS<br/>Message Queue]
+                Lambda[Lambda Functions<br/>Background Workers]
+            end
+        end
+
+        subgraph "Supporting Services"
+            S3[S3 Bucket<br/>File Storage]
+            CloudWatch[CloudWatch<br/>Monitoring & Logs]
+            SecretsManager[Secrets Manager<br/>API Keys & Credentials]
+        end
+    end
+
+    Internet[Internet Users] -->|HTTPS| ALB
+    ALB --> App1
+    ALB --> App2
+
+    App1 --> RDS
+    App2 --> RDS
+    App1 --> ElastiCache
+    App2 --> ElastiCache
+
+    App1 -->|Upload/Download| S3
+    App2 -->|Upload/Download| S3
+
+    App1 -->|Send Message| SQS
+    SQS -->|Trigger| Lambda
+    Lambda --> RDS
+
+    App1 -->|Logs & Metrics| CloudWatch
+    App2 -->|Logs & Metrics| CloudWatch
+    Lambda -->|Logs| CloudWatch
+
+    App1 -->|Fetch Secrets| SecretsManager
+    App2 -->|Fetch Secrets| SecretsManager
+
+    style Internet fill:#e1f5ff
+    style RDS fill:#e1ffe1
+    style ElastiCache fill:#f0e1ff
+    style S3 fill:#fff4e1
+    style CloudWatch fill:#ffe1e1
+```
+````
+
+**Use for:** Documenting cloud architecture, network topology, AWS/GCP/Azure resources, VPC design
+
+---
+
+##### 4️⃣ Monitoring & Observability Diagram (Optional)
+
+Use `graph TD` to show monitoring, logging, and alerting stack:
+
+````markdown
+```mermaid
+graph TD
+    subgraph "Application Layer"
+        App[API Servers]
+        Worker[Background Workers]
+    end
+
+    subgraph "Monitoring Stack"
+        Prometheus[Prometheus<br/>Metrics Collection]
+        Grafana[Grafana<br/>Dashboards]
+        AlertManager[Alert Manager<br/>Notifications]
+    end
+
+    subgraph "Logging Stack"
+        FluentBit[Fluent Bit<br/>Log Collector]
+        Elasticsearch[Elasticsearch<br/>Log Storage]
+        Kibana[Kibana<br/>Log Viewer]
+    end
+
+    subgraph "Tracing"
+        Jaeger[Jaeger<br/>Distributed Tracing]
+    end
+
+    subgraph "Alerts"
+        PagerDuty[PagerDuty]
+        Slack[Slack Notifications]
+    end
+
+    App -->|Metrics| Prometheus
+    Worker -->|Metrics| Prometheus
+    Prometheus --> Grafana
+    Prometheus --> AlertManager
+
+    App -->|Logs| FluentBit
+    Worker -->|Logs| FluentBit
+    FluentBit --> Elasticsearch
+    Elasticsearch --> Kibana
+
+    App -->|Traces| Jaeger
+    Worker -->|Traces| Jaeger
+
+    AlertManager --> PagerDuty
+    AlertManager --> Slack
+
+    style Grafana fill:#e1f5ff
+    style Kibana fill:#f0e1ff
+    style PagerDuty fill:#ffe1e1
+```
+````
+
+**Use for:** Documenting observability strategy, monitoring infrastructure, alerting workflows
+
+---
+
+**Best Practices for Operations Diagrams:**
+
+1. **Include Resource Specs:** Add CPU/RAM/disk info to nodes (e.g., `[API Server<br/>4 vCPU, 8GB RAM]`)
+2. **Show Redundancy:** Display load balancers, replicas, multi-AZ deployments, failover paths
+3. **Label Network Boundaries:** Use subgraphs for VPCs, subnets, availability zones, regions
+4. **Document Protocols:** Label connections with HTTPS, gRPC, TCP, WebSocket, etc.
+5. **Add IP Ranges:** Include CIDR blocks for network subnets (e.g., `10.0.1.0/24`)
+6. **Show Auto-Scaling:** Indicate which components scale horizontally/vertically
+7. **Include External Services:** SaaS tools, third-party APIs, CDNs, email providers
+8. **Color Code by Layer:** Infrastructure (blue), data (green), monitoring (purple), alerts (red)
+
+**Common Formatting Rules:**
+- Code fence: ` ```mermaid ` (lowercase, no spaces, three backticks)
+- Use `subgraph "Name"` to group related components by layer/zone
+- Use `[(Cylinder)]` for databases, data stores, and persistent storage
+- Use `[Square Brackets]` for services, servers, and compute resources
+- Use dotted arrows `-.->` for replication, backup, and async flows
+- Apply consistent styling: `style NodeName fill:#colorcode`
+
+**Deployment Context Examples:**
+- For Docker: Show containers, volumes, networks, registries
+- For Kubernetes: Show pods, services, ingress, namespaces, persistent volumes
+- For Serverless: Show Lambda functions, API Gateway, S3 triggers, event sources
+- For VMs: Show instances, security groups, load balancers, auto-scaling groups
+
+**Validation:** Test diagrams at https://mermaid.live/ before saving to ensure syntax is correct
+
+---
+
 **7.11 Optional: Spec-Kit Integration**
 
 ```

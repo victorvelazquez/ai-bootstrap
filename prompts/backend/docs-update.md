@@ -85,6 +85,200 @@ First, check if `.ai-bootstrap/analysis.json` exists:
 No se requiere ninguna actualización.
 ```
 
+---
+
+## 📊 MERMAID DIAGRAM REGENERATION GUIDELINES
+
+When regenerating or updating diagrams in documentation files, follow these **critical** formatting rules:
+
+### ER Diagrams (data-model.md)
+
+**Diagram Type:** `erDiagram`
+
+**Requirements:**
+1. Show ALL entities and their relationships
+2. Include field types and constraints (PK, FK, UK)
+3. Add descriptions for complex or business-critical fields
+4. Verify relationship cardinality matches actual database schema
+5. Keep entity order logical (core entities first, then related)
+
+**Quality Checklist:**
+- [ ] Code fence is exactly ` ```mermaid ` (lowercase, no spaces)
+- [ ] All entities from database are represented
+- [ ] All foreign key relationships are shown
+- [ ] Primary keys are marked with `PK`
+- [ ] Foreign keys are marked with `FK`
+- [ ] Many-to-many relationships use junction tables
+- [ ] Field types match database schema
+- [ ] Diagram renders without errors
+
+**Example:**
+````markdown
+```mermaid
+erDiagram
+    USER ||--o{ ORDER : places
+    PRODUCT ||--o{ ORDER_ITEM : contains
+    ORDER ||--o{ ORDER_ITEM : includes
+
+    USER {
+        string id PK
+        string email UK
+        string name
+        datetime createdAt
+    }
+
+    ORDER {
+        string id PK
+        string userId FK
+        decimal total
+        string status
+    }
+
+    PRODUCT {
+        string id PK
+        string name
+        decimal price
+    }
+
+    ORDER_ITEM {
+        string id PK
+        string orderId FK
+        string productId FK
+        int quantity
+    }
+```
+````
+
+---
+
+### Architecture Diagrams (architecture.md)
+
+**Diagram Type:** `graph TD` (or `graph LR`)
+
+**Requirements:**
+1. Show ALL major system components (services, databases, caches, queues)
+2. Label connections with protocols/methods (HTTPS, gRPC, REST, etc.)
+3. Use consistent styling (databases as cylinders, services as boxes)
+4. Include external integrations (Email, Payment, SMS services)
+5. Show monitoring and logging components if present
+6. Include deployment context (load balancers, CDN) if relevant
+
+**Quality Checklist:**
+- [ ] Code fence is exactly ` ```mermaid ` (lowercase, no spaces)
+- [ ] All services/components from codebase are shown
+- [ ] Database connections are labeled
+- [ ] External APIs are included
+- [ ] Authentication/authorization flow is visible
+- [ ] Caching layer is shown (if exists)
+- [ ] Message queues are included (if exists)
+- [ ] Styling is applied for clarity
+- [ ] Diagram renders without errors
+
+**Example:**
+````markdown
+```mermaid
+graph TD
+    Client[Client Application]
+    API[API Gateway<br/>Express/NestJS]
+    Auth[Auth Service<br/>JWT]
+    DB[(PostgreSQL)]
+    Cache[(Redis)]
+    Queue[Message Queue<br/>RabbitMQ]
+
+    Client -->|HTTPS| API
+    API -->|Verify| Auth
+    API -->|Query| DB
+    API -->|Cache| Cache
+    API -->|Enqueue| Queue
+
+    style DB fill:#e1ffe1
+    style Cache fill:#f0e1ff
+```
+````
+
+---
+
+### Business Flow Diagrams (project-brief.md)
+
+**Diagram Type:** `flowchart TD` (or `flowchart LR`)
+
+**Requirements:**
+1. Start with `([Start Terminal])`
+2. End with `([End Terminal])`
+3. Use `{Diamond}` for ALL decision points
+4. Label ALL decision branches clearly (`-->|Yes|`, `-->|No|`)
+5. Show complete paths (including error/failure scenarios)
+6. Keep flows readable (avoid crossing arrows when possible)
+7. Use consistent styling for node types
+
+**Quality Checklist:**
+- [ ] Code fence is exactly ` ```mermaid ` (lowercase, no spaces)
+- [ ] Flow starts with a terminal node
+- [ ] Flow ends with terminal node(s)
+- [ ] All decision points have labeled branches
+- [ ] All paths lead to an end state
+- [ ] Error/failure paths are included
+- [ ] Node labels are clear and concise
+- [ ] Line breaks (`<br/>`) used for readability
+- [ ] Styling applied for visual clarity
+- [ ] Diagram renders without errors
+
+**Example:**
+````markdown
+```mermaid
+flowchart TD
+    Start([User Starts Process]) --> Action1[Perform Action]
+    Action1 --> Decision{Success?}
+
+    Decision -->|Yes| Success[Process Complete]
+    Decision -->|No| Retry{Retry?}
+
+    Retry -->|Yes| Action1
+    Retry -->|No| Failed[Process Failed]
+
+    Success --> End1([End: Success])
+    Failed --> End2([End: Failed])
+
+    style Start fill:#e1f5ff
+    style End1 fill:#e1ffe1
+    style End2 fill:#ffe1e1
+```
+````
+
+---
+
+### Common Formatting Rules (ALL Diagrams)
+
+**CRITICAL - Code Fence Syntax:**
+```
+✅ CORRECT: ```mermaid
+❌ WRONG:   ```Mermaid (capital M)
+❌ WRONG:   ``` mermaid (extra space)
+❌ WRONG:   ``mermaid (missing backtick)
+```
+
+**Indentation:**
+- Start Mermaid syntax at column 0 (no leading spaces/tabs)
+- Only indent within Mermaid syntax according to Mermaid rules
+- Do NOT indent the entire code block
+
+**Validation Steps:**
+1. After generating/updating diagram, verify syntax at https://mermaid.live/
+2. Check that diagram renders in VS Code markdown preview
+3. Verify all nodes and relationships are present
+4. Confirm labels are clear and readable
+5. Test that styling is applied correctly
+
+**When Updating Existing Diagrams:**
+1. Read the current diagram first
+2. Identify what needs to be added/removed/modified
+3. Maintain existing styling and layout patterns
+4. Add new elements in logical positions
+5. Preserve comments or notes if present
+6. Verify the entire diagram still renders after changes
+
+---
+
 ### Step 4: Update Documents (If User Confirms)
 
 **If user responds "Y", "Yes", "y", "yes", or similar:**

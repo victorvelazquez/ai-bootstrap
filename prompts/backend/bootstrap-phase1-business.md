@@ -236,6 +236,136 @@ Example:
 - Invoicing: Invoice generation after purchase.
 
 The AI will automatically generate flow diagrams (mermaid) for each documented process.
+
+---
+
+#### 🎨 MERMAID BUSINESS FLOW DIAGRAM FORMAT - CRITICAL
+
+**Use this exact format** for business process flows:
+
+````markdown
+```mermaid
+flowchart TD
+    Start([User Visits Site]) --> Browse[Browse Product Catalog]
+    Browse --> Search{Search or<br/>Browse Categories?}
+
+    Search -->|Use Search| Filter[Apply Search Filters]
+    Search -->|Browse| Category[Select Category]
+
+    Filter --> Results[View Search Results]
+    Category --> Results
+
+    Results --> Select[Select Product]
+    Select --> Details[View Product Details]
+    Details --> Decision{Add to Cart?}
+
+    Decision -->|Yes| AddCart[Add Item to Cart]
+    Decision -->|No| Browse
+
+    AddCart --> MoreShopping{Continue<br/>Shopping?}
+    MoreShopping -->|Yes| Browse
+    MoreShopping -->|No| Cart[View Shopping Cart]
+
+    Cart --> ReviewCart{Cart OK?}
+    ReviewCart -->|Modify| Browse
+    ReviewCart -->|Proceed| Checkout[Start Checkout]
+
+    Checkout --> Address[Enter/Confirm Address]
+    Address --> Payment[Enter Payment Info]
+    Payment --> Review[Review Order]
+    Review --> ProcessPayment[Process Payment]
+
+    ProcessPayment --> PaymentResult{Payment<br/>Success?}
+
+    PaymentResult -->|Success| Confirm[Order Confirmation]
+    PaymentResult -->|Declined| Retry{Retry<br/>Payment?}
+
+    Retry -->|Yes| Payment
+    Retry -->|No| SaveCart[Save Cart for Later]
+    SaveCart --> End1([Exit: Saved])
+
+    Confirm --> Email[Send Confirmation Email]
+    Email --> Inventory[Update Inventory]
+    Inventory --> Invoice[Generate Invoice]
+    Invoice --> End2([Order Complete])
+
+    style Start fill:#e1f5ff
+    style End1 fill:#ffe1e1
+    style End2 fill:#e1ffe1
+    style ProcessPayment fill:#fff4e1
+    style Confirm fill:#d4edda
+```
+````
+
+**Flowchart Syntax:**
+- `flowchart TD` = Top-Down flow (recommended)
+- `flowchart LR` = Left-Right flow
+- `flowchart BT` = Bottom-Top
+- `flowchart RL` = Right-Left
+
+**Node Shapes:**
+- `[Rectangle]` = Process step/action
+- `{Diamond}` = Decision point (Yes/No, multiple options)
+- `([Rounded Rectangle])` = Start/End terminal
+- `[(Cylinder)]` = Database operation
+- `[[Subroutine]]` = Sub-process
+- `[/Parallelogram/]` = Input/Output
+- `((Circle))` = Connection point
+
+**Arrow Types:**
+- `-->` = Solid arrow (standard flow)
+- `-.->` = Dotted arrow (optional/conditional)
+- `==>` = Thick arrow (emphasis)
+- `-->|Label|` = Labeled arrow (decision branch)
+
+**Best Practices for Business Flows:**
+1. **Always start with a terminal**: `([Start])`
+2. **Always end with a terminal**: `([End])`
+3. **Label decision branches**: Use `-->|Yes|` or `-->|No|`
+4. **Use line breaks in labels**: `{Continue<br/>Shopping?}` for readability
+5. **Apply consistent styling**: Same colors for similar node types
+6. **Keep it readable**: Avoid spaghetti flows, group related steps
+7. **Show all paths**: Every decision should have all branches defined
+8. **Include error paths**: Payment failures, validation errors, etc.
+
+**Multiple Flow Example (Advanced):**
+
+```mermaid
+flowchart TD
+    subgraph "Customer Journey"
+        C1[Browse] --> C2[Select]
+        C2 --> C3[Purchase]
+    end
+
+    subgraph "Backend Processing"
+        B1[Validate Order] --> B2[Process Payment]
+        B2 --> B3[Update Inventory]
+        B3 --> B4[Send Notifications]
+    end
+
+    C3 --> B1
+    B4 --> C4[Confirmation]
+```
+
+**Color Coding Guide:**
+- Blue (`#e1f5ff`): Start/Entry points
+- Green (`#e1ffe1`): Success/Completion
+- Red (`#ffe1e1`): Failure/Error states
+- Yellow (`#fff4e1`): Critical operations (Payment, Auth)
+- Purple (`#f0e1ff`): External integrations
+
+**Common Business Flows to Document:**
+- User Registration/Login
+- Purchase/Checkout Process
+- Content Creation/Publishing
+- Approval/Review Workflows
+- Data Import/Export
+- Notification/Alert Flows
+- Customer Support Ticket Lifecycle
+
+**Validation:** Test at https://mermaid.live/ before saving
+
+---
 ```
 
 ### Phase 1 Output
