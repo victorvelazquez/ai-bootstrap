@@ -22,13 +22,17 @@
 
 ## Project Practices
 
-- Documentation-first ethos: every new feature should surface in `templates/` and, if user-facing, in `README.md`; keep emojis and tone aligned with existing material.
+- **Documentation structure:** `README.md` is overview and installation, `GETTING-STARTED.md` is complete tutorial with 3-tier approach (beginner/regular/power user). Keep them consistent.
+- **Documentation-first ethos:** Every new feature should surface in `templates/` and, if user-facing, in both `README.md` (brief mention) and `GETTING-STARTED.md` (detailed tutorial).
+- **Cross-references:** Always add links between README ↔ GETTING-STARTED when introducing new features or commands.
 - Prefer ASCII in code/templates unless updating files that already rely on emoji (most prompts intentionally include them).
 - When touching prompts (`prompts/backend.md`) keep phase ordering, emoji markers (⭐🔥⚡🏆), and markdown fences intact so slash commands stay valid.
 - Copilot slash prompts live in `slash-commands/copilot/`; any rename must propagate to `.github/copilot-commands` and docs that reference `/bootstrap*` commands.
 
 ## Research Checklist for Agents
 
+- Read `README.md` for project overview and high-level features.
+- Read `GETTING-STARTED.md` for user-facing tutorials, command workflows, and complete usage examples.
 - Read `templates/copilot-instructions.template.md` to understand expected output format for generated projects.
 - Review `templates/docs/*.template.md` and `templates/specs/*.template.md` before editing; they enforce the doc structure AI Bootstrap guarantees downstream.
 - Check `.ai-bootstrap/core/config.json` schema when modifying initialization metadata; consumers expect keys `version`, `aiTools`, `createdAt`, `backend`, `frontend`.

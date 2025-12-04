@@ -1,0 +1,1880 @@
+# Getting Started with AI Bootstrap
+
+> Complete guide from installation to advanced workflows
+
+## 📖 Table of Contents
+
+- [Quick Links](#-quick-links) - For experienced users
+- [Part 1: First-Time Setup](#-part-1-first-time-setup) - For beginners (10 minutes)
+- [Part 2: Core Workflows](#-part-2-core-workflows) - For regular users
+- [Part 3: Advanced Usage](#-part-3-advanced-usage) - For power users
+- [Reference](#-reference) - Command index & troubleshooting
+
+---
+
+## 🎯 Quick Links
+
+**Already familiar with AI Bootstrap?** Jump directly to:
+
+| Link                                          | Description                             |
+| --------------------------------------------- | --------------------------------------- |
+| [CLI Flags Reference](#cli-flags-reference)   | All `init` command flags                |
+| [Commands Cheat Sheet](#commands-cheat-sheet) | All 26+ commands organized              |
+| [Workflow Commands](#33-workflow-commands)    | `/feature`, `/fix`, `/review` workflows |
+| [Troubleshooting](#troubleshooting)           | Common issues and solutions             |
+| [Best Practices](#best-practices)             | Expert tips and recommendations         |
+
+---
+
+## 🚀 Part 1: First-Time Setup
+
+> **Target Audience:** Beginners, first-time users  
+> **Time Required:** 10 minutes  
+> **Goal:** Get AI Bootstrap running and create your first AI-ready documentation
+
+### 1.1 Prerequisites
+
+Before starting, ensure you have:
+
+- **Node.js:** 18.0.0 or higher ([Download](https://nodejs.org/))
+- **npm:** Included with Node.js
+- **An AI tool:** Claude, Cursor, GitHub Copilot, or Gemini
+
+### 1.2 Installation
+
+Install AI Bootstrap globally via npm:
+
+```bash
+npm install -g ai-bootstrap
+```
+
+Or using uv (Python tool manager):
+
+```bash
+uv tool install ai-bootstrap
+```
+
+Verify installation:
+
+```bash
+ai-bootstrap --version
+# Output: 1.1.1
+```
+
+### 1.3 Your First Project (5-Minute Walkthrough)
+
+Let's create your first AI-ready project step by step.
+
+#### Step 1: Create Project Folder
+
+```bash
+mkdir my-awesome-api
+cd my-awesome-api
+```
+
+#### Step 2: Initialize AI Bootstrap
+
+```bash
+ai-bootstrap init .
+```
+
+You'll be asked:
+
+1. **Which AI tool will you use?**
+   - Select: `claude`, `cursor`, `copilot`, `gemini`, or `all`
+   - This configures tool-specific files (`.clauderules`, `.cursorrules`, etc.)
+
+2. **What type of project?**
+   - Select: `backend`, `frontend`, `fullstack`, or `mobile`
+   - Each type generates different documentation sets
+
+3. **Project name?** (optional)
+   - Press Enter to use folder name, or type custom name
+
+**What happens next:**
+
+- ✅ Creates `.ai-bootstrap/` hidden folder
+- ✅ Copies master prompts to `.ai-bootstrap/prompts/`
+- ✅ Copies document templates to `.ai-bootstrap/templates/`
+- ✅ Installs slash commands (`.claude/commands/`, `.cursor/commands/`, etc.)
+- ✅ Creates configuration file `.ai-bootstrap/core/config.json`
+
+**Time:** ~30 seconds
+
+#### Step 3: Run the Bootstrap Process
+
+Open your AI tool (Claude, Cursor, Copilot, or Gemini) in your project folder and type:
+
+```
+/bootstrap
+```
+
+This starts an **interactive 8-phase questionnaire**:
+
+- **Phase 0:** Context Discovery (existing projects only - analyzes your code)
+- **Phase 1:** Discovery & Business (what problem are you solving?)
+- **Phase 2:** Data Architecture or Components (database design or UI components)
+- **Phase 3:** System Architecture (tech stack, patterns)
+- **Phase 4:** Security & Authentication (auth strategy, compliance)
+- **Phase 5:** Code Standards (quality rules, conventions)
+- **Phase 6:** Testing Strategy (test types, coverage)
+- **Phase 7:** Operations & Deployment (CI/CD, monitoring)
+
+**Time for new projects:** 90-120 minutes  
+**Time for existing projects:** 35-70 minutes (50-60% faster with auto-detection!)
+
+#### Step 4: Answer Questions
+
+The AI assistant will guide you through each phase with questions like:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 Phase 1: Discovery & Business  |  Question 1/8  |  Phase Progress: 12%
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+What core business problem does your API solve?
+
+Examples:
+- User authentication and authorization
+- E-commerce product catalog management
+- Real-time notifications system
+- Payment processing gateway
+```
+
+**Tips:**
+
+- ⭐🔥⚡🏆 markers indicate **recommended choices**
+- The more detail you provide, the better your documentation
+- For **existing projects**, many answers are pre-filled from code analysis
+- You can always refine documentation later
+
+#### Step 5: Generated Documentation ✅
+
+After completion, you'll have professional documentation:
+
+**Backend projects** (17 documents):
+
+```
+my-awesome-api/
+├── AGENT.md                    # ⭐ Universal AI configuration
+├── .clauderules               # Claude-specific config
+├── ai-instructions.md         # AI development rules
+├── project-brief.md           # Business context
+├── docs/
+│   ├── architecture.md        # System design
+│   ├── data-model.md          # Entity catalog
+│   ├── code-standards.md      # Quality rules
+│   ├── testing.md             # Test strategy
+│   ├── operations.md          # Deployment
+│   ├── business-flows.md      # Workflows
+│   ├── api.md                 # API conventions
+│   └── contributing.md        # Dev setup
+├── specs/
+│   ├── security.md           # Auth & compliance
+│   └── configuration.md      # Environment config
+└── README.md                 # Project overview
+```
+
+**Frontend projects** (12 documents), **Mobile projects** (15 documents), **Fullstack projects** (~20 documents) - see [Project Type Comparison](#project-type-comparison) for details.
+
+### 1.4 Understanding the Output
+
+#### Key Files Explained
+
+**`AGENT.md`** - Universal AI configuration file
+
+- Acts as the **entry point** for all AI tools
+- Aggregates and references all other documentation
+- Contains quick reference for AI assistants
+- Read this file to understand the entire project structure
+
+**`ai-instructions.md`** - AI development rules
+
+- Tech stack and dependencies
+- NEVER/ALWAYS rules (what to avoid, what to enforce)
+- Architecture patterns and conventions
+- Project-specific guidelines
+
+**`project-brief.md`** - Business context
+
+- Problem statement and goals
+- Target users and use cases
+- Success metrics
+- Project scope and constraints
+
+**`docs/*.md`** - Technical documentation
+
+- Detailed specs for each architectural concern
+- Interconnected (they reference each other)
+- Updated as project evolves
+
+**`.ai-bootstrap/`** - Tool foundation (hidden folder)
+
+- `prompts/` - Master prompt files for bootstrap and workflows
+- `templates/` - Document templates with placeholders
+- `core/config.json` - Bootstrap configuration metadata
+
+#### Using Slash Commands
+
+After initialization, you have access to **26+ slash commands**:
+
+**Basic commands:**
+
+```
+/bootstrap                    # Run full 8-phase process
+/bootstrap-phase1-business   # Run only Phase 1
+/docs-update                 # Update docs when code changes
+```
+
+**Workflow commands** (backend only):
+
+```
+/feature                     # Create/modify features (15-20 min)
+/fix                         # Fix bugs (3-15 min, adaptive)
+/work                        # Manage work in progress
+/review                      # Multi-aspect code review (5 min)
+/refactor-quick             # Quick refactorings (3-5 min)
+```
+
+See [Commands Cheat Sheet](#commands-cheat-sheet) for the complete list.
+
+---
+
+## 📚 Part 2: Core Workflows
+
+> **Target Audience:** Regular users, project maintainers  
+> **Goal:** Master everyday AI Bootstrap workflows
+
+### 2.1 New vs Existing Projects
+
+AI Bootstrap adapts to your project state with **3-layer smart detection**.
+
+#### New Projects: Full Bootstrap
+
+For brand-new projects, AI Bootstrap guides you through all phases with no assumptions:
+
+- ✅ You answer every question from scratch
+- ✅ You design architecture, data models, and standards
+- ✅ Time: **90-120 minutes** for production-ready docs
+- ✅ Generates: 12-17 documents depending on project type
+
+**Best for:** Greenfield projects, MVPs, new microservices
+
+#### Existing Projects: Smart Detection
+
+For existing codebases, AI Bootstrap analyzes your project first (**Phase 0: Context Discovery**):
+
+**Layer 0: Cache Check (2-5 seconds)**
+
+- Checks `.ai-bootstrap/analysis.json` for previous analysis
+- Detects file changes by comparing timestamps
+- **Result:** 0 seconds on re-runs if nothing changed
+
+**Layer 1: Fast Metadata Scan (10-20 seconds)**
+
+- Detects language from `package.json`, `composer.json`, `pom.xml`, `go.mod`, etc.
+- Identifies framework and version (60+ frameworks supported)
+- Detects ORM and database (35+ ORMs supported)
+- Scans for existing documentation files
+- **Uses:** ~1,500 tokens
+
+**Layer 2: Structural Analysis (30-90 seconds)**
+
+- Analyzes directory structure and patterns
+- Counts files by category (controllers, services, entities)
+- Detects architecture pattern (feature-based, layer-based, modular)
+- Extracts entity names from schema files
+- Estimates test coverage
+- **Uses:** ~4,000 tokens
+
+**Layer 3: Selective Deep Analysis (1-5 minutes, optional)**
+
+- **User-controlled:** Choose which areas to analyze deeply
+- Parses code to extract API endpoints with methods/paths
+- Maps entity relationships and fields
+- Detects security patterns (auth, validation)
+- **Smart sampling:** Stratified file selection
+- **Uses:** Variable tokens (stops before limits)
+
+**Benefits:**
+
+- ⚡ **50-94% faster** setup time
+- 💾 **50-94% less tokens** used (saves API costs)
+- 📝 **40-60% of answers pre-filled** from code analysis
+- 🔄 **Instant re-runs** with intelligent caching
+
+**Time:** 35-70 minutes vs 90-120 for new projects
+
+**Example detection output:**
+
+```
+🔍 ANALYSIS COMPLETE
+
+✅ Language: Node.js/TypeScript 18.x
+✅ Framework: NestJS 10.3.0
+✅ ORM: Prisma 5.7.0
+✅ Database: PostgreSQL
+✅ Architecture: Feature-based (modular)
+✅ Entities detected: 8 (User, Product, Order, Payment, etc.)
+✅ API endpoints: 24 routes across 6 controllers
+✅ Security: JWT auth, class-validator, helmet
+✅ Testing: Jest, 67% coverage
+✅ Documentation: README.md only (needs expansion)
+
+📝 Pre-populated answers: 47/82 (57%)
+⏱️ Estimated time: 42 minutes (vs 95 minutes from scratch)
+```
+
+### 2.2 Running the Bootstrap Process
+
+#### Full Bootstrap Command
+
+The `/bootstrap` command orchestrates all 8 phases:
+
+```
+/bootstrap
+```
+
+**For new projects:**
+
+- Starts directly at Phase 1 (Discovery & Business)
+- Walks through all phases sequentially
+- 90-120 minutes total
+
+**For existing projects:**
+
+- Starts with Phase 0 (Context Discovery)
+- Analyzes code first (3-layer detection)
+- Pre-fills answers based on analysis
+- 35-70 minutes total
+
+#### Individual Phase Commands
+
+You can also run phases individually:
+
+**Backend projects:**
+
+```
+/bootstrap-phase0-context          # Context discovery (existing only)
+/bootstrap-phase1-business         # Discovery & Business
+/bootstrap-phase2-data             # Data Architecture
+/bootstrap-phase3-architecture     # System Architecture
+/bootstrap-phase4-security         # Security & Auth
+/bootstrap-phase5-standards        # Code Standards
+/bootstrap-phase6-testing          # Testing Strategy
+/bootstrap-phase7-operations       # Operations & Deployment
+```
+
+**Frontend projects:**
+
+```
+/bootstrap-phase0-context          # Context discovery
+/bootstrap-phase1-discovery        # Discovery & UX
+/bootstrap-phase2-components       # Components & Framework
+/bootstrap-phase3-state            # State Management
+/bootstrap-phase4-styling          # Styling & Design
+/bootstrap-phase5-standards        # Code Standards
+/bootstrap-phase6-testing          # Testing Strategy
+/bootstrap-phase7-deployment       # Deployment
+```
+
+**Mobile projects:**
+
+```
+/bootstrap-phase0-context          # Context discovery
+/bootstrap-phase1-platform         # Platform & Framework
+/bootstrap-phase2-navigation       # Navigation & Architecture
+/bootstrap-phase3-state            # State & Data Management
+/bootstrap-phase4-permissions      # Permissions & Native Features
+/bootstrap-phase5-standards        # Code Standards
+/bootstrap-phase6-testing          # Testing Strategy
+/bootstrap-phase7-deployment       # Deployment
+```
+
+**When to use individual phases:**
+
+- 🔄 Update specific documentation area (e.g., security policies changed)
+- 🚀 Onboard new team members to one aspect (e.g., testing strategy)
+- 🎯 Deep dive into complex phase (e.g., data architecture for large schemas)
+
+### 2.3 Working with Different AI Tools
+
+AI Bootstrap supports 4 AI tools with tool-specific configurations.
+
+#### Claude Code
+
+**Setup:**
+
+```bash
+ai-bootstrap init . --ai claude
+```
+
+**Generated files:**
+
+- `.clauderules` - Claude-specific configuration
+- `.claude/commands/*.md` - Slash commands (26+ commands)
+- `AGENT.md` - Universal config (referenced by `.clauderules`)
+
+**Features:**
+
+- ✅ Plan mode optimized workflow
+- ✅ Structured task execution
+- ✅ Long-form code generation
+
+**Usage:**
+
+```
+/bootstrap                    # In Claude chat
+/feature "real-time notifications"
+/review
+```
+
+#### Cursor
+
+**Setup:**
+
+```bash
+ai-bootstrap init . --ai cursor
+```
+
+**Generated files:**
+
+- `.cursorrules` - Cursor-specific configuration
+- `.cursor/commands/*.md` - Slash commands
+- `AGENT.md` - Universal config
+
+**Features:**
+
+- ✅ Fast iteration support
+- ✅ Inline code editing
+- ✅ Multi-file refactoring
+
+**Usage:**
+
+```
+/bootstrap                    # In Cursor chat
+Ctrl+K → /feature "user authentication"
+```
+
+#### GitHub Copilot
+
+**Setup:**
+
+```bash
+ai-bootstrap init . --ai copilot
+```
+
+**Generated files:**
+
+- `.github/copilot-instructions.md` - Copilot workspace instructions
+- `.github/prompts/*.prompt.md` - Slash commands (Copilot format)
+- `AGENT.md` - Universal config
+
+**Features:**
+
+- ✅ Copilot workspace instructions integration
+- ✅ GitHub workflow integration
+- ✅ Inline suggestions
+
+**Usage:**
+
+```
+/bootstrap                    # In Copilot chat (or GitHub Web)
+/feature "payment processing"
+```
+
+#### Gemini
+
+**Setup:**
+
+```bash
+ai-bootstrap init . --ai gemini
+```
+
+**Generated files:**
+
+- `.gemini/commands/*.md` - Slash commands
+- `AGENT.md` - Universal config
+
+**Features:**
+
+- ✅ AI-optimized documentation structure
+- ✅ Google AI workflow integration
+- ✅ Multi-modal support
+
+**Usage:**
+
+```
+/bootstrap
+/work resume feature-notifications
+```
+
+#### All AI Tools (Maximum Compatibility)
+
+```bash
+ai-bootstrap init . --ai all
+```
+
+Sets up configuration for **all 4 AI tools** simultaneously. Perfect for:
+
+- 🤝 Teams using different AI tools
+- 🔄 Experimenting with multiple tools
+- 📦 Open-source projects with diverse contributors
+
+### 2.4 Understanding Generated Documentation
+
+The number and type of documents varies by project type.
+
+#### Backend Projects (17 documents)
+
+**Core Documents (4):**
+
+- `AGENT.md` - Universal AI config, aggregator
+- `ai-instructions.md` - Tech stack, NEVER/ALWAYS rules
+- `project-brief.md` - Business context, objectives
+- `README.md` - Project overview, setup
+
+**Technical Docs (9):**
+
+- `docs/architecture.md` - System architecture, design patterns
+- `docs/data-model.md` - Entity catalog, ownership rules, relationships
+- `docs/code-standards.md` - Naming conventions, quality rules
+- `docs/testing.md` - Testing strategy, coverage requirements
+- `docs/operations.md` - Deployment, monitoring, runbooks
+- `docs/business-flows.md` - Business workflows, process diagrams
+- `docs/api.md` - API conventions, CRUD endpoints, contracts
+- `docs/contributing.md` - Development setup, workflow
+
+**Specifications (2):**
+
+- `specs/security.md` - Authentication, authorization, compliance
+- `specs/configuration.md` - Environment variables, external services
+
+**Configuration (2):**
+
+- `.env.example` - Environment variable template
+- Tool-specific configs (`.clauderules`, `.cursorrules`, etc.)
+
+#### Frontend Projects (12 documents)
+
+**Core Documents (4):**
+
+- `AGENT.md`, `ai-instructions.md`, `project-brief.md`, `README.md`
+
+**Technical Docs (6):**
+
+- `docs/components.md` - Component architecture and patterns
+- `docs/state-management.md` - State patterns (Redux, Zustand, Context, etc.)
+- `docs/styling.md` - Styling guidelines, design system
+- `docs/api-integration.md` - API client, data fetching patterns
+- `docs/testing.md` - Testing strategy (unit, integration, e2e)
+- `docs/operations.md` - Build, deployment, performance
+
+**Specifications (2):**
+
+- `specs/configuration.md` - Environment config
+- `specs/accessibility.md` - A11y requirements
+
+#### Mobile Projects (15 documents)
+
+**Core Documents (4):**
+
+- `AGENT.md`, `ai-instructions.md`, `project-brief.md`, `README.md`
+
+**Technical Docs (9):**
+
+- `docs/architecture.md` - App architecture patterns
+- `docs/navigation.md` - Navigation structure (React Navigation, etc.)
+- `docs/state-management.md` - State patterns
+- `docs/offline-strategy.md` - Offline sync, caching
+- `docs/permissions.md` - Runtime permissions handling
+- `docs/native-features.md` - Native modules integration
+- `docs/code-standards.md` - Code conventions
+- `docs/testing.md` - Testing strategy
+- `docs/app-store.md` - App store configuration
+
+**Specifications (2):**
+
+- `specs/build-configuration.md` - Build configs, CI/CD
+- `specs/deployment.md` - Deployment procedures
+
+#### Fullstack Projects (~20 documents)
+
+Combines backend + frontend documentation with fullstack-specific templates for shared files.
+
+**Core Documents (4):**
+
+- Combined tech stack in `ai-instructions.md`
+- Combined business context in `project-brief.md`
+- Unified `AGENT.md` and `README.md`
+
+**Backend + Frontend Docs:**
+
+- All backend technical docs (8 files)
+- All frontend technical docs (5 files)
+- Shared specifications (2 files)
+- Combined `.env.example`
+
+#### Document Interconnections
+
+All documents reference each other for consistency:
+
+```
+AGENT.md
+├── References: ai-instructions.md, project-brief.md
+├── Links to: docs/*, specs/*
+│
+ai-instructions.md
+├── Imports patterns from: docs/code-standards.md
+├── References: docs/architecture.md, docs/testing.md
+│
+docs/api.md
+├── Uses entities from: docs/data-model.md
+├── Follows patterns from: docs/architecture.md
+├── Security rules from: specs/security.md
+│
+docs/testing.md
+├── Aligns with: docs/code-standards.md
+├── Tests entities from: docs/data-model.md
+```
+
+**Result:** Changing one document triggers relevant updates in others.
+
+---
+
+## ⚡ Part 3: Advanced Usage
+
+> **Target Audience:** Power users, team leads  
+> **Goal:** Leverage advanced features and optimize workflows
+
+### 3.1 CLI Flags Reference
+
+The `ai-bootstrap init` command accepts multiple flags for automation and customization.
+
+#### Complete Flags Table
+
+| Flag                   | Type    | Required | Description              | Example                    |
+| ---------------------- | ------- | -------- | ------------------------ | -------------------------- |
+| `--ai <tool>`          | String  | Yes\*    | AI tool selection        | `--ai claude`              |
+| `--type <type>`        | String  | No       | Project type             | `--type backend`           |
+| `--name <name>`        | String  | No       | Project name             | `--name "My API"`          |
+| `--description <desc>` | String  | No       | Project description      | `--description "REST API"` |
+| `--verbose`            | Boolean | No       | Enable detailed logging  | `--verbose`                |
+| `--dry-run`            | Boolean | No       | Simulate without writing | `--dry-run`                |
+
+\* If omitted, CLI will prompt interactively.
+
+#### Flag Values
+
+**`--ai` values:**
+
+- `claude` - Claude Code only
+- `cursor` - Cursor only
+- `copilot` - GitHub Copilot only
+- `gemini` - Gemini only
+- `all` - All tools (maximum compatibility)
+
+**`--type` values:**
+
+- `backend` - Backend API/Service (17 docs)
+- `frontend` - Frontend Application (12 docs)
+- `mobile` - Mobile Application (15 docs)
+- `fullstack` - Fullstack Application (~20 docs)
+
+#### Usage Examples
+
+**Basic initialization:**
+
+```bash
+# Interactive (prompts for missing values)
+ai-bootstrap init .
+
+# Specify AI tool only
+ai-bootstrap init . --ai claude
+
+# Specify AI tool and project type
+ai-bootstrap init . --ai cursor --type backend
+```
+
+**Full automation (no prompts):**
+
+```bash
+ai-bootstrap init . \
+  --ai copilot \
+  --type backend \
+  --name "Payment API" \
+  --description "Stripe integration service"
+```
+
+**Debugging and testing:**
+
+```bash
+# Verbose logging (see all internal operations)
+ai-bootstrap init . --ai claude --verbose
+
+# Dry run (simulate without creating files)
+ai-bootstrap init . --ai all --dry-run
+
+# Combine both
+ai-bootstrap init . --ai gemini --verbose --dry-run
+```
+
+**Different directories:**
+
+```bash
+# Relative paths
+ai-bootstrap init ../my-project --ai claude
+ai-bootstrap init ./backend --ai cursor --type backend
+
+# Absolute paths
+ai-bootstrap init /absolute/path/to/project --ai copilot --type fullstack
+```
+
+**CI/CD integration:**
+
+```bash
+# GitHub Actions example
+- name: Initialize AI Bootstrap
+  run: |
+    npm install -g ai-bootstrap
+    ai-bootstrap init . --ai copilot --type backend --name "${{ github.event.repository.name }}"
+```
+
+### 3.2 Individual Phase Commands
+
+Run specific bootstrap phases independently for targeted updates.
+
+#### When to Use Individual Phases
+
+**Scenario 1: Update specific documentation**
+
+```
+# Security policies changed
+/bootstrap-phase4-security
+
+# New testing requirements
+/bootstrap-phase6-testing
+```
+
+**Scenario 2: Onboard team members**
+
+```
+# New backend developer joins
+/bootstrap-phase3-architecture
+/bootstrap-phase5-standards
+
+# New DevOps engineer joins
+/bootstrap-phase7-operations
+```
+
+**Scenario 3: Deep dive into complex areas**
+
+```
+# Large data model redesign
+/bootstrap-phase2-data
+
+# Architecture refactoring
+/bootstrap-phase3-architecture
+```
+
+#### Phase Command Reference
+
+**All project types:**
+
+```
+/bootstrap-phase0-context          # Context Discovery (existing projects)
+```
+
+**Backend-specific:**
+
+```
+/bootstrap-phase1-business         # Discovery & Business (15-20 min)
+/bootstrap-phase2-data             # Data Architecture (15-20 min)
+/bootstrap-phase3-architecture     # System Architecture (15-20 min)
+/bootstrap-phase4-security         # Security & Auth (15-20 min)
+/bootstrap-phase5-standards        # Code Standards (15-20 min)
+/bootstrap-phase6-testing          # Testing Strategy (15-25 min)
+/bootstrap-phase7-operations       # Operations & Deployment (10 min)
+```
+
+**Frontend-specific:**
+
+```
+/bootstrap-phase1-discovery        # Discovery & UX
+/bootstrap-phase2-components       # Components & Framework
+/bootstrap-phase3-state            # State Management
+/bootstrap-phase4-styling          # Styling & Design
+/bootstrap-phase5-standards        # Code Standards
+/bootstrap-phase6-testing          # Testing Strategy
+/bootstrap-phase7-deployment       # Deployment
+```
+
+**Mobile-specific:**
+
+```
+/bootstrap-phase1-platform         # Platform & Framework
+/bootstrap-phase2-navigation       # Navigation & Architecture
+/bootstrap-phase3-state            # State & Data Management
+/bootstrap-phase4-permissions      # Permissions & Native Features
+/bootstrap-phase5-standards        # Code Standards
+/bootstrap-phase6-testing          # Testing Strategy
+/bootstrap-phase7-deployment       # Deployment
+```
+
+#### Phase Dependencies
+
+Some phases depend on others. Recommended order:
+
+```
+Phase 0 (Context Discovery) → Always run first for existing projects
+    ↓
+Phase 1 (Business/Discovery) → Defines goals and scope
+    ↓
+Phase 2 (Data/Components) → Defines entities or UI building blocks
+    ↓
+Phase 3 (Architecture) → System design (depends on Phase 2)
+    ↓
+Phase 4 (Security/Styling) → Security rules or design system
+    ↓
+Phase 5 (Standards) → Code quality rules
+    ↓
+Phase 6 (Testing) → Test strategy (depends on Phases 2-5)
+    ↓
+Phase 7 (Operations/Deployment) → CI/CD (depends on all previous)
+```
+
+**Example: Updating only architecture and testing**
+
+```bash
+# 1. Update architecture decisions
+/bootstrap-phase3-architecture
+
+# 2. Update testing to match new architecture
+/bootstrap-phase6-testing
+
+# 3. Update operations for new deployment pattern
+/bootstrap-phase7-operations
+```
+
+### 3.3 Workflow Commands
+
+**Backend projects only** - Structured workflows for feature development, bug fixes, code review, and refactoring.
+
+#### 3.3.1 `/feature` - Feature Development
+
+**Time:** 15-20 minutes  
+**Purpose:** Create new features, modify existing ones, or refactor code with full specification and planning.
+
+**Usage Modes:**
+
+```bash
+/feature                      # Interactive (asks: new/change/refactor)
+/feature new                  # New feature from scratch
+/feature change               # Modify existing feature
+/feature refactor             # Refactor existing code
+```
+
+**Workflow:**
+
+1. **Spec Creation** - Define feature requirements
+   - User stories and acceptance criteria
+   - API contracts and data structures
+   - Dependencies and risks
+
+2. **Planning** - Break down into tasks
+   - Technical approach
+   - Step-by-step implementation plan
+   - Testing strategy
+
+3. **Implementation** - Execute tasks
+   - Write code following specs
+   - Add tests for each task
+   - Update documentation
+
+4. **Auto-Archive** - Save work history
+   - Moves to `.ai-bootstrap/archive/`
+   - Updates relevant documentation
+   - Preserves context for future reference
+
+**Generated Structure:**
+
+```
+.ai-bootstrap/work/feature-[name]/
+├── spec.md           # Feature specification
+├── plan.md           # Implementation plan
+└── tasks.md          # Task checklist
+```
+
+**Example:**
+
+```
+/feature new
+
+[AI] What feature would you like to build?
+
+User: Real-time notifications API with WebSocket support
+
+[AI creates spec.md with requirements]
+[AI creates plan.md with 8 tasks]
+[AI implements tasks one by one]
+[AI writes tests for each task]
+[AI updates docs/api.md and docs/architecture.md]
+[AI archives to .ai-bootstrap/archive/feature-notifications/]
+
+✅ Feature complete: Real-time notifications API
+📝 Documentation updated: docs/api.md, docs/architecture.md
+🧪 Tests added: 12 test cases, 98% coverage
+⏱️ Time: 18 minutes
+```
+
+#### 3.3.2 `/fix` - Bug Fixes
+
+**Time:** 3-15 minutes (adaptive)  
+**Purpose:** Fix bugs with automatic complexity detection and appropriate workflow.
+
+**Usage:**
+
+```bash
+/fix                          # Interactive (describe the bug)
+/fix "Login returns 500 when email not found"
+```
+
+**Adaptive Workflow:**
+
+The command **automatically detects complexity** and adjusts:
+
+**Simple bugs (3-5 minutes):**
+
+- Single file, single function
+- Clear root cause
+- No architecture changes
+
+**Workflow:**
+
+1. Locate bug
+2. Quick fix
+3. Add test case
+4. Done
+
+**Complex bugs (10-15 minutes):**
+
+- Multiple files or layers
+- Unclear root cause
+- Requires investigation
+
+**Workflow:**
+
+1. Deep analysis
+2. Root cause identification
+3. Comprehensive fix
+4. Multiple test cases
+5. Documentation update
+
+**Example (Simple):**
+
+```
+/fix "Validation allows empty email"
+
+[AI] Analyzing bug...
+🔍 Complexity: Simple (single validator function)
+⏱️ Estimated time: 3 minutes
+
+[AI locates validator in src/validators/user.validator.ts]
+[AI fixes validation rule]
+[AI adds test case]
+
+✅ Fixed: src/validators/user.validator.ts
+🧪 Test added: src/validators/__tests__/user.validator.test.ts
+⏱️ Actual time: 4 minutes
+```
+
+**Example (Complex):**
+
+```
+/fix "Race condition in payment processing"
+
+[AI] Analyzing bug...
+🔍 Complexity: Complex (concurrency, multi-layer)
+⏱️ Estimated time: 12 minutes
+
+[AI investigates payment flow across 4 files]
+[AI identifies race condition in transaction handling]
+[AI implements pessimistic locking]
+[AI adds integration test with concurrent requests]
+[AI updates docs/architecture.md with concurrency notes]
+
+✅ Fixed: 4 files across service + repository layers
+🧪 Tests added: 3 unit tests, 1 integration test
+📝 Updated: docs/architecture.md
+⏱️ Actual time: 14 minutes
+```
+
+#### 3.3.3 `/work` - Work Management
+
+**Purpose:** Manage work in progress, resume interrupted tasks, archive completed work.
+
+**Subcommands:**
+
+```bash
+/work                         # List active tasks with progress
+/work show [name]            # Show task details
+/work resume [name]          # Resume interrupted work
+/work archive [name]         # Archive completed work and update docs
+```
+
+**Structure:**
+
+```
+.ai-bootstrap/
+├── work/                    # Active work
+│   ├── feature-notifications/
+│   ├── feature-auth/
+│   └── fix-payment-bug/
+└── archive/                 # Completed work
+    ├── feature-user-crud/
+    └── fix-validation/
+```
+
+**Example: List Active Work**
+
+```
+/work
+
+📋 ACTIVE WORK:
+
+1. feature-notifications
+   Status: In Progress (Task 5/8)
+   Started: 2h ago
+   Files: 12 modified
+
+2. feature-auth
+   Status: Planning
+   Started: 1 day ago
+   Files: 3 modified
+
+3. fix-payment-bug
+   Status: In Progress (Task 2/3)
+   Started: 45 min ago
+   Files: 4 modified
+```
+
+**Example: Resume Work**
+
+```
+/work resume feature-notifications
+
+📂 RESUMING: feature-notifications
+
+✅ Completed tasks (4):
+  [x] Create WebSocket server module
+  [x] Implement connection management
+  [x] Add authentication middleware
+  [x] Create notification queue
+
+⏳ Current task (5/8):
+  [ ] Implement room-based broadcasting
+
+📝 Context loaded from: .ai-bootstrap/work/feature-notifications/
+📄 Files in progress: 12
+🎯 Next step: Complete broadcasting logic
+
+Ready to continue! What would you like me to do?
+```
+
+**Example: Archive Completed Work**
+
+```
+/work archive feature-notifications
+
+📦 ARCHIVING: feature-notifications
+
+✅ Marking all tasks complete
+📝 Updating documentation:
+  - docs/api.md (added WebSocket endpoints)
+  - docs/architecture.md (added notification system diagram)
+  - CHANGELOG.md (added v1.2.0 notes)
+
+📁 Moving to archive:
+  .ai-bootstrap/work/feature-notifications/
+  → .ai-bootstrap/archive/feature-notifications/
+
+✅ ARCHIVED SUCCESSFULLY
+⏱️ Total time: 2h 15min
+📊 Final stats: 8/8 tasks, 12 files, 342 lines added
+```
+
+#### 3.3.4 `/review` - Code Review
+
+**Time:** 5 minutes  
+**Purpose:** Professional multi-aspect code review with prioritized findings.
+
+**Usage:**
+
+```bash
+/review                       # Review current uncommitted changes
+/review feature-[name]       # Review specific feature work
+/review --full               # Review entire codebase
+```
+
+**Analysis Perspectives (5):**
+
+1. **🔒 Security**
+   - SQL injection, XSS, CSRF vulnerabilities
+   - Authentication/authorization issues
+   - Secrets in code
+   - Input validation gaps
+
+2. **⚡ Performance**
+   - N+1 query problems
+   - Missing database indexes
+   - Memory leaks
+   - Inefficient algorithms
+
+3. **🧪 Testing**
+   - Test coverage gaps
+   - Missing edge cases
+   - Untested error paths
+   - Integration test needs
+
+4. **📐 Architecture**
+   - SOLID principles violations
+   - DRY violations
+   - High coupling
+   - Poor separation of concerns
+
+5. **🎨 Code Quality**
+   - Naming conventions
+   - Code complexity
+   - Documentation gaps
+   - Code smells
+
+**Prioritized Report:**
+
+```
+/review
+
+🔍 CODE REVIEW REPORT
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔴 CRITICAL ISSUES (Fix Immediately)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔒 SECURITY - SQL Injection Risk
+File: src/repositories/user.repository.ts:45
+Issue: Raw SQL with string interpolation
+Fix: Use parameterized queries
+
+⚡ PERFORMANCE - N+1 Query Problem
+File: src/services/order.service.ts:78
+Issue: Loading relations in loop (100+ queries)
+Fix: Use eager loading or batch fetching
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🟡 WARNINGS (Should Fix Soon)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🧪 TESTING - Missing Edge Case Tests
+File: src/validators/email.validator.ts
+Issue: No tests for invalid formats
+Fix: Add test cases for edge cases
+
+📐 ARCHITECTURE - Service Layer Violation
+File: src/controllers/payment.controller.ts:23
+Issue: Direct database access from controller
+Fix: Move logic to service layer
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🟢 SUGGESTIONS (Nice to Have)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎨 CODE QUALITY - Complex Function
+File: src/utils/price-calculator.ts:15
+Issue: Cyclomatic complexity: 12 (threshold: 10)
+Suggestion: Extract helper functions
+
+🎨 CODE QUALITY - Magic Numbers
+File: src/services/subscription.service.ts:34
+Issue: Hard-coded 30, 90, 365 days
+Suggestion: Use named constants
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 SUMMARY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Files reviewed: 8
+Critical issues: 2 🔴
+Warnings: 2 🟡
+Suggestions: 2 🟢
+
+Overall score: 7/10 (Good, but fix critical issues)
+
+⏱️ Review time: 5 minutes
+```
+
+#### 3.3.5 `/refactor-quick` - Quick Refactorings
+
+**Time:** 3-5 minutes  
+**Purpose:** Small refactorings without the overhead of full feature workflow.
+
+**When to use:**
+
+- ✅ Extract methods/functions
+- ✅ Rename variables/classes
+- ✅ Move logic between layers
+- ✅ Extract to utility modules
+- ✅ Simplify complex conditionals
+- ❌ Large architectural changes (use `/feature refactor`)
+
+**vs `/feature refactor`:**
+
+| Aspect        | `/refactor-quick` | `/feature refactor`   |
+| ------------- | ----------------- | --------------------- |
+| Time          | 3-5 min           | 15-20 min             |
+| Spec required | ❌ No             | ✅ Yes                |
+| Plan required | ❌ No             | ✅ Yes                |
+| Documentation | Auto-update       | Full rewrite          |
+| Best for      | Small changes     | Architectural changes |
+
+**Usage:**
+
+```bash
+/refactor-quick "Extract validation logic to utility"
+/refactor-quick "Rename getUserById to findUserById"
+/refactor-quick "Move email sending to service layer"
+```
+
+**Example:**
+
+```
+/refactor-quick "Extract price calculation to utility"
+
+[AI] Analyzing target code...
+🎯 Target: src/services/order.service.ts (calculateTotal method)
+📊 Complexity: Medium (45 lines, 3 nested ifs)
+⏱️ Estimated: 4 minutes
+
+[AI creates src/utils/price-calculator.ts]
+[AI extracts calculation logic]
+[AI updates order.service.ts to use utility]
+[AI adds unit tests for price-calculator.ts]
+
+✅ REFACTORING COMPLETE
+
+Files changed:
+  - Created: src/utils/price-calculator.ts (67 lines)
+  - Modified: src/services/order.service.ts (-42, +8 lines)
+  - Created: src/utils/__tests__/price-calculator.test.ts (45 lines)
+
+Benefits:
+  ✅ Reduced complexity: 45 → 8 lines in service
+  ✅ Reusable utility function
+  ✅ Better test coverage (isolated logic)
+
+⏱️ Actual time: 4 minutes
+```
+
+### 3.4 Documentation Updates
+
+Keep documentation synchronized with code changes using `/docs-update`.
+
+#### Command: `/docs-update`
+
+**Purpose:** Detect code changes and automatically update affected documentation.
+
+**How it works:**
+
+1. Compares current code with last documented state (`.ai-bootstrap/analysis.json`)
+2. Detects changes based on project type
+3. Shows report of documents needing updates
+4. Asks for confirmation
+5. Updates documents incrementally
+
+**Changes detected:**
+
+**Backend:**
+
+- API endpoints (new routes, changed methods)
+- Database entities (new fields, relationships)
+- Dependencies (new packages)
+- Architecture patterns (structural changes)
+- Configuration (new environment variables)
+
+**Frontend:**
+
+- Components (new components, prop changes)
+- State management (new stores, hooks)
+- Styling approach (design tokens changes)
+- Dependencies (new packages)
+- Architecture (structural changes)
+
+**Mobile:**
+
+- Screens (new screens, navigation changes)
+- Permissions (new runtime permissions)
+- Native features (new native modules)
+- Build configuration (new build settings)
+- Dependencies (new packages)
+
+**Usage:**
+
+```bash
+# For backend, frontend, or mobile projects
+/docs-update
+
+# For fullstack projects (separate commands)
+/backend-docs-update
+/frontend-docs-update
+```
+
+**Example (Backend):**
+
+```
+/docs-update
+
+🔍 ANALYZING CODE CHANGES...
+
+Last analysis: 2 days ago (Dec 2, 2025)
+Files changed: 47
+New files: 8
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 CHANGES DETECTED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔴 Documents requiring updates (4):
+
+1. docs/api.md
+   - 3 new endpoints (POST /notifications, GET /notifications/:id, DELETE /notifications/:id)
+   - 1 endpoint modified (PUT /users/:id now accepts 'preferences' field)
+
+2. docs/data-model.md
+   - New entity: Notification (6 fields)
+   - Modified entity: User (added 'preferences' JSONB field)
+   - New relationship: User.notifications (OneToMany)
+
+3. docs/architecture.md
+   - New module: NotificationModule
+   - New service: WebSocketGateway
+   - Modified: Added event-driven architecture notes
+
+4. specs/configuration.md
+   - 4 new environment variables (REDIS_URL, WEBSOCKET_PORT, etc.)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+¿Actualizar todos los documentos detectados? (Y/N)
+
+> Y
+
+⏳ Updating documentation...
+
+✅ docs/api.md updated
+   - Added 3 new endpoints
+   - Updated 1 endpoint documentation
+
+✅ docs/data-model.md updated
+   - Added Notification entity
+   - Updated User entity
+   - Added relationship diagram
+
+✅ docs/architecture.md updated
+   - Added NotificationModule to system diagram
+   - Added WebSocket communication section
+   - Updated event flow diagram
+
+✅ specs/configuration.md updated
+   - Added 4 new environment variables with descriptions
+
+✅ .ai-bootstrap/analysis.json updated
+   - Saved new baseline for future comparisons
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ DOCUMENTATION UPDATE COMPLETE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Documents updated: 4
+Lines added: 127
+Lines modified: 43
+Time: 6 minutes
+
+💡 Tip: Run /docs-update weekly to keep docs synchronized!
+```
+
+**When to run:**
+
+- ⚡ **After major features** - New endpoints, entities, or modules
+- 🔄 **Weekly/monthly** - Catch incremental drift
+- 📝 **Before releases** - Ensure docs match production code
+- 👥 **When onboarding** - Verify docs reflect current state
+
+### 3.5 Project Scopes
+
+AI Bootstrap adapts documentation depth to your project maturity needs.
+
+#### Scope Comparison
+
+| Aspect              | MVP (Basic Tests) | Production-Ready   | Enterprise           |
+| ------------------- | ----------------- | ------------------ | -------------------- |
+| **Time (New)**      | 50-70 min         | 90-120 min         | 120-150 min          |
+| **Time (Existing)** | 25-40 min         | 35-70 min          | 50-90 min            |
+| **Testing**         | Basic unit tests  | Unit + integration | Full test pyramid    |
+| **Documentation**   | Essential docs    | Comprehensive      | + Compliance         |
+| **Security**        | Basic auth        | Full security      | + Audit trails       |
+| **Operations**      | Simple deploy     | CI/CD pipeline     | + Monitoring         |
+| **Best For**        | Prototypes, MVPs  | Production apps    | Enterprise/regulated |
+
+#### MVP Scope (Basic Tests)
+
+**Goal:** Get to market fast with essential quality
+
+**Includes:**
+
+- ✅ Basic architecture documentation
+- ✅ Essential API/component docs
+- ✅ Unit tests (60%+ coverage)
+- ✅ Basic authentication
+- ✅ Simple deployment guide
+- ⚠️ No integration tests
+- ⚠️ No comprehensive monitoring
+
+**Time:** 50-70 min (new) / 25-40 min (existing)
+
+**When to choose:**
+
+- 🚀 Prototypes and proof of concepts
+- 💡 Testing market fit
+- 🏃 Speed is critical
+- 👥 Small team (<5 people)
+
+#### Production-Ready Scope
+
+**Goal:** Robust production system with confidence
+
+**Includes:**
+
+- ✅ Comprehensive architecture docs
+- ✅ Full API/component documentation
+- ✅ Unit tests (80%+ coverage)
+- ✅ Integration tests (key flows)
+- ✅ Full authentication + authorization
+- ✅ CI/CD pipeline
+- ✅ Basic monitoring
+- ⚠️ No compliance documentation
+
+**Time:** 90-120 min (new) / 35-70 min (existing)
+
+**When to choose:**
+
+- 🎯 Production applications
+- 👥 Growing teams (5-20 people)
+- 💼 Business-critical systems
+- 🔄 Need maintainability
+
+#### Enterprise Scope
+
+**Goal:** Enterprise-grade with compliance and audit
+
+**Includes:**
+
+- ✅ Full test pyramid (unit + integration + e2e)
+- ✅ 90%+ test coverage
+- ✅ Complete compliance documentation
+- ✅ Security audit trails
+- ✅ Comprehensive monitoring + alerting
+- ✅ Disaster recovery plans
+- ✅ Performance benchmarks
+- ✅ Multi-environment strategy
+
+**Time:** 120-150 min (new) / 50-90 min (existing)
+
+**When to choose:**
+
+- 🏢 Enterprise organizations
+- 📋 Regulated industries (finance, healthcare)
+- 🔐 Security-critical systems
+- 👥 Large teams (20+ people)
+- 🌍 Multi-region deployments
+
+#### Changing Scope Later
+
+You can upgrade scope after initial bootstrap:
+
+```bash
+# Initially chose MVP, now need Production-Ready
+/bootstrap-phase6-testing    # Expand testing strategy
+/bootstrap-phase7-operations # Add CI/CD and monitoring
+
+# Upgrading to Enterprise
+/bootstrap-phase4-security   # Add compliance docs
+/bootstrap-phase6-testing    # Add e2e tests
+/bootstrap-phase7-operations # Add disaster recovery
+```
+
+---
+
+## 📖 Reference
+
+### Commands Cheat Sheet
+
+Complete list of all available commands organized by category.
+
+#### CLI Commands (2)
+
+```bash
+ai-bootstrap init [path] [options]   # Initialize project
+ai-bootstrap check                    # Verify initialization
+ai-bootstrap --version               # Show version (1.1.1)
+ai-bootstrap --help                  # Show help
+```
+
+#### Bootstrap Commands - Backend (9)
+
+```
+/bootstrap                           # Full 8-phase process (90-120 min)
+/bootstrap-phase0-context           # Context discovery (existing only)
+/bootstrap-phase1-business          # Discovery & Business
+/bootstrap-phase2-data              # Data Architecture
+/bootstrap-phase3-architecture      # System Architecture
+/bootstrap-phase4-security          # Security & Auth
+/bootstrap-phase5-standards         # Code Standards
+/bootstrap-phase6-testing           # Testing Strategy
+/bootstrap-phase7-operations        # Operations & Deployment
+```
+
+#### Bootstrap Commands - Frontend (9)
+
+```
+/bootstrap                           # Full 8-phase process
+/bootstrap-phase0-context           # Context discovery
+/bootstrap-phase1-discovery         # Discovery & UX
+/bootstrap-phase2-components        # Components & Framework
+/bootstrap-phase3-state             # State Management
+/bootstrap-phase4-styling           # Styling & Design
+/bootstrap-phase5-standards         # Code Standards
+/bootstrap-phase6-testing           # Testing Strategy
+/bootstrap-phase7-deployment        # Deployment
+```
+
+#### Bootstrap Commands - Mobile (9)
+
+```
+/bootstrap                           # Full 8-phase process
+/bootstrap-phase0-context           # Context discovery
+/bootstrap-phase1-platform          # Platform & Framework
+/bootstrap-phase2-navigation        # Navigation & Architecture
+/bootstrap-phase3-state             # State & Data Management
+/bootstrap-phase4-permissions       # Permissions & Native Features
+/bootstrap-phase5-standards         # Code Standards
+/bootstrap-phase6-testing           # Testing Strategy
+/bootstrap-phase7-deployment        # Deployment
+```
+
+#### Workflow Commands - Backend Only (5)
+
+```
+/feature [new|change|refactor]      # Feature development (15-20 min)
+/fix                                 # Bug fixes (3-15 min, adaptive)
+/work [show|resume|archive]         # Work management
+/review [--full]                    # Multi-aspect code review (5 min)
+/refactor-quick                     # Quick refactorings (3-5 min)
+```
+
+#### Documentation Update Commands (3)
+
+```
+/docs-update                         # Backend/Frontend/Mobile
+/backend-docs-update                # Fullstack: backend only
+/frontend-docs-update               # Fullstack: frontend only
+```
+
+**Total Commands:** 26+ (varies by project type)
+
+### Project Type Comparison
+
+| Feature                 | Backend        | Frontend       | Mobile       | Fullstack   |
+| ----------------------- | -------------- | -------------- | ------------ | ----------- |
+| **Documents Generated** | 17             | 12             | 15           | ~20         |
+| **Bootstrap Phases**    | 8 (0-7)        | 8 (0-7)        | 8 (0-7)      | 16 (both)   |
+| **Workflow Commands**   | ✅ 5           | ❌ None        | ❌ None      | ✅ 5        |
+| **Context Detection**   | ✅ 3-layer     | ✅ 3-layer     | ✅ 3-layer   | ✅ 3-layer  |
+| **Languages Supported** | 12             | JavaScript/TS  | Native/Cross | Both        |
+| **Frameworks Detected** | 60+            | 10+            | 8+           | 60+         |
+| **Time (New)**          | 90-120 min     | 80-100 min     | 90-110 min   | 150-200 min |
+| **Time (Existing)**     | 35-70 min      | 30-50 min      | 35-60 min    | 60-100 min  |
+| **Best For**            | APIs, Services | Web Apps, SPAs | iOS, Android | Full Apps   |
+
+### CLI Flags Reference
+
+| Flag            | Type    | Required | Values                                         | Description                    |
+| --------------- | ------- | -------- | ---------------------------------------------- | ------------------------------ |
+| `--ai`          | String  | Yes\*    | `claude`, `cursor`, `copilot`, `gemini`, `all` | AI tool selection              |
+| `--type`        | String  | No       | `backend`, `frontend`, `mobile`, `fullstack`   | Project type                   |
+| `--name`        | String  | No       | Any string                                     | Project name                   |
+| `--description` | String  | No       | Any string                                     | Project description            |
+| `--verbose`     | Boolean | No       | -                                              | Enable detailed logging        |
+| `--dry-run`     | Boolean | No       | -                                              | Simulate without writing files |
+
+\* If omitted, CLI prompts interactively.
+
+### Supported Languages & Frameworks
+
+**Languages (12):** Node.js/TypeScript, Python, PHP, Java, C#/.NET, Go, Ruby, Kotlin, Rust, Elixir, Scala, Swift
+
+**Frameworks (60+):** NestJS, Express, Fastify, Django, FastAPI, Laravel, Spring Boot, ASP.NET Core, Gin, Rails, and 50+ more
+
+**ORMs (35+):** Prisma, TypeORM, Sequelize, SQLAlchemy, Eloquent, Hibernate, Entity Framework, GORM, and 27+ more
+
+**Market Coverage:** ~98%
+
+See [README.md](README.md#-supported-languages--frameworks) for complete tables.
+
+### Troubleshooting
+
+#### Node.js Version Error
+
+**Error:** `Error: Node.js version must be >=18.0.0`
+
+**Solution:**
+
+```bash
+# Check current version
+node --version
+
+# Install Node.js 18+ from https://nodejs.org/
+# Or use nvm:
+nvm install 18
+nvm use 18
+```
+
+#### Insufficient Permissions
+
+**Error:** `EACCES: permission denied, mkdir '.ai-bootstrap'`
+
+**Solution:**
+
+```bash
+# Check folder permissions
+ls -la
+
+# Fix permissions (Unix/macOS)
+chmod 755 .
+
+# Or run with correct user (avoid sudo)
+```
+
+#### Slash Commands Not Working
+
+**Problem:** `/bootstrap` command not recognized in AI tool
+
+**Solution:**
+
+1. **Verify initialization:**
+
+   ```bash
+   ai-bootstrap check
+   ```
+
+2. **Check command files exist:**
+
+   ```bash
+   # For Claude
+   ls .claude/commands/
+
+   # For Cursor
+   ls .cursor/commands/
+
+   # For Copilot
+   ls .github/prompts/
+   ```
+
+3. **Reinstall slash commands:**
+
+   ```bash
+   ai-bootstrap init . --ai [your-tool]
+   ```
+
+4. **Manual invocation:**
+   ```
+   Read .ai-bootstrap/prompts/backend/bootstrap.md and execute
+   ```
+
+#### AI Tool Not Detecting Config
+
+**Problem:** Claude/Cursor not reading `.clauderules` or `.cursorrules`
+
+**Solution:**
+
+1. **Verify file exists:**
+
+   ```bash
+   ls -a | grep -E '\.(claude|cursor)rules'
+   ```
+
+2. **Check file content:**
+
+   ```bash
+   cat .clauderules
+   # Should reference AGENT.md
+   ```
+
+3. **Restart AI tool** - Config files loaded at startup
+
+4. **Force reload:**
+   - Claude: Create new project
+   - Cursor: Reload window (Cmd/Ctrl + R)
+   - Copilot: Reload VS Code
+
+#### Documentation Not Generated
+
+**Problem:** `/bootstrap` completes but files missing
+
+**Solution:**
+
+1. **Check AI tool permissions:**
+   - Verify AI can write files in project directory
+   - Check for file system restrictions
+
+2. **Verify templates exist:**
+
+   ```bash
+   ls .ai-bootstrap/templates/
+   ```
+
+3. **Run with verbose logging:**
+
+   ```bash
+   ai-bootstrap init . --verbose
+   ```
+
+4. **Check AI tool output** for error messages
+
+#### Analysis.json Issues
+
+**Problem:** `/docs-update` says "no changes" but code changed
+
+**Solution:**
+
+1. **Delete analysis cache:**
+
+   ```bash
+   rm .ai-bootstrap/analysis.json
+   ```
+
+2. **Run docs-update again:**
+
+   ```
+   /docs-update
+   ```
+
+3. **Force full re-analysis:**
+   ```
+   /bootstrap-phase0-context
+   ```
+
+### Best Practices
+
+#### Before Bootstrap
+
+1. ✅ **Have a clear problem statement** - Understand what you're building
+2. ✅ **Know your tech stack** - Framework, database, deployment target
+3. ✅ **Understand your users** - Who will use the product?
+4. ✅ **Choose appropriate scope** - MVP vs Production-Ready vs Enterprise
+5. ✅ **Set aside time** - Block 90-120 min (new) or 35-70 min (existing)
+6. ✅ **Gather requirements** - Business goals, constraints, compliance needs
+
+#### During Bootstrap
+
+1. ✅ **Take your time** - Don't rush through questions
+2. ✅ **Be specific** - More detail = better documentation
+3. ✅ **Use recommendations** - ⭐🔥⚡🏆 markers guide best choices
+4. ✅ **Confirm each phase** - Review before moving to next phase
+5. ✅ **Save progress** - Work saved automatically in `.ai-bootstrap/work/`
+6. ✅ **Ask for clarification** - AI can explain terms or options
+
+#### After Bootstrap
+
+1. ✅ **Review all documents** - Read generated docs thoroughly
+2. ✅ **Customize as needed** - Templates are starting points, not final
+3. ✅ **Share with team** - Share `AGENT.md` and `README.md` with developers
+4. ✅ **Update regularly** - Run `/docs-update` weekly or after major changes
+5. ✅ **Archive completed work** - Use `/work archive` to maintain history
+6. ✅ **Leverage workflows** - Use `/feature`, `/fix`, `/review` for daily work
+
+#### Team Collaboration
+
+1. ✅ **Commit `.ai-bootstrap/`** to version control - Team needs templates
+2. ✅ **Commit generated docs** - Share knowledge across team
+3. ✅ **Don't commit `analysis.json`** - Add to `.gitignore` (machine-specific cache)
+4. ✅ **Update docs in PRs** - Use `/docs-update` before merging
+5. ✅ **Use same AI tool** - Or use `--ai all` for compatibility
+6. ✅ **Review together** - Use `/review` for pair programming
+
+#### Documentation Maintenance
+
+1. ✅ **Weekly updates** - Run `/docs-update` to catch drift
+2. ✅ **Version documentation** - Tag docs with releases
+3. ✅ **Link from code** - Reference docs in comments
+4. ✅ **Update on architecture changes** - Re-run relevant phases
+5. ✅ **Keep AGENT.md current** - It's the single source of truth
+6. ✅ **Archive old work** - Move completed features to archive
+
+#### Performance Optimization
+
+1. ✅ **Use caching** - Let Layer 0 cache work (don't delete `analysis.json`)
+2. ✅ **Selective deep analysis** - Choose Layer 3 targets wisely
+3. ✅ **Incremental updates** - Use individual phase commands
+4. ✅ **Quick refactors** - Use `/refactor-quick` for small changes
+5. ✅ **Review regularly** - Catch issues early with `/review`
+
+---
+
+## 🎓 Learning Resources
+
+- **[README.md](README.md)** - Project overview, features, installation
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Contribution guidelines
+- **[GitHub Issues](https://github.com/victorvelazquez/ai-bootstrap/issues)** - Support and bug reports
+- **[GitHub Discussions](https://github.com/victorvelazquez/ai-bootstrap/discussions)** - Community Q&A
+
+---
+
+## 💡 Tips for Success
+
+### Quick Wins
+
+1. **Start with existing projects** - See 50-94% time savings immediately
+2. **Use workflow commands** - `/feature`, `/fix`, `/review` save 60-70% time
+3. **Leverage caching** - Re-run `/docs-update` in 0 seconds with no changes
+4. **Choose right scope** - MVP for speed, Enterprise for compliance
+
+### Common Mistakes to Avoid
+
+1. ❌ **Rushing through questions** - Take time, provide details
+2. ❌ **Ignoring recommendations** - ⭐🔥⚡🏆 markers are research-backed
+3. ❌ **Not updating docs** - Code evolves, docs should too
+4. ❌ **Deleting `.ai-bootstrap/`** - You lose templates and workflows
+5. ❌ **Skipping Phase 0** - Context detection saves 50-60% time
+
+### Power User Shortcuts
+
+```bash
+# Automated initialization
+ai-bootstrap init . --ai all --type backend --name "My API" --description "REST API" --verbose
+
+# Quick feature iteration
+/feature new → Build → /review → /work archive
+
+# Emergency bug fix
+/fix "Critical bug description" → Test → Deploy
+
+# Weekly maintenance
+/docs-update → Review changes → Commit
+
+# Team onboarding
+/bootstrap-phase3-architecture → Share with new dev
+```
+
+---
+
+**🚀 Ready to transform your development workflow with AI Bootstrap!**
+
+For questions or support, visit [GitHub Issues](https://github.com/victorvelazquez/ai-bootstrap/issues).
