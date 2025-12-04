@@ -138,6 +138,7 @@ uv tool install ai-bootstrap
 **Versión actual:** 1.1.1
 
 **Archivos publicados en npm:**
+
 - dist/
 - prompts/
 - templates/
@@ -219,23 +220,25 @@ Read .ai-bootstrap/prompts/mobile/bootstrap.md and execute the 7-phase questionn
 Initialize a new project with AI-ready documentation.
 
 **Syntax:**
+
 ```bash
 ai-bootstrap init [path] [options]
 ```
 
 **Arguments:**
+
 - `[path]` - Target directory (defaults to current directory `.`)
 
 ### CLI Flags
 
-| Flag            | Descripción                                               |
-|-----------------|----------------------------------------------------------|
-| --ai <tool>     | Selecciona la herramienta de IA (claude, cursor, copilot, gemini, all) |
-| --type <type>   | Tipo de proyecto (backend, frontend, fullstack, mobile)  |
-| --name <name>   | Nombre del proyecto (omite prompt interactivo)           |
-| --description <desc> | Descripción del proyecto (omite prompt interactivo)  |
-| --verbose       | Activa logging detallado                                 |
-| --dry-run       | Simula sin escribir archivos                             |
+| Flag                 | Type     | Descripción                                                            |
+| -------------------- | -------- | ---------------------------------------------------------------------- |
+| --ai <tool>          | REQUIRED | Selecciona la herramienta de IA (claude, cursor, copilot, gemini, all) |
+| --type <type>        | Optional | Tipo de proyecto (backend, frontend, fullstack, mobile)                |
+| --name <name>        | Optional | Nombre del proyecto (omite prompt interactivo)                         |
+| --description <desc> | Optional | Descripción del proyecto (omite prompt interactivo)                    |
+| --verbose            | Optional | Activa logging detallado                                               |
+| --dry-run            | Optional | Simula sin escribir archivos                                           |
 
 > Requiere Node.js >=18.0.0 para ejecutar todos los comandos.
 
@@ -256,6 +259,10 @@ ai-bootstrap init . --verbose
 
 # Usar todos los flags juntos
 ai-bootstrap init ./my-project --ai copilot --type fullstack --name "Mi App" --description "App completa" --verbose
+
+# Inicializar en directorios específicos
+ai-bootstrap init ../another-project --ai claude --type backend
+ai-bootstrap init /absolute/path/to/project --ai cursor --type frontend
 ```
 
 ### Command: `check`
@@ -263,8 +270,24 @@ ai-bootstrap init ./my-project --ai copilot --type fullstack --name "Mi App" --d
 Verify if your project is properly initialized with AI Bootstrap.
 
 **Syntax:**
+
 ```bash
 ai-bootstrap check
+```
+
+### Getting Help
+
+View the CLI help and version information:
+
+```bash
+# Show help and available commands
+ai-bootstrap
+
+# Show version
+ai-bootstrap --version
+
+# Show help for specific command
+ai-bootstrap init --help
 ```
 
 ---
