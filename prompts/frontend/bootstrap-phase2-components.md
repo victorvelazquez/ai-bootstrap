@@ -807,6 +807,119 @@ D) **Minimal** (Unit only)
 
 ---
 
+## Question 2.13: API Integration Pattern
+
+**Question:** How will you integrate with backend APIs?
+
+**Context:** Define how your frontend communicates with backend services.
+
+**Options:**
+
+A) ⭐ **REST API with Fetch/Axios**
+   - Standard REST endpoints
+   - Client: Axios, Fetch API, or custom wrapper
+   - Best for: Most apps, simple integration
+   - Example: `GET /api/users`, `POST /api/users`
+
+B) **GraphQL with Apollo/urql**
+   - Single endpoint, flexible queries
+   - Client: Apollo Client, urql, or TanStack Query GraphQL
+   - Best for: Complex data requirements, mobile apps
+   - Example: `query { users { id name } }`
+
+C) **tRPC (TypeScript RPC)**
+   - End-to-end type safety
+   - Best for: TypeScript monorepos, type-safe APIs
+   - Example: `trpc.users.getById.useQuery({ id: '1' })`
+
+D) **gRPC-Web**
+   - Protocol buffers, efficient binary format
+   - Best for: High-performance, microservices
+   - Example: `client.getUser({ id: '1' })`
+
+**Your choice:** (A/B/C/D)
+
+**If REST selected:**
+- **API Client:** Axios / Fetch API / Custom wrapper
+- **Base URL:** __
+- **Request interceptors:** [Auth headers, error handling, logging]
+- **Response interceptors:** [Error transformation, token refresh]
+
+**If GraphQL selected:**
+- **Client:** Apollo Client / urql / TanStack Query GraphQL
+- **Endpoint:** __
+- **Subscriptions:** [Yes/No - Real-time updates]
+
+**API Layer Pattern:**
+A) ⭐ **Service Layer** - Separate API functions
+   ```
+   services/
+     api.ts (base client)
+     users.ts (user endpoints)
+     products.ts (product endpoints)
+   ```
+
+B) **Hooks/Composables Layer** - API calls in hooks
+   ```
+   hooks/
+     useUsers.ts (API calls + state)
+     useProducts.ts
+   ```
+
+C) **Both** - Services + Hooks
+   ```
+   services/ (API functions)
+   hooks/ (React hooks/Vue composables)
+   ```
+
+**Your choice:** (A/B/C)
+
+---
+
+## Question 2.14: Error Boundaries / Global Error Handling
+
+**Question:** How will you handle global errors?
+
+**Context:** Catch and handle errors that occur during rendering, lifecycle methods, and constructors.
+
+**Options:**
+
+**For React:**
+A) ⭐ **Error Boundaries** (Recommended)
+   - Catch component tree errors
+   - Show fallback UI
+   - Best for: React apps
+   - Example: `<ErrorBoundary><App /></ErrorBoundary>`
+
+B) **Global Error Handler + Error Boundary**
+   - Window error handler + Error Boundaries
+   - Best for: Comprehensive error handling
+
+**For Vue:**
+A) ⭐ **errorHandler** (Built-in)
+   - Global error handler
+   - Best for: Vue apps
+   - Example: `app.config.errorHandler = (err, instance, info) => { ... }`
+
+**For Angular:**
+A) ⭐ **ErrorHandler** (Built-in)
+   - Global error handler service
+   - Best for: Angular apps
+
+**Error Recovery Strategy:**
+A) ⭐ **Show fallback UI** - Display error message, retry button
+B) **Redirect to error page** - Navigate to `/error`
+C) **Log and continue** - Log error, show minimal notification
+D) **Combined** - Different strategies for different error types
+
+**Error Logging:**
+- **Tool:** Sentry / LogRocket / Console only
+- **What to log:** [Error message, stack trace, user context, component tree]
+
+**Your answer:**
+
+---
+
 ## 📝 Phase 2 Summary
 
 After all questions, show summary:
@@ -835,6 +948,10 @@ Dark Mode:        {{DARK_MODE_SUPPORT}}
 Testing:
   - Component:    {{COMPONENT_TEST_LIBRARY}}
   - E2E:          {{E2E_FRAMEWORK}}
+
+API Integration:  {{API_INTEGRATION_PATTERN}}
+API Client:       {{API_CLIENT}}
+Error Handling:   {{ERROR_HANDLING_STRATEGY}}
 
 =================================================
 ```

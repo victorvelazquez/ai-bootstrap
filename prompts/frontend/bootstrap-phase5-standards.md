@@ -412,6 +412,8 @@ Component Structure: [Answer from 5.7]
 Error Handling: [Answer from 5.8]
 Code Review: [Answer from 5.9]
 Commit Messages: [Answer from 5.10]
+Logging Standards: [Answer from 5.11]
+Documentation Tools: [Answer from 5.12]
 
 Is this correct? (Y/n)
 ```

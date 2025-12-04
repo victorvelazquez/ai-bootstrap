@@ -616,6 +616,8 @@ Real-Time Updates: [Answer from 3.7]
 State Normalization: [Answer from 3.8]
 State Placement: [Answer from 3.9]
 Error Handling: [Answer from 3.10]
+API Error Handling: [Answer from 3.11]
+Retry Strategy: [Answer from 3.12]
 
 Is this correct? (Y/n)
 ```
