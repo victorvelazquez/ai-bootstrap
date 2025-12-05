@@ -207,6 +207,7 @@ Each tool gets:
 - Integration with `AGENT.md` (universal config)
 
 **Slash command locations:**
+
 - **GitHub Copilot:** `.github/prompts/*.prompt.md`
 - **Claude:** `.claude/commands/*.md`
 - **Cursor:** `.cursor/commands/*.md`
