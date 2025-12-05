@@ -37,6 +37,8 @@
 - Review `templates/docs/*.template.md` and `templates/specs/*.template.md` before editing; they enforce the doc structure AI Bootstrap guarantees downstream.
 - Check `.ai-bootstrap/core/config.json` schema when modifying initialization metadata; consumers expect keys `version`, `aiTools`, `createdAt`, `backend`, `frontend`.
 - Validate cross-platform behavior: Windows keeps script perms untouched, so avoid Unix-only workflows inside the CLI.
+- Review `prompts/backend/project-scaffold.md` and `prompts/backend/project-roadmap.md` for 0→1 flow automation (scaffold generates code structure, roadmap creates implementation plan with Story Points).
+- Check `prompts/backend/feature.md` for Story Points integration using Fibonacci scale (1, 2, 3, 5, 8, 13, 21); format is "Task • X SP" with checkbox lists.
 
 ## Collaboration Tips
 

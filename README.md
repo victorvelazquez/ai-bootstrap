@@ -11,6 +11,7 @@ AI Bootstrap is an interactive CLI that generates comprehensive professional doc
 **Key Features:**
 
 - 🚀 Complete professional documentation (12-17 docs per project type)
+- ⚡ **Two modes:** Interactive (90-120 min, full control) or Smart Auto-Suggest (15-25 min, 6 questions)
 - 🌍 Universal support - 12 languages, 60+ frameworks, 35+ ORMs (98% coverage)
 - 🤖 Multi-AI support with slash commands
 - 🔍 Smart 3-layer detection for existing projects (50-94% faster)
@@ -35,6 +36,7 @@ Transforma tu idea en un proyecto listo para producción y documentado para IA e
 **Características:**
 
 - 🚀 Documentación profesional completa (12-17 docs por tipo)
+- ⚡ **Dos modos:** Interactivo (90-120 min, control total) o Auto-Sugerido (15-25 min, 6 preguntas)
 - 🌍 Soporte universal - 12 lenguajes, 60+ frameworks, 35+ ORMs
 - 🤖 Compatible con Claude, Copilot, Cursor, Gemini
 - 🔍 Detección inteligente para proyectos existentes (50-94% más rápido)
@@ -55,13 +57,14 @@ ai-bootstrap init .
 ## Português
 
 Transforme sua ideia em um projeto pronto para produção e documentado para IA em minutos.
-
 **Características:**
 
 - 🚀 Documentação profissional completa (12-17 docs por tipo)
+- ⚡ **Dois modos:** Interativo (90-120 min, controle total) ou Auto-Sugestão (15-25 min, 6 perguntas)
 - 🌍 Suporte universal - 12 linguagens, 60+ frameworks, 35+ ORMs
 - 🤖 Compatível com Claude, Copilot, Cursor, Gemini
 - 🔍 Detecção inteligente para projetos existentes (50-94% mais rápido)
+- ⏱️ Economize 10-20 horas por projetos existentes (50-94% mais rápido)
 - ⏱️ Economize 10-20 horas por projeto
 
 **Início rápido:**
@@ -81,23 +84,27 @@ ai-bootstrap init .
 AI Bootstrap is an interactive CLI tool that generates comprehensive professional documentation for your project (backend, frontend, fullstack, or mobile) through a guided 8-phase questionnaire. It creates the foundation for AI-assisted development with any AI tool.
 
 **The Problem:** Starting a project requires hours of documentation setup. Existing projects lack proper AI-ready documentation. Without proper docs, AI assistants work inefficiently.
-
 **The Solution:**
 
-- **New Projects:** Generates professional documentation from scratch (90-120 min)
-- **Existing Projects:** Analyzes your code to pre-populate answers (35-70 min, 50-60% faster)
+- **Interactive Mode:** Full control, all questions (90-120 min new, 35-70 min existing)
+- **Smart Auto-Suggest Mode:** Only 6 critical questions, AI suggests the rest (15-25 min)
+- **Smart Detection:** Analyzes existing projects to pre-populate answers (50-60% faster)
 
+The result is interconnected documentation that guides AI assistants and human developers throughout your project lifecycle.
 The result is interconnected documentation that guides AI assistants and human developers throughout your project lifecycle.
 
 ---
 
-## ✨ Key Features
-
 - 🌍 **Universal Support** - 12 languages, 60+ frameworks, 35+ ORMs (98% coverage)
 - 🤖 **AI-Agnostic** - Claude, Copilot, Cursor, Gemini, any AI tool
 - 📚 **Professional Documentation** - 12-17 docs per project type
-- ⚡ **Smart 3-Layer Detection** - Analyzes existing projects in 15s-5min
-- 🔍 **Intelligent Caching** - 0 seconds on re-runs with no changes
+- ⚡ **Two Questionnaire Modes:**
+  - **Interactive Mode:** Full control, 71 questions (90-120 min)
+  - **Smart Auto-Suggest:** Only 6 critical questions, AI suggests best practices (15-25 min)
+- 🔍 **Smart 3-Layer Detection** - Analyzes existing projects in 15s-5min
+- 💾 **Intelligent Caching** - 0 seconds on re-runs with no changes
+- 💡 **Slash Commands** - Easy execution with `/bootstrap`, `/feature`, `/fix`
+- ⏱️ **Time Efficient** - Save 10-20 hours per projectth no changes
 - 💡 **Slash Commands** - Easy execution with `/bootstrap`, `/feature`, `/fix`
 - ⏱️ **Time Efficient** - Save 10-20 hours per project
 
@@ -204,6 +211,11 @@ After initialization, use these slash commands in your AI tool:
 - `/bootstrap-phase0-context` - Context discovery (existing projects)
 - `/bootstrap-phase1` through `/phase7` - Individual phases
 - `/docs-update` - Update documentation when code changes
+
+**Project Setup (Backend only):**
+
+- `/project-scaffold` - Generate complete project structure (90-120 min)
+- `/project-roadmap` - Create implementation roadmap with Story Points (15-30 min)
 
 **Workflows (Backend only):**
 

@@ -16,13 +16,14 @@
 
 **Already familiar with AI Bootstrap?** Jump directly to:
 
-| Link                                          | Description                             |
-| --------------------------------------------- | --------------------------------------- |
-| [CLI Flags Reference](#cli-flags-reference)   | All `init` command flags                |
-| [Commands Cheat Sheet](#commands-cheat-sheet) | All 26+ commands organized              |
-| [Workflow Commands](#33-workflow-commands)    | `/feature`, `/fix`, `/review` workflows |
-| [Troubleshooting](#troubleshooting)           | Common issues and solutions             |
-| [Best Practices](#best-practices)             | Expert tips and recommendations         |
+| Link                                                 | Description                             |
+| ---------------------------------------------------- | --------------------------------------- |
+| [Bootstrap Modes](#15-understanding-bootstrap-modes) | Interactive vs Smart Auto-Suggest       |
+| [CLI Flags Reference](#cli-flags-reference)          | All `init` command flags                |
+| [Commands Cheat Sheet](#commands-cheat-sheet)        | All 26+ commands organized              |
+| [Workflow Commands](#33-workflow-commands)           | `/feature`, `/fix`, `/review` workflows |
+| [Troubleshooting](#troubleshooting)                  | Common issues and solutions             |
+| [Best Practices](#best-practices)                    | Expert tips and recommendations         |
 
 ---
 
@@ -109,7 +110,29 @@ Open your AI tool (Claude, Cursor, Copilot, or Gemini) in your project folder an
 /bootstrap
 ```
 
-This starts an **interactive 8-phase questionnaire**:
+**First, choose your mode:**
+
+```
+🚀 Welcome to AI Bootstrap!
+
+How would you like to proceed?
+
+A) ⭐ Interactive Mode (Recommended)
+   • You answer each question step-by-step
+   • Full control over every decision
+   • Takes 90-120 min for new projects, 35-70 min for existing
+   • Best for: Custom requirements, specific needs
+
+B) ⚡ Smart Auto-Suggest Mode
+   • AI suggests best practices for most questions
+   • You only answer 6 critical business questions
+   • Takes 15-25 minutes
+   • Best for: MVPs, standard projects, quick setup
+
+Your choice (A/B): __
+```
+
+**Mode A - Interactive (8-phase questionnaire):**
 
 - **Phase 0:** Context Discovery (existing projects only - analyzes your code)
 - **Phase 1:** Discovery & Business (what problem are you solving?)
@@ -120,10 +143,23 @@ This starts an **interactive 8-phase questionnaire**:
 - **Phase 6:** Testing Strategy (test types, coverage)
 - **Phase 7:** Operations & Deployment (CI/CD, monitoring)
 
-**Time for new projects:** 90-120 minutes  
-**Time for existing projects:** 35-70 minutes (50-60% faster with auto-detection!)
+**Mode B - Smart Auto-Suggest (6 critical questions only):**
+
+1. Project Name & Description
+2. What problem does this solve?
+3. Top 3 business objectives
+4. System Type (E-commerce/SaaS/CRM/etc.)
+5. Core entities/models
+6. Backend framework
+
+**Time:**
+
+- **Interactive Mode:** 90-120 min (new), 35-70 min (existing)
+- **Smart Auto-Suggest:** 15-25 minutes (any project type)
 
 #### Step 4: Answer Questions
+
+**If you chose Interactive Mode (A):**
 
 The AI assistant will guide you through each phase with questions like:
 
@@ -147,6 +183,27 @@ Examples:
 - The more detail you provide, the better your documentation
 - For **existing projects**, many answers are pre-filled from code analysis
 - You can always refine documentation later
+
+**If you chose Smart Auto-Suggest Mode (B):**
+
+You'll only answer 6 critical questions, then the AI will auto-suggest best practices for everything else:
+
+```
+⚡ Smart Auto-Suggest Mode  |  Question 1/6  |  Progress: 17%
+
+1. What is the project name?
+2. What problem does this solve? (2-3 sentences)
+3. Top 3 measurable objectives?
+4. System type? (E-commerce/SaaS/CRM/etc.)
+5. Core entities? (User, Product, Order, etc.)
+6. Backend framework? (NestJS/FastAPI/Spring Boot/etc.)
+```
+
+After answering, you'll see:
+
+- ✅ **Quick Summary** (1 paragraph) - Fast overview
+- 📋 **Extended Report** (organized by phase) - Detailed breakdown
+- Choose to accept suggestions, customize, or switch to Interactive Mode
 
 #### Step 5: Generated Documentation ✅
 
@@ -176,6 +233,104 @@ my-awesome-api/
 ```
 
 **Frontend projects** (12 documents), **Mobile projects** (15 documents), **Fullstack projects** (~20 documents) - see [Project Type Comparison](#project-type-comparison) for details.
+
+#### Step 6: Generate Project Structure (NEW - Backend only)
+
+Now that you have complete documentation, generate the actual project code skeleton:
+
+```
+/project-scaffold
+```
+
+**What this does:**
+
+- ✅ Analyzes your documentation (tech stack, architecture, entities)
+- ✅ Executes framework CLI (NestJS, Express, FastAPI, Django, etc.)
+- ✅ Creates Clean Architecture structure (entities, repositories, services, controllers)
+- ✅ Configures testing framework (Jest, pytest, etc.)
+- ✅ Sets up linters and formatters (ESLint, Prettier, Black, etc.)
+- ✅ Creates Docker configuration (Dockerfile, docker-compose.yml)
+- ✅ Configures CI/CD pipeline (GitHub Actions, GitLab CI, etc.)
+
+**Time:** 90-120 minutes (automated)
+
+**Output:** Complete project structure with:
+
+- ~40-60 source files with TODO comments
+- ~20-30 test files (skeleton)
+- All configuration files
+- Docker + CI/CD setup
+
+#### Step 7: Generate Implementation Roadmap (NEW - Backend only)
+
+After scaffolding, generate a complete task breakdown:
+
+```
+/project-roadmap
+```
+
+**What this does:**
+
+- ✅ Analyzes ALL documentation (entities, endpoints, flows, security)
+- ✅ Breaks down into Epics, Features, and Tasks
+- ✅ Estimates Story Points (Fibonacci scale: 1, 2, 3, 5, 8, 13, 21)
+- ✅ Calculates time estimates (1 dev, 2 devs, 3 devs)
+- ✅ Identifies dependencies and optimal execution order
+- ✅ Generates Mermaid dependency graph
+- ✅ Creates ready-to-execute `/feature` commands
+
+**Time:** 15-30 minutes (automated)
+
+**Output:** `.ai-bootstrap/roadmap.md` with complete implementation plan
+
+**Example roadmap structure:**
+
+````markdown
+# 🗺️ Implementation Roadmap: My Awesome API
+
+**Total Estimated:** 17 weeks • 204 SP
+
+## 📊 Epic Overview
+
+| Epic               | Priority | Story Points | Est. Time | Status |
+| ------------------ | -------- | ------------ | --------- | ------ |
+| 1. Foundation      | P0       | 21 SP        | 2 weeks   | - [ ]  |
+| 2. Data Layer      | P0       | 34 SP        | 3 weeks   | - [ ]  |
+| 3. Authentication  | P0       | 21 SP        | 2 weeks   | - [ ]  |
+| 4. User Management | P0       | 13 SP        | 1 week    | - [ ]  |
+| 5. Product Catalog | P1       | 21 SP        | 2 weeks   | - [ ]  |
+| ...                | ...      | ...          | ...       | ...    |
+
+## 🏗️ Epic 1: Foundation & Infrastructure • 21 SP
+
+⏱️ **Est. Time:** 2 weeks • 🎯 **Priority:** P0
+
+### Feature 1.1: Base Configuration • 5 SP
+
+⏱️ **Est. Time:** 1-2 days • 🎯 **Priority:** P0
+
+**Tasks:**
+
+- [ ] Configure environment variables
+- [ ] Setup configuration service
+- [ ] Add validation for env vars
+- [ ] Write unit tests (5 tests)
+
+**Ready-to-execute:**
+
+```bash
+/feature new "Base application configuration"
+```
+````
+
+```
+
+**Key benefits:**
+
+- ✅ **100% Coverage:** Every entity, endpoint, and requirement included
+- ✅ **Realistic Estimates:** Based on complexity analysis, not guesswork
+- ✅ **Optimal Order:** Dependencies analyzed, features sequenced correctly
+- ✅ **Production Checklist:** 50+ items to verify before deployment
 
 ### 1.4 Understanding the Output
 
@@ -214,6 +369,94 @@ my-awesome-api/
 - `templates/` - Document templates with placeholders
 - `core/config.json` - Bootstrap configuration metadata
 
+### 1.5 Understanding Bootstrap Modes
+
+AI Bootstrap offers two modes to fit your workflow and time constraints.
+
+#### Mode A: Interactive (Recommended for Custom Projects)
+
+**Time:** 90-120 minutes (new projects) | 35-70 minutes (existing projects)
+**Questions:** 71 total across 8 phases
+**Control:** Full control over every decision
+
+**Best for:**
+- ✅ Custom requirements and specific needs
+- ✅ Complex projects with unique architecture
+- ✅ Teams that want to discuss every decision
+- ✅ Learning about project architecture in depth
+
+**Example flow:**
+
+```
+
+/bootstrap → Mode A → Phase 1 (10 questions) → Phase 2 (7 questions) → ... → Phase 7 (11 questions)
+→ Quick Summary + Extended Report → Documentation Generated
+
+```
+
+#### Mode B: Smart Auto-Suggest (Fast Setup)
+
+**Time:** 15-25 minutes (any project type)
+**Questions:** Only 6 critical business questions
+**Control:** Review and customize AI suggestions
+
+**Best for:**
+- ⚡ MVPs and quick prototypes
+- ⚡ Standard projects (E-commerce, SaaS, CRM)
+- ⚡ Solo developers who want speed
+- ⚡ Projects following industry best practices
+
+**What the AI auto-suggests:**
+
+Based on your 6 answers, the AI automatically suggests:
+- Database and ORM (e.g., PostgreSQL + Prisma for Node.js)
+- Architecture pattern (Clean Architecture)
+- Security best practices (JWT auth, RBAC, password policies)
+- Code standards (Prettier, ESLint, naming conventions)
+- Testing strategy (Jest, 60-80% coverage)
+- Deployment platform (Heroku for MVP, AWS for production)
+
+**Example flow:**
+
+```
+
+/bootstrap → Mode B → 6 critical questions → AI generates suggestions
+→ Quick Summary + Extended Report → Review (Accept/Customize/Change Mode)
+→ Documentation Generated
+
+```
+
+**Example Smart Auto-Suggest Summary:**
+
+```
+
+✅ Configuration Complete - Quick Summary
+
+Your E-commerce backend will use NestJS (TypeScript 5.3) with PostgreSQL 15
+and Prisma, following Clean Architecture with 8 entities (User, Product, Cart,
+Order, Payment). Security includes JWT auth with RBAC, bcrypt passwords, and
+rate limiting. Deployment to Heroku with Sentry for MVP.
+
+📋 Extended Report available below with full details by phase.
+
+Would you like to:
+A) ✅ Accept all suggestions (Generate docs now)
+B) 📝 Review & customize specific sections
+C) ❌ Switch to Interactive Mode
+
+```
+
+#### Comparison Table
+
+| Feature | Interactive Mode | Smart Auto-Suggest |
+|---------|------------------|-------------------|
+| Time | 90-120 min (new) | 15-25 min |
+| Questions | 71 questions | 6 questions |
+| Control | Full control | Review & customize |
+| Best for | Custom projects | MVPs, standard projects |
+| Learning | Deep dive | Quick overview |
+| Flexibility | Maximum | High (can customize) |
+
 #### Using Slash Commands
 
 After initialization, you have access to **26+ slash commands**:
@@ -221,19 +464,23 @@ After initialization, you have access to **26+ slash commands**:
 **Basic commands:**
 
 ```
-/bootstrap                    # Run full 8-phase process
-/bootstrap-phase1-business   # Run only Phase 1
-/docs-update                 # Update docs when code changes
+
+/bootstrap # Run full process (choose mode)
+/bootstrap-phase1-business # Run only Phase 1
+/docs-update # Update docs when code changes
+
 ```
 
 **Workflow commands** (backend only):
 
 ```
-/feature                     # Create/modify features (15-20 min)
-/fix                         # Fix bugs (3-15 min, adaptive)
-/work                        # Manage work in progress
-/review                      # Multi-aspect code review (5 min)
-/refactor-quick             # Quick refactorings (3-5 min)
+
+/feature # Create/modify features (15-20 min)
+/fix # Fix bugs (3-15 min, adaptive)
+/work # Manage work in progress
+/review # Multi-aspect code review (5 min)
+/refactor-quick # Quick refactorings (3-5 min)
+
 ```
 
 See [Commands Cheat Sheet](#commands-cheat-sheet) for the complete list.
@@ -242,7 +489,7 @@ See [Commands Cheat Sheet](#commands-cheat-sheet) for the complete list.
 
 ## 📚 Part 2: Core Workflows
 
-> **Target Audience:** Regular users, project maintainers  
+> **Target Audience:** Regular users, project maintainers
 > **Goal:** Master everyday AI Bootstrap workflows
 
 ### 2.1 New vs Existing Projects
@@ -308,6 +555,7 @@ For existing codebases, AI Bootstrap analyzes your project first (**Phase 0: Con
 **Example detection output:**
 
 ```
+
 🔍 ANALYSIS COMPLETE
 
 ✅ Language: Node.js/TypeScript 18.x
@@ -323,6 +571,7 @@ For existing codebases, AI Bootstrap analyzes your project first (**Phase 0: Con
 
 📝 Pre-populated answers: 47/82 (57%)
 ⏱️ Estimated time: 42 minutes (vs 95 minutes from scratch)
+
 ```
 
 ### 2.2 Running the Bootstrap Process
@@ -332,7 +581,9 @@ For existing codebases, AI Bootstrap analyzes your project first (**Phase 0: Con
 The `/bootstrap` command orchestrates all 8 phases:
 
 ```
+
 /bootstrap
+
 ```
 
 **For new projects:**
@@ -355,41 +606,47 @@ You can also run phases individually:
 **Backend projects:**
 
 ```
-/bootstrap-phase0-context          # Context discovery (existing only)
-/bootstrap-phase1-business         # Discovery & Business
-/bootstrap-phase2-data             # Data Architecture
-/bootstrap-phase3-architecture     # System Architecture
-/bootstrap-phase4-security         # Security & Auth
-/bootstrap-phase5-standards        # Code Standards
-/bootstrap-phase6-testing          # Testing Strategy
-/bootstrap-phase7-operations       # Operations & Deployment
+
+/bootstrap-phase0-context # Context discovery (existing only)
+/bootstrap-phase1-business # Discovery & Business
+/bootstrap-phase2-data # Data Architecture
+/bootstrap-phase3-architecture # System Architecture
+/bootstrap-phase4-security # Security & Auth
+/bootstrap-phase5-standards # Code Standards
+/bootstrap-phase6-testing # Testing Strategy
+/bootstrap-phase7-operations # Operations & Deployment
+
 ```
 
 **Frontend projects:**
 
 ```
-/bootstrap-phase0-context          # Context discovery
-/bootstrap-phase1-discovery        # Discovery & UX
-/bootstrap-phase2-components       # Components & Framework
-/bootstrap-phase3-state            # State Management
-/bootstrap-phase4-styling          # Styling & Design
-/bootstrap-phase5-standards        # Code Standards
-/bootstrap-phase6-testing          # Testing Strategy
-/bootstrap-phase7-deployment       # Deployment
+
+/bootstrap-phase0-context # Context discovery
+/bootstrap-phase1-discovery # Discovery & UX
+/bootstrap-phase2-components # Components & Framework
+/bootstrap-phase3-state # State Management
+/bootstrap-phase4-styling # Styling & Design
+/bootstrap-phase5-standards # Code Standards
+/bootstrap-phase6-testing # Testing Strategy
+/bootstrap-phase7-deployment # Deployment
+
 ```
 
 **Mobile projects:**
 
 ```
-/bootstrap-phase0-context          # Context discovery
-/bootstrap-phase1-platform         # Platform & Framework
-/bootstrap-phase2-navigation       # Navigation & Architecture
-/bootstrap-phase3-state            # State & Data Management
-/bootstrap-phase4-permissions      # Permissions & Native Features
-/bootstrap-phase5-standards        # Code Standards
-/bootstrap-phase6-testing          # Testing Strategy
-/bootstrap-phase7-deployment       # Deployment
-```
+
+/bootstrap-phase0-context # Context discovery
+/bootstrap-phase1-platform # Platform & Framework
+/bootstrap-phase2-navigation # Navigation & Architecture
+/bootstrap-phase3-state # State & Data Management
+/bootstrap-phase4-permissions # Permissions & Native Features
+/bootstrap-phase5-standards # Code Standards
+/bootstrap-phase6-testing # Testing Strategy
+/bootstrap-phase7-deployment # Deployment
+
+````
 
 **When to use individual phases:**
 
@@ -407,7 +664,7 @@ AI Bootstrap supports 4 AI tools with tool-specific configurations.
 
 ```bash
 ai-bootstrap init . --ai claude
-```
+````
 
 **Generated files:**
 

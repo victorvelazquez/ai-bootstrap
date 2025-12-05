@@ -9,6 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **Qué es:** CLI de Node.js/TypeScript que genera 15 documentos de backend profesionales mediante cuestionario interactivo de 7 fases
 
 **Flujo principal:**
+
 1. Usuario instala globalmente: `npm install -g ai-bootstrap`
 2. Ejecuta: `ai-bootstrap init .` → Crea `.ai-bootstrap/` con templates, prompts, slash commands
 3. Abre AI tool (Claude/Cursor/Copilot/Gemini) → Ejecuta `/bootstrap`
@@ -16,6 +17,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 5. AI genera 15 archivos .md llenando placeholders `{{VARIABLE}}` en templates
 
 **Arquitectura clave:**
+
 - `src/cli.ts` (329 líneas) - Toda la lógica CLI (Commander.js + Inquirer)
 - `templates/*.template.md` (15 archivos) - Templates con placeholders
 - `prompts/backend/bootstrap.md` - Cuestionario maestro de 7 fases
@@ -24,6 +26,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **Para desarrollo:** `npm run dev init test --ai claude` (ts-node, no build)
 
 **Reglas críticas:**
+
 - SIEMPRE leer archivos antes de editar (Read → Edit, nunca Write sobre existentes)
 - Templates usan `{{PLACEHOLDER_FORMAT}}`
 - Path resolution: `__dirname` relativo a `dist/` para copiar assets desde package instalado
@@ -242,6 +245,7 @@ AI Bootstrap 2.0 introduces structured workflow commands for backend development
 ### Architecture
 
 **Directory Structure:**
+
 ```
 .ai-bootstrap/
 ├── work/                    # Active work-in-progress
@@ -267,20 +271,25 @@ AI Bootstrap 2.0 introduces structured workflow commands for backend development
 
 ### Workflow Commands
 
-**5 Core Commands** (~530 lines total):
+**7 Core Commands** (~2,700+ lines total):
 
-| Command | Lines | Purpose | Time |
-|---------|-------|---------|------|
-| `/feature` | ~150 | Create/modify/refactor features | 15-20 min |
-| `/fix` | ~100 | Fix bugs (auto-detects complexity) | 3-15 min |
-| `/work` | ~80 | Manage work in progress | Instant |
-| `/review` | ~120 | Multi-aspect code review | 5 min |
-| `/refactor-quick` | ~80 | Quick refactoring without spec | 3-5 min |
+| Command             | Lines  | Purpose                                           | Time                   |
+| ------------------- | ------ | ------------------------------------------------- | ---------------------- |
+| `/project-scaffold` | ~1,060 | Generate complete project structure               | 90-120 min (automated) |
+| `/project-roadmap`  | ~1,130 | Create implementation roadmap with Story Points   | 15-30 min (automated)  |
+| `/feature`          | ~1,320 | Create/modify/refactor features with Story Points | 15-20 min              |
+| `/fix`              | ~100   | Fix bugs (auto-detects complexity)                | 3-15 min               |
+| `/work`             | ~80    | Manage work in progress                           | Instant                |
+| `/review`           | ~120   | Multi-aspect code review                          | 5 min                  |
+| `/refactor-quick`   | ~80    | Quick refactoring without spec                    | 3-5 min                |
 
 ### File Locations
 
 **Prompt Files:**
-- `prompts/backend/feature.md` - Feature workflow
+
+- `prompts/backend/project-scaffold.md` - Complete project structure generation (0→1)
+- `prompts/backend/project-roadmap.md` - Implementation roadmap with Story Points (Fibonacci scale)
+- `prompts/backend/feature.md` - Feature workflow with Story Points estimation
 - `prompts/backend/fix.md` - Bug fix workflow
 - `prompts/backend/work.md` - Work management
 - `prompts/backend/review.md` - Code review
@@ -290,30 +299,54 @@ AI Bootstrap 2.0 introduces structured workflow commands for backend development
 
 ### Key Features
 
+**Project Scaffold (`/project-scaffold`):**
+
+- 6-phase automated setup: Context → Framework Init → Clean Architecture → Testing → Quality → DevOps
+- Generates 40-60 source files with TODO comments
+- Creates 20-30 test file skeletons
+- Full Docker + CI/CD configuration
+- 90-120 minutes automated (vs 2-3 weeks manual)
+
+**Project Roadmap (`/project-roadmap`):**
+
+- 5-phase breakdown: Doc Analysis → Epic Definition → Feature Breakdown → Dependencies → Document Generation
+- Story Points using Fibonacci scale (1, 2, 3, 5, 8, 13, 21)
+- Time estimates for 1, 2, or 3 developers
+- Mermaid dependency graphs
+- Production readiness checklist (50+ items)
+- Output: `.ai-bootstrap/roadmap.md`
+
 **Feature Workflow (`/feature`):**
+
 - 4-phase process: Spec → Plan → Implementation → Archive
-- Auto-generates spec.md, plan.md, tasks.md
+- Story Points estimation with Fibonacci scale
+- Auto-generates spec.md, plan.md, tasks.md with checkbox format
+- Simple features: ~3 SP (~15-20 min), Complex features: ~34 SP (~2-3 hours)
 - Security check before archiving
 - Updates affected docs automatically
 
 **Bug Fix Workflow (`/fix`):**
+
 - Adaptive complexity detection (simple vs complex)
 - Simple: 3-5 min (direct fix + test)
 - Complex: 10-15 min (root cause analysis + comprehensive fix)
 - Archives with summary or full analysis
 
 **Work Management (`/work`):**
+
 - List active tasks with progress
 - Resume interrupted work without context loss
 - Archive completed work with doc updates
 - Status tracking via status.json
 
 **Code Review (`/review`):**
+
 - 5-perspective analysis: Security, Performance, Testing, Architecture, Quality
 - Prioritized report: 🔴 Critical, 🟡 Warnings, 🟢 Suggestions
 - Reviews current changes, specific features, or full modules
 
 **Quick Refactoring (`/refactor-quick`):**
+
 - No spec/plan overhead (vs `/feature refactor`)
 - Extract methods, rename, move logic
 - 3-5 minutes vs 15-20 minutes
@@ -342,10 +375,29 @@ AI Bootstrap 2.0 introduces structured workflow commands for backend development
 
 ### Development Workflow Example
 
+**Complete 0→1→N Flow (New Project):**
+
 ```bash
-# Morning: Start new feature
-/feature "Real-time notifications API"
-# → 18 minutes: Complete with tests + docs
+# Day 1: Generate documentation
+/bootstrap
+# → 90-120 minutes: Complete professional documentation (17 docs)
+
+# Day 1-2: Generate project structure
+/project-scaffold
+# → 90-120 minutes automated: Complete Clean Architecture setup
+# → Creates 40-60 source files, 20-30 test files, Docker, CI/CD
+
+# Day 2: Generate implementation roadmap
+/project-roadmap
+# → 15-30 minutes automated: Complete task breakdown with Story Points
+# → Output: .ai-bootstrap/roadmap.md with Epics, Features, Dependencies
+
+# Day 3+: Execute features from roadmap
+/feature new "Base application configuration"  # From roadmap Epic 1
+# → 15-20 minutes: Complete with tests + docs (5 SP)
+
+/feature new "Database connection and migrations"  # From roadmap Epic 1
+# → 30-40 minutes: Complete with tests + docs (8 SP)
 
 # Bug reported
 /fix "Login returns 500 when email not found"
@@ -361,6 +413,20 @@ AI Bootstrap 2.0 introduces structured workflow commands for backend development
 # Code review before merge
 /review feature-notifications
 # → 5 minutes: Multi-aspect analysis with report
+```
+
+**Existing Project Flow:**
+
+```bash
+# Existing codebase: Generate documentation
+/bootstrap
+# → 35-70 minutes: Smart detection pre-fills 40-60% of answers
+
+# Existing codebase: Generate roadmap for new features
+/project-roadmap
+# → 15-30 minutes: Creates roadmap based on existing architecture
+
+# Continue with /feature commands as normal
 ```
 
 ### Testing Workflow Commands
@@ -386,12 +452,14 @@ cd test-project
 ### When to Edit Workflow Files
 
 **Edit workflow prompts when:**
+
 - Improving question flow or clarity
 - Adding new workflow phases
 - Enhancing validation logic
 - Updating examples or output formats
 
 **Workflow files reference each other:**
+
 - `/feature` can trigger `/review` at completion
 - `/work` lists all active `/feature` and `/fix` tasks
 - `/review` can analyze work from `/feature` or `/fix`
@@ -399,12 +467,14 @@ cd test-project
 ### Benefits vs Traditional Development
 
 **Without Workflows:**
+
 - ⏱️ 60-90 min per feature (coding + tests + docs manual)
 - 📝 Documentation drift/inconsistency
 - 🔄 Context loss on interruptions
 - 🐛 No systematic quality checks
 
 **With Workflows:**
+
 - ⏱️ 15-20 min per feature (automated)
 - 📝 Documentation always synchronized
 - 🔄 Resume without context loss
@@ -493,11 +563,11 @@ cd test-project
 
 ```typescript
 try {
-  const spinner = ora("Creating structure...").start();
+  const spinner = ora('Creating structure...').start();
   await fs.ensureDir(path);
-  spinner.succeed("Created structure");
+  spinner.succeed('Created structure');
 } catch (error) {
-  spinner.fail("Failed to create structure");
+  spinner.fail('Failed to create structure');
   throw error;
 }
 ```
@@ -603,22 +673,22 @@ Closes #42
 
 ## 📚 Key Files Reference
 
-| File                                  | Lines    | Purpose                                        | When to Edit                                      |
-| ------------------------------------- | -------- | ---------------------------------------------- | ------------------------------------------------- |
-| `src/cli.ts`                          | ~329     | CLI entry point, all commands, file operations | Adding commands, changing initialization logic    |
-| `prompts/backend/bootstrap.md`        | Large    | 7-phase master questionnaire                   | Improving questions, adding phases, changing flow |
-| `prompts/backend/feature.md`          | ~150     | Feature workflow (create/modify/refactor)      | Improving feature workflow, adding phases         |
-| `prompts/backend/fix.md`              | ~100     | Bug fix workflow (adaptive complexity)         | Improving bug fix process, complexity detection   |
-| `prompts/backend/work.md`             | ~80      | Work management (list/resume/archive)          | Improving work management features                |
-| `prompts/backend/review.md`           | ~120     | Code review workflow (multi-aspect)            | Adding review perspectives, improving criteria    |
-| `prompts/backend/refactor-quick.md`   | ~80      | Quick refactoring workflow                     | Adding refactor types, improving speed            |
-| `templates/*.template.md`             | 13 files | Document templates with placeholders           | Enhancing generated docs, changing structure      |
-| `templates/AGENT.template.md`         | Core     | Universal AI config aggregator                 | Changing AI tool integration                      |
-| `slash-commands/{tool}/*.md`          | 13/tool  | Bootstrap + workflow command definitions       | Modifying command behavior for specific AI tools  |
-| `scripts/init.sh`                     | Bash     | Initialization script                          | Changing setup automation                         |
-| `package.json`                        | Config   | Dependencies, scripts, bin config              | Changing commands, adding dependencies            |
-| `tsconfig.json`                       | Config   | TypeScript compilation settings                | Changing target, module system                    |
-| `README.md`                           | Docs     | User-facing documentation                      | User-facing changes, features                     |
+| File                                | Lines    | Purpose                                        | When to Edit                                      |
+| ----------------------------------- | -------- | ---------------------------------------------- | ------------------------------------------------- |
+| `src/cli.ts`                        | ~329     | CLI entry point, all commands, file operations | Adding commands, changing initialization logic    |
+| `prompts/backend/bootstrap.md`      | Large    | 7-phase master questionnaire                   | Improving questions, adding phases, changing flow |
+| `prompts/backend/feature.md`        | ~150     | Feature workflow (create/modify/refactor)      | Improving feature workflow, adding phases         |
+| `prompts/backend/fix.md`            | ~100     | Bug fix workflow (adaptive complexity)         | Improving bug fix process, complexity detection   |
+| `prompts/backend/work.md`           | ~80      | Work management (list/resume/archive)          | Improving work management features                |
+| `prompts/backend/review.md`         | ~120     | Code review workflow (multi-aspect)            | Adding review perspectives, improving criteria    |
+| `prompts/backend/refactor-quick.md` | ~80      | Quick refactoring workflow                     | Adding refactor types, improving speed            |
+| `templates/*.template.md`           | 13 files | Document templates with placeholders           | Enhancing generated docs, changing structure      |
+| `templates/AGENT.template.md`       | Core     | Universal AI config aggregator                 | Changing AI tool integration                      |
+| `slash-commands/{tool}/*.md`        | 13/tool  | Bootstrap + workflow command definitions       | Modifying command behavior for specific AI tools  |
+| `scripts/init.sh`                   | Bash     | Initialization script                          | Changing setup automation                         |
+| `package.json`                      | Config   | Dependencies, scripts, bin config              | Changing commands, adding dependencies            |
+| `tsconfig.json`                     | Config   | TypeScript compilation settings                | Changing target, module system                    |
+| `README.md`                         | Docs     | User-facing documentation                      | User-facing changes, features                     |
 
 ### Key Functions in src/cli.ts
 
@@ -643,8 +713,8 @@ Closes #42
 **Solution:** Use `__dirname` to resolve the packaged assets relative to `dist/cli.js`
 
 ```typescript
-const ROOT_DIR = path.resolve(__dirname, "..");
-const templatesSource = path.join(ROOT_DIR, "templates");
+const ROOT_DIR = path.resolve(__dirname, '..');
+const templatesSource = path.join(ROOT_DIR, 'templates');
 ```
 
 This works because:

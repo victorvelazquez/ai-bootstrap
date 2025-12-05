@@ -28,6 +28,7 @@
 **Testing:** Jest
 
 **Key Characteristics:**
+
 - Authentication: N/A (CLI tool)
 - API Style: Command-line interface
 - Deployment: npm registry
@@ -174,15 +175,18 @@ ai-bootstrap/
 **Entry Point:** `src/cli.ts` (shebang for CLI execution)
 
 **Module System:**
+
 - TypeScript compiles to CommonJS (`module: "commonjs"` in tsconfig.json)
 - Uses `__dirname`-based path resolution to copy assets
 - Target: ES2020 with Node.js >=18.0.0
 
 **Commands:**
+
 - `init [path] [--ai <tool>] [--type <type>] [--name <name>] [--description <desc>]` - Initialize AI Bootstrap in project
 - `check` - Verify if project is initialized and show config
 
 **Dependencies:**
+
 - `commander` - CLI framework
 - `inquirer` - Interactive prompts
 - `chalk` - Terminal colors
@@ -191,6 +195,7 @@ ai-bootstrap/
 - `ejs` - Template rendering
 
 **CLI Flow:**
+
 1. User runs `ai-bootstrap init .`
 2. Check if already initialized (`.ai-bootstrap/` exists)
 3. Prompt for AI tool selection if not provided via `--ai` flag
@@ -207,6 +212,7 @@ ai-bootstrap/
 10. Display next steps and available commands
 
 **Package Structure:**
+
 - Binary entry point: `dist/cli.js` (from `src/cli.ts`)
 - Files included in npm package: `dist/`, `prompts/`, `templates/`, `scripts/`
 - Users install globally: `npm install -g ai-bootstrap`
@@ -218,11 +224,12 @@ ai-bootstrap/
 **Solution:** Use `__dirname` to resolve the packaged assets relative to `dist/cli.js`
 
 ```typescript
-const ROOT_DIR = path.resolve(__dirname, "..");
-const templatesSource = path.join(ROOT_DIR, "templates");
+const ROOT_DIR = path.resolve(__dirname, '..');
+const templatesSource = path.join(ROOT_DIR, 'templates');
 ```
 
 This works because:
+
 1. `dist/cli.js` is compiled output
 2. `__dirname` points to `dist/`
 3. `ROOT_DIR` normalizes the package root
@@ -231,6 +238,7 @@ This works because:
 ### AI Tool Mapping
 
 **Tool → Configuration Location:**
+
 - `claude` → `.claude/commands/`
 - `cursor` → `.cursor/commands/`
 - `copilot` → `.github/prompts/*.prompt.md`
@@ -242,6 +250,7 @@ This works because:
 **Location:** `.ai-bootstrap/core/config.json`
 
 **Schema:**
+
 ```json
 {
   "version": "1.0.8",
@@ -260,6 +269,7 @@ This works because:
 ### Common Commands
 
 **Development:**
+
 ```bash
 npm run dev init . --ai cursor          # Development mode (ts-node, no build)
 npm run build                           # Build TypeScript to dist/
@@ -269,6 +279,7 @@ npm run lint                            # Run linter
 ```
 
 **Testing Changes Locally:**
+
 ```bash
 npm run build
 npm run dev init test-folder --ai cursor
@@ -280,6 +291,7 @@ rm -rf test-folder
 ```
 
 **Package Distribution:**
+
 ```bash
 npm run prepare                         # Prepare for publishing (runs build)
 npm publish --access public             # Publish to npm
@@ -311,6 +323,7 @@ npm run lint                            # No linting errors
 ### Commit Format
 
 Use Conventional Commits:
+
 ```
 <type>(<scope>): <subject>
 
@@ -323,6 +336,7 @@ Use Conventional Commits:
 **Scopes:** `cli`, `templates`, `prompts`, `commands`, `docs`, `deps`, `config`, `readme`
 
 **Examples:**
+
 - `feat(cli): add frontend project type support`
 - `fix(templates): correct placeholder syntax`
 - `docs(readme): update installation instructions`
@@ -332,30 +346,35 @@ Use Conventional Commits:
 
 ## 📝 Key Files Reference
 
-| File                          | Purpose                                        | When to Edit                                      |
-| ----------------------------- | ---------------------------------------------- | ------------------------------------------------- |
-| `src/cli.ts`                  | CLI entry point, all commands, file operations | Adding commands, changing initialization logic    |
-| `prompts/backend/bootstrap.md`| 7-phase master questionnaire                   | Improving questions, adding phases, changing flow |
-| `prompts/frontend/bootstrap.md`| Frontend 7-phase questionnaire                | Frontend-specific improvements                     |
-| `templates/*.template.md`     | Document templates with placeholders           | Enhancing generated docs, changing structure      |
-| `package.json`                | Dependencies, scripts, bin config              | Changing commands, adding dependencies            |
-| `tsconfig.json`               | TypeScript compilation settings                | Changing target, module system                    |
-| `README.md`                   | User-facing documentation                      | User-facing changes, features                     |
-| `CLAUDE.md`                   | Detailed architecture guide                    | Architecture changes, implementation details      |
-| `.cursorrules`                | Cursor-specific configuration                  | Cursor workflow, rules                            |
-| `.github/prompts/*.prompt.md` | Development workflow commands                 | Development automation                             |
+| File                                  | Purpose                                         | When to Edit                                        |
+| ------------------------------------- | ----------------------------------------------- | --------------------------------------------------- |
+| `src/cli.ts`                          | CLI entry point, all commands, file operations  | Adding commands, changing initialization logic      |
+| `prompts/backend/bootstrap.md`        | 7-phase master questionnaire                    | Improving questions, adding phases, changing flow   |
+| `prompts/backend/project-scaffold.md` | Complete project structure generation (0→1)     | Modifying scaffold phases, adding framework support |
+| `prompts/backend/project-roadmap.md`  | Implementation roadmap with Story Points        | Changing roadmap format, SP scale, epic structure   |
+| `prompts/backend/feature.md`          | Feature workflow with Story Points              | Updating SP estimates, task format, phase structure |
+| `prompts/frontend/bootstrap.md`       | Frontend 7-phase questionnaire                  | Frontend-specific improvements                      |
+| `templates/*.template.md`             | Document templates with placeholders            | Enhancing generated docs, changing structure        |
+| `package.json`                        | Dependencies, scripts, bin config               | Changing commands, adding dependencies              |
+| `tsconfig.json`                       | TypeScript compilation settings                 | Changing target, module system                      |
+| `README.md`                           | User-facing documentation                       | User-facing changes, features                       |
+| `GETTING-STARTED.md`                  | Complete tutorial (beginner/regular/power user) | Adding tutorials, workflow examples                 |
+| `CLAUDE.md`                           | Detailed architecture guide                     | Architecture changes, implementation details        |
+| `.cursorrules`                        | Cursor-specific configuration                   | Cursor workflow, rules                              |
+| `.github/copilot-instructions.md`     | GitHub Copilot playbook                         | Copilot-specific guidance, research checklist       |
+| `.github/prompts/*.prompt.md`         | Development workflow commands                   | Development automation                              |
 
 ### Key Functions in src/cli.ts
 
-| Function                     | Purpose                                             | Parameters                              |
-| ---------------------------- | --------------------------------------------------- | --------------------------------------- |
-| `selectAITool()`             | Interactive AI tool selection or validate --ai flag | `providedTool?: string`                 |
-| `selectProjectType()`        | Interactive project type selection                  | `providedType?: string`                 |
-| `checkIfInitialized()`       | Check if .ai-bootstrap exists                       | `targetPath: string`                    |
-| `createBootstrapStructure()`| Create folders and config.json                      | `targetPath, aiTools, projectType, ...` |
-| `renderTemplates()`          | Copy and render templates to project                | `targetPath, projectData, projectType`  |
-| `copyPrompts()`              | Copy prompts/ to project                            | `targetPath: string`                    |
-| `setupSlashCommands()`       | Install slash commands for selected tools            | `targetPath, aiTools, projectType`      |
+| Function                     | Purpose                                             | Parameters                               |
+| ---------------------------- | --------------------------------------------------- | ---------------------------------------- |
+| `selectAITool()`             | Interactive AI tool selection or validate --ai flag | `providedTool?: string`                  |
+| `selectProjectType()`        | Interactive project type selection                  | `providedType?: string`                  |
+| `checkIfInitialized()`       | Check if .ai-bootstrap exists                       | `targetPath: string`                     |
+| `createBootstrapStructure()` | Create folders and config.json                      | `targetPath, aiTools, projectType, ...`  |
+| `renderTemplates()`          | Copy and render templates to project                | `targetPath, projectData, projectType`   |
+| `copyPrompts()`              | Copy prompts/ to project                            | `targetPath: string`                     |
+| `setupSlashCommands()`       | Install slash commands for selected tools           | `targetPath, aiTools, projectType`       |
 | `initializeProject()`        | Main init orchestration                             | `targetPath, aiTool?, projectType?, ...` |
 
 ---
@@ -374,18 +393,21 @@ Use Conventional Commits:
 ### Code Quality Standards
 
 **TypeScript Configuration:**
+
 - Strict mode enabled
 - Explicit return types for functions
 - Interfaces for object shapes
 - No `any` types without justification
 
 **Naming Conventions:**
+
 - Files: `kebab-case.ts`
 - Classes/Interfaces: `PascalCase`
 - Functions: `camelCase`
 - Constants: `UPPER_SNAKE_CASE`
 
 **Error Handling:**
+
 - Try-catch blocks around all I/O operations
 - `ora` spinners show success/fail states
 - `chalk.red()` for errors, `chalk.yellow()` for warnings
@@ -398,11 +420,13 @@ Use Conventional Commits:
 ### Templates vs Project Documentation
 
 **CRITICAL:** The `templates/` directory contains templates for **user projects**, not for documenting this project (ai-bootstrap). These templates are:
+
 - Copied to user projects when they run `ai-bootstrap init`
 - Used to generate documentation in user projects
 - NOT used to document ai-bootstrap itself
 
 **For documenting ai-bootstrap, use:**
+
 - `README.md` - User-facing docs
 - `CLAUDE.md` - Architecture guide
 - `AGENT.md` - This file
@@ -412,6 +436,7 @@ Use Conventional Commits:
 ### Testing Philosophy
 
 Every change should be tested with the **full bootstrap flow**:
+
 1. Initialize a test project
 2. Run `/bootstrap` command in AI tool
 3. Verify generated documents are correct
@@ -432,4 +457,3 @@ Every change should be tested with the **full bootstrap flow**:
 
 **Last Updated:** 2025-01-XX
 **Version:** 1.0.8
-
