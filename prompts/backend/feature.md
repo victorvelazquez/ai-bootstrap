@@ -81,6 +81,23 @@ Count total tasks needed based on spec. Then classify:
   - Feature affecting entire system, major refactoring
   - Example: Multi-tenant architecture implementation
 
+**Story Points Estimation (Fibonacci Scale):**
+
+Estimate complexity using industry-standard Fibonacci Story Points:
+
+| Story Points | Complexity | Typical Time | Example Task                         |
+| ------------ | ---------- | ------------ | ------------------------------------ |
+| **1 SP**     | Trivial    | 1-2 hours    | Add simple field, update enum        |
+| **2 SP**     | Very Small | 2-4 hours    | Basic validation, simple test        |
+| **3 SP**     | Small      | 4-8 hours    | Simple CRUD endpoint, basic entity   |
+| **5 SP**     | Medium     | 1-2 days     | Complex endpoint with business logic |
+| **8 SP**     | Complex    | 2-3 days     | Auth flow, complex validation        |
+| **13 SP**    | Large      | 1 week       | Complete module with full tests      |
+| **21 SP**    | Very Large | 2 weeks      | Major feature with integration       |
+
+> **Note:** Times assume experienced developer with AI assistance.
+> Without AI: multiply by 2-3x.
+
 **Phase Structure (for MEDIUM/COMPLEX/LARGE):**
 
 Organize tasks into logical phases:
@@ -111,7 +128,8 @@ Organize tasks into logical phases:
 
 Based on your project (Node.js + Express + PostgreSQL):
 
-**Complexity:** SIMPLE (8 tasks)
+**Complexity:** SIMPLE (8 tasks) • 3 SP
+⏱️ **Est. Time:** 15-20 minutes
 
 **Stack decisions:**
 - Validation: joi ⚡
@@ -122,16 +140,16 @@ Based on your project (Node.js + Express + PostgreSQL):
 - tests/user.test.ts
 
 **Tasks:**
-1. Add email field to User entity
-2. Update UserController validation
-3. Add migration for email column
-4. Update existing tests
-5. Add email validation tests
-6. Update API documentation
-7. Update data model documentation
-8. Test endpoint manually
+- [ ] Add email field to User entity (1 SP)
+- [ ] Update UserController validation (0.5 SP)
+- [ ] Add migration for email column (0.5 SP)
+- [ ] Update existing tests (0.5 SP)
+- [ ] Add email validation tests (0.5 SP)
+- [ ] Update API documentation (trivial)
+- [ ] Update data model documentation (trivial)
+- [ ] Test endpoint manually (trivial)
 
-Estimated time: 15-20 minutes
+**Total:** 3 SP (~15-20 min with AI assistance)
 
 Review plan? (Y/n)
 ```
@@ -145,48 +163,67 @@ Review plan? (Y/n)
 
 Based on your project (Node.js + Express + PostgreSQL):
 
-**Complexity:** COMPLEX (52 tasks across 5 phases)
+**Complexity:** COMPLEX (52 tasks across 5 phases) • 34 SP
+⏱️ **Est. Time:** 2-3 hours
 
 **Stack decisions:**
 - Auth: JWT with jsonwebtoken ⭐
 - Validation: joi ⚡
 - Email: nodemailer 📧
 
-**PHASE 1: Data Layer (10 tasks)**
-├── 1.1 Create User entity
-├── 1.2 Create Session entity
-├── 1.3 Create RefreshToken entity
-├── 1.4 Create migrations
-├── 1.5 Create UserRepository
-├── 1.6 Create SessionRepository
-└── ... (4 more)
+## Phase 1: Data Layer • 8 SP
+⏱️ **Est. Time:** 30-40 min
 
-**PHASE 2: Business Logic (15 tasks)**
-├── 2.1 Create AuthService
-├── 2.2 Create TokenService
-├── 2.3 Create EmailService
-├── 2.4 Implement password hashing
-├── 2.5 Implement JWT generation
-└── ... (10 more)
+- [ ] 1.1 Create User entity (2 SP)
+- [ ] 1.2 Create Session entity (1 SP)
+- [ ] 1.3 Create RefreshToken entity (1 SP)
+- [ ] 1.4 Create migrations (1 SP)
+- [ ] 1.5 Create UserRepository (1 SP)
+- [ ] 1.6 Create SessionRepository (1 SP)
+- [ ] 1.7 Create RefreshTokenRepository (1 SP)
+- [ ] ... (4 more tasks)
 
-**PHASE 3: API Layer (12 tasks)**
-├── 3.1 Create AuthController
-├── 3.2 Create auth middleware
-├── 3.3 Create validation schemas
-└── ... (9 more)
+## Phase 2: Business Logic • 13 SP
+⏱️ **Est. Time:** 50-60 min
 
-**PHASE 4: Integration (8 tasks)**
-├── 4.1 Connect services to controllers
-├── 4.2 Add error handling middleware
-└── ... (6 more)
+- [ ] 2.1 Create AuthService (3 SP)
+- [ ] 2.2 Create TokenService (2 SP)
+- [ ] 2.3 Create EmailService (2 SP)
+- [ ] 2.4 Implement password hashing (1 SP)
+- [ ] 2.5 Implement JWT generation (2 SP)
+- [ ] 2.6 Implement refresh token rotation (2 SP)
+- [ ] 2.7 Email verification flow (1 SP)
+- [ ] ... (8 more tasks)
 
-**PHASE 5: Testing & Docs (7 tasks)**
-├── 5.1 Unit tests for services
-├── 5.2 Integration tests for API
-├── 5.3 Update documentation
-└── ... (4 more)
+## Phase 3: API Layer • 8 SP
+⏱️ **Est. Time:** 30-40 min
 
-Estimated time: 2-3 hours
+- [ ] 3.1 Create AuthController (3 SP)
+- [ ] 3.2 Create auth middleware (2 SP)
+- [ ] 3.3 Create validation schemas (1 SP)
+- [ ] 3.4 Create DTOs (1 SP)
+- [ ] 3.5 Setup routes (1 SP)
+- [ ] ... (7 more tasks)
+
+## Phase 4: Integration • 3 SP
+⏱️ **Est. Time:** 15-20 min
+
+- [ ] 4.1 Connect services to controllers (1 SP)
+- [ ] 4.2 Add error handling middleware (1 SP)
+- [ ] 4.3 Configure CORS and security headers (1 SP)
+- [ ] ... (5 more tasks)
+
+## Phase 5: Testing & Docs • 2 SP
+⏱️ **Est. Time:** 10-15 min
+
+- [ ] 5.1 Unit tests for services (1 SP)
+- [ ] 5.2 Integration tests for API (1 SP)
+- [ ] 5.3 Update documentation (trivial)
+- [ ] ... (4 more tasks)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+**Total:** 34 SP • 52 tasks • ~2-3 hours with AI assistance
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Review plan? (Y/n)
 ```
