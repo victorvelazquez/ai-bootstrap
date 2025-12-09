@@ -16,7 +16,7 @@ Initialize a clean project in the **current directory** using the framework's of
 
 Before executing this command, ensure:
 
-- ✅ `/bootstrap` completed (documentation generated)
+- ✅ `/flow-docs-gen` completed (documentation generated)
 - ✅ `ai-instructions.md` exists with tech stack defined
 - ✅ Current directory is empty or ready for initialization
 
@@ -246,3 +246,4 @@ This command provides a **clean slate** from the official tooling. The architect
 **Time:** 5-10 minutes total  
 **Output:** Clean framework initialization in current directory  
 **Next:** Run `/project-roadmap` to generate implementation plan
+

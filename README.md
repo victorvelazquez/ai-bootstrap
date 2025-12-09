@@ -1,6 +1,6 @@
 # AI Flow
 
-[![CI Status](https://github.com/victorvelazquez/ai-flow/actions/workflows/nodejs.yml/badge.svg?branch=main)](https://github.com/victorvelazquez/ai-flow/actions/workflows/nodejs.yml)
+[![CI Status](https://github.com/victorvelazquez/ai-flow/actions/flow-dev-workflows/nodejs.yml/badge.svg?branch=main)](https://github.com/victorvelazquez/ai-flow/actions/flow-dev-workflows/nodejs.yml)
 
 ## English
 
@@ -22,7 +22,7 @@ AI Flow is an interactive CLI that creates comprehensive professional documentat
 ```bash
 npm install -g ai-flow
 ai-flow init .
-# Then open your AI tool and run: /bootstrap
+# Then open your AI tool and run: /flow-docs-gen
 ```
 
 📚 **[Complete Guide →](GETTING-STARTED.md)**
@@ -47,7 +47,7 @@ Transforma tu idea en un proyecto listo para producción y documentado para IA e
 ```bash
 npm install -g ai-flow
 ai-flow init .
-# Luego en tu AI tool: /bootstrap
+# Luego en tu AI tool: /flow-docs-gen
 ```
 
 📚 **[Guía Completa →](GETTING-STARTED.md)**
@@ -72,7 +72,7 @@ Transforme sua ideia em um projeto pronto para produção e documentado para IA 
 ```bash
 npm install -g ai-flow
 ai-flow init .
-# Depois na sua ferramenta de IA: /bootstrap
+# Depois na sua ferramenta de IA: /flow-docs-gen
 ```
 
 📚 **[Guia Completo →](GETTING-STARTED.md)**
@@ -103,9 +103,9 @@ The result is interconnected documentation that guides AI assistants and human d
   - **Smart Auto-Suggest:** Only 6 critical questions, AI suggests best practices (15-25 min)
 - 🔍 **Smart 3-Layer Detection** - Analyzes existing projects in 15s-5min
 - 💾 **Intelligent Caching** - 0 seconds on re-runs with no changes
-- 💡 **Slash Commands** - Easy execution with `/bootstrap`, `/feature`, `/fix`
+- 💡 **Slash Commands** - Easy execution with `/flow-docs-gen`, `/flow-dev-feature`, `/flow-dev-fix`
 - ⏱️ **Time Efficient** - Save 10-20 hours per projectth no changes
-- 💡 **Slash Commands** - Easy execution with `/bootstrap`, `/feature`, `/fix`
+- 💡 **Slash Commands** - Easy execution with `/flow-docs-gen`, `/flow-dev-feature`, `/flow-dev-fix`
 - ⏱️ **Time Efficient** - Save 10-20 hours per project
 
 ---
@@ -144,7 +144,7 @@ cd my-awesome-project
 ai-flow init .
 
 # 3. Open your AI tool and run:
-/bootstrap
+/flow-docs-gen
 ```
 
 That's it! The AI will guide you through an interactive questionnaire to generate all documentation.
@@ -221,29 +221,29 @@ After initialization, use these slash commands in your AI tool:
 
 **Documentation & Bootstrap:**
 
-- `/bootstrap` - Full 8-phase documentation generation
-- `/bootstrap-phase0-context` - Context discovery (existing projects)
-- `/bootstrap-phase1-business` - Business requirements
-- `/bootstrap-phase2-data` - Data architecture
-- `/bootstrap-phase3-architecture` - Technical architecture
-- `/bootstrap-phase4-security` - Security & compliance
-- `/bootstrap-phase5-standards` - Code standards
-- `/bootstrap-phase6-testing` - Testing strategy
-- `/bootstrap-phase7-operations` - Deployment & operations
-- `/docs-update` - Update documentation when code changes
+- `/flow-docs-gen` - Full 8-phase documentation generation
+- `/flow-docs-gen-phase-0-context` - Context discovery (existing projects)
+- `/flow-docs-gen-phase-1-business` - Business requirements
+- `/flow-docs-gen-phase-2-data` - Data architecture
+- `/flow-docs-gen-phase-3-architecture` - Technical architecture
+- `/flow-docs-gen-phase-4-security` - Security & compliance
+- `/flow-docs-gen-phase-5-standards` - Code standards
+- `/flow-docs-gen-phase-6-testing` - Testing strategy
+- `/flow-docs-gen-phase-7-operations` - Deployment & operations
+- `/flow-docs-sync` - Update documentation when code changes
 
 **Project Setup (Backend only):**
 
-- `/project-init` - Initialize project with framework (5-10 min, auto-executed by /bootstrap)
+- `/project-init` - Initialize project with framework (5-10 min, auto-executed by /flow-docs-gen)
 - `/project-roadmap` - Create implementation roadmap with Story Points (15-30 min)
 
 **Workflows (Backend only):**
 
-- `/feature` - Create/modify features (15-20 min)
-- `/fix` - Fix bugs (3-15 min, adaptive)
-- `/work` - Manage work in progress
-- `/review` - Multi-aspect code review (5 min)
-- `/refactor-quick` - Quick refactorings (3-5 min)
+- `/flow-dev-feature` - Create/modify features (15-20 min)
+- `/flow-dev-fix` - Fix bugs (3-15 min, adaptive)
+- `/flow-dev-work` - Manage work in progress
+- `/flow-dev-review` - Multi-aspect code review (5 min)
+- `/flow-dev-refactor-quick` - Quick refactorings (3-5 min)
 
 **📚 See [GETTING-STARTED.md](GETTING-STARTED.md) for complete command reference**
 
@@ -404,3 +404,4 @@ MIT License - See [LICENSE](LICENSE) for details.
 **Transform your idea into a production-ready project with AI Flow** 🚀
 
 **Made with ❤️ for the developer community**
+

@@ -16,7 +16,7 @@ Generate a complete, prioritized implementation roadmap with Fibonacci-based Sto
 
 Before executing this command, ensure:
 
-- ✅ `/bootstrap` completed (documentation generated)
+- ✅ `/flow-docs-gen` completed (documentation generated)
 - ✅ `/project-init` completed (project initialized with framework)
 - ✅ All documentation files exist in `.ai-flow/templates/`
 
@@ -850,7 +850,7 @@ After each Feature:
 - [ ] Run tests: `npm run test`
 - [ ] Check linting: `npm run lint`
 - [ ] Check types: `npm run type-check`
-- [ ] Update documentation if needed: `/docs-update`
+- [ ] Update documentation if needed: `/flow-docs-sync`
 - [ ] Commit with conventional commits
 - [ ] Create PR for review
 
@@ -874,7 +874,7 @@ Update this roadmap as you complete features:
 
 **Need to modify the roadmap?**
 
-- Update documentation first (`/bootstrap` or `/docs-update`)
+- Update documentation first (`/flow-docs-gen` or `/flow-docs-sync`)
 - Re-run `/project-roadmap` to regenerate
 
 ---
@@ -960,7 +960,7 @@ Update this roadmap as you complete features:
 5. **Validate continuously**
    └─ Run tests after each feature
    └─ Use /review for code quality checks
-   └─ Update docs with /docs-update when needed
+   └─ Update docs with /flow-docs-sync when needed
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💡 Pro Tips
@@ -1145,3 +1145,4 @@ Example: /feature "{{FEATURE_1_NAME}}"
 **Time:** 15-30 minutes total
 **Output:** Complete implementation roadmap with Story Points
 **Next:** Start executing features with `/feature` command
+

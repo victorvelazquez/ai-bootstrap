@@ -21,7 +21,7 @@
 | [Bootstrap Modes](#15-understanding-bootstrap-modes) | Interactive vs Smart Auto-Suggest       |
 | [CLI Flags Reference](#cli-flags-reference)          | All `init` command flags                |
 | [Commands Cheat Sheet](#commands-cheat-sheet)        | All 26+ commands organized              |
-| [Workflow Commands](#33-workflow-commands)           | `/feature`, `/fix`, `/review` workflows |
+| [Workflow Commands](#33-workflow-commands)           | `/flow-dev-feature`, `/flow-dev-fix`, `/flow-dev-review` workflows |
 | [Troubleshooting](#troubleshooting)                  | Common issues and solutions             |
 | [Best Practices](#best-practices)                    | Expert tips and recommendations         |
 
@@ -107,7 +107,7 @@ You'll be asked:
 Open your AI tool (Claude, Cursor, Copilot, or Gemini) in your project folder and type:
 
 ```
-/bootstrap
+/flow-docs-gen
 ```
 
 **First, choose your mode:**
@@ -236,9 +236,9 @@ my-awesome-api/
 
 #### Step 6: Initialize Project (Automatic)
 
-**This step is now AUTOMATIC** - `/bootstrap` will ask if you want to continue with project initialization.
+**This step is now AUTOMATIC** - `/flow-docs-gen` will ask if you want to continue with project initialization.
 
-If you chose "Yes" at the end of `/bootstrap`, the project is already initialized! ✅
+If you chose "Yes" at the end of `/flow-docs-gen`, the project is already initialized! ✅
 
 If you need to run it manually (or if the session was interrupted):
 
@@ -264,7 +264,7 @@ If you need to run it manually (or if the session was interrupted):
 - Dependencies installed
 - **Ready to run!** ✨
 
-**Note:** This does NOT create your architecture layers - those are built incrementally with `/feature` commands.
+**Note:** This does NOT create your architecture layers - those are built incrementally with `/flow-dev-feature` commands.
 
 #### Step 7: Generate Implementation Roadmap (Backend only)
 
@@ -282,7 +282,7 @@ After scaffolding, generate a complete task breakdown:
 - ✅ Calculates time estimates (1 dev, 2 devs, 3 devs)
 - ✅ Identifies dependencies and optimal execution order
 - ✅ Generates Mermaid dependency graph
-- ✅ Creates ready-to-execute `/feature` commands
+- ✅ Creates ready-to-execute `/flow-dev-feature` commands
 
 **Time:** 15-30 minutes (automated)
 
@@ -324,7 +324,7 @@ After scaffolding, generate a complete task breakdown:
 **Ready-to-execute:**
 
 ```bash
-/feature new "Base application configuration"
+/flow-dev-feature new "Base application configuration"
 ```
 ````
 
@@ -394,7 +394,7 @@ AI Flow offers two modes to fit your workflow and time constraints.
 
 ```
 
-/bootstrap → Mode A → Phase 1 (10 questions) → Phase 2 (7 questions) → ... → Phase 7 (11 questions)
+/flow-docs-gen → Mode A → Phase 1 (10 questions) → Phase 2 (7 questions) → ... → Phase 7 (11 questions)
 → Quick Summary + Extended Report → Documentation Generated
 
 ```
@@ -425,7 +425,7 @@ Based on your 6 answers, the AI automatically suggests:
 
 ```
 
-/bootstrap → Mode B → 6 critical questions → AI generates suggestions
+/flow-docs-gen → Mode B → 6 critical questions → AI generates suggestions
 → Quick Summary + Extended Report → Review (Accept/Customize/Change Mode)
 → Documentation Generated
 
@@ -470,9 +470,9 @@ After initialization, you have access to **26+ slash commands**:
 
 ```
 
-/bootstrap # Run full process (choose mode)
-/bootstrap-phase1-business # Run only Phase 1
-/docs-update # Update docs when code changes
+/flow-docs-gen # Run full process (choose mode)
+/flow-docs-gen-phase-1-business # Run only Phase 1
+/flow-docs-sync # Update docs when code changes
 
 ```
 
@@ -480,11 +480,11 @@ After initialization, you have access to **26+ slash commands**:
 
 ```
 
-/feature # Create/modify features (15-20 min)
-/fix # Fix bugs (3-15 min, adaptive)
-/work # Manage work in progress
-/review # Multi-aspect code review (5 min)
-/refactor-quick # Quick refactorings (3-5 min)
+/flow-dev-feature # Create/modify features (15-20 min)
+/flow-dev-fix # Fix bugs (3-15 min, adaptive)
+/flow-dev-work # Manage work in progress
+/flow-dev-review # Multi-aspect code review (5 min)
+/flow-dev-refactor # Quick refactorings (3-5 min)
 
 ```
 
@@ -583,11 +583,11 @@ For existing codebases, AI Flow analyzes your project first (**Phase 0: Context 
 
 #### Full Bootstrap Command
 
-The `/bootstrap` command orchestrates all 8 phases:
+The `/flow-docs-gen` command orchestrates all 8 phases:
 
 ```
 
-/bootstrap
+/flow-docs-gen
 
 ```
 
@@ -612,14 +612,14 @@ You can also run phases individually:
 
 ```
 
-/bootstrap-phase0-context # Context discovery (existing only)
-/bootstrap-phase1-business # Discovery & Business
-/bootstrap-phase2-data # Data Architecture
-/bootstrap-phase3-architecture # System Architecture
-/bootstrap-phase4-security # Security & Auth
-/bootstrap-phase5-standards # Code Standards
-/bootstrap-phase6-testing # Testing Strategy
-/bootstrap-phase7-operations # Operations & Deployment
+/flow-docs-gen-phase-0-context # Context discovery (existing only)
+/flow-docs-gen-phase-1-business # Discovery & Business
+/flow-docs-gen-phase-2-data # Data Architecture
+/flow-docs-gen-phase-3-architecture # System Architecture
+/flow-docs-gen-phase-4-security # Security & Auth
+/flow-docs-gen-phase-5-standards # Code Standards
+/flow-docs-gen-phase-6-testing # Testing Strategy
+/flow-docs-gen-phase-7-operations # Operations & Deployment
 
 ```
 
@@ -627,14 +627,14 @@ You can also run phases individually:
 
 ```
 
-/bootstrap-phase0-context # Context discovery
-/bootstrap-phase1-discovery # Discovery & UX
-/bootstrap-phase2-components # Components & Framework
-/bootstrap-phase3-state # State Management
-/bootstrap-phase4-styling # Styling & Design
-/bootstrap-phase5-standards # Code Standards
-/bootstrap-phase6-testing # Testing Strategy
-/bootstrap-phase7-deployment # Deployment
+/flow-docs-gen-phase-0-context # Context discovery
+/flow-docs-gen-phase-1-discovery # Discovery & UX
+/flow-docs-gen-phase-2-components # Components & Framework
+/flow-docs-gen-phase-3-state # State Management
+/flow-docs-gen-phase-4-styling # Styling & Design
+/flow-docs-gen-phase-5-standards # Code Standards
+/flow-docs-gen-phase-6-testing # Testing Strategy
+/flow-docs-gen-phase-7-deployment # Deployment
 
 ```
 
@@ -642,14 +642,14 @@ You can also run phases individually:
 
 ```
 
-/bootstrap-phase0-context # Context discovery
-/bootstrap-phase1-platform # Platform & Framework
-/bootstrap-phase2-navigation # Navigation & Architecture
-/bootstrap-phase3-state # State & Data Management
-/bootstrap-phase4-permissions # Permissions & Native Features
-/bootstrap-phase5-standards # Code Standards
-/bootstrap-phase6-testing # Testing Strategy
-/bootstrap-phase7-deployment # Deployment
+/flow-docs-gen-phase-0-context # Context discovery
+/flow-docs-gen-phase-1-platform # Platform & Framework
+/flow-docs-gen-phase-2-navigation # Navigation & Architecture
+/flow-docs-gen-phase-3-state # State & Data Management
+/flow-docs-gen-phase-4-permissions # Permissions & Native Features
+/flow-docs-gen-phase-5-standards # Code Standards
+/flow-docs-gen-phase-6-testing # Testing Strategy
+/flow-docs-gen-phase-7-deployment # Deployment
 
 ````
 
@@ -686,9 +686,9 @@ ai-flow init . --ai claude
 **Usage:**
 
 ```
-/bootstrap                    # In Claude chat
-/feature "real-time notifications"
-/review
+/flow-docs-gen                    # In Claude chat
+/flow-dev-feature "real-time notifications"
+/flow-dev-review
 ```
 
 #### Cursor
@@ -714,8 +714,8 @@ ai-flow init . --ai cursor
 **Usage:**
 
 ```
-/bootstrap                    # In Cursor chat
-Ctrl+K → /feature "user authentication"
+/flow-docs-gen                    # In Cursor chat
+Ctrl+K → /flow-dev-feature "user authentication"
 ```
 
 #### GitHub Copilot
@@ -741,8 +741,8 @@ ai-flow init . --ai copilot
 **Usage:**
 
 ```
-/bootstrap                    # In Copilot chat (or GitHub Web)
-/feature "payment processing"
+/flow-docs-gen                    # In Copilot chat (or GitHub Web)
+/flow-dev-feature "payment processing"
 ```
 
 #### Gemini
@@ -767,8 +767,8 @@ ai-flow init . --ai gemini
 **Usage:**
 
 ```
-/bootstrap
-/work resume feature-notifications
+/flow-docs-gen
+/flow-dev-work resume feature-notifications
 ```
 
 #### All AI Tools (Maximum Compatibility)
@@ -1012,31 +1012,31 @@ Run specific bootstrap phases independently for targeted updates.
 
 ```
 # Security policies changed
-/bootstrap-phase4-security
+/flow-docs-gen-phase-4-security
 
 # New testing requirements
-/bootstrap-phase6-testing
+/flow-docs-gen-phase-6-testing
 ```
 
 **Scenario 2: Onboard team members**
 
 ```
 # New backend developer joins
-/bootstrap-phase3-architecture
-/bootstrap-phase5-standards
+/flow-docs-gen-phase-3-architecture
+/flow-docs-gen-phase-5-standards
 
 # New DevOps engineer joins
-/bootstrap-phase7-operations
+/flow-docs-gen-phase-7-operations
 ```
 
 **Scenario 3: Deep dive into complex areas**
 
 ```
 # Large data model redesign
-/bootstrap-phase2-data
+/flow-docs-gen-phase-2-data
 
 # Architecture refactoring
-/bootstrap-phase3-architecture
+/flow-docs-gen-phase-3-architecture
 ```
 
 #### Phase Command Reference
@@ -1044,43 +1044,43 @@ Run specific bootstrap phases independently for targeted updates.
 **All project types:**
 
 ```
-/bootstrap-phase0-context          # Context Discovery (existing projects)
+/flow-docs-gen-phase-0-context          # Context Discovery (existing projects)
 ```
 
 **Backend-specific:**
 
 ```
-/bootstrap-phase1-business         # Discovery & Business (15-20 min)
-/bootstrap-phase2-data             # Data Architecture (15-20 min)
-/bootstrap-phase3-architecture     # System Architecture (15-20 min)
-/bootstrap-phase4-security         # Security & Auth (15-20 min)
-/bootstrap-phase5-standards        # Code Standards (15-20 min)
-/bootstrap-phase6-testing          # Testing Strategy (15-25 min)
-/bootstrap-phase7-operations       # Operations & Deployment (10 min)
+/flow-docs-gen-phase-1-business         # Discovery & Business (15-20 min)
+/flow-docs-gen-phase-2-data             # Data Architecture (15-20 min)
+/flow-docs-gen-phase-3-architecture     # System Architecture (15-20 min)
+/flow-docs-gen-phase-4-security         # Security & Auth (15-20 min)
+/flow-docs-gen-phase-5-standards        # Code Standards (15-20 min)
+/flow-docs-gen-phase-6-testing          # Testing Strategy (15-25 min)
+/flow-docs-gen-phase-7-operations       # Operations & Deployment (10 min)
 ```
 
 **Frontend-specific:**
 
 ```
-/bootstrap-phase1-discovery        # Discovery & UX
-/bootstrap-phase2-components       # Components & Framework
-/bootstrap-phase3-state            # State Management
-/bootstrap-phase4-styling          # Styling & Design
-/bootstrap-phase5-standards        # Code Standards
-/bootstrap-phase6-testing          # Testing Strategy
-/bootstrap-phase7-deployment       # Deployment
+/flow-docs-gen-phase-1-discovery        # Discovery & UX
+/flow-docs-gen-phase-2-components       # Components & Framework
+/flow-docs-gen-phase-3-state            # State Management
+/flow-docs-gen-phase-4-styling          # Styling & Design
+/flow-docs-gen-phase-5-standards        # Code Standards
+/flow-docs-gen-phase-6-testing          # Testing Strategy
+/flow-docs-gen-phase-7-deployment       # Deployment
 ```
 
 **Mobile-specific:**
 
 ```
-/bootstrap-phase1-platform         # Platform & Framework
-/bootstrap-phase2-navigation       # Navigation & Architecture
-/bootstrap-phase3-state            # State & Data Management
-/bootstrap-phase4-permissions      # Permissions & Native Features
-/bootstrap-phase5-standards        # Code Standards
-/bootstrap-phase6-testing          # Testing Strategy
-/bootstrap-phase7-deployment       # Deployment
+/flow-docs-gen-phase-1-platform         # Platform & Framework
+/flow-docs-gen-phase-2-navigation       # Navigation & Architecture
+/flow-docs-gen-phase-3-state            # State & Data Management
+/flow-docs-gen-phase-4-permissions      # Permissions & Native Features
+/flow-docs-gen-phase-5-standards        # Code Standards
+/flow-docs-gen-phase-6-testing          # Testing Strategy
+/flow-docs-gen-phase-7-deployment       # Deployment
 ```
 
 #### Phase Dependencies
@@ -1109,20 +1109,20 @@ Phase 7 (Operations/Deployment) → CI/CD (depends on all previous)
 
 ```bash
 # 1. Update architecture decisions
-/bootstrap-phase3-architecture
+/flow-docs-gen-phase-3-architecture
 
 # 2. Update testing to match new architecture
-/bootstrap-phase6-testing
+/flow-docs-gen-phase-6-testing
 
 # 3. Update operations for new deployment pattern
-/bootstrap-phase7-operations
+/flow-docs-gen-phase-7-operations
 ```
 
 ### 3.3 Workflow Commands
 
 **Backend projects only** - Structured workflows for feature development, bug fixes, code review, and refactoring.
 
-#### 3.3.1 `/feature` - Feature Development
+#### 3.3.1 `/flow-dev-feature` - Feature Development
 
 **Time:** 15-20 minutes  
 **Purpose:** Create new features, modify existing ones, or refactor code with full specification and planning.
@@ -1130,10 +1130,10 @@ Phase 7 (Operations/Deployment) → CI/CD (depends on all previous)
 **Usage Modes:**
 
 ```bash
-/feature                      # Interactive (asks: new/change/refactor)
-/feature new                  # New feature from scratch
-/feature change               # Modify existing feature
-/feature refactor             # Refactor existing code
+/flow-dev-feature                      # Interactive (asks: new/change/refactor)
+/flow-dev-feature new                  # New feature from scratch
+/flow-dev-feature change               # Modify existing feature
+/flow-dev-feature refactor             # Refactor existing code
 ```
 
 **Workflow:**
@@ -1161,7 +1161,7 @@ Phase 7 (Operations/Deployment) → CI/CD (depends on all previous)
 **Generated Structure:**
 
 ```
-.ai-flow/work/feature-[name]/
+.ai-flow/flow-dev-work/flow-dev-feature-[name]/
 ├── spec.md           # Feature specification
 ├── plan.md           # Implementation plan
 └── tasks.md          # Task checklist
@@ -1170,7 +1170,7 @@ Phase 7 (Operations/Deployment) → CI/CD (depends on all previous)
 **Example:**
 
 ```
-/feature new
+/flow-dev-feature new
 
 [AI] What feature would you like to build?
 
@@ -1181,7 +1181,7 @@ User: Real-time notifications API with WebSocket support
 [AI implements tasks one by one]
 [AI writes tests for each task]
 [AI updates docs/api.md and docs/architecture.md]
-[AI archives to .ai-flow/archive/feature-notifications/]
+[AI archives to .ai-flow/archive/flow-dev-feature-notifications/]
 
 ✅ Feature complete: Real-time notifications API
 📝 Documentation updated: docs/api.md, docs/architecture.md
@@ -1189,7 +1189,7 @@ User: Real-time notifications API with WebSocket support
 ⏱️ Time: 18 minutes
 ```
 
-#### 3.3.2 `/fix` - Bug Fixes
+#### 3.3.2 `/flow-dev-fix` - Bug Fixes
 
 **Time:** 3-15 minutes (adaptive)  
 **Purpose:** Fix bugs with automatic complexity detection and appropriate workflow.
@@ -1197,8 +1197,8 @@ User: Real-time notifications API with WebSocket support
 **Usage:**
 
 ```bash
-/fix                          # Interactive (describe the bug)
-/fix "Login returns 500 when email not found"
+/flow-dev-fix                          # Interactive (describe the bug)
+/flow-dev-fix "Login returns 500 when email not found"
 ```
 
 **Adaptive Workflow:**
@@ -1235,7 +1235,7 @@ The command **automatically detects complexity** and adjusts:
 **Example (Simple):**
 
 ```
-/fix "Validation allows empty email"
+/flow-dev-fix "Validation allows empty email"
 
 [AI] Analyzing bug...
 🔍 Complexity: Simple (single validator function)
@@ -1253,7 +1253,7 @@ The command **automatically detects complexity** and adjusts:
 **Example (Complex):**
 
 ```
-/fix "Race condition in payment processing"
+/flow-dev-fix "Race condition in payment processing"
 
 [AI] Analyzing bug...
 🔍 Complexity: Complex (concurrency, multi-layer)
@@ -1271,17 +1271,17 @@ The command **automatically detects complexity** and adjusts:
 ⏱️ Actual time: 14 minutes
 ```
 
-#### 3.3.3 `/work` - Work Management
+#### 3.3.3 `/flow-dev-work` - Work Management
 
 **Purpose:** Manage work in progress, resume interrupted tasks, archive completed work.
 
 **Subcommands:**
 
 ```bash
-/work                         # List active tasks with progress
-/work show [name]            # Show task details
-/work resume [name]          # Resume interrupted work
-/work archive [name]         # Archive completed work and update docs
+/flow-dev-work                         # List active tasks with progress
+/flow-dev-work show [name]            # Show task details
+/flow-dev-work resume [name]          # Resume interrupted work
+/flow-dev-work archive [name]         # Archive completed work and update docs
 ```
 
 **Structure:**
@@ -1300,7 +1300,7 @@ The command **automatically detects complexity** and adjusts:
 **Example: List Active Work**
 
 ```
-/work
+/flow-dev-work
 
 📋 ACTIVE WORK:
 
@@ -1323,7 +1323,7 @@ The command **automatically detects complexity** and adjusts:
 **Example: Resume Work**
 
 ```
-/work resume feature-notifications
+/flow-dev-work resume feature-notifications
 
 📂 RESUMING: feature-notifications
 
@@ -1336,7 +1336,7 @@ The command **automatically detects complexity** and adjusts:
 ⏳ Current task (5/8):
   [ ] Implement room-based broadcasting
 
-📝 Context loaded from: .ai-flow/work/feature-notifications/
+📝 Context loaded from: .ai-flow/flow-dev-work/flow-dev-feature-notifications/
 📄 Files in progress: 12
 🎯 Next step: Complete broadcasting logic
 
@@ -1346,7 +1346,7 @@ Ready to continue! What would you like me to do?
 **Example: Archive Completed Work**
 
 ```
-/work archive feature-notifications
+/flow-dev-work archive feature-notifications
 
 📦 ARCHIVING: feature-notifications
 
@@ -1357,15 +1357,15 @@ Ready to continue! What would you like me to do?
   - CHANGELOG.md (added v1.2.0 notes)
 
 📁 Moving to archive:
-  .ai-flow/work/feature-notifications/
-  → .ai-flow/archive/feature-notifications/
+  .ai-flow/flow-dev-work/flow-dev-feature-notifications/
+  → .ai-flow/archive/flow-dev-feature-notifications/
 
 ✅ ARCHIVED SUCCESSFULLY
 ⏱️ Total time: 2h 15min
 📊 Final stats: 8/8 tasks, 12 files, 342 lines added
 ```
 
-#### 3.3.4 `/review` - Code Review
+#### 3.3.4 `/flow-dev-review` - Code Review
 
 **Time:** 5 minutes  
 **Purpose:** Professional multi-aspect code review with prioritized findings.
@@ -1373,9 +1373,9 @@ Ready to continue! What would you like me to do?
 **Usage:**
 
 ```bash
-/review                       # Review current uncommitted changes
-/review feature-[name]       # Review specific feature work
-/review --full               # Review entire codebase
+/flow-dev-review                       # Review current uncommitted changes
+/flow-dev-review feature-[name]       # Review specific feature work
+/flow-dev-review --full               # Review entire codebase
 ```
 
 **Analysis Perspectives (5):**
@@ -1413,7 +1413,7 @@ Ready to continue! What would you like me to do?
 **Prioritized Report:**
 
 ```
-/review
+/flow-dev-review
 
 🔍 CODE REVIEW REPORT
 
@@ -1473,7 +1473,7 @@ Overall score: 7/10 (Good, but fix critical issues)
 ⏱️ Review time: 5 minutes
 ```
 
-#### 3.3.5 `/refactor-quick` - Quick Refactorings
+#### 3.3.5 `/flow-dev-refactor` - Quick Refactorings
 
 **Time:** 3-5 minutes  
 **Purpose:** Small refactorings without the overhead of full feature workflow.
@@ -1485,11 +1485,11 @@ Overall score: 7/10 (Good, but fix critical issues)
 - ✅ Move logic between layers
 - ✅ Extract to utility modules
 - ✅ Simplify complex conditionals
-- ❌ Large architectural changes (use `/feature refactor`)
+- ❌ Large architectural changes (use `/flow-dev-feature refactor`)
 
-**vs `/feature refactor`:**
+**vs `/flow-dev-feature refactor`:**
 
-| Aspect        | `/refactor-quick` | `/feature refactor`   |
+| Aspect        | `/flow-dev-refactor` | `/flow-dev-feature refactor`   |
 | ------------- | ----------------- | --------------------- |
 | Time          | 3-5 min           | 15-20 min             |
 | Spec required | ❌ No             | ✅ Yes                |
@@ -1500,15 +1500,15 @@ Overall score: 7/10 (Good, but fix critical issues)
 **Usage:**
 
 ```bash
-/refactor-quick "Extract validation logic to utility"
-/refactor-quick "Rename getUserById to findUserById"
-/refactor-quick "Move email sending to service layer"
+/flow-dev-refactor "Extract validation logic to utility"
+/flow-dev-refactor "Rename getUserById to findUserById"
+/flow-dev-refactor "Move email sending to service layer"
 ```
 
 **Example:**
 
 ```
-/refactor-quick "Extract price calculation to utility"
+/flow-dev-refactor "Extract price calculation to utility"
 
 [AI] Analyzing target code...
 🎯 Target: src/services/order.service.ts (calculateTotal method)
@@ -1537,9 +1537,9 @@ Benefits:
 
 ### 3.4 Documentation Updates
 
-Keep documentation synchronized with code changes using `/docs-update`.
+Keep documentation synchronized with code changes using `/flow-docs-sync`.
 
-#### Command: `/docs-update`
+#### Command: `/flow-docs-sync`
 
 **Purpose:** Detect code changes and automatically update affected documentation.
 
@@ -1581,7 +1581,7 @@ Keep documentation synchronized with code changes using `/docs-update`.
 
 ```bash
 # For backend, frontend, or mobile projects
-/docs-update
+/flow-docs-sync
 
 # For fullstack projects (separate commands)
 /backend-docs-update
@@ -1591,7 +1591,7 @@ Keep documentation synchronized with code changes using `/docs-update`.
 **Example (Backend):**
 
 ```
-/docs-update
+/flow-docs-sync
 
 🔍 ANALYZING CODE CHANGES...
 
@@ -1659,7 +1659,7 @@ Lines added: 127
 Lines modified: 43
 Time: 6 minutes
 
-💡 Tip: Run /docs-update weekly to keep docs synchronized!
+💡 Tip: Run /flow-docs-sync weekly to keep docs synchronized!
 ```
 
 **When to run:**
@@ -1763,13 +1763,13 @@ You can upgrade scope after initial bootstrap:
 
 ```bash
 # Initially chose MVP, now need Production-Ready
-/bootstrap-phase6-testing    # Expand testing strategy
-/bootstrap-phase7-operations # Add CI/CD and monitoring
+/flow-docs-gen-phase-6-testing    # Expand testing strategy
+/flow-docs-gen-phase-7-operations # Add CI/CD and monitoring
 
 # Upgrading to Enterprise
-/bootstrap-phase4-security   # Add compliance docs
-/bootstrap-phase6-testing    # Add e2e tests
-/bootstrap-phase7-operations # Add disaster recovery
+/flow-docs-gen-phase-4-security   # Add compliance docs
+/flow-docs-gen-phase-6-testing    # Add e2e tests
+/flow-docs-gen-phase-7-operations # Add disaster recovery
 ```
 
 ---
@@ -1792,66 +1792,66 @@ ai-flow --help                  # Show help
 #### Bootstrap Commands - Backend (9)
 
 ```
-/bootstrap                           # Full 8-phase process (90-120 min)
-/bootstrap-phase0-context           # Context discovery (existing only)
-/bootstrap-phase1-business          # Discovery & Business
-/bootstrap-phase2-data              # Data Architecture
-/bootstrap-phase3-architecture      # System Architecture
-/bootstrap-phase4-security          # Security & Auth
-/bootstrap-phase5-standards         # Code Standards
-/bootstrap-phase6-testing           # Testing Strategy
-/bootstrap-phase7-operations        # Operations & Deployment
+/flow-docs-gen                           # Full 8-phase process (90-120 min)
+/flow-docs-gen-phase-0-context           # Context discovery (existing only)
+/flow-docs-gen-phase-1-business          # Discovery & Business
+/flow-docs-gen-phase-2-data              # Data Architecture
+/flow-docs-gen-phase-3-architecture      # System Architecture
+/flow-docs-gen-phase-4-security          # Security & Auth
+/flow-docs-gen-phase-5-standards         # Code Standards
+/flow-docs-gen-phase-6-testing           # Testing Strategy
+/flow-docs-gen-phase-7-operations        # Operations & Deployment
 ```
 
 #### Bootstrap Commands - Frontend (9)
 
 ```
-/bootstrap                           # Full 8-phase process
-/bootstrap-phase0-context           # Context discovery
-/bootstrap-phase1-discovery         # Discovery & UX
-/bootstrap-phase2-components        # Components & Framework
-/bootstrap-phase3-state             # State Management
-/bootstrap-phase4-styling           # Styling & Design
-/bootstrap-phase5-standards         # Code Standards
-/bootstrap-phase6-testing           # Testing Strategy
-/bootstrap-phase7-deployment        # Deployment
+/flow-docs-gen                           # Full 8-phase process
+/flow-docs-gen-phase-0-context           # Context discovery
+/flow-docs-gen-phase-1-discovery         # Discovery & UX
+/flow-docs-gen-phase-2-components        # Components & Framework
+/flow-docs-gen-phase-3-state             # State Management
+/flow-docs-gen-phase-4-styling           # Styling & Design
+/flow-docs-gen-phase-5-standards         # Code Standards
+/flow-docs-gen-phase-6-testing           # Testing Strategy
+/flow-docs-gen-phase-7-deployment        # Deployment
 ```
 
 #### Bootstrap Commands - Mobile (9)
 
 ```
-/bootstrap                           # Full 8-phase process
-/bootstrap-phase0-context           # Context discovery
-/bootstrap-phase1-platform          # Platform & Framework
-/bootstrap-phase2-navigation        # Navigation & Architecture
-/bootstrap-phase3-state             # State & Data Management
-/bootstrap-phase4-permissions       # Permissions & Native Features
-/bootstrap-phase5-standards         # Code Standards
-/bootstrap-phase6-testing           # Testing Strategy
-/bootstrap-phase7-deployment        # Deployment
+/flow-docs-gen                           # Full 8-phase process
+/flow-docs-gen-phase-0-context           # Context discovery
+/flow-docs-gen-phase-1-platform          # Platform & Framework
+/flow-docs-gen-phase-2-navigation        # Navigation & Architecture
+/flow-docs-gen-phase-3-state             # State & Data Management
+/flow-docs-gen-phase-4-permissions       # Permissions & Native Features
+/flow-docs-gen-phase-5-standards         # Code Standards
+/flow-docs-gen-phase-6-testing           # Testing Strategy
+/flow-docs-gen-phase-7-deployment        # Deployment
 ```
 
 #### Project Setup - Backend Only (2)
 
 ```
-/project-init                        # Initialize with framework (5-10 min, auto-run by /bootstrap)
+/project-init                        # Initialize with framework (5-10 min, auto-run by /flow-docs-gen)
 /project-roadmap                    # Generate implementation plan (15-30 min)
 ```
 
 #### Workflow Commands - Backend Only (5)
 
 ```
-/feature [new|change|refactor]      # Feature development (15-20 min)
-/fix                                 # Bug fixes (3-15 min, adaptive)
-/work [show|resume|archive]         # Work management
-/review [--full]                    # Multi-aspect code review (5 min)
-/refactor-quick                     # Quick refactorings (3-5 min)
+/flow-dev-feature [new|change|refactor]      # Feature development (15-20 min)
+/flow-dev-fix                                 # Bug fixes (3-15 min, adaptive)
+/flow-dev-work [show|resume|archive]         # Work management
+/flow-dev-review [--full]                    # Multi-aspect code review (5 min)
+/flow-dev-refactor                     # Quick refactorings (3-5 min)
 ```
 
 #### Documentation Update Commands (3)
 
 ```
-/docs-update                         # Backend/Frontend/Mobile
+/flow-docs-sync                         # Backend/Frontend/Mobile
 /backend-docs-update                # Fullstack: backend only
 /frontend-docs-update               # Fullstack: frontend only
 ```
@@ -1933,7 +1933,7 @@ chmod 755 .
 
 #### Slash Commands Not Working
 
-**Problem:** `/bootstrap` command not recognized in AI tool
+**Problem:** `/flow-docs-gen` command not recognized in AI tool
 
 **Solution:**
 
@@ -1964,7 +1964,7 @@ chmod 755 .
 
 4. **Manual invocation:**
    ```
-   Read .ai-flow/prompts/backend/bootstrap.md and execute
+   Read .ai-flow/prompts/backend/flow-docs-gen.md and execute
    ```
 
 #### AI Tool Not Detecting Config
@@ -1995,7 +1995,7 @@ chmod 755 .
 
 #### Documentation Not Generated
 
-**Problem:** `/bootstrap` completes but files missing
+**Problem:** `/flow-docs-gen` completes but files missing
 
 **Solution:**
 
@@ -2019,7 +2019,7 @@ chmod 755 .
 
 #### Analysis.json Issues
 
-**Problem:** `/docs-update` says "no changes" but code changed
+**Problem:** `/flow-docs-sync` says "no changes" but code changed
 
 **Solution:**
 
@@ -2032,12 +2032,12 @@ chmod 755 .
 2. **Run docs-update again:**
 
    ```
-   /docs-update
+   /flow-docs-sync
    ```
 
 3. **Force full re-analysis:**
    ```
-   /bootstrap-phase0-context
+   /flow-docs-gen-phase-0-context
    ```
 
 ### Best Practices
@@ -2057,7 +2057,7 @@ chmod 755 .
 2. ✅ **Be specific** - More detail = better documentation
 3. ✅ **Use recommendations** - ⭐🔥⚡🏆 markers guide best choices
 4. ✅ **Confirm each phase** - Review before moving to next phase
-5. ✅ **Save progress** - Work saved automatically in `.ai-flow/work/`
+5. ✅ **Save progress** - Work saved automatically in `.ai-flow/flow-dev-work/`
 6. ✅ **Ask for clarification** - AI can explain terms or options
 
 #### After Bootstrap
@@ -2065,22 +2065,22 @@ chmod 755 .
 1. ✅ **Review all documents** - Read generated docs thoroughly
 2. ✅ **Customize as needed** - Templates are starting points, not final
 3. ✅ **Share with team** - Share `AGENT.md` and `README.md` with developers
-4. ✅ **Update regularly** - Run `/docs-update` weekly or after major changes
-5. ✅ **Archive completed work** - Use `/work archive` to maintain history
-6. ✅ **Leverage workflows** - Use `/feature`, `/fix`, `/review` for daily work
+4. ✅ **Update regularly** - Run `/flow-docs-sync` weekly or after major changes
+5. ✅ **Archive completed work** - Use `/flow-dev-work archive` to maintain history
+6. ✅ **Leverage workflows** - Use `/flow-dev-feature`, `/flow-dev-fix`, `/flow-dev-review` for daily work
 
 #### Team Collaboration
 
 1. ✅ **Commit `.ai-flow/`** to version control - Team needs templates
 2. ✅ **Commit generated docs** - Share knowledge across team
 3. ✅ **Don't commit `analysis.json`** - Add to `.gitignore` (machine-specific cache)
-4. ✅ **Update docs in PRs** - Use `/docs-update` before merging
+4. ✅ **Update docs in PRs** - Use `/flow-docs-sync` before merging
 5. ✅ **Use same AI tool** - Or use `--ai all` for compatibility
-6. ✅ **Review together** - Use `/review` for pair programming
+6. ✅ **Review together** - Use `/flow-dev-review` for pair programming
 
 #### Documentation Maintenance
 
-1. ✅ **Weekly updates** - Run `/docs-update` to catch drift
+1. ✅ **Weekly updates** - Run `/flow-docs-sync` to catch drift
 2. ✅ **Version documentation** - Tag docs with releases
 3. ✅ **Link from code** - Reference docs in comments
 4. ✅ **Update on architecture changes** - Re-run relevant phases
@@ -2092,8 +2092,8 @@ chmod 755 .
 1. ✅ **Use caching** - Let Layer 0 cache work (don't delete `analysis.json`)
 2. ✅ **Selective deep analysis** - Choose Layer 3 targets wisely
 3. ✅ **Incremental updates** - Use individual phase commands
-4. ✅ **Quick refactors** - Use `/refactor-quick` for small changes
-5. ✅ **Review regularly** - Catch issues early with `/review`
+4. ✅ **Quick refactors** - Use `/flow-dev-refactor` for small changes
+5. ✅ **Review regularly** - Catch issues early with `/flow-dev-review`
 
 ---
 
@@ -2111,8 +2111,8 @@ chmod 755 .
 ### Quick Wins
 
 1. **Start with existing projects** - See 50-94% time savings immediately
-2. **Use workflow commands** - `/feature`, `/fix`, `/review` save 60-70% time
-3. **Leverage caching** - Re-run `/docs-update` in 0 seconds with no changes
+2. **Use workflow commands** - `/flow-dev-feature`, `/flow-dev-fix`, `/flow-dev-review` save 60-70% time
+3. **Leverage caching** - Re-run `/flow-docs-sync` in 0 seconds with no changes
 4. **Choose right scope** - MVP for speed, Enterprise for compliance
 
 ### Common Mistakes to Avoid
@@ -2130,16 +2130,16 @@ chmod 755 .
 ai-flow init . --ai all --type backend --name "My API" --description "REST API" --verbose
 
 # Quick feature iteration
-/feature new → Build → /review → /work archive
+/flow-dev-feature new → Build → /flow-dev-review → /flow-dev-work archive
 
 # Emergency bug fix
-/fix "Critical bug description" → Test → Deploy
+/flow-dev-fix "Critical bug description" → Test → Deploy
 
 # Weekly maintenance
-/docs-update → Review changes → Commit
+/flow-docs-sync → Review changes → Commit
 
 # Team onboarding
-/bootstrap-phase3-architecture → Share with new dev
+/flow-docs-gen-phase-3-architecture → Share with new dev
 ```
 
 ---
@@ -2147,3 +2147,5 @@ ai-flow init . --ai all --type backend --name "My API" --description "REST API" 
 **🚀 Ready to transform your development workflow with AI Flow!**
 
 For questions or support, visit [GitHub Issues](https://github.com/victorvelazquez/ai-flow/issues).
+
+

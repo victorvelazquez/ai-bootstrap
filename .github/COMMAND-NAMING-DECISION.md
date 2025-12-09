@@ -26,7 +26,7 @@ Standardize all slash commands with a structured naming convention to improve:
 ### Components:
 
 1. **PREFIX** - Tool identifier
-   - Current: `aibs` (from "ai-flow")
+   - Current: `flow` (from "ai-flow")
    - Future: Subject to change if tool is renamed
    - Purpose: Unique namespace, prevents collision with other tools
 
@@ -52,15 +52,15 @@ Documentation generation and maintenance
 #### Generation Commands (9)
 | Old Command | New Command | Description |
 |-------------|-------------|-------------|
-| `/bootstrap` | `/aibs-docs-gen` | Generate all documentation (8-phase bootstrap) |
-| `/bootstrap-phase0-context` | `/aibs-docs-gen-phase-0` | Phase 0: Context Discovery (existing projects) |
-| `/bootstrap-phase1-business` | `/aibs-docs-gen-phase-1` | Phase 1: Discovery & Business |
-| `/bootstrap-phase2-data` | `/aibs-docs-gen-phase-2` | Phase 2: Data Architecture / Components |
-| `/bootstrap-phase3-architecture` | `/aibs-docs-gen-phase-3` | Phase 3: System Architecture |
-| `/bootstrap-phase4-security` | `/aibs-docs-gen-phase-4` | Phase 4: Security & Auth / Styling |
-| `/bootstrap-phase5-standards` | `/aibs-docs-gen-phase-5` | Phase 5: Code Standards |
-| `/bootstrap-phase6-testing` | `/aibs-docs-gen-phase-6` | Phase 6: Testing Strategy |
-| `/bootstrap-phase7-operations` | `/aibs-docs-gen-phase-7` | Phase 7: Operations & Deployment |
+| `/bootstrap` | `/flow-docs-gen` | Generate all documentation (8-phase bootstrap) |
+| `/bootstrap-phase0-context` | `/flow-docs-gen-phase-0` | Phase 0: Context Discovery (existing projects) |
+| `/bootstrap-phase1-business` | `/flow-docs-gen-phase-1` | Phase 1: Discovery & Business |
+| `/bootstrap-phase2-data` | `/flow-docs-gen-phase-2` | Phase 2: Data Architecture / Components |
+| `/bootstrap-phase3-architecture` | `/flow-docs-gen-phase-3` | Phase 3: System Architecture |
+| `/bootstrap-phase4-security` | `/flow-docs-gen-phase-4` | Phase 4: Security & Auth / Styling |
+| `/bootstrap-phase5-standards` | `/flow-docs-gen-phase-5` | Phase 5: Code Standards |
+| `/bootstrap-phase6-testing` | `/flow-docs-gen-phase-6` | Phase 6: Testing Strategy |
+| `/bootstrap-phase7-operations` | `/flow-docs-gen-phase-7` | Phase 7: Operations & Deployment |
 
 **Rationale:**
 - `gen` = Generate (3 letters, concise)
@@ -70,9 +70,9 @@ Documentation generation and maintenance
 #### Synchronization Commands (3)
 | Old Command | New Command | Description |
 |-------------|-------------|-------------|
-| `/docs-update` | `/aibs-docs-sync` | Sync docs with code changes |
-| `/backend-docs-update` | `/aibs-docs-sync-be` | Backend only (fullstack projects) |
-| `/frontend-docs-update` | `/aibs-docs-sync-fe` | Frontend only (fullstack projects) |
+| `/docs-update` | `/flow-docs-sync` | Sync docs with code changes |
+| `/backend-docs-update` | `/flow-docs-sync-be` | Backend only (fullstack projects) |
+| `/frontend-docs-update` | `/flow-docs-sync-fe` | Frontend only (fullstack projects) |
 
 **Rationale:**
 - `sync` = Synchronize (4 letters, more descriptive than "update")
@@ -86,11 +86,11 @@ Complete development workflow (feature development, fixes, refactoring, review, 
 
 | Old Command | New Command | Description |
 |-------------|-------------|-------------|
-| `/feature` | `/aibs-dev-feature` | Feature workflow (interactive: new/change/refactor) |
-| `/fix` | `/aibs-dev-fix` | Fix bugs (adaptive complexity detection) |
-| `/refactor-quick` | `/aibs-dev-refactor` | Quick refactorings without overhead |
-| `/review` | `/aibs-dev-review` | Multi-aspect code review (5 perspectives) |
-| `/work` | `/aibs-dev-work` | Work management (list/show/resume/archive) |
+| `/feature` | `/flow-dev-feature` | Feature workflow (interactive: new/change/refactor) |
+| `/fix` | `/flow-dev-fix` | Fix bugs (adaptive complexity detection) |
+| `/refactor-quick` | `/flow-dev-refactor` | Quick refactorings without overhead |
+| `/review` | `/flow-dev-review` | Multi-aspect code review (5 perspectives) |
+| `/work` | `/flow-dev-work` | Work management (list/show/resume/archive) |
 
 **Rationale:**
 - All development-related commands grouped together
@@ -114,25 +114,25 @@ Complete development workflow (feature development, fixes, refactoring, review, 
 
 ```bash
 # DOCS (12 commands)
-/aibs-docs-gen
-/aibs-docs-gen-phase-0
-/aibs-docs-gen-phase-1
-/aibs-docs-gen-phase-2
-/aibs-docs-gen-phase-3
-/aibs-docs-gen-phase-4
-/aibs-docs-gen-phase-5
-/aibs-docs-gen-phase-6
-/aibs-docs-gen-phase-7
-/aibs-docs-sync
-/aibs-docs-sync-be
-/aibs-docs-sync-fe
+/flow-docs-gen
+/flow-docs-gen-phase-0
+/flow-docs-gen-phase-1
+/flow-docs-gen-phase-2
+/flow-docs-gen-phase-3
+/flow-docs-gen-phase-4
+/flow-docs-gen-phase-5
+/flow-docs-gen-phase-6
+/flow-docs-gen-phase-7
+/flow-docs-sync
+/flow-docs-sync-be
+/flow-docs-sync-fe
 
 # DEV (5 commands)
-/aibs-dev-feature
-/aibs-dev-fix
-/aibs-dev-refactor
-/aibs-dev-review
-/aibs-dev-work
+/flow-dev-feature
+/flow-dev-fix
+/flow-dev-refactor
+/flow-dev-review
+/flow-dev-work
 ```
 
 ---
@@ -170,44 +170,44 @@ Complete development workflow (feature development, fixes, refactoring, review, 
 #### Solution (After)
 - 17 commands with consistent structure
 - 2 logical groups (docs, dev)
-- Unique prefix (`/aibs-`) for all commands
+- Unique prefix (`/flow-`) for all commands
 - Clear semantic distinction (gen vs sync)
 - Excellent autocomplete experience
 
 ### Autocomplete Experience
 
-**User types:** `/aibs-docs-`
+**User types:** `/flow-docs-`
 
 ```
 Autocomplete shows:
-  /aibs-docs-gen
-  /aibs-docs-gen-phase-0
-  /aibs-docs-gen-phase-1
-  /aibs-docs-gen-phase-2
-  /aibs-docs-gen-phase-3
-  /aibs-docs-gen-phase-4
-  /aibs-docs-gen-phase-5
-  /aibs-docs-gen-phase-6
-  /aibs-docs-gen-phase-7
-  /aibs-docs-sync
-  /aibs-docs-sync-be
-  /aibs-docs-sync-fe
+  /flow-docs-gen
+  /flow-docs-gen-phase-0
+  /flow-docs-gen-phase-1
+  /flow-docs-gen-phase-2
+  /flow-docs-gen-phase-3
+  /flow-docs-gen-phase-4
+  /flow-docs-gen-phase-5
+  /flow-docs-gen-phase-6
+  /flow-docs-gen-phase-7
+  /flow-docs-sync
+  /flow-docs-sync-be
+  /flow-docs-sync-fe
 ```
 
-**User types:** `/aibs-dev-`
+**User types:** `/flow-dev-`
 
 ```
 Autocomplete shows:
-  /aibs-dev-feature
-  /aibs-dev-fix
-  /aibs-dev-refactor
-  /aibs-dev-review
-  /aibs-dev-work
+  /flow-dev-feature
+  /flow-dev-fix
+  /flow-dev-refactor
+  /flow-dev-review
+  /flow-dev-work
 ```
 
 ### Benefits
 
-1. ✅ **Unique Namespace** - `/aibs-` prevents collisions
+1. ✅ **Unique Namespace** - `/flow-` prevents collisions
 2. ✅ **Logical Grouping** - Commands grouped by purpose
 3. ✅ **Sequential Order** - Numbers indicate phase progression
 4. ✅ **Brevity** - Short actions (gen, sync, feature, fix, etc.)
@@ -221,7 +221,7 @@ Autocomplete shows:
 
 ### If Tool is Renamed
 
-**Current:** ai-flow → PREFIX: `aibs`
+**Current:** ai-flow → PREFIX: `flow`
 
 **Example rename scenarios:**
 
@@ -253,11 +253,11 @@ Autocomplete shows:
 
 ```bash
 # Add test runner to dev group
-/aibs-dev-test
+/flow-dev-test
 
 # Add deployment group (if needed)
-/aibs-deploy-staging
-/aibs-deploy-production
+/flow-deploy-staging
+/flow-deploy-production
 ```
 
 ---
@@ -293,10 +293,10 @@ prompts/backend/work.md → dev-work.md
 **Pattern:**
 ```
 Old: slash-commands/claude/bootstrap.md
-New: slash-commands/claude/aibs-docs-gen.md
+New: slash-commands/claude/flow-docs-gen.md
 
 Old: slash-commands/claude/feature.md
-New: slash-commands/claude/aibs-dev-feature.md
+New: slash-commands/claude/flow-dev-feature.md
 ```
 
 ### Phase 3: Update CLI Code (src/)
@@ -338,10 +338,10 @@ const promptFiles = {
 **Pattern:**
 ```markdown
 Old: Use `/bootstrap` to generate documentation
-New: Use `/aibs-docs-gen` to generate documentation
+New: Use `/flow-docs-gen` to generate documentation
 
 Old: Run `/feature` to create new features
-New: Run `/aibs-dev-feature` to create new features
+New: Run `/flow-dev-feature` to create new features
 ```
 
 ### Phase 6: Testing & Validation
@@ -380,27 +380,27 @@ New: Run `/aibs-dev-feature` to create new features
 
 ```bash
 # DOCS - Generation
-/bootstrap                    → /aibs-docs-gen
-/bootstrap-phase0-context     → /aibs-docs-gen-phase-0
-/bootstrap-phase1-business    → /aibs-docs-gen-phase-1
-/bootstrap-phase2-data        → /aibs-docs-gen-phase-2
-/bootstrap-phase3-architecture → /aibs-docs-gen-phase-3
-/bootstrap-phase4-security    → /aibs-docs-gen-phase-4
-/bootstrap-phase5-standards   → /aibs-docs-gen-phase-5
-/bootstrap-phase6-testing     → /aibs-docs-gen-phase-6
-/bootstrap-phase7-operations  → /aibs-docs-gen-phase-7
+/bootstrap                    → /flow-docs-gen
+/bootstrap-phase0-context     → /flow-docs-gen-phase-0
+/bootstrap-phase1-business    → /flow-docs-gen-phase-1
+/bootstrap-phase2-data        → /flow-docs-gen-phase-2
+/bootstrap-phase3-architecture → /flow-docs-gen-phase-3
+/bootstrap-phase4-security    → /flow-docs-gen-phase-4
+/bootstrap-phase5-standards   → /flow-docs-gen-phase-5
+/bootstrap-phase6-testing     → /flow-docs-gen-phase-6
+/bootstrap-phase7-operations  → /flow-docs-gen-phase-7
 
 # DOCS - Sync
-/docs-update                  → /aibs-docs-sync
-/backend-docs-update          → /aibs-docs-sync-be
-/frontend-docs-update         → /aibs-docs-sync-fe
+/docs-update                  → /flow-docs-sync
+/backend-docs-update          → /flow-docs-sync-be
+/frontend-docs-update         → /flow-docs-sync-fe
 
 # DEV - Workflows
-/feature                      → /aibs-dev-feature
-/fix                          → /aibs-dev-fix
-/refactor-quick               → /aibs-dev-refactor
-/review                       → /aibs-dev-review
-/work                         → /aibs-dev-work
+/feature                      → /flow-dev-feature
+/fix                          → /flow-dev-fix
+/refactor-quick               → /flow-dev-refactor
+/review                       → /flow-dev-review
+/work                         → /flow-dev-work
 ```
 
 ### Migration Steps
@@ -475,3 +475,4 @@ New: Run `/aibs-dev-feature` to create new features
 ---
 
 **END OF TECHNICAL DECISION DOCUMENT**
+

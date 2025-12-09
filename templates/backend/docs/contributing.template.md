@@ -132,7 +132,7 @@ Closes #123
 
 ### Keeping Documentation Updated
 
-As your project evolves, keep documentation synchronized with code changes using the `/docs-update` command.
+As your project evolves, keep documentation synchronized with code changes using the `/flow-docs-sync` command.
 
 **When to update documentation:**
 
@@ -145,7 +145,7 @@ As your project evolves, keep documentation synchronized with code changes using
 **How to update:**
 
 ```
-/docs-update
+/flow-docs-sync
 ```
 
 The command will:
@@ -160,3 +160,4 @@ The command will:
 ---
 
 **Last Updated:** {{GENERATION_DATE}}
+
