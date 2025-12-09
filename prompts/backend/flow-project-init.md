@@ -28,13 +28,35 @@ Before executing this command, ensure:
 
 ## Workflow: 2 Steps
 
-### Step 1: Read Documentation (1 minute - automatic)
+### Step 1: Read Documentation & Prepare Directory (1-2 minutes)
 
 **Read `ai-instructions.md` to identify:**
 
 - Programming language and version
 - Framework and version (if any)
 - Package manager preference
+
+**Check for conflicting files:**
+
+Most framework CLIs fail if they detect existing files like `README.md`, `package.json`, `.gitignore`, etc.
+
+**Detect conflicting files:**
+
+```bash
+# Check for common conflicting files
+ls -la | grep -E '(README|package\.json|\.git|tsconfig\.json|\.eslintrc)'
+```
+
+**If conflicts detected, backup and clear:**
+
+```bash
+# Create backup directory
+mkdir -p .ai-flow/backup-$(date +%Y%m%d-%H%M%S)
+
+# Move conflicting files to backup (preserve AI Flow docs)
+mv README.md package.json tsconfig.json .gitignore .ai-flow/backup-*/
+# Keep .ai-flow/ directory intact
+```
 
 **Display summary:**
 
@@ -49,8 +71,10 @@ Before executing this command, ensure:
 
 Target Directory: {{PWD}}
 
-⚠️  IMPORTANT: This will initialize the project in the CURRENT directory.
-   No subdirectories will be created.
+⚠️  IMPORTANT: 
+   • This will initialize the project in the CURRENT directory
+   • Conflicting files backed up to .ai-flow/backup-*/
+   • .ai-flow/ directory will be preserved
 
 Continue? (Y/n)
 ```
@@ -82,8 +106,9 @@ Please specify the framework to use:
 
 1. ✅ **Initialize in current directory** (use `.` when the CLI supports it)
 2. ✅ **Use official CLI tools** (don't create manual folder structures)
-3. ❌ **DO NOT create subdirectories** (no `mkdir project-name`)
-4. ❌ **DO NOT create manual file structures**
+3. ✅ **Directory must be clean** (backup existing files first if needed)
+4. ❌ **DO NOT create subdirectories** (no `mkdir project-name`)
+5. ❌ **DO NOT create manual file structures**
 
 ---
 
@@ -196,6 +221,30 @@ unzip -o project.zip && rm project.zip
 
 ---
 
+**Post-Initialization: Restore AI Flow Documentation**
+
+After framework initialization completes:
+
+1. **Preserve framework README (if created):**
+   ```bash
+   mv README.md README.framework.md
+   ```
+
+2. **Restore AI Flow documentation from backup:**
+   ```bash
+   # Restore AI instructions and project brief
+   cp .ai-flow/backup-*/ai-instructions.md .
+   cp .ai-flow/backup-*/project-brief.md .
+   
+   # Restore original README if you want to keep it
+   cp .ai-flow/backup-*/README.md .
+   ```
+
+3. **Merge or choose README strategy:**
+   - **Option A:** Keep framework README, link to AI docs
+   - **Option B:** Keep AI Flow README, reference framework docs
+   - **Option C:** Merge both READMEs
+
 **Success Output:**
 
 ```
@@ -208,12 +257,15 @@ unzip -o project.zip && rm project.zip
 Generated structure:
 {{LIST_KEY_FILES}}
 
+📋 Backup location: .ai-flow/backup-{{TIMESTAMP}}/
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Next steps:
-1. Review generated files
-2. Run /flow-project-roadmap to plan implementation
-3. Start development with /feature commands
+1. Review generated files (README.framework.md, package.json, etc.)
+2. Decide on README strategy (AI Flow vs Framework)
+3. Run /flow-project-roadmap to plan implementation
+4. Start development with /feature commands
 ```
 
 ---
