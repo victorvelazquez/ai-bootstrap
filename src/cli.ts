@@ -210,7 +210,7 @@ async function createBootstrapStructure(targetPath: string, aiTools: string[], p
   }
 }
 
-async function renderTemplates(targetPath: string, projectData: { name: string; description: string }, projectType: 'backend' | 'frontend' | 'fullstack' | 'mobile' = 'backend', dryRun?: boolean, verbose?: boolean): Promise<void> {
+async function renderTemplates(targetPath: string, projectData: { name: string; description: string }, projectType: 'backend' | 'frontend' | 'fullstack' | 'mobile' = 'backend', aiTools: string[] = [], dryRun?: boolean, verbose?: boolean): Promise<void> {
   const spinner = ora('Generating documentation from templates...').start();
   try {
     const templatesTarget = path.join(targetPath, '.ai-bootstrap', 'templates');
@@ -291,6 +291,17 @@ async function renderTemplates(targetPath: string, projectData: { name: string; 
 
     // Render each template
     for (const [relPath, { file: templateFile }] of processedFiles) {
+      // Skip AI tool-specific config files if the tool is not selected
+      const fileName = path.basename(relPath);
+      if (fileName === '.clauderules' && !aiTools.includes('claude') && !aiTools.includes('all')) {
+        logVerbose(`Skipping ${relPath} (Claude not selected)`, verbose);
+        continue;
+      }
+      if (fileName === '.cursorrules' && !aiTools.includes('cursor') && !aiTools.includes('all')) {
+        logVerbose(`Skipping ${relPath} (Cursor not selected)`, verbose);
+        continue;
+      }
+
       const destPath = path.join(templatesTarget, relPath);
       await fs.ensureDir(path.dirname(destPath));
       const templateContent = await fs.readFile(templateFile, 'utf8');
@@ -488,7 +499,7 @@ async function initializeProject(targetPath: string, aiTool?: string, projectTyp
 
     // Create structure
     await createBootstrapStructure(targetPath, aiTools, selectedProjectType, flags?.dryRun, flags?.verbose);
-    await renderTemplates(targetPath, { name: finalProjectName!, description: finalProjectDescription! }, selectedProjectType, flags?.dryRun, flags?.verbose);
+    await renderTemplates(targetPath, { name: finalProjectName!, description: finalProjectDescription! }, selectedProjectType, aiTools, flags?.dryRun, flags?.verbose);
     await copyPrompts(targetPath, flags?.dryRun, flags?.verbose);
     await setupSlashCommands(targetPath, aiTools, selectedProjectType, flags?.dryRun, flags?.verbose);
 
