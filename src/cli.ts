@@ -356,9 +356,9 @@ async function setupSlashCommands(targetPath: string, aiTools: string[], project
     for (const { dir, prefix } of promptSources) {
       const promptsSource = path.join(ROOT_DIR, 'prompts', dir);
       const allFiles = await fs.readdir(promptsSource);
-      // Filter only files that match slash command pattern (bootstrap*.md or docs-update.md)
+      // Filter all markdown files (all prompts are valid slash commands)
       const files = allFiles.filter(file =>
-        file.endsWith('.md') && (file.startsWith('bootstrap') || file === 'docs-update.md')
+        file.endsWith('.md')
       );
 
       for (const tool of aiTools) {
