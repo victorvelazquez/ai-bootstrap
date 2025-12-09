@@ -87,19 +87,24 @@ Ask these 6 questions one by one with progress indicator:
 **Critical Questions:**
 
 1. **Project Name & Description** (if new project - skip if Phase 0 detected)
+
    - What is the project name?
    - Provide a short description (1 sentence)
 
 2. **Project Overview**
+
    - What problem does this backend system solve? (2-3 sentences)
 
 3. **Business Objectives**
+
    - What are the top 3 measurable objectives for this project?
 
 4. **System Type**
+
    - What type of system are you building? (E-commerce/SaaS/CRM/Social/etc.)
 
 5. **Core Data Entities** (if new project - skip if Phase 0 detected)
+
    - List the main entities/models your system needs (e.g., User, Product, Order)
 
 6. **Backend Framework** (if new project - skip if Phase 0 detected)
@@ -785,19 +790,21 @@ B) No, I'll review documentation first
 Your choice (A): __
 ```
 
-**If choice A:** Execute the content of `/project-init` automatically
+**If choice A:** Execute the content of `/flow-project-init` automatically
+
 - Read `.ai-flow/templates/ai-instructions.md` to detect framework
 - Run framework initialization command in current directory
 - Display success message with generated files
 
 **If choice B:** Show manual workflow:
+
 ```
 **Manual Workflow (resume anytime):**
 
 1. Review documentation in .ai-flow/templates/
-2. When ready, run: /project-init (5-10 min)
+2. When ready, run: /flow-project-init (5-10 min)
    → Initializes project with framework CLI
-3. Then run: /project-roadmap (15-30 min)
+3. Then run: /flow-project-roadmap (15-30 min)
    → Generates implementation plan with Story Points
 4. Start implementing: /feature <feature-name>
    → Implements features following your architecture
@@ -809,6 +816,5 @@ Your choice (A): __
 ---
 
 _Last Updated: 2025-12-09_
-_Version: 2.2 (Integrated project-init automation + renamed from project-scaffold)_
+_Version: 2.2 (Integrated flow-project-init automation + renamed from project-scaffold)_
 _AI Flow - Transform your idea into production-ready code in minutes_
-

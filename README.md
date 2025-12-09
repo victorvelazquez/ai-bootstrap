@@ -234,8 +234,8 @@ After initialization, use these slash commands in your AI tool:
 
 **Project Setup (Backend only):**
 
-- `/project-init` - Initialize project with framework (5-10 min, auto-executed by /flow-docs-gen)
-- `/project-roadmap` - Create implementation roadmap with Story Points (15-30 min)
+- `/flow-project-init` - Initialize project with framework (5-10 min, auto-executed by /flow-docs-gen)
+- `/flow-project-roadmap` - Create implementation roadmap with Story Points (15-30 min)
 
 **Workflows (Backend only):**
 
@@ -404,4 +404,3 @@ MIT License - See [LICENSE](LICENSE) for details.
 **Transform your idea into a production-ready project with AI Flow** 🚀
 
 **Made with ❤️ for the developer community**
-

@@ -16,14 +16,14 @@
 
 **Already familiar with AI Flow?** Jump directly to:
 
-| Link                                                 | Description                             |
-| ---------------------------------------------------- | --------------------------------------- |
-| [Bootstrap Modes](#15-understanding-bootstrap-modes) | Interactive vs Smart Auto-Suggest       |
-| [CLI Flags Reference](#cli-flags-reference)          | All `init` command flags                |
-| [Commands Cheat Sheet](#commands-cheat-sheet)        | All 26+ commands organized              |
+| Link                                                 | Description                                                        |
+| ---------------------------------------------------- | ------------------------------------------------------------------ |
+| [Bootstrap Modes](#15-understanding-bootstrap-modes) | Interactive vs Smart Auto-Suggest                                  |
+| [CLI Flags Reference](#cli-flags-reference)          | All `init` command flags                                           |
+| [Commands Cheat Sheet](#commands-cheat-sheet)        | All 26+ commands organized                                         |
 | [Workflow Commands](#33-workflow-commands)           | `/flow-dev-feature`, `/flow-dev-fix`, `/flow-dev-review` workflows |
-| [Troubleshooting](#troubleshooting)                  | Common issues and solutions             |
-| [Best Practices](#best-practices)                    | Expert tips and recommendations         |
+| [Troubleshooting](#troubleshooting)                  | Common issues and solutions                                        |
+| [Best Practices](#best-practices)                    | Expert tips and recommendations                                    |
 
 ---
 
@@ -82,10 +82,12 @@ ai-flow init .
 You'll be asked:
 
 1. **Which AI tool will you use?**
+
    - Select: `claude`, `cursor`, `copilot`, `gemini`, or `all`
    - This configures tool-specific files (`.clauderules`, `.cursorrules`, etc.)
 
 2. **What type of project?**
+
    - Select: `backend`, `frontend`, `fullstack`, or `mobile`
    - Each type generates different documentation sets
 
@@ -243,7 +245,7 @@ If you chose "Yes" at the end of `/flow-docs-gen`, the project is already initia
 If you need to run it manually (or if the session was interrupted):
 
 ```
-/project-init
+/flow-project-init
 ```
 
 **What this does:**
@@ -271,7 +273,7 @@ If you need to run it manually (or if the session was interrupted):
 After scaffolding, generate a complete task breakdown:
 
 ```
-/project-roadmap
+/flow-project-roadmap
 ```
 
 **What this does:**
@@ -1139,16 +1141,19 @@ Phase 7 (Operations/Deployment) → CI/CD (depends on all previous)
 **Workflow:**
 
 1. **Spec Creation** - Define feature requirements
+
    - User stories and acceptance criteria
    - API contracts and data structures
    - Dependencies and risks
 
 2. **Planning** - Break down into tasks
+
    - Technical approach
    - Step-by-step implementation plan
    - Testing strategy
 
 3. **Implementation** - Execute tasks
+
    - Write code following specs
    - Add tests for each task
    - Update documentation
@@ -1381,24 +1386,28 @@ Ready to continue! What would you like me to do?
 **Analysis Perspectives (5):**
 
 1. **🔒 Security**
+
    - SQL injection, XSS, CSRF vulnerabilities
    - Authentication/authorization issues
    - Secrets in code
    - Input validation gaps
 
 2. **⚡ Performance**
+
    - N+1 query problems
    - Missing database indexes
    - Memory leaks
    - Inefficient algorithms
 
 3. **🧪 Testing**
+
    - Test coverage gaps
    - Missing edge cases
    - Untested error paths
    - Integration test needs
 
 4. **📐 Architecture**
+
    - SOLID principles violations
    - DRY violations
    - High coupling
@@ -1489,13 +1498,13 @@ Overall score: 7/10 (Good, but fix critical issues)
 
 **vs `/flow-dev-feature refactor`:**
 
-| Aspect        | `/flow-dev-refactor` | `/flow-dev-feature refactor`   |
-| ------------- | ----------------- | --------------------- |
-| Time          | 3-5 min           | 15-20 min             |
-| Spec required | ❌ No             | ✅ Yes                |
-| Plan required | ❌ No             | ✅ Yes                |
-| Documentation | Auto-update       | Full rewrite          |
-| Best for      | Small changes     | Architectural changes |
+| Aspect        | `/flow-dev-refactor` | `/flow-dev-feature refactor` |
+| ------------- | -------------------- | ---------------------------- |
+| Time          | 3-5 min              | 15-20 min                    |
+| Spec required | ❌ No                | ✅ Yes                       |
+| Plan required | ❌ No                | ✅ Yes                       |
+| Documentation | Auto-update          | Full rewrite                 |
+| Best for      | Small changes        | Architectural changes        |
 
 **Usage:**
 
@@ -1834,8 +1843,8 @@ ai-flow --help                  # Show help
 #### Project Setup - Backend Only (2)
 
 ```
-/project-init                        # Initialize with framework (5-10 min, auto-run by /flow-docs-gen)
-/project-roadmap                    # Generate implementation plan (15-30 min)
+/flow-project-init                  # Initialize with framework (5-10 min, auto-run by /flow-docs-gen)
+/flow-project-roadmap               # Generate implementation plan (15-30 min)
 ```
 
 #### Workflow Commands - Backend Only (5)
@@ -2000,6 +2009,7 @@ chmod 755 .
 **Solution:**
 
 1. **Check AI tool permissions:**
+
    - Verify AI can write files in project directory
    - Check for file system restrictions
 
@@ -2147,5 +2157,3 @@ ai-flow init . --ai all --type backend --name "My API" --description "REST API" 
 **🚀 Ready to transform your development workflow with AI Flow!**
 
 For questions or support, visit [GitHub Issues](https://github.com/victorvelazquez/ai-flow/issues).
-
-

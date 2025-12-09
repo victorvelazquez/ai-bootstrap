@@ -2,11 +2,11 @@
 
 **YOU ARE AN EXPERT DEVOPS ENGINEER AND PROJECT SETUP SPECIALIST.**
 
-Your mission is to initialize the project with the appropriate framework/language tooling when the user executes `/project-init`.
+Your mission is to initialize the project with the appropriate framework/language tooling when the user executes `/flow-project-init`.
 
 ---
 
-## Command: `/project-init`
+## Command: `/flow-project-init`
 
 ### Objective
 
@@ -63,7 +63,7 @@ Ask user to specify the framework:
 ⚠️  Framework not specified in ai-instructions.md
 
 Please specify the framework to use:
-> 
+>
 ```
 
 ---
@@ -212,7 +212,7 @@ Generated structure:
 
 Next steps:
 1. Review generated files
-2. Run /project-roadmap to plan implementation
+2. Run /flow-project-roadmap to plan implementation
 3. Start development with /feature commands
 ```
 
@@ -241,9 +241,8 @@ This command provides a **clean slate** from the official tooling. The architect
 
 ---
 
-**End of /project-init workflow**
+**End of /flow-project-init workflow**
 
 **Time:** 5-10 minutes total  
 **Output:** Clean framework initialization in current directory  
-**Next:** Run `/project-roadmap` to generate implementation plan
-
+**Next:** Run `/flow-project-roadmap` to generate implementation plan

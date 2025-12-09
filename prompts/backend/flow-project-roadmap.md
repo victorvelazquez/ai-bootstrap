@@ -2,11 +2,11 @@
 
 **YOU ARE AN EXPERT PROJECT MANAGER AND TECHNICAL ARCHITECT.**
 
-Your mission is to analyze the complete project documentation and generate a detailed implementation roadmap with Story Point estimations when the user executes `/project-roadmap`.
+Your mission is to analyze the complete project documentation and generate a detailed implementation roadmap with Story Point estimations when the user executes `/flow-project-roadmap`.
 
 ---
 
-## Command: `/project-roadmap`
+## Command: `/flow-project-roadmap`
 
 ### Objective
 
@@ -17,7 +17,7 @@ Generate a complete, prioritized implementation roadmap with Fibonacci-based Sto
 Before executing this command, ensure:
 
 - ✅ `/flow-docs-gen` completed (documentation generated)
-- ✅ `/project-init` completed (project initialized with framework)
+- ✅ `/flow-project-init` completed (project initialized with framework)
 - ✅ All documentation files exist in `.ai-flow/templates/`
 
 ### Duration
@@ -57,6 +57,7 @@ Extracting key information...
 **Extract structured data:**
 
 1. **Business Context** (from `project-brief.md`):
+
    - Primary objectives
    - Target users
    - Success metrics
@@ -64,41 +65,48 @@ Extracting key information...
    - Timeline (if specified)
 
 2. **Technical Stack** (from `ai-instructions.md`):
+
    - Language and version
    - Framework and version
    - Database and ORM
    - Key libraries
 
 3. **System Architecture** (from `docs/architecture.md`):
+
    - Architecture pattern (Clean, Hexagonal, Layered, MVC)
    - Layers/modules structure
    - Integration points
    - External services
 
 4. **Data Model** (from `docs/data-model.md`):
+
    - All entities/models
    - Relationships (1:1, 1:N, N:M)
    - Key fields per entity
    - Validation rules
 
 5. **API Endpoints** (from `docs/api.md`):
+
    - All routes
    - HTTP methods
    - Authentication requirements
    - Request/response schemas
 
 6. **Business Flows** (from `docs/business-flows.md`):
+
    - User journeys
    - Critical workflows
    - State transitions
 
 7. **Security Requirements** (from `specs/security.md`):
+
    - Authentication method
    - Authorization strategy (RBAC, ABAC, etc.)
    - Compliance requirements
    - Security features
 
 8. **Testing Strategy** (from `docs/testing.md`):
+
    - Unit test coverage target
    - Integration test scope
    - E2E test scenarios
@@ -468,10 +476,12 @@ Story Points | Complexity | Typical Time | Examples
 **Dependency Analysis:**
 
 1. **Entity Dependencies** (from `docs/data-model.md`):
+
    - Entities with no foreign keys can be built first
    - Entities with FKs depend on referenced entities
 
 2. **Feature Dependencies** (logical):
+
    - Authentication must complete before protected endpoints
    - Data layer must complete before business logic
    - Business logic must complete before integrations
@@ -582,8 +592,7 @@ Writing to .ai-flow/roadmap.md...
 ````markdown
 # 🗺️ Implementation Roadmap: {{PROJECT_NAME}}
 
-> **Generated:** {{DATE}}
-> **Based on:** Documentation v1.0 (Bootstrap + Scaffold)
+> **Generated:** {{DATE}} > **Based on:** Documentation v1.0 (Bootstrap + Scaffold)
 > **Total Estimated:** {{TOTAL_WEEKS}} weeks • {{TOTAL_SP}} SP
 
 ---
@@ -829,8 +838,8 @@ Before deploying to production, ensure all items are completed:
 ### Step 2: Setup Your Workflow
 
 ```bash
-# Ensure you've run scaffold
-/project-scaffold
+# Ensure you've run init
+/flow-project-init
 
 # Start with Phase 1, Epic 1, Feature 1.1
 /feature new "Base application configuration with environment validation"
@@ -875,7 +884,7 @@ Update this roadmap as you complete features:
 **Need to modify the roadmap?**
 
 - Update documentation first (`/flow-docs-gen` or `/flow-docs-sync`)
-- Re-run `/project-roadmap` to regenerate
+- Re-run `/flow-project-roadmap` to regenerate
 
 ---
 
@@ -976,7 +985,7 @@ Update this roadmap as you complete features:
   time-to-market.
 
 • **Re-generate:** If documentation changes significantly, re-run
-  /project-roadmap to update the plan.
+  /flow-project-roadmap to update the plan.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -994,6 +1003,7 @@ Open .ai-flow/roadmap.md and let's ship this! 💪
 The Story Point estimates are based on:
 
 1. **Complexity factors:**
+
    - Number of entities involved
    - Business logic complexity
    - Integration complexity
@@ -1001,6 +1011,7 @@ The Story Point estimates are based on:
    - Security requirements
 
 2. **Historical data:**
+
    - Simple CRUD: 3-5 SP
    - Auth systems: 13-21 SP
    - Payment integrations: 13-21 SP
@@ -1046,7 +1057,7 @@ Incomplete documentation:
 - [ ] No entities defined in docs/data-model.md
 - [ ] No endpoints defined in docs/api.md
 
-Please fix documentation and re-run /project-roadmap
+Please fix documentation and re-run /flow-project-roadmap
 ```
 
 ---
@@ -1086,7 +1097,7 @@ git add .ai-flow/roadmap.md
 # Create commit
 git commit -m "docs: add implementation roadmap with Story Points
 
-Generated by AI Flow /project-roadmap command:
+Generated by AI Flow /flow-project-roadmap command:
 - {{TOTAL_EPICS}} epics, {{TOTAL_FEATURES}} features, {{TOTAL_TASKS}} tasks
 - Total estimation: {{TOTAL_SP}} Story Points (~{{WEEKS}} weeks)
 - Prioritized by business value
@@ -1121,6 +1132,7 @@ Your choice (A): __
 **If choice A:** Execute `/feature "{{FIRST_FEATURE_NAME}}"` automatically
 
 **If choice B:** Show feature selection:
+
 ```
 **Available Features (Priority Order):**
 
@@ -1140,9 +1152,8 @@ Example: /feature "{{FEATURE_1_NAME}}"
 
 ---
 
-**End of /project-roadmap workflow**
+**End of /flow-project-roadmap workflow**
 
 **Time:** 15-30 minutes total
 **Output:** Complete implementation roadmap with Story Points
 **Next:** Start executing features with `/feature` command
-

@@ -47,35 +47,41 @@ All documentation is structured to guide AI assistants in understanding the proj
 ### 📚 Core Documentation (Read in Order)
 
 1. **`.cursorrules`** ⭐ **START HERE FOR CURSOR**
+
    - Cursor-specific configuration
    - Development workflow
    - Code standards and rules
 
 2. **`CLAUDE.md`**
+
    - Detailed project architecture
    - Implementation details
    - Development principles
    - Key functions reference
 
 3. **`.github/copilot-instructions.md`**
+
    - GitHub Copilot playbook
    - Architecture and flow
    - Build and test workflow
    - Project practices
 
 4. **`README.md`**
+
    - User-facing documentation
    - Installation and usage
    - Features and capabilities
    - Quick start guide
 
 5. **`CONTRIBUTING.md`**
+
    - Contribution guidelines
    - Development setup
    - Code style standards
    - Testing requirements
 
 6. **`package.json`**
+
    - Dependencies and versions
    - Scripts and commands
    - Package configuration
@@ -224,8 +230,8 @@ ai-flow/
 **Solution:** Use `__dirname` to resolve the packaged assets relative to `dist/cli.js`
 
 ```typescript
-const ROOT_DIR = path.resolve(__dirname, '..');
-const templatesSource = path.join(ROOT_DIR, 'templates');
+const ROOT_DIR = path.resolve(__dirname, "..");
+const templatesSource = path.join(ROOT_DIR, "templates");
 ```
 
 This works because:
@@ -346,23 +352,23 @@ Use Conventional Commits:
 
 ## 📝 Key Files Reference
 
-| File                                  | Purpose                                         | When to Edit                                        |
-| ------------------------------------- | ----------------------------------------------- | --------------------------------------------------- |
-| `src/cli.ts`                          | CLI entry point, all commands, file operations  | Adding commands, changing initialization logic      |
-| `prompts/backend/bootstrap.md`        | 7-phase master questionnaire                    | Improving questions, adding phases, changing flow   |
-| `prompts/backend/project-scaffold.md` | Complete project structure generation (0→1)     | Modifying scaffold phases, adding framework support |
-| `prompts/backend/project-roadmap.md`  | Implementation roadmap with Story Points        | Changing roadmap format, SP scale, epic structure   |
-| `prompts/backend/feature.md`          | Feature workflow with Story Points              | Updating SP estimates, task format, phase structure |
-| `prompts/frontend/bootstrap.md`       | Frontend 7-phase questionnaire                  | Frontend-specific improvements                      |
-| `templates/*.template.md`             | Document templates with placeholders            | Enhancing generated docs, changing structure        |
-| `package.json`                        | Dependencies, scripts, bin config               | Changing commands, adding dependencies              |
-| `tsconfig.json`                       | TypeScript compilation settings                 | Changing target, module system                      |
-| `README.md`                           | User-facing documentation                       | User-facing changes, features                       |
-| `GETTING-STARTED.md`                  | Complete tutorial (beginner/regular/power user) | Adding tutorials, workflow examples                 |
-| `CLAUDE.md`                           | Detailed architecture guide                     | Architecture changes, implementation details        |
-| `.cursorrules`                        | Cursor-specific configuration                   | Cursor workflow, rules                              |
-| `.github/copilot-instructions.md`     | GitHub Copilot playbook                         | Copilot-specific guidance, research checklist       |
-| `.github/prompts/*.prompt.md`         | Development workflow commands                   | Development automation                              |
+| File                                      | Purpose                                         | When to Edit                                        |
+| ----------------------------------------- | ----------------------------------------------- | --------------------------------------------------- |
+| `src/cli.ts`                              | CLI entry point, all commands, file operations  | Adding commands, changing initialization logic      |
+| `prompts/backend/bootstrap.md`            | 7-phase master questionnaire                    | Improving questions, adding phases, changing flow   |
+| `prompts/backend/project-scaffold.md`     | Complete project structure generation (0→1)     | Modifying scaffold phases, adding framework support |
+| `prompts/backend/flow-project-roadmap.md` | Implementation roadmap with Story Points        | Changing roadmap format, SP scale, epic structure   |
+| `prompts/backend/feature.md`              | Feature workflow with Story Points              | Updating SP estimates, task format, phase structure |
+| `prompts/frontend/bootstrap.md`           | Frontend 7-phase questionnaire                  | Frontend-specific improvements                      |
+| `templates/*.template.md`                 | Document templates with placeholders            | Enhancing generated docs, changing structure        |
+| `package.json`                            | Dependencies, scripts, bin config               | Changing commands, adding dependencies              |
+| `tsconfig.json`                           | TypeScript compilation settings                 | Changing target, module system                      |
+| `README.md`                               | User-facing documentation                       | User-facing changes, features                       |
+| `GETTING-STARTED.md`                      | Complete tutorial (beginner/regular/power user) | Adding tutorials, workflow examples                 |
+| `CLAUDE.md`                               | Detailed architecture guide                     | Architecture changes, implementation details        |
+| `.cursorrules`                            | Cursor-specific configuration                   | Cursor workflow, rules                              |
+| `.github/copilot-instructions.md`         | GitHub Copilot playbook                         | Copilot-specific guidance, research checklist       |
+| `.github/prompts/*.prompt.md`             | Development workflow commands                   | Development automation                              |
 
 ### Key Functions in src/cli.ts
 
@@ -370,7 +376,7 @@ Use Conventional Commits:
 | ---------------------------- | --------------------------------------------------- | ---------------------------------------- |
 | `selectAITool()`             | Interactive AI tool selection or validate --ai flag | `providedTool?: string`                  |
 | `selectProjectType()`        | Interactive project type selection                  | `providedType?: string`                  |
-| `checkIfInitialized()`       | Check if .ai-flow exists                       | `targetPath: string`                     |
+| `checkIfInitialized()`       | Check if .ai-flow exists                            | `targetPath: string`                     |
 | `createBootstrapStructure()` | Create folders and config.json                      | `targetPath, aiTools, projectType, ...`  |
 | `renderTemplates()`          | Copy and render templates to project                | `targetPath, projectData, projectType`   |
 | `copyPrompts()`              | Copy prompts/ to project                            | `targetPath: string`                     |

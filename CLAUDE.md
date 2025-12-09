@@ -273,22 +273,22 @@ AI Flow 2.0 introduces structured workflow commands for backend development, ins
 
 **7 Core Commands** (~2,700+ lines total):
 
-| Command             | Lines  | Purpose                                           | Time                   |
-| ------------------- | ------ | ------------------------------------------------- | ---------------------- |
-| `/project-scaffold` | ~1,060 | Generate complete project structure               | 90-120 min (automated) |
-| `/project-roadmap`  | ~1,130 | Create implementation roadmap with Story Points   | 15-30 min (automated)  |
-| `/feature`          | ~1,320 | Create/modify/refactor features with Story Points | 15-20 min              |
-| `/fix`              | ~100   | Fix bugs (auto-detects complexity)                | 3-15 min               |
-| `/work`             | ~80    | Manage work in progress                           | Instant                |
-| `/review`           | ~120   | Multi-aspect code review                          | 5 min                  |
-| `/refactor-quick`   | ~80    | Quick refactoring without spec                    | 3-5 min                |
+| Command                 | Lines  | Purpose                                           | Time                   |
+| ----------------------- | ------ | ------------------------------------------------- | ---------------------- |
+| `/project-scaffold`     | ~1,060 | Generate complete project structure               | 90-120 min (automated) |
+| `/flow-project-roadmap` | ~1,130 | Create implementation roadmap with Story Points   | 15-30 min (automated)  |
+| `/feature`              | ~1,320 | Create/modify/refactor features with Story Points | 15-20 min              |
+| `/fix`                  | ~100   | Fix bugs (auto-detects complexity)                | 3-15 min               |
+| `/work`                 | ~80    | Manage work in progress                           | Instant                |
+| `/review`               | ~120   | Multi-aspect code review                          | 5 min                  |
+| `/refactor-quick`       | ~80    | Quick refactoring without spec                    | 3-5 min                |
 
 ### File Locations
 
 **Prompt Files:**
 
 - `prompts/backend/project-scaffold.md` - Complete project structure generation (0→1)
-- `prompts/backend/project-roadmap.md` - Implementation roadmap with Story Points (Fibonacci scale)
+- `prompts/backend/flow-project-roadmap.md` - Implementation roadmap with Story Points (Fibonacci scale)
 - `prompts/backend/feature.md` - Feature workflow with Story Points estimation
 - `prompts/backend/fix.md` - Bug fix workflow
 - `prompts/backend/work.md` - Work management
@@ -307,7 +307,7 @@ AI Flow 2.0 introduces structured workflow commands for backend development, ins
 - Full Docker + CI/CD configuration
 - 90-120 minutes automated (vs 2-3 weeks manual)
 
-**Project Roadmap (`/project-roadmap`):**
+**Project Roadmap (`/flow-project-roadmap`):**
 
 - 5-phase breakdown: Doc Analysis → Epic Definition → Feature Breakdown → Dependencies → Document Generation
 - Story Points using Fibonacci scale (1, 2, 3, 5, 8, 13, 21)
@@ -388,7 +388,7 @@ AI Flow 2.0 introduces structured workflow commands for backend development, ins
 # → Creates 40-60 source files, 20-30 test files, Docker, CI/CD
 
 # Day 2: Generate implementation roadmap
-/project-roadmap
+/flow-project-roadmap
 # → 15-30 minutes automated: Complete task breakdown with Story Points
 # → Output: .ai-flow/roadmap.md with Epics, Features, Dependencies
 
@@ -423,7 +423,7 @@ AI Flow 2.0 introduces structured workflow commands for backend development, ins
 # → 35-70 minutes: Smart detection pre-fills 40-60% of answers
 
 # Existing codebase: Generate roadmap for new features
-/project-roadmap
+/flow-project-roadmap
 # → 15-30 minutes: Creates roadmap based on existing architecture
 
 # Continue with /feature commands as normal
@@ -563,11 +563,11 @@ cd test-project
 
 ```typescript
 try {
-  const spinner = ora('Creating structure...').start();
+  const spinner = ora("Creating structure...").start();
   await fs.ensureDir(path);
-  spinner.succeed('Created structure');
+  spinner.succeed("Created structure");
 } catch (error) {
-  spinner.fail('Failed to create structure');
+  spinner.fail("Failed to create structure");
   throw error;
 }
 ```
@@ -695,7 +695,7 @@ Closes #42
 | Function                     | Purpose                                             | Parameters                              |
 | ---------------------------- | --------------------------------------------------- | --------------------------------------- |
 | `selectAITool()`             | Interactive AI tool selection or validate --ai flag | `providedTool?: string`                 |
-| `checkIfInitialized()`       | Check if .ai-flow exists                       | `targetPath: string`                    |
+| `checkIfInitialized()`       | Check if .ai-flow exists                            | `targetPath: string`                    |
 | `createBootstrapStructure()` | Create folders and config.json                      | `targetPath: string, aiTools: string[]` |
 | `copyTemplates()`            | Copy templates/ to project                          | `targetPath: string`                    |
 | `copyPrompts()`              | Copy prompts/ to project                            | `targetPath: string`                    |
@@ -713,8 +713,8 @@ Closes #42
 **Solution:** Use `__dirname` to resolve the packaged assets relative to `dist/cli.js`
 
 ```typescript
-const ROOT_DIR = path.resolve(__dirname, '..');
-const templatesSource = path.join(ROOT_DIR, 'templates');
+const ROOT_DIR = path.resolve(__dirname, "..");
+const templatesSource = path.join(ROOT_DIR, "templates");
 ```
 
 This works because:
