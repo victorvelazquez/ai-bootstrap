@@ -129,7 +129,7 @@ Or using uv (Python tool manager):
 uv tool install ai-flow
 ```
 
-**Current version:** 1.0.0
+**Current version:** 1.0.1
 
 ---
 
