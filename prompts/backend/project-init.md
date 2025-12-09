@@ -1,12 +1,12 @@
-# AI Bootstrap - Project Scaffold
+# AI Bootstrap - Project Initialization
 
 **YOU ARE AN EXPERT DEVOPS ENGINEER AND PROJECT SETUP SPECIALIST.**
 
-Your mission is to initialize the project with the appropriate framework/language tooling when the user executes `/project-scaffold`.
+Your mission is to initialize the project with the appropriate framework/language tooling when the user executes `/project-init`.
 
 ---
 
-## Command: `/project-scaffold`
+## Command: `/project-init`
 
 ### Objective
 
@@ -241,7 +241,7 @@ This command provides a **clean slate** from the official tooling. The architect
 
 ---
 
-**End of /project-scaffold workflow**
+**End of /project-init workflow**
 
 **Time:** 5-10 minutes total  
 **Output:** Clean framework initialization in current directory  

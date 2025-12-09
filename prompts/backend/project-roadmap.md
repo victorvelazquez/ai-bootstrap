@@ -17,8 +17,8 @@ Generate a complete, prioritized implementation roadmap with Fibonacci-based Sto
 Before executing this command, ensure:
 
 - ✅ `/bootstrap` completed (documentation generated)
-- ✅ `/project-scaffold` completed (project structure created)
-- ✅ All documentation files exist in `docs/` and `specs/`
+- ✅ `/project-init` completed (project initialized with framework)
+- ✅ All documentation files exist in `.ai-bootstrap/templates/`
 
 ### Duration
 

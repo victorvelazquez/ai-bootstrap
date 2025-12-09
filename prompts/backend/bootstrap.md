@@ -772,34 +772,42 @@ Commit hash: {{COMMIT_HASH}}
 Files tracked: 17 documentation files
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🎯 Next Step: Generate Project Structure
+🎯 Next Step: Initialize Project
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Your documentation is ready! Now let's create the project structure.
+Your documentation is ready! Now let's initialize your project with the selected framework.
 
-Ready to generate the code skeleton?
+Continue with project initialization?
 
-A) ✅ Yes, run /project-scaffold now (recommended)
+A) ✅ Yes, initialize now (recommended) - 5-10 min
 B) No, I'll review documentation first
 
 Your choice (A): __
 ```
 
-**If choice A:** Execute `/project-scaffold` automatically
+**If choice A:** Execute the content of `/project-init` automatically
+- Read `.ai-bootstrap/templates/ai-instructions.md` to detect framework
+- Run framework initialization command in current directory
+- Display success message with generated files
 
-**If choice B:** Show manual next steps:
+**If choice B:** Show manual workflow:
 ```
-**Manual Next Steps:**
-1. Review generated documentation in .ai-bootstrap/
-2. When ready, run: /project-scaffold (90-120 min)
-3. Then run: /project-roadmap (15-30 min)
-4. Start implementing with: /feature
+**Manual Workflow (resume anytime):**
 
+1. Review documentation in .ai-bootstrap/templates/
+2. When ready, run: /project-init (5-10 min)
+   → Initializes project with framework CLI
+3. Then run: /project-roadmap (15-30 min)
+   → Generates implementation plan with Story Points
+4. Start implementing: /feature <feature-name>
+   → Implements features following your architecture
+
+💡 Tip: All commands are independent and re-executable.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
 ---
 
 _Last Updated: 2025-12-09_
-_Version: 2.1 (Added Smart Auto-Suggest Mode + Initial Commit)_
-_AI Bootstrap - Transform your idea into production-ready documentation in minutes_
+_Version: 2.2 (Integrated project-init automation + renamed from project-scaffold)_
+_AI Bootstrap - Transform your idea into production-ready code in minutes_

@@ -234,34 +234,39 @@ my-awesome-api/
 
 **Frontend projects** (12 documents), **Mobile projects** (15 documents), **Fullstack projects** (~20 documents) - see [Project Type Comparison](#project-type-comparison) for details.
 
-#### Step 6: Generate Project Structure (NEW - Backend only)
+#### Step 6: Initialize Project (Automatic)
 
-Now that you have complete documentation, generate the actual project code skeleton:
+**This step is now AUTOMATIC** - `/bootstrap` will ask if you want to continue with project initialization.
+
+If you chose "Yes" at the end of `/bootstrap`, the project is already initialized! ✅
+
+If you need to run it manually (or if the session was interrupted):
 
 ```
-/project-scaffold
+/project-init
 ```
 
 **What this does:**
 
-- ✅ Analyzes your documentation (tech stack, architecture, entities)
-- ✅ Executes framework CLI (NestJS, Express, FastAPI, Django, etc.)
-- ✅ Creates Clean Architecture structure (entities, repositories, services, controllers)
-- ✅ Configures testing framework (Jest, pytest, etc.)
-- ✅ Sets up linters and formatters (ESLint, Prettier, Black, etc.)
-- ✅ Creates Docker configuration (Dockerfile, docker-compose.yml)
-- ✅ Configures CI/CD pipeline (GitHub Actions, GitLab CI, etc.)
+- ✅ Reads your tech stack from ai-instructions.md
+- ✅ Executes the official framework CLI in current directory
+- ✅ Creates base project files (package.json, tsconfig.json, main entry point, etc.)
+- ✅ Installs initial dependencies
+- ✅ Project is immediately runnable (npm start, python manage.py runserver, etc.)
 
-**Time:** 90-120 minutes (automated)
+**Time:** 5-10 minutes (automated)
 
-**Output:** Complete project structure with:
+**Output:** Clean framework initialization with:
 
-- ~40-60 source files with TODO comments
-- ~20-30 test files (skeleton)
-- All configuration files
-- Docker + CI/CD setup
+- Configuration files (package.json, tsconfig.json, etc.)
+- Entry point (main.ts, app.py, Program.cs, etc.)
+- Basic framework structure
+- Dependencies installed
+- **Ready to run!** ✨
 
-#### Step 7: Generate Implementation Roadmap (NEW - Backend only)
+**Note:** This does NOT create your architecture layers - those are built incrementally with `/feature` commands.
+
+#### Step 7: Generate Implementation Roadmap (Backend only)
 
 After scaffolding, generate a complete task breakdown:
 
@@ -1824,6 +1829,13 @@ ai-bootstrap --help                  # Show help
 /bootstrap-phase5-standards         # Code Standards
 /bootstrap-phase6-testing           # Testing Strategy
 /bootstrap-phase7-deployment        # Deployment
+```
+
+#### Project Setup - Backend Only (2)
+
+```
+/project-init                        # Initialize with framework (5-10 min, auto-run by /bootstrap)
+/project-roadmap                    # Generate implementation plan (15-30 min)
 ```
 
 #### Workflow Commands - Backend Only (5)

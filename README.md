@@ -234,7 +234,7 @@ After initialization, use these slash commands in your AI tool:
 
 **Project Setup (Backend only):**
 
-- `/project-scaffold` - Generate complete project structure (90-120 min)
+- `/project-init` - Initialize project with framework (5-10 min, auto-executed by /bootstrap)
 - `/project-roadmap` - Create implementation roadmap with Story Points (15-30 min)
 
 **Workflows (Backend only):**
