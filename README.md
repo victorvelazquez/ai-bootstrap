@@ -20,7 +20,7 @@ AI Flow is an interactive CLI that creates comprehensive professional documentat
 **Quick Start:**
 
 ```bash
-npm install -g ai-flow
+npm install -g ai-flow-dev
 ai-flow init .
 # Then open your AI tool and run: /flow-docs-gen
 ```
@@ -45,9 +45,9 @@ Transforma tu idea en un proyecto listo para producción y documentado para IA e
 **Inicio rápido:**
 
 ```bash
-npm install -g ai-flow
+npm install -g ai-flow-dev
 ai-flow init .
-# Luego en tu AI tool: /flow-docs-gen
+# Luego en tu herramienta IA: /flow-docs-gen
 ```
 
 📚 **[Guía Completa →](GETTING-STARTED.md)**
@@ -67,12 +67,12 @@ Transforme sua ideia em um projeto pronto para produção e documentado para IA 
 - ⏱️ Economize 10-20 horas por projetos existentes (50-94% mais rápido)
 - ⏱️ Economize 10-20 horas por projeto
 
-**Início rápido:**
+**Início Rápido:**
 
 ```bash
-npm install -g ai-flow
+npm install -g ai-flow-dev
 ai-flow init .
-# Depois na sua ferramenta de IA: /flow-docs-gen
+# Em seguida, na sua ferramenta de IA: /flow-docs-gen
 ```
 
 📚 **[Guia Completo →](GETTING-STARTED.md)**

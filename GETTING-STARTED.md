@@ -46,21 +46,23 @@ Before starting, ensure you have:
 Install AI Flow globally via npm:
 
 ```bash
-npm install -g ai-flow
+npm install -g ai-flow-dev
 ```
 
 Or using uv (Python tool manager):
 
 ```bash
-uv tool install ai-flow
+uv tool install ai-flow-dev
 ```
 
 Verify installation:
 
 ```bash
 ai-flow --version
-# Output: 1.1.1
+# Output: 1.0.1
 ```
+
+_Note: Package name is `ai-flow-dev`, but the CLI command remains `ai-flow`_
 
 ### 1.3 Your First Project (5-Minute Walkthrough)
 

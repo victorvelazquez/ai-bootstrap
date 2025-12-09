@@ -278,5 +278,5 @@ See [docs/contributing.md](docs/contributing.md) for contribution guidelines.
 
 ---
 
-**Generated with** [AI Flow](https://github.com/victorvelazquez/ai-flow) 🚀
+**Generated with** [AI Flow](https://github.com/victorvelazquez/ai-flow) | `npm i -g ai-flow-dev` 🚀
 
