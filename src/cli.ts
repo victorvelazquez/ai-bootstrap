@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-import { Command } from "commander";
-import inquirer from "inquirer";
-import chalk from "chalk";
-import ora from "ora";
-import * as fs from "fs-extra";
-import * as path from "path";
-import ejs from "ejs";
-import { assertDirWritable } from "./fs-utils";
+import { Command } from 'commander';
+import inquirer from 'inquirer';
+import chalk from 'chalk';
+import ora from 'ora';
+import * as fs from 'fs-extra';
+import * as path from 'path';
+import ejs from 'ejs';
+import { assertDirWritable } from './fs-utils';
 
-const ROOT_DIR = path.resolve(__dirname, "..");
+const ROOT_DIR = path.resolve(__dirname, '..');
 
 const program = new Command();
 
@@ -21,34 +21,34 @@ interface AIToolChoice {
 
 const AI_TOOLS: AIToolChoice[] = [
   {
-    name: "GitHub Copilot",
-    value: "copilot",
-    description: "",
+    name: 'GitHub Copilot',
+    value: 'copilot',
+    description: '',
   },
   {
-    name: "Claude Code",
-    value: "claude",
-    description: "",
+    name: 'Claude Code',
+    value: 'claude',
+    description: '',
   },
   {
-    name: "Cursor",
-    value: "cursor",
-    description: "",
+    name: 'Cursor',
+    value: 'cursor',
+    description: '',
   },
   {
-    name: "Gemini",
-    value: "gemini",
-    description: "",
+    name: 'Gemini',
+    value: 'gemini',
+    description: '',
   },
   {
-    name: "All AI Tools",
-    value: "all",
-    description: "",
+    name: 'All AI Tools',
+    value: 'all',
+    description: '',
   },
 ];
 
 const PKG_VERSION: string = fs.readJSONSync(
-  path.join(__dirname, "..", "package.json")
+  path.join(__dirname, '..', 'package.json')
 ).version as string;
 
 const EXIT = {
@@ -75,7 +75,7 @@ function isValidDescription(value: string): boolean {
 
 function fsErrorMessage(e: unknown): string {
   const anyErr = e as any;
-  const code = anyErr && anyErr.code ? String(anyErr.code) : "UNKNOWN";
+  const code = anyErr && anyErr.code ? String(anyErr.code) : 'UNKNOWN';
   const msg = anyErr && anyErr.message ? String(anyErr.message) : String(e);
   return `${code}: ${msg}`;
 }
@@ -86,163 +86,163 @@ async function selectAITool(providedTool?: string): Promise<string[]> {
     if (!tool) {
       console.error(chalk.red(`❌ Invalid AI tool: ${providedTool}`));
       console.log(
-        chalk.yellow("Available options: claude, cursor, copilot, gemini, all")
+        chalk.yellow('Available options: claude, cursor, copilot, gemini, all')
       );
       process.exit(EXIT.INVALID_ARGS);
     }
-    return providedTool === "all"
-      ? ["claude", "cursor", "copilot", "gemini"]
+    return providedTool === 'all'
+      ? ['claude', 'cursor', 'copilot', 'gemini']
       : [providedTool];
   }
 
   // Display banner
-  console.log("\n");
+  console.log('\n');
   console.log(
     chalk.cyan(
-      "    ╔═══════════════════════════════════════════════════════════════════╗"
+      '    ╔═══════════════════════════════════════════════════════════════════╗'
     )
   );
   console.log(
-    chalk.cyan("    ║") +
-      "                                                                   " +
-      chalk.cyan("║")
+    chalk.cyan('    ║') +
+      '                                                                   ' +
+      chalk.cyan('║')
   );
   console.log(
-    chalk.cyan("    ║") +
+    chalk.cyan('    ║') +
       chalk.bold.cyan(
-        "          █████╗ ██╗    ██████╗  ██████╗  ██████╗ ████████╗"
+        '          █████╗ ██╗    ██████╗  ██████╗  ██████╗ ████████╗'
       ) +
-      "        " +
-      chalk.cyan("║")
+      '        ' +
+      chalk.cyan('║')
   );
   console.log(
-    chalk.cyan("    ║") +
+    chalk.cyan('    ║') +
       chalk.bold.cyan(
-        "         ██╔══██╗██║    ██╔══██╗██╔═══██╗██╔═══██╗╚══██╔══╝"
+        '         ██╔══██╗██║    ██╔══██╗██╔═══██╗██╔═══██╗╚══██╔══╝'
       ) +
-      "        " +
-      chalk.cyan("║")
+      '        ' +
+      chalk.cyan('║')
   );
   console.log(
-    chalk.cyan("    ║") +
+    chalk.cyan('    ║') +
       chalk.bold.cyan(
-        "         ███████║██║    ██████╔╝██║   ██║██║   ██║   ██║"
+        '         ███████║██║    ██████╔╝██║   ██║██║   ██║   ██║'
       ) +
-      "           " +
-      chalk.cyan("║")
+      '           ' +
+      chalk.cyan('║')
   );
   console.log(
-    chalk.cyan("    ║") +
+    chalk.cyan('    ║') +
       chalk.bold.cyan(
-        "         ██╔══██║██║    ██╔══██╗██║   ██║██║   ██║   ██║"
+        '         ██╔══██║██║    ██╔══██╗██║   ██║██║   ██║   ██║'
       ) +
-      "           " +
-      chalk.cyan("║")
+      '           ' +
+      chalk.cyan('║')
   );
   console.log(
-    chalk.cyan("    ║") +
+    chalk.cyan('    ║') +
       chalk.bold.cyan(
-        "         ██║  ██║██║    ██████╔╝╚██████╔╝╚██████╔╝   ██║"
+        '         ██║  ██║██║    ██████╔╝╚██████╔╝╚██████╔╝   ██║'
       ) +
-      "           " +
-      chalk.cyan("║")
+      '           ' +
+      chalk.cyan('║')
   );
   console.log(
-    chalk.cyan("    ║") +
-      chalk.cyan("         ╚═╝  ╚═╝╚═╝    ╚═════╝  ╚═════╝  ╚═════╝    ╚═╝") +
-      "           " +
-      chalk.cyan("║")
+    chalk.cyan('    ║') +
+      chalk.cyan('         ╚═╝  ╚═╝╚═╝    ╚═════╝  ╚═════╝  ╚═════╝    ╚═╝') +
+      '           ' +
+      chalk.cyan('║')
   );
   console.log(
-    chalk.cyan("    ║") +
-      "                                                                   " +
-      chalk.cyan("║")
+    chalk.cyan('    ║') +
+      '                                                                   ' +
+      chalk.cyan('║')
   );
   console.log(
-    chalk.cyan("    ║") +
-      "               " +
-      chalk.white("✨ AI-Ready Documentation in Minutes") +
-      "                " +
-      chalk.cyan("║")
+    chalk.cyan('    ║') +
+      '               ' +
+      chalk.white('✨ AI-Ready Documentation in Minutes') +
+      '                ' +
+      chalk.cyan('║')
   );
   console.log(
-    chalk.cyan("    ║") +
-      "                                                                   " +
-      chalk.cyan("║")
+    chalk.cyan('    ║') +
+      '                                                                   ' +
+      chalk.cyan('║')
   );
   console.log(
     chalk.cyan(
-      "    ╚═══════════════════════════════════════════════════════════════════╝"
+      '    ╚═══════════════════════════════════════════════════════════════════╝'
     )
   );
-  console.log("\n");
-  console.log(chalk.white("    📂 Project Setup"));
+  console.log('\n');
+  console.log(chalk.white('    📂 Project Setup'));
   console.log(
     chalk.gray(
-      "    ────────────────────────────────────────────────────────────────────"
+      '    ────────────────────────────────────────────────────────────────────'
     )
   );
   console.log(chalk.gray(`    Working Directory: ${process.cwd()}`));
   console.log(chalk.gray(`    Version: ${PKG_VERSION}`));
-  console.log("\n");
-  console.log(chalk.white("    🤖 Select your AI development tool:"));
+  console.log('\n');
+  console.log(chalk.white('    🤖 Select your AI development tool:'));
   console.log(
     chalk.gray(
-      "    ────────────────────────────────────────────────────────────────────"
+      '    ────────────────────────────────────────────────────────────────────'
     )
   );
 
   const { selectedTool } = await inquirer.prompt([
     {
-      type: "list",
-      name: "selectedTool",
-      message: "\u200B", // invisible char para ocultar el ?
+      type: 'list',
+      name: 'selectedTool',
+      message: '\u200B', // invisible char para ocultar el ?
       choices: AI_TOOLS.map((tool) => ({
-        name: "    " + tool.name, // 4 espacios para alinear
+        name: '    ' + tool.name, // 4 espacios para alinear
         value: tool.value,
       })),
       pageSize: 10,
     },
   ]);
 
-  return selectedTool === "all"
-    ? ["claude", "cursor", "copilot", "gemini"]
+  return selectedTool === 'all'
+    ? ['claude', 'cursor', 'copilot', 'gemini']
     : [selectedTool];
 }
 
 async function selectProjectType(
   providedType?: string
-): Promise<"backend" | "frontend" | "fullstack" | "mobile"> {
+): Promise<'backend' | 'frontend' | 'fullstack' | 'mobile'> {
   // v1.4.0: Backend, Frontend, Fullstack, and Mobile supported
   if (providedType) {
-    const valid = ["backend", "frontend", "fullstack", "mobile"];
+    const valid = ['backend', 'frontend', 'fullstack', 'mobile'];
     if (!valid.includes(providedType)) {
       console.error(chalk.red(`❌ Invalid project type: ${providedType}`));
       console.log(
-        chalk.yellow("Available options: backend, frontend, fullstack, mobile")
+        chalk.yellow('Available options: backend, frontend, fullstack, mobile')
       );
       process.exit(EXIT.INVALID_ARGS);
     }
-    return providedType as "backend" | "frontend" | "fullstack" | "mobile";
+    return providedType as 'backend' | 'frontend' | 'fullstack' | 'mobile';
   }
 
   // If no TTY available (non-interactive mode, e.g., in tests), default to backend
   // This maintains backward compatibility with existing tests and scripts
   if (!process.stdin.isTTY) {
-    return "backend";
+    return 'backend';
   }
 
   // v1.4.0: Interactive selection for backend/frontend/fullstack/mobile
   const answer = await inquirer.prompt([
     {
-      type: "list",
-      name: "projectType",
-      message: "What type of project are you bootstrapping?",
+      type: 'list',
+      name: 'projectType',
+      message: 'What type of project are you bootstrapping?',
       choices: [
-        { name: "🔧 Backend API/Service", value: "backend" },
-        { name: "🎨 Frontend Application", value: "frontend" },
-        { name: "🚀 Full Stack Application", value: "fullstack" },
-        { name: "📱 Mobile Application", value: "mobile" },
+        { name: '🔧 Backend API/Service', value: 'backend' },
+        { name: '🎨 Frontend Application', value: 'frontend' },
+        { name: '🚀 Full Stack Application', value: 'fullstack' },
+        { name: '📱 Mobile Application', value: 'mobile' },
       ],
     },
   ]);
@@ -250,33 +250,33 @@ async function selectProjectType(
 }
 
 async function checkIfInitialized(targetPath: string): Promise<boolean> {
-  const bootstrapPath = path.join(targetPath, ".ai-flow");
+  const bootstrapPath = path.join(targetPath, '.ai-flow');
   return await fs.pathExists(bootstrapPath);
 }
 
 async function createBootstrapStructure(
   targetPath: string,
   aiTools: string[],
-  projectType: "backend" | "frontend" | "fullstack" | "mobile" = "backend",
+  projectType: 'backend' | 'frontend' | 'fullstack' | 'mobile' = 'backend',
   dryRun?: boolean,
   verbose?: boolean
 ): Promise<void> {
-  const spinner = ora("Creating .ai-flow structure...").start();
+  const spinner = ora('Creating .ai-flow structure...').start();
 
   try {
-    const bootstrapPath = path.join(targetPath, ".ai-flow");
+    const bootstrapPath = path.join(targetPath, '.ai-flow');
 
     // Create core directories
     if (dryRun) {
-      spinner.succeed("Created .ai-flow structure (dry-run)");
+      spinner.succeed('Created .ai-flow structure (dry-run)');
       return;
     }
     await assertDirWritable(targetPath);
-    await fs.ensureDir(path.join(bootstrapPath, "core"));
-    await fs.ensureDir(path.join(bootstrapPath, "prompts"));
-    await fs.ensureDir(path.join(bootstrapPath, "templates", "docs"));
-    await fs.ensureDir(path.join(bootstrapPath, "templates", "specs"));
-    await fs.ensureDir(path.join(bootstrapPath, "scripts"));
+    await fs.ensureDir(path.join(bootstrapPath, 'core'));
+    await fs.ensureDir(path.join(bootstrapPath, 'prompts'));
+    await fs.ensureDir(path.join(bootstrapPath, 'templates', 'docs'));
+    await fs.ensureDir(path.join(bootstrapPath, 'templates', 'specs'));
+    await fs.ensureDir(path.join(bootstrapPath, 'scripts'));
 
     // Create config file with new projectType field
     const config = {
@@ -285,22 +285,22 @@ async function createBootstrapStructure(
       createdAt: new Date().toISOString(),
       projectType: projectType,
       // Deprecated fields for backward compatibility
-      backend: projectType === "backend" || projectType === "fullstack",
-      frontend: projectType === "frontend" || projectType === "fullstack",
-      mobile: projectType === "mobile",
+      backend: projectType === 'backend' || projectType === 'fullstack',
+      frontend: projectType === 'frontend' || projectType === 'fullstack',
+      mobile: projectType === 'mobile',
     };
 
     await fs.writeJSON(
-      path.join(bootstrapPath, "core", "config.json"),
+      path.join(bootstrapPath, 'core', 'config.json'),
       config,
       { spaces: 2 }
     );
     logVerbose(
-      `Wrote ${path.join(bootstrapPath, "core", "config.json")}`,
+      `Wrote ${path.join(bootstrapPath, 'core', 'config.json')}`,
       verbose
     );
 
-    spinner.succeed("Created .ai-flow structure");
+    spinner.succeed('Created .ai-flow structure');
   } catch (error) {
     spinner.fail(fsErrorMessage(error));
     throw error;
@@ -310,16 +310,16 @@ async function createBootstrapStructure(
 async function renderTemplates(
   targetPath: string,
   projectData: { name: string; description: string },
-  projectType: "backend" | "frontend" | "fullstack" | "mobile" = "backend",
+  projectType: 'backend' | 'frontend' | 'fullstack' | 'mobile' = 'backend',
   aiTools: string[] = [],
   dryRun?: boolean,
   verbose?: boolean
 ): Promise<void> {
-  const spinner = ora("Generating documentation from templates...").start();
+  const spinner = ora('Generating documentation from templates...').start();
   try {
-    const templatesTarget = path.join(targetPath, ".ai-flow", "templates");
+    const templatesTarget = path.join(targetPath, '.ai-flow', 'templates');
     if (dryRun) {
-      spinner.succeed("Documentation generated from templates (dry-run)");
+      spinner.succeed('Documentation generated from templates (dry-run)');
       return;
     }
     await assertDirWritable(templatesTarget);
@@ -334,8 +334,8 @@ async function renderTemplates(
         if (stat.isDirectory()) {
           files = files.concat(await walk(fullPath));
         } else if (
-          entry.endsWith(".template.md") ||
-          entry.endsWith(".template")
+          entry.endsWith('.template.md') ||
+          entry.endsWith('.template')
         ) {
           files.push(fullPath);
         }
@@ -347,22 +347,22 @@ async function renderTemplates(
     const templateSources: { source: string; base: string }[] = [];
 
     // Always include shared templates (e.g., AGENT.md)
-    const sharedSource = path.join(ROOT_DIR, "templates", "shared");
+    const sharedSource = path.join(ROOT_DIR, 'templates', 'shared');
     templateSources.push({ source: sharedSource, base: sharedSource });
 
     // Include project-type-specific templates
-    if (projectType === "backend") {
-      const backendSource = path.join(ROOT_DIR, "templates", "backend");
+    if (projectType === 'backend') {
+      const backendSource = path.join(ROOT_DIR, 'templates', 'backend');
       templateSources.push({ source: backendSource, base: backendSource });
-    } else if (projectType === "frontend") {
-      const frontendSource = path.join(ROOT_DIR, "templates", "frontend");
+    } else if (projectType === 'frontend') {
+      const frontendSource = path.join(ROOT_DIR, 'templates', 'frontend');
       templateSources.push({ source: frontendSource, base: frontendSource });
-    } else if (projectType === "fullstack") {
+    } else if (projectType === 'fullstack') {
       // v1.3.0: Copy both backend and frontend templates
       // Priority: fullstack-specific templates > backend templates > frontend templates
-      const fullstackSource = path.join(ROOT_DIR, "templates", "fullstack");
-      const backendSource = path.join(ROOT_DIR, "templates", "backend");
-      const frontendSource = path.join(ROOT_DIR, "templates", "frontend");
+      const fullstackSource = path.join(ROOT_DIR, 'templates', 'fullstack');
+      const backendSource = path.join(ROOT_DIR, 'templates', 'backend');
+      const frontendSource = path.join(ROOT_DIR, 'templates', 'frontend');
 
       // Check if fullstack templates directory exists
       const fullstackExists = await fs.pathExists(fullstackSource);
@@ -376,9 +376,9 @@ async function renderTemplates(
       templateSources.push({ source: backendSource, base: backendSource });
       // Frontend templates (will overwrite only if not in fullstack and not conflicting with backend)
       templateSources.push({ source: frontendSource, base: frontendSource });
-    } else if (projectType === "mobile") {
+    } else if (projectType === 'mobile') {
       // v1.4.0: Copy mobile templates
-      const mobileSource = path.join(ROOT_DIR, "templates", "mobile");
+      const mobileSource = path.join(ROOT_DIR, 'templates', 'mobile');
       templateSources.push({ source: mobileSource, base: mobileSource });
     }
 
@@ -391,8 +391,8 @@ async function renderTemplates(
       for (const file of files) {
         const relPath = path
           .relative(base, file)
-          .replace(".template.md", ".md")
-          .replace(".template", "");
+          .replace('.template.md', '.md')
+          .replace('.template', '');
         // Only add if not already processed (first occurrence wins)
         if (!processedFiles.has(relPath)) {
           processedFiles.set(relPath, { file, base });
@@ -405,17 +405,17 @@ async function renderTemplates(
       // Skip AI tool-specific config files if the tool is not selected
       const fileName = path.basename(relPath);
       if (
-        fileName === ".clauderules" &&
-        !aiTools.includes("claude") &&
-        !aiTools.includes("all")
+        fileName === '.clauderules' &&
+        !aiTools.includes('claude') &&
+        !aiTools.includes('all')
       ) {
         logVerbose(`Skipping ${relPath} (Claude not selected)`, verbose);
         continue;
       }
       if (
-        fileName === ".cursorrules" &&
-        !aiTools.includes("cursor") &&
-        !aiTools.includes("all")
+        fileName === '.cursorrules' &&
+        !aiTools.includes('cursor') &&
+        !aiTools.includes('all')
       ) {
         logVerbose(`Skipping ${relPath} (Cursor not selected)`, verbose);
         continue;
@@ -423,7 +423,7 @@ async function renderTemplates(
 
       const destPath = path.join(templatesTarget, relPath);
       await fs.ensureDir(path.dirname(destPath));
-      const templateContent = await fs.readFile(templateFile, "utf8");
+      const templateContent = await fs.readFile(templateFile, 'utf8');
       // Render with EJS, leaving {{PLACEHOLDER}} for everything except name/description
       const rendered = ejs.render(
         templateContent,
@@ -431,15 +431,15 @@ async function renderTemplates(
           PROJECT_NAME: projectData.name,
           PROJECT_DESCRIPTION: projectData.description,
           PROJECT_TYPE: projectType,
-          GENERATION_DATE: new Date().toISOString().split("T")[0],
-          PLACEHOLDER: "{{PLACEHOLDER}}",
+          GENERATION_DATE: new Date().toISOString().split('T')[0],
+          PLACEHOLDER: '{{PLACEHOLDER}}',
         },
-        { delimiter: "?" }
+        { delimiter: '?' }
       );
-      await fs.writeFile(destPath, rendered, "utf8");
+      await fs.writeFile(destPath, rendered, 'utf8');
       logVerbose(`Rendered ${destPath}`, verbose);
     }
-    spinner.succeed("Documentation generated from templates");
+    spinner.succeed('Documentation generated from templates');
   } catch (error) {
     spinner.fail(fsErrorMessage(error));
     throw error;
@@ -451,21 +451,21 @@ async function copyPrompts(
   dryRun?: boolean,
   verbose?: boolean
 ): Promise<void> {
-  const spinner = ora("Copying master prompts...").start();
+  const spinner = ora('Copying master prompts...').start();
 
   try {
-    const promptsSource = path.join(ROOT_DIR, "prompts");
-    const promptsTarget = path.join(targetPath, ".ai-flow", "prompts");
+    const promptsSource = path.join(ROOT_DIR, 'prompts');
+    const promptsTarget = path.join(targetPath, '.ai-flow', 'prompts');
 
     if (dryRun) {
-      spinner.succeed("Master prompts copied (dry-run)");
+      spinner.succeed('Master prompts copied (dry-run)');
       return;
     }
     await assertDirWritable(promptsTarget);
     await fs.copy(promptsSource, promptsTarget);
     logVerbose(`Copied prompts to ${promptsTarget}`, verbose);
 
-    spinner.succeed("Master prompts copied");
+    spinner.succeed('Master prompts copied');
   } catch (error) {
     spinner.fail(fsErrorMessage(error));
     throw error;
@@ -475,45 +475,45 @@ async function copyPrompts(
 async function setupSlashCommands(
   targetPath: string,
   aiTools: string[],
-  projectType: "backend" | "frontend" | "fullstack" | "mobile" = "backend",
+  projectType: 'backend' | 'frontend' | 'fullstack' | 'mobile' = 'backend',
   dryRun?: boolean,
   verbose?: boolean
 ): Promise<void> {
-  const spinner = ora("Setting up slash commands...").start();
+  const spinner = ora('Setting up slash commands...').start();
 
   try {
     // Determine which prompt directories to copy from
     const promptSources: Array<{ dir: string; prefix?: string }> = [];
 
-    if (projectType === "backend") {
-      promptSources.push({ dir: "backend" });
-    } else if (projectType === "frontend") {
-      promptSources.push({ dir: "frontend" });
-    } else if (projectType === "fullstack") {
+    if (projectType === 'backend') {
+      promptSources.push({ dir: 'backend' });
+    } else if (projectType === 'frontend') {
+      promptSources.push({ dir: 'frontend' });
+    } else if (projectType === 'fullstack') {
       // For fullstack, copy both with prefixes
-      promptSources.push({ dir: "backend", prefix: "backend-" });
-      promptSources.push({ dir: "frontend", prefix: "frontend-" });
-    } else if (projectType === "mobile") {
-      promptSources.push({ dir: "mobile" });
+      promptSources.push({ dir: 'backend', prefix: 'backend-' });
+      promptSources.push({ dir: 'frontend', prefix: 'frontend-' });
+    } else if (projectType === 'mobile') {
+      promptSources.push({ dir: 'mobile' });
     }
 
     for (const { dir, prefix } of promptSources) {
-      const promptsSource = path.join(ROOT_DIR, "prompts", dir);
+      const promptsSource = path.join(ROOT_DIR, 'prompts', dir);
       const allFiles = await fs.readdir(promptsSource);
       // Filter all markdown files (all prompts are valid slash commands)
-      const files = allFiles.filter((file) => file.endsWith(".md"));
+      const files = allFiles.filter((file) => file.endsWith('.md'));
 
       for (const tool of aiTools) {
-        if (tool === "copilot") {
+        if (tool === 'copilot') {
           // Copilot: prompts in .github/prompts with .prompt.md suffix
-          const promptsTarget = path.join(targetPath, ".github", "prompts");
+          const promptsTarget = path.join(targetPath, '.github', 'prompts');
           if (!dryRun) {
             await assertDirWritable(promptsTarget);
             await fs.ensureDir(promptsTarget);
           }
           for (const file of files) {
             const srcFile = path.join(promptsSource, file);
-            const base = file.replace(/\.md$/, "");
+            const base = file.replace(/\.md$/, '');
             const destName = prefix
               ? `${prefix}${base}.prompt.md`
               : `${base}.prompt.md`;
@@ -521,8 +521,8 @@ async function setupSlashCommands(
             if (!dryRun) await fs.copyFile(srcFile, destFile);
             logVerbose(`Installed ${destFile}`, verbose);
           }
-        } else if (tool === "claude") {
-          const commandsTarget = path.join(targetPath, ".claude", "commands");
+        } else if (tool === 'claude') {
+          const commandsTarget = path.join(targetPath, '.claude', 'commands');
           if (!dryRun) {
             await assertDirWritable(commandsTarget);
             await fs.ensureDir(commandsTarget);
@@ -534,8 +534,8 @@ async function setupSlashCommands(
             if (!dryRun) await fs.copyFile(srcFile, destFile);
             logVerbose(`Installed ${destFile}`, verbose);
           }
-        } else if (tool === "cursor") {
-          const commandsTarget = path.join(targetPath, ".cursor", "commands");
+        } else if (tool === 'cursor') {
+          const commandsTarget = path.join(targetPath, '.cursor', 'commands');
           if (!dryRun) {
             await assertDirWritable(commandsTarget);
             await fs.ensureDir(commandsTarget);
@@ -547,8 +547,8 @@ async function setupSlashCommands(
             if (!dryRun) await fs.copyFile(srcFile, destFile);
             logVerbose(`Installed ${destFile}`, verbose);
           }
-        } else if (tool === "gemini") {
-          const commandsTarget = path.join(targetPath, ".gemini", "commands");
+        } else if (tool === 'gemini') {
+          const commandsTarget = path.join(targetPath, '.gemini', 'commands');
           if (!dryRun) {
             await assertDirWritable(commandsTarget);
             await fs.ensureDir(commandsTarget);
@@ -564,7 +564,7 @@ async function setupSlashCommands(
       }
     }
 
-    spinner.succeed(`Slash commands set up for: ${aiTools.join(", ")}`);
+    spinner.succeed(`Slash commands set up for: ${aiTools.join(', ')}`);
   } catch (error) {
     spinner.fail(fsErrorMessage(error));
     throw error;
@@ -584,18 +584,18 @@ async function initializeProject(
     const isInitialized = await checkIfInitialized(targetPath);
     if (isInitialized) {
       console.log(
-        chalk.yellow("\n⚠️  Project already initialized with AI Flow")
+        chalk.yellow('\n⚠️  Project already initialized with AI Flow')
       );
       const { reinitialize } = await inquirer.prompt([
         {
-          type: "confirm",
-          name: "reinitialize",
-          message: "Do you want to reinitialize?",
+          type: 'confirm',
+          name: 'reinitialize',
+          message: 'Do you want to reinitialize?',
           default: false,
         },
       ]);
       if (!reinitialize) {
-        console.log(chalk.blue("Initialization cancelled"));
+        console.log(chalk.blue('Initialization cancelled'));
         return;
       }
     }
@@ -609,39 +609,39 @@ async function initializeProject(
     // Infer project name from directory
     const inferredName = path
       .basename(targetPath)
-      .split("-")
+      .split('-')
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
+      .join(' ');
 
     // Request minimal project data only if not provided
     if (projectName && !isValidName(projectName)) {
-      console.error(chalk.red("Invalid project name"));
+      console.error(chalk.red('Invalid project name'));
       process.exit(EXIT.INVALID_ARGS);
     }
     if (projectDescription && !isValidDescription(projectDescription)) {
-      console.error(chalk.red("Invalid project description"));
+      console.error(chalk.red('Invalid project description'));
       process.exit(EXIT.INVALID_ARGS);
     }
     let finalProjectName = projectName;
     let finalProjectDescription =
-      projectDescription || "TBD - Run /bootstrap to define";
+      projectDescription || 'TBD - Run /bootstrap to define';
 
     if (!finalProjectName) {
       const answers = await inquirer.prompt([
         {
-          type: "input",
-          name: "projectName",
-          message: "Project name (you can refine it in /bootstrap):",
+          type: 'input',
+          name: 'projectName',
+          message: 'Project name (you can refine it in /bootstrap):',
           default: inferredName,
           validate: (input: string) =>
             isValidName(input) ||
-            "Enter 2-100 chars: letters, numbers, space, - _ .",
+            'Enter 2-100 chars: letters, numbers, space, - _ .',
         },
       ]);
       finalProjectName = answers.projectName;
     }
 
-    console.log(chalk.cyan("\n📦 Initializing AI Flow...\n"));
+    console.log(chalk.cyan('\n📦 Initializing AI Flow...\n'));
 
     // Create structure
     await createBootstrapStructure(
@@ -668,300 +668,300 @@ async function initializeProject(
       flags?.verbose
     );
 
-    const modeText = flags?.dryRun ? "DRY-RUN" : "WRITE";
-    console.log(chalk.green("\n✅ AI Flow initialized successfully!"));
-    console.log(chalk.white("\nSummary:"));
+    const modeText = flags?.dryRun ? 'DRY-RUN' : 'WRITE';
+    console.log(chalk.green('\n✅ AI Flow initialized successfully!'));
+    console.log(chalk.white('\nSummary:'));
     console.log(chalk.gray(`  Project: ${finalProjectName}`));
     console.log(chalk.gray(`  Version: ${PKG_VERSION}`));
     console.log(chalk.gray(`  Directory: ${targetPath}`));
-    console.log(chalk.gray(`  Tools: ${aiTools.join(", ")}`));
+    console.log(chalk.gray(`  Tools: ${aiTools.join(', ')}`));
     console.log(chalk.gray(`  Mode: ${modeText}`));
-    console.log(chalk.white("\nNext steps:\n"));
+    console.log(chalk.white('\nNext steps:\n'));
 
     const toolsText =
       aiTools.length === 1
         ? aiTools[0]
-        : `${aiTools.slice(0, -1).join(", ")} and ${
+        : `${aiTools.slice(0, -1).join(', ')} and ${
             aiTools[aiTools.length - 1]
           }`;
 
-    if (selectedProjectType === "fullstack") {
-      if (aiTools.includes("claude")) {
-        console.log(chalk.cyan("  1. Open Claude Code"));
+    if (selectedProjectType === 'fullstack') {
+      if (aiTools.includes('claude')) {
+        console.log(chalk.cyan('  1. Open Claude Code'));
         console.log(
-          chalk.cyan("  2. Run: /backend-bootstrap (for backend documentation)")
+          chalk.cyan('  2. Run: /backend-bootstrap (for backend documentation)')
         );
         console.log(
           chalk.cyan(
-            "  3. Run: /frontend-bootstrap (for frontend documentation)"
+            '  3. Run: /frontend-bootstrap (for frontend documentation)'
           )
         );
-        console.log(chalk.gray("     Each will guide you through 7 phases\n"));
-      } else if (aiTools.includes("cursor")) {
-        console.log(chalk.cyan("  1. Open Cursor"));
+        console.log(chalk.gray('     Each will guide you through 7 phases\n'));
+      } else if (aiTools.includes('cursor')) {
+        console.log(chalk.cyan('  1. Open Cursor'));
         console.log(
-          chalk.cyan("  2. Run: /backend-bootstrap (for backend documentation)")
+          chalk.cyan('  2. Run: /backend-bootstrap (for backend documentation)')
         );
         console.log(
           chalk.cyan(
-            "  3. Run: /frontend-bootstrap (for frontend documentation)"
+            '  3. Run: /frontend-bootstrap (for frontend documentation)'
           )
         );
-        console.log(chalk.gray("     Each will guide you through 7 phases\n"));
+        console.log(chalk.gray('     Each will guide you through 7 phases\n'));
       } else {
         console.log(chalk.cyan(`  1. Open your AI tool (${toolsText})`));
         console.log(
-          chalk.cyan("  2. Run: /backend-bootstrap (for backend documentation)")
+          chalk.cyan('  2. Run: /backend-bootstrap (for backend documentation)')
         );
         console.log(
           chalk.cyan(
-            "  3. Run: /frontend-bootstrap (for frontend documentation)"
+            '  3. Run: /frontend-bootstrap (for frontend documentation)'
           )
         );
-        console.log(chalk.gray("     Each will guide you through 7 phases\n"));
+        console.log(chalk.gray('     Each will guide you through 7 phases\n'));
       }
 
-      console.log(chalk.white("Available slash commands:"));
-      console.log(chalk.gray("  Backend commands:"));
+      console.log(chalk.white('Available slash commands:'));
+      console.log(chalk.gray('  Backend commands:'));
       console.log(
         chalk.gray(
-          "    /backend-bootstrap                    - Backend 7-phase documentation generation"
+          '    /backend-bootstrap                    - Backend 7-phase documentation generation'
         )
       );
       console.log(
         chalk.gray(
-          "    /backend-bootstrap-phase0-context     - Backend context discovery"
+          '    /backend-bootstrap-phase0-context     - Backend context discovery'
         )
       );
       console.log(
         chalk.gray(
-          "    /backend-bootstrap-phase1-business    - Backend discovery & business"
+          '    /backend-bootstrap-phase1-business    - Backend discovery & business'
         )
       );
       console.log(
         chalk.gray(
-          "    /backend-bootstrap-phase2-data        - Backend data architecture"
+          '    /backend-bootstrap-phase2-data        - Backend data architecture'
         )
       );
       console.log(
         chalk.gray(
-          "    /backend-bootstrap-phase3-architecture - Backend system architecture"
+          '    /backend-bootstrap-phase3-architecture - Backend system architecture'
         )
       );
       console.log(
         chalk.gray(
-          "    /backend-bootstrap-phase4-security    - Backend security & auth"
+          '    /backend-bootstrap-phase4-security    - Backend security & auth'
         )
       );
       console.log(
         chalk.gray(
-          "    /backend-bootstrap-phase5-standards    - Backend code standards"
+          '    /backend-bootstrap-phase5-standards    - Backend code standards'
         )
       );
       console.log(
         chalk.gray(
-          "    /backend-bootstrap-phase6-testing     - Backend testing"
+          '    /backend-bootstrap-phase6-testing     - Backend testing'
         )
       );
       console.log(
         chalk.gray(
-          "    /backend-bootstrap-phase7-operations  - Backend operations + tools"
+          '    /backend-bootstrap-phase7-operations  - Backend operations + tools'
         )
       );
       console.log(
         chalk.gray(
-          "    /backend-docs-update                  - Update backend documentation\n"
+          '    /backend-docs-update                  - Update backend documentation\n'
         )
       );
-      console.log(chalk.gray("  Frontend commands:"));
+      console.log(chalk.gray('  Frontend commands:'));
       console.log(
         chalk.gray(
-          "    /frontend-bootstrap                    - Frontend 7-phase documentation generation"
-        )
-      );
-      console.log(
-        chalk.gray(
-          "    /frontend-bootstrap-phase0-context    - Frontend context discovery"
+          '    /frontend-bootstrap                    - Frontend 7-phase documentation generation'
         )
       );
       console.log(
         chalk.gray(
-          "    /frontend-bootstrap-phase1-discovery  - Frontend discovery & UX"
+          '    /frontend-bootstrap-phase0-context    - Frontend context discovery'
         )
       );
       console.log(
         chalk.gray(
-          "    /frontend-bootstrap-phase2-components  - Frontend components & framework"
+          '    /frontend-bootstrap-phase1-discovery  - Frontend discovery & UX'
         )
       );
       console.log(
         chalk.gray(
-          "    /frontend-bootstrap-phase3-state       - Frontend state management"
+          '    /frontend-bootstrap-phase2-components  - Frontend components & framework'
         )
       );
       console.log(
         chalk.gray(
-          "    /frontend-bootstrap-phase4-styling     - Frontend styling & design"
+          '    /frontend-bootstrap-phase3-state       - Frontend state management'
         )
       );
       console.log(
         chalk.gray(
-          "    /frontend-bootstrap-phase5-standards  - Frontend code standards"
+          '    /frontend-bootstrap-phase4-styling     - Frontend styling & design'
         )
       );
       console.log(
         chalk.gray(
-          "    /frontend-bootstrap-phase6-testing    - Frontend testing"
+          '    /frontend-bootstrap-phase5-standards  - Frontend code standards'
         )
       );
       console.log(
         chalk.gray(
-          "    /frontend-bootstrap-phase7-deployment - Frontend deployment"
+          '    /frontend-bootstrap-phase6-testing    - Frontend testing'
         )
       );
       console.log(
         chalk.gray(
-          "    /frontend-docs-update                  - Update frontend documentation\n"
+          '    /frontend-bootstrap-phase7-deployment - Frontend deployment'
         )
       );
-    } else if (selectedProjectType === "mobile") {
-      if (aiTools.includes("claude")) {
-        console.log(chalk.cyan("  1. Open Claude Code"));
-        console.log(chalk.cyan("  2. Run: /bootstrap"));
+      console.log(
+        chalk.gray(
+          '    /frontend-docs-update                  - Update frontend documentation\n'
+        )
+      );
+    } else if (selectedProjectType === 'mobile') {
+      if (aiTools.includes('claude')) {
+        console.log(chalk.cyan('  1. Open Claude Code'));
+        console.log(chalk.cyan('  2. Run: /bootstrap'));
         console.log(
-          chalk.gray("     This will start the 7-phase interactive setup\n")
+          chalk.gray('     This will start the 7-phase interactive setup\n')
         );
-      } else if (aiTools.includes("cursor")) {
-        console.log(chalk.cyan("  1. Open Cursor"));
-        console.log(chalk.cyan("  2. Run: /bootstrap"));
+      } else if (aiTools.includes('cursor')) {
+        console.log(chalk.cyan('  1. Open Cursor'));
+        console.log(chalk.cyan('  2. Run: /bootstrap'));
         console.log(
-          chalk.gray("     This will start the 7-phase interactive setup\n")
+          chalk.gray('     This will start the 7-phase interactive setup\n')
         );
       } else {
         console.log(chalk.cyan(`  1. Open your AI tool (${toolsText})`));
-        console.log(chalk.cyan("  2. Run: /bootstrap"));
+        console.log(chalk.cyan('  2. Run: /bootstrap'));
         console.log(
-          chalk.gray("     This will start the 7-phase interactive setup\n")
+          chalk.gray('     This will start the 7-phase interactive setup\n')
         );
       }
 
-      console.log(chalk.white("Available slash commands:"));
+      console.log(chalk.white('Available slash commands:'));
       console.log(
         chalk.gray(
-          "  /bootstrap                    - Full 7-phase documentation generation"
+          '  /bootstrap                    - Full 7-phase documentation generation'
         )
       );
       console.log(
         chalk.gray(
-          "  /bootstrap-phase0-context     - Context Discovery (existing projects)"
+          '  /bootstrap-phase0-context     - Context Discovery (existing projects)'
         )
       );
       console.log(
         chalk.gray(
-          "  /bootstrap-phase1-platform    - Platform & Framework Selection"
+          '  /bootstrap-phase1-platform    - Platform & Framework Selection'
         )
       );
       console.log(
         chalk.gray(
-          "  /bootstrap-phase2-navigation  - Navigation & Architecture"
+          '  /bootstrap-phase2-navigation  - Navigation & Architecture'
         )
       );
       console.log(
-        chalk.gray("  /bootstrap-phase3-state       - State & Data Management")
+        chalk.gray('  /bootstrap-phase3-state       - State & Data Management')
       );
       console.log(
         chalk.gray(
-          "  /bootstrap-phase4-permissions  - Permissions & Native Features"
+          '  /bootstrap-phase4-permissions  - Permissions & Native Features'
         )
       );
       console.log(
-        chalk.gray("  /bootstrap-phase5-standards   - Code Standards")
+        chalk.gray('  /bootstrap-phase5-standards   - Code Standards')
       );
       console.log(
-        chalk.gray("  /bootstrap-phase6-testing     - Testing Strategy")
+        chalk.gray('  /bootstrap-phase6-testing     - Testing Strategy')
       );
       console.log(
-        chalk.gray("  /bootstrap-phase7-deployment  - Store Deployment")
+        chalk.gray('  /bootstrap-phase7-deployment  - Store Deployment')
       );
       console.log(
         chalk.gray(
-          "  /docs-update                  - Update documentation when code changes\n"
+          '  /docs-update                  - Update documentation when code changes\n'
         )
       );
     } else {
-      if (aiTools.includes("claude")) {
-        console.log(chalk.cyan("  1. Open Claude Code"));
-        console.log(chalk.cyan("  2. Run: /bootstrap"));
+      if (aiTools.includes('claude')) {
+        console.log(chalk.cyan('  1. Open Claude Code'));
+        console.log(chalk.cyan('  2. Run: /bootstrap'));
         console.log(
-          chalk.gray("     This will start the 7-phase interactive setup\n")
+          chalk.gray('     This will start the 7-phase interactive setup\n')
         );
-      } else if (aiTools.includes("cursor")) {
-        console.log(chalk.cyan("  1. Open Cursor"));
-        console.log(chalk.cyan("  2. Run: /bootstrap"));
+      } else if (aiTools.includes('cursor')) {
+        console.log(chalk.cyan('  1. Open Cursor'));
+        console.log(chalk.cyan('  2. Run: /bootstrap'));
         console.log(
-          chalk.gray("     This will start the 7-phase interactive setup\n")
+          chalk.gray('     This will start the 7-phase interactive setup\n')
         );
       } else {
         console.log(chalk.cyan(`  1. Open your AI tool (${toolsText})`));
-        console.log(chalk.cyan("  2. Run: /bootstrap"));
+        console.log(chalk.cyan('  2. Run: /bootstrap'));
         console.log(
-          chalk.gray("     This will start the 7-phase interactive setup\n")
+          chalk.gray('     This will start the 7-phase interactive setup\n')
         );
       }
 
-      console.log(chalk.white("Available slash commands:"));
+      console.log(chalk.white('Available slash commands:'));
       console.log(
         chalk.gray(
-          "  /bootstrap                    - Full 7-phase documentation generation"
+          '  /bootstrap                    - Full 7-phase documentation generation'
         )
       );
       console.log(
         chalk.gray(
-          "  /bootstrap-phase0-context     - Context Discovery (existing projects)"
+          '  /bootstrap-phase0-context     - Context Discovery (existing projects)'
         )
       );
-      if (selectedProjectType === "backend") {
+      if (selectedProjectType === 'backend') {
         console.log(
-          chalk.gray("  /bootstrap-phase1-business    - Discovery & Business")
+          chalk.gray('  /bootstrap-phase1-business    - Discovery & Business')
         );
         console.log(
-          chalk.gray("  /bootstrap-phase2-data        - Data Architecture")
+          chalk.gray('  /bootstrap-phase2-data        - Data Architecture')
         );
         console.log(
-          chalk.gray("  /bootstrap-phase3-architecture - System Architecture")
+          chalk.gray('  /bootstrap-phase3-architecture - System Architecture')
         );
         console.log(
-          chalk.gray("  /bootstrap-phase4-security    - Security & Auth")
+          chalk.gray('  /bootstrap-phase4-security    - Security & Auth')
         );
         console.log(
-          chalk.gray("  /bootstrap-phase5-standards    - Code Standards")
+          chalk.gray('  /bootstrap-phase5-standards    - Code Standards')
         );
-        console.log(chalk.gray("  /bootstrap-phase6-testing     - Testing"));
+        console.log(chalk.gray('  /bootstrap-phase6-testing     - Testing'));
         console.log(
-          chalk.gray("  /bootstrap-phase7-operations  - Operations + Tools")
+          chalk.gray('  /bootstrap-phase7-operations  - Operations + Tools')
         );
       } else {
         console.log(
-          chalk.gray("  /bootstrap-phase1-discovery   - Discovery & UX")
+          chalk.gray('  /bootstrap-phase1-discovery   - Discovery & UX')
         );
         console.log(
-          chalk.gray("  /bootstrap-phase2-components - Components & Framework")
+          chalk.gray('  /bootstrap-phase2-components - Components & Framework')
         );
         console.log(
-          chalk.gray("  /bootstrap-phase3-state      - State Management")
+          chalk.gray('  /bootstrap-phase3-state      - State Management')
         );
         console.log(
-          chalk.gray("  /bootstrap-phase4-styling     - Styling & Design")
+          chalk.gray('  /bootstrap-phase4-styling     - Styling & Design')
         );
         console.log(
-          chalk.gray("  /bootstrap-phase5-standards   - Code Standards")
+          chalk.gray('  /bootstrap-phase5-standards   - Code Standards')
         );
-        console.log(chalk.gray("  /bootstrap-phase6-testing     - Testing"));
-        console.log(chalk.gray("  /bootstrap-phase7-deployment - Deployment"));
+        console.log(chalk.gray('  /bootstrap-phase6-testing     - Testing'));
+        console.log(chalk.gray('  /bootstrap-phase7-deployment - Deployment'));
       }
       console.log(
         chalk.gray(
-          "  /docs-update                  - Update documentation when code changes\n"
+          '  /docs-update                  - Update documentation when code changes\n'
         )
       );
     }
@@ -969,18 +969,18 @@ async function initializeProject(
     if (flags?.dryRun) {
       console.log(
         chalk.yellow(
-          "⚠️ Dry-run: no files were written. Run again without --dry-run to apply changes.\n"
+          '⚠️ Dry-run: no files were written. Run again without --dry-run to apply changes.\n'
         )
       );
     }
     console.log(
       chalk.yellow(
-        "💡 Tip: You can run individual phases if you want to work step-by-step\n"
+        '💡 Tip: You can run individual phases if you want to work step-by-step\n'
       )
     );
   } catch (error) {
     console.error(
-      chalk.red("\n❌ Initialization failed:"),
+      chalk.red('\n❌ Initialization failed:'),
       fsErrorMessage(error)
     );
     process.exit(EXIT.FS_ERROR);
@@ -989,31 +989,31 @@ async function initializeProject(
 
 // CLI Commands
 program
-  .name("ai-flow")
+  .name('ai-flow')
   .description(
-    "AI-powered development workflow from idea to production. Generate specs, plan features, and build with AI assistance."
+    'AI-powered development workflow from idea to production. Generate specs, plan features, and build with AI assistance.'
   )
-  .version("2.0.0");
+  .version('1.0.0');
 
 program
-  .command("init")
-  .description("Initialize AI Flow in current directory")
-  .argument("[path]", "Target directory (defaults to current directory)", ".")
+  .command('init')
+  .description('Initialize AI Flow in current directory')
+  .argument('[path]', 'Target directory (defaults to current directory)', '.')
   .option(
-    "--ai <tool>",
-    "AI tool to use (claude, cursor, copilot, gemini, all)"
+    '--ai <tool>',
+    'AI tool to use (claude, cursor, copilot, gemini, all)'
   )
   .option(
-    "--type <type>",
-    "Project type (backend, frontend, fullstack, mobile)"
+    '--type <type>',
+    'Project type (backend, frontend, fullstack, mobile)'
   )
-  .option("--name <name>", "Project name (skip interactive prompt)")
+  .option('--name <name>', 'Project name (skip interactive prompt)')
   .option(
-    "--description <desc>",
-    "Project description (skip interactive prompt)"
+    '--description <desc>',
+    'Project description (skip interactive prompt)'
   )
-  .option("--verbose", "Enable verbose logging")
-  .option("--dry-run", "Simulate without writing files")
+  .option('--verbose', 'Enable verbose logging')
+  .option('--dry-run', 'Simulate without writing files')
   .action(
     async (
       targetPath: string,
@@ -1041,18 +1041,18 @@ program
   );
 
 program
-  .command("check")
-  .description("Check if current directory is initialized")
+  .command('check')
+  .description('Check if current directory is initialized')
   .action(async () => {
     const isInitialized = await checkIfInitialized(process.cwd());
     if (isInitialized) {
-      console.log(chalk.green("✅ Project is initialized with AI Flow"));
+      console.log(chalk.green('✅ Project is initialized with AI Flow'));
 
       const configPath = path.join(
         process.cwd(),
-        ".ai-flow",
-        "core",
-        "config.json"
+        '.ai-flow',
+        'core',
+        'config.json'
       );
       const config = await fs.readJSON(configPath);
 
@@ -1060,127 +1060,127 @@ program
       const projectType =
         config.projectType ||
         (config.backend && !config.frontend
-          ? "backend"
+          ? 'backend'
           : config.frontend && !config.backend
-          ? "frontend"
+          ? 'frontend'
           : config.mobile
-          ? "mobile"
-          : "backend");
+          ? 'mobile'
+          : 'backend');
       const projectTypeDisplay =
-        projectType === "backend"
-          ? "🔧 Backend"
-          : projectType === "frontend"
-          ? "🎨 Frontend"
-          : projectType === "fullstack"
-          ? "🚀 Full Stack"
-          : projectType === "mobile"
-          ? "📱 Mobile"
-          : "🔧 Backend";
+        projectType === 'backend'
+          ? '🔧 Backend'
+          : projectType === 'frontend'
+          ? '🎨 Frontend'
+          : projectType === 'fullstack'
+          ? '🚀 Full Stack'
+          : projectType === 'mobile'
+          ? '📱 Mobile'
+          : '🔧 Backend';
 
-      console.log(chalk.white("\nConfiguration:"));
+      console.log(chalk.white('\nConfiguration:'));
       console.log(chalk.gray(`  Version: ${config.version}`));
       console.log(chalk.gray(`  Project Type: ${projectTypeDisplay}`));
-      console.log(chalk.gray(`  AI Tools: ${config.aiTools.join(", ")}`));
+      console.log(chalk.gray(`  AI Tools: ${config.aiTools.join(', ')}`));
       console.log(
         chalk.gray(`  Created: ${new Date(config.createdAt).toLocaleString()}`)
       );
       console.log(chalk.gray(`  Working Dir: ${process.cwd()}`));
 
       // Show correct prompts path based on project type
-      if (projectType === "fullstack") {
+      if (projectType === 'fullstack') {
         const backendPromptsPath = path.join(
           process.cwd(),
-          ".ai-flow",
-          "prompts",
-          "backend",
-          "bootstrap.md"
+          '.ai-flow',
+          'prompts',
+          'backend',
+          'bootstrap.md'
         );
         const frontendPromptsPath = path.join(
           process.cwd(),
-          ".ai-flow",
-          "prompts",
-          "frontend",
-          "bootstrap.md"
+          '.ai-flow',
+          'prompts',
+          'frontend',
+          'bootstrap.md'
         );
         console.log(chalk.gray(`  Backend Prompts: ${backendPromptsPath}`));
         console.log(chalk.gray(`  Frontend Prompts: ${frontendPromptsPath}`));
       } else {
         const promptsPath = path.join(
           process.cwd(),
-          ".ai-flow",
-          "prompts",
+          '.ai-flow',
+          'prompts',
           projectType,
-          "bootstrap.md"
+          'bootstrap.md'
         );
         console.log(chalk.gray(`  Prompts: ${promptsPath}`));
       }
 
-      console.log(chalk.white("\nNext steps:"));
-      if (projectType === "fullstack") {
-        if (config.aiTools.includes("claude")) {
-          console.log(chalk.cyan("  1. Open Claude Code"));
+      console.log(chalk.white('\nNext steps:'));
+      if (projectType === 'fullstack') {
+        if (config.aiTools.includes('claude')) {
+          console.log(chalk.cyan('  1. Open Claude Code'));
           console.log(
             chalk.cyan(
-              "  2. Run: /backend-bootstrap (for backend documentation)"
+              '  2. Run: /backend-bootstrap (for backend documentation)'
             )
           );
           console.log(
             chalk.cyan(
-              "  3. Run: /frontend-bootstrap (for frontend documentation)"
+              '  3. Run: /frontend-bootstrap (for frontend documentation)'
             )
           );
-        } else if (config.aiTools.includes("cursor")) {
-          console.log(chalk.cyan("  1. Open Cursor"));
+        } else if (config.aiTools.includes('cursor')) {
+          console.log(chalk.cyan('  1. Open Cursor'));
           console.log(
             chalk.cyan(
-              "  2. Run: /backend-bootstrap (for backend documentation)"
+              '  2. Run: /backend-bootstrap (for backend documentation)'
             )
           );
           console.log(
             chalk.cyan(
-              "  3. Run: /frontend-bootstrap (for frontend documentation)"
+              '  3. Run: /frontend-bootstrap (for frontend documentation)'
             )
           );
         } else {
           const toolsText =
             config.aiTools.length === 1
               ? config.aiTools[0]
-              : `${config.aiTools.slice(0, -1).join(", ")} and ${
+              : `${config.aiTools.slice(0, -1).join(', ')} and ${
                   config.aiTools[config.aiTools.length - 1]
                 }`;
           console.log(chalk.cyan(`  1. Open your AI tool (${toolsText})`));
           console.log(
             chalk.cyan(
-              "  2. Run: /backend-bootstrap (for backend documentation)"
+              '  2. Run: /backend-bootstrap (for backend documentation)'
             )
           );
           console.log(
             chalk.cyan(
-              "  3. Run: /frontend-bootstrap (for frontend documentation)"
+              '  3. Run: /frontend-bootstrap (for frontend documentation)'
             )
           );
         }
       } else {
-        if (config.aiTools.includes("claude")) {
-          console.log(chalk.cyan("  1. Open Claude Code"));
-          console.log(chalk.cyan("  2. Run: /bootstrap"));
-        } else if (config.aiTools.includes("cursor")) {
-          console.log(chalk.cyan("  1. Open Cursor"));
-          console.log(chalk.cyan("  2. Run: /bootstrap"));
+        if (config.aiTools.includes('claude')) {
+          console.log(chalk.cyan('  1. Open Claude Code'));
+          console.log(chalk.cyan('  2. Run: /bootstrap'));
+        } else if (config.aiTools.includes('cursor')) {
+          console.log(chalk.cyan('  1. Open Cursor'));
+          console.log(chalk.cyan('  2. Run: /bootstrap'));
         } else {
           const toolsText =
             config.aiTools.length === 1
               ? config.aiTools[0]
-              : `${config.aiTools.slice(0, -1).join(", ")} and ${
+              : `${config.aiTools.slice(0, -1).join(', ')} and ${
                   config.aiTools[config.aiTools.length - 1]
                 }`;
           console.log(chalk.cyan(`  1. Open your AI tool (${toolsText})`));
-          console.log(chalk.cyan("  2. Run: /bootstrap"));
+          console.log(chalk.cyan('  2. Run: /bootstrap'));
         }
       }
     } else {
-      console.log(chalk.yellow("⚠️  Project is not initialized"));
-      console.log(chalk.white("Run: ai-flow init ."));
+      console.log(chalk.yellow('⚠️  Project is not initialized'));
+      console.log(chalk.white('Run: ai-flow init .'));
     }
   });
 
