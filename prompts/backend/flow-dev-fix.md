@@ -229,7 +229,7 @@ Time: 4 minutes
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📋 Fix Plan
+📋 Fix Plan (COMPLEX Bug)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Issue: Memory leak in WebSocket connections
@@ -239,12 +239,85 @@ Root causes identified:
 2. Connection map not clearing disconnected sockets
 3. Redis subscriptions not being unsubscribed
 
-Fix plan:
-1. Add socket.removeAllListeners() on disconnect
-2. Delete from activeConnections Map on disconnect
-3. Call redisClient.unsubscribe() on disconnect
-4. Add heartbeat mechanism
-5. Add connection monitoring
+**Affected files:**
+- src/websocket/notificationSocket.ts (event listeners)
+- src/services/ConnectionManager.ts (connection map)
+- src/app.ts (Redis setup)
+
+**Estimated:** 5 SP (~8-10 hours) • 10 tasks
+
+**Fix plan:** (Test-First approach, execution order)
+
+- [ ] [T001] [P] Write test for event listener cleanup • 1 SP (~1-2h)
+      File: tests/unit/websocket/disconnect-cleanup.spec.ts
+      Tests: Verify listeners removed, memory not retained
+      Dependencies: None (can run parallel with T003)
+
+- [ ] [T002] Add socket.removeAllListeners() on disconnect • 1 SP (~1h)
+      File: src/websocket/notificationSocket.ts
+      Implements: Cleanup in disconnect event handler
+      Dependencies: None
+
+- [ ] [T003] [P] Write test for connection map cleanup • 1 SP (~1h)
+      File: tests/unit/services/ConnectionManager.spec.ts
+      Tests: Verify Map.delete() called, connection removed
+      Dependencies: None (can run parallel with T001)
+
+- [ ] [T004] Delete from activeConnections Map on disconnect • 1 SP (~30min)
+      File: src/services/ConnectionManager.ts
+      Implements: this.activeConnections.delete(socketId)
+      Dependencies: None
+
+- [ ] [T005] Write test for Redis unsubscribe • 1 SP (~1h)
+      File: tests/integration/redis/subscription-cleanup.spec.ts
+      Tests: Redis UNSUBSCRIBE called, channels cleaned up
+      Dependencies: None
+
+- [ ] [T006] Call redisClient.unsubscribe() on disconnect • 1 SP (~1h)
+      File: src/app.ts
+      Implements: Unsubscribe from all channels for this connection
+      Dependencies: None
+
+- [ ] [T007] Write test for heartbeat mechanism • 1 SP (~1-2h)
+      File: tests/unit/websocket/heartbeat.spec.ts
+      Tests: Ping/pong, timeout detection, stale cleanup
+      Dependencies: None
+
+- [ ] [T008] Implement heartbeat mechanism • 2 SP (~3-4h)
+      File: src/websocket/heartbeat.ts
+      Implements: Ping every 30s, timeout after 60s, auto-disconnect
+      Dependencies: None
+
+- [ ] [T009] Add connection monitoring and metrics • 1 SP (~1-2h)
+      File: src/services/ConnectionMonitor.ts
+      Implements: Track active count, memory usage, alert on leaks
+      Dependencies: T004 (needs ConnectionManager cleanup)
+
+- [ ] [T010] Integration test for complete cleanup flow • 1 SP (~1-2h)
+      File: tests/integration/websocket/full-cleanup.spec.ts
+      Tests: Connect 1000 clients, disconnect all, verify memory freed
+      Dependencies: T002, T004, T006, T008 (needs all fixes)
+
+**Parallelization Notes:**
+- T001, T003 can run in parallel (different test files)
+- T002, T004, T006, T008 can run in parallel (different files)
+- T010 (E2E test) depends on all fixes complete
+
+**Task Execution Graph:**
+
+```
+T001 [P] ──┐
+T003 [P] ──┼──> (Test tasks can run parallel)
+T005 [P] ──┤
+T007 [P] ──┘
+
+T002 (notificationSocket.ts) ──┐
+T004 (ConnectionManager.ts) ───┼──> T009 (Monitor) ──> T010 (E2E test)
+T006 (app.ts) ──────────────────┤
+T008 (heartbeat.ts) ────────────┘
+```
+
+**Estimated time:** 8-10 hours (with AI) | 2-3 days (manual)
 
 Proceed with fix? (Y/n)
 ```
