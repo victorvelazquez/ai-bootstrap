@@ -106,7 +106,7 @@ describe("ai-flow CLI", () => {
       tempDir,
       ".cursor",
       "commands",
-      "flow-docs-gen.md"
+      "flow-bootstrap.md"
     );
     expect(fs.existsSync(frontendPromptPath)).toBe(true);
 
@@ -226,13 +226,13 @@ describe("ai-flow CLI", () => {
       tempDir,
       ".cursor",
       "commands",
-      "backend-flow-docs-gen.md"
+      "backend-flow-bootstrap.md"
     );
     const frontendPromptPath = path.join(
       tempDir,
       ".cursor",
       "commands",
-      "frontend-flow-docs-gen.md"
+      "frontend-flow-bootstrap.md"
     );
     expect(fs.existsSync(backendPromptPath)).toBe(true);
     expect(fs.existsSync(frontendPromptPath)).toBe(true);
@@ -292,8 +292,8 @@ describe("ai-flow CLI", () => {
     expect(output).toContain("Full Stack");
     expect(output).toContain("Backend Prompts");
     expect(output).toContain("Frontend Prompts");
-    expect(output).toContain("/backend-flow-docs-gen");
-    expect(output).toContain("/frontend-flow-docs-gen");
+    expect(output).toContain("/backend-flow-bootstrap");
+    expect(output).toContain("/frontend-flow-bootstrap");
   });
 
   it("initializes mobile project when --type mobile is supplied", () => {
@@ -331,7 +331,7 @@ describe("ai-flow CLI", () => {
       tempDir,
       ".cursor",
       "commands",
-      "flow-docs-gen.md"
+      "flow-bootstrap.md"
     );
     expect(fs.existsSync(mobilePromptPath)).toBe(true);
 
@@ -388,4 +388,5 @@ describe("ai-flow CLI", () => {
     expect(output).toContain("mobile");
   });
 });
+
 

@@ -25,23 +25,27 @@ Define your app store deployment strategy:
 **Which app stores will you publish to?**
 
 A) ⭐ **Apple App Store (iOS)** (Required for iOS)
-   - Requires: Apple Developer Account ($99/year)
-   - Review process: 1-3 days typically
-   - Best for: iOS apps
+
+- Requires: Apple Developer Account ($99/year)
+- Review process: 1-3 days typically
+- Best for: iOS apps
 
 B) ⭐ **Google Play Store (Android)** (Required for Android)
-   - Requires: Google Play Developer Account ($25 one-time)
-   - Review process: Usually instant, can take hours
-   - Best for: Android apps
+
+- Requires: Google Play Developer Account ($25 one-time)
+- Review process: Usually instant, can take hours
+- Best for: Android apps
 
 C) 🔥 **Both App Store + Play Store** (Recommended for cross-platform)
-   - Maximum reach
-   - Best for: Most apps
+
+- Maximum reach
+- Best for: Most apps
 
 D) **Enterprise Distribution Only**
-   - Internal distribution
-   - No public store
-   - Best for: Enterprise apps
+
+- Internal distribution
+- No public store
+- Best for: Enterprise apps
 
 **Your answer:**
 
@@ -52,29 +56,34 @@ D) **Enterprise Distribution Only**
 **What CI/CD tool will you use for builds and deployment?**
 
 A) ⭐ **Fastlane** (Recommended)
-   - Automates builds, screenshots, deployment
-   - Works with iOS and Android
-   - Integrates with GitHub Actions, Bitrise, etc.
-   - Best for: Most projects
+
+- Automates builds, screenshots, deployment
+- Works with iOS and Android
+- Integrates with GitHub Actions, Bitrise, etc.
+- Best for: Most projects
 
 B) **Codemagic**
-   - Cloud-based CI/CD for Flutter/React Native
-   - Easy setup, good for small teams
-   - Best for: Flutter/React Native apps
+
+- Cloud-based CI/CD for Flutter/React Native
+- Easy setup, good for small teams
+- Best for: Flutter/React Native apps
 
 C) **GitHub Actions**
-   - Flexible, free for public repos
-   - Custom workflows
-   - Best for: GitHub-hosted projects
+
+- Flexible, free for public repos
+- Custom workflows
+- Best for: GitHub-hosted projects
 
 D) **Bitrise**
-   - Mobile-focused CI/CD
-   - Good for complex workflows
-   - Best for: Enterprise teams
+
+- Mobile-focused CI/CD
+- Good for complex workflows
+- Best for: Enterprise teams
 
 E) **Manual Builds**
-   - Build locally, upload manually
-   - Best for: Learning, small projects
+
+- Build locally, upload manually
+- Best for: Learning, small projects
 
 **Your answer:**
 
@@ -85,27 +94,32 @@ E) **Manual Builds**
 **How will you version your app?**
 
 A) ⭐ **Semantic Versioning** (Recommended)
-   - Format: `MAJOR.MINOR.PATCH` (e.g., `1.2.3`)
-   - MAJOR: Breaking changes
-   - MINOR: New features, backward compatible
-   - PATCH: Bug fixes
-   - Best for: Most apps
+
+- Format: `MAJOR.MINOR.PATCH` (e.g., `1.2.3`)
+- MAJOR: Breaking changes
+- MINOR: New features, backward compatible
+- PATCH: Bug fixes
+- Best for: Most apps
 
 B) **Date-based Versioning**
-   - Format: `YYYY.MM.DD` (e.g., `2025.01.20`)
-   - Best for: Frequent releases
+
+- Format: `YYYY.MM.DD` (e.g., `2025.01.20`)
+- Best for: Frequent releases
 
 C) **Build Number Only**
-   - Incrementing build number
-   - Best for: Simple apps
+
+- Incrementing build number
+- Best for: Simple apps
 
 **Your answer:**
 
 **Version code strategy (Android):**
+
 - A) ⭐ **Incrementing integer** (1, 2, 3, ...)
 - B) **Based on version** (e.g., 1.2.3 → 10203)
 
 **Build number strategy (iOS):**
+
 - A) ⭐ **Incrementing integer** (1, 2, 3, ...)
 - B) **Based on version** (e.g., 1.2.3 → 10203)
 
@@ -116,7 +130,9 @@ C) **Build Number Only**
 **How will you handle code signing?**
 
 **For iOS:**
+
 - A) ⭐ **Automatic Signing** (Recommended)
+
   - Xcode manages certificates
   - Easier for most developers
   - Best for: Most apps
@@ -127,7 +143,9 @@ C) **Build Number Only**
   - Best for: Advanced scenarios
 
 **For Android:**
+
 - A) ⭐ **Automatic Signing** (Recommended)
+
   - Gradle manages keystores
   - Easier for most developers
   - Best for: Most apps
@@ -140,7 +158,9 @@ C) **Build Number Only**
 **Your answer:**
 
 **Keystore management:**
+
 - A) ⭐ **Store in CI/CD secrets** (Recommended)
+
   - GitHub Secrets, Bitrise Secrets, etc.
   - Secure, automated
 
@@ -155,27 +175,32 @@ C) **Build Number Only**
 **How will you handle beta testing?**
 
 A) ⭐ **TestFlight (iOS) + Firebase App Distribution (Android)** (Recommended)
-   - Free, easy to use
-   - TestFlight: Up to 10,000 testers
-   - Firebase: Unlimited testers
-   - Best for: Most projects
+
+- Free, easy to use
+- TestFlight: Up to 10,000 testers
+- Firebase: Unlimited testers
+- Best for: Most projects
 
 B) **TestFlight (iOS) + Google Play Internal Testing (Android)**
-   - Official store channels
-   - Internal testing: Up to 100 testers
-   - Best for: Store-focused testing
+
+- Official store channels
+- Internal testing: Up to 100 testers
+- Best for: Store-focused testing
 
 C) **TestFlight (iOS) + Google Play Closed Beta (Android)**
-   - Closed beta: Up to 20,000 testers
-   - Best for: Larger beta programs
+
+- Closed beta: Up to 20,000 testers
+- Best for: Larger beta programs
 
 D) **HockeyApp / App Center**
-   - Microsoft's solution
-   - Good for enterprise
+
+- Microsoft's solution
+- Good for enterprise
 
 E) **No Beta Testing**
-   - Direct to production
-   - Best for: MVPs, internal apps
+
+- Direct to production
+- Best for: MVPs, internal apps
 
 **Your answer:**
 
@@ -186,18 +211,21 @@ E) **No Beta Testing**
 **What release strategy will you use?**
 
 A) ⭐ **Staged Rollout** (Recommended)
-   - Release to 10% → 50% → 100% of users
-   - Monitor for issues before full release
-   - Best for: Most apps
+
+- Release to 10% → 50% → 100% of users
+- Monitor for issues before full release
+- Best for: Most apps
 
 B) **Gradual Rollout**
-   - Release to specific countries/regions first
-   - Expand gradually
-   - Best for: Global apps
+
+- Release to specific countries/regions first
+- Expand gradually
+- Best for: Global apps
 
 C) **Full Release**
-   - Release to 100% immediately
-   - Best for: Small updates, bug fixes
+
+- Release to 100% immediately
+- Best for: Small updates, bug fixes
 
 **Your answer:**
 
@@ -208,6 +236,7 @@ C) **Full Release**
 **What metadata will you prepare for stores?**
 
 **Required:**
+
 - [ ] App name (30 chars iOS, 50 chars Android)
 - [ ] App description (4000 chars)
 - [ ] Screenshots (various sizes)
@@ -215,6 +244,7 @@ C) **Full Release**
 - [ ] Privacy policy URL
 
 **Optional:**
+
 - [ ] Promotional text
 - [ ] Keywords (iOS only)
 - [ ] App preview videos
@@ -229,17 +259,20 @@ C) **Full Release**
 **Will you automate screenshot generation?**
 
 A) ⭐ **Yes - Fastlane Screenshots** (Recommended)
-   - Automate screenshots for all devices
-   - Update automatically on each release
-   - Best for: Most apps
+
+- Automate screenshots for all devices
+- Update automatically on each release
+- Best for: Most apps
 
 B) **Yes - Manual Scripts**
-   - Custom screenshot scripts
-   - Best for: Custom requirements
+
+- Custom screenshot scripts
+- Best for: Custom requirements
 
 C) **No - Manual Screenshots**
-   - Take screenshots manually
-   - Best for: Small teams, infrequent updates
+
+- Take screenshots manually
+- Best for: Small teams, infrequent updates
 
 **Your answer:**
 
@@ -250,6 +283,7 @@ C) **No - Manual Screenshots**
 **How will you prepare for app review?**
 
 **For iOS App Store:**
+
 - [ ] Test on latest iOS version
 - [ ] Test on multiple device sizes
 - [ ] Ensure all features work
@@ -258,6 +292,7 @@ C) **No - Manual Screenshots**
 - [ ] Test in TestFlight first
 
 **For Google Play:**
+
 - [ ] Test on latest Android version
 - [ ] Test on multiple device sizes
 - [ ] Ensure all features work
@@ -274,20 +309,24 @@ C) **No - Manual Screenshots**
 **How often will you release updates?**
 
 A) ⭐ **As Needed** (Recommended)
-   - Release when features are ready
-   - Best for: Most apps
+
+- Release when features are ready
+- Best for: Most apps
 
 B) **Weekly**
-   - Regular weekly releases
-   - Best for: Rapid iteration
+
+- Regular weekly releases
+- Best for: Rapid iteration
 
 C) **Bi-weekly**
-   - Every two weeks
-   - Best for: Balanced approach
+
+- Every two weeks
+- Best for: Balanced approach
 
 D) **Monthly**
-   - Once per month
-   - Best for: Stable apps
+
+- Once per month
+- Best for: Stable apps
 
 **Your answer:**
 
@@ -298,16 +337,19 @@ D) **Monthly**
 **How will you handle rollbacks?**
 
 A) ⭐ **Store Rollback** (Recommended)
-   - Revert to previous version in store
-   - Best for: Critical bugs
+
+- Revert to previous version in store
+- Best for: Critical bugs
 
 B) **Hotfix Release**
-   - Release emergency fix
-   - Best for: Quick fixes
+
+- Release emergency fix
+- Best for: Quick fixes
 
 C) **No Rollback Plan**
-   - Not recommended
-   - Best for: Very small apps
+
+- Not recommended
+- Best for: Very small apps
 
 **Your answer:**
 
@@ -318,21 +360,25 @@ C) **No Rollback Plan**
 **What monitoring will you use post-deployment?**
 
 A) ⭐ **Firebase Analytics + Crashlytics** (Recommended)
-   - Free, comprehensive
-   - Works with iOS and Android
-   - Best for: Most apps
+
+- Free, comprehensive
+- Works with iOS and Android
+- Best for: Most apps
 
 B) **Sentry**
-   - Excellent error tracking
-   - Good for: Production apps
+
+- Excellent error tracking
+- Good for: Production apps
 
 C) **App Store Connect Analytics + Play Console Analytics**
-   - Built-in store analytics
-   - Best for: Store metrics
+
+- Built-in store analytics
+- Best for: Store metrics
 
 D) **Custom Analytics**
-   - Mixpanel, Amplitude, etc.
-   - Best for: Advanced analytics
+
+- Mixpanel, Amplitude, etc.
+- Best for: Advanced analytics
 
 **Your answer:**
 
@@ -348,60 +394,56 @@ After answering all questions, summarize:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Selected Deployment Strategy:
-- Stores: App Store + Play Store
-- CI/CD: Fastlane + GitHub Actions
-- Versioning: Semantic Versioning
-- Code Signing: Automatic
-- Beta Testing: TestFlight + Firebase App Distribution
-- Release Strategy: Staged Rollout
-- Monitoring: Firebase Analytics + Crashlytics
+- Stores: {{TARGET_STORES}}
+- CI/CD: {{CICD_PIPELINE}}
+- Versioning: {{VERSIONING_STRATEGY}}
+- Code Signing: {{CODE_SIGNING}}
+- Beta Testing: {{BETA_TESTING}}
+- Release Strategy: {{RELEASE_STRATEGY}}
+- Monitoring: {{MONITORING_TOOLS}}
 
-All phases complete! Ready to generate documentation.
+Generated Documents:
+✅ docs/app-store.md
+✅ specs/build-configuration.md
+✅ specs/deployment.md
+✅ .env.example
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 Progress Summary:
+
+Phases 1-7 completed:
+✅ project-brief.md (Phase 1)
+✅ docs/app-structure.md (Phase 2)
+✅ docs/architecture.md (Phase 3)
+✅ ai-instructions.md (Phase 3)
+✅ docs/code-standards.md (Phase 5)
+✅ docs/testing.md (Phase 6)
+✅ docs/app-store.md (Phase 7)
+✅ specs/build-configuration.md (Phase 7)
+✅ specs/deployment.md (Phase 7)
+✅ .env.example (Phase 7)
+
+Remaining:
+⏭️  Phase 8: Project setup & final documentation
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 Next: Phase 8 - Project Setup & Final Documentation
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Phase 8 will:
+- 🔍 Detect project state (new vs existing)
+- 🚀 Initialize framework (optional, for new projects)
+- 📝 Generate final docs (platform-guides, navigation-guide, contributing)
+- 📖 Generate AGENT.md (master documentation index)
+- 📄 Generate README.md (with intelligent merge if needed)
+- 🤖 Create tool-specific configs (based on AI selection)
+
+Continue to Phase 8? (yes/no)
 ```
 
 ---
 
-## 📝 Generated Documents
+**Last Updated:** 2025-12-09
 
-After Phase 7, generate/update:
-
-- `docs/app-store.md` - App Store configuration and deployment guide
-- `specs/build-configuration.md` - Build and CI/CD configuration
-- `specs/deployment.md` - Deployment procedures
-- `ai-instructions.md` - Add deployment rules
-
----
-
-## 🎉 Bootstrap Complete!
-
-All 7 phases are complete. Generate the full documentation set:
-
-**Core Documents:**
-- `AGENT.md` - Universal AI assistant configuration
-- `ai-instructions.md` - Tech stack and development rules
-- `project-brief.md` - Project overview and objectives
-- `README.md` - Quick start guide
-
-**Documentation:**
-- `docs/architecture.md` - System architecture
-- `docs/navigation.md` - Navigation patterns
-- `docs/state-management.md` - State management guide
-- `docs/offline-strategy.md` - Offline and sync strategy
-- `docs/permissions.md` - Permissions handling
-- `docs/native-features.md` - Native features integration
-- `docs/code-standards.md` - Code standards
-- `docs/testing.md` - Testing strategy
-- `docs/app-store.md` - App Store configuration
-
-**Specifications:**
-- `specs/build-configuration.md` - Build configuration
-- `specs/deployment.md` - Deployment procedures
-- `specs/configuration.md` - Environment configuration
-
----
-
-**Last Updated:** 2025-01-XX
-
-**Version:** 1.4.0
-
-
+**Version:** 2.0.0 (Unified workflow with Phase 8)

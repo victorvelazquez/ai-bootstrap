@@ -358,12 +358,13 @@ After Phase 5, generate/update:
 
 **Next Phase:** Phase 6 - Testing Strategy
 
-Read: `.ai-flow/prompts/mobile/flow-docs-gen-phase-6-testing.md`
+Read: `.ai-flow/prompts/mobile/flow-bootstrap-phase-6-testing.md`
 
 ---
 
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
+
 
 

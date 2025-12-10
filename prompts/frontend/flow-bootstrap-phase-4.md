@@ -469,7 +469,7 @@ Documents Generated:
 
 Next: Phase 5 - Code Standards
 
-Read: .ai-flow/prompts/frontend/flow-docs-gen-phase-5-standards.md
+Read: .ai-flow/prompts/frontend/flow-bootstrap-phase-5-standards.md
 ```
 
 ---
@@ -477,4 +477,5 @@ Read: .ai-flow/prompts/frontend/flow-docs-gen-phase-5-standards.md
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.2.0
+
 

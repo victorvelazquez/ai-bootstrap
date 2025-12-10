@@ -375,7 +375,7 @@ After Phase 0 completes:
 
 Next: Proceed to Phase 1 (Platform & Framework Selection)
 
-Read: .ai-flow/prompts/mobile/flow-docs-gen-phase-1-platform.md
+Read: .ai-flow/prompts/mobile/flow-bootstrap-phase-1-platform.md
 ```
 
 ---
@@ -383,5 +383,6 @@ Read: .ai-flow/prompts/mobile/flow-docs-gen-phase-1-platform.md
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
+
 
 

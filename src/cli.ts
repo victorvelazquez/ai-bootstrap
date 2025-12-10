@@ -623,7 +623,7 @@ async function initializeProject(
     }
     let finalProjectName = projectName;
     let finalProjectDescription =
-      projectDescription || 'TBD - Run /flow-docs-gen to define';
+      projectDescription || 'TBD - Run /flow-bootstrap to define';
 
     if (!finalProjectName) {
       const answers = await inquirer.prompt([
@@ -688,33 +688,33 @@ async function initializeProject(
       if (aiTools.includes('claude')) {
         console.log(chalk.cyan('  1. Open Claude Code'));
         console.log(
-          chalk.cyan('  2. Run: /backend-flow-docs-gen (for backend documentation)')
+          chalk.cyan('  2. Run: /backend-flow-bootstrap (for backend documentation)')
         );
         console.log(
           chalk.cyan(
-            '  3. Run: /frontend-flow-docs-gen (for frontend documentation)'
+            '  3. Run: /frontend-flow-bootstrap (for frontend documentation)'
           )
         );
         console.log(chalk.gray('     Each will guide you through 7 phases\n'));
       } else if (aiTools.includes('cursor')) {
         console.log(chalk.cyan('  1. Open Cursor'));
         console.log(
-          chalk.cyan('  2. Run: /backend-flow-docs-gen (for backend documentation)')
+          chalk.cyan('  2. Run: /backend-flow-bootstrap (for backend documentation)')
         );
         console.log(
           chalk.cyan(
-            '  3. Run: /frontend-flow-docs-gen (for frontend documentation)'
+            '  3. Run: /frontend-flow-bootstrap (for frontend documentation)'
           )
         );
         console.log(chalk.gray('     Each will guide you through 7 phases\n'));
       } else {
         console.log(chalk.cyan(`  1. Open your AI tool (${toolsText})`));
         console.log(
-          chalk.cyan('  2. Run: /backend-flow-docs-gen (for backend documentation)')
+          chalk.cyan('  2. Run: /backend-flow-bootstrap (for backend documentation)')
         );
         console.log(
           chalk.cyan(
-            '  3. Run: /frontend-flow-docs-gen (for frontend documentation)'
+            '  3. Run: /frontend-flow-bootstrap (for frontend documentation)'
           )
         );
         console.log(chalk.gray('     Each will guide you through 7 phases\n'));
@@ -724,47 +724,47 @@ async function initializeProject(
       console.log(chalk.gray('  Backend commands:'));
       console.log(
         chalk.gray(
-          '    /backend-flow-docs-gen                    - Backend 7-phase documentation generation'
+          '    /backend-flow-bootstrap                    - Backend 7-phase documentation generation'
         )
       );
       console.log(
         chalk.gray(
-          '    /backend-flow-docs-gen-phase-0-context     - Backend context discovery'
+          '    /backend-flow-bootstrap-phase-0-context     - Backend context discovery'
         )
       );
       console.log(
         chalk.gray(
-          '    /backend-flow-docs-gen-phase-1-business    - Backend discovery & business'
+          '    /backend-flow-bootstrap-phase-1-business    - Backend discovery & business'
         )
       );
       console.log(
         chalk.gray(
-          '    /backend-flow-docs-gen-phase-2-data        - Backend data architecture'
+          '    /backend-flow-bootstrap-phase-2-data        - Backend data architecture'
         )
       );
       console.log(
         chalk.gray(
-          '    /backend-flow-docs-gen-phase-3-architecture - Backend system architecture'
+          '    /backend-flow-bootstrap-phase-3-architecture - Backend system architecture'
         )
       );
       console.log(
         chalk.gray(
-          '    /backend-flow-docs-gen-phase-4-security    - Backend security & auth'
+          '    /backend-flow-bootstrap-phase-4-security    - Backend security & auth'
         )
       );
       console.log(
         chalk.gray(
-          '    /backend-flow-docs-gen-phase-5-standards    - Backend code standards'
+          '    /backend-flow-bootstrap-phase-5-standards    - Backend code standards'
         )
       );
       console.log(
         chalk.gray(
-          '    /backend-flow-docs-gen-phase-6-testing     - Backend testing'
+          '    /backend-flow-bootstrap-phase-6-testing     - Backend testing'
         )
       );
       console.log(
         chalk.gray(
-          '    /backend-flow-docs-gen-phase-7-operations  - Backend operations + tools'
+          '    /backend-flow-bootstrap-phase-7-operations  - Backend operations + tools'
         )
       );
       console.log(
@@ -775,47 +775,47 @@ async function initializeProject(
       console.log(chalk.gray('  Frontend commands:'));
       console.log(
         chalk.gray(
-          '    /frontend-flow-docs-gen                    - Frontend 7-phase documentation generation'
+          '    /frontend-flow-bootstrap                    - Frontend 7-phase documentation generation'
         )
       );
       console.log(
         chalk.gray(
-          '    /frontend-flow-docs-gen-phase-0-context    - Frontend context discovery'
+          '    /frontend-flow-bootstrap-phase-0-context    - Frontend context discovery'
         )
       );
       console.log(
         chalk.gray(
-          '    /frontend-flow-docs-gen-phase-1-discovery  - Frontend discovery & UX'
+          '    /frontend-flow-bootstrap-phase-1-discovery  - Frontend discovery & UX'
         )
       );
       console.log(
         chalk.gray(
-          '    /frontend-flow-docs-gen-phase-2-components  - Frontend components & framework'
+          '    /frontend-flow-bootstrap-phase-2-components  - Frontend components & framework'
         )
       );
       console.log(
         chalk.gray(
-          '    /frontend-flow-docs-gen-phase-3-state       - Frontend state management'
+          '    /frontend-flow-bootstrap-phase-3-state       - Frontend state management'
         )
       );
       console.log(
         chalk.gray(
-          '    /frontend-flow-docs-gen-phase-4-styling     - Frontend styling & design'
+          '    /frontend-flow-bootstrap-phase-4-styling     - Frontend styling & design'
         )
       );
       console.log(
         chalk.gray(
-          '    /frontend-flow-docs-gen-phase-5-standards  - Frontend code standards'
+          '    /frontend-flow-bootstrap-phase-5-standards  - Frontend code standards'
         )
       );
       console.log(
         chalk.gray(
-          '    /frontend-flow-docs-gen-phase-6-testing    - Frontend testing'
+          '    /frontend-flow-bootstrap-phase-6-testing    - Frontend testing'
         )
       );
       console.log(
         chalk.gray(
-          '    /frontend-flow-docs-gen-phase-7-deployment - Frontend deployment'
+          '    /frontend-flow-bootstrap-phase-7-deployment - Frontend deployment'
         )
       );
       console.log(
@@ -847,40 +847,40 @@ async function initializeProject(
       console.log(chalk.white('Available slash commands:'));
       console.log(
         chalk.gray(
-          '  /flow-docs-gen                    - Full 7-phase documentation generation'
+          '  /flow-bootstrap                    - Full 7-phase documentation generation'
         )
       );
       console.log(
         chalk.gray(
-          '  /flow-docs-gen-phase-0-context     - Context Discovery (existing projects)'
+          '  /flow-bootstrap-phase-0-context     - Context Discovery (existing projects)'
         )
       );
       console.log(
         chalk.gray(
-          '  /flow-docs-gen-phase-1-platform    - Platform & Framework Selection'
+          '  /flow-bootstrap-phase-1-platform    - Platform & Framework Selection'
         )
       );
       console.log(
         chalk.gray(
-          '  /flow-docs-gen-phase-2-navigation  - Navigation & Architecture'
+          '  /flow-bootstrap-phase-2-navigation  - Navigation & Architecture'
         )
       );
       console.log(
-        chalk.gray('  /flow-docs-gen-phase-3-state       - State & Data Management')
+        chalk.gray('  /flow-bootstrap-phase-3-state       - State & Data Management')
       );
       console.log(
         chalk.gray(
-          '  /flow-docs-gen-phase-4-permissions  - Permissions & Native Features'
+          '  /flow-bootstrap-phase-4-permissions  - Permissions & Native Features'
         )
       );
       console.log(
-        chalk.gray('  /flow-docs-gen-phase-5-standards   - Code Standards')
+        chalk.gray('  /flow-bootstrap-phase-5-standards   - Code Standards')
       );
       console.log(
-        chalk.gray('  /flow-docs-gen-phase-6-testing     - Testing Strategy')
+        chalk.gray('  /flow-bootstrap-phase-6-testing     - Testing Strategy')
       );
       console.log(
-        chalk.gray('  /flow-docs-gen-phase-7-deployment  - Store Deployment')
+        chalk.gray('  /flow-bootstrap-phase-7-deployment  - Store Deployment')
       );
       console.log(
         chalk.gray(
@@ -911,52 +911,52 @@ async function initializeProject(
       console.log(chalk.white('Available slash commands:'));
       console.log(
         chalk.gray(
-          '  /flow-docs-gen                    - Full 7-phase documentation generation'
+          '  /flow-bootstrap                    - Full 7-phase documentation generation'
         )
       );
       console.log(
         chalk.gray(
-          '  /flow-docs-gen-phase-0-context     - Context Discovery (existing projects)'
+          '  /flow-bootstrap-phase-0-context     - Context Discovery (existing projects)'
         )
       );
       if (selectedProjectType === 'backend') {
         console.log(
-          chalk.gray('  /flow-docs-gen-phase-1-business    - Discovery & Business')
+          chalk.gray('  /flow-bootstrap-phase-1-business    - Discovery & Business')
         );
         console.log(
-          chalk.gray('  /flow-docs-gen-phase-2-data        - Data Architecture')
+          chalk.gray('  /flow-bootstrap-phase-2-data        - Data Architecture')
         );
         console.log(
-          chalk.gray('  /flow-docs-gen-phase-3-architecture - System Architecture')
+          chalk.gray('  /flow-bootstrap-phase-3-architecture - System Architecture')
         );
         console.log(
-          chalk.gray('  /flow-docs-gen-phase-4-security    - Security & Auth')
+          chalk.gray('  /flow-bootstrap-phase-4-security    - Security & Auth')
         );
         console.log(
-          chalk.gray('  /flow-docs-gen-phase-5-standards    - Code Standards')
+          chalk.gray('  /flow-bootstrap-phase-5-standards    - Code Standards')
         );
-        console.log(chalk.gray('  /flow-docs-gen-phase-6-testing     - Testing'));
+        console.log(chalk.gray('  /flow-bootstrap-phase-6-testing     - Testing'));
         console.log(
-          chalk.gray('  /flow-docs-gen-phase-7-operations  - Operations + Tools')
+          chalk.gray('  /flow-bootstrap-phase-7-operations  - Operations + Tools')
         );
       } else {
         console.log(
-          chalk.gray('  /flow-docs-gen-phase-1-discovery   - Discovery & UX')
+          chalk.gray('  /flow-bootstrap-phase-1-discovery   - Discovery & UX')
         );
         console.log(
-          chalk.gray('  /flow-docs-gen-phase-2-components - Components & Framework')
+          chalk.gray('  /flow-bootstrap-phase-2-components - Components & Framework')
         );
         console.log(
-          chalk.gray('  /flow-docs-gen-phase-3-state      - State Management')
+          chalk.gray('  /flow-bootstrap-phase-3-state      - State Management')
         );
         console.log(
-          chalk.gray('  /flow-docs-gen-phase-4-styling     - Styling & Design')
+          chalk.gray('  /flow-bootstrap-phase-4-styling     - Styling & Design')
         );
         console.log(
-          chalk.gray('  /flow-docs-gen-phase-5-standards   - Code Standards')
+          chalk.gray('  /flow-bootstrap-phase-5-standards   - Code Standards')
         );
-        console.log(chalk.gray('  /flow-docs-gen-phase-6-testing     - Testing'));
-        console.log(chalk.gray('  /flow-docs-gen-phase-7-deployment - Deployment'));
+        console.log(chalk.gray('  /flow-bootstrap-phase-6-testing     - Testing'));
+        console.log(chalk.gray('  /flow-bootstrap-phase-7-deployment - Deployment'));
       }
       console.log(
         chalk.gray(
@@ -1120,24 +1120,24 @@ program
           console.log(chalk.cyan('  1. Open Claude Code'));
           console.log(
             chalk.cyan(
-              '  2. Run: /backend-flow-docs-gen (for backend documentation)'
+              '  2. Run: /backend-flow-bootstrap (for backend documentation)'
             )
           );
           console.log(
             chalk.cyan(
-              '  3. Run: /frontend-flow-docs-gen (for frontend documentation)'
+              '  3. Run: /frontend-flow-bootstrap (for frontend documentation)'
             )
           );
         } else if (config.aiTools.includes('cursor')) {
           console.log(chalk.cyan('  1. Open Cursor'));
           console.log(
             chalk.cyan(
-              '  2. Run: /backend-flow-docs-gen (for backend documentation)'
+              '  2. Run: /backend-flow-bootstrap (for backend documentation)'
             )
           );
           console.log(
             chalk.cyan(
-              '  3. Run: /frontend-flow-docs-gen (for frontend documentation)'
+              '  3. Run: /frontend-flow-bootstrap (for frontend documentation)'
             )
           );
         } else {
@@ -1150,12 +1150,12 @@ program
           console.log(chalk.cyan(`  1. Open your AI tool (${toolsText})`));
           console.log(
             chalk.cyan(
-              '  2. Run: /backend-flow-docs-gen (for backend documentation)'
+              '  2. Run: /backend-flow-bootstrap (for backend documentation)'
             )
           );
           console.log(
             chalk.cyan(
-              '  3. Run: /frontend-flow-docs-gen (for frontend documentation)'
+              '  3. Run: /frontend-flow-bootstrap (for frontend documentation)'
             )
           );
         }
@@ -1184,6 +1184,7 @@ program
   });
 
 program.parse();
+
 
 
 

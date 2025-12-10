@@ -352,12 +352,13 @@ After Phase 4, generate/update:
 
 **Next Phase:** Phase 5 - Code Standards
 
-Read: `.ai-flow/prompts/mobile/flow-docs-gen-phase-5-standards.md`
+Read: `.ai-flow/prompts/mobile/flow-bootstrap-phase-5-standards.md`
 
 ---
 
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
+
 
 

@@ -41,21 +41,22 @@ This documentation is **modularized** for better maintainability and performance
 
 Execute phases sequentially by reading each file in order:
 
-1. **Phase 0 (Optional - Existing Projects Only):** Read `.ai-flow/prompts/frontend/flow-docs-gen-phase-0-context.md`
-2. **Phase 1 (Discovery & UX):** Read `.ai-flow/prompts/frontend/flow-docs-gen-phase-1-discovery.md`
-3. **Phase 2 (Components & Framework):** Read `.ai-flow/prompts/frontend/flow-docs-gen-phase-2-components.md`
-4. **Phase 3 (State Management):** Read `.ai-flow/prompts/frontend/flow-docs-gen-phase-3-state.md`
-5. **Phase 4 (Styling & Design):** Read `.ai-flow/prompts/frontend/flow-docs-gen-phase-4-styling.md`
-6. **Phase 5 (Code Standards):** Read `.ai-flow/prompts/frontend/flow-docs-gen-phase-5-standards.md`
-7. **Phase 6 (Testing Strategy):** Read `.ai-flow/prompts/frontend/flow-docs-gen-phase-6-testing.md`
-8. **Phase 7 (Performance & Deployment):** Read `.ai-flow/prompts/frontend/flow-docs-gen-phase-7-deployment.md`
+1. **Phase 0 (Optional - Existing Projects Only):** Read `.ai-flow/prompts/frontend/flow-bootstrap-phase-0-context.md`
+2. **Phase 1 (Discovery & UX):** Read `.ai-flow/prompts/frontend/flow-bootstrap-phase-1-discovery.md`
+3. **Phase 2 (Components & Framework):** Read `.ai-flow/prompts/frontend/flow-bootstrap-phase-2-components.md`
+4. **Phase 3 (State Management):** Read `.ai-flow/prompts/frontend/flow-bootstrap-phase-3-state.md`
+5. **Phase 4 (Styling & Design):** Read `.ai-flow/prompts/frontend/flow-bootstrap-phase-4-styling.md`
+6. **Phase 5 (Code Standards):** Read `.ai-flow/prompts/frontend/flow-bootstrap-phase-5-standards.md`
+7. **Phase 6 (Testing Strategy):** Read `.ai-flow/prompts/frontend/flow-bootstrap-phase-6-testing.md`
+8. **Phase 7 (Performance & Deployment):** Read `.ai-flow/prompts/frontend/flow-bootstrap-phase-7-deployment.md`
+9. **Phase 8 (Project Setup & Final Documentation):** Read `.ai-flow/prompts/frontend/flow-bootstrap-phase-8.md`
 
 ### For Individual Phases
 
 You can execute any phase independently by reading its file. For example:
 
 ```
-Read .ai-flow/prompts/frontend/flow-docs-gen-phase-3-state.md and execute only Phase 3
+Read .ai-flow/prompts/frontend/flow-bootstrap-phase-3-state.md and execute only Phase 3
 ```
 
 ---
@@ -64,7 +65,7 @@ Read .ai-flow/prompts/frontend/flow-docs-gen-phase-3-state.md and execute only P
 
 ### Phase 0: Context Discovery (Optional)
 
-**File:** `frontend/flow-docs-gen-phase-0-context.md`
+**File:** `frontend/flow-bootstrap-phase-0-context.md`
 **For:** Existing projects with code/documentation
 **Duration:** 1-5 minutes (automated analysis)
 **Output:** Pre-populated answers, project analysis
@@ -84,7 +85,7 @@ Read .ai-flow/prompts/frontend/flow-docs-gen-phase-3-state.md and execute only P
 
 ### Phase 1: Discovery & UX Requirements
 
-**File:** `frontend/flow-docs-gen-phase-1-discovery.md`
+**File:** `frontend/flow-bootstrap-phase-1-discovery.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
 
@@ -102,7 +103,7 @@ Read .ai-flow/prompts/frontend/flow-docs-gen-phase-3-state.md and execute only P
 
 ### Phase 2: Components & Framework
 
-**File:** `frontend/flow-docs-gen-phase-2-components.md`
+**File:** `frontend/flow-bootstrap-phase-2-components.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
 
@@ -121,7 +122,7 @@ Read .ai-flow/prompts/frontend/flow-docs-gen-phase-3-state.md and execute only P
 
 ### Phase 3: State Management
 
-**File:** `frontend/flow-docs-gen-phase-3-state.md`
+**File:** `frontend/flow-bootstrap-phase-3-state.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
 
@@ -139,7 +140,7 @@ Read .ai-flow/prompts/frontend/flow-docs-gen-phase-3-state.md and execute only P
 
 ### Phase 4: Styling & Design System
 
-**File:** `frontend/flow-docs-gen-phase-4-styling.md`
+**File:** `frontend/flow-bootstrap-phase-4-styling.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
 
@@ -157,7 +158,7 @@ Read .ai-flow/prompts/frontend/flow-docs-gen-phase-3-state.md and execute only P
 
 ### Phase 5: Code Standards & Best Practices
 
-**File:** `frontend/flow-docs-gen-phase-5-standards.md`
+**File:** `frontend/flow-bootstrap-phase-5-standards.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
 
@@ -175,7 +176,7 @@ Read .ai-flow/prompts/frontend/flow-docs-gen-phase-3-state.md and execute only P
 
 ### Phase 6: Testing Strategy
 
-**File:** `frontend/flow-docs-gen-phase-6-testing.md`
+**File:** `frontend/flow-bootstrap-phase-6-testing.md`
 **Duration:** 15-25 minutes
 **Key Questions:**
 
@@ -193,7 +194,7 @@ Read .ai-flow/prompts/frontend/flow-docs-gen-phase-3-state.md and execute only P
 
 ### Phase 7: Performance & Deployment
 
-**File:** `frontend/flow-docs-gen-phase-7-deployment.md`
+**File:** `frontend/flow-bootstrap-phase-7-deployment.md`
 **Duration:** 10-15 minutes
 **Key Questions:**
 
@@ -207,7 +208,32 @@ Read .ai-flow/prompts/frontend/flow-docs-gen-phase-3-state.md and execute only P
 - `docs/performance.md`
 - `docs/operations.md`
 - `specs/configuration.md`
-- Parts of `ai-instructions.md`
+- `.env.example`
+
+**Next:** Transitions to Phase 8 for project setup and final documentation
+
+---
+
+### Phase 8: Project Setup & Final Documentation
+
+**File:** `frontend/flow-bootstrap-phase-8.md`
+**Duration:** 10-15 minutes
+**Key Steps:**
+
+- Detect project state (new vs existing)
+- Initialize framework (optional, for new projects)
+- Generate final documentation
+- Create master index (AGENT.md)
+- Generate README.md with intelligent merge
+
+**Generates:**
+
+- `docs/components-guide.md`
+- `docs/state-management.md`
+- `docs/contributing.md`
+- `AGENT.md` (master index)
+- `README.md`
+- Tool-specific configs (`.clauderules`, `.cursorrules`, `.github/copilot-instructions.md`)
 
 ---
 
@@ -396,13 +422,13 @@ To begin the complete frontend bootstrap process:
 **Ready to start?** Proceed to Phase 1 by reading:
 
 ```
-.ai-flow/prompts/frontend/flow-docs-gen-phase-1-discovery.md
+.ai-flow/prompts/frontend/flow-bootstrap-phase-1-discovery.md
 ```
 
 Or if you have existing code, start with Phase 0 for automatic detection:
 
 ```
-.ai-flow/prompts/frontend/flow-docs-gen-phase-0-context.md
+.ai-flow/prompts/frontend/flow-bootstrap-phase-0-context.md
 ```
 
 ---
@@ -410,4 +436,5 @@ Or if you have existing code, start with Phase 0 for automatic detection:
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.2.0 (Frontend MVP)
+
 

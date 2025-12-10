@@ -34,7 +34,7 @@ First, check if `.ai-flow/analysis.json` exists:
 
 1. **Perform Current Code Analysis:**
 
-   - Execute the same analysis as Phase 0 (mobile/flow-docs-gen-phase-0-context.md):
+   - Execute the same analysis as Phase 0 (mobile/flow-bootstrap-phase-0-context.md):
      - File structure analysis
      - Screen and component detection
      - Navigation pattern detection
@@ -630,5 +630,6 @@ Documentation synchronized successfully.
 ---
 
 **BEGIN EXECUTION when user runs `/flow-docs-sync`**
+
 
 

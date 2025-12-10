@@ -519,12 +519,13 @@ After Phase 1, generate/update:
 
 **Next Phase:** Phase 2 - Navigation & Architecture
 
-Read: `.ai-flow/prompts/mobile/flow-docs-gen-phase-2-navigation.md`
+Read: `.ai-flow/prompts/mobile/flow-bootstrap-phase-2-navigation.md`
 
 ---
 
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
+
 
 

@@ -472,7 +472,7 @@ Documents Generated:
 
 Next: Phase 6 - Testing Strategy
 
-Read: .ai-flow/prompts/frontend/flow-docs-gen-phase-6-testing.md
+Read: .ai-flow/prompts/frontend/flow-bootstrap-phase-6-testing.md
 ```
 
 ---
@@ -480,4 +480,5 @@ Read: .ai-flow/prompts/frontend/flow-docs-gen-phase-6-testing.md
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.2.0
+
 

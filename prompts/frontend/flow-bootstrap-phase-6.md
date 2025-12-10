@@ -559,7 +559,7 @@ Documents Generated:
 
 Next: Phase 7 - Performance & Deployment
 
-Read: .ai-flow/prompts/frontend/flow-docs-gen-phase-7-deployment.md
+Read: .ai-flow/prompts/frontend/flow-bootstrap-phase-7-deployment.md
 ```
 
 ---
@@ -567,4 +567,5 @@ Read: .ai-flow/prompts/frontend/flow-docs-gen-phase-7-deployment.md
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.2.0
+
 

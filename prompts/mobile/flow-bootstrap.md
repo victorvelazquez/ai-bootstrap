@@ -41,21 +41,22 @@ This documentation is **modularized** for better maintainability and performance
 
 Execute phases sequentially by reading each file in order:
 
-1. **Phase 0 (Optional - Existing Projects Only):** Read `.ai-flow/prompts/mobile/flow-docs-gen-phase-0-context.md`
-2. **Phase 1 (Platform & Framework Selection):** Read `.ai-flow/prompts/mobile/flow-docs-gen-phase-1-platform.md`
-3. **Phase 2 (Navigation & Architecture):** Read `.ai-flow/prompts/mobile/flow-docs-gen-phase-2-navigation.md`
-4. **Phase 3 (State & Data Management):** Read `.ai-flow/prompts/mobile/flow-docs-gen-phase-3-state.md`
-5. **Phase 4 (Permissions & Native Features):** Read `.ai-flow/prompts/mobile/flow-docs-gen-phase-4-permissions.md`
-6. **Phase 5 (Code Standards):** Read `.ai-flow/prompts/mobile/flow-docs-gen-phase-5-standards.md`
-7. **Phase 6 (Testing Strategy):** Read `.ai-flow/prompts/mobile/flow-docs-gen-phase-6-testing.md`
-8. **Phase 7 (Store Deployment):** Read `.ai-flow/prompts/mobile/flow-docs-gen-phase-7-deployment.md`
+1. **Phase 0 (Optional - Existing Projects Only):** Read `.ai-flow/prompts/mobile/flow-bootstrap-phase-0-context.md`
+2. **Phase 1 (Platform & Framework Selection):** Read `.ai-flow/prompts/mobile/flow-bootstrap-phase-1-platform.md`
+3. **Phase 2 (Navigation & Architecture):** Read `.ai-flow/prompts/mobile/flow-bootstrap-phase-2-navigation.md`
+4. **Phase 3 (State & Data Management):** Read `.ai-flow/prompts/mobile/flow-bootstrap-phase-3-state.md`
+5. **Phase 4 (Permissions & Native Features):** Read `.ai-flow/prompts/mobile/flow-bootstrap-phase-4-permissions.md`
+6. **Phase 5 (Code Standards):** Read `.ai-flow/prompts/mobile/flow-bootstrap-phase-5-standards.md`
+7. **Phase 6 (Testing Strategy):** Read `.ai-flow/prompts/mobile/flow-bootstrap-phase-6-testing.md`
+8. **Phase 7 (Store Deployment):** Read `.ai-flow/prompts/mobile/flow-bootstrap-phase-7-deployment.md`
+9. **Phase 8 (Project Setup & Final Documentation):** Read `.ai-flow/prompts/mobile/flow-bootstrap-phase-8.md`
 
 ### For Individual Phases
 
 You can execute any phase independently by reading its file. For example:
 
 ```
-Read .ai-flow/prompts/mobile/flow-docs-gen-phase-3-state.md and execute only Phase 3
+Read .ai-flow/prompts/mobile/flow-bootstrap-phase-3-state.md and execute only Phase 3
 ```
 
 ---
@@ -64,7 +65,7 @@ Read .ai-flow/prompts/mobile/flow-docs-gen-phase-3-state.md and execute only Pha
 
 ### Phase 0: Context Discovery (Optional)
 
-**File:** `mobile/flow-docs-gen-phase-0-context.md`
+**File:** `mobile/flow-bootstrap-phase-0-context.md`
 **For:** Existing projects with code/documentation
 **Duration:** 1-5 minutes (automated analysis)
 **Output:** Pre-populated answers, project analysis
@@ -84,7 +85,7 @@ Read .ai-flow/prompts/mobile/flow-docs-gen-phase-3-state.md and execute only Pha
 
 ### Phase 1: Platform & Framework Selection
 
-**File:** `mobile/flow-docs-gen-phase-1-platform.md`
+**File:** `mobile/flow-bootstrap-phase-1-platform.md`
 **Duration:** 20-25 minutes
 **Key Questions:**
 
@@ -107,7 +108,7 @@ Read .ai-flow/prompts/mobile/flow-docs-gen-phase-3-state.md and execute only Pha
 
 ### Phase 2: Navigation & Architecture
 
-**File:** `mobile/flow-docs-gen-phase-2-navigation.md`
+**File:** `mobile/flow-bootstrap-phase-2-navigation.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
 
@@ -126,7 +127,7 @@ Read .ai-flow/prompts/mobile/flow-docs-gen-phase-3-state.md and execute only Pha
 
 ### Phase 3: State & Data Management
 
-**File:** `mobile/flow-docs-gen-phase-3-state.md`
+**File:** `mobile/flow-bootstrap-phase-3-state.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
 
@@ -145,7 +146,7 @@ Read .ai-flow/prompts/mobile/flow-docs-gen-phase-3-state.md and execute only Pha
 
 ### Phase 4: Permissions & Native Features
 
-**File:** `mobile/flow-docs-gen-phase-4-permissions.md`
+**File:** `mobile/flow-bootstrap-phase-4-permissions.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
 
@@ -164,7 +165,7 @@ Read .ai-flow/prompts/mobile/flow-docs-gen-phase-3-state.md and execute only Pha
 
 ### Phase 5: Code Standards & Best Practices
 
-**File:** `mobile/flow-docs-gen-phase-5-standards.md`
+**File:** `mobile/flow-bootstrap-phase-5-standards.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
 
@@ -182,7 +183,7 @@ Read .ai-flow/prompts/mobile/flow-docs-gen-phase-3-state.md and execute only Pha
 
 ### Phase 6: Testing Strategy
 
-**File:** `mobile/flow-docs-gen-phase-6-testing.md`
+**File:** `mobile/flow-bootstrap-phase-6-testing.md`
 **Duration:** 15-25 minutes
 **Key Questions:**
 
@@ -201,7 +202,7 @@ Read .ai-flow/prompts/mobile/flow-docs-gen-phase-3-state.md and execute only Pha
 
 ### Phase 7: Store Deployment
 
-**File:** `mobile/flow-docs-gen-phase-7-deployment.md`
+**File:** `mobile/flow-bootstrap-phase-7-deployment.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
 
@@ -216,7 +217,32 @@ Read .ai-flow/prompts/mobile/flow-docs-gen-phase-3-state.md and execute only Pha
 - `docs/app-store.md`
 - `specs/build-configuration.md`
 - `specs/deployment.md`
-- Parts of `ai-instructions.md`
+- `.env.example`
+
+**Next:** Transitions to Phase 8 for project setup and final documentation
+
+---
+
+### Phase 8: Project Setup & Final Documentation
+
+**File:** `mobile/flow-bootstrap-phase-8.md`
+**Duration:** 10-15 minutes
+**Key Steps:**
+
+- Detect project state (new vs existing)
+- Initialize framework (optional, for new projects)
+- Generate final documentation
+- Create master index (AGENT.md)
+- Generate README.md with intelligent merge
+
+**Generates:**
+
+- `docs/platform-guides.md`
+- `docs/navigation-guide.md`
+- `docs/contributing.md`
+- `AGENT.md` (master index)
+- `README.md`
+- Tool-specific configs (`.clauderules`, `.cursorrules`, `.github/copilot-instructions.md`)
 
 ---
 
@@ -412,13 +438,13 @@ To begin the complete mobile bootstrap process:
 **Ready to start?** Proceed to Phase 1 by reading:
 
 ```
-.ai-flow/prompts/mobile/flow-docs-gen-phase-1-platform.md
+.ai-flow/prompts/mobile/flow-bootstrap-phase-1-platform.md
 ```
 
 Or if you have existing code, start with Phase 0 for automatic detection:
 
 ```
-.ai-flow/prompts/mobile/flow-docs-gen-phase-0-context.md
+.ai-flow/prompts/mobile/flow-bootstrap-phase-0-context.md
 ```
 
 ---
@@ -426,5 +452,6 @@ Or if you have existing code, start with Phase 0 for automatic detection:
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0 (Mobile MVP)
+
 
 

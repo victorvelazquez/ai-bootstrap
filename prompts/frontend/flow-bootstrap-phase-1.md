@@ -438,7 +438,7 @@ Documents Generated:
 
 Next: Phase 2 - Components & Framework
 
-Read: .ai-flow/prompts/frontend/flow-docs-gen-phase-2-components.md
+Read: .ai-flow/prompts/frontend/flow-bootstrap-phase-2-components.md
 ```
 
 ---
@@ -446,4 +446,5 @@ Read: .ai-flow/prompts/frontend/flow-docs-gen-phase-2-components.md
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.2.0
+
 

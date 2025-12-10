@@ -479,12 +479,13 @@ After Phase 6, generate/update:
 
 **Next Phase:** Phase 7 - Store Deployment
 
-Read: `.ai-flow/prompts/mobile/flow-docs-gen-phase-7-deployment.md`
+Read: `.ai-flow/prompts/mobile/flow-bootstrap-phase-7-deployment.md`
 
 ---
 
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
+
 
 

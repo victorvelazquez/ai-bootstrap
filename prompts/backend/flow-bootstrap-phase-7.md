@@ -930,129 +930,62 @@ Plus tool-specific configurations:
 Generating...
 ```
 
-### Generation Instructions for Final Documents
+### Transition to Phase 8
 
-For EACH final document:
+All information from Phases 1-7 has been collected and documented.
 
-**1. `docs/business-flows.md`**
+Phase 8 will handle:
 
-- Use template: `.ai-flow/templates/docs/business-flows.template.md`
-- Fill with business flows from Phase 1
-- Generate mermaid diagrams for each flow
+- Project state detection
+- Framework initialization (if needed)
+- Final documentation generation
+- README.md creation with intelligent merge
+- Tool-specific configurations
 
-**2. `docs/api.md`**
-
-- Use template: `.ai-flow/templates/docs/api.template.md`
-- Auto-generate CRUD endpoints for each entity from Phase 2
-- Apply API conventions from Phase 3 (question 3.5)
-- Include authentication, pagination, error formats
-
-**3. `docs/contributing.md`**
-
-- Use template: `.ai-flow/templates/docs/contributing.template.md`
-- Fill with git workflow, commit format from Phase 5
-- Include setup instructions from Phase 3 & 7
-
-**4. `README.md`**
-
-- Use template: `.ai-flow/templates/README.template.md`
-- **CRITICAL:** This aggregates info from ALL phases
-- Re-read ALL previously generated docs before filling
-- Include quick start, tech stack, deployment info
-
-**5. `AGENT.md`**
-
-- Use template: `.ai-flow/templates/AGENT.template.md`
-- **CRITICAL:** This is the master index
-- Lists ALL 15 documents with descriptions
-- Includes quick reference to tech stack and critical rules
-- Re-read ALL previously generated docs to ensure accuracy
-
-### Special Documents
-
-**AGENT.md**: Acts as aggregator
-
-- Links to other documents
-- Provides quick reference
-- Auto-generated summary of stack and rules
-
-**Tool-specific configs**:
-If AI tool selected was:
-
-- Claude → Create `.clauderules` (references AGENT.md)
-- Cursor → Create `.cursorrules` (references AGENT.md)
-- Copilot → Create `.github/copilot-instructions.md` (references AGENT.md)
-- All → Create all three
-
-**Framework initialization**:
-If user wants framework initialized:
-
-```bash
-# Example for NestJS
-nest new . --skip-git --package-manager npm
-
-# Example for FastAPI
-# Create main.py, requirements.txt, etc.
-```
-
-### Success Message
+**Phase 8 will be executed next to complete the AI Flow process.**
 
 ```
-✅ AI Flow Complete!
+✅ Phase 7 Complete!
 
-Generated 15 documents successfully:
-
-Phase 1:
-✅ project-brief.md
-
-Phase 2:
-✅ docs/data-model.md
-
-Phase 3:
-✅ docs/architecture.md
-✅ ai-instructions.md
-
-Phase 4:
-✅ specs/security.md
-
-Phase 5:
-✅ docs/code-standards.md
-
-Phase 6:
-✅ docs/testing.md
+Generated 3 documents successfully:
 
 Phase 7:
 ✅ docs/operations.md
 ✅ specs/configuration.md
 ✅ .env.example
 
-Final Generation:
-✅ docs/business-flows.md
-✅ docs/api.md
-✅ docs/contributing.md
-✅ README.md
-✅ AGENT.md
+---
 
-Tool-specific configs:
-✅ [Selected tool configs generated]
+📊 Progress Summary:
 
-Next steps:
-1. Review all generated documents
-2. Customize as needed for your specific project
-3. Initialize git repository (if not already done)
-4. Set up environment variables (.env file from .env.example)
-5. Install dependencies
-6. Start building! 🚀
-7. Start building! 🚀
+Phases 1-7 completed:
+✅ project-brief.md (Phase 1)
+✅ docs/data-model.md (Phase 2)
+✅ docs/architecture.md (Phase 3)
+✅ ai-instructions.md (Phase 3)
+✅ specs/security.md (Phase 4)
+✅ docs/code-standards.md (Phase 5)
+✅ docs/testing.md (Phase 6)
+✅ docs/operations.md (Phase 7)
+✅ specs/configuration.md (Phase 7)
+✅ .env.example (Phase 7)
+
+Remaining:
+⏭️  Phase 8: Project setup & final documentation
 
 ---
 
-💡 Remember:
-- Update documents as project evolves
-- Documents are living artifacts, not set-in-stone
-- AI assistants will reference these docs for all future work
+🎯 Next: Phase 8 - Project Setup & Final Documentation
 
-Happy building! 🎉
+Phase 8 will:
+- 🔍 Detect project state (new vs existing)
+- 🚀 Initialize framework (optional, for new projects)
+- 📝 Generate final docs (business-flows.md, api.md, contributing.md)
+- 📖 Generate AGENT.md (master documentation index)
+- 📄 Generate README.md (with intelligent merge if needed)
+- 🤖 Create tool-specific configs (based on AI selection)
+
+Continue to Phase 8? (yes/no)
 ```
 
 ---
@@ -1183,7 +1116,7 @@ This is an investment that will save 10-20 hours over the project lifecycle.
 
 **EXECUTION FLOW:**
 
-1. **START:** User runs `/flow-docs-gen`
+1. **START:** User runs `/flow-bootstrap`
 2. **DETECT:** Check for existing project files (Phase 0)
    - If existing files found → Run Phase 0 deep analysis:
      - 0.1: Deep Code Analysis (file structure, AST parsing, schema extraction, pattern detection)
@@ -1199,7 +1132,7 @@ This is an investment that will save 10-20 hours over the project lifecycle.
 
 ---
 
-**BEGIN EXECUTION when user runs `/flow-docs-gen`**
+**BEGIN EXECUTION when user runs `/flow-bootstrap`**
 
 ```
 

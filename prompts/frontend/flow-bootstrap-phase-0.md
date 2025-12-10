@@ -483,7 +483,7 @@ After Phase 0 completes:
 
 Next: Proceed to Phase 1 (Discovery & UX)
 
-Read: .ai-flow/prompts/frontend/flow-docs-gen-phase-1-discovery.md
+Read: .ai-flow/prompts/frontend/flow-bootstrap-phase-1-discovery.md
 ```
 
 ---
@@ -491,4 +491,5 @@ Read: .ai-flow/prompts/frontend/flow-docs-gen-phase-1-discovery.md
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.2.0
+
 

@@ -648,12 +648,13 @@ After Phase 3, generate/update:
 
 **Next Phase:** Phase 4 - Permissions & Native Features
 
-Read: `.ai-flow/prompts/mobile/flow-docs-gen-phase-4-permissions.md`
+Read: `.ai-flow/prompts/mobile/flow-bootstrap-phase-4-permissions.md`
 
 ---
 
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
+
 
 

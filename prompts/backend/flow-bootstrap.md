@@ -301,21 +301,22 @@ This documentation is **modularized** for better maintainability and performance
 
 Execute phases sequentially by reading each file in order:
 
-1. **Phase 0 (Optional - Existing Projects Only):** Read `.ai-flow/prompts/backend/flow-docs-gen-phase-0-context.md`
-2. **Phase 1 (Discovery & Business):** Read `.ai-flow/prompts/backend/flow-docs-gen-phase-1-business.md`
-3. **Phase 2 (Data Architecture):** Read `.ai-flow/prompts/backend/flow-docs-gen-phase-2-data.md`
-4. **Phase 3 (System Architecture):** Read `.ai-flow/prompts/backend/flow-docs-gen-phase-3-architecture.md`
-5. **Phase 4 (Security & Authentication):** Read `.ai-flow/prompts/backend/flow-docs-gen-phase-4-security.md`
-6. **Phase 5 (Code Standards):** Read `.ai-flow/prompts/backend/flow-docs-gen-phase-5-standards.md`
-7. **Phase 6 (Testing Strategy):** Read `.ai-flow/prompts/backend/flow-docs-gen-phase-6-testing.md`
-8. **Phase 7 (Operations & Deployment):** Read `.ai-flow/prompts/backend/flow-docs-gen-phase-7-operations.md`
+1. **Phase 0 (Optional - Existing Projects Only):** Read `.ai-flow/prompts/backend/flow-bootstrap-phase-0-context.md`
+2. **Phase 1 (Discovery & Business):** Read `.ai-flow/prompts/backend/flow-bootstrap-phase-1-business.md`
+3. **Phase 2 (Data Architecture):** Read `.ai-flow/prompts/backend/flow-bootstrap-phase-2-data.md`
+4. **Phase 3 (System Architecture):** Read `.ai-flow/prompts/backend/flow-bootstrap-phase-3-architecture.md`
+5. **Phase 4 (Security & Authentication):** Read `.ai-flow/prompts/backend/flow-bootstrap-phase-4-security.md`
+6. **Phase 5 (Code Standards):** Read `.ai-flow/prompts/backend/flow-bootstrap-phase-5-standards.md`
+7. **Phase 6 (Testing Strategy):** Read `.ai-flow/prompts/backend/flow-bootstrap-phase-6-testing.md`
+8. **Phase 7 (Operations & Deployment):** Read `.ai-flow/prompts/backend/flow-bootstrap-phase-7-operations.md`
+9. **Phase 8 (Project Setup & Final Documentation):** Read `.ai-flow/prompts/backend/flow-bootstrap-phase-8.md`
 
 ### For Individual Phases
 
 You can execute any phase independently by reading its file. For example:
 
 ```
-Read .ai-flow/prompts/backend/flow-docs-gen-phase-4-security.md and execute only Phase 4
+Read .ai-flow/prompts/backend/flow-bootstrap-phase-4-security.md and execute only Phase 4
 ```
 
 ---
@@ -324,7 +325,7 @@ Read .ai-flow/prompts/backend/flow-docs-gen-phase-4-security.md and execute only
 
 ### Phase 0: Context Discovery (Optional)
 
-**File:** `backend/flow-docs-gen-phase-0-context.md`
+**File:** `backend/flow-bootstrap-phase-0-context.md`
 **For:** Existing projects with code/documentation
 **Duration:** 1-5 minutes (automated analysis)
 **Output:** Pre-populated answers, project analysis
@@ -344,7 +345,7 @@ Read .ai-flow/prompts/backend/flow-docs-gen-phase-4-security.md and execute only
 
 ### Phase 1: Discovery & Business
 
-**File:** `backend/flow-docs-gen-phase-1-business.md`
+**File:** `backend/flow-bootstrap-phase-1-business.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
 
@@ -362,7 +363,7 @@ Read .ai-flow/prompts/backend/flow-docs-gen-phase-4-security.md and execute only
 
 ### Phase 2: Data Architecture
 
-**File:** `backend/flow-docs-gen-phase-2-data.md`
+**File:** `backend/flow-bootstrap-phase-2-data.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
 
@@ -380,7 +381,7 @@ Read .ai-flow/prompts/backend/flow-docs-gen-phase-4-security.md and execute only
 
 ### Phase 3: System Architecture
 
-**File:** `backend/flow-docs-gen-phase-3-architecture.md`
+**File:** `backend/flow-bootstrap-phase-3-architecture.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
 
@@ -400,7 +401,7 @@ Read .ai-flow/prompts/backend/flow-docs-gen-phase-4-security.md and execute only
 
 ### Phase 4: Security & Authentication
 
-**File:** `backend/flow-docs-gen-phase-4-security.md`
+**File:** `backend/flow-bootstrap-phase-4-security.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
 
@@ -418,7 +419,7 @@ Read .ai-flow/prompts/backend/flow-docs-gen-phase-4-security.md and execute only
 
 ### Phase 5: Code Standards
 
-**File:** `backend/flow-docs-gen-phase-5-standards.md`
+**File:** `backend/flow-bootstrap-phase-5-standards.md`
 **Duration:** 15-20 minutes
 **Key Questions:**
 
@@ -436,7 +437,7 @@ Read .ai-flow/prompts/backend/flow-docs-gen-phase-4-security.md and execute only
 
 ### Phase 6: Testing Strategy
 
-**File:** `backend/flow-docs-gen-phase-6-testing.md`
+**File:** `backend/flow-bootstrap-phase-6-testing.md`
 **Duration:** 15-25 minutes
 **Key Questions:**
 
@@ -454,7 +455,7 @@ Read .ai-flow/prompts/backend/flow-docs-gen-phase-4-security.md and execute only
 
 ### Phase 7: Operations & Deployment
 
-**File:** `backend/flow-docs-gen-phase-7-operations.md`
+**File:** `backend/flow-bootstrap-phase-7-operations.md`
 **Duration:** 10 minutes
 **Key Questions:**
 
@@ -468,7 +469,63 @@ Read .ai-flow/prompts/backend/flow-docs-gen-phase-4-security.md and execute only
 - `docs/operations.md`
 - `specs/configuration.md`
 - `.env.example`
-- Final `AGENT.md`, `.clauderules`, `README.md`, `docs/contributing.md`
+
+**Next:** Transitions to Phase 8 for project setup and final documentation
+
+---
+
+### Phase 8: Project Setup & Final Documentation
+
+**File:** `backend/flow-bootstrap-phase-8.md`
+**Duration:** 10-15 minutes
+**Key Steps:**
+
+- Detect project state (new vs existing)
+- Initialize framework (optional, for new projects)
+- Generate final documentation
+- Create master index (AGENT.md)
+- Generate README.md with intelligent merge
+
+**Generates:**
+
+- `docs/business-flows.md`
+- `docs/api.md`
+- `docs/contributing.md`
+- `AGENT.md` (master index)
+- `README.md`
+- Tool-specific configs (`.clauderules`, `.cursorrules`, `.github/copilot-instructions.md`)
+
+**Next:** Offers optional Phase 9 for implementation roadmap generation
+
+---
+
+### Phase 9: Implementation Roadmap (Optional)
+
+**File:** `backend/flow-bootstrap-phase-9.md`
+**Duration:** 15-30 minutes
+**Key Steps:**
+
+- Analyze all generated documentation
+- Define Epics by domain
+- Break down Features with Story Points (Fibonacci scale)
+- Generate dependency graph and execution order
+- Identify parallelization opportunities
+- Create production readiness checklist
+
+**Generates:**
+
+- `.ai-flow/roadmap.md` (complete implementation plan)
+
+**Output includes:**
+
+- Epics organized by priority
+- Features with Story Point estimations
+- Task breakdown with acceptance criteria
+- Ready-to-execute `/feature` commands
+- Dependency graph (Mermaid)
+- Time estimates (1 dev, 2 devs, 3 devs)
+
+**Skip if:** You prefer to start coding immediately without a detailed roadmap
 
 ---
 
@@ -486,7 +543,7 @@ Read .ai-flow/prompts/backend/flow-docs-gen-phase-4-security.md and execute only
 **Command:**
 
 ```
-Read .ai-flow/prompts/backend/flow-docs-gen-phase-1-business.md and execute Phase 1
+Read .ai-flow/prompts/backend/flow-bootstrap-phase-1-business.md and execute Phase 1
 ```
 
 ---
@@ -508,7 +565,7 @@ Read .ai-flow/prompts/backend/flow-docs-gen-phase-1-business.md and execute Phas
 **Command:**
 
 ```
-Read .ai-flow/prompts/backend/flow-docs-gen-phase-0-context.md and execute Phase 0
+Read .ai-flow/prompts/backend/flow-bootstrap-phase-0-context.md and execute Phase 0
 ```
 
 ---
@@ -644,8 +701,8 @@ As your project evolves, your documentation may become out of sync with your cod
 2. **Then:**
    - 🆕 **New Project + Mode A:** Execute all phases sequentially, ask all questions
    - 🆕 **New Project + Mode B:** Ask 6 critical questions, auto-suggest the rest, show summary
-   - 📁 **Existing Project + Mode A:** Read `flow-docs-gen-phase-0-context.md` first, then proceed with all phases
-   - 📁 **Existing Project + Mode B:** Read `flow-docs-gen-phase-0-context.md` first, then ask remaining critical questions
+   - 📁 **Existing Project + Mode A:** Read `flow-bootstrap-phase-0-context.md` first, then proceed with all phases
+   - 📁 **Existing Project + Mode B:** Read `flow-bootstrap-phase-0-context.md` first, then ask remaining critical questions
    - 🔄 **Update Docs:** Use `/flow-docs-sync` command
 
 ---
@@ -760,7 +817,7 @@ git add .ai-flow/
 # Create initial commit with documentation metadata
 git commit -m "docs: initial project documentation
 
-Generated by AI Flow /flow-docs-gen command:
+Generated by AI Flow /flow-bootstrap command:
 - 17 documentation files (backend)
 - Architecture: {{ARCHITECTURE_PATTERN}}
 - Tech stack: {{FRAMEWORK}}, {{DATABASE}}, {{ORM}}
@@ -777,24 +834,28 @@ Commit hash: {{COMMIT_HASH}}
 Files tracked: 17 documentation files
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🎯 Next Step: Initialize Project
+🎯 Next Step: Initialize Project & Optional Roadmap
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Your documentation is ready! Now let's initialize your project with the selected framework.
+Your documentation is ready! Now let's initialize your project.
 
-Continue with project initialization?
+Continue with Phase 8?
 
-A) ✅ Yes, initialize now (recommended) - 5-10 min
+A) ✅ Yes, continue to Phase 8 (recommended) - 10-15 min
+   → Initialize project + Generate final docs
+   → Then option to continue to Phase 9 (roadmap)
+
 B) No, I'll review documentation first
 
 Your choice (A): __
 ```
 
-**If choice A:** Execute the content of `/flow-project-init` automatically
+**If choice A:** Automatically transitions to Phase 8
 
-- Read `.ai-flow/templates/ai-instructions.md` to detect framework
-- Run framework initialization command in current directory
-- Display success message with generated files
+- Phase 8 will detect project state and offer framework initialization
+- Generates final documentation (business-flows, api, contributing)
+- Creates AGENT.md and README.md
+- Sets up AI tool configs
 
 **If choice B:** Show manual workflow:
 
@@ -802,19 +863,23 @@ Your choice (A): __
 **Manual Workflow (resume anytime):**
 
 1. Review documentation in .ai-flow/templates/
-2. When ready, run: /flow-project-init (5-10 min)
-   → Initializes project with framework CLI
-3. Then run: /flow-project-roadmap (15-30 min)
-   → Generates implementation plan with Story Points
+2. When ready, run Phase 8:
+   → Read .ai-flow/prompts/backend/flow-bootstrap-phase-8.md
+   → Detects project state, initializes framework (optional), generates final docs
+3. (Optional) Continue to Phase 9: Implementation Roadmap (15-30 min)
+   → Generates complete implementation plan with Story Points
+   → Includes Epics, Features, Tasks, and execution order
 4. Start implementing: /feature <feature-name>
    → Implements features following your architecture
 
-💡 Tip: All commands are independent and re-executable.
+💡 Tip: All phases are independent and re-executable.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
 ---
 
+_Version: 4.0 (Phase 9 integrated - Implementation Roadmap with Story Points)_
 _Last Updated: 2025-12-09_
-_Version: 2.2 (Integrated flow-project-init automation + renamed from project-scaffold)_
+_Version: 3.0 (Unified workflow: Phase 8 integrates project setup + final docs generation)_
 _AI Flow - Transform your idea into production-ready code in minutes_
+

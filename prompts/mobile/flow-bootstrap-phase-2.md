@@ -573,12 +573,13 @@ After Phase 2, generate/update:
 
 **Next Phase:** Phase 3 - State & Data Management
 
-Read: `.ai-flow/prompts/mobile/flow-docs-gen-phase-3-state.md`
+Read: `.ai-flow/prompts/mobile/flow-bootstrap-phase-3-state.md`
 
 ---
 
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
+
 
 
