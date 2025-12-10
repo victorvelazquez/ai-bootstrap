@@ -33,7 +33,7 @@ Analyze modified files and group by functional relationship. Create atomic commi
 
 **2. Configuration** → `chore(config)`
 
-- `tsconfig.json`, `scripts/*.sh`, config files
+- `tsconfig.json`, config files
 
 **3. Feature Implementation** → `feat(cli)`
 
@@ -61,7 +61,7 @@ Analyze modified files and group by functional relationship. Create atomic commi
 | ----------------------------------------------------------- | ----------- |
 | `src/cli.ts`, `src/utils/*.ts`                              | `cli`       |
 | `package.json`, `package-lock.json`                         | `deps`      |
-| `tsconfig.json`, `scripts/*.sh`                             | `config`    |
+| `tsconfig.json`                                             | `config`    |
 | `templates/*.md`                                            | `templates` |
 | `prompts/*.md`, `slash-commands/**`, `.github/prompts/*.md` | `prompts`   |
 | `README.md`                                                 | `readme`    |

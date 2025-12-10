@@ -348,7 +348,6 @@ ai-flow/
 │   ├── cursor/
 │   ├── copilot/
 │   └── gemini/
-└── scripts/                # Setup scripts
 ```
 
 ## 🧪 Testing Guidelines

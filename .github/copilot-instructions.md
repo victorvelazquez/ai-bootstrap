@@ -8,10 +8,9 @@
 ## Architecture & Flow
 
 - `src/cli.ts` is the only executable source today; it wires Commander CLI commands (`init`, `check`) to filesystem tasks with `fs-extra`, progress feedback via `ora`, and prompts through `inquirer`.
-- `init` composes helper steps: `createBootstrapStructure` → `copyTemplates` → `copyPrompts` → `copyScripts` → `setupSlashCommands`; stay consistent with that order when extending.
+- `init` composes helper steps: `createBootstrapStructure` → `copyTemplates` → `copyPrompts` → `setupSlashCommands`; stay consistent with that order when extending.
 - Tool selection lives in `AI_TOOLS`; adding a tool requires new slash-command directory, script branch, and inclusion in `.ai-flow/core/config.json` generation.
 - The generated `.ai-flow/templates/**` files are copied verbatim; preserve `{{PLACEHOLDER}}` tokens because downstream AI agents expand them.
-- Shell automation lives in `scripts/init.sh`; keep it in sync with CLI changes when touching setup logic.
 
 ## Build & Test Workflow
 

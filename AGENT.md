@@ -206,7 +206,7 @@ ai-flow/
 2. Check if already initialized (`.ai-flow/` exists)
 3. Prompt for AI tool selection if not provided via `--ai` flag
 4. Prompt for project type (backend/frontend) if not provided via `--type` flag
-5. Create `.ai-flow/` structure with core/, prompts/, templates/, scripts/
+5. Create `.ai-flow/` structure with core/, prompts/, templates/
 6. Write config.json with version, aiTools, projectType, timestamps
 7. Copy templates from package to project
 8. Copy master prompts (backend/bootstrap.md or frontend/bootstrap.md and phase files)
@@ -220,7 +220,7 @@ ai-flow/
 **Package Structure:**
 
 - Binary entry point: `dist/cli.js` (from `src/cli.ts`)
-- Files included in npm package: `dist/`, `prompts/`, `templates/`, `scripts/`
+- Files included in npm package: `dist/`, `prompts/`, `templates/`
 - Users install globally: `npm install -g ai-flow`
 
 ### Path Resolution Strategy

@@ -69,8 +69,6 @@ ai-flow/
 │   ├── claude/
 │   ├── cursor/
 │   └── copilot/
-├── scripts/
-│   └── init.sh                # Initialization helper
 ├── package.json
 ├── tsconfig.json
 ├── README.md                  # Project documentation
@@ -178,22 +176,21 @@ npm run prepare
 1. User runs `ai-flow init .`
 2. Check if already initialized (`.ai-flow/` exists)
 3. Prompt for AI tool selection if not provided via `--ai` flag
-4. Create `.ai-flow/` structure with core/, prompts/, templates/, scripts/
+4. Create `.ai-flow/` structure with core/, prompts/, templates/
 5. Write config.json with version, aiTools, timestamps
 6. Copy templates from package to project
 7. Copy master prompts (backend/bootstrap.md and phase files)
-8. Copy the helper script `init.sh`
-9. Set up slash commands in tool-specific directories:
+8. Set up slash commands in tool-specific directories:
    - Claude → `.claude/commands/`
    - Cursor → `.cursor/commands/`
    - Copilot → `.github/copilot-commands/`
    - Gemini → `.gemini/commands/`
-10. Display next steps and available commands
+9. Display next steps and available commands
 
 **Package Structure:**
 
 - Binary entry point: `dist/cli.js` (from `src/cli.ts`)
-- Files included in npm package: `dist/`, `prompts/`, `templates/`, `scripts/`
+- Files included in npm package: `dist/`, `prompts/`, `templates/`
 - Users install globally: `npm install -g ai-flow`
 
 ### Template System
@@ -685,7 +682,6 @@ Closes #42
 | `templates/*.template.md`           | 13 files | Document templates with placeholders           | Enhancing generated docs, changing structure      |
 | `templates/AGENT.template.md`       | Core     | Universal AI config aggregator                 | Changing AI tool integration                      |
 | `slash-commands/{tool}/*.md`        | 13/tool  | Bootstrap + workflow command definitions       | Modifying command behavior for specific AI tools  |
-| `scripts/init.sh`                   | Bash     | Initialization script                          | Changing setup automation                         |
 | `package.json`                      | Config   | Dependencies, scripts, bin config              | Changing commands, adding dependencies            |
 | `tsconfig.json`                     | Config   | TypeScript compilation settings                | Changing target, module system                    |
 | `README.md`                         | Docs     | User-facing documentation                      | User-facing changes, features                     |
@@ -698,9 +694,7 @@ Closes #42
 | `checkIfInitialized()`       | Check if .ai-flow exists                            | `targetPath: string`                    |
 | `createBootstrapStructure()` | Create folders and config.json                      | `targetPath: string, aiTools: string[]` |
 | `copyTemplates()`            | Copy templates/ to project                          | `targetPath: string`                    |
-| `copyPrompts()`              | Copy prompts/ to project                            | `targetPath: string`                    |
 | `setupSlashCommands()`       | Install slash commands for selected tools           | `targetPath: string, aiTools: string[]` |
-| `copyScripts()`              | Copy scripts and chmod                              | `targetPath: string`                    |
 | `initializeProject()`        | Main init orchestration                             | `targetPath: string, aiTool?: string`   |
 
 ---
