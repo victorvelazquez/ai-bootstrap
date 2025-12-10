@@ -10,7 +10,7 @@ AI Flow is an interactive CLI that creates comprehensive professional documentat
 
 **Key Features:**
 
-- 🚀 Complete professional documentation (14-17 docs per project type)
+- 🚀 Complete professional documentation (Backend: 13 docs, Frontend: 15+ docs, Mobile: 11+ docs, Fullstack: 20+ docs)
 - ⚡ **Two modes:** Interactive (90-120 min, full control) or Smart Auto-Suggest (15-25 min, 6 questions)
 - 🌍 Universal support - 12 languages, 60+ frameworks, 35+ ORMs (98% coverage)
 - 🤖 Multi-AI support with slash commands
@@ -35,7 +35,7 @@ Transforma tu idea en un proyecto listo para producción y documentado para IA e
 
 **Características:**
 
-- 🚀 Documentación profesional completa (14-17 docs por tipo)
+- 🚀 Documentación profesional completa (Backend: 13 docs, Frontend: 15+ docs, Mobile: 11+ docs, Fullstack: 20+ docs)
 - ⚡ **Dos modos:** Interactivo (90-120 min, control total) o Auto-Sugerido (15-25 min, 6 preguntas)
 - 🌍 Soporte universal - 12 lenguajes, 60+ frameworks, 35+ ORMs
 - 🤖 Compatible con Claude, Copilot, Cursor, Gemini
@@ -189,9 +189,11 @@ ai-flow init . --type backend
 # Combine type with AI tool
 ai-flow init . --ai claude --type fullstack
 
-# Enable verbose output (detailed logging)
+# Mobile project example
+ai-flow init . --ai claude --type mobile
+
+# Enable verbose output (detailed logging) - only for init command
 ai-flow init . --verbose
-ai-flow check --verbose
 
 # Simulate initialization without writing files (dry-run)
 ai-flow init . --dry-run --verbose
