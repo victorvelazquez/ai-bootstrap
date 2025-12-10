@@ -206,7 +206,8 @@ async function selectAITool(providedTool?: string): Promise<string[]> {
         name: tool.name,
         value: tool.value,
       })),
-      pageSize: 10,
+      pageSize: 15,
+      loop: false,
     },
   ]);
 
