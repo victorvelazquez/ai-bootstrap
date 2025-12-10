@@ -532,6 +532,14 @@ Generating...
 [Generate mermaid sequence diagram]
 ```
 
+**📝 Action:** Write the complete file to `.ai-flow/docs/business-flows.md`
+
+```
+✅ Generated: .ai-flow/docs/business-flows.md
+```
+
+---
+
 ### 8.3.2: Generate docs/api.md
 
 - **Template:** `.ai-flow/templates/docs/api.template.md`
@@ -607,6 +615,12 @@ We use [workflow from Phase 5]
 
 [Format from Phase 5.2]
 ````
+
+**📝 Action:** Write the complete file to `.ai-flow/docs/contributing.md`
+
+```
+✅ Generated: .ai-flow/docs/contributing.md
+```
 
 ---
 
@@ -759,11 +773,46 @@ The API will be available at `http://localhost:3000`
 
 ````
 
-**Success message:**
+**📝 Action:** Write the complete file to `.ai-flow/README.md`
 
 ```
-✅ README.md generated!
+✅ Generated: .ai-flow/README.md
    [If merged] Merged with framework's setup instructions
+```
+
+---
+
+## 8.6: Generate AGENT.md (Master Index)
+
+**CRITICAL:** Before generating AGENT.md, re-read ALL previously generated documents to have complete context.
+
+**📝 Action:**
+
+```
+🔄 Re-reading all generated documents for AGENT.md generation...
+
+✅ Reading .ai-flow/project-brief.md
+✅ Reading .ai-flow/ai-instructions.md
+✅ Reading .ai-flow/docs/data-model.md
+✅ Reading .ai-flow/docs/architecture.md
+✅ Reading .ai-flow/docs/code-standards.md
+✅ Reading .ai-flow/docs/testing.md
+✅ Reading .ai-flow/docs/operations.md
+✅ Reading .ai-flow/specs/security.md
+✅ Reading .ai-flow/specs/configuration.md
+✅ Reading .ai-flow/docs/business-flows.md
+✅ Reading .ai-flow/docs/api.md
+✅ Reading .ai-flow/docs/contributing.md
+
+✅ All context loaded!
+```
+
+Now generate AGENT.md with complete information from all documents.
+
+**📝 Action:** Write the complete file to `.ai-flow/AGENT.md`
+
+```
+✅ Generated: .ai-flow/AGENT.md (Master Index)
 ```
 
 ---
@@ -874,9 +923,17 @@ Master index: `.ai-flow/AGENT.md`
 [Extract from code-standards.md]
 ```
 
-### If "All" selected:
+**📝 Action:** Generate the tool-specific config files based on selection:
 
-Generate all three files above.
+- If Claude → Write `.clauderules`
+- If Cursor → Write `.cursorrules`
+- If Copilot → Write `.github/copilot-instructions.md`
+- If "All" → Write all three files
+
+```
+✅ Generated tool-specific configs:
+   [List generated files based on selection]
+```
 
 ---
 

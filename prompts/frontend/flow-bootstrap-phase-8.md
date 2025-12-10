@@ -265,6 +265,12 @@ Generating...
   - Add styling approach
   - Link to component library (if using one)
 
+**📝 Action:** Write the complete file to `.ai-flow/docs/components-guide.md`
+
+```
+✅ Generated: .ai-flow/docs/components-guide.md
+```
+
 ### 8.3.2: Generate docs/state-management.md
 
 - **Template:** `.ai-flow/templates/docs/state-management.template.md`
@@ -276,6 +282,12 @@ Generating...
   - Document async state handling
   - Add caching strategy
 
+**📝 Action:** Write the complete file to `.ai-flow/docs/state-management.md`
+
+```
+✅ Generated: .ai-flow/docs/state-management.md
+```
+
 ### 8.3.3: Generate docs/contributing.md
 
 - **Template:** `.ai-flow/templates/docs/contributing.template.md`
@@ -286,6 +298,12 @@ Generating...
   - Code review process
   - Setup instructions from Phase 7
   - Testing requirements from Phase 6
+
+**📝 Action:** Write the complete file to `.ai-flow/docs/contributing.md`
+
+```
+✅ Generated: .ai-flow/docs/contributing.md
+```
 
 ---
 
@@ -347,6 +365,33 @@ Generating...
 [From operations.md and contributing.md]
 ```
 
+**📝 Action:**
+
+```
+🔄 Re-reading all generated documents for AGENT.md generation...
+
+✅ Reading .ai-flow/project-brief.md
+✅ Reading .ai-flow/ai-instructions.md
+✅ Reading .ai-flow/docs/ui-structure.md
+✅ Reading .ai-flow/docs/architecture.md
+✅ Reading .ai-flow/docs/components-guide.md
+✅ Reading .ai-flow/docs/state-management.md
+✅ Reading .ai-flow/docs/code-standards.md
+✅ Reading .ai-flow/docs/testing.md
+✅ Reading .ai-flow/docs/performance.md
+✅ Reading .ai-flow/docs/operations.md
+✅ Reading .ai-flow/specs/configuration.md
+✅ Reading .ai-flow/docs/contributing.md
+
+✅ All context loaded!
+```
+
+**📝 Action:** Write the complete file to `.ai-flow/AGENT.md`
+
+```
+✅ Generated: .ai-flow/AGENT.md (Master Index)
+```
+
 ---
 
 ## 8.5: Generate README.md (Intelligent Merge)
@@ -381,6 +426,13 @@ Generating...
 4. **Insert framework-specific content** in "Getting Started" section
 5. **Ensure no duplication**
 6. **Validate all links** work correctly
+
+**📝 Action:** Write the complete file to `.ai-flow/README.md`
+
+```
+✅ Generated: .ai-flow/README.md
+   [If merged] Merged with framework's setup instructions
+```
 
 ---
 
@@ -483,6 +535,18 @@ Master index: `.ai-flow/AGENT.md`
 ## Tech Stack
 
 [From Phase 3]
+```
+
+**📝 Action:** Generate the tool-specific config files based on selection:
+
+- If Claude → Write `.clauderules`
+- If Cursor → Write `.cursorrules`
+- If Copilot → Write `.github/copilot-instructions.md`
+- If "All" → Write all three files
+
+```
+✅ Generated tool-specific configs:
+   [List generated files based on selection]
 ```
 
 ---
