@@ -259,6 +259,87 @@ Story Points | Complexity | Typical Time | Examples
 34 SP        | Epic       | 3 weeks      | Multiple related features
 ```
 
+---
+
+### Story Points to Time Conversion (Hybrid Estimation)
+
+**Use this table to add time estimates to each task:**
+
+| Story Points | Time Estimate (solo dev) | Time Range | Example Task                               |
+| ------------ | ------------------------ | ---------- | ------------------------------------------ |
+| **1 SP**     | 1-2 hours                | (~1-2h)    | Add enum value, simple config change       |
+| **2 SP**     | 3-4 hours                | (~3-4h)    | Write 5-8 unit tests, basic validation     |
+| **3 SP**     | 4-8 hours                | (~4-8h)    | Simple CRUD endpoint, basic entity         |
+| **5 SP**     | 1-2 days                 | (~1-2d)    | Complex endpoint with business logic       |
+| **8 SP**     | 2-3 days                 | (~2-3d)    | Auth flow, complex validation              |
+| **13 SP**    | 1 week                   | (~1w)      | Complete module with full test coverage    |
+| **21 SP**    | 2 weeks                  | (~2w)      | Major feature with integration             |
+| **34 SP**    | 3 weeks                  | (~3w)      | Multiple related features (Epic-level)     |
+
+> **Note:** Time assumes AI-assisted development (GitHub Copilot, Claude, etc.). Without AI assistance, multiply time estimates by 2-3x.
+>
+> **Velocity Tracking:** After completing 2-3 features, compare actual time vs estimates to calibrate your team's velocity. Adjust remaining estimates accordingly.
+
+**How to use hybrid estimation:**
+
+- Each task shows **both** Story Points and time: `• 2 SP (~3-4h)`
+- Story Points measure **complexity** (stable across teams)
+- Time estimates measure **effort** (varies by team velocity)
+- Track both to improve estimation accuracy over time
+
+---
+
+### Task Format Reference (Spec-Kit Inspired)
+
+**Every task must follow this format:**
+
+```markdown
+- [ ] [TaskID] [Optional:P] [Optional:StoryTag] Description • SP (~time)
+      File: exact/path/to/file.ts
+      Dependencies: T001, T002 (or "None")
+```
+
+**Components explained:**
+
+- **[TaskID]**: Sequential ID in execution order (T001, T002, ..., T099, T100)
+- **[P] marker**: ONLY for parallelizable tasks (different files, no blocking deps)
+- **[StoryTag]**: Links task to user story ([US1], [US2]) - only in story phases
+- **Description**: What to implement (specific, LLM-completable without additional context)
+- **• SP (~time)**: Hybrid estimation - Story Points + time (e.g., "2 SP (~3-4h)", "5 SP (~1-2d)")
+- **File path**: Exact file where work happens (REQUIRED)
+- **Dependencies**: Which tasks must complete first (REQUIRED, even if "None")
+
+**Task Sequencing Rules:**
+
+1. **Tests BEFORE implementation** (TDD approach)
+2. **Models → Services → Controllers → Endpoints** (layer dependency order)
+3. **Core utilities BEFORE features** that use them
+4. **Database migrations BEFORE data access code**
+5. **Interfaces BEFORE implementations**
+
+**Parallelization Rules ([P] marker):**
+
+✅ **Use [P] when:**
+- Tasks target different files
+- No shared dependencies between tasks
+- Can run simultaneously (e.g., independent entities, different modules)
+
+❌ **Don't use [P] when:**
+- Task depends on another incomplete task
+- Same file is modified by multiple tasks
+- Shared resource (DB migration, config file, shared service)
+
+**Example task with all components:**
+
+```markdown
+- [ ] [T042] [P] Write unit tests for Product entity validation (12 tests) • 2 SP (~3-4h)
+      File: tests/unit/entities/Product.entity.spec.ts
+      Tests: price validation, stock constraints, name required, category FK
+      Dependencies: None (can run parallel with other test tasks)
+```
+
+---
+
 **Feature Breakdown Logic:**
 
 For each Epic:
@@ -289,18 +370,57 @@ For each Epic:
 - Entity: {{ENTITY_NAME}}
 - Tests: {{TEST_COUNT}} ({{TEST_TYPES}})
 
-**Tasks:**
+**Tasks:** (Test-First ordering, execution sequence, hybrid estimation)
 
-- [ ] Create {{ENTITY}} entity with validation • {{SP}} SP
-- [ ] Create {{REPOSITORY}} repository • {{SP}} SP
-- [ ] Implement {{SERVICE}} service • {{SP}} SP
-- [ ] Create {{CONTROLLER}} controller • {{SP}} SP
-- [ ] Add {{ENDPOINT_1}} endpoint • {{SP}} SP
-- [ ] Add {{ENDPOINT_2}} endpoint • {{SP}} SP
-- [ ] Write unit tests for service ({{COUNT}} tests) • {{SP}} SP
-- [ ] Write integration tests for endpoints ({{COUNT}} tests) • {{SP}} SP
-- [ ] Update API documentation • {{SP}} SP
-- [ ] Update data model documentation • {{SP}} SP
+- [ ] [T0XX] [P] Write unit tests for {{ENTITY}} entity validation ({{COUNT}} tests) • {{SP}} SP (~{{TIME}})
+      File: tests/unit/entities/{{ENTITY}}.entity.spec.ts
+      Tests: {{TEST_SCENARIOS}}
+      Dependencies: None (can run parallel with other test tasks)
+
+- [ ] [T0YY] Create {{ENTITY}} entity with validation • {{SP}} SP (~{{TIME}})
+      File: src/entities/{{ENTITY}}.entity.ts
+      Implements: {{VALIDATION_RULES}}
+      Dependencies: None
+
+- [ ] [T0ZZ] Create I{{REPOSITORY}} interface • {{SP}} SP (~{{TIME}})
+      File: src/repositories/interfaces/I{{REPOSITORY}}.ts
+      Methods: {{REPOSITORY_METHODS}}
+      Dependencies: T0YY (needs {{ENTITY}} entity type)
+
+- [ ] [T0AA] Implement {{REPOSITORY}} with {{ORM}} • {{SP}} SP (~{{TIME}})
+      File: src/repositories/{{REPOSITORY}}.ts
+      Implements: All CRUD methods from I{{REPOSITORY}} interface
+      Dependencies: T0YY (entity), T0ZZ (interface)
+
+- [ ] [T0BB] Implement {{SERVICE}} service with business logic • {{SP}} SP (~{{TIME}})
+      File: src/services/{{SERVICE}}.service.ts
+      Business Logic: {{SERVICE_LOGIC}}
+      Dependencies: T0AA (repository)
+
+- [ ] [T0CC] Create {{CONTROLLER}} controller • {{SP}} SP (~{{TIME}})
+      File: src/controllers/{{CONTROLLER}}.controller.ts
+      Endpoints: {{ENDPOINT_1}}, {{ENDPOINT_2}}
+      Dependencies: T0BB (service)
+
+- [ ] [T0DD] Write unit tests for {{SERVICE}} service ({{COUNT}} tests) • {{SP}} SP (~{{TIME}})
+      File: tests/unit/services/{{SERVICE}}.service.spec.ts
+      Tests: {{SERVICE_TEST_SCENARIOS}}
+      Dependencies: T0BB (service implementation)
+
+- [ ] [T0EE] Write integration tests for {{ENDPOINT_1}}, {{ENDPOINT_2}} ({{COUNT}} tests) • {{SP}} SP (~{{TIME}})
+      File: tests/integration/controllers/{{CONTROLLER}}.spec.ts
+      Tests: {{INTEGRATION_TEST_SCENARIOS}}
+      Dependencies: T0CC (controller)
+
+- [ ] [T0FF] Update API documentation • {{SP}} SP (~{{TIME}})
+      File: docs/api.md
+      Add: {{ENDPOINT_1}}, {{ENDPOINT_2}} with request/response schemas
+      Dependencies: T0CC (endpoints implemented)
+
+- [ ] [T0GG] Update data model documentation • {{SP}} SP (~{{TIME}})
+      File: docs/data-model.md
+      Add: {{ENTITY}} schema, relationships, validation rules
+      Dependencies: T0YY (entity complete)
 
 **Acceptance Criteria:**
 
@@ -326,9 +446,10 @@ For each Epic:
 
 ### Feature 2.1: User Entity & Repository • 5 SP
 
-⏱️ **Est. Time:** 1-2 days
+⏱️ **Est. Time:** 1-2 days (~12-16h total)
 🎯 **Priority:** P0
-📋 **Dependencies:** None
+📋 **Dependencies:** None (foundational entity)
+🏷️ **User Story:** [US1] As a system, I need to store user data securely
 
 **Scope:**
 - Entity: User (id, email, username, passwordHash, role, createdAt, updatedAt)
@@ -336,23 +457,68 @@ For each Epic:
 - Validation: Email format, username constraints, password strength
 - Tests: 8 unit tests, 4 integration tests
 
-**Tasks:**
-- [ ] Create User entity with field validation • 2 SP
-- [ ] Create IUserRepository interface • 1 SP
-- [ ] Implement UserRepository (Prisma/TypeORM) • 1 SP
-- [ ] Add database migration for users table • 1 SP
-- [ ] Add indexes (email unique, username unique) • 1 SP
-- [ ] Write unit tests for User entity validation (8 tests) • 2 SP
-- [ ] Write integration tests for UserRepository (4 tests) • 2 SP
-- [ ] Update docs/data-model.md • 1 SP
+**Tasks:** (Test-First, execution order, hybrid estimation)
+
+- [ ] [T001] [P] Write unit tests for User entity validation (8 tests) • 2 SP (~3-4h)
+      File: tests/unit/entities/User.entity.spec.ts
+      Tests: email format, username constraints, password hashing, role enum, timestamps
+      Dependencies: None (can run parallel with other test tasks)
+
+- [ ] [T002] Create User entity with field validation • 2 SP (~3-4h)
+      File: src/entities/User.entity.ts
+      Implements: Email validation regex, username 3-20 chars, password bcrypt hashing
+      Dependencies: None
+
+- [ ] [T003] [P] Create IUserRepository interface • 1 SP (~1-2h)
+      File: src/repositories/interfaces/IUserRepository.ts
+      Methods: create, findById, findByEmail, findAll, update, delete
+      Dependencies: T002 (needs User entity type)
+
+- [ ] [T004] Implement UserRepository with Prisma/TypeORM • 1 SP (~1-2h)
+      File: src/repositories/UserRepository.ts
+      Implements: All CRUD methods from IUserRepository interface
+      Dependencies: T002 (User entity), T003 (interface)
+
+- [ ] [T005] Add database migration for users table • 1 SP (~1-2h)
+      File: migrations/001_create_users_table.ts (Prisma) or similar
+      Schema: All User fields + indexes (email unique, username unique)
+      Dependencies: T002 (User entity schema)
+
+- [ ] [T006] Write integration tests for UserRepository (4 tests) • 2 SP (~3-4h)
+      File: tests/integration/repositories/UserRepository.spec.ts
+      Tests: CRUD operations, unique constraints, transactions, error handling
+      Dependencies: T004 (UserRepository), T005 (migration)
+
+- [ ] [T007] Update data model documentation • 1 SP (~1h)
+      File: docs/data-model.md
+      Add: User entity schema, relationships, validation rules
+      Dependencies: T002 (User entity complete)
 
 **Acceptance Criteria:**
-- [ ] User entity validates email format
-- [ ] Password is hashed before storage
-- [ ] Repository handles all CRUD operations
-- [ ] Migration creates table with correct schema
-- [ ] Test coverage ≥ 80%
-- [ ] No TypeScript errors
+
+- [ ] User entity validates email format (regex: RFC 5322)
+- [ ] Password is hashed with bcrypt (cost factor 10) before storage
+- [ ] Repository handles all CRUD operations correctly
+- [ ] Migration creates table with correct schema + indexes
+- [ ] Test coverage ≥ 80% (measured by Jest/Vitest)
+- [ ] No TypeScript errors (strict mode)
+- [ ] All 12 tests passing (8 unit + 4 integration)
+
+**Task Execution Graph:**
+
+```
+T001 [P] ──┐
+           ├──> T002 ──┬──> T003 ──> T004 ──┬──> T006
+           │           │                     │
+           │           └──> T005 ────────────┘
+           │                                 │
+           └─────────────────────────────────┴──> T007
+```
+
+**Parallelization Notes:**
+- T001 can run parallel to other test tasks (different file)
+- T005 can start as soon as T002 completes (don't need to wait for T004)
+- T007 (docs) can run while T006 (tests) runs
 
 **Ready-to-execute command:**
 ```bash
@@ -363,40 +529,96 @@ For each Epic:
 
 ### Feature 2.2: Product Entity & Repository • 8 SP
 
-⏱️ **Est. Time:** 2-3 days
+⏱️ **Est. Time:** 2-3 days (~16-24h total)
 🎯 **Priority:** P0
-📋 **Dependencies:** Feature 2.4 (Category entity)
+📋 **Dependencies:** Feature 2.4 (Category entity - needs Category FK)
+🏷️ **User Story:** [US2] As a store owner, I need to manage product catalog with search
 
 **Scope:**
 
 - Entity: Product (id, name, description, price, stock, categoryId, images, createdAt, updatedAt)
-- Repository: IProductRepository with CRUD + search
+- Repository: IProductRepository with CRUD + search/filter
 - Validation: Price > 0, stock ≥ 0, name required
 - Relationships: belongsTo Category
 - Tests: 12 unit tests, 6 integration tests
 
-**Tasks:**
+**Tasks:** (Test-First, execution order, hybrid estimation)
 
-- [ ] Create Product entity with validation • 3 SP
-- [ ] Add relationship to Category (FK constraint) • 1 SP
-- [ ] Create IProductRepository interface • 1 SP
-- [ ] Implement ProductRepository with search/filter methods • 2 SP
-- [ ] Add database migration for products table • 1 SP
-- [ ] Add indexes (categoryId, name for search) • 1 SP
-- [ ] Implement inventory tracking logic • 2 SP
-- [ ] Write unit tests for Product entity (12 tests) • 3 SP
-- [ ] Write integration tests for ProductRepository (6 tests) • 2 SP
-- [ ] Write tests for search/filter functionality (4 tests) • 2 SP
-- [ ] Update docs/data-model.md • 1 SP
+- [ ] [T008] [P] Write unit tests for Product entity validation (12 tests) • 3 SP (~4-8h)
+      File: tests/unit/entities/Product.entity.spec.ts
+      Tests: price validation, stock constraints, name required, category FK, images array
+      Dependencies: T007 (Category entity exists for FK testing)
+
+- [ ] [T009] Create Product entity with validation + Category FK • 3 SP (~4-8h)
+      File: src/entities/Product.entity.ts
+      Implements: Price > 0, stock ≥ 0, name required, belongs to Category relationship
+      Dependencies: T007 (Category entity), T008 (tests)
+
+- [ ] [T010] Create IProductRepository interface • 1 SP (~1-2h)
+      File: src/repositories/interfaces/IProductRepository.ts
+      Methods: CRUD + search(query), filterByCategory(categoryId), updateStock(id, quantity)
+      Dependencies: T009 (Product entity)
+
+- [ ] [T011] Implement ProductRepository with search/filter methods • 2 SP (~3-4h)
+      File: src/repositories/ProductRepository.ts
+      Implements: All CRUD + search (case-insensitive name), filter by category
+      Dependencies: T009 (entity), T010 (interface)
+
+- [ ] [T012] Add database migration for products table • 1 SP (~1-2h)
+      File: migrations/002_create_products_table.ts
+      Schema: All Product fields + FK to categories + indexes (categoryId, name)
+      Dependencies: T009 (Product entity schema)
+
+- [ ] [T013] Implement inventory tracking logic • 2 SP (~3-4h)
+      File: src/repositories/ProductRepository.ts (extend)
+      Logic: Atomic stock decrements, prevent negative stock, transaction support
+      Dependencies: T011 (ProductRepository base)
+
+- [ ] [T014] Write integration tests for ProductRepository (6 tests) • 2 SP (~3-4h)
+      File: tests/integration/repositories/ProductRepository.spec.ts
+      Tests: CRUD, search, filter by category, stock updates, FK constraints
+      Dependencies: T011, T012, T013
+
+- [ ] [T015] Write tests for search/filter functionality (4 tests) • 2 SP (~3-4h)
+      File: tests/integration/repositories/ProductRepository.search.spec.ts
+      Tests: Case-insensitive search, partial match, filter by category, pagination
+      Dependencies: T011 (search implementation)
+
+- [ ] [T016] Update data model documentation • 1 SP (~1h)
+      File: docs/data-model.md
+      Add: Product entity schema, Category relationship, search indexes
+      Dependencies: T009 (Product entity complete)
 
 **Acceptance Criteria:**
 
-- [ ] Product validates price and stock constraints
-- [ ] Search by name works (case-insensitive)
-- [ ] Filter by category works
-- [ ] Inventory decrements correctly
-- [ ] Migration includes FK constraint to categories
+- [ ] Product validates price > 0 and stock ≥ 0
+- [ ] Search by name works (case-insensitive, partial match)
+- [ ] Filter by category returns only products in that category
+- [ ] Inventory decrements correctly with atomic operations
+- [ ] Stock cannot go negative (validation error)
+- [ ] Migration includes FK constraint to categories + indexes
 - [ ] Test coverage ≥ 80%
+- [ ] All 22 tests passing (12 unit + 6 integration + 4 search)
+
+**Task Execution Graph:**
+
+```
+T007 (Category) ──> T008 [P] (tests) ──> T009 (entity) ──┬──> T010 (interface) ──> T011 (repo) ──> T013 (inventory)
+                                                          │                                            │
+                                                          └──> T012 (migration) ─────────────────────┬─┤
+                                                                                                     │ │
+                                                T014 <──────────────────────────────────────────────┤ │
+                                                T015 <────────────────────────────────────────────────┘
+                                                T016 <── T009
+
+[P] = Can run parallel with other test tasks
+```
+
+**Parallelization Notes:**
+
+- T008 (tests) can run parallel to other entity test tasks
+- T014 (integration tests) and T015 (search tests) can run in parallel (different test files)
+- T016 (docs) can run while tests are executing
 
 **Ready-to-execute command:**
 
@@ -436,6 +658,58 @@ For each Epic:
 3. **Parallelization Opportunities:**
    - Independent entities can be built in parallel
    - Independent epics (after foundation) can be worked simultaneously
+
+4. **Task-Level Dependencies** (Spec-Kit Inspired):
+   - For each Feature, analyze task dependencies at granular level
+   - Identify parallelization opportunities **within** Features (not just between)
+   - Generate task execution graph per Epic showing exact task order
+
+**Task Dependency Matrix Example:**
+
+```
+Epic 2: Data Layer
+
+Feature 2.1: User Entity (5 SP)
+├─ T001 [P] Write User entity tests → No deps (can run parallel)
+├─ T002 Create User entity → Depends on: None
+├─ T003 [P] Create IUserRepository interface → Depends on: T002
+├─ T004 Implement UserRepository → Depends on: T002, T003
+├─ T005 Add users table migration → Depends on: T002
+├─ T006 Write UserRepository integration tests → Depends on: T004, T005
+└─ T007 Update data model docs → Depends on: T002
+
+Feature 2.2: Category Entity (3 SP) [Can run PARALLEL to Feature 2.1]
+├─ T008 [P] Write Category entity tests → No deps
+├─ T009 Create Category entity → Depends on: None
+├─ T010 Create CategoryRepository → Depends on: T009
+└─ T011 Update data model docs → Depends on: T009
+
+Feature 2.3: Product Entity (8 SP) [BLOCKS on Feature 2.2 - needs Category FK]
+├─ T012 Write Product entity tests → Depends on: T009 (Category entity)
+├─ T013 Create Product entity with Category FK → Depends on: T009, T012
+├─ T014 Create IProductRepository → Depends on: T013
+├─ T015 Implement ProductRepository with search → Depends on: T013, T014
+├─ T016 Write ProductRepository tests → Depends on: T015
+└─ T017 Update data model docs → Depends on: T013
+```
+
+**Parallelization Analysis:**
+
+✅ **Feature-Level Parallelization:**
+- Feature 2.1 (User) and Feature 2.2 (Category) can run in PARALLEL → 40% time save
+- Feature 2.3 (Product) BLOCKS on Feature 2.2 → must wait for Category entity
+
+✅ **Task-Level Parallelization (within Feature 2.1):**
+- T001 (tests) can run parallel to T002 (entity) if desired (TDD: run tests first recommended)
+- T003 (interface) and T005 (migration) can run in parallel (both depend only on T002)
+- T006 (integration tests) and T007 (docs) can run in parallel
+
+⚡ **Team Scaling:**
+- With 1 dev: Features run sequentially → ~16 hours (Feature 2.1) + ~8 hours (Feature 2.2) + ~16 hours (Feature 2.3) = 40 hours total
+- With 2 devs: Feature 2.1 + 2.2 parallel → ~16 hours + ~16 hours (Product) = 32 hours total (20% save)
+- With 3 devs: Task-level parallelization within features → ~28 hours total (30% save)
+
+---
 
 **Generate Mermaid Dependency Graph:**
 
@@ -595,6 +869,91 @@ Use this table to translate Story Points to time estimates:
 
 ---
 
+## 🔄 5-Phase Execution Model (Spec-Kit Inspired)
+
+Our roadmap follows a battle-tested 5-phase approach for predictable, incremental delivery:
+
+### Phase 0: Setup (Pre-Foundation)
+
+**Goal:** Project initialization
+**Duration:** 1-2 days (already done by `/project-scaffold`)
+
+- Repository setup, CI/CD baseline, Docker configuration
+- Development environment setup
+- Base dependencies installed
+
+### Phase 1: Foundational (Blocking Prerequisites)
+
+**Goal:** Core infrastructure that everything depends on
+**Duration:** 2-3 weeks
+**Epics:** Foundation, Data Layer (base models only)
+
+**Characteristics:**
+
+- ❌ NO parallelization (everything blocks on these)
+- ✅ Must complete BEFORE user story implementation
+- 🎯 Establish patterns for entire project
+
+**Example Tasks:**
+
+- [T001-T020] Database connection, ORM setup, migrations
+- [T021-T040] Logging, error handling, config management
+- [T041-T060] Base entity models (User, Session)
+
+### Phase 2-N: User Stories (Priority-Ordered)
+
+**Goal:** Deliver business value incrementally
+**Duration:** Varies per story (1-3 weeks each)
+**Epics:** All business features
+
+**Characteristics:**
+
+- ✅ Each story is INDEPENDENTLY deployable
+- ✅ High parallelization potential (2-3 devs)
+- 🎯 Delivers working software each iteration
+
+**Story Execution Order:**
+
+1. P0 stories (MVP-critical) → [US1], [US2], [US3]
+2. P1 stories (high value) → [US4], [US5]
+3. P2 stories (nice-to-have) → [US6], [US7]
+
+**Example Story Tasks:**
+
+- [T061] [US1] Write authentication tests
+- [T062] [US1] Implement JWT service
+- [T063] [US1] Create login endpoint
+- [T064] [P] [US2] Write product catalog tests (parallel to US1)
+
+### Phase N: Polish & Cross-Cutting
+
+**Goal:** Production readiness
+**Duration:** 1-2 weeks
+**Epics:** Operations, Testing, Performance
+
+**Characteristics:**
+
+- ✅ Can run after all critical stories complete
+- ✅ Some parallelization (different concerns)
+- 🎯 Ensures quality and operability
+
+**Example Tasks:**
+
+- [T200-T210] Performance optimization, caching
+- [T211-T220] Security hardening, penetration testing
+- [T221-T230] Monitoring, alerting, logging
+- [T231-T240] Documentation finalization
+
+### Phase Benefits:
+
+1. **Incremental Delivery**: Ship user stories as they complete
+2. **Risk Mitigation**: Foundation issues caught early
+3. **Team Scaling**: Multiple stories run in parallel
+4. **Predictable Velocity**: Story points per sprint stabilize
+5. **Quality Gates**: Each phase has clear exit criteria
+
+---
+
 ## 🔗 Dependency Graph
 
 ```mermaid
@@ -625,16 +984,40 @@ Use this table to translate Story Points to time estimates:
 
 ##### Feature 1.1: Base Application Configuration • 5 SP
 
-⏱️ **Est. Time:** 1-2 days • 🎯 **Priority:** P0 • 📋 **Dependencies:** None
+⏱️ **Est. Time:** 1-2 days (~8-12h total) • 🎯 **Priority:** P0 • 📋 **Dependencies:** None
+🏷️ **User Story:** [US0] As a developer, I need a robust configuration system
 
-**Tasks:**
+**Tasks:** (Test-First, execution order, hybrid estimation)
 
-- [ ] Configure environment variables (`.env` structure) • 1 SP
-- [ ] Setup configuration service/module • 2 SP
-- [ ] Add validation for required env vars • 1 SP
-- [ ] Create constants file for app-wide values • 1 SP
-- [ ] Write unit tests for configuration service (5 tests) • 2 SP
-- [ ] Document configuration in `specs/configuration.md` • 1 SP
+- [ ] [T001] [P] Write unit tests for configuration service (5 tests) • 2 SP (~3-4h)
+      File: tests/unit/config/ConfigService.spec.ts
+      Tests: env var loading, validation, defaults, type conversion, missing var errors
+      Dependencies: None (can run parallel with other foundational tests)
+
+- [ ] [T002] Setup configuration service/module • 2 SP (~3-4h)
+      File: src/config/ConfigService.ts
+      Implements: Load env vars, validate required fields, type-safe access
+      Dependencies: None
+
+- [ ] [T003] Configure environment variables (`.env` structure) • 1 SP (~1-2h)
+      File: .env.example
+      Structure: All required env vars with descriptions and example values
+      Dependencies: T002 (know which vars are needed)
+
+- [ ] [T004] Add validation for required env vars • 1 SP (~1-2h)
+      File: src/config/ConfigService.ts (extend)
+      Logic: Fail-fast on missing vars, clear error messages
+      Dependencies: T002 (base service exists)
+
+- [ ] [T005] [P] Create constants file for app-wide values • 1 SP (~1h)
+      File: src/constants/index.ts
+      Constants: App name, version, default values, enums
+      Dependencies: None (can run parallel with other tasks)
+
+- [ ] [T006] Document configuration in specs/configuration.md • 1 SP (~1h)
+      File: specs/configuration.md
+      Add: All env vars, types, defaults, validation rules
+      Dependencies: T002, T003, T004 (config system complete)
 
 **Acceptance Criteria:**
 
