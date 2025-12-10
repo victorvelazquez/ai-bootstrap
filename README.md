@@ -10,7 +10,7 @@ AI Flow is an interactive CLI that creates comprehensive professional documentat
 
 **Key Features:**
 
-- 🚀 Complete professional documentation (Backend: 13 docs, Frontend: 15+ docs, Mobile: 11+ docs, Fullstack: 20+ docs)
+- 🚀 Complete professional documentation (Backend: 17 docs, Frontend: 15 docs, Mobile: 14 docs, Fullstack: 4+ docs)
 - ⚡ **Two modes:** Interactive (90-120 min, full control) or Smart Auto-Suggest (15-25 min, 6 questions)
 - 🌍 Universal support - 12 languages, 60+ frameworks, 35+ ORMs (98% coverage)
 - 🤖 Multi-AI support with slash commands
@@ -18,6 +18,8 @@ AI Flow is an interactive CLI that creates comprehensive professional documentat
 - ⏱️ Save 10-20 hours per project
 
 **Quick Start:**
+
+**Requirements:** Node.js ≥20.0.0
 
 ```bash
 npm install -g ai-flow-dev
@@ -35,7 +37,7 @@ Transforma tu idea en un proyecto listo para producción y documentado para IA e
 
 **Características:**
 
-- 🚀 Documentación profesional completa (Backend: 13 docs, Frontend: 15+ docs, Mobile: 11+ docs, Fullstack: 20+ docs)
+- 🚀 Documentación profesional completa (Backend: 17 docs, Frontend: 15 docs, Mobile: 14 docs, Fullstack: 4+ docs)
 - ⚡ **Dos modos:** Interactivo (90-120 min, control total) o Auto-Sugerido (15-25 min, 6 preguntas)
 - 🌍 Soporte universal - 12 lenguajes, 60+ frameworks, 35+ ORMs
 - 🤖 Compatible con Claude, Copilot, Cursor, Gemini
@@ -43,6 +45,8 @@ Transforma tu idea en un proyecto listo para producción y documentado para IA e
 - ⏱️ Ahorra 10-20 horas por proyecto
 
 **Inicio rápido:**
+
+**Requisitos:** Node.js ≥20.0.0
 
 ```bash
 npm install -g ai-flow-dev
@@ -59,7 +63,7 @@ ai-flow init .
 Transforme sua ideia em um projeto pronto para produção e documentado para IA em minutos.
 **Características:**
 
-- 🚀 Documentação profissional completa (14-17 docs por tipo)
+- 🚀 Documentação profissional completa (Backend: 17, Frontend: 15, Mobile: 14, Fullstack: 4+ docs)
 - ⚡ **Dois modos:** Interativo (90-120 min, controle total) ou Auto-Sugestão (15-25 min, 6 perguntas)
 - 🌍 Suporte universal - 12 linguagens, 60+ frameworks, 35+ ORMs
 - 🤖 Compatível com Claude, Copilot, Cursor, Gemini
@@ -68,6 +72,8 @@ Transforme sua ideia em um projeto pronto para produção e documentado para IA 
 - ⏱️ Economize 10-20 horas por projeto
 
 **Início Rápido:**
+
+**Requisitos:** Node.js ≥20.0.0
 
 ```bash
 npm install -g ai-flow-dev
@@ -97,7 +103,7 @@ The result is interconnected documentation that guides AI assistants and human d
 
 - 🌍 **Universal Support** - 12 languages, 60+ frameworks, 35+ ORMs (98% coverage)
 - 🤖 **AI-Agnostic** - Claude, Copilot, Cursor, Gemini, any AI tool
-- 📚 **Professional Documentation** - 14-17 docs per project type
+- 📚 **Professional Documentation** - Backend: 17, Frontend: 15, Mobile: 14, Fullstack: 4+ docs
 - ⚡ **Two Questionnaire Modes:**
   - **Interactive Mode:** Full control, 71 questions (90-120 min)
   - **Smart Auto-Suggest:** Only 6 critical questions, AI suggests best practices (15-25 min)
@@ -167,8 +173,8 @@ ai-flow --help          # Show help
 --type <type>            # backend, frontend, mobile, fullstack (interactive if omitted)
 --name <name>            # Project name (interactive if omitted)
 --description <desc>     # Project description (interactive if omitted)
---verbose                # Detailed logging
---dry-run                # Simulate without writing
+--verbose                # Detailed logging (init only)
+--dry-run                # Simulate without writing (init only)
 ```
 
 **Examples:**
@@ -276,7 +282,7 @@ After initialization, use these slash commands in your AI tool:
 
 1. **Smart Detection** - Analyzes existing projects in 3 layers (15s to 5min)
 2. **Interactive Questionnaire** - Guides you through 8-9 phases (choose mode)
-3. **Template Generation** - Creates 14-17 professional documents
+3. **Template Generation** - Creates 15-17 professional documents per project type
 4. **Implementation Roadmap** - Optional Phase 9 generates Story Point estimates
 5. **AI Integration** - Configures your AI tool with project context
 6. **Slash Command Setup** - Installs prompts to tool-specific paths (.github/prompts/, .claude/commands/, etc.)
@@ -304,7 +310,7 @@ After initialization, use these slash commands in your AI tool:
 
 **Mobile** (14 docs): AGENT.md, ai-instructions.md, project-brief.md, README.md, 8 technical docs, 2 specs
 
-**Fullstack** (~20 docs): Merges backend + frontend templates with priority resolution (fullstack-specific → backend → frontend)
+**Fullstack** (4+ docs): ai-instructions.md, project-brief.md, README.md, configuration spec + inherits from backend/frontend as needed
 
 ---
 
