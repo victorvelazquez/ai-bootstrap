@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 describe('ai-flow templates', () => {
-  it('should include AGENT.template.md in templates/shared/', () => {
-    const agentTemplate = path.resolve(__dirname, '..', 'templates', 'shared', 'AGENT.template.md');
+  it('should include AGENT.template.md in templates root', () => {
+    const agentTemplate = path.resolve(__dirname, '..', 'templates', 'AGENT.template.md');
     expect(fs.existsSync(agentTemplate)).toBe(true);
   });
 

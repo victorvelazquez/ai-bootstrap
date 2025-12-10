@@ -348,12 +348,23 @@ async function renderTemplates(
       return files;
     };
 
-    // Collect template files from shared and project-type-specific directories
+    // Collect template files from project-type-specific directories
     const templateSources: { source: string; base: string }[] = [];
 
-    // Always include shared templates (e.g., AGENT.md)
-    const sharedSource = path.join(ROOT_DIR, 'templates', 'shared');
-    templateSources.push({ source: sharedSource, base: sharedSource });
+    // Always include root templates (AGENT.template.md)
+    const rootTemplatesSource = path.join(ROOT_DIR, 'templates');
+    const processedFiles = new Map<string, { file: string; base: string }>();
+    
+    // Only scan root level files (not subdirectories)
+    const allRootItems = await fs.readdir(rootTemplatesSource);
+    for (const item of allRootItems) {
+      const fullPath = path.join(rootTemplatesSource, item);
+      const stat = await fs.stat(fullPath);
+      if (stat.isFile() && item.endsWith('.template.md')) {
+        const relPath = item.replace('.template.md', '.md').replace('.template', '');
+        processedFiles.set(relPath, { file: fullPath, base: rootTemplatesSource });
+      }
+    }
 
     // Include project-type-specific templates
     if (projectType === 'backend') {
@@ -388,9 +399,7 @@ async function renderTemplates(
     }
 
     // Walk all source directories and collect template files
-    // For fullstack, use a Map to track processed files (priority: fullstack > backend > frontend)
-    const processedFiles = new Map<string, { file: string; base: string }>();
-
+    // For fullstack, use a Map to track processed files (priority: root > fullstack > backend > frontend)
     for (const { source, base } of templateSources) {
       const files = await walk(source);
       for (const file of files) {
