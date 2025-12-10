@@ -84,6 +84,7 @@ npm audit
 - **Version mismatches** between runtime deps and type definitions
 
 **Critical checks:**
+
 - If `@types/*` package is outdated by 2+ major versions → **CRITICAL** (type mismatch)
 - If runtime package version doesn't match `@types/*` major version → **CRITICAL** (incompatibility)
 - If ESM-only package detected in CommonJS project → **CRITICAL** (module system mismatch)
@@ -140,6 +141,7 @@ npm test
 - Failed test names
 
 **Additional validation:**
+
 - After tests pass, check for **ESM/CommonJS compatibility issues**:
   ```bash
   npm run build && node dist/cli.js --version
@@ -233,7 +235,7 @@ Provide comprehensive execution report:
 - ❌ Coverage below threshold
 - ❌ Security vulnerabilities (high/critical)
 - ❌ npm audit critical issues
-- ❌ **Type definition mismatch** (runtime vs @types/* version gap > 1 major)
+- ❌ **Type definition mismatch** (runtime vs @types/\* version gap > 1 major)
 - ❌ **ESM/CommonJS incompatibility** (ERR_REQUIRE_ESM errors)
 - ❌ **Build validation failure** (CLI doesn't execute after build)
 

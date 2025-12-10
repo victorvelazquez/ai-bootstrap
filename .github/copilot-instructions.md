@@ -45,4 +45,3 @@
 - Keep logging consistent with `chalk` semantics used in `src/cli.ts` (info = cyan/white, warnings = yellow, failures = red) to ensure CLI feedback stays predictable.
 - After structural changes, run `ai-flow init ./tmp` locally to smoke-test that templates, prompts, and slash commands land in the right paths.
 - Surface notable behavioral changes in `README.md` “Features” or “Quick Start” sections so downstream AI agents inherit accurate guidance.
-
