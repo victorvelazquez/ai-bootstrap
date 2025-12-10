@@ -4,11 +4,15 @@ import { Command } from 'commander';
 import inquirer from 'inquirer';
 import chalk from 'chalk';
 import ora from 'ora';
-import * as fs from 'fs-extra';
-import * as path from 'path';
+import fs from 'fs-extra';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 import ejs from 'ejs';
-import { assertDirWritable } from './fs-utils';
+import { assertDirWritable } from './fs-utils.js';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, '..');
 
 const program = new Command();
@@ -47,9 +51,10 @@ const AI_TOOLS: AIToolChoice[] = [
   },
 ];
 
-const PKG_VERSION: string = fs.readJSONSync(
-  path.join(__dirname, '..', 'package.json')
-).version as string;
+// Read package.json for version
+const packageJsonPath = path.join(__dirname, '..', 'package.json');
+const packageJson = JSON.parse(await fs.readFile(packageJsonPath, 'utf-8'));
+const PKG_VERSION: string = packageJson.version;
 
 const EXIT = {
   OK: 0,
