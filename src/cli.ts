@@ -1007,7 +1007,7 @@ program
   .description(
     'AI-powered development workflow from idea to production. Generate specs, plan features, and build with AI assistance.'
   )
-  .version('1.3.0');
+  .version('1.4.0');
 
 program
   .command('init')
