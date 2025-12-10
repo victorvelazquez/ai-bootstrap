@@ -201,9 +201,9 @@ async function selectAITool(providedTool?: string): Promise<string[]> {
     {
       type: 'list',
       name: 'selectedTool',
-      message: '\u200B', // invisible char para ocultar el ?
+      message: 'Select your AI tool:',
       choices: AI_TOOLS.map((tool) => ({
-        name: '    ' + tool.name, // 4 espacios para alinear
+        name: tool.name,
         value: tool.value,
       })),
       pageSize: 10,
