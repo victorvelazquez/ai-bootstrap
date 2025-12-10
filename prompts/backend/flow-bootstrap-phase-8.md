@@ -437,17 +437,174 @@ npx prisma init
   - MySQL: https://hub.docker.com/_/mysql
   - MongoDB: https://hub.docker.com/_/mongo
 
-### 8.2.6.5: Final Summary
+### 8.2.6.5: Generate .gitignore
+
+**IMPORTANT:** Generate a comprehensive `.gitignore` file based on the framework, language, and tools selected in previous phases.
+
+```
+📝 Generating .gitignore for your tech stack...
+```
+
+**Strategy:**
+
+1. **Detect framework from Phase 3** (NestJS, Express, Django, FastAPI, etc.)
+2. **Detect language** (Node.js, Python, Go, etc.)
+3. **Detect tools from Phase 7** (Docker, Prisma, etc.)
+4. **Combine relevant patterns**
+
+**Base patterns by technology:**
+
+**Node.js projects (NestJS, Express):**
+
+```gitignore
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+.nyc_output/
+
+# Logs
+logs/
+*.log
+
+# Prisma (if using)
+prisma/migrations/dev.db
+prisma/*.db
+
+# TypeScript
+*.tsbuildinfo
+```
+
+**Python projects (Django, FastAPI):**
+
+```gitignore
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# FastAPI
+.pytest_cache/
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+```
+
+**Go projects:**
+
+```gitignore
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+
+# Test binary
+*.test
+
+# Output
+*.out
+
+# Go workspace
+go.work
+
+# Environment
+.env
+
+# IDE
+.vscode/
+.idea/
+```
+
+**Docker additions (if Docker selected in Phase 7):**
+
+```gitignore
+# Docker
+docker-compose.override.yml
+.docker/
+```
+
+**📝 Action:** Generate and write `.gitignore` to project root.
+
+**Selection logic:**
+
+- If NestJS/Express → Use Node.js patterns
+- If Django/FastAPI → Use Python patterns
+- If Go/Gin → Use Go patterns
+- If Prisma detected in Phase 3 → Add Prisma patterns
+- If Docker selected in Phase 7 → Add Docker patterns
+
+```
+✅ Generated: .gitignore
+   Patterns included: [Node.js | Python | Go] + [Prisma] + [Docker]
+```
+
+---
+
+### 8.2.6.6: Final Summary
 
 ```
 ✅ Minimal enhancements complete!
 
-Files created (2-3 max):
+Files created (3-4 max):
 ✅ .env.example (environment template)
+✅ .gitignore (ignore patterns for your stack)
 ✅ docker-compose.yml (if Docker selected)
 ✅ prisma/schema.prisma (if Prisma ORM)
 
-🎯 Total: 2-3 files (vs 40-60 files in old approach)
+🎯 Total: 3-4 files (vs 40-60 files in old approach)
 📚 For Express/FastAPI starter code, refer to official documentation
 
 Next steps:
@@ -465,7 +622,7 @@ Next steps:
 - ❌ **DO NOT** create authentication endpoints
 - ❌ **DO NOT** create complete folder structures
 - ❌ **DO NOT** install 40+ packages manually
-- ✅ **ONLY** create .env.example, docker-compose (optional), ORM init
+- ✅ **ONLY** create .env.example, .gitignore, docker-compose (optional), ORM init
 - ✅ **LET** framework CLI handle structure, configs, dependencies
 - ✅ **REFER** to official docs for starter code when needed
 
@@ -955,7 +1112,7 @@ All validations passed!
 ```
 🎉 AI Flow Complete!
 
-Generated 15 documents successfully:
+Generated 16 documents successfully:
 
 Phase 1:
 ✅ project-brief.md
@@ -987,6 +1144,7 @@ Phase 8:
 ✅ docs/contributing.md
 ✅ README.md
 ✅ AGENT.md
+✅ .gitignore
 
 [If framework initialized:]
 ✅ [FRAMEWORK_NAME] project initialized
@@ -1023,6 +1181,7 @@ your-project/
 ├── [framework files] # If initialized
 ├── README.md
 ├── .env.example
+├── .gitignore
 └── [tool configs] # .clauderules, .cursorrules, etc.
 
 ````
@@ -1094,11 +1253,12 @@ When executing Phase 8:
 - [ ] Generate docs/business-flows.md (from Phase 1)
 - [ ] Generate docs/api.md (from Phase 2 + Phase 3)
 - [ ] Generate docs/contributing.md (from Phase 5 + Phase 7)
+- [ ] Generate .gitignore (based on framework and tools)
 
 **8.4 Generate AGENT.md:**
 
 - [ ] Re-read ALL documents again to ensure accuracy
-- [ ] Create master index listing all 15 documents
+- [ ] Create master index listing all 16 documents
 - [ ] Include quick reference (tech stack, rules, commands)
 - [ ] Validate all links
 

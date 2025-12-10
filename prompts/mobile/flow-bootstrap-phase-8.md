@@ -236,13 +236,14 @@ Proceeding to documentation generation...
 
 ✅ Context fully loaded and updated!
 
-🎉 Now generating final 4 documents:
+🎉 Now generating final 5 documents:
 
 1. docs/platform-guides.md - iOS and Android specific implementations
 2. docs/navigation-guide.md - Navigation patterns and screen flow
 3. docs/contributing.md - Contribution guidelines
-4. AGENT.md - Universal AI configuration (master index)
-5. README.md - Project overview (consolidates all phases)
+4. .gitignore - Ignore patterns for React Native/Flutter
+5. AGENT.md - Universal AI configuration (master index)
+6. README.md - Project overview (consolidates all phases)
 
 Generating...
 ```
@@ -297,6 +298,165 @@ Generating...
 
 ```
 ✅ Generated: .ai-flow/docs/contributing.md
+```
+
+---
+
+## 8.3.4: Generate .gitignore
+
+**IMPORTANT:** Generate a comprehensive `.gitignore` file based on the mobile framework selected in previous phases.
+
+```
+📝 Generating .gitignore for your mobile stack...
+```
+
+**Strategy:**
+
+1. **Detect framework from Phase 3** (React Native, Flutter, etc.)
+2. **Detect package manager** (npm, yarn, pub)
+3. **Combine relevant patterns**
+
+**React Native patterns:**
+
+```gitignore
+# React Native
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Metro bundler
+.metro-health-check*
+
+# OSX
+.DS_Store
+
+# Android
+android/app/build/
+android/app/release/
+android/.gradle/
+android/local.properties
+android/.idea/
+android/*.iml
+android/app/debug/
+android/app/profile/
+android/keystore.properties
+android/key.properties
+
+# iOS
+ios/Pods/
+ios/**/*.mode1v3
+ios/**/*.mode2v3
+ios/**/*.perspectivev3
+ios/**/*.pbxuser
+ios/**/*.xcworkspace/xcuserdata
+ios/**/.DS_Store
+ios/build/
+ios/.xcode.env.local
+DerivedData/
+
+# Expo
+.expo/
+.expo-shared/
+web-build/
+dist/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Environment
+.env
+.env*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+```
+
+**Flutter patterns:**
+
+```gitignore
+# Flutter
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+flutter_*.png
+linked_*.ds
+unlinked.ds
+unlinked_spec.ds
+
+# Android
+android/app/debug/
+android/app/profile/
+android/app/release/
+android/.gradle/
+android/local.properties
+android/gradle/
+android/gradlew
+android/gradlew.bat
+android/key.properties
+
+# iOS
+ios/Flutter/.last_build_id
+ios/Flutter/flutter_export_environment.sh
+ios/Pods/
+ios/**/*.mode1v3
+ios/**/*.mode2v3
+ios/**/*.pbxuser
+ios/**/*.perspectivev3
+ios/**/*.xcworkspace/xcuserdata
+ios/Runner.xcworkspace/
+
+# Web
+web/packages/
+
+# macOS
+macos/Flutter/
+
+# Testing
+coverage/
+.test_coverage.dart
+
+# Environment
+.env
+.env*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+```
+
+**📝 Action:** Generate and write `.gitignore` to project root.
+
+**Selection logic:**
+
+- If React Native → Use React Native patterns
+- If Flutter → Use Flutter patterns
+- If Expo detected → Add Expo-specific patterns
+
+```
+✅ Generated: .gitignore
+   Patterns included: [React Native | Flutter] + Platform-specific
 ```
 
 ---
@@ -567,7 +727,7 @@ All validations passed!
 ```
 🎉 AI Flow Complete!
 
-Generated 14 documents successfully:
+Generated 15 documents successfully:
 
 Phase 1:
 ✅ project-brief.md
@@ -595,6 +755,7 @@ Phase 8:
 ✅ docs/platform-guides.md
 ✅ docs/navigation-guide.md
 ✅ docs/contributing.md
+✅ .gitignore
 ✅ README.md
 ✅ AGENT.md
 
@@ -634,6 +795,7 @@ your-app/
 ├── src/ or lib/                 # Source code (if initialized)
 ├── README.md
 ├── .env.example
+├── .gitignore
 └── [tool configs]               # .clauderules, .cursorrules, etc.
 
 ---

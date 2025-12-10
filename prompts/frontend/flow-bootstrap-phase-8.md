@@ -243,13 +243,14 @@ Proceeding to documentation generation...
 
 ✅ Context fully loaded and updated!
 
-🎉 Now generating final 4 documents:
+🎉 Now generating final 5 documents:
 
 1. docs/components-guide.md - Component architecture and patterns
 2. docs/state-management.md - State management strategy
 3. docs/contributing.md - Contribution guidelines
-4. AGENT.md - Universal AI configuration (master index)
-5. README.md - Project overview (consolidates all phases)
+4. .gitignore - Ignore patterns for your tech stack
+5. AGENT.md - Universal AI configuration (master index)
+6. README.md - Project overview (consolidates all phases)
 
 Generating...
 ```
@@ -303,6 +304,155 @@ Generating...
 
 ```
 ✅ Generated: .ai-flow/docs/contributing.md
+```
+
+---
+
+## 8.3.4: Generate .gitignore
+
+**IMPORTANT:** Generate a comprehensive `.gitignore` file based on the framework, bundler, and tools selected in previous phases.
+
+```
+📝 Generating .gitignore for your frontend stack...
+```
+
+**Strategy:**
+
+1. **Detect framework from Phase 3** (React, Vue, Angular, etc.)
+2. **Detect bundler/meta-framework** (Vite, Next.js, Create React App, etc.)
+3. **Detect package manager** (npm, yarn, pnpm)
+4. **Combine relevant patterns**
+
+**Base patterns for JavaScript/TypeScript projects:**
+
+```gitignore
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Production builds
+dist/
+build/
+.next/
+out/
+.nuxt/
+.output/
+.vite/
+*.local
+
+# Environment variables
+.env
+.env*.local
+.env.production
+
+# IDE
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+
+# TypeScript
+*.tsbuildinfo
+.tsbuildinfo
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Cache
+.cache/
+.parcel-cache/
+.turbo/
+.eslintcache
+.stylelintcache
+
+# Storybook
+storybook-static/
+```
+
+**Framework-specific additions:**
+
+**Next.js:**
+
+```gitignore
+# Next.js
+.next/
+out/
+next-env.d.ts
+```
+
+**Vite:**
+
+```gitignore
+# Vite
+dist/
+.vite/
+```
+
+**Angular:**
+
+```gitignore
+# Angular
+/dist/
+/tmp/
+/out-tsc/
+/bazel-out/
+.angular/
+```
+
+**Vue (with Vite):**
+
+```gitignore
+# Vue
+dist/
+.vite/
+```
+
+**Nuxt:**
+
+```gitignore
+# Nuxt
+.nuxt/
+.output/
+.nitro/
+.cache/
+```
+
+**📝 Action:** Generate and write `.gitignore` to project root.
+
+**Selection logic:**
+
+- If React + Vite → Base + Vite patterns
+- If Next.js → Base + Next.js patterns
+- If Angular → Base + Angular patterns
+- If Vue + Vite → Base + Vite patterns
+- If Nuxt → Base + Nuxt patterns
+
+```
+✅ Generated: .gitignore
+   Patterns included: [Framework] + [Bundler] + Base JavaScript patterns
 ```
 
 ---
@@ -569,7 +719,7 @@ All validations passed!
 ```
 🎉 AI Flow Complete!
 
-Generated 14 documents successfully:
+Generated 15 documents successfully:
 
 Phase 1:
 ✅ project-brief.md
@@ -597,6 +747,7 @@ Phase 8:
 ✅ docs/components-guide.md
 ✅ docs/state-management.md
 ✅ docs/contributing.md
+✅ .gitignore
 ✅ README.md
 ✅ AGENT.md
 
@@ -634,6 +785,7 @@ your-project/
 ├── [framework files]            # If initialized
 ├── README.md
 ├── .env.example
+├── .gitignore
 └── [tool configs]               # .clauderules, .cursorrules, etc.
 
 ---
