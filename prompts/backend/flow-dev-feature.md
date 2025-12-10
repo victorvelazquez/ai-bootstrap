@@ -32,7 +32,9 @@ Ask 3-5 key questions to understand requirements:
 3. **What database entities/models?**
 4. **Special requirements?** (real-time, authentication, etc.)
 
-**Generate:** `.ai-flow/work/feature-[name]/spec.md`
+**Generate:** `.ai-flow/work/NNN-feature-name/spec.md`
+
+**Example:** `.ai-flow/work/003-user-authentication/spec.md`
 
 **Example interaction:**
 
@@ -55,6 +57,35 @@ Special requirements? (real-time, auth, etc.)
 ```
 
 ### Phase 2: Technical Plan (1 minute - auto-generated)
+
+#### Step 2.1: Auto-Assign Feature Number
+
+**Generate sequential feature number for tracking and organization:**
+
+```
+🔢 Assigning feature number...
+
+Scanning .ai-flow/work/ directory...
+Last feature: 002-notifications
+New feature: 003-[feature-name]
+
+Creating: .ai-flow/work/003-[feature-name]/
+```
+
+**Numbering Rules:**
+
+- Auto-increment from existing features in `.ai-flow/work/`
+- Format: `NNN-feature-name` (e.g., `001-auth`, `002-notifications`)
+- Slug: Lowercase, hyphens, no special characters
+- If no existing features → Start at `001`
+
+**Example transformations:**
+
+- "User Authentication" → `003-user-authentication`
+- "Payment Processing" → `004-payment-processing`
+- "Real-Time Notifications" → `005-real-time-notifications`
+
+#### Step 2.2: Analyze Project Context
 
 Based on the project's detected stack and existing patterns, auto-generate a technical plan.
 
@@ -175,7 +206,9 @@ Organize tasks into logical phases:
 - Dependencies between phases
 - Estimated time per phase
 
-**Generate:** `.ai-flow/work/feature-[name]/plan.md`
+**Generate:** `.ai-flow/work/NNN-feature-name/plan.md`
+
+**Example:** `.ai-flow/work/003-user-authentication/plan.md`
 
 **Example output (SIMPLE):**
 
@@ -1024,7 +1057,9 @@ To resume: /work resume feature-[name]
 
 ```
 
-**Generate:** `.ai-flow/work/feature-[name]/tasks.md` (with ✅ checkmarks)
+**Generate:** `.ai-flow/work/NNN-feature-name/tasks.md` (with ✅ checkmarks)
+
+**Example:** `.ai-flow/work/003-user-authentication/tasks.md`
 
 **Implementation rules:**
 
@@ -1203,22 +1238,26 @@ https://github.com/[user]/[repo]/compare/main...feature/auth-jwt-system
 ### During workflow (work directory):
 
 ```
-.ai-flow/work/feature-[name]/
+.ai-flow/work/NNN-feature-name/
 ├── spec.md          # What is being built
 ├── plan.md          # How it will be built
 ├── tasks.md         # Checklist with ✅
 ├── status.json      # Metadata (progress, timestamps)
+
+**Example:** `.ai-flow/work/003-user-authentication/`
 └── implementation.md # Optional implementation notes
 ```
 
 ### After completion (archive):
 
 ```
-.ai-flow/archive/YYYY-MM/feature-[name]/
+.ai-flow/archive/YYYY-MM/NNN-feature-name/
 ├── spec.md
 ├── plan.md
 ├── tasks.md
 └── summary.md       # Final summary with stats
+
+**Example:** `.ai-flow/archive/2025-01/003-user-authentication/`
 ```
 
 ---
