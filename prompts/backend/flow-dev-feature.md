@@ -94,9 +94,67 @@ Estimate complexity using industry-standard Fibonacci Story Points:
 | **8 SP**     | Complex    | 2-3 days     | Auth flow, complex validation        |
 | **13 SP**    | Large      | 1 week       | Complete module with full tests      |
 | **21 SP**    | Very Large | 2 weeks      | Major feature with integration       |
+| **34 SP**    | Epic       | 3 weeks      | Multiple related features (Epic-level) |
 
 > **Note:** Times assume experienced developer with AI assistance.
 > Without AI: multiply by 2-3x.
+
+### Story Points to Time Conversion (Hybrid Estimation)
+
+**Use this table to add precise time estimates to each task:**
+
+| Story Points | Time Estimate (solo dev) | Time Range      | Example Task                          |
+|--------------|--------------------------|-----------------|---------------------------------------|
+| **1 SP**     | 1-2 hours                | (~1-2h)         | Add enum value, simple config change  |
+| **2 SP**     | 3-4 hours                | (~3-4h)         | Write 5-8 unit tests, basic validation|
+| **3 SP**     | 4-8 hours                | (~4-8h)         | Simple CRUD endpoint, basic entity    |
+| **5 SP**     | 1-2 days                 | (~1-2d)         | Complex endpoint with business logic  |
+| **8 SP**     | 2-3 days                 | (~2-3d)         | Auth flow, complex validation         |
+| **13 SP**    | 1 week                   | (~1w)           | Complete module with full test coverage|
+| **21 SP**    | 2 weeks                  | (~2w)           | Major feature with integration        |
+| **34 SP**    | 3 weeks                  | (~3w)           | Multiple related features (Epic-level)|
+
+> **Note:** Time assumes AI-assisted development (Copilot/Claude). Without AI, multiply by 2-3x.
+> For team velocity adjustment, track actual time vs estimates after 2-3 features.
+
+### Task Format Reference (Spec-Kit Inspired)
+
+**Every task must follow this format:**
+
+```markdown
+- [ ] [TaskID] [Optional:P] Description • SP (~time)
+      File: exact/path/to/file.ts
+      Dependencies: T001, T002 (or "None")
+```
+
+**Components explained:**
+
+- **[TaskID]**: Sequential ID in execution order (T001, T002, ..., T099, T100)
+- **[P] marker**: ONLY for parallelizable tasks (different files, no blocking deps)
+- **Description**: What to implement (specific, LLM-completable without additional context)
+- **• SP (~time)**: Hybrid estimation - Story Points + time (e.g., "2 SP (~3-4h)", "5 SP (~1-2d)")
+- **File path**: Exact file where work happens (REQUIRED)
+- **Dependencies**: Which tasks must complete first (REQUIRED, even if "None")
+
+**Task Sequencing Rules:**
+
+1. Tests BEFORE implementation (TDD approach) when applicable
+2. Models → Services → Controllers → Endpoints
+3. Core utilities BEFORE features that use them
+4. Database migrations BEFORE data access code
+5. Interfaces BEFORE implementations
+
+**Parallelization Rules ([P] marker):**
+
+✅ **Use [P] when:**
+- Tasks target different files
+- No shared dependencies
+- Can run simultaneously (e.g., independent entities, different test suites)
+
+❌ **Don't use [P] when:**
+- Task depends on another incomplete task
+- Same file is modified
+- Shared resource (DB migration, config file)
 
 **Phase Structure (for MEDIUM/COMPLEX/LARGE):**
 
@@ -128,7 +186,7 @@ Organize tasks into logical phases:
 
 Based on your project (Node.js + Express + PostgreSQL):
 
-**Complexity:** SIMPLE (8 tasks) • 3 SP
+**Complexity:** SIMPLE (8 tasks) • 3 SP (~15-20 min)
 ⏱️ **Est. Time:** 15-20 minutes
 
 **Stack decisions:**
@@ -139,15 +197,42 @@ Based on your project (Node.js + Express + PostgreSQL):
 - src/controllers/UserController.ts
 - tests/user.test.ts
 
-**Tasks:**
-- [ ] Add email field to User entity (1 SP)
-- [ ] Update UserController validation (0.5 SP)
-- [ ] Add migration for email column (0.5 SP)
-- [ ] Update existing tests (0.5 SP)
-- [ ] Add email validation tests (0.5 SP)
-- [ ] Update API documentation (trivial)
-- [ ] Update data model documentation (trivial)
-- [ ] Test endpoint manually (trivial)
+**Tasks:** (execution order with hybrid estimation)
+
+- [ ] [T001] Add email field to User entity • 1 SP (~1-2h)
+      File: src/entities/User.entity.ts
+      Dependencies: None
+
+- [ ] [T002] Add migration for email column • 1 SP (~1h)
+      File: src/migrations/002_add_email_to_users.ts
+      Dependencies: T001 (needs entity schema)
+
+- [ ] [T003] [P] Update UserController validation • 1 SP (~1h)
+      File: src/controllers/UserController.ts
+      Dependencies: T001 (needs entity field)
+
+- [ ] [T004] [P] Update existing user tests • 1 SP (~1h)
+      File: tests/user.test.ts
+      Dependencies: T001 (can run parallel with T003)
+
+- [ ] [T005] Add email validation tests • 1 SP (~1-2h)
+      File: tests/user.test.ts
+      Dependencies: T003 (needs controller validation)
+
+- [ ] [T006] [P] Update API documentation • trivial (~15 min)
+      File: docs/api.md
+      Dependencies: None (can run parallel)
+
+- [ ] [T007] [P] Update data model documentation • trivial (~15 min)
+      File: docs/data-model.md
+      Dependencies: None (can run parallel)
+
+- [ ] [T008] Test endpoint manually • trivial (~10 min)
+      Dependencies: T005 (needs all code complete)
+
+**Parallelization Notes:**
+- T003 and T004 can run in parallel (different concerns)
+- T006 and T007 can run in parallel (different docs)
 
 **Total:** 3 SP (~15-20 min with AI assistance)
 
@@ -163,67 +248,322 @@ Review plan? (Y/n)
 
 Based on your project (Node.js + Express + PostgreSQL):
 
-**Complexity:** COMPLEX (52 tasks across 5 phases) • 34 SP
-⏱️ **Est. Time:** 2-3 hours
+**Complexity:** COMPLEX (52 tasks across 5 phases) • 34 SP (~2-3 hours)
+⏱️ **Est. Time:** 2-3 hours (with AI assistance)
 
 **Stack decisions:**
 - Auth: JWT with jsonwebtoken ⭐
 - Validation: joi ⚡
 - Email: nodemailer 📧
 
-## Phase 1: Data Layer • 8 SP
-⏱️ **Est. Time:** 30-40 min
+## Phase 1: Data Layer • 8 SP (~30-40 min)
 
-- [ ] 1.1 Create User entity (2 SP)
-- [ ] 1.2 Create Session entity (1 SP)
-- [ ] 1.3 Create RefreshToken entity (1 SP)
-- [ ] 1.4 Create migrations (1 SP)
-- [ ] 1.5 Create UserRepository (1 SP)
-- [ ] 1.6 Create SessionRepository (1 SP)
-- [ ] 1.7 Create RefreshTokenRepository (1 SP)
-- [ ] ... (4 more tasks)
+**Tasks:** (Test-First approach, execution order)
 
-## Phase 2: Business Logic • 13 SP
-⏱️ **Est. Time:** 50-60 min
+- [ ] [T001] [P] Write unit tests for User entity (8 tests) • 2 SP (~3-4h)
+      File: tests/unit/entities/User.entity.spec.ts
+      Tests: email format, password hashing, role validation, timestamps
+      Dependencies: None (can run parallel with T003, T005)
 
-- [ ] 2.1 Create AuthService (3 SP)
-- [ ] 2.2 Create TokenService (2 SP)
-- [ ] 2.3 Create EmailService (2 SP)
-- [ ] 2.4 Implement password hashing (1 SP)
-- [ ] 2.5 Implement JWT generation (2 SP)
-- [ ] 2.6 Implement refresh token rotation (2 SP)
-- [ ] 2.7 Email verification flow (1 SP)
-- [ ] ... (8 more tasks)
+- [ ] [T002] Create User entity with validation • 2 SP (~3-4h)
+      File: src/entities/User.entity.ts
+      Implements: Email regex, password bcrypt, role enum, timestamps
+      Dependencies: None
 
-## Phase 3: API Layer • 8 SP
-⏱️ **Est. Time:** 30-40 min
+- [ ] [T003] [P] Write unit tests for Session entity (4 tests) • 1 SP (~1-2h)
+      File: tests/unit/entities/Session.entity.spec.ts
+      Tests: session creation, expiration, invalidation
+      Dependencies: None (can run parallel with T001)
 
-- [ ] 3.1 Create AuthController (3 SP)
-- [ ] 3.2 Create auth middleware (2 SP)
-- [ ] 3.3 Create validation schemas (1 SP)
-- [ ] 3.4 Create DTOs (1 SP)
-- [ ] 3.5 Setup routes (1 SP)
-- [ ] ... (7 more tasks)
+- [ ] [T004] Create Session entity • 1 SP (~1-2h)
+      File: src/entities/Session.entity.ts
+      Implements: User FK, token, expiration, status
+      Dependencies: T002 (needs User entity)
 
-## Phase 4: Integration • 3 SP
-⏱️ **Est. Time:** 15-20 min
+- [ ] [T005] [P] Write unit tests for RefreshToken entity (4 tests) • 1 SP (~1-2h)
+      File: tests/unit/entities/RefreshToken.entity.spec.ts
+      Tests: token generation, rotation, revocation
+      Dependencies: None (can run parallel with T001, T003)
 
-- [ ] 4.1 Connect services to controllers (1 SP)
-- [ ] 4.2 Add error handling middleware (1 SP)
-- [ ] 4.3 Configure CORS and security headers (1 SP)
-- [ ] ... (5 more tasks)
+- [ ] [T006] Create RefreshToken entity • 1 SP (~1-2h)
+      File: src/entities/RefreshToken.entity.ts
+      Implements: User FK, token, expiration, rotation tracking
+      Dependencies: T002 (needs User entity)
 
-## Phase 5: Testing & Docs • 2 SP
-⏱️ **Est. Time:** 10-15 min
+- [ ] [T007] Create database migrations • 1 SP (~1-2h)
+      File: src/migrations/001_create_auth_tables.ts
+      Creates: users, sessions, refresh_tokens tables with indexes
+      Dependencies: T002, T004, T006 (needs all entity schemas)
 
-- [ ] 5.1 Unit tests for services (1 SP)
-- [ ] 5.2 Integration tests for API (1 SP)
-- [ ] 5.3 Update documentation (trivial)
-- [ ] ... (4 more tasks)
+- [ ] [T008] Create IUserRepository interface • 1 SP (~1h)
+      File: src/repositories/interfaces/IUserRepository.ts
+      Methods: create, findById, findByEmail, update, delete
+      Dependencies: T002 (needs User entity type)
+
+- [ ] [T009] Implement UserRepository • 1 SP (~1-2h)
+      File: src/repositories/UserRepository.ts
+      Implements: All CRUD methods from IUserRepository
+      Dependencies: T002, T008
+
+- [ ] [T010] Create SessionRepository • 1 SP (~1h)
+      File: src/repositories/SessionRepository.ts
+      Methods: create, findByToken, invalidate, findActiveByUser
+      Dependencies: T004 (needs Session entity)
+
+- [ ] [T011] Create RefreshTokenRepository • 1 SP (~1h)
+      File: src/repositories/RefreshTokenRepository.ts
+      Methods: create, findByToken, revoke, rotateToken
+      Dependencies: T006 (needs RefreshToken entity)
+
+**Task Execution Graph (Phase 1):**
+
+```
+T001 [P] ──┐
+T003 [P] ──┼──> (Tests can run parallel)
+T005 [P] ──┘
+
+T002 ──┬──> T004
+       ├──> T006
+       ├──> T007 (needs T002, T004, T006)
+       ├──> T008 ──> T009
+       │
+       └──> T010 (needs T004)
+            T011 (needs T006)
+```
+
+**Parallelization Notes (Phase 1):**
+- T001, T003, T005 can run in parallel (different test files)
+- T002 is foundational (blocks T004, T006, T008, T009)
+- T010 and T011 can run in parallel after T004/T006 complete
+
+## Phase 2: Business Logic • 13 SP (~50-60 min)
+
+**Tasks:**
+
+- [ ] [T012] [P] Write unit tests for AuthService (12 tests) • 3 SP (~4-8h)
+      File: tests/unit/services/AuthService.spec.ts
+      Tests: register, login, logout, refresh, email verification
+      Dependencies: None (can run parallel with T014, T016)
+
+- [ ] [T013] Create AuthService • 3 SP (~4-8h)
+      File: src/services/AuthService.ts
+      Implements: register, login, logout, refresh, verify email
+      Dependencies: T009, T010, T011 (needs all repositories)
+
+- [ ] [T014] [P] Write unit tests for TokenService (8 tests) • 2 SP (~3-4h)
+      File: tests/unit/services/TokenService.spec.ts
+      Tests: JWT generation, verification, refresh token rotation
+      Dependencies: None (can run parallel with T012)
+
+- [ ] [T015] Create TokenService • 2 SP (~3-4h)
+      File: src/services/TokenService.ts
+      Implements: generateAccessToken, generateRefreshToken, verifyToken
+      Dependencies: None (utility service)
+
+- [ ] [T016] [P] Write unit tests for EmailService (6 tests) • 2 SP (~3-4h)
+      File: tests/unit/services/EmailService.spec.ts
+      Tests: send verification email, send password reset
+      Dependencies: None (can run parallel with T012, T014)
+
+- [ ] [T017] Create EmailService • 2 SP (~3-4h)
+      File: src/services/EmailService.ts
+      Implements: sendVerificationEmail, sendPasswordResetEmail
+      Dependencies: None (3rd party wrapper)
+
+- [ ] [T018] Implement password hashing utility • 1 SP (~1-2h)
+      File: src/utils/password.util.ts
+      Implements: hashPassword, comparePassword using bcrypt
+      Dependencies: None
+
+- [ ] [T019] Implement JWT generation logic • 2 SP (~3-4h)
+      File: src/utils/jwt.util.ts
+      Implements: sign, verify, decode JWT with RS256
+      Dependencies: None
+
+- [ ] [T020] Implement refresh token rotation • 2 SP (~3-4h)
+      File: src/utils/token-rotation.util.ts
+      Implements: rotation detection, security checks
+      Dependencies: T015 (needs TokenService)
+
+- [ ] [T021] Implement email verification flow • 1 SP (~1-2h)
+      File: src/services/EmailVerificationService.ts
+      Implements: generate verification token, verify token
+      Dependencies: T017 (needs EmailService)
+
+**Task Execution Graph (Phase 2):**
+
+```
+T012 [P] ──┐
+T014 [P] ──┼──> (Test suites can run parallel)
+T016 [P] ──┘
+
+T009, T010, T011 (from Phase 1) ──> T013 (AuthService)
+
+T015 (TokenService) ──> T020 (Token rotation)
+T017 (EmailService) ──> T021 (Email verification)
+T018 (Password utils) ──> T013 (used by AuthService)
+T019 (JWT utils) ──> T013 (used by AuthService)
+```
+
+**Parallelization Notes (Phase 2):**
+- All test tasks (T012, T014, T016) can run in parallel
+- T015, T017, T018, T019 can run in parallel (independent utilities)
+- T013 blocks on T009, T010, T011 from Phase 1
+
+## Phase 3: API Layer • 8 SP (~30-40 min)
+
+**Tasks:**
+
+- [ ] [T022] [P] Write integration tests for AuthController (10 tests) • 3 SP (~4-8h)
+      File: tests/integration/controllers/AuthController.spec.ts
+      Tests: POST /register, POST /login, POST /refresh, POST /logout
+      Dependencies: None (can run parallel with T024)
+
+- [ ] [T023] Create AuthController • 3 SP (~4-8h)
+      File: src/controllers/AuthController.ts
+      Implements: register, login, refresh, logout, verifyEmail endpoints
+      Dependencies: T013 (needs AuthService)
+
+- [ ] [T024] [P] Write unit tests for auth middleware (6 tests) • 2 SP (~3-4h)
+      File: tests/unit/middleware/auth.middleware.spec.ts
+      Tests: JWT verification, token extraction, error handling
+      Dependencies: None (can run parallel with T022)
+
+- [ ] [T025] Create auth middleware • 2 SP (~3-4h)
+      File: src/middleware/auth.middleware.ts
+      Implements: requireAuth, optionalAuth, requireRole
+      Dependencies: T015 (needs TokenService)
+
+- [ ] [T026] Create validation schemas • 1 SP (~1-2h)
+      File: src/validators/auth.validators.ts
+      Implements: Joi schemas for register, login, refresh payloads
+      Dependencies: None
+
+- [ ] [T027] Create DTOs • 1 SP (~1-2h)
+      File: src/dtos/auth.dto.ts
+      Implements: RegisterDTO, LoginDTO, AuthResponseDTO
+      Dependencies: None
+
+- [ ] [T028] Setup auth routes • 1 SP (~1h)
+      File: src/routes/auth.routes.ts
+      Implements: Route registration with validation and middleware
+      Dependencies: T023, T025, T026 (needs controller, middleware, validators)
+
+**Task Execution Graph (Phase 3):**
+
+```
+T022 [P] ──┐
+T024 [P] ──┘──> (Test suites can run parallel)
+
+T013 (AuthService) ──> T023 (AuthController)
+T015 (TokenService) ──> T025 (Auth middleware)
+
+T026 (Validators) ──┐
+T027 (DTOs)        ├──> T028 (Routes)
+T023 (Controller)  ┘
+T025 (Middleware) ─┘
+```
+
+## Phase 4: Integration • 3 SP (~15-20 min)
+
+**Tasks:**
+
+- [ ] [T029] Connect services to controllers • 1 SP (~1-2h)
+      File: src/app.ts
+      Implements: Dependency injection setup for controllers
+      Dependencies: T023 (needs AuthController)
+
+- [ ] [T030] Add global error handling middleware • 1 SP (~1-2h)
+      File: src/middleware/error.middleware.ts
+      Implements: Catch all errors, format responses, log errors
+      Dependencies: None
+
+- [ ] [T031] Configure CORS and security headers • 1 SP (~1h)
+      File: src/middleware/security.middleware.ts
+      Implements: CORS config, Helmet setup, rate limiting
+      Dependencies: None
+
+- [ ] [T032] Register auth routes in main app • trivial (~30 min)
+      File: src/app.ts
+      Implements: app.use('/api/auth', authRoutes)
+      Dependencies: T028 (needs auth routes)
+
+- [ ] [T033] Add environment variable validation • 1 SP (~1h)
+      File: src/config/env.validation.ts
+      Implements: Validate JWT_SECRET, DATABASE_URL, EMAIL config
+      Dependencies: None
+
+**Task Execution Graph (Phase 4):**
+
+```
+T030, T031, T033 [P] ──> (Can run parallel - different concerns)
+
+T028 ──> T029 ──> T032 (Sequential: routes → DI → registration)
+```
+
+## Phase 5: Testing & Docs • 2 SP (~10-15 min)
+
+**Tasks:**
+
+- [ ] [T034] Run full test suite and fix issues • 1 SP (~1-2h)
+      File: N/A (command: npm test)
+      Validates: All 47 tests passing, coverage ≥ 80%
+      Dependencies: T001-T033 (needs all tests written)
+
+- [ ] [T035] Integration test for complete auth flow • 1 SP (~1-2h)
+      File: tests/integration/auth-flow.spec.ts
+      Tests: Full flow from register → login → refresh → logout
+      Dependencies: T034 (needs all individual tests passing)
+
+- [ ] [T036] [P] Update API documentation • trivial (~20 min)
+      File: docs/api.md
+      Updates: Add 5 auth endpoints with request/response examples
+      Dependencies: None (can run parallel with T037, T038)
+
+- [ ] [T037] [P] Update data model documentation • trivial (~15 min)
+      File: docs/data-model.md
+      Updates: Add User, Session, RefreshToken entities with relationships
+      Dependencies: None (can run parallel with T036, T038)
+
+- [ ] [T038] [P] Update security documentation • trivial (~15 min)
+      File: specs/security.md
+      Updates: Document JWT flow, refresh token rotation, password policy
+      Dependencies: None (can run parallel with T036, T037)
+
+- [ ] [T039] Add environment variables to .env.example • trivial (~10 min)
+      File: .env.example
+      Updates: Add JWT_SECRET, JWT_EXPIRATION, REFRESH_TOKEN_EXPIRATION
+      Dependencies: None
+
+**Task Execution Graph (Phase 5):**
+
+```
+T001-T033 ──> T034 (Run all tests) ──> T035 (E2E flow test)
+
+T036 [P] ──┐
+T037 [P] ──┼──> (Documentation updates can run parallel)
+T038 [P] ──┘
+
+T039 (env example) ──> (Independent, can run anytime)
+```
+
+**Parallelization Notes (Phase 5):**
+- All documentation tasks (T036, T037, T038) can run in parallel
+- T034 must complete before T035 (E2E depends on unit/integration tests)
+- T039 is independent and can run anytime
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-**Total:** 34 SP • 52 tasks • ~2-3 hours with AI assistance
+**Total:** 34 SP • 39 tasks • ~2-3 hours with AI assistance
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+**Parallelization Summary:**
+- ✅ Phase 1: 3 test tasks parallel (T001, T003, T005)
+- ✅ Phase 2: 3 test tasks + 4 utility tasks parallel
+- ✅ Phase 3: 2 test tasks parallel (T022, T024)
+- ✅ Phase 4: 3 tasks parallel (T030, T031, T033)
+- ✅ Phase 5: 3 documentation tasks parallel (T036, T037, T038)
+- ⚡ With 2 devs: ~40% time savings via parallelization
+- ⚡ With 3 devs: ~50% time savings via parallelization
 
 Review plan? (Y/n)
 ```
