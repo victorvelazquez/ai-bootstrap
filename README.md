@@ -127,7 +127,7 @@ Or using uv (Python tool manager):
 uv tool install ai-flow-dev
 ```
 
-**Current version:** 1.0.4
+**Current version:** 1.1.0
 
 ---
 
@@ -183,12 +183,25 @@ ai-flow init .
 # Hybrid mode (some flags, some prompts)
 ai-flow init . --ai claude
 
+# Specify project type directly
+ai-flow init . --type backend
+
+# Combine type with AI tool
+ai-flow init . --ai claude --type fullstack
+
 # Enable verbose output (detailed logging)
 ai-flow init . --verbose
 ai-flow check --verbose
 
 # Simulate initialization without writing files (dry-run)
 ai-flow init . --dry-run --verbose
+
+# Show detailed help with all commands and options
+ai-flow --help
+
+# Show help for specific command
+ai-flow init --help
+ai-flow check --help
 ```
 
 ---
