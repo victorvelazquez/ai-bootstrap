@@ -50,7 +50,7 @@ describe('template rendering', () => {
       }
     );
 
-    const aiInstructions = path.join(tempDir, '.ai-flow', 'templates', 'ai-instructions.md');
+    const aiInstructions = path.join(tempDir, 'ai-instructions.md');
     expect(fs.existsSync(aiInstructions)).toBe(true);
     const content = fs.readFileSync(aiInstructions, 'utf8');
 

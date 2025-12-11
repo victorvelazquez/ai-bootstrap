@@ -289,13 +289,12 @@ async function renderTemplates(
 ): Promise<void> {
   const spinner = ora('Generating documentation from templates...').start();
   try {
-    const templatesTarget = path.join(targetPath, '.ai-flow', 'templates');
+    // All generated files go to project root, not .ai-flow/templates/
     if (dryRun) {
       spinner.succeed('Documentation generated from templates (dry-run)');
       return;
     }
-    await assertDirWritable(templatesTarget);
-    await fs.ensureDir(templatesTarget);
+    await assertDirWritable(targetPath);
 
     // Find all .template.md and .template files in a directory and subfolders
     const walk = async (dir: string): Promise<string[]> => {
@@ -391,7 +390,8 @@ async function renderTemplates(
         continue;
       }
 
-      const destPath = path.join(templatesTarget, relPath);
+      // All files go to project root with their relative path structure
+      const destPath = path.join(targetPath, relPath);
       await fs.ensureDir(path.dirname(destPath));
       const templateContent = await fs.readFile(templateFile, 'utf8');
       // Render with EJS, leaving {{PLACEHOLDER}} for everything except name/description
