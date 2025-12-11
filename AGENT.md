@@ -438,7 +438,7 @@ Use Conventional Commits:
 Every change should be tested with the **full build flow**:
 
 1. Initialize a test project
-2. Run `/flow-build` command in AI tool
+2. Run `/flow-build` command in AI tool (or `/flow-build fase N` for specific phase)
 3. Verify generated documents are correct
 4. Check all placeholders are filled
 5. Ensure documentation is coherent

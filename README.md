@@ -262,23 +262,39 @@ After initialization, use these slash commands in your AI tool:
 > **Note:** Command prefix may vary by AI tool. Examples use `/flow-` (GitHub Copilot), but Claude may use `/` alone, Cursor may use `@`, etc. Check your tool's documentation.
 
 **Backend Projects:** 17 commands  
-**Frontend/Mobile Projects:** 11 commands (build + docs-sync)  
+**Frontend/Mobile Projects:** 2 commands (build + docs-sync)  
 **Fullstack Projects:** Combined backend + frontend commands
 
 **Documentation & Build:**
 
-- `/flow-build` - Full 9-phase project build (includes docs + setup + roadmap)
-- `/flow-build-phase-0` - Context discovery (existing projects)
-- `/flow-build-phase-1` - Business requirements
-- `/flow-build-phase-2` - Data architecture
-- `/flow-build-phase-3` - Technical architecture
-- `/flow-build-phase-4` - Security & compliance
-- `/flow-build-phase-5` - Code standards
-- `/flow-build-phase-6` - Testing strategy
-- `/flow-build-phase-7` - Deployment & operations
-- `/flow-build-phase-8` - Project setup & final documentation
-- `/flow-build-phase-9` - Implementation roadmap with Story Points (Backend only, optional)
+- `/flow-build` - Flujo completo: todas las fases en orden (9 fases backend, 8 frontend/mobile)
+- `/flow-build fase N` - Ejecutar fase específica (ver lista de fases abajo)
 - `/flow-docs-sync` - Update documentation when code changes
+
+**Fases disponibles (Backend):**
+
+- `/flow-build fase 0` - Context Discovery (solo proyectos existentes)
+- `/flow-build fase 1` - Discovery & Business
+- `/flow-build fase 2` - Data Architecture
+- `/flow-build fase 3` - System Architecture
+- `/flow-build fase 4` - Security & Authentication
+- `/flow-build fase 5` - Code Standards
+- `/flow-build fase 6` - Testing Strategy
+- `/flow-build fase 7` - Operations & Deployment
+- `/flow-build fase 8` - Project Setup & Final Documentation
+- `/flow-build fase 9` - Implementation Roadmap (opcional)
+
+**Fases disponibles (Frontend/Mobile):**
+
+- `/flow-build fase 0` - Context Discovery (solo proyectos existentes)
+- `/flow-build fase 1` - Discovery & UX / Platform Selection
+- `/flow-build fase 2` - Components & Framework / Navigation
+- `/flow-build fase 3` - State Management
+- `/flow-build fase 4` - Styling & Design / Permissions
+- `/flow-build fase 5` - Code Standards
+- `/flow-build fase 6` - Testing Strategy
+- `/flow-build fase 7` - Performance & Deployment / Store Deployment
+- `/flow-build fase 8` - Project Setup & Final Documentation
 
 **Workflows (Backend only):**
 

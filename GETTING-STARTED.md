@@ -16,14 +16,14 @@
 
 **Already familiar with AI Flow?** Jump directly to:
 
-| Link                                                 | Description                                                        |
-| ---------------------------------------------------- | ------------------------------------------------------------------ |
-| [Build Modes](#15-understanding-build-modes) | Interactive vs Smart Auto-Suggest                                  |
-| [CLI Flags Reference](#cli-flags-reference)          | All `init` command flags                                           |
-| [Commands Cheat Sheet](#commands-cheat-sheet)        | All 26+ commands organized                                         |
-| [Workflow Commands](#33-workflow-commands)           | `/flow-dev-feature`, `/flow-dev-fix`, `/flow-dev-review` workflows |
-| [Troubleshooting](#troubleshooting)                  | Common issues and solutions                                        |
-| [Best Practices](#best-practices)                    | Expert tips and recommendations                                    |
+| Link                                          | Description                                                        |
+| --------------------------------------------- | ------------------------------------------------------------------ |
+| [Build Modes](#15-understanding-build-modes)  | Interactive vs Smart Auto-Suggest                                  |
+| [CLI Flags Reference](#cli-flags-reference)   | All `init` command flags                                           |
+| [Commands Cheat Sheet](#commands-cheat-sheet) | All 26+ commands organized                                         |
+| [Workflow Commands](#33-workflow-commands)    | `/flow-dev-feature`, `/flow-dev-fix`, `/flow-dev-review` workflows |
+| [Troubleshooting](#troubleshooting)           | Common issues and solutions                                        |
+| [Best Practices](#best-practices)             | Expert tips and recommendations                                    |
 
 ---
 
@@ -84,12 +84,10 @@ ai-flow init .
 You'll be asked:
 
 1. **Which AI tool will you use?**
-
    - Select: `claude`, `cursor`, `copilot`, `gemini`, or `all`
    - This configures tool-specific files (`.clauderules`, `.cursorrules`, etc.)
 
 2. **What type of project?**
-
    - Select: `backend`, `frontend`, `fullstack`, or `mobile`
    - Each type generates different documentation sets
 
@@ -494,7 +492,7 @@ After initialization, you have access to **26+ slash commands**:
 ```
 
 /flow-build # Run full process (choose mode)
-/flow-build-phase-1-business # Run only Phase 1
+/flow-build fase 1 # Run only Phase 1
 /flow-docs-sync # Update docs when code changes
 
 ```
@@ -635,14 +633,14 @@ You can also run phases individually:
 
 ```
 
-/flow-build-phase-0-context # Context discovery (existing only)
-/flow-build-phase-1-business # Discovery & Business
-/flow-build-phase-2-data # Data Architecture
-/flow-build-phase-3-architecture # System Architecture
-/flow-build-phase-4-security # Security & Auth
-/flow-build-phase-5-standards # Code Standards
-/flow-build-phase-6-testing # Testing Strategy
-/flow-build-phase-7-operations # Operations & Deployment
+/flow-build fase 0 # Context discovery (existing only)
+/flow-build fase 1 # Discovery & Business
+/flow-build fase 2 # Data Architecture
+/flow-build fase 3 # System Architecture
+/flow-build fase 4 # Security & Auth
+/flow-build fase 5 # Code Standards
+/flow-build fase 6 # Testing Strategy
+/flow-build fase 7 # Operations & Deployment
 
 ```
 
@@ -650,14 +648,14 @@ You can also run phases individually:
 
 ```
 
-/flow-build-phase-0-context # Context discovery
-/flow-build-phase-1-discovery # Discovery & UX
-/flow-build-phase-2-components # Components & Framework
-/flow-build-phase-3-state # State Management
-/flow-build-phase-4-styling # Styling & Design
-/flow-build-phase-5-standards # Code Standards
-/flow-build-phase-6-testing # Testing Strategy
-/flow-build-phase-7-deployment # Deployment
+/flow-build fase 0 # Context discovery
+/flow-build fase 1 # Discovery & UX
+/flow-build fase 2 # Components & Framework
+/flow-build fase 3 # State Management
+/flow-build fase 4 # Styling & Design
+/flow-build fase 5 # Code Standards
+/flow-build fase 6 # Testing Strategy
+/flow-build fase 7 # Deployment
 
 ```
 
@@ -665,14 +663,14 @@ You can also run phases individually:
 
 ```
 
-/flow-build-phase-0-context # Context discovery
-/flow-build-phase-1-platform # Platform & Framework
-/flow-build-phase-2-navigation # Navigation & Architecture
-/flow-build-phase-3-state # State & Data Management
-/flow-build-phase-4-permissions # Permissions & Native Features
-/flow-build-phase-5-standards # Code Standards
-/flow-build-phase-6-testing # Testing Strategy
-/flow-build-phase-7-deployment # Deployment
+/flow-build fase 0 # Context discovery
+/flow-build fase 1 # Platform & Framework
+/flow-build fase 2 # Navigation & Architecture
+/flow-build fase 3 # State & Data Management
+/flow-build fase 4 # Permissions & Native Features
+/flow-build fase 5 # Code Standards
+/flow-build fase 6 # Testing Strategy
+/flow-build fase 7 # Deployment
 
 ````
 
@@ -1035,31 +1033,31 @@ Run specific Build Phases independently for targeted updates.
 
 ```
 # Security policies changed
-/flow-build-phase-4-security
+/flow-build fase 4
 
 # New testing requirements
-/flow-build-phase-6-testing
+/flow-build fase 6
 ```
 
 **Scenario 2: Onboard team members**
 
 ```
 # New backend developer joins
-/flow-build-phase-3-architecture
-/flow-build-phase-5-standards
+/flow-build fase 3
+/flow-build fase 5
 
 # New DevOps engineer joins
-/flow-build-phase-7-operations
+/flow-build fase 7
 ```
 
 **Scenario 3: Deep dive into complex areas**
 
 ```
 # Large data model redesign
-/flow-build-phase-2-data
+/flow-build fase 2
 
 # Architecture refactoring
-/flow-build-phase-3-architecture
+/flow-build fase 3
 ```
 
 #### Phase Command Reference
@@ -1067,46 +1065,46 @@ Run specific Build Phases independently for targeted updates.
 **All project types:**
 
 ```
-/flow-build-phase-0-context          # Context Discovery (existing projects)
+/flow-build fase 0          # Context Discovery (existing projects)
 ```
 
 **Backend-specific:**
 
 ```
-/flow-build-phase-1-business         # Discovery & Business (15-20 min)
-/flow-build-phase-2-data             # Data Architecture (15-20 min)
-/flow-build-phase-3-architecture     # System Architecture (15-20 min)
-/flow-build-phase-4-security         # Security & Auth (15-20 min)
-/flow-build-phase-5-standards        # Code Standards (15-20 min)
-/flow-build-phase-6-testing          # Testing Strategy (15-25 min)
-/flow-build-phase-7-operations       # Operations & Deployment (10 min)
-/flow-build-phase-8                  # Project Setup & Final Docs (10-15 min)
+/flow-build fase 1         # Discovery & Business (15-20 min)
+/flow-build fase 2             # Data Architecture (15-20 min)
+/flow-build fase 3     # System Architecture (15-20 min)
+/flow-build fase 4         # Security & Auth (15-20 min)
+/flow-build fase 5        # Code Standards (15-20 min)
+/flow-build fase 6          # Testing Strategy (15-25 min)
+/flow-build fase 7       # Operations & Deployment (10 min)
+/flow-build fase 8                  # Project Setup & Final Docs (10-15 min)
 ```
 
 **Frontend-specific:**
 
 ```
-/flow-build-phase-1-discovery        # Discovery & UX
-/flow-build-phase-2-components       # Components & Framework
-/flow-build-phase-3-state            # State Management
-/flow-build-phase-4-styling          # Styling & Design
-/flow-build-phase-5-standards        # Code Standards
-/flow-build-phase-6-testing          # Testing Strategy
-/flow-build-phase-7-deployment       # Deployment
-/flow-build-phase-8                  # Project Setup & Final Docs (10-15 min)
+/flow-build fase 1        # Discovery & UX
+/flow-build fase 2       # Components & Framework
+/flow-build fase 3            # State Management
+/flow-build fase 4          # Styling & Design
+/flow-build fase 5        # Code Standards
+/flow-build fase 6          # Testing Strategy
+/flow-build fase 7       # Deployment
+/flow-build fase 8                  # Project Setup & Final Docs (10-15 min)
 ```
 
 **Mobile-specific:**
 
 ```
-/flow-build-phase-1-platform         # Platform & Framework
-/flow-build-phase-2-navigation       # Navigation & Architecture
-/flow-build-phase-3-state            # State & Data Management
-/flow-build-phase-4-permissions      # Permissions & Native Features
-/flow-build-phase-5-standards        # Code Standards
-/flow-build-phase-6-testing          # Testing Strategy
-/flow-build-phase-7-deployment       # Deployment
-/flow-build-phase-8                  # Project Setup & Final Docs (10-15 min)
+/flow-build fase 1         # Platform & Framework
+/flow-build fase 2       # Navigation & Architecture
+/flow-build fase 3            # State & Data Management
+/flow-build fase 4      # Permissions & Native Features
+/flow-build fase 5        # Code Standards
+/flow-build fase 6          # Testing Strategy
+/flow-build fase 7       # Deployment
+/flow-build fase 8                  # Project Setup & Final Docs (10-15 min)
 ```
 
 #### Phase Dependencies
@@ -1139,16 +1137,16 @@ Phase 9 (Implementation Roadmap) → Optional (Backend only) - Story Points, Epi
 
 ```bash
 # 1. Update architecture decisions
-/flow-build-phase-3-architecture
+/flow-build fase 3
 
 # 2. Update testing to match new architecture
-/flow-build-phase-6-testing
+/flow-build fase 6
 
 # 3. Update operations for new deployment pattern
-/flow-build-phase-7-operations
+/flow-build fase 7
 
 # 4. Regenerate final docs and README
-/flow-build-phase-8
+/flow-build fase 8
 ```
 
 ### 3.3 Workflow Commands
@@ -1172,19 +1170,16 @@ Phase 9 (Implementation Roadmap) → Optional (Backend only) - Story Points, Epi
 **Workflow:**
 
 1. **Spec Creation** - Define feature requirements
-
    - User stories and acceptance criteria
    - API contracts and data structures
    - Dependencies and risks
 
 2. **Planning** - Break down into tasks
-
    - Technical approach
    - Step-by-step implementation plan
    - Testing strategy
 
 3. **Implementation** - Execute tasks
-
    - Write code following specs
    - Add tests for each task
    - Update documentation
@@ -1417,28 +1412,24 @@ Ready to continue! What would you like me to do?
 **Analysis Perspectives (5):**
 
 1. **🔒 Security**
-
    - SQL injection, XSS, CSRF vulnerabilities
    - Authentication/authorization issues
    - Secrets in code
    - Input validation gaps
 
 2. **⚡ Performance**
-
    - N+1 query problems
    - Missing database indexes
    - Memory leaks
    - Inefficient algorithms
 
 3. **🧪 Testing**
-
    - Test coverage gaps
    - Missing edge cases
    - Untested error paths
    - Integration test needs
 
 4. **📐 Architecture**
-
    - SOLID principles violations
    - DRY violations
    - High coupling
@@ -1803,13 +1794,13 @@ You can upgrade scope after initial build:
 
 ```bash
 # Initially chose MVP, now need Production-Ready
-/flow-build-phase-6-testing    # Expand testing strategy
-/flow-build-phase-7-operations # Add CI/CD and monitoring
+/flow-build fase 6    # Expand testing strategy
+/flow-build fase 7 # Add CI/CD and monitoring
 
 # Upgrading to Enterprise
-/flow-build-phase-4-security   # Add compliance docs
-/flow-build-phase-6-testing    # Add e2e tests
-/flow-build-phase-7-operations # Add disaster recovery
+/flow-build fase 4   # Add compliance docs
+/flow-build fase 6   # Add e2e tests
+/flow-build fase 7   # Add disaster recovery
 ```
 
 ---
@@ -1829,46 +1820,39 @@ ai-flow --version               # Show version (1.1.1)
 ai-flow --help                  # Show help
 ```
 
-#### Build Commands - Backend (9)
+#### Build Commands - Backend (2)
 
 ```
-/flow-build                           # Full 8-phase process (90-120 min)
-/flow-build-phase-0-context           # Context discovery (existing only)
-/flow-build-phase-1-business          # Discovery & Business
-/flow-build-phase-2-data              # Data Architecture
-/flow-build-phase-3-architecture      # System Architecture
-/flow-build-phase-4-security          # Security & Auth
-/flow-build-phase-5-standards         # Code Standards
-/flow-build-phase-6-testing           # Testing Strategy
-/flow-build-phase-7-operations        # Operations & Deployment
+/flow-build                      # Flujo completo (9 fases en orden)
+/flow-build fase N               # Fase específica (0-9)
 ```
 
 #### Build Commands - Frontend (9)
 
 ```
 /flow-build                           # Full 8-phase process
-/flow-build-phase-0-context           # Context discovery
-/flow-build-phase-1-discovery         # Discovery & UX
-/flow-build-phase-2-components        # Components & Framework
-/flow-build-phase-3-state             # State Management
-/flow-build-phase-4-styling           # Styling & Design
-/flow-build-phase-5-standards         # Code Standards
-/flow-build-phase-6-testing           # Testing Strategy
-/flow-build-phase-7-deployment        # Deployment
+/flow-build fase 0           # Context discovery
+/flow-build fase 1         # Discovery & UX
+/flow-build fase 2        # Components & Framework
+/flow-build fase 3             # State Management
+/flow-build fase 4           # Styling & Design
+/flow-build fase 5         # Code Standards
+/flow-build fase 6           # Testing Strategy
+/flow-build fase 7        # Deployment
 ```
 
 #### Build Commands - Mobile (9)
 
 ```
 /flow-build                           # Full 8-phase process
-/flow-build-phase-0-context           # Context discovery
-/flow-build-phase-1-platform          # Platform & Framework
-/flow-build-phase-2-navigation        # Navigation & Architecture
-/flow-build-phase-3-state             # State & Data Management
-/flow-build-phase-4-permissions       # Permissions & Native Features
-/flow-build-phase-5-standards         # Code Standards
-/flow-build-phase-6-testing           # Testing Strategy
-/flow-build-phase-7-deployment        # Deployment
+/flow-build fase 0           # Context discovery
+/flow-build fase 1          # Platform & Framework
+/flow-build fase 2        # Navigation & Architecture
+/flow-build fase 3             # State & Data Management
+/flow-build fase 4       # Permissions & Native Features
+/flow-build fase 5         # Code Standards
+/flow-build fase 6           # Testing Strategy
+/flow-build fase 7        # Deployment
 ```
 
 #### Workflow Commands - Backend Only (5)
@@ -1896,7 +1880,7 @@ ai-flow --help                  # Show help
 | Feature                 | Backend        | Frontend       | Mobile       | Fullstack   |
 | ----------------------- | -------------- | -------------- | ------------ | ----------- |
 | **Documents Generated** | 17             | 12             | 15           | ~20         |
-| **Build Phases**    | 8 (0-8)        | 8 (0-8)        | 8 (0-8)      | 16 (both)   |
+| **Build Phases**        | 8 (0-8)        | 8 (0-8)        | 8 (0-8)      | 16 (both)   |
 | **Workflow Commands**   | ✅ 5           | ❌ None        | ❌ None      | ✅ 5        |
 | **Context Detection**   | ✅ 3-layer     | ✅ 3-layer     | ✅ 3-layer   | ✅ 3-layer  |
 | **Languages Supported** | 12             | JavaScript/TS  | Native/Cross | Both        |
@@ -2033,7 +2017,6 @@ chmod 755 .
 **Solution:**
 
 1. **Check AI tool permissions:**
-
    - Verify AI can write files in project directory
    - Check for file system restrictions
 
@@ -2071,7 +2054,7 @@ chmod 755 .
 
 3. **Force full re-analysis:**
    ```
-   /flow-build-phase-0-context
+   /flow-build fase 0
    ```
 
 ### Best Practices
@@ -2181,6 +2164,3 @@ ai-flow init . --ai all --type backend --name "My API" --description "REST API" 
 **🚀 Ready to transform your development workflow with AI Flow!**
 
 For questions or support, visit [GitHub Issues](https://github.com/victorvelazquez/ai-flow/issues).
-
-
-
