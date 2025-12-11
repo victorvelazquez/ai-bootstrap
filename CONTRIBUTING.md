@@ -32,7 +32,7 @@ Thank you for your interest in contributing to AI Flow! This document provides g
 
 ### Prerequisites
 
-- Node.js 18 or higher
+- Node.js 20 or higher
 - npm or yarn
 - Git
 - A GitHub account
@@ -237,7 +237,6 @@ node dist/cli.js init test-project --ai all --name "Test" --description "Test"
 2. **Open a Pull Request** on GitHub
 
 3. **Fill out the PR template:**
-
    - Clear description of changes
    - Reference related issues
    - Screenshots (if UI changes)
@@ -355,7 +354,7 @@ ai-flow/
 ### Test Structure
 
 ```javascript
-describe("Feature Name", () => {
+describe('Feature Name', () => {
   beforeEach(() => {
     // Setup
   });
@@ -364,15 +363,15 @@ describe("Feature Name", () => {
     // Cleanup
   });
 
-  it("should do something specific", () => {
+  it('should do something specific', () => {
     // Arrange
-    const input = "test";
+    const input = 'test';
 
     // Act
     const result = someFunction(input);
 
     // Assert
-    expect(result).toBe("expected");
+    expect(result).toBe('expected');
   });
 });
 ```
