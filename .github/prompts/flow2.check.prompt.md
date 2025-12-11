@@ -1,8 +1,8 @@
 # Pre-PR Quality Checklist
 
-Execute comprehensive quality checks before creating a pull request. Automate verification of code quality, documentation, security, tests, and commit hygiene.
+Execute comprehensive quality checks before creating a pull request. Automate verification of code quality, formatting, build integrity, dependencies, and tests.
 
-**Display Behavior:** Show step title (`## Step N/8: Name`) in your response BEFORE executing commands in that step.
+**Display Behavior:** Show step title (`## Step N/6: Name`) in your response BEFORE executing commands in that step.
 
 ---
 
@@ -10,20 +10,18 @@ Execute comprehensive quality checks before creating a pull request. Automate ve
 
 Execute all steps sequentially. Stop only if critical issues are found.
 
-| Step | Action       | Commands                    | Requires Allow |
-| ---- | ------------ | --------------------------- | -------------- |
-| 1    | **Lint**     | `npm run lint`              | No             |
-| 2    | **Docs**     | Scan README/templates       | No             |
-| 3    | **Deps**     | `npm outdated`, `npm audit` | No             |
-| 4    | **Security** | `git grep` for secrets      | No             |
-| 5    | **Tests**    | `npm test`                  | No             |
-| 6    | **Commits**  | Invoke flow1 prompt         | Yes            |
-| 7    | **Push**     | `git push origin main`      | Yes            |
-| 8    | **Summary**  | Report results              | No             |
+| Step | Action       | Commands                      | Requires Allow |
+| ---- | ------------ | ----------------------------- | -------------- |
+| 1    | **Lint**     | `npm run lint`                | No             |
+| 2    | **Format**   | `npm run format:check`        | No             |
+| 3    | **Build**    | `npm run build`               | No             |
+| 4    | **Deps**     | `npm outdated`, `npm audit`   | No             |
+| 5    | **Tests**    | `npm test` + CLI validation   | No             |
+| 6    | **Summary**  | Report results                | No             |
 
 ---
 
-## 🔍 Step 1/8: Lint
+## 🔍 Step 1/6: Lint
 
 ```bash
 npm run lint
@@ -44,32 +42,103 @@ npm run lint
 
 ---
 
-## 📚 Step 2/8: Docs
+## 🎨 Step 2/6: Format
 
-Scan documentation files for quality issues:
+```bash
+npm run format:check
+```
 
-**Files to check:**
+**Report:**
 
-- `README.md`
-- `templates/AGENT.template.md`
-- `docs/*.md`
-
-**Checks:**
-
-- Search for `TODO`, `FIXME`, `DEPRECATED` markers
-- Verify internal links (files exist)
-- Check for version mismatches
+- Files not formatted
+- Total files checked
+- Suggestion to run `npm run format` if issues found
 
 **Example output:**
 
 ```
-✅ No outdated references
-⚠️ Found 1 TODO in README.md line 42
+✅ All files formatted correctly
+❌ 3 files not formatted:
+  - src/cli.ts
+  - src/fs-utils.ts
+  - __tests__/cli.test.js
+💡 Run: npm run format
 ```
 
 ---
 
-## 📦 Step 3/8: Deps
+## 🏗️ Step 3/6: Build
+
+```bash
+npm run build
+```
+
+**Report:**
+
+- TypeScript compilation status
+- Error count with file locations
+- Type errors with line numbers
+
+**Example output:**
+
+```
+✅ Build successful (0 errors)
+❌ Build failed with 2 type errors:
+  - src/cli.ts:125 - Type 'string' not assignable to 'number'
+  - src/fs-utils.ts:45 - Property 'xyz' does not exist
+```
+
+---
+
+## 🎨 Step 2/6: Format
+
+```bash
+npm run format:check
+```
+
+**Report:**
+
+- Files not formatted
+- Total files checked
+- Suggestion to run `npm run format` if issues found
+
+**Example output:**
+
+```
+✅ All files formatted correctly
+❌ 3 files not formatted:
+  - src/cli.ts
+  - src/fs-utils.ts
+  - __tests__/cli.test.js
+💡 Run: npm run format
+```
+
+---
+
+## 🏗️ Step 3/6: Build
+
+```bash
+npm run build
+```
+
+**Report:**
+
+- TypeScript compilation status
+- Error count with file locations
+- Type errors with line numbers
+
+**Example output:**
+
+```
+✅ Build successful (0 errors)
+❌ Build failed with 2 type errors:
+  - src/cli.ts:125 - Type 'string' not assignable to 'number'
+  - src/fs-utils.ts:45 - Property 'xyz' does not exist
+```
+
+---
+
+## 📦 Step 4/6: Deps
 
 ```bash
 npm outdated
@@ -105,30 +174,7 @@ npm audit
 
 ---
 
-## 🔐 Step 4/8: Security
-
-Scan for hardcoded secrets and sensitive data:
-
-```bash
-git grep -E '(password|secret|api_key|token)\s*=\s*["\047][^"\047]+["\047]'
-```
-
-**Checks:**
-
-- Hardcoded passwords/secrets
-- API keys in source
-- Sensitive data in logs
-
-**Example output:**
-
-```
-✅ No hardcoded secrets detected
-❌ Found potential secret in src/config.ts:12
-```
-
----
-
-## 🧪 Step 5/8: Tests
+## 🧪 Step 5/6: Tests
 
 ```bash
 npm test
@@ -142,59 +188,30 @@ npm test
 
 **Additional validation:**
 
-- After tests pass, check for **ESM/CommonJS compatibility issues**:
+- After tests pass, validate CLI execution:
   ```bash
-  npm run build && node dist/cli.js --version
+  node dist/cli.js --version
   ```
-- If build succeeds but execution fails with `ERR_REQUIRE_ESM` → **CRITICAL** (module mismatch)
+- If execution fails with `ERR_REQUIRE_ESM` → **CRITICAL** (module mismatch)
 
 **Example output:**
 
 ```
 ✅ 12/12 tests passed
+✅ Coverage: 87%
 ✅ All test suites passed
 
-✅ Build validation:
-  - npm run build: SUCCESS
-  - CLI execution: SUCCESS (v1.0.6)
+✅ CLI validation:
+  - CLI execution: SUCCESS (v2.0.0)
 
-❌ CRITICAL: Build succeeds but CLI execution fails:
+❌ CRITICAL: CLI execution fails:
   Error [ERR_REQUIRE_ESM]: require() of ES Module inquirer not supported
-  → Action: Check Step 3/8 for ESM/CommonJS compatibility issues
+  → Action: Check Step 4/6 for ESM/CommonJS compatibility issues
 ```
 
 ---
 
-## ✅ Step 6/8: Commits
-
-Invoke flow1.commit.prompt.md to generate conventional commits.
-
-**Process:**
-
-1. Detect changes (git status/diff)
-2. Group files by type
-3. Generate commits (requires Allow per commit)
-
-**Expected groups:**
-
-- `feat(cli)`: New features
-- `fix(cli)`: Bug fixes
-- `docs(prompts|templates|readme)`: Documentation
-- `chore(deps|config)`: Maintenance
-
----
-
-## 🚀 Step 7/8: Push
-
-```bash
-git push origin main
-```
-
-**User must click Allow.** If push fails, suggest resolution.
-
----
-
-## 📊 Step 8/8: Summary
+## 📊 Step 6/6: Summary
 
 Provide comprehensive execution report:
 
@@ -202,42 +219,35 @@ Provide comprehensive execution report:
 ## Pre-PR Check Results
 
 ✅ Lint: 0 errors, 2 warnings
-✅ Docs: No issues
+✅ Format: All files formatted correctly
+✅ Build: Compilation successful
 ⚠️ Deps: 2 outdated (1 major)
-✅ Security: Clean
 ✅ Tests: 24/24 passed, 87% coverage
-✅ Commits: 3 created
-  - abc1234 feat(cli): add new command
-  - def5678 docs(readme): update examples
-  - ghi9012 chore(deps): upgrade chalk
-✅ Push: Success
 
-📊 Total time: ~5 min
+📊 Total time: ~3 min
 ```
 
 ---
 
 ## Execution Model
 
-| Steps | Action           | User Interaction       |
-| ----- | ---------------- | ---------------------- |
-| 1-5   | Run checks       | Automatic              |
-| 6     | Generate commits | Click Allow per commit |
-| 7     | Push to remote   | Click Allow            |
-| 8     | Show summary     | Automatic              |
+| Steps | Action         | User Interaction |
+| ----- | -------------- | ---------------- |
+| 1-5   | Run checks     | Automatic        |
+| 6     | Show summary   | Automatic        |
 
 ## Error Handling
 
 ### Critical Errors (Stop Immediately)
 
 - ❌ Lint errors (not warnings)
+- ❌ Format errors (unformatted files)
+- ❌ Build failures (TypeScript compilation errors)
 - ❌ Test failures
-- ❌ Coverage below threshold
-- ❌ Security vulnerabilities (high/critical)
 - ❌ npm audit critical issues
 - ❌ **Type definition mismatch** (runtime vs @types/\* version gap > 1 major)
 - ❌ **ESM/CommonJS incompatibility** (ERR_REQUIRE_ESM errors)
-- ❌ **Build validation failure** (CLI doesn't execute after build)
+- ❌ **CLI execution failure** (after successful build)
 
 **Action:** Display error details with file/line numbers and stop execution.
 
@@ -260,14 +270,17 @@ Provide comprehensive execution report:
 
 **Required:**
 
-- Sequential execution (1→8)
+- Sequential execution (1→6)
 - Clear step titles before execution
 - Actionable error messages
 - Complete summary at end
 
-**Estimated Time:** 5-10 minutes (fully automated steps 1-5, 8)
+**Estimated Time:** 3-5 minutes (fully automated)
 
 ---
 
 **Reference:** Project quality standards  
-**Last Updated:** 2025-11-27
+**Last Updated:** 2025-12-11
+
+**Reference:** Project quality standards  
+**Last Updated:** 2025-12-11
