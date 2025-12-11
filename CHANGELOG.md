@@ -1,0 +1,193 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [2.1.0] - 2025-01-29
+
+### Added
+
+- **New Workflow Command:** `/flow-dev-commit` - Intelligent commit automation that analyzes changed files, groups them semantically (Feature Complete, Refactoring, Configuration, Tests, Documentation), generates Conventional Commits messages with dynamic scopes, and automates the commit process
+  - Framework-agnostic grouping patterns work with any language/stack
+  - Built-in Conventional Commits validation with regex enforcement
+  - 4-step workflow: Detect changes → Group intelligently → Generate commits → Show log + push
+  - Comprehensive documentation in README.md, GETTING-STARTED.md, and copilot-instructions.md
+
+### Changed
+
+- Updated version from 2.0.1 to 2.1.0
+
+## [2.0.1] - 2025-01-29
+
+### Changed
+
+- Updated Node.js requirement to 20.0.0 in prerequisites
+- Simplified flow3.docs to single approval for all changes
+- Updated Node.js requirement to 20+ and version to 2.0.0
+- Updated command syntax to unified flow-build with phase arguments
+
+### Fixed
+
+- Added .ai-flow/cache/ to gitignore
+- Verified phase files are not copied as slash commands
+
+## [2.0.0] - 2025-01-28
+
+### Changed
+
+- **BREAKING:** Renamed all bootstrap commands to build across entire codebase
+  - `/flow-bootstrap` → `/flow-build`
+  - Phase commands now use `/flow-build-phase-N` pattern
+- Updated dependencies and version to 2.0.0
+- Simplified code and improved readability
+- Updated prompt references and command list
+- Fixed template counts in documentation
+
+### Added
+
+- Complete frontend flow prompts (Phase 0-7) with renamed structure
+- Complete backend flow prompts (Phase 0-9) with renamed structure
+- Complete mobile flow prompts (Phase 0-8) with project setup
+- Phase 8 project setup for mobile and frontend
+- Phase 9 roadmap generation with Story Points using Fibonacci scale
+- Automatic feature numbering to development workflow
+- Phase detection logic to flow-build commands
+- Prettier configuration files
+
+### Removed
+
+- Old renamed prompt files
+- Constitution generation from Phase 8
+
+## [1.4.0] - 2025-01-27
+
+### Changed
+
+- Removed templates/shared dependency after AGENT consolidation
+- Simplified assumptions system to AI-based suggestions
+
+### Fixed
+
+- Removed templates/shared dependency after AGENT consolidation
+
+## [1.3.0] - 2025-01-26
+
+### Changed
+
+- Updated to use latest stable versions for all framework dependencies
+- Improved /fix command for COMPLEX bugs with Spec-Kit format
+- Improved /feature command with Spec-Kit task precision
+- Enhanced Phase 9 with Spec-Kit task generation strategy
+
+### Fixed
+
+- Fixed template counts and added Node.js version requirements
+
+## [1.2.0] - 2025-01-25
+
+### Changed
+
+- Updated CLI documentation accuracy and examples
+- Added default selection (option 1) to AI tool and project type prompts
+
+### Fixed
+
+- Used rawlist for project type selection to fix empty list in PowerShell
+
+## [1.1.2] - 2025-01-24
+
+### Fixed
+
+- Used rawlist instead of list for AI tool selection
+- Improved inquirer list rendering with pageSize and loop options
+- Resolved empty AI tools list in interactive prompt
+
+## [1.1.1] - 2025-01-23
+
+### Added
+
+- Added --help command examples for improved CLI discoverability
+
+### Removed
+
+- Removed CHANGELOG.md file (reinstated in 2.1.0)
+
+## [1.1.0] - 2025-01-22
+
+### Changed
+
+- Updated Commander version to 1.1.0
+
+## [1.0.4] - 2025-01-21
+
+### Fixed
+
+- Fixed documentation counts for frontend and mobile
+- Added CLI examples and improved troubleshooting
+
+### Changed
+
+- Updated Node.js requirement to 20.0.0 across all documentation
+- Updated GitHub Actions to Node.js 20.x
+- Updated Node.js requirement to >=20.0.0 for ESM dependencies
+
+## [1.0.3] - 2025-01-20
+
+### Fixed
+
+- Improved flow-project-init to merge AI Flow docs with framework files
+- Handled existing files in flow-project-init
+
+## [1.0.2] - 2025-01-19
+
+### Fixed
+
+- Removed unnecessary scripts folder creation
+
+### Changed
+
+- Renamed package to ai-flow-dev
+
+## [1.0.1] - 2025-01-18
+
+### Fixed
+
+- Fixed frontend documentation count
+- Fixed version and documentation counts
+
+### Changed
+
+- **BREAKING:** Renamed project commands to flow-project-* prefix
+- **BREAKING:** Standardized command naming to /flow- prefix pattern
+- Updated banner to display AI FLOW branding
+
+## [1.0.0] - 2025-01-17
+
+### Initial Release
+
+- CLI tool for AI-powered development workflows
+- Support for Backend, Frontend, Mobile, and Fullstack projects
+- Multi-AI tool support: Claude, Cursor, GitHub Copilot, Gemini
+- Complete documentation generation with 40+ templates
+- 10+ workflow commands (/flow-build, /flow-dev-feature, /flow-dev-fix, etc.)
+- Phase-based project initialization (Phase 0-9)
+- Slash command distribution for all AI tools
+- Comprehensive testing suite with Jest
+- ESM support with Node.js 20+
+
+[2.1.0]: https://github.com/victorvelazquez/ai-flow/compare/v2.0.1...v2.1.0
+[2.0.1]: https://github.com/victorvelazquez/ai-flow/compare/v2.0.0...v2.0.1
+[2.0.0]: https://github.com/victorvelazquez/ai-flow/compare/v1.4.0...v2.0.0
+[1.4.0]: https://github.com/victorvelazquez/ai-flow/compare/v1.3.0...v1.4.0
+[1.3.0]: https://github.com/victorvelazquez/ai-flow/compare/v1.2.0...v1.3.0
+[1.2.0]: https://github.com/victorvelazquez/ai-flow/compare/v1.1.2...v1.2.0
+[1.1.2]: https://github.com/victorvelazquez/ai-flow/compare/v1.1.1...v1.1.2
+[1.1.1]: https://github.com/victorvelazquez/ai-flow/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/victorvelazquez/ai-flow/compare/v1.0.4...v1.1.0
+[1.0.4]: https://github.com/victorvelazquez/ai-flow/compare/v1.0.3...v1.0.4
+[1.0.3]: https://github.com/victorvelazquez/ai-flow/compare/v1.0.2...v1.0.3
+[1.0.2]: https://github.com/victorvelazquez/ai-flow/compare/v1.0.1...v1.0.2
+[1.0.1]: https://github.com/victorvelazquez/ai-flow/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/victorvelazquez/ai-flow/releases/tag/v1.0.0

@@ -59,7 +59,7 @@ Verify installation:
 
 ```bash
 ai-flow --version
-# Output: 2.0.1
+# Output: 2.1.0
 ```
 
 _Note: Package name is `ai-flow-dev`, but the CLI command remains `ai-flow`_
