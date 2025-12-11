@@ -149,8 +149,8 @@ Use Conventional Commits format:
 - Use `@package.json` for dependencies and scripts
 - Run `/flow1.commit` for automated conventional commits
 - Run `/flow2.check` for pre-PR quality checks
-- Run `/flow3.release` for version publishing
-- Run `/flow4.readme` for README gap analysis
+- Run `/flow3.docs` for documentation gap analysis and auto-update
+- Run `/flow4.release` for version publishing
 
 ---
 

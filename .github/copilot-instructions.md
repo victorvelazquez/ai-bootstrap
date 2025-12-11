@@ -39,10 +39,10 @@
 - Review `prompts/backend/flow-build-phase-8.md` for project initialization logic (detects state, initializes framework, generates final docs).
 - Review `prompts/backend/flow-build-phase-9.md` for roadmap generation (creates implementation plan with Story Points, Epics, Features).
 - Check `prompts/backend/feature.md` for Story Points integration using Fibonacci scale (1, 2, 3, 5, 8, 13, 21); format is "Task • X SP" with checkbox lists.
+- Use `flow3.docs.md` (Cursor) or `flow3.docs.prompt.md` (Copilot) to validate and auto-update README.md, GETTING-STARTED.md, and CONTRIBUTING.md against source code, templates, and prompts.
 
 ## Collaboration Tips
 
 - Keep logging consistent with `chalk` semantics used in `src/cli.ts` (info = cyan/white, warnings = yellow, failures = red) to ensure CLI feedback stays predictable.
 - After structural changes, run `ai-flow init ./tmp` locally to smoke-test that templates, prompts, and slash commands land in the right paths.
 - Surface notable behavioral changes in `README.md` “Features” or “Quick Start” sections so downstream AI agents inherit accurate guidance.
-

@@ -47,41 +47,35 @@ All documentation is structured to guide AI assistants in understanding the proj
 ### 📚 Core Documentation (Read in Order)
 
 1. **`.cursorrules`** ⭐ **START HERE FOR CURSOR**
-
    - Cursor-specific configuration
    - Development workflow
    - Code standards and rules
 
 2. **`CLAUDE.md`**
-
    - Detailed project architecture
    - Implementation details
    - Development principles
    - Key functions reference
 
 3. **`.github/copilot-instructions.md`**
-
    - GitHub Copilot playbook
    - Architecture and flow
    - Build and test workflow
    - Project practices
 
 4. **`README.md`**
-
    - User-facing documentation
    - Installation and usage
    - Features and capabilities
    - Quick start guide
 
 5. **`CONTRIBUTING.md`**
-
    - Contribution guidelines
    - Development setup
    - Code style standards
    - Testing requirements
 
 6. **`package.json`**
-
    - Dependencies and versions
    - Scripts and commands
    - Package configuration
@@ -126,8 +120,8 @@ ai-flow/
 │   └── prompts/               # Development workflow commands
 │       ├── flow1.commit.prompt.md
 │       ├── flow2.check.prompt.md
-│       ├── flow3.release.prompt.md
-│       └── flow4.readme.prompt.md
+│       ├── flow3.docs.prompt.md
+│       └── flow4.release.prompt.md
 ├── .cursor/                    # Cursor configuration (this project)
 │   └── commands/              # Cursor slash commands
 ├── package.json               # Dependencies and scripts
@@ -230,8 +224,8 @@ ai-flow/
 **Solution:** Use `__dirname` to resolve the packaged assets relative to `dist/cli.js`
 
 ```typescript
-const ROOT_DIR = path.resolve(__dirname, "..");
-const templatesSource = path.join(ROOT_DIR, "templates");
+const ROOT_DIR = path.resolve(__dirname, '..');
+const templatesSource = path.join(ROOT_DIR, 'templates');
 ```
 
 This works because:
