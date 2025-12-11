@@ -466,8 +466,10 @@ async function setupSlashCommands(
     for (const { dir, prefix } of promptSources) {
       const promptsSource = path.join(ROOT_DIR, 'prompts', dir);
       const allFiles = await fs.readdir(promptsSource);
-      // Filter all markdown files (all prompts are valid slash commands)
-      const files = allFiles.filter((file) => file.endsWith('.md'));
+      // Filter markdown files, excluding flow-build-phase-*.md (they are loaded by flow-build.md)
+      const files = allFiles.filter(
+        (file) => file.endsWith('.md') && !file.match(/^flow-build-phase-\d+.*\.md$/)
+      );
 
       for (const tool of aiTools) {
         if (tool === 'copilot') {
@@ -664,65 +666,19 @@ async function initializeProject(
       console.log(chalk.white('Available slash commands:'));
       console.log(chalk.gray('  Backend commands:'));
       console.log(
-        chalk.gray(
-          '    /backend-flow-build                    - Backend 7-phase documentation generation'
-        )
+        chalk.gray('    /backend-flow-build                - Flujo completo (9 fases en orden)')
       );
+      console.log(chalk.gray('    /backend-flow-build fase N         - Fase específica (0-9)'));
       console.log(
-        chalk.gray('    /backend-flow-build-phase-0-context     - Backend context discovery')
-      );
-      console.log(
-        chalk.gray('    /backend-flow-build-phase-1-business    - Backend discovery & business')
-      );
-      console.log(
-        chalk.gray('    /backend-flow-build-phase-2-data        - Backend data architecture')
-      );
-      console.log(
-        chalk.gray('    /backend-flow-build-phase-3-architecture - Backend system architecture')
-      );
-      console.log(
-        chalk.gray('    /backend-flow-build-phase-4-security    - Backend security & auth')
-      );
-      console.log(
-        chalk.gray('    /backend-flow-build-phase-5-standards    - Backend code standards')
-      );
-      console.log(chalk.gray('    /backend-flow-build-phase-6-testing     - Backend testing'));
-      console.log(
-        chalk.gray('    /backend-flow-build-phase-7-operations  - Backend operations + tools')
-      );
-      console.log(
-        chalk.gray('    /backend-flow-docs-sync                  - Update backend documentation\n')
+        chalk.gray('    /backend-flow-docs-sync            - Update backend documentation\n')
       );
       console.log(chalk.gray('  Frontend commands:'));
       console.log(
-        chalk.gray(
-          '    /frontend-flow-build                    - Frontend 7-phase documentation generation'
-        )
+        chalk.gray('    /frontend-flow-build               - Flujo completo (8 fases en orden)')
       );
+      console.log(chalk.gray('    /frontend-flow-build fase N        - Fase específica (0-8)'));
       console.log(
-        chalk.gray('    /frontend-flow-build-phase-0-context    - Frontend context discovery')
-      );
-      console.log(
-        chalk.gray('    /frontend-flow-build-phase-1-discovery  - Frontend discovery & UX')
-      );
-      console.log(
-        chalk.gray('    /frontend-flow-build-phase-2-components  - Frontend components & framework')
-      );
-      console.log(
-        chalk.gray('    /frontend-flow-build-phase-3-state       - Frontend state management')
-      );
-      console.log(
-        chalk.gray('    /frontend-flow-build-phase-4-styling     - Frontend styling & design')
-      );
-      console.log(
-        chalk.gray('    /frontend-flow-build-phase-5-standards  - Frontend code standards')
-      );
-      console.log(chalk.gray('    /frontend-flow-build-phase-6-testing    - Frontend testing'));
-      console.log(chalk.gray('    /frontend-flow-build-phase-7-deployment - Frontend deployment'));
-      console.log(
-        chalk.gray(
-          '    /frontend-flow-docs-sync                  - Update frontend documentation\n'
-        )
+        chalk.gray('    /frontend-flow-docs-sync           - Update frontend documentation\n')
       );
     } else if (selectedProjectType === 'mobile') {
       if (aiTools.includes('claude')) {
@@ -740,21 +696,14 @@ async function initializeProject(
       }
 
       console.log(chalk.white('Available slash commands:'));
+      console.log(chalk.gray('  /flow-build                - Flujo completo (8 fases en orden)'));
       console.log(
-        chalk.gray('  /flow-build                    - Full 7-phase documentation generation')
+        chalk.gray(
+          '  /flow-build fase N         - Fase específica (0-8: Discovery, Platform, Navigation, State, Permissions, Standards, Testing, Deployment)'
+        )
       );
       console.log(
-        chalk.gray('  /flow-build-phase-0-context     - Context Discovery (existing projects)')
-      );
-      console.log(chalk.gray('  /flow-build-phase-1-platform    - Platform & Framework Selection'));
-      console.log(chalk.gray('  /flow-build-phase-2-navigation  - Navigation & Architecture'));
-      console.log(chalk.gray('  /flow-build-phase-3-state       - State & Data Management'));
-      console.log(chalk.gray('  /flow-build-phase-4-permissions  - Permissions & Native Features'));
-      console.log(chalk.gray('  /flow-build-phase-5-standards   - Code Standards'));
-      console.log(chalk.gray('  /flow-build-phase-6-testing     - Testing Strategy'));
-      console.log(chalk.gray('  /flow-build-phase-7-deployment  - Store Deployment'));
-      console.log(
-        chalk.gray('  /flow-docs-sync                  - Update documentation when code changes\n')
+        chalk.gray('  /flow-docs-sync            - Update documentation when code changes\n')
       );
     } else {
       if (aiTools.includes('claude')) {
@@ -773,27 +722,37 @@ async function initializeProject(
 
       console.log(chalk.white('Available slash commands:'));
       console.log(
-        chalk.gray('  /flow-build                    - Full 7-phase documentation generation')
+        chalk.gray('  /flow-build                - Flujo completo (todas las fases en orden)')
       );
       console.log(
-        chalk.gray('  /flow-build-phase-0-context     - Context Discovery (existing projects)')
+        chalk.gray('  /flow-build fase N         - Fase específica (ver lista de fases abajo)')
+      );
+      console.log(
+        chalk.gray('  /flow-docs-sync            - Update documentation when code changes\n')
       );
       if (selectedProjectType === 'backend') {
-        console.log(chalk.gray('  /flow-build-phase-1-business    - Discovery & Business'));
-        console.log(chalk.gray('  /flow-build-phase-2-data        - Data Architecture'));
-        console.log(chalk.gray('  /flow-build-phase-3-architecture - System Architecture'));
-        console.log(chalk.gray('  /flow-build-phase-4-security    - Security & Auth'));
-        console.log(chalk.gray('  /flow-build-phase-5-standards    - Code Standards'));
-        console.log(chalk.gray('  /flow-build-phase-6-testing     - Testing'));
-        console.log(chalk.gray('  /flow-build-phase-7-operations  - Operations + Tools'));
+        console.log(chalk.gray('\n  Fases disponibles (Backend):'));
+        console.log(chalk.gray('    fase 0: Context Discovery (proyectos existentes)'));
+        console.log(chalk.gray('    fase 1: Discovery & Business'));
+        console.log(chalk.gray('    fase 2: Data Architecture'));
+        console.log(chalk.gray('    fase 3: System Architecture'));
+        console.log(chalk.gray('    fase 4: Security & Auth'));
+        console.log(chalk.gray('    fase 5: Code Standards'));
+        console.log(chalk.gray('    fase 6: Testing'));
+        console.log(chalk.gray('    fase 7: Operations + Tools'));
+        console.log(chalk.gray('    fase 8: Project Setup & Final Docs'));
+        console.log(chalk.gray('    fase 9: Implementation Roadmap (opcional)'));
       } else {
-        console.log(chalk.gray('  /flow-build-phase-1-discovery   - Discovery & UX'));
-        console.log(chalk.gray('  /flow-build-phase-2-components - Components & Framework'));
-        console.log(chalk.gray('  /flow-build-phase-3-state      - State Management'));
-        console.log(chalk.gray('  /flow-build-phase-4-styling     - Styling & Design'));
-        console.log(chalk.gray('  /flow-build-phase-5-standards   - Code Standards'));
-        console.log(chalk.gray('  /flow-build-phase-6-testing     - Testing'));
-        console.log(chalk.gray('  /flow-build-phase-7-deployment - Deployment'));
+        console.log(chalk.gray('\n  Fases disponibles (Frontend):'));
+        console.log(chalk.gray('    fase 0: Context Discovery (proyectos existentes)'));
+        console.log(chalk.gray('    fase 1: Discovery & UX'));
+        console.log(chalk.gray('    fase 2: Components & Framework'));
+        console.log(chalk.gray('    fase 3: State Management'));
+        console.log(chalk.gray('    fase 4: Styling & Design'));
+        console.log(chalk.gray('    fase 5: Code Standards'));
+        console.log(chalk.gray('    fase 6: Testing'));
+        console.log(chalk.gray('    fase 7: Deployment'));
+        console.log(chalk.gray('    fase 8: Project Setup & Final Docs'));
       }
       console.log(
         chalk.gray('  /flow-docs-sync                  - Update documentation when code changes\n')
