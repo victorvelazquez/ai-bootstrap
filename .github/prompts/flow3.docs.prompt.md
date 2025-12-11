@@ -10,16 +10,16 @@ Analyze and automatically update project documentation (README.md, GETTING-START
 
 Execute all steps sequentially to ensure comprehensive documentation validation and automatic updates.
 
-| Step | Action                  | Focus                                         | Requires Allow   |
-| ---- | ----------------------- | --------------------------------------------- | ---------------- |
-| 0    | **Cache Check**         | Skip analysis if no changes since last run    | No               |
-| 1    | **Inventory CLI**       | Commands, flags, options from source          | No               |
-| 2    | **Inventory Artifacts** | Count templates, prompts, verify package.json | No               |
-| 3    | **Cross-Reference**     | Compare inventory vs all documentation        | No               |
-| 4    | **Identify Gaps**       | Missing, inaccurate, or outdated info         | No               |
-| 5    | **Generate Report**     | Prioritized recommendations with exact fixes  | No               |
-| 6    | **Apply Updates**       | Edit files directly with confirmation per gap | Yes (per change) |
-| 7    | **Validate Changes**    | Re-analyze to confirm gaps resolved           | No               |
+| Step | Action                  | Focus                                         | Requires Allow                |
+| ---- | ----------------------- | --------------------------------------------- | ----------------------------- |
+| 0    | **Cache Check**         | Skip analysis if no changes since last run    | No                            |
+| 1    | **Inventory CLI**       | Commands, flags, options from source          | No                            |
+| 2    | **Inventory Artifacts** | Count templates, prompts, verify package.json | No                            |
+| 3    | **Cross-Reference**     | Compare inventory vs all documentation        | No                            |
+| 4    | **Identify Gaps**       | Missing, inaccurate, or outdated info         | No                            |
+| 5    | **Generate Report**     | Prioritized recommendations with exact fixes  | No                            |
+| 6    | **Apply Updates**       | Show all changes, single approval for all     | No to start, Yes once for all |
+| 7    | **Validate Changes**    | Re-analyze to confirm gaps resolved           | No (automatic after Step 6)   |
 
 ---
 
@@ -633,234 +633,143 @@ After Step 6 updates, Step 7 will verify:
 
 ## 📝 Next Steps
 
-Proceeding to Step 6: Apply Updates
+**Automatically proceeding to Step 6: Apply Updates**
 
-- Will show each change before applying
-- You Allow/reject individually
-- Only CRITICAL + IMPORTANT gaps applied
-- Step 7 validates all changes worked
+- All CRITICAL + IMPORTANT changes will be shown together
+- You Allow/reject ALL changes with a single confirmation
+- If allowed, all changes are applied automatically
+- Step 7 then validates all changes worked
+
+---
 ```
 
 ---
 
 ## 🔧 Step 6/7: Apply Updates
 
-Apply fixes directly to documentation files with individual confirmation per gap.
+**This step executes automatically after Step 5.**
+
+Display ALL proposed changes together and request a SINGLE Allow to apply them all.
 
 ### Process
 
-**For each CRITICAL and IMPORTANT gap from Step 5:**
+**Display all CRITICAL and IMPORTANT gaps from Step 5:**
 
-1. **Display the proposed change:**
+````markdown
+## 📝 Proposed Changes Summary
 
-   ````markdown
-   ## 📝 Proposed Change [N/Total]
+**Total Changes:** [N] (Critical: [X], Important: [Y])
 
-   **Gap:** [Title]
-   **Priority:** [CRITICAL | IMPORTANT]
-   **File:** [README.md | GETTING-STARTED.md | CONTRIBUTING.md]
-   **Section:** [Section name]
-   **Line:** [Approximate line number]
+---
 
-   **Current:**
+### Change 1/N: [Gap Title]
 
-   ```markdown
-   [Current content from file]
-   ```
-   ````
+**Priority:** [CRITICAL | IMPORTANT]
+**File:** [README.md | GETTING-STARTED.md | CONTRIBUTING.md]
+**Section:** [Section name]
+**Line:** [Approximate line number]
 
-   **New:**
+**Current:**
 
-   ```markdown
-   [Proposed new content]
-   ```
+```markdown
+[Current content from file]
+```
 
-   **Impact:** [Brief explanation]
+**New:**
 
-   [Tool will wait for your Allow]
+```markdown
+[Proposed new content]
+```
 
-   ```
+**Impact:** [Brief explanation]
 
-   ```
+---
 
-2. **If allowed, edit the file:**
-   - Locate exact section using 5-10 lines of context before/after
-   - Apply the change (replace or insert)
-   - Log the result
+### Change 2/N: [Gap Title]
 
-3. **If not allowed, skip and continue to next gap**
+[... repeat for all changes ...]
+
+---
+
+## ⚠️ Confirmation Required
+
+**Do you want to Allow ALL [N] changes listed above?**
+
+- ✅ **Allow All** - Apply all changes automatically and proceed to Step 7 validation
+- ❌ **Reject** - Skip all changes and proceed to Step 7 without modifications
+
+[Waiting for your Allow...]
+````
+
+**If allowed:**
+
+1. Apply ALL changes automatically using replace_string_in_file or multi_replace_string_in_file
+2. Use sufficient context (5-10 lines) to locate exact sections
+3. Log each successful change
+4. Automatically proceed to Step 7
+
+**If rejected:**
+
+1. Skip all changes
+2. Log that user rejected updates
+3. Automatically proceed to Step 7
 
 ### Editing Strategy
 
-**For replacements (fixing existing content):**
+**Use replace_string_in_file or multi_replace_string_in_file:**
 
-```markdown
-Old text (with 5-10 lines context before/after):
-...
-Line N-2: context
-Line N-1: context
-Line N: OLD CONTENT TO REPLACE
-Line N+1: context
-Line N+2: context
-...
-
-New text (same context):
-...
-Line N-2: context
-Line N-1: context
-Line N: NEW CORRECT CONTENT
-Line N+1: context
-Line N+2: context
-...
-```
-
-**For insertions (adding new content):**
-
-```markdown
-Anchor (existing content):
-...
-Line N: existing section
-Line N+1: existing content
-[INSERT NEW CONTENT HERE]
-Line N+2: next section
-...
-```
-
-**For deletions (removing outdated content):**
-
-```markdown
-Remove lines X-Y completely, preserving surrounding context.
-```
+- Include 5-10 lines of context before and after target text
+- For multiple changes in same file, use multi_replace_string_in_file
+- For changes across different files, call replace_string_in_file sequentially
+- Match whitespace and indentation exactly
 
 ### Safety Rules
 
-- ✅ Apply CRITICAL and IMPORTANT gaps only
-- ✅ Wait for Allow per change (unlimited total changes)
-- ✅ Use sufficient context (5-10 lines) to locate exact section
-- ✅ Log each change: "✅ Applied to FILE (line X)"
-- ✅ Continue if user rejects a change (skip that gap)
-- ❌ Do NOT batch multiple changes without individual Allow
+- ✅ Show ALL changes before requesting Allow
+- ✅ Single Allow applies or rejects ALL changes
+- ✅ Apply all changes automatically if allowed
+- ✅ Automatically proceed to Step 7 after applying (or skipping)
+- ❌ Do NOT ask for Allow per individual change
 - ❌ Do NOT apply NICE-TO-HAVE without explicit request
-- ❌ Do NOT guess line numbers - use context matching
-
-### Example Execution
-
-````markdown
-## 📝 Proposed Change 1/3
-
-**Gap:** Version Mismatch in README Badge
-**Priority:** CRITICAL
-**File:** README.md
-**Section:** Top badges (line ~5)
-**Line:** 5
-
-**Current:**
-
-```markdown
-![Version](https://img.shields.io/badge/version-1.0.6-blue)
-```
-````
-
-**New:**
-
-```markdown
-![Version](https://img.shields.io/badge/version-2.0.0-blue)
-```
-
-**Impact:** Fixes version mismatch (package.json shows 2.0.0)
-
-[Waiting for Allow...]
-
-✅ User allowed
-✅ Applied to README.md (line 5)
-
----
-
-## 📝 Proposed Change 2/3
-
-**Gap:** Wrong Backend Template Count
-**Priority:** IMPORTANT
-**File:** README.md
-**Section:** Features - Generated Documents (line ~342)
-**Line:** 342
-
-**Current:**
-
-```markdown
-**Backend** (15 docs): AGENT.md, ai-instructions.md, copilot-instructions.md...
-```
-
-**New:**
-
-```markdown
-**Backend** (18 docs): AGENT.md, ai-instructions.md, copilot-instructions.md, project-brief.md, README.md, plus 8 detailed docs and 2 specs.
-```
-
-**Impact:** Accurate count prevents user confusion
-
-[Waiting for Allow...]
-
-✅ User allowed
-✅ Applied to README.md (line 342)
-
----
-
-## 📝 Proposed Change 3/3
-
-**Gap:** Missing --dry-run Flag in GETTING-STARTED
-**Priority:** IMPORTANT
-**File:** GETTING-STARTED.md
-**Section:** CLI Flags Reference (line ~45)
-**Line:** 45
-
-**Current:**
-
-```markdown
-| `--verbose` | Enable detailed logging output | Optional |
-
-### Commands Cheat Sheet
-```
-
-**New:**
-
-```markdown
-| `--verbose` | Enable detailed logging output | Optional |
-| `--dry-run` | Simulate initialization without writing files (useful for testing) | Optional |
-
-### Commands Cheat Sheet
-```
-
-**Impact:** Users can discover dry-run testing capability
-
-[Waiting for Allow...]
-
-⏭️ User rejected
-⏭️ Skipped (not applied)
-
-````
 
 ### Post-Application Log
 
-After all changes:
+After applying (or rejecting) changes:
 
 ```markdown
-## 📊 Update Summary
+## 📎 Update Summary
 
-✅ **Applied:** 2/3 changes
+✅ **User Decision:** [Allowed All | Rejected All]
 
-1. ✅ Version mismatch in README.md (line 5) - CRITICAL
-2. ✅ Backend template count in README.md (line 342) - IMPORTANT
+**Changes Applied:** [N]/[Total]
 
-⏭️ **Skipped:** 1/3 changes
+1. ✅ Node.js version in CONTRIBUTING.md (line 35) - CRITICAL
+2. ✅ Version numbers in GETTING-STARTED.md (lines 62, 1819) - IMPORTANT
 
-3. ⏭️ Missing --dry-run flag in GETTING-STARTED.md - IMPORTANT (user rejected)
+**Status:** All changes applied successfully
 
-📝 **Next:** Proceeding to Step 7 to validate applied changes...
-````
+🔎 **Automatically proceeding to Step 7: Validate Changes...**
+```
+
+OR if rejected:
+
+```markdown
+## 📎 Update Summary
+
+❌ **User Decision:** Rejected All
+
+**Changes Applied:** 0/[Total]
+
+**Status:** No changes were made to documentation
+
+🔎 **Automatically proceeding to Step 7: Validate Changes...**
+```
 
 ---
 
 ## ✅ Step 7/7: Validate Changes
+
+**This step executes automatically after Step 6, regardless of Allow/rejection.**
 
 Re-analyze edited files to confirm gaps were resolved correctly.
 
@@ -946,16 +855,16 @@ Writing analysis results to `.ai-flow/cache/docs-analysis.json` for next run...
 
 ## Execution Model
 
-| Step | Action              | Duration    | Requires Allow   |
-| ---- | ------------------- | ----------- | ---------------- |
-| 0    | Cache check         | 5 seconds   | No               |
-| 1    | Inventory CLI       | 30 seconds  | No               |
-| 2    | Inventory artifacts | 30 seconds  | No               |
-| 3    | Cross-reference     | 1 minute    | No               |
-| 4    | Identify gaps       | 30 seconds  | No               |
-| 5    | Generate report     | 30 seconds  | No               |
-| 6    | Apply updates       | 1-5 minutes | Yes (per change) |
-| 7    | Validate changes    | 30 seconds  | No               |
+| Step | Action              | Duration    | Requires Allow                |
+| ---- | ------------------- | ----------- | ----------------------------- |
+| 0    | Cache check         | 5 seconds   | No                            |
+| 1    | Inventory CLI       | 30 seconds  | No                            |
+| 2    | Inventory artifacts | 30 seconds  | No                            |
+| 3    | Cross-reference     | 1 minute    | No                            |
+| 4    | Identify gaps       | 30 seconds  | No                            |
+| 5    | Generate report     | 30 seconds  | No                            |
+| 6    | Apply updates       | 1-5 minutes | No to start, Yes once for all |
+| 7    | Validate changes    | 30 seconds  | No (automatic after Step 6)   |
 
 **Total Time:**
 
