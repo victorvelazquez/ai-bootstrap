@@ -266,10 +266,10 @@ Generating...
   - Add styling approach
   - Link to component library (if using one)
 
-**📝 Action:** Write the complete file to `.ai-flow/docs/components-guide.md`
+**📝 Action:** Write the complete file to `docs/components-guide.md`
 
 ```
-✅ Generated: .ai-flow/docs/components-guide.md
+✅ Generated: docs/components-guide.md
 ```
 
 ### 8.3.2: Generate docs/state-management.md
@@ -283,10 +283,10 @@ Generating...
   - Document async state handling
   - Add caching strategy
 
-**📝 Action:** Write the complete file to `.ai-flow/docs/state-management.md`
+**📝 Action:** Write the complete file to `docs/state-management.md`
 
 ```
-✅ Generated: .ai-flow/docs/state-management.md
+✅ Generated: docs/state-management.md
 ```
 
 ### 8.3.3: Generate docs/contributing.md
@@ -300,10 +300,10 @@ Generating...
   - Setup instructions from Phase 7
   - Testing requirements from Phase 6
 
-**📝 Action:** Write the complete file to `.ai-flow/docs/contributing.md`
+**📝 Action:** Write the complete file to `docs/contributing.md`
 
 ```
-✅ Generated: .ai-flow/docs/contributing.md
+✅ Generated: docs/contributing.md
 ```
 
 ---
@@ -522,16 +522,16 @@ dist/
 
 ✅ Reading .ai-flow/project-brief.md
 ✅ Reading .ai-flow/ai-instructions.md
-✅ Reading .ai-flow/docs/ui-structure.md
-✅ Reading .ai-flow/docs/architecture.md
-✅ Reading .ai-flow/docs/components-guide.md
-✅ Reading .ai-flow/docs/state-management.md
-✅ Reading .ai-flow/docs/code-standards.md
-✅ Reading .ai-flow/docs/testing.md
-✅ Reading .ai-flow/docs/performance.md
-✅ Reading .ai-flow/docs/operations.md
-✅ Reading .ai-flow/specs/configuration.md
-✅ Reading .ai-flow/docs/contributing.md
+✅ Reading docs/ui-structure.md
+✅ Reading docs/architecture.md
+✅ Reading docs/components-guide.md
+✅ Reading docs/state-management.md
+✅ Reading docs/code-standards.md
+✅ Reading docs/testing.md
+✅ Reading docs/performance.md
+✅ Reading docs/operations.md
+✅ Reading specs/configuration.md
+✅ Reading docs/contributing.md
 
 ✅ All context loaded!
 ```
@@ -607,20 +607,20 @@ Read `.ai-flow/AGENT.md` first for complete documentation index.
 
 - Project overview: `.ai-flow/project-brief.md`
 - AI instructions: `.ai-flow/ai-instructions.md`
-- Architecture: `.ai-flow/docs/architecture.md`
-- UI Structure: `.ai-flow/docs/ui-structure.md`
-- Components: `.ai-flow/docs/components-guide.md`
-- State: `.ai-flow/docs/state-management.md`
-- Code standards: `.ai-flow/docs/code-standards.md`
+- Architecture: `docs/architecture.md`
+- UI Structure: `docs/ui-structure.md`
+- Components: `docs/components-guide.md`
+- State: `docs/state-management.md`
+- Code standards: `docs/code-standards.md`
 
 ## Working Instructions
 
 When writing code:
 
-1. Follow patterns in `.ai-flow/docs/code-standards.md`
-2. Reference component structure in `.ai-flow/docs/ui-structure.md`
-3. Follow state management patterns from `.ai-flow/docs/state-management.md`
-4. Write tests per `.ai-flow/docs/testing.md`
+1. Follow patterns in `docs/code-standards.md`
+2. Reference component structure in `docs/ui-structure.md`
+3. Follow state management patterns from `docs/state-management.md`
+4. Write tests per `docs/testing.md`
 
 ## Critical Rules
 
@@ -643,9 +643,9 @@ See `.ai-flow/AGENT.md` for complete document list.
 ## Quick Reference
 
 - Tech Stack: [from Phase 3]
-- Architecture: `.ai-flow/docs/architecture.md`
-- Components: `.ai-flow/docs/components-guide.md`
-- Code Standards: `.ai-flow/docs/code-standards.md`
+- Architecture: `docs/architecture.md`
+- Components: `docs/components-guide.md`
+- Code Standards: `docs/code-standards.md`
 
 ## Code Generation Rules
 
@@ -671,12 +671,12 @@ Master index: `.ai-flow/AGENT.md`
 
 ## Key References
 
-- Architecture: `.ai-flow/docs/architecture.md`
-- UI Structure: `.ai-flow/docs/ui-structure.md`
-- Components: `.ai-flow/docs/components-guide.md`
-- State: `.ai-flow/docs/state-management.md`
-- Code Standards: `.ai-flow/docs/code-standards.md`
-- Testing: `.ai-flow/docs/testing.md`
+- Architecture: `docs/architecture.md`
+- UI Structure: `docs/ui-structure.md`
+- Components: `docs/components-guide.md`
+- State: `docs/state-management.md`
+- Code Standards: `docs/code-standards.md`
+- Testing: `docs/testing.md`
 
 ## Code Generation Guidelines
 

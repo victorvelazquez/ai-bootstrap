@@ -268,14 +268,19 @@ my-awesome-api/
 **Output after Phase 8:**
 
 ```
-.ai-flow/
-  ├── AGENT.md              ⭐ Master index (start here!)
-  ├── README.md             📄 Project overview
-  ├── docs/
-  │   ├── business-flows.md
-  │   ├── api.md
-  │   └── contributing.md
-  └── [tool configs]      🤖 .clauderules, .cursorrules, etc.
+my-awesome-api/
+├── AGENT.md              ⭐ Master index (start here!)
+├── README.md             📄 Project overview
+├── docs/
+│   ├── business-flows.md
+│   ├── api.md
+│   └── contributing.md
+├── specs/
+│   ├── security.md
+│   └── configuration.md
+├── .clauderules         🤖 AI tool configs
+├── .cursorrules
+└── .ai-flow/            📦 Templates and prompts (internal)
 ```
 
 **Note:** Framework initialization does NOT create your architecture layers - those are built incrementally with `/flow-dev-feature` commands.
@@ -297,7 +302,7 @@ my-awesome-api/
 
 **Time:** 15-30 minutes (automated)
 
-**Output:** `.ai-flow/roadmap.md` with complete implementation plan
+**Output:** `roadmap.md` with complete implementation plan
 
 **When to use:**
 

@@ -84,7 +84,7 @@ B) ⏭️  Skip for now (manual setup later)
 📦 Preparing for framework initialization...
 
 Creating backup of AI Flow documentation:
-→ Moving .ai-flow/ docs to .ai-flow/temp-backup/
+→ Moving project root docs to .ai-flow/temp-backup/
 
 Files to backup:
 ✅ project-brief.md
@@ -689,10 +689,10 @@ Generating...
 [Generate mermaid sequence diagram]
 ```
 
-**📝 Action:** Write the complete file to `.ai-flow/docs/business-flows.md`
+**📝 Action:** Write the complete file to `docs/business-flows.md`
 
 ```
-✅ Generated: .ai-flow/docs/business-flows.md
+✅ Generated: docs/business-flows.md
 ```
 
 ---
@@ -773,10 +773,10 @@ We use [workflow from Phase 5]
 [Format from Phase 5.2]
 ````
 
-**📝 Action:** Write the complete file to `.ai-flow/docs/contributing.md`
+**📝 Action:** Write the complete file to `docs/contributing.md`
 
 ```
-✅ Generated: .ai-flow/docs/contributing.md
+✅ Generated: docs/contributing.md
 ```
 
 ---
@@ -948,18 +948,18 @@ The API will be available at `http://localhost:3000`
 ```
 🔄 Re-reading all generated documents for AGENT.md generation...
 
-✅ Reading .ai-flow/project-brief.md
-✅ Reading .ai-flow/ai-instructions.md
-✅ Reading .ai-flow/docs/data-model.md
-✅ Reading .ai-flow/docs/architecture.md
-✅ Reading .ai-flow/docs/code-standards.md
-✅ Reading .ai-flow/docs/testing.md
-✅ Reading .ai-flow/docs/operations.md
-✅ Reading .ai-flow/specs/security.md
-✅ Reading .ai-flow/specs/configuration.md
-✅ Reading .ai-flow/docs/business-flows.md
-✅ Reading .ai-flow/docs/api.md
-✅ Reading .ai-flow/docs/contributing.md
+✅ Reading project-brief.md
+✅ Reading ai-instructions.md
+✅ Reading docs/data-model.md
+✅ Reading docs/architecture.md
+✅ Reading docs/code-standards.md
+✅ Reading docs/testing.md
+✅ Reading docs/operations.md
+✅ Reading specs/security.md
+✅ Reading specs/configuration.md
+✅ Reading docs/business-flows.md
+✅ Reading docs/api.md
+✅ Reading docs/contributing.md
 
 ✅ All context loaded!
 ```
@@ -995,18 +995,18 @@ Read `.ai-flow/AGENT.md` first for complete documentation index.
 
 - Project overview: `.ai-flow/project-brief.md`
 - AI instructions: `.ai-flow/ai-instructions.md`
-- Architecture: `.ai-flow/docs/architecture.md`
-- API reference: `.ai-flow/docs/api.md`
-- Code standards: `.ai-flow/docs/code-standards.md`
+- Architecture: `docs/architecture.md`
+- API reference: `docs/api.md`
+- Code standards: `docs/code-standards.md`
 
 ## Working Instructions
 
 When writing code:
 
-1. Follow patterns in `.ai-flow/docs/code-standards.md`
-2. Reference data model in `.ai-flow/docs/data-model.md`
-3. Implement security rules from `.ai-flow/specs/security.md`
-4. Write tests per `.ai-flow/docs/testing.md`
+1. Follow patterns in `docs/code-standards.md`
+2. Reference data model in `docs/data-model.md`
+3. Implement security rules from `specs/security.md`
+4. Write tests per `docs/testing.md`
 
 ## Critical Rules
 
@@ -1029,9 +1029,9 @@ See `.ai-flow/AGENT.md` for complete document list.
 ## Quick Reference
 
 - Tech Stack: [from Phase 3]
-- Architecture: `.ai-flow/docs/architecture.md`
-- Code Standards: `.ai-flow/docs/code-standards.md`
-- API Conventions: `.ai-flow/docs/api.md`
+- Architecture: `docs/architecture.md`
+- Code Standards: `docs/code-standards.md`
+- API Conventions: `docs/api.md`
 
 ## Code Generation Rules
 
@@ -1061,11 +1061,11 @@ Master index: `.ai-flow/AGENT.md`
 
 ## Key References
 
-- Architecture: `.ai-flow/docs/architecture.md`
-- Data Model: `.ai-flow/docs/data-model.md`
-- API: `.ai-flow/docs/api.md`
-- Code Standards: `.ai-flow/docs/code-standards.md`
-- Testing: `.ai-flow/docs/testing.md`
+- Architecture: `docs/architecture.md`
+- Data Model: `docs/data-model.md`
+- API: `docs/api.md`
+- Code Standards: `docs/code-standards.md`
+- Testing: `docs/testing.md`
 
 ## Code Generation Guidelines
 
@@ -1174,9 +1174,9 @@ your-project/
 │ │ ├── testing.md
 │ │ ├── operations.md
 │ │ └── contributing.md
-│ ├── specs/
-│ │ ├── security.md
-│ │ └── configuration.md
+├── specs/
+│ ├── security.md
+│ └── configuration.md
 │ └── templates/ # Original templates
 ├── [framework files] # If initialized
 ├── README.md

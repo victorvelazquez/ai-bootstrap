@@ -259,10 +259,10 @@ Generating...
   - Native module integration (if any)
   - Platform permissions setup
 
-**📝 Action:** Write the complete file to `.ai-flow/docs/platform-guides.md`
+**📝 Action:** Write the complete file to `docs/platform-guides.md`
 
 ```
-✅ Generated: .ai-flow/docs/platform-guides.md
+✅ Generated: docs/platform-guides.md
 ```
 
 ### 8.3.2: Generate docs/navigation-guide.md
@@ -276,10 +276,10 @@ Generating...
   - Navigation parameters
   - Authentication flow
 
-**📝 Action:** Write the complete file to `.ai-flow/docs/navigation-guide.md`
+**📝 Action:** Write the complete file to `docs/navigation-guide.md`
 
 ```
-✅ Generated: .ai-flow/docs/navigation-guide.md
+✅ Generated: docs/navigation-guide.md
 ```
 
 ### 8.3.3: Generate docs/contributing.md
@@ -294,10 +294,10 @@ Generating...
   - Testing requirements from Phase 6
   - Build and release process
 
-**📝 Action:** Write the complete file to `.ai-flow/docs/contributing.md`
+**📝 Action:** Write the complete file to `docs/contributing.md`
 
 ```
-✅ Generated: .ai-flow/docs/contributing.md
+✅ Generated: docs/contributing.md
 ```
 
 ---
@@ -526,16 +526,16 @@ Thumbs.db
 
 ✅ Reading .ai-flow/project-brief.md
 ✅ Reading .ai-flow/ai-instructions.md
-✅ Reading .ai-flow/docs/app-structure.md
-✅ Reading .ai-flow/docs/architecture.md
-✅ Reading .ai-flow/docs/platform-guides.md
-✅ Reading .ai-flow/docs/navigation-guide.md
-✅ Reading .ai-flow/docs/code-standards.md
-✅ Reading .ai-flow/docs/testing.md
-✅ Reading .ai-flow/docs/app-store.md
-✅ Reading .ai-flow/specs/build-configuration.md
-✅ Reading .ai-flow/specs/deployment.md
-✅ Reading .ai-flow/docs/contributing.md
+✅ Reading docs/app-structure.md
+✅ Reading docs/architecture.md
+✅ Reading docs/platform-guides.md
+✅ Reading docs/navigation-guide.md
+✅ Reading docs/code-standards.md
+✅ Reading docs/testing.md
+✅ Reading docs/app-store.md
+✅ Reading specs/build-configuration.md
+✅ Reading specs/deployment.md
+✅ Reading docs/contributing.md
 
 ✅ All context loaded!
 ```
@@ -614,21 +614,21 @@ Read `.ai-flow/AGENT.md` first for complete documentation index.
 
 - Project overview: `.ai-flow/project-brief.md`
 - AI instructions: `.ai-flow/ai-instructions.md`
-- Architecture: `.ai-flow/docs/architecture.md`
-- App Structure: `.ai-flow/docs/app-structure.md`
-- Platform Guides: `.ai-flow/docs/platform-guides.md`
-- Navigation: `.ai-flow/docs/navigation-guide.md`
-- Code standards: `.ai-flow/docs/code-standards.md`
+- Architecture: `docs/architecture.md`
+- App Structure: `docs/app-structure.md`
+- Platform Guides: `docs/platform-guides.md`
+- Navigation: `docs/navigation-guide.md`
+- Code standards: `docs/code-standards.md`
 
 ## Working Instructions
 
 When writing code:
 
-1. Follow patterns in `.ai-flow/docs/code-standards.md`
-2. Reference app structure in `.ai-flow/docs/app-structure.md`
-3. Follow platform guidelines from `.ai-flow/docs/platform-guides.md`
-4. Implement navigation per `.ai-flow/docs/navigation-guide.md`
-5. Write tests per `.ai-flow/docs/testing.md`
+1. Follow patterns in `docs/code-standards.md`
+2. Reference app structure in `docs/app-structure.md`
+3. Follow platform guidelines from `docs/platform-guides.md`
+4. Implement navigation per `docs/navigation-guide.md`
+5. Write tests per `docs/testing.md`
 
 ## Critical Rules
 
@@ -651,9 +651,9 @@ See `.ai-flow/AGENT.md` for complete document list.
 ## Quick Reference
 
 - Tech Stack: [from Phase 1 & 3]
-- Architecture: `.ai-flow/docs/architecture.md`
-- Platform Guides: `.ai-flow/docs/platform-guides.md`
-- Code Standards: `.ai-flow/docs/code-standards.md`
+- Architecture: `docs/architecture.md`
+- Platform Guides: `docs/platform-guides.md`
+- Code Standards: `docs/code-standards.md`
 
 ## Code Generation Rules
 
@@ -679,12 +679,12 @@ Master index: `.ai-flow/AGENT.md`
 
 ## Key References
 
-- Architecture: `.ai-flow/docs/architecture.md`
-- App Structure: `.ai-flow/docs/app-structure.md`
-- Platform Guides: `.ai-flow/docs/platform-guides.md`
-- Navigation: `.ai-flow/docs/navigation-guide.md`
-- Code Standards: `.ai-flow/docs/code-standards.md`
-- Testing: `.ai-flow/docs/testing.md`
+- Architecture: `docs/architecture.md`
+- App Structure: `docs/app-structure.md`
+- Platform Guides: `docs/platform-guides.md`
+- Navigation: `docs/navigation-guide.md`
+- Code Standards: `docs/code-standards.md`
+- Testing: `docs/testing.md`
 
 ## Code Generation Guidelines
 
