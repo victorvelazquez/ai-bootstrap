@@ -16,7 +16,7 @@ describe('slash commands installation', () => {
   beforeAll(() => {
     execFileSync(process.execPath, [TSC_PATH], {
       cwd: PROJECT_ROOT,
-      stdio: 'pipe'
+      stdio: 'pipe',
     });
   });
 
@@ -31,15 +31,14 @@ describe('slash commands installation', () => {
   });
 
   const runInit = (tool) => {
-    execFileSync('node', [
-      CLI_PATH, 'init', tempDir,
-      '--ai', tool,
-      '--name', 'Test',
-      '--description', 'Desc'
-    ], {
-      cwd: PROJECT_ROOT,
-      stdio: 'pipe'
-    });
+    execFileSync(
+      'node',
+      [CLI_PATH, 'init', tempDir, '--ai', tool, '--name', 'Test', '--description', 'Desc'],
+      {
+        cwd: PROJECT_ROOT,
+        stdio: 'pipe',
+      }
+    );
   };
 
   it('installs Copilot prompts with .prompt.md suffix', () => {
@@ -66,7 +65,3 @@ describe('slash commands installation', () => {
     expect(fs.existsSync(file)).toBe(true);
   });
 });
-
-
-
-

@@ -16,7 +16,7 @@ describe('check command output', () => {
   beforeAll(() => {
     execFileSync(process.execPath, [TSC_PATH], {
       cwd: PROJECT_ROOT,
-      stdio: 'pipe'
+      stdio: 'pipe',
     });
   });
 
@@ -31,19 +31,18 @@ describe('check command output', () => {
   });
 
   it('prints configuration with version and AI tools', () => {
-    execFileSync('node', [
-      CLI_PATH, 'init', tempDir,
-      '--ai', 'claude',
-      '--name', 'Test',
-      '--description', 'Desc'
-    ], {
-      cwd: PROJECT_ROOT,
-      stdio: 'pipe'
-    });
+    execFileSync(
+      'node',
+      [CLI_PATH, 'init', tempDir, '--ai', 'claude', '--name', 'Test', '--description', 'Desc'],
+      {
+        cwd: PROJECT_ROOT,
+        stdio: 'pipe',
+      }
+    );
 
     const output = execFileSync('node', [CLI_PATH, 'check'], {
       cwd: tempDir,
-      stdio: 'pipe'
+      stdio: 'pipe',
     }).toString();
 
     expect(output).toMatch(/✅ Project is initialized with AI Flow/);
@@ -53,4 +52,3 @@ describe('check command output', () => {
     expect(output).toMatch(/AI Tools: claude/);
   });
 });
-
