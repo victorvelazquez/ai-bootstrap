@@ -379,11 +379,19 @@ async function copyTemplates(
     for (const [relPath, { file: templateFile }] of processedFiles) {
       // Skip AI tool-specific config files if the tool is not selected
       const fileName = path.basename(relPath);
-      if (fileName === '.clauderules.template' && !aiTools.includes('claude') && !aiTools.includes('all')) {
+      if (
+        fileName === '.clauderules.template' &&
+        !aiTools.includes('claude') &&
+        !aiTools.includes('all')
+      ) {
         logVerbose(`Skipping ${relPath} (Claude not selected)`, verbose);
         continue;
       }
-      if (fileName === '.cursorrules.template' && !aiTools.includes('cursor') && !aiTools.includes('all')) {
+      if (
+        fileName === '.cursorrules.template' &&
+        !aiTools.includes('cursor') &&
+        !aiTools.includes('all')
+      ) {
         logVerbose(`Skipping ${relPath} (Cursor not selected)`, verbose);
         continue;
       }
