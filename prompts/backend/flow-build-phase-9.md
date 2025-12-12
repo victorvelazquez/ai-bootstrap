@@ -59,7 +59,6 @@ Extracting structured information...
 **Extract and analyze:**
 
 1. **Business Context** (from `project-brief.md`):
-
    - Primary objectives
    - Target users
    - Success metrics
@@ -67,48 +66,41 @@ Extracting structured information...
    - Timeline (if specified)
 
 2. **Technical Stack** (from `ai-instructions.md`):
-
    - Language and version
    - Framework and version
    - Database and ORM
    - Key libraries
 
 3. **System Architecture** (from `docs/architecture.md`):
-
    - Architecture pattern (Clean, Hexagonal, Layered, MVC)
    - Layers/modules structure
    - Integration points
    - External services
 
 4. **Data Model** (from `docs/data-model.md`):
-
    - All entities/models
    - Relationships (1:1, 1:N, N:M)
    - Key fields per entity
    - Validation rules
 
 5. **API Endpoints** (from `docs/api.md`):
-
    - All routes
    - HTTP methods
    - Authentication requirements
    - Request/response schemas
 
 6. **Business Flows** (from `docs/business-flows.md`):
-
    - User journeys
    - Critical workflows
    - State transitions
 
 7. **Security Requirements** (from `specs/security.md`):
-
    - Authentication method
    - Authorization strategy (RBAC, ABAC, etc.)
    - Compliance requirements
    - Security features
 
 8. **Testing Strategy** (from `docs/testing.md`):
-
    - Unit test coverage target
    - Integration test scope
    - E2E test scenarios
@@ -1276,16 +1268,20 @@ Open roadmap.md and let's ship this! 💪
 ```
 Would you like to:
 
-A) ✅ Start implementing first feature now (recommended)
-   → Will execute: /feature new "{{FIRST_FEATURE_NAME}}"
+A) 📖 Continue to Phase 10: User Stories (RECOMMENDED)
+   → Generate detailed User Stories with acceptance criteria
+   → Will execute: /flow-build fase 10
 
-B) 📋 Review roadmap first
+B) ✅ Start implementing from roadmap directly
+   → Will execute: /flow-dev-feature {{FIRST_FEATURE_ID}}
+
+C) 📋 Review roadmap first
    → Will open roadmap.md
 
-C) ✏️ Customize roadmap
+D) ✏️ Customize roadmap
    → Will open roadmap.md for editing
 
-Your choice (A/B/C): __
+Your choice (A/B/C/D): __
 ```
 
 ---
@@ -1297,7 +1293,6 @@ Your choice (A/B/C): __
 The Story Point estimates are based on:
 
 1. **Complexity factors:**
-
    - Number of entities involved
    - Business logic complexity
    - Integration complexity
@@ -1305,7 +1300,6 @@ The Story Point estimates are based on:
    - Security requirements
 
 2. **Historical data:**
-
    - Simple CRUD: 3-5 SP
    - Auth systems: 13-21 SP
    - Payment integrations: 13-21 SP
@@ -1445,7 +1439,6 @@ Please fix documentation and re-run Phase 9
 
 ---
 
-**CONTINUE TO:** End (Phase 9 is the final phase)
+**CONTINUE TO:** Phase 10 (User Stories) - OPTIONAL
 
-**SUCCESS:** Complete implementation roadmap with Story Points generated! Ready to start building! 🚀
-
+**SUCCESS:** Complete implementation roadmap with Story Points generated! Ready to start building or continue to Phase 10 for detailed User Stories! 🚀
