@@ -146,6 +146,7 @@ Your choice (A/B): __
 - **Phase 7:** Operations & Deployment (CI/CD, monitoring)
 - **Phase 8:** Project Setup & Final Documentation (framework init, AGENT.md, README.md)
 - **Phase 9:** Implementation Roadmap (Backend only, optional - Story Points, Epics, Features)
+- **Phase 10:** User Stories (Backend only, optional - Acceptance Criteria, Test Cases, DoD)
 
 **Mode B - Smart Auto-Suggest (6 critical questions only):**
 
@@ -292,7 +293,7 @@ my-awesome-api/
 - ✅ Analyzes ALL documentation (entities, endpoints, flows, security)
 - ✅ Defines Epics organized by domain
 - ✅ Breaks down Features with Story Point estimations (Fibonacci scale: 1, 2, 3, 5, 8, 13, 21)
-- ✅ Creates Task breakdown with acceptance criteria
+- ✅ Creates Task breakdown with dependencies
 - ✅ Calculates time estimates (1 dev, 2 devs, 3 devs)
 - ✅ Generates dependency graph (Mermaid)
 - ✅ Identifies optimal execution order and parallelization opportunities
@@ -300,55 +301,217 @@ my-awesome-api/
 
 **Time:** 15-30 minutes (automated)
 
-**Output:** `roadmap.md` with complete implementation plan
+**Output:** `roadmap.md` with complete implementation plan (strategic level)
 
 **When to use:**
 
-- ✅ You want a detailed implementation plan before starting
+- ✅ You want a high-level implementation plan before starting
 - ✅ You need time/cost estimates for stakeholders
 - ✅ You're working with a team and need task distribution
 - ❌ Skip if you prefer to start coding immediately
 
-**Example roadmap structure:**
+---
 
-````markdown
-# 🗺️ Implementation Roadmap: My Awesome API
+#### Step 8: Phase 10 - User Stories Generation (Backend only, Optional)
 
-**Total Estimated:** 17 weeks • 204 SP
+**Phase 10 is OPTIONAL** - requires Phase 9 (roadmap) to be completed!
 
-## 📊 Epic Overview
+**What Phase 10 does:**
 
-| Epic               | Priority | Story Points | Est. Time | Status |
-| ------------------ | -------- | ------------ | --------- | ------ |
-| 1. Foundation      | P0       | 21 SP        | 2 weeks   | - [ ]  |
-| 2. Data Layer      | P0       | 34 SP        | 3 weeks   | - [ ]  |
-| 3. Authentication  | P0       | 21 SP        | 2 weeks   | - [ ]  |
-| 4. User Management | P0       | 13 SP        | 1 week    | - [ ]  |
-| 5. Product Catalog | P1       | 21 SP        | 2 weeks   | - [ ]  |
-| ...                | ...      | ...          | ...       | ...    |
+- ✅ Reads roadmap.md Features and converts them to detailed User Stories
+- ✅ Generates Gherkin-style acceptance criteria (Given/When/Then)
+- ✅ Creates technical task breakdown (Backend/Frontend/Testing)
+- ✅ Derives QA test cases from acceptance criteria
+- ✅ Adds Definition of Done checklist
+- ✅ Links back to Epic and Feature
 
-## 🏗️ Epic 1: Foundation & Infrastructure • 21 SP
+**Time:**
 
-⏱️ **Est. Time:** 2 weeks • 🎯 **Priority:** P0
+- All Epics: 30-60 minutes
+- One Epic: 5-10 minutes
+- One User Story: 2-3 minutes
 
-### Feature 1.1: Base Configuration • 5 SP
+**Output:** `user-stories/EP-XXX/HU-XXX-XXX.md` files
 
-⏱️ **Est. Time:** 1-2 days • 🎯 **Priority:** P0
-
-**Tasks:**
-
-- [ ] Configure environment variables
-- [ ] Setup configuration service
-- [ ] Add validation for env vars
-- [ ] Write unit tests (5 tests)
-
-**Ready-to-execute:**
+**3 execution modes:**
 
 ```bash
-/flow-dev-feature new "Base application configuration"
-```
-````
+# Generate all User Stories (or Sprint 1 selection)
+/flow-build fase 10
 
+# Generate User Stories for specific Epic
+/flow-build fase 10 EP-001
+
+# Generate/regenerate specific User Story
+/flow-build fase 10 HU-001-001
+```
+
+**When to use:**
+
+- ✅ You want detailed User Stories with acceptance criteria before coding
+- ✅ You're working with QA and need test case specifications
+- ✅ You follow Scrum/Agile with User Story format
+- ❌ Skip if roadmap.md is enough for your workflow
+
+**Example User Story structure:**
+
+```markdown
+# 📖 Historia de Usuario: HU-001-001 - Login básico
+
+## Epic
+
+EP-001: Autenticación y Seguridad
+
+## Historia de Usuario
+
+**ID:** HU-001-001  
+**Título:** Sistema de login básico con email y contraseña  
+**Prioridad:** Alta (P0)  
+**Sprint:** 1  
+**Story Points:** 5 SP  
+**Estimación:** 6-8h
+
+**Como:** Usuario registrado  
+**Quiero:** Iniciar sesión con email y contraseña  
+**Para:** Acceder a mi cuenta de forma segura
+
+---
+
+## Criterios de Aceptación
+
+### Escenario 1: Login exitoso
+
+**Dado que** el usuario tiene credenciales válidas  
+**Cuando** ingresa email y contraseña correctos  
+**Entonces** recibe JWT token y accede al sistema
+
+### Escenario 2: Credenciales inválidas
+
+**Dado que** el usuario ingresa credenciales incorrectas  
+**Cuando** intenta iniciar sesión  
+**Entonces** recibe error 401 con mensaje claro
+
+### Escenario 3: Rate limiting
+
+**Dado que** el usuario falla login 5 veces en 15 minutos  
+**Cuando** intenta login nuevamente  
+**Entonces** recibe error 429 (Too Many Requests)
+
+---
+
+## Tareas Técnicas
+
+### Backend
+
+- [ ] **T-001-001:** Write User entity tests • 1 SP (~1-2h)
+      File: tests/unit/User.spec.ts
+      Dependencies: None
+
+- [ ] **T-001-002:** Create User entity • 1 SP (~1-2h)
+      File: src/domain/entities/User.ts
+      Dependencies: T-001-001
+
+### Testing
+
+- [ ] **T-001-005:** Write integration tests • 2 SP (~3-4h)
+      File: tests/integration/auth.spec.ts
+      Dependencies: T-001-003
+
+**Total Tasks:** 5  
+**Total SP:** 5 Story Points
+
+---
+
+## Casos de Prueba (QA)
+
+### TC-001-001: Login exitoso (Happy Path)
+
+- **Precondición:** Usuario registrado con email=test@example.com, password=SecureP@ss123
+- **Pasos:**
+  1. POST /api/auth/login con credenciales válidas
+  2. Verificar status 200
+  3. Verificar JWT token en response
+- **Resultado Esperado:** Token JWT válido con exp, user_id, role
+- **Prioridad:** Alta
+- **Tipo:** Funcional
+
+### TC-001-002: Credenciales inválidas (Error Case)
+
+- **Precondición:** Usuario registrado
+- **Pasos:**
+  1. POST /api/auth/login con password incorrecta
+  2. Verificar status 401
+- **Resultado Esperado:** {"error": "Invalid credentials"}
+- **Prioridad:** Alta
+- **Tipo:** Funcional
+
+---
+
+## Estimación
+
+- **Story Points:** 5 SP (from roadmap)
+- **Tiempo Estimado:** 6-8h
+- **Complejidad:** Media
+
+---
+
+## Dependencias
+
+- **Requiere:** Ninguna (feature foundational)
+- **Bloquea:** HU-001-002 (OAuth login), HU-002-001 (User CRUD)
+
+---
+
+## Definición de Done (DoD)
+
+- [ ] Código implementado siguiendo ai-instructions.md
+- [ ] Code review aprobado (mín 1 revisor)
+- [ ] Tests unitarios escritos (cobertura > 80%)
+- [ ] Tests de integración pasando
+- [ ] Casos de prueba QA ejecutados y aprobados (8/8)
+- [ ] Documentación técnica actualizada (docs/api.md)
+- [ ] Sin errores de lint ni formateo
+- [ ] Deploy a staging exitoso
+- [ ] Product Owner aprobó la funcionalidad
+```
+
+**Folder structure after Phase 10:**
+
+```
+user-stories/
+├── EP-001/              (Authentication)
+│   ├── HU-001-001.md   (Login básico)
+│   ├── HU-001-002.md   (OAuth login)
+│   └── HU-001-003.md   (Password recovery)
+└── EP-002/              (User Management)
+    ├── HU-002-001.md   (CRUD usuarios)
+    └── HU-002-002.md   (Perfiles y roles)
+```
+
+---
+
+#### Step 9: Start Implementing with Workflows
+
+**After completing Phase 8 (or optionally Phases 9-10), start building!**
+
+**With roadmap only (Phase 9):**
+
+```bash
+# Use Feature names from roadmap.md
+/flow-dev-feature Base application configuration
+```
+
+**With User Stories (Phase 10):**
+
+```bash
+# Use User Story IDs for guided implementation
+/flow-dev-feature HU-001-001
+
+# AI agent will:
+# 1. Read HU-001-001.md (acceptance criteria, tasks, test cases)
+# 2. Implement code following DoD checklist
+# 3. Generate tests from QA test cases
+# 4. Verify all acceptance criteria met
 ```
 
 **Key benefits:**
@@ -406,6 +569,7 @@ AI Flow offers two modes to fit your workflow and time constraints.
 **Control:** Full control over every decision
 
 **Best for:**
+
 - ✅ Custom requirements and specific needs
 - ✅ Complex projects with unique architecture
 - ✅ Teams that want to discuss every decision
@@ -427,6 +591,7 @@ AI Flow offers two modes to fit your workflow and time constraints.
 **Control:** Review and customize AI suggestions
 
 **Best for:**
+
 - ⚡ MVPs and quick prototypes
 - ⚡ Standard projects (E-commerce, SaaS, CRM)
 - ⚡ Solo developers who want speed
@@ -435,6 +600,7 @@ AI Flow offers two modes to fit your workflow and time constraints.
 **What the AI auto-suggests:**
 
 Based on your 6 answers, the AI automatically suggests:
+
 - Database and ORM (e.g., PostgreSQL + Prisma for Node.js)
 - Architecture pattern (Clean Architecture)
 - Security best practices (JWT auth, RBAC, password policies)
@@ -474,14 +640,14 @@ C) ❌ Switch to Interactive Mode
 
 #### Comparison Table
 
-| Feature | Interactive Mode | Smart Auto-Suggest |
-|---------|------------------|-------------------|
-| Time | 90-120 min (new) | 15-25 min |
-| Questions | 71 questions | 6 questions |
-| Control | Full control | Review & customize |
-| Best for | Custom projects | MVPs, standard projects |
-| Learning | Deep dive | Quick overview |
-| Flexibility | Maximum | High (can customize) |
+| Feature     | Interactive Mode | Smart Auto-Suggest      |
+| ----------- | ---------------- | ----------------------- |
+| Time        | 90-120 min (new) | 15-25 min               |
+| Questions   | 71 questions     | 6 questions             |
+| Control     | Full control     | Review & customize      |
+| Best for    | Custom projects  | MVPs, standard projects |
+| Learning    | Deep dive        | Quick overview          |
+| Flexibility | Maximum          | High (can customize)    |
 
 #### Using Slash Commands
 
@@ -673,7 +839,7 @@ You can also run phases individually:
 /flow-build fase 6 # Testing Strategy
 /flow-build fase 7 # Deployment
 
-````
+```
 
 **When to use individual phases:**
 
@@ -691,7 +857,7 @@ AI Flow supports 4 AI tools with tool-specific configurations.
 
 ```bash
 ai-flow init . --ai claude
-````
+```
 
 **Generated files:**
 
@@ -1132,6 +1298,8 @@ Phase 7 (Operations/Deployment) → CI/CD (depends on all previous)
 Phase 8 (Project Setup & Final Docs) → Framework init, AGENT.md, README.md
     ↓
 Phase 9 (Implementation Roadmap) → Optional (Backend only) - Story Points, Epics, Features
+    ↓
+Phase 10 (User Stories) → Optional (Backend only, requires Phase 9) - Acceptance Criteria, Test Cases
 ```
 
 **Example: Updating only architecture and testing**
@@ -1166,23 +1334,27 @@ Phase 9 (Implementation Roadmap) → Optional (Backend only) - Story Points, Epi
 /flow-dev-feature new                  # New feature from scratch
 /flow-dev-feature change               # Modify existing feature
 /flow-dev-feature refactor             # Refactor existing code
+
+# With User Story ID (requires Phase 10):
+/flow-dev-feature HU-001-001           # Implement specific User Story
+/flow-dev-feature HU-002-003           # AI reads acceptance criteria, tasks, test cases
 ```
 
 **Workflow:**
 
 1. **Spec Creation** - Define feature requirements
-   - User stories and acceptance criteria
+   - User stories and acceptance criteria (or read from HU-XXX-XXX.md)
    - API contracts and data structures
    - Dependencies and risks
 
 2. **Planning** - Break down into tasks
    - Technical approach
    - Step-by-step implementation plan
-   - Testing strategy
+   - Testing strategy (or use test cases from User Story)
 
 3. **Implementation** - Execute tasks
    - Write code following specs
-   - Add tests for each task
+   - Add tests for each task (validates acceptance criteria)
    - Update documentation
 
 4. **Auto-Archive** - Save work history
