@@ -350,14 +350,13 @@ Is this correct? (Yes/No)
 ✅ Re-reading project-brief.md
 ```
 
-Once confirmed, generate:
-
-**1. `docs/data-model.md`**
+**Generate `docs/data-model.md` automatically:**
 
 - Use template: `.ai-flow/templates/docs/data-model.template.md`
 - Fill with all Phase 2 entity and relationship information
 - Include entity catalog, relationships, data patterns
 - Generate entity-relationship diagram (ER diagram) in mermaid format showing all entities and their relationships
+- Write to: `docs/data-model.md`
 
 ---
 
@@ -447,25 +446,20 @@ erDiagram
 ```
 ✅ Generated: docs/data-model.md
 
-📝 Please review this document. Do you need to make any corrections?
+Document has been created with all Phase 2 information.
 
-A) ✅ Looks perfect, continue to Phase 3
-B) 📝 I'll edit it now (I'll wait)
-C) 🔄 Regenerate with changes (tell me what to modify)
+📝 Would you like to make any corrections before continuing?
+
+→ If yes: Edit docs/data-model.md and type "ready" when done. I'll re-read it.
+→ If no: Type "continue" to proceed to Phase 3.
 ```
 
-**If user selects B:**
-
-```
-Perfect. Please edit docs/data-model.md and type "ready" when you're done.
-I'll re-read the file to update my context before continuing.
-```
-
-Then execute: `read_file('docs/data-model.md')` to refresh context.
+**If user edits file:**
+Execute `read_file('docs/data-model.md')` to refresh context before continuing.
 
 ---
 
-**Proceed to Phase 3 only after document is validated.**
+**Proceed to Phase 3 after document is generated and optionally reviewed.**
 
 ---
 

@@ -391,39 +391,29 @@ If corrections needed, specify which section.
 
 ### 📄 Generate Phase 1 Documents
 
-Once confirmed, generate:
-
-**1. `project-brief.md`**
+**Generate `project-brief.md` automatically:**
 
 - Use template: `.ai-flow/templates/project-brief.template.md`
 - Fill with all Phase 1 information
-- Write to project root
+- Write to project root: `project-brief.md`
 
 ```
 ✅ Generated: project-brief.md
 
-📝 Please review this document. Do you need to make any corrections?
+The document has been created with all the information from Phase 1.
 
-A) ✅ Looks perfect, continue to Phase 2
-B) 📝 I'll edit it now (I'll wait)
-C) 🔄 Regenerate with changes (tell me what to modify)
+📝 Would you like to make any corrections before continuing?
+
+→ If yes: Edit project-brief.md and type "ready" when done. I'll re-read it.
+→ If no: Type "continue" to proceed to Phase 2.
 ```
 
-**If user selects B:**
-
-```
-Perfect. Please edit project-brief.md and type "ready" when you're done.
-I'll re-read the file to update my context before continuing.
-```
-
-Then execute: `read_file('project-brief.md')` to refresh context.
-
-**If user selects C:**
-Ask what needs to be changed and regenerate the document.
+**If user edits the file:**
+Execute `read_file('project-brief.md')` to refresh context before continuing.
 
 ---
 
-**Proceed to Phase 2 only after document is validated.**
+**Proceed to Phase 2 after document is generated and optionally reviewed.**
 
 ---
 

@@ -430,31 +430,27 @@ Is this correct? (Yes/No)
 ✅ Re-reading ai-instructions.md
 ```
 
-Once confirmed, generate:
-
-**1. `docs/testing.md`**
+**Generate `docs/testing.md` automatically:**
 
 - Use template: `.ai-flow/templates/docs/testing.template.md`
 - **If MVP scope:** Fill with basic testing strategy: framework selection, smoke tests on critical paths, coverage 15-25%, basic CI setup. Mark advanced sections as "Not implemented yet - expand when moving to Production-Ready"
 - **If Production-Ready:** Fill with comprehensive testing strategy: framework, unit/integration/e2e tests, 60-80% coverage, test data management, mocking, full CI/CD
 - **If Enterprise:** Fill with exhaustive testing strategy: all Production-Ready items + contract tests, load tests, security tests, 80-95% coverage, performance benchmarks
+- Write to: `docs/testing.md`
 
 ```
 ✅ Generated: docs/testing.md
 
-📝 Please review this document. Do you need to make any corrections?
+Document has been created with all Phase 6 information.
 
-A) ✅ Looks perfect, continue to Phase 7
-B) 📝 I'll edit it now (I'll wait)
-C) 🔄 Regenerate with changes (tell me what to modify)
+📝 Would you like to make any corrections before continuing?
+
+→ If yes: Edit the file and type "ready" when done. I'll re-read it.
+→ If no: Type "continue" to proceed to Phase 7.
 ```
 
-**If user selects B:**
-
-```
-Perfect. Please edit the document and type "ready" when you're done.
-I'll re-read all files to update my context before continuing.
-```
+**If user edits file:**
+Re-read file to refresh context before continuing.
 
 ---
 

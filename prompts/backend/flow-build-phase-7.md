@@ -815,41 +815,41 @@ Is this correct? (Yes/No)
 ✅ Re-reading ai-instructions.md
 ```
 
-Once confirmed, generate:
+**Generate documents automatically:**
 
 **1. `docs/operations.md`**
 
 - Use template: `.ai-flow/templates/docs/operations.template.md`
 - Fill with deployment, monitoring, alerting, backup, scaling
+- Write to: `docs/operations.md`
 
 **2. `specs/configuration.md`**
 
 - Use template: `.ai-flow/templates/specs/configuration.template.md`
 - Fill with environment variables, secrets management, feature flags
+- Write to: `specs/configuration.md`
 
 **3. `.env.example`**
 
 - List all environment variables needed
 - Include comments explaining each variable
+- Write to: `.env.example`
 
 ```
 ✅ Generated: docs/operations.md
 ✅ Generated: specs/configuration.md
 ✅ Generated: .env.example
 
-📝 Please review these documents. Do you need to make any corrections?
+Documents have been created with all Phase 7 information.
 
-A) ✅ Look perfect, continue to final checkpoint
-B) 📝 I'll edit them now (I'll wait)
-C) 🔄 Regenerate with changes (tell me what to modify)
+📝 Would you like to make any corrections before continuing?
+
+→ If yes: Edit the files and type "ready" when done. I'll re-read them.
+→ If no: Type "continue" to proceed to final checkpoint.
 ```
 
-**If user selects B:**
-
-```
-Perfect. Please edit the documents and type "ready" when you're done.
-I'll re-read all files to update my context before continuing.
-```
+**If user edits files:**
+Re-read files to refresh context before continuing.
 
 ---
 
@@ -1137,6 +1137,3 @@ This is an investment that will save 10-20 hours over the project lifecycle.
 ```
 
 ```
-
-
-

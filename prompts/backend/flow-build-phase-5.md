@@ -599,12 +599,13 @@ Is this correct? (Yes/No)
 ✅ Re-reading specs/security.md
 ```
 
-Once confirmed, generate:
+**Generate documents automatically:**
 
 **1. `docs/code-standards.md`**
 
 - Use template: `.ai-flow/templates/docs/code-standards.template.md`
 - Fill with all code quality rules, naming conventions, formatting
+- Write to: `docs/code-standards.md`
 
 **2. Update `ai-instructions.md`**
 
@@ -615,19 +616,16 @@ Once confirmed, generate:
 ✅ Generated: docs/code-standards.md
 ✅ Updated: ai-instructions.md (code standards added)
 
-📝 Please review these documents. Do you need to make any corrections?
+Documents have been created with all Phase 5 information.
 
-A) ✅ Look perfect, continue to Phase 6
-B) 📝 I'll edit them now (I'll wait)
-C) 🔄 Regenerate with changes (tell me what to modify)
+📝 Would you like to make any corrections before continuing?
+
+→ If yes: Edit the files and type "ready" when done. I'll re-read them.
+→ If no: Type "continue" to proceed to Phase 6.
 ```
 
-**If user selects B:**
-
-```
-Perfect. Please edit the documents and type "ready" when you're done.
-I'll re-read all files to update my context before continuing.
-```
+**If user edits files:**
+Re-read files to refresh context before continuing.
 
 ---
 

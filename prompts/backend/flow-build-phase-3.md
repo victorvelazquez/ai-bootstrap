@@ -661,40 +661,37 @@ Is this correct? (Yes/No)
 ✅ Re-reading docs/data-model.md
 ```
 
-Once confirmed, generate:
+**Generate documents automatically:**
 
 **1. `docs/architecture.md`**
 
 - Use template: `.ai-flow/templates/docs/architecture.template.md`
 - Fill with system architecture, patterns, tech stack
 - Include architecture diagram (mermaid format)
+- Write to: `docs/architecture.md`
 
 **2. `ai-instructions.md`**
 
 - Use template: `.ai-flow/templates/ai-instructions.template.md`
 - Fill with tech stack, framework, language, key dependencies
 - Include NEVER/ALWAYS rules specific to chosen stack
-- Generate idiomatic code examples for Controller, Service, Repository, DTO and Module placeholders, strictly following the selected Architecture Pattern (e.g., if Hexagonal, show Ports & Adapters).
+- Generate idiomatic code examples for Controller, Service, Repository, DTO and Module placeholders, strictly following the selected Architecture Pattern (e.g., if Hexagonal, show Ports & Adapters)
+- Write to: `ai-instructions.md`
 
 ```
 ✅ Generated: docs/architecture.md
 ✅ Generated: ai-instructions.md
 
-📝 Please review these documents. Do you need to make any corrections?
+Documents have been created with all Phase 3 information.
 
-A) ✅ Look perfect, continue to Phase 4
-B) 📝 I'll edit them now (I'll wait)
-C) 🔄 Regenerate with changes (tell me what to modify)
+📝 Would you like to make any corrections before continuing?
+
+→ If yes: Edit the files and type "ready" when done. I'll re-read them.
+→ If no: Type "continue" to proceed to Phase 4.
 ```
 
-**If user selects B:**
-
-```
-Perfect. Please edit the documents and type "ready" when you're done.
-I'll re-read all files to update my context before continuing.
-```
-
-Then execute: `read_file()` for both documents to refresh context.
+**If user edits files:**
+Execute `read_file()` for both documents to refresh context before continuing.
 
 ---
 
