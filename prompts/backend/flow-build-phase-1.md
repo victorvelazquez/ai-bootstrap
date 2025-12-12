@@ -92,37 +92,37 @@ What are the main functionalities your system needs?
 Think about what your users will be able to do with your system. You can list them freely, or select from common features suggested below based on your system type.
 
 🛒 E-commerce common features:
-A) User authentication (register/login)
-B) Product catalog with search/filters
-C) Shopping cart
-D) Checkout and payment processing
-E) Order management
-F) Inventory tracking
-G) Admin dashboard
+1) User authentication (register/login)
+2) Product catalog with search/filters
+3) Shopping cart
+4) Checkout and payment processing
+5) Order management
+6) Inventory tracking
+7) Admin dashboard
 📱 SaaS common features:
-A) User authentication with SSO
-B) Multi-tenant organization/workspace management
-C) Role-based access control (RBAC)
-D) Subscription and billing
-E) Dashboard and analytics
-F) API access
-G) Admin panel
+1) User authentication with SSO
+2) Multi-tenant organization/workspace management
+3) Role-based access control (RBAC)
+4) Subscription and billing
+5) Dashboard and analytics
+6) API access
+7) Admin panel
 📊 CRM/Business Tool common features:
-A) User/team management
-B) Contact/customer database
-C) Activity tracking and logging
-D) Reporting and analytics
-E) Integrations (email, calendar, etc.)
-F) Search and filters
-G) Export functionality
+1) User/team management
+2) Contact/customer database
+3) Activity tracking and logging
+4) Reporting and analytics
+5) Integrations (email, calendar, etc.)
+6) Search and filters
+7) Export functionality
 🎮 Social/Community common features:
-A) User profiles
-B) Posts/content creation
-C) Feed/timeline
-D) Comments and reactions
-E) Follow/friend system
-F) Notifications
-G) Moderation tools
+1) User profiles
+2) Posts/content creation
+3) Feed/timeline
+4) Comments and reactions
+5) Follow/friend system
+6) Notifications
+7) Moderation tools
 ⭐ Your specific features (add any custom functionalities):
 -
 -
@@ -147,13 +147,13 @@ This helps us focus the documentation on what you're building now, while noting 
 ⏭️ What will you leave for future versions? (What you're NOT building now)
 
 Common things to defer:
-A) Mobile native apps (building web/API first)
-B) Advanced analytics/ML features
-C) Third-party integrations (v2)
-D) White-label/multi-branding
-E) Internationalization (i18n)
-F) Advanced automation/workflows
-G) Video/live streaming features
+1) Mobile native apps (building web/API first)
+2) Advanced analytics/ML features
+3) Third-party integrations (v2)
+4) White-label/multi-branding
+5) Internationalization (i18n)
+6) Advanced automation/workflows
+7) Video/live streaming features
 ⭐ Other features to defer (add your own):
 -
 -
@@ -214,7 +214,7 @@ How will you measure success?
 
 > Note: If you omit any common flow or functionality, the AI will suggest and document typical processes relevant to your system type, based on best practices and common use cases.
 
-```
+`````
 List the main business flows of the system (e.g., sales, inventory update, invoicing, user registration).
 
 For each flow, you can add a brief description (optional).
@@ -289,7 +289,8 @@ flowchart TD
     style End2 fill:#e1ffe1
     style ProcessPayment fill:#fff4e1
     style Confirm fill:#d4edda
-```
+`````
+
 ````
 
 **Flowchart Syntax:**
@@ -428,3 +429,4 @@ Ask what needs to be changed and regenerate the document.
 
 ## PHASE 2: Data Architecture (15-20 min)
 
+````

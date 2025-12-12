@@ -48,46 +48,46 @@ Do you need to add more entities? (Y/N)
 Based on your system type (from Phase 1, question 1.5), here are common entities:
 
 🛒 E-commerce typical entities:
-A) User - System users with authentication
-B) Product - Items available for purchase
-C) Category - Product categorization
-D) Cart - Shopping cart items
-E) Order - Customer orders
-F) OrderItem - Individual items in an order
-G) Payment - Payment transactions
-H) Address - Shipping/billing addresses
-I) Review - Product reviews and ratings
-J) Inventory - Stock tracking
+1) User - System users with authentication
+2) Product - Items available for purchase
+3) Category - Product categorization
+4) Cart - Shopping cart items
+5) Order - Customer orders
+6) OrderItem - Individual items in an order
+7) Payment - Payment transactions
+8) Address - Shipping/billing addresses
+9) Review - Product reviews and ratings
+10) Inventory - Stock tracking
 
 📱 SaaS typical entities:
-A) User - System users
-B) Organization - Tenant/workspace
-C) Team - Groups within organizations
-D) Role - Access control roles
-E) Permission - Granular permissions
-F) Subscription - Billing plans
-G) Invoice - Payment records
-H) ApiKey - API access credentials
-I) AuditLog - Activity tracking
+1) User - System users
+2) Organization - Tenant/workspace
+3) Team - Groups within organizations
+4) Role - Access control roles
+5) Permission - Granular permissions
+6) Subscription - Billing plans
+7) Invoice - Payment records
+8) ApiKey - API access credentials
+9) AuditLog - Activity tracking
 
 📊 CRM typical entities:
-A) User - System users
-B) Contact - Customers/leads
-C) Company - Organizations
-D) Deal - Sales opportunities
-E) Activity - Calls, emails, meetings
-F) Task - To-do items
-G) Note - Free-form notes
-H) Document - Attachments
+1) User - System users
+2) Contact - Customers/leads
+3) Company - Organizations
+4) Deal - Sales opportunities
+5) Activity - Calls, emails, meetings
+6) Task - To-do items
+7) Note - Free-form notes
+8) Document - Attachments
 
 🎮 Social typical entities:
-A) User - Platform users
-B) Profile - User profiles
-C) Post - Content/publications
-D) Comment - Post comments
-E) Like/Reaction - Engagement
-F) Follow - User connections
-G) Notification - User alerts
+1) User - Platform users
+2) Profile - User profiles
+3) Post - Content/publications
+4) Comment - Post comments
+5) Like/Reaction - Engagement
+6) Follow - User connections
+7) Notification - User alerts
 H) Message - Direct messages
 I) Group - Communities
 
@@ -434,8 +434,8 @@ erDiagram
 
 **Common Mistakes to Avoid:**
 
-- ❌ ` ​```Mermaid ` (capital M - will not render)
-- ❌ ` ​``` mermaid ` (extra space - will not render)
+- ❌ `​```Mermaid` (capital M - will not render)
+- ❌ `​``` mermaid` (extra space - will not render)
 - ❌ Indenting the entire diagram with spaces/tabs
 - ❌ Missing closing ` ``` ` fence
 - ❌ Invalid entity/relationship syntax
