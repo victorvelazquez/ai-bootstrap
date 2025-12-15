@@ -59,7 +59,7 @@ Verify installation:
 
 ```bash
 ai-flow --version
-# Output: 2.1.1
+# Output: 2.1.2
 ```
 
 _Note: Package name is `ai-flow-dev`, but the CLI command remains `ai-flow`_
@@ -301,7 +301,7 @@ my-awesome-api/
 
 **Time:** 15-30 minutes (automated)
 
-**Output:** `roadmap.md` with complete implementation plan (strategic level)
+**Output:** `docs/roadmap.md` with complete implementation plan (strategic level)
 
 **When to use:**
 
@@ -318,7 +318,7 @@ my-awesome-api/
 
 **What Phase 10 does:**
 
-- ✅ Reads roadmap.md Features and converts them to detailed User Stories
+- ✅ Reads docs/roadmap.md Features and converts them to detailed User Stories
 - ✅ Generates Gherkin-style acceptance criteria (Given/When/Then)
 - ✅ Creates technical task breakdown (Backend/Frontend/Testing)
 - ✅ Derives QA test cases from acceptance criteria
@@ -331,7 +331,7 @@ my-awesome-api/
 - One Epic: 5-10 minutes
 - One User Story: 2-3 minutes
 
-**Output:** `user-stories/EP-XXX/HU-XXX-XXX.md` files
+**Output:** `.ai-flow/user-stories/EP-XXX/HU-XXX-XXX.md` files
 
 **3 execution modes:**
 
@@ -351,7 +351,7 @@ my-awesome-api/
 - ✅ You want detailed User Stories with acceptance criteria before coding
 - ✅ You're working with QA and need test case specifications
 - ✅ You follow Scrum/Agile with User Story format
-- ❌ Skip if roadmap.md is enough for your workflow
+- ❌ Skip if docs/roadmap.md is enough for your workflow
 
 **Example User Story structure:**
 
@@ -478,7 +478,7 @@ EP-001: Autenticación y Seguridad
 **Folder structure after Phase 10:**
 
 ```
-user-stories/
+.ai-flow/user-stories/
 ├── EP-001/              (Authentication)
 │   ├── HU-001-001.md   (Login básico)
 │   ├── HU-001-002.md   (OAuth login)
@@ -497,7 +497,7 @@ user-stories/
 **With roadmap only (Phase 9):**
 
 ```bash
-# Use Feature names from roadmap.md
+# Use Feature names from docs/roadmap.md
 /flow-dev-feature Base application configuration
 ```
 
@@ -706,7 +706,7 @@ For existing codebases, AI Flow analyzes your project first (**Phase 0: Context 
 
 **Layer 0: Cache Check (2-5 seconds)**
 
-- Checks `.ai-flow/analysis.json` for previous analysis
+- Checks `.ai-flow/cache/docs-analysis.json` for previous analysis
 - Detects file changes by comparing timestamps
 - **Result:** 0 seconds on re-runs if nothing changed
 
@@ -1927,7 +1927,7 @@ Keep documentation synchronized with code changes using `/flow-docs-sync`.
 
 **How it works:**
 
-1. Compares current code with last documented state (`.ai-flow/analysis.json`)
+1. Compares current code with last documented state (`.ai-flow/cache/docs-analysis.json`)
 2. Detects changes based on project type
 3. Shows report of documents needing updates
 4. Asks for confirmation
@@ -2029,7 +2029,7 @@ New files: 8
 ✅ specs/configuration.md updated
    - Added 4 new environment variables with descriptions
 
-✅ .ai-flow/analysis.json updated
+✅ .ai-flow/cache/docs-analysis.json updated
    - Saved new baseline for future comparisons
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -2167,7 +2167,7 @@ Complete list of all available commands organized by category.
 ```bash
 ai-flow init [path] [options]   # Initialize project
 ai-flow check                    # Verify initialization
-ai-flow --version               # Show version (2.1.1)
+ai-flow --version               # Show version (2.1.2)
 ai-flow --help                  # Show help
 ```
 
@@ -2385,7 +2385,7 @@ chmod 755 .
 
 4. **Check AI tool output** for error messages
 
-#### Analysis.json Issues
+#### docs-analysis.json Issues
 
 **Problem:** `/flow-docs-sync` says "no changes" but code changed
 
@@ -2394,7 +2394,7 @@ chmod 755 .
 1. **Delete analysis cache:**
 
    ```bash
-   rm .ai-flow/analysis.json
+   rm .ai-flow/cache/docs-analysis.json
    ```
 
 2. **Run docs-update again:**
@@ -2456,7 +2456,7 @@ chmod 755 .
 
 #### Performance Optimization
 
-1. ✅ **Use caching** - Let Layer 0 cache work (don't delete `analysis.json`)
+1. ✅ **Use caching** - Let Layer 0 cache work (don't delete `docs-analysis.json`)
 2. ✅ **Selective deep analysis** - Choose Layer 3 targets wisely
 3. ✅ **Incremental updates** - Use individual phase commands
 4. ✅ **Quick refactors** - Use `/flow-dev-refactor` for small changes

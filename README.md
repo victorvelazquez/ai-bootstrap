@@ -133,7 +133,7 @@ Or using uv (Python tool manager):
 uv tool install ai-flow-dev
 ```
 
-**Current version:** 2.1.1
+**Current version:** 2.1.2
 
 ---
 
@@ -261,8 +261,9 @@ After initialization, use these slash commands in your AI tool:
 
 > **Note:** Command prefix may vary by AI tool. Examples use `/flow-` (GitHub Copilot), but Claude may use `/` alone, Cursor may use `@`, etc. Check your tool's documentation.
 
-**Backend Projects:** 19 commands  
-**Frontend/Mobile Projects:** 2 commands (build + docs-sync)  
+**Backend Projects:** 8 commands  
+**Frontend Projects:** 2 commands  
+**Mobile Projects:** 2 commands  
 **Fullstack Projects:** Combined backend + frontend commands
 
 **Documentation & Build:**
@@ -338,7 +339,7 @@ After initialization, use these slash commands in your AI tool:
 
 ## 🎯 Generated Documentation
 
-**Backend** (14 docs): AGENT.md, ai-instructions.md, copilot-instructions.md, project-brief.md, plus 8 technical docs and 2 specs
+**Backend** (14 docs): AGENT.md, ai-instructions.md, copilot-instructions.md, project-brief.md, README.md, plus 8 technical docs and 1 spec
 
 **Frontend** (15 docs): AGENT.md, ai-instructions.md, project-brief.md, plus 9 technical docs and 3 specs
 
