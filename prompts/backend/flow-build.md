@@ -587,7 +587,7 @@ Read .ai-flow/prompts/backend/flow-build-phase-4-security.md and execute only Ph
 
 **Generates:**
 
-- `.ai-flow/roadmap.md` (complete implementation plan)
+- `docs/roadmap.md` (complete implementation plan)
 
 **Output includes:**
 
