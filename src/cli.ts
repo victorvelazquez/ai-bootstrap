@@ -767,7 +767,7 @@ program
   .description(
     'AI-powered development workflow from idea to production. Generate specs, plan features, and build with AI assistance.'
   )
-  .version('2.1.1');
+  .version('2.1.2');
 
 program
   .command('init')
