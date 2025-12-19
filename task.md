@@ -1,0 +1,30 @@
+# Task Checklist
+
+- [x] Analyze source prompt handling in `src/cli.ts`
+- [x] Create implementation plan for source prompts adaptation [/]
+- [x] Adapt `prompts/backend/flow-build.md`
+- [x] Adapt `prompts/backend/flow-dev-commit.md`
+- [x] Adapt `prompts/backend/flow-dev-feature.md`
+- [x] Adapt `prompts/backend/flow-dev-fix.md`
+- [x] Adapt `prompts/backend/flow-dev-refactor.md`
+- [x] Adapt `prompts/backend/flow-dev-review.md`
+- [x] Adapt `prompts/backend/flow-dev-work.md`
+- [x] Adapt `prompts/backend/flow-dev-commit.md`
+- [x] Adapt `prompts/backend/flow-docs-sync.md`
+- [x] (Self-Correction) Check if frontend/mobile also need adaptation
+- [x] Adapt `prompts/frontend/flow-build.md`
+- [x] Adapt `prompts/frontend/flow-docs-sync.md`
+- [x] Adapt `prompts/mobile/flow-build.md`
+- [x] Adapt `prompts/mobile/flow-docs-sync.md`
+- [x] Verify changes
+- [x] Execute `/flow2-check`
+- [x] Execute `/flow3-docs`
+- [x] Execute `/flow1-commit`
+- [x] Execute `/flow4-release`
+- [x] Implement Iterative Description Refinement [/]
+  - [x] Create implementation plan
+  - [x] Implement in `backend/flow-build-phase-1.md`
+  - [x] Remove redundancy in Backend Phase 1 (confirmatory 1.2, 1.3, 1.5)
+  - [x] Implement in `frontend/flow-build-phase-1.md` (renumbering + confirmatory 1.3, 1.4)
+  - [x] Implement in `mobile/flow-build-phase-1.md` (renumbering + overview 1.2)
+  - [ ] Final verification and commit
