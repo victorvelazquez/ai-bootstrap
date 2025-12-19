@@ -3,8 +3,8 @@
 > **Order for this phase:**
 >
 > - **MVP:** 6.1 → 6.2 (smoke tests) → 6.7 (CI basics)
-> - **Production-Ready:** 6.1 → 6.2 → 6.3 → 6.4 → 6.5 → 6.6 → 6.7
-> - **Enterprise:** 6.1 → 6.2 → 6.3 → 6.4 → 6.5 → 6.6 → 6.7 → 6.8 → 6.9
+> - **Production-Ready:** 6.1 → 6.1b → 6.2 → 6.3 → 6.4 → 6.5 → 6.6 → 6.7
+> - **Enterprise:** 6.1 → 6.1b → 6.2 → 6.3 → 6.4 → 6.5 → 6.6 → 6.7 → 6.8 → 6.9
 
 > **📌 Scope-based behavior:**
 >
@@ -44,6 +44,33 @@ Your choice: \_\_
 Assertion library: **
 Mocking library: **
 
+```
+
+**6.1b Testing Philosophy** (Production-Ready and Enterprise only)
+
+```
+What is your testing philosophy?
+
+A) ⭐ Test-First (TDD) - Write tests before code
+   - Red-Green-Refactor cycle
+   - Higher initial effort, better design
+   - Best for: Complex business logic, critical systems
+
+B) 🔥 Test-After - Write tests after implementation
+   - Faster initial development
+   - Risk of untested edge cases
+   - Best for: Rapid prototyping, time-sensitive features
+
+C) ⚡ Behavior-Driven (BDD) - Write tests as specifications
+   - Given/When/Then format
+   - Business-readable tests
+   - Best for: Domain-heavy applications
+
+D) 🏆 Hybrid - TDD for core logic, test-after for simple features
+   - Balance of speed and quality
+   - Pragmatic approach
+
+Your choice: __
 ```
 
 **6.2 Test Types**

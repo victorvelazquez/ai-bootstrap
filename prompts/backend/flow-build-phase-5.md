@@ -1,12 +1,12 @@
 ## PHASE 5: Code Standards (15-20 min)
 
-> **Order for this phase:** 5.1 → 5.2 → 5.3 → 5.4 → 5.5 → 5.6 → 5.7 → 5.8 → 5.9 → 5.10 → 5.11
+> **Order for this phase:** 5.1 → 5.2 → 5.3 → 5.4 → 5.5 → 5.6 → 5.7 → 5.8 → 5.9 → 5.10 → 5.11 → 5.12 → 5.13
 
 > **📌 Scope-based behavior:**
 >
-> - **MVP:** Ask 5.1-5.5 only (formatting, naming, structure, coverage target, Git workflow), skip 5.6-5.11 (advanced practices)
-> - **Production-Ready:** Ask all questions 5.1-5.11
-> - **Enterprise:** Ask all questions 5.1-5.11 with emphasis on governance and documentation
+> - **MVP:** Ask 5.1-5.5 only (formatting, naming, structure, coverage target, Git workflow), skip 5.6-5.13 (advanced practices)
+> - **Production-Ready:** Ask all questions 5.1-5.13
+> - **Enterprise:** Ask all questions 5.1-5.13 with emphasis on governance and documentation
 
 ### Objective
 
@@ -556,6 +556,40 @@ E) Other: __
 Log retention: __ days
 ```
 
+**5.13 Custom Project Rules**
+
+```
+Do you have any project-specific rules for AI assistants?
+
+❌ NEVER Rules (things that should NEVER be done):
+
+Examples of NEVER rules:
+- Never use ORM X, always use ORM Y
+- Never modify files in the /legacy folder
+- Never use inline styles in components
+- Never bypass the API gateway
+
+Your custom NEVER rules:
+1. __
+2. __
+3. __
+(Leave blank if none)
+
+✅ ALWAYS Rules (things that should ALWAYS be done):
+
+Examples of ALWAYS rules:
+- Always use the company's error handling wrapper
+- Always include tenant_id in database queries
+- Always use the shared logging utility
+- Always run security scan before commit
+
+Your custom ALWAYS rules:
+1. __
+2. __
+3. __
+(Leave blank if none)
+```
+
 ### Phase 5 Output
 
 ```
@@ -573,6 +607,7 @@ Complexity: [function length, cyclomatic complexity, parameters, nesting depth l
 Git: [commit format (conventional/simple), branch naming convention]
 Versioning: [scheme (SemVer/Date), migration strategy, changelog method, responsibility]
 Logging Standards: [format (JSON/text), levels, context, aggregation tool, retention]
+Custom Rules: [NEVER rules count, ALWAYS rules count]
 
 Is this correct? (Yes/No)
 ```

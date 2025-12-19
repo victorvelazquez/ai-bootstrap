@@ -222,6 +222,51 @@ H) 🗂️ Partitioning - Split large tables by date/region/etc.
 For each selected, provide brief detail:
 ```
 
+**2.7.1 Domain-Driven Design Concepts** (Production-Ready and Enterprise only)
+
+```
+Will you use Domain-Driven Design (DDD) patterns?
+
+A) ⭐ Yes - Using DDD tactical patterns
+   - Aggregate Roots for transactional boundaries
+   - Value Objects for immutable data
+   - Domain Events for decoupling
+
+B) 🔥 Partial - Only Aggregate Roots
+   - Define aggregate roots for complex domains
+   - Keep entities grouped by aggregate
+
+C) No - Simple CRUD patterns
+   - Standard entity relationships
+   - No aggregate boundaries
+
+If using DDD (A or B):
+
+What are your Aggregate Roots?
+(Aggregate roots are the entry points to groups of related entities)
+
+Examples:
+- Order (with OrderItems, Shipping, Payment)
+- User (with Profile, Preferences, Settings)
+- Project (with Tasks, Members, Files)
+
+Your Aggregate Roots:
+1. __ (contains: __)
+2. __ (contains: __)
+3. __ (contains: __)
+
+Domain Events (things that happen in your domain):
+- UserRegistered
+- OrderPlaced
+- PaymentCompleted
+- etc.
+
+Your key domain events:
+1.
+2.
+3.
+```
+
 **2.8 Database Indexes**
 
 ```

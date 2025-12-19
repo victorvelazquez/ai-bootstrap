@@ -149,6 +149,39 @@ C) Manual deploy for all environments
 
 ```
 
+**7.4.1 Deployment Strategy** (Production-Ready and Enterprise only)
+
+```
+What deployment strategy will you use for production?
+
+A) ⭐ Rolling Deployment - Gradual replacement
+   - Replace instances one at a time
+   - Zero downtime
+   - Easy rollback
+
+B) 🔥 Blue-Green Deployment - Instant switch
+   - Two identical environments
+   - Switch traffic instantly
+   - Higher infrastructure cost
+
+C) ⚡ Canary Deployment - Progressive rollout
+   - Deploy to small percentage first
+   - Monitor for issues
+   - Gradually increase traffic
+
+D) 🏆 Feature Flags - Code-level control
+   - Deploy code, toggle features
+   - Instant enable/disable
+   - Best with: LaunchDarkly, Unleash
+
+Your choice: __
+
+Rollback plan:
+- How quickly must rollback complete? __ minutes
+- Who can trigger rollback? [DevOps/Tech Lead/Any developer]
+- Rollback trigger criteria? [Error rate > X%, latency > Y ms, manual]
+```
+
 **7.4.1 Deployment Strategy**
 
 ```
