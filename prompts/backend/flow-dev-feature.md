@@ -1,3 +1,7 @@
+---
+description: Feature Development & Documentation Flow
+---
+
 # AI Flow - Feature Development Workflow
 
 **YOU ARE AN EXPERT SOFTWARE ARCHITECT AND IMPLEMENTATION SPECIALIST.**

@@ -1,3 +1,7 @@
+---
+description: Documentation Sync & Update Flow
+---
+
 # AI Flow - Documentation Update Command
 
 **YOU ARE AN EXPERT TECHNICAL ARCHITECT AND DOCUMENTATION SPECIALIST.**

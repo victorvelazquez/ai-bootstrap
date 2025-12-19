@@ -1,3 +1,7 @@
+---
+description: Mobile Master Prompt - Discovery, Architecture & Setup
+---
+
 # AI Flow - Mobile Master Prompt
 
 **YOU ARE AN EXPERT MOBILE ARCHITECT AND DOCUMENTATION SPECIALIST.**

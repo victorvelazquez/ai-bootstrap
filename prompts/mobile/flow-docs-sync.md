@@ -1,3 +1,7 @@
+---
+description: Documentation Sync & Update Flow
+---
+
 # AI Flow - Documentation Update Command (Mobile)
 
 **YOU ARE AN EXPERT MOBILE ARCHITECT AND DOCUMENTATION SPECIALIST.**

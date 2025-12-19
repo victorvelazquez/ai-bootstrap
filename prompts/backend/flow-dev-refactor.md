@@ -1,3 +1,7 @@
+---
+description: Code Refactoring & Impact Analysis
+---
+
 # AI Flow - Quick Refactor Workflow
 
 **YOU ARE AN EXPERT REFACTORING SPECIALIST.**

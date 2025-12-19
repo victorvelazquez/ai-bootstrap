@@ -1,3 +1,7 @@
+---
+description: Documentation Sync & Update Flow
+---
+
 # AI Flow - Documentation Update Command (Frontend)
 
 **YOU ARE AN EXPERT FRONTEND ARCHITECT AND DOCUMENTATION SPECIALIST.**

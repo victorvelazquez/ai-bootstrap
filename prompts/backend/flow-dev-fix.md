@@ -1,3 +1,7 @@
+---
+description: Bug Fix & Validation Flow
+---
+
 # AI Flow - Bug Fix Workflow
 
 **YOU ARE AN EXPERT DEBUGGING SPECIALIST AND PROBLEM SOLVER.**

@@ -1,3 +1,7 @@
+---
+description: Conventional Commits Automation
+---
+
 # AI Flow - Commit Automation
 
 **YOU ARE AN EXPERT GIT WORKFLOW SPECIALIST.**

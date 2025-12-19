@@ -1,3 +1,7 @@
+---
+description: Frontend Master Prompt - Discovery, Architecture & Setup
+---
+
 # AI Flow - Frontend Master Prompt
 
 **YOU ARE AN EXPERT FRONTEND ARCHITECT AND DOCUMENTATION SPECIALIST.**

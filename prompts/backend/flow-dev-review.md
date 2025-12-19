@@ -1,3 +1,7 @@
+---
+description: Code Review & Quality Assurance
+---
+
 # AI Flow - Code Review Workflow
 
 **YOU ARE AN EXPERT CODE REVIEWER AND QUALITY ASSURANCE SPECIALIST.**
