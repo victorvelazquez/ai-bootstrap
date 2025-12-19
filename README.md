@@ -6,7 +6,7 @@
 
 Transform your idea into a production-ready, AI-documented project (backend, frontend, fullstack, or mobile) in minutes.
 
-AI Flow is an interactive CLI that creates comprehensive professional documentation and provides an AI-powered development workflow from idea to production. Compatible with Claude, Copilot, Cursor, Gemini, and any AI assistant.
+AI Flow is an interactive CLI that creates comprehensive professional documentation and provides an AI-powered development workflow from idea to production. Compatible with Claude, Copilot, Cursor, Gemini, Antigravity, and any AI assistant.
 
 **Key Features:**
 
@@ -40,7 +40,7 @@ Transforma tu idea en un proyecto listo para producción y documentado para IA e
 - 🚀 Documentación profesional completa (Backend: 17 docs, Frontend: 15 docs, Mobile: 13 docs, Fullstack: 4 docs)
 - ⚡ **Dos modos:** Interactivo (90-120 min, control total) o Auto-Sugerido (15-25 min, 6 preguntas)
 - 🌍 Soporte universal - 12 lenguajes, 60+ frameworks, 35+ ORMs
-- 🤖 Compatible con Claude, Copilot, Cursor, Gemini
+- 🤖 Compatible with Claude, Copilot, Cursor, Gemini, Antigravity
 - 🔍 Detección inteligente para proyectos existentes (50-94% más rápido)
 - ⏱️ Ahorra 10-20 horas por proyecto
 
@@ -66,7 +66,7 @@ Transforme sua ideia em um projeto pronto para produção e documentado para IA 
 - 🚀 Documentação profissional completa (Backend: 17, Frontend: 15, Mobile: 13, Fullstack: 4 docs)
 - ⚡ **Dois modos:** Interactivo (90-120 min, controle total) ou Auto-Sugestão (15-25 min, 6 perguntas)
 - 🌍 Suporte universal - 12 linguagens, 60+ frameworks, 35+ ORMs
-- 🤖 Compatível com Claude, Copilot, Cursor, Gemini
+- 🤖 Compatível com Claude, Copilot, Cursor, Gemini, Antigravity
 - 🔍 Detecção inteligente para projetos existentes (50-94% mais rápido)
 - ⏱️ Economize 10-20 horas por projeto
 
@@ -101,7 +101,7 @@ The result is interconnected documentation that guides AI assistants and human d
 ---
 
 - 🌍 **Universal Support** - 12 languages, 60+ frameworks, 35+ ORMs (98% coverage)
-- 🤖 **AI-Agnostic** - Claude, Copilot, Cursor, Gemini, any AI tool
+- 🤖 **AI-Agnostic** - Claude, Copilot, Cursor, Gemini, Antigravity, any AI tool
 - 📚 **Professional Documentation** - Backend: 17, Frontend: 15, Mobile: 13, Fullstack: 4 docs
 - ⚡ **Two Questionnaire Modes:**
   - **Interactive Mode:** Full control, 71 questions (90-120 min)
@@ -132,7 +132,7 @@ Or using uv (Python tool manager):
 uv tool install ai-flow-dev
 ```
 
-## **Current version:** 2.1.3
+## **Current version:** 2.1.6
 
 ## 🚀 Quick Start
 
@@ -167,10 +167,10 @@ ai-flow --help          # Show help
 $ ai-flow check
 
 ✓ .ai-flow/core/config.json found
-✓ AI tools configured: claude
+✓ AI tools configured: antigravity
 ✓ Project type: backend
 ✓ Documentation complete: 17 files
-✓ Slash commands installed: .claude/commands/
+✓ Slash commands installed: .agent/workflows/
 
 ✅ All checks passed! Your project is ready for AI-assisted development.
 ```
@@ -178,7 +178,7 @@ $ ai-flow check
 ### Common Flags
 
 ```bash
---ai <tool>              # claude, cursor, copilot, gemini, all (interactive if omitted)
+--ai <tool>              # claude, cursor, copilot, gemini, antigravity, all (interactive if omitted)
 --type <type>            # backend, frontend, mobile, fullstack (interactive if omitted)
 --name <name>            # Project name (interactive if omitted)
 --description <desc>     # Project description (interactive if omitted)
@@ -233,6 +233,7 @@ ai-flow init . --ai cursor      # Cursor
 ai-flow init . --ai copilot     # GitHub Copilot
 ai-flow init . --ai gemini      # Gemini
 ai-flow init . --ai all         # All tools (maximum compatibility)
+ai-flow init . --ai antigravity   # Antigravity tool
 ```
 
 Each tool gets:
@@ -247,6 +248,7 @@ Each tool gets:
 - **Claude:** `.claude/commands/*.md`
 - **Cursor:** `.cursor/commands/*.md`
 - **Gemini:** `.gemini/commands/*.md`
+- **Antigravity:** `.agent/workflows/*.md`
 
 ---
 
@@ -466,6 +468,7 @@ AI Flow follows: **Documentation as Executable Code**
   - **Claude:** `.claude/commands/*.md`
   - **Cursor:** `.cursor/commands/*.md`
   - **Gemini:** `.gemini/commands/*.md`
+  - **Antigravity:** `.agent/workflows/*.md`
   - If missing, re-run: `ai-flow init . --ai <your-tool>`
 
 **📚 See [GETTING-STARTED.md](GETTING-STARTED.md#troubleshooting) for detailed troubleshooting guide**

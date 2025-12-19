@@ -59,7 +59,7 @@ Verify installation:
 
 ```bash
 ai-flow --version
-# Output: 2.1.3
+# Output: 2.1.6
 ```
 
 _Note: Package name is `ai-flow-dev`, but the CLI command remains `ai-flow`_
@@ -84,7 +84,7 @@ ai-flow init .
 You'll be asked:
 
 1. **Which AI tool will you use?**
-   - Select: `claude`, `cursor`, `copilot`, `gemini`, or `all`
+   - Select: `claude`, `cursor`, `copilot`, `gemini`, `antigravity`, or `all`
    - This configures tool-specific files (`.clauderules`, `.cursorrules`, etc.)
 
 2. **What type of project?**
@@ -99,7 +99,7 @@ You'll be asked:
 - ✅ Creates `.ai-flow/` hidden folder
 - ✅ Copies Master prompts to `.ai-flow/prompts/`
 - ✅ Copies document templates to `.ai-flow/templates/`
-- ✅ Installs slash commands (`.claude/commands/`, `.cursor/commands/`, etc.)
+- ✅ Installs slash commands (`.claude/commands/`, `.cursor/commands/`, `.agent/workflows/`, etc.)
 - ✅ Creates configuration file `.ai-flow/core/config.json`
 
 **Time:** ~30 seconds
@@ -2147,7 +2147,7 @@ Complete list of all available commands organized by category.
 ```bash
 ai-flow init [path] [options]   # Initialize project
 ai-flow check                    # Verify initialization
-ai-flow --version               # Show version (2.1.3)
+ai-flow --version               # Show version (2.1.6)
 ai-flow --help                  # Show help
 ```
 
@@ -2224,7 +2224,7 @@ ai-flow --help                  # Show help
 
 | Flag            | Type    | Required | Values                                         | Description                    |
 | --------------- | ------- | -------- | ---------------------------------------------- | ------------------------------ |
-| `--ai`          | String  | Yes\*    | `claude`, `cursor`, `copilot`, `gemini`, `all` | AI tool selection              |
+| `--ai`          | String  | Yes\*    | `claude`, `cursor`, `copilot`, `gemini`, `antigravity`, `all` | AI tool selection              |
 | `--type`        | String  | No       | `backend`, `frontend`, `mobile`, `fullstack`   | Project type                   |
 | `--name`        | String  | No       | Any string                                     | Project name                   |
 | `--description` | String  | No       | Any string                                     | Project description            |
@@ -2296,6 +2296,10 @@ chmod 755 .
    ```bash
    # For Claude
    ls .claude/commands/
+
+   # For Antigravity
+   ls .agent/workflows/
+   ```
 
    # For Cursor
    ls .cursor/commands/
