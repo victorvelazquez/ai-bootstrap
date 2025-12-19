@@ -3,9 +3,7 @@
 **Duration:** 15-20 minutes
 **Questions:** ~12 questions
 **Output:** docs/app-store.md, specs/build-configuration.md, specs/deployment.md, parts of ai-instructions.md
-
 ---
-
 ## 🎯 Objective
 
 Define your app store deployment strategy:
@@ -15,9 +13,7 @@ Define your app store deployment strategy:
 3. How will you handle versioning?
 4. What code signing strategy?
 5. What beta testing approach?
-
 ---
-
 ## 📋 Questions
 
 ### Question 7.1: Target App Stores
@@ -48,9 +44,7 @@ D) **Enterprise Distribution Only**
 - Best for: Enterprise apps
 
 **Your answer:**
-
 ---
-
 ### Question 7.2: CI/CD Pipeline
 
 **What CI/CD tool will you use for builds and deployment?**
@@ -86,9 +80,7 @@ E) **Manual Builds**
 - Best for: Learning, small projects
 
 **Your answer:**
-
 ---
-
 ### Question 7.3: Versioning Strategy
 
 **How will you version your app?**
@@ -122,9 +114,7 @@ C) **Build Number Only**
 
 - A) ⭐ **Incrementing integer** (1, 2, 3, ...)
 - B) **Based on version** (e.g., 1.2.3 → 10203)
-
 ---
-
 ### Question 7.4: Code Signing Strategy
 
 **How will you handle code signing?**
@@ -164,9 +154,7 @@ C) **Build Number Only**
 - B) **Store locally**
   - Manual management
   - Best for: Small teams
-
 ---
-
 ### Question 7.5: Beta Testing Strategy
 
 **How will you handle beta testing?**
@@ -200,9 +188,7 @@ E) **No Beta Testing**
 - Best for: MVPs, internal apps
 
 **Your answer:**
-
 ---
-
 ### Question 7.6: Release Strategy
 
 **What release strategy will you use?**
@@ -225,9 +211,7 @@ C) **Full Release**
 - Best for: Small updates, bug fixes
 
 **Your answer:**
-
 ---
-
 ### Question 7.7: App Store Metadata
 
 **What metadata will you prepare for stores?**
@@ -248,9 +232,7 @@ C) **Full Release**
 - [ ] Feature graphic (Android)
 
 **Your answer:**
-
 ---
-
 ### Question 7.8: Screenshot Automation
 
 **Will you automate screenshot generation?**
@@ -272,9 +254,7 @@ C) **No - Manual Screenshots**
 - Best for: Small teams, infrequent updates
 
 **Your answer:**
-
 ---
-
 ### Question 7.9: App Review Preparation
 
 **How will you prepare for app review?**
@@ -298,9 +278,7 @@ C) **No - Manual Screenshots**
 - [ ] Test in internal testing first
 
 **Your answer:**
-
 ---
-
 ### Question 7.10: Update Frequency
 
 **How often will you release updates?**
@@ -326,9 +304,7 @@ D) **Monthly**
 - Best for: Stable apps
 
 **Your answer:**
-
 ---
-
 ### Question 7.11: Rollback Strategy
 
 **How will you handle rollbacks?**
@@ -349,9 +325,7 @@ C) **No Rollback Plan**
 - Best for: Very small apps
 
 **Your answer:**
-
 ---
-
 ### Question 7.12: Monitoring & Analytics
 
 **What monitoring will you use post-deployment?**
@@ -378,18 +352,15 @@ D) **Custom Analytics**
 - Best for: Advanced analytics
 
 **Your answer:**
-
 ---
-
 ## ✅ Phase 7 Completion
 
 After answering all questions, summarize:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ Phase 7 Complete: Store Deployment
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Selected Deployment Strategy:
 - Stores: {{TARGET_STORES}}
 - CI/CD: {{CICD_PIPELINE}}
@@ -404,9 +375,7 @@ Generated Documents:
 ✅ specs/build-configuration.md
 ✅ specs/deployment.md
 ✅ .env.example
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 📊 Progress Summary:
 
 Phases 1-7 completed:
@@ -423,11 +392,9 @@ Phases 1-7 completed:
 
 Remaining:
 ⏭️  Phase 8: Project setup & final documentation
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 🎯 Next: Phase 8 - Project Setup & Final Documentation
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Phase 8 will:
 - 🔍 Detect project state (new vs existing)
 - 🚀 Initialize framework (optional, for new projects)
@@ -438,9 +405,11 @@ Phase 8 will:
 
 Continue to Phase 8? (yes/no)
 ```
-
 ---
-
 **Last Updated:** 2025-12-09
 
 **Version:** 2.0.0 (Unified workflow with Phase 8)
+
+
+
+

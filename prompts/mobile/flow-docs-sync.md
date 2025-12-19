@@ -3,17 +3,13 @@
 **YOU ARE AN EXPERT MOBILE ARCHITECT AND DOCUMENTATION SPECIALIST.**
 
 Your mission is to detect changes in the mobile codebase and update the project documentation automatically when the user executes `/flow-docs-sync`.
-
 ---
-
 ## Command: `/flow-docs-sync`
 
 ### Objective
 
 Detect changes in the mobile codebase compared to the last documented state (stored in `.ai-flow/cache/docs-analysis.json`) and update all affected documentation files automatically.
-
 ---
-
 ## Execution Flow
 
 ### Step 1: Check for Analysis File
@@ -218,9 +214,7 @@ No updates required.
 ```
 Update cancelled. Run `/flow-docs-sync` when you're ready to update the documentation.
 ```
-
 ---
-
 ## Change Detection Rules
 
 ### Screens Detection
@@ -341,9 +335,7 @@ Update cancelled. Run `/flow-docs-sync` when you're ready to update the document
 
 - Add new variables to configuration spec
 - Maintain existing variables
-
 ---
-
 ## Important Rules
 
 1. **Incremental Updates Only:**
@@ -369,9 +361,7 @@ Update cancelled. Run `/flow-docs-sync` when you're ready to update the document
    - Regenerate navigation diagrams when screens change
    - Regenerate architecture diagrams when structure changes
    - Use mermaid format for all diagrams
-
 ---
-
 ## 📊 MOBILE DIAGRAM REGENERATION GUIDELINES
 
 When regenerating mobile diagrams, follow these **critical** formatting rules:
@@ -437,9 +427,7 @@ graph TD
     style P1 fill:#fff4e6
 ```
 ````
-
 ---
-
 ### State Management Diagrams (state-management.md)
 
 **Diagram Types:** `graph LR`, `sequenceDiagram`, `graph TD`
@@ -495,9 +483,7 @@ sequenceDiagram
     Note over Cache: Cache valid for 5min
 ```
 ````
-
 ---
-
 ### Testing Diagrams (testing.md)
 
 **Diagram Type:** `graph TB`
@@ -535,9 +521,7 @@ graph TB
     style UNIT fill:#e8f5e9,stroke:#388e3c,stroke-width:3px
 ```
 ````
-
 ---
-
 ### Common Formatting Rules (ALL Mobile Diagrams)
 
 **CRITICAL - Code Fence Syntax:**
@@ -583,16 +567,12 @@ graph TB
 - Show device vs emulator distinction in testing diagrams
 - Include deep linking routes in navigation diagrams
 - Highlight authentication flows and protected routes
-
 ---
-
 5. **Error Handling:**
    - If document doesn't exist, create it following template
    - If docs-analysis.json is corrupted, regenerate it
    - If comparison fails, show error and suggest full Phase 0 re-run
-
 ---
-
 ## Example Execution
 
 ```
@@ -626,10 +606,11 @@ AI:
 
 Documentation synchronized successfully.
 ```
-
 ---
-
 **BEGIN EXECUTION when user runs `/flow-docs-sync`**
+
+
+
 
 
 

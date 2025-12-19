@@ -3,9 +3,7 @@
 **Duration:** 15-20 minutes
 **Questions:** ~10 questions
 **Output:** docs/navigation.md, docs/architecture.md, parts of ai-instructions.md
-
 ---
-
 ## 🎯 Objective
 
 Define the **navigation structure and architecture** for your mobile app:
@@ -14,9 +12,7 @@ Define the **navigation structure and architecture** for your mobile app:
 2. How will you organize screens and components?
 3. What architecture pattern will you follow?
 4. How will you structure your codebase?
-
 ---
-
 ## 📋 Questions
 
 ### Question 2.1: Navigation Pattern
@@ -76,9 +72,7 @@ Define the **navigation structure and architecture** for your mobile app:
 
 - How many bottom tabs? (3-5 recommended)
 - What are the main sections? (e.g., Home, Search, Profile, Settings)
-
 ---
-
 ### Question 2.2: Screen Organization
 
 **How will you organize your screens?**
@@ -108,9 +102,7 @@ D) **Route-based**
 - Best for: File-based routing (Expo Router)
 
 **Your answer:**
-
 ---
-
 ### Question 2.3: Component Organization
 
 **How will you organize your components?**
@@ -137,9 +129,7 @@ D) **Type-based**
 - Best for: Component library approach
 
 **Your answer:**
-
 ---
-
 ### Question 2.4: Architecture Pattern
 
 **What architecture pattern will you follow?**
@@ -171,9 +161,7 @@ E) **Simple (No strict pattern)**
 - Best for: Small apps, MVPs
 
 **Your answer:**
-
 ---
-
 ### Question 2.5: Folder Structure
 
 **What folder structure will you use?**
@@ -216,9 +204,7 @@ lib/
 ```
 
 **Your preference:** (Describe or select from examples)
-
 ---
-
 ### Question 2.6: Navigation Library
 
 **Which navigation library will you use?**
@@ -246,9 +232,7 @@ lib/
   - Best for: Complex routing
 
 **Your answer:**
-
 ---
-
 ### Question 2.7: Deep Linking Strategy
 
 **How will you handle deep links?**
@@ -276,9 +260,7 @@ C) **No Deep Linking**
 
 - What URL scheme? (e.g., `myapp://`, `https://myapp.com`)
 - What screens need deep links? (e.g., product details, user profiles)
-
 ---
-
 ### Question 2.8: Navigation State Management
 
 **How will you manage navigation state?**
@@ -300,9 +282,7 @@ C) **Custom State Management**
 - Best for: Advanced use cases
 
 **Your answer:**
-
 ---
-
 ### Question 2.9: Screen Transitions
 
 **What screen transition animations will you use?**
@@ -325,9 +305,7 @@ C) **No Animations**
 - Best for: Performance-critical apps
 
 **Your answer:**
-
 ---
-
 ### Question 2.10: Navigation Guards / Authentication Flow
 
 **How will you handle protected routes?**
@@ -351,15 +329,11 @@ C) **No Protection**
 - Best for: Simple apps
 
 **Your answer:**
-
 ---
-
 #### 🎨 MERMAID NAVIGATION DIAGRAM FORMATS - CRITICAL
 
 **Use these exact formats** for mobile navigation diagrams:
-
 ---
-
 ##### 1️⃣ Navigation Structure (Tab + Stack Pattern)
 
 Use `graph TD` to show navigation hierarchy:
@@ -427,9 +401,7 @@ graph TD
 ```
 
 **Use for:** Tab-based apps with nested stacks (Instagram, Twitter pattern)
-
 ---
-
 ##### 2️⃣ Authentication Flow
 
 Use `graph LR` to show auth-protected navigation:
@@ -470,9 +442,7 @@ graph LR
 ```
 
 **Use for:** Apps with authentication/onboarding flows
-
 ---
-
 ##### 3️⃣ Deep Linking Routes
 
 Use `graph TD` to show deep link structure:
@@ -513,9 +483,7 @@ graph TD
 ```
 
 **Use for:** Apps with universal links/app links
-
 ---
-
 ##### 4️⃣ Screen Hierarchy (Feature-based)
 
 Use `graph TB` to show folder/screen organization:
@@ -561,9 +529,7 @@ graph TB
 ```
 
 **Use for:** Documenting folder structure and file organization
-
 ---
-
 **Diagram Guidelines:**
 
 - Color code by level (Root=light blue, Tabs=blue, Stacks=orange, Screens=default)
@@ -571,18 +537,15 @@ graph TB
 - Show authentication checks with decision diamonds
 - Include deep link routes with ⚠️ for protected routes
 - Update screen names based on actual app structure
-
 ---
-
 ## ✅ Phase 2 Completion
 
 After answering all questions, summarize:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ Phase 2 Complete: Navigation & Architecture
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Selected Architecture:
 - Navigation: Tab + Stack Navigation
 - Library: React Navigation 6.0
@@ -594,9 +557,7 @@ Selected Architecture:
 
 Proceed to Phase 3 (State & Data Management)? (Y/n)
 ```
-
 ---
-
 ## 📝 Generated Documents
 
 After Phase 2, generate/update:
@@ -604,15 +565,15 @@ After Phase 2, generate/update:
 - `docs/navigation.md` - Navigation patterns and setup guide
 - `docs/architecture.md` - System architecture overview
 - `ai-instructions.md` - Add navigation and architecture rules
-
 ---
-
 **Next Phase:** Phase 3 - State & Data Management
 
 Read: `.ai-flow/prompts/mobile/flow-build-phase-3-state.md`
-
 ---
-
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
+
+
+
+

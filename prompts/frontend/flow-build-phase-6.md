@@ -3,9 +3,7 @@
 **Duration:** 15-25 minutes
 **Questions:** ~12 questions
 **Output:** docs/testing.md, parts of ai-instructions.md
-
 ---
-
 ## 🎯 Objective
 
 Define your testing strategy:
@@ -14,9 +12,7 @@ Define your testing strategy:
 2. What types of tests will you write?
 3. What coverage targets?
 4. How will tests run in CI/CD?
-
 ---
-
 ## 📋 Questions
 
 ### Question 6.1: Unit Testing Framework
@@ -49,9 +45,7 @@ D) **Mocha + Chai**
 - Best for: Legacy projects
 
 **Your answer:**
-
 ---
-
 ### Question 6.2: Component Testing Library
 
 **How will you test components?**
@@ -99,9 +93,7 @@ A) ⭐ **Solid Testing Library**
 - Best for: All Solid apps
 
 **Your answer:**
-
 ---
-
 ### Question 6.3: E2E Testing Framework
 
 **What E2E testing tool will you use?**
@@ -135,9 +127,7 @@ E) **No E2E tests**
 - Best for: MVPs, small apps
 
 **Your answer:**
-
 ---
-
 ### Question 6.4: Testing Pyramid Distribution
 
 **What test distribution will you target?**
@@ -171,9 +161,7 @@ D) **Testing Trophy** (Kent C. Dodds)
 - Best for: User-centric apps
 
 **Your answer:**
-
 ---
-
 #### 🎨 TESTING PYRAMID VISUALIZATION
 
 **Use this diagram format** to visualize test distribution strategy:
@@ -236,11 +224,8 @@ graph TB
 - Show percentages clearly
 - Include speed/cost trade-offs
 - Update percentages based on selected strategy (A, B, C, or D)
-
 ---
-
 ---
-
 ### Question 6.5: Code Coverage Targets
 
 **What coverage percentage will you target?**
@@ -272,9 +257,7 @@ D) **No coverage targets**
 **Enforce coverage in CI?**
 A) Yes - Fail CI if below threshold
 B) No - Report only, no enforcement
-
 ---
-
 ### Question 6.6: Snapshot Testing
 
 **Will you use snapshot testing?**
@@ -298,9 +281,7 @@ C) **No snapshot testing**
 - Best for: Avoiding brittle tests
 
 **Your answer:**
-
 ---
-
 ### Question 6.7: Test Data & Fixtures
 
 **How will you manage test data?**
@@ -340,9 +321,7 @@ D) **Inline data**
 - Best for: Simple tests
 
 **Your answer:**
-
 ---
-
 ### Question 6.8: Mocking Strategy
 
 **How will you mock dependencies?**
@@ -380,9 +359,7 @@ D) **No mocking**
 - Best for: Integration tests only
 
 **Your answer:**
-
 ---
-
 ### Question 6.9: Test Organization
 
 **How will you organize tests?**
@@ -429,9 +406,7 @@ tests/
 - `e2e/` folder at root
 - `tests/e2e/` folder
 - `__e2e__/` folders throughout
-
 ---
-
 ### Question 6.10: CI/CD Test Execution
 
 **How will tests run in CI?**
@@ -463,9 +438,7 @@ B) No - Sequential execution
 **Retry failed tests:**
 A) Yes - Retry flaky tests (specify retries: \_\_\_)
 B) No - Fail immediately
-
 ---
-
 ### Question 6.11: Visual Regression Testing
 
 **Will you do visual regression testing?**
@@ -494,9 +467,7 @@ C) **No visual regression**
 - [ ] All components (Storybook)
 - [ ] Responsive breakpoints
 - [ ] Dark/light themes
-
 ---
-
 ### Question 6.12: Accessibility Testing
 
 **How will you test accessibility?**
@@ -532,16 +503,13 @@ E) **Combined (automated + manual)**
 - Best for: WCAG compliance
 
 **Your answer:**
-
 ---
-
 ## 📊 Phase 6 Summary
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📋 PHASE 6 SUMMARY: TESTING STRATEGY
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Unit Testing: [Answer from 6.1]
 Component Testing: [Answer from 6.2]
 E2E Testing: [Answer from 6.3]
@@ -557,9 +525,7 @@ A11y Testing: [Answer from 6.12]
 
 Is this correct? (Y/n)
 ```
-
 ---
-
 ## 📝 Document Generation
 
 Generate `docs/testing.md` with these placeholders:
@@ -603,9 +569,7 @@ Update `ai-instructions.md`:
   {{/IF_A11Y_TESTING}}
 - ✅ ALWAYS maintain {{COVERAGE_TARGETS}}% code coverage
 ```
-
 ---
-
 ## 🚀 Next Steps
 
 ```
@@ -619,9 +583,11 @@ Next: Phase 7 - Performance & Deployment
 
 Read: .ai-flow/prompts/frontend/flow-build-phase-7-deployment.md
 ```
-
 ---
-
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.2.0
+
+
+
+

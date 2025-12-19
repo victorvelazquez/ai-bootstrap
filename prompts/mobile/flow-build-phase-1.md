@@ -3,9 +3,7 @@
 **Duration:** 20-25 minutes
 **Questions:** ~15 questions
 **Output:** project-brief.md, parts of AGENT.md, parts of ai-instructions.md
-
 ---
-
 ## 🎯 Objective
 
 Determine the **technical foundation** for your mobile application:
@@ -14,9 +12,7 @@ Determine the **technical foundation** for your mobile application:
 2. What framework will you use?
 3. What minimum OS versions will you support?
 4. What development tools and languages?
-
 ---
-
 ## 📋 Questions
 
 ### Question 1.1: Target Platforms
@@ -48,9 +44,7 @@ D) **iOS + Android + Web (Universal)**
 - Best for: Multi-platform presence
 
 **Your answer:**
-
 ---
-
 ### Question 1.2: Mobile Framework
 
 **What framework will you use to build your mobile app?**
@@ -106,9 +100,7 @@ D) **iOS + Android + Web (Universal)**
 
 - What Flutter version? (Latest stable recommended)
 - Will you use Flutter for Web/Desktop too? (Y/n)
-
 ---
-
 ### Question 1.3: Minimum OS Versions
 
 **What minimum OS versions will you support?**
@@ -158,9 +150,7 @@ D) **iOS + Android + Web (Universal)**
   - Best for: Premium apps, latest tech
 
 **Your answer:**
-
 ---
-
 ### Question 1.4: Programming Language
 
 **What programming language will you use?**
@@ -202,9 +192,7 @@ D) **iOS + Android + Web (Universal)**
   - Best for: Maintaining existing apps
 
 **Your answer:**
-
 ---
-
 ### Question 1.5: Development Environment
 
 **What development tools will you use?**
@@ -234,9 +222,7 @@ D) **iOS + Android + Web (Universal)**
 - **Dart DevTools** - Debugging (Flutter)
 
 **Your answer:**
-
 ---
-
 ### Question 1.6: Package Manager
 
 **What package manager will you use?**
@@ -260,9 +246,7 @@ D) **iOS + Android + Web (Universal)**
 - **Gradle** (built-in)
 
 **Your answer:**
-
 ---
-
 ### Question 1.7: Build Tools & CI/CD
 
 **What build and deployment tools will you use?**
@@ -294,9 +278,7 @@ E) **Manual Builds**
 - Best for: Learning, small projects
 
 **Your answer:**
-
 ---
-
 ### Question 1.8: Code Signing Strategy
 
 **How will you handle code signing?**
@@ -322,9 +304,7 @@ E) **Manual Builds**
   - Required for some enterprise scenarios
 
 **Your answer:**
-
 ---
-
 ### Question 1.9: App Store Accounts
 
 **Do you have App Store accounts set up?**
@@ -341,9 +321,7 @@ E) **Manual Builds**
 - B) ❌ **No, will set up later**
 
 **Your answer:**
-
 ---
-
 ### Question 1.10: Beta Testing Strategy
 
 **How will you handle beta testing?**
@@ -369,9 +347,7 @@ D) **No Beta Testing**
 - Best for: MVPs, internal apps
 
 **Your answer:**
-
 ---
-
 ### Question 1.11: Analytics & Crash Reporting
 
 **What analytics and crash reporting will you use?**
@@ -398,9 +374,7 @@ D) **No Analytics**
 - Best for: Privacy-critical apps
 
 **Your answer:**
-
 ---
-
 ### Question 1.12: UI/UX Framework
 
 **What UI/UX framework or design system will you use?**
@@ -448,9 +422,7 @@ D) **No Analytics**
 
 - Will you use platform-specific UI? (iOS uses Cupertino, Android uses Material)
 - Or unified design across platforms?
-
 ---
-
 ### Question 1.13: Theme & Dark Mode
 
 **Will your app support dark mode?**
@@ -471,9 +443,7 @@ C) **No Dark Mode**
 - Best for: Simple apps
 
 **Your answer:**
-
 ---
-
 ### Question 1.14: Internationalization (i18n)
 
 **Will your app support multiple languages?**
@@ -501,9 +471,7 @@ C) **No Internationalization**
   - React Native: react-i18next, react-native-localize
   - Flutter: intl, easy_localization
   - Native: NSLocalizedString (iOS), Resources (Android)
-
 ---
-
 ### Question 1.15: Image & Asset Management
 
 **How will you handle images and assets?**
@@ -532,18 +500,15 @@ C) **All Remote Images**
   - React Native: react-native-fast-image, react-native-image-caching
   - Flutter: cached_network_image
   - Native: SDWebImage (iOS), Glide (Android)
-
 ---
-
 ## ✅ Phase 1 Completion
 
 After answering all questions, summarize:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ Phase 1 Complete: Platform & Framework Selection
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Selected Stack:
 - Platforms: iOS + Android
 - Framework: React Native 0.72.0
@@ -560,9 +525,7 @@ Selected Stack:
 
 Proceed to Phase 2 (Navigation & Architecture)? (Y/n)
 ```
-
 ---
-
 ## 📝 Generated Documents
 
 After Phase 1, generate/update:
@@ -570,15 +533,15 @@ After Phase 1, generate/update:
 - `project-brief.md` - Add platform and framework information
 - `AGENT.md` - Update technical context section
 - `ai-instructions.md` - Add framework-specific rules and setup
-
 ---
-
 **Next Phase:** Phase 2 - Navigation & Architecture
 
 Read: `.ai-flow/prompts/mobile/flow-build-phase-2-navigation.md`
-
 ---
-
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
+
+
+
+

@@ -26,9 +26,7 @@ Layer 3: Selective Deep Analysis (1-5 minutes, ~5,000-25,000 tokens, OPTIONAL)
          ↓
 Result Synthesis & Pre-population
 ```
-
 ---
-
 ## 0.0 Check for Existing Analysis (Layer 0)
 
 ```
@@ -102,9 +100,7 @@ Your choice: __
 
 Proceeding to Layer 1...
 ```
-
 ---
-
 ## 0.1 Layer 1: Fast Metadata Scan (10-20 seconds)
 
 ```
@@ -403,13 +399,12 @@ Checking for Swift project...
 ✅ Layer 1 Complete (15 seconds)
 
 📦 Project Detected:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
   Name: [from package.json/composer.json/etc.]
   Language: [TypeScript/Python/PHP/Java/etc.]
   Version: [language version]
   Package Manager: [npm/composer/maven/etc.]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 🚀 Framework: [Name] v[version]
 🗄️  ORM/Database: [Name] v[version]
 
@@ -420,9 +415,7 @@ Checking for Swift project...
 
 💾 Context Used: ~1,200 tokens
 ⏱️  Time Elapsed: 15s
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Continue to Layer 2? (Structural analysis - no code reading yet)
 
 A) ✅ Yes - Continue (Recommended)
@@ -433,9 +426,7 @@ Your choice: __ (Auto-continue in 3s)
 ```
 
 **Context Usage:** ~1,000-1,500 tokens
-
 ---
-
 ## 0.2 Layer 2: Structural Analysis (30-90 seconds)
 
 ```
@@ -673,7 +664,7 @@ Checking docs/ directory...
 🏛️  Architecture Pattern: [Feature-based/Layer-based/Modular/Hybrid]
 
 📊 Code Structure:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 [Language-specific breakdown, e.g., for Node.js:]
 
   Controllers: [X files]
@@ -691,8 +682,7 @@ Checking docs/ directory...
   Tests: [X files] → Coverage estimate: [Low/Medium/High]
 
 [etc., adapt to detected language]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 📂 Organization:
 [Example for Feature-based:]
   ✓ src/users/ (3 controllers, 5 services, 2 entities)
@@ -712,9 +702,7 @@ Checking docs/ directory...
 
 💾 Context Used: ~3,500 tokens (total: ~4,700)
 ⏱️  Time Elapsed: 1m 15s
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 💡 Recommended Scope: [MVP / Production-Ready / Enterprise]
    (Based on detected maturity level and code complexity)
 
@@ -728,9 +716,7 @@ Your choice: __
 ```
 
 **Context Usage:** ~2,000-5,000 tokens (cumulative: ~3,000-6,500)
-
 ---
-
 ## 0.3 Layer 3: Selective Deep Analysis (1-5 minutes, OPTIONAL)
 
 ```
@@ -774,8 +760,7 @@ Select areas (use arrow keys, space to select, enter to confirm):
     ⏱️  Estimated time: 90-120 seconds
     💾 Context cost: ~8,000-15,000 tokens
     ⚠️  HIGH CONTEXT USAGE
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 Total estimated: ~2-3 minutes, ~9,000-18,000 tokens
 
 Or:
@@ -1406,8 +1391,7 @@ Security Headers:
   ℹ️  Remaining checks deferred
   ⏱️  Elapsed: 20s
   💾 Tokens: 1,800
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 Total: 2m 20s | 14,500 tokens used
 Remaining context: 155,500 tokens
 ```
@@ -1418,7 +1402,7 @@ Remaining context: 155,500 tokens
 ✅ Layer 3 Complete (2m 30s)
 
 📡 API Endpoints: [127 detected]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 By Method:
   GET: 58 endpoints
   POST: 32 endpoints
@@ -1441,7 +1425,7 @@ Sample Endpoints:
   [View full list in docs-analysis.json]
 
 🗄️  Database Entities: [18 detected]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 Core Entities:
   • User (8 fields, 3 relationships)
     - Relationships: OneToMany → Orders, OneToMany → Reviews
@@ -1453,7 +1437,7 @@ Core Entities:
   [+15 more entities - see docs-analysis.json for full schema]
 
 🔒 Security Patterns:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
   ✅ Authentication: JWT with bcrypt
   ✅ Validation: class-validator + DTOs
   ⚠️  Rate Limiting: Not detected
@@ -1462,14 +1446,11 @@ Core Entities:
 
 💾 Context Used: ~14,500 tokens (total: ~18,700)
 ⏱️  Time Elapsed: 3m 45s
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ```
 
 **Context Usage:** ~5,000-25,000 tokens (cumulative: ~8,000-31,500)
-
 ---
-
 ## 0.4 Proactive Improvement Suggestions
 
 ```
@@ -1517,9 +1498,7 @@ Based on my analysis, I found opportunities for improvement:
    Action: Implement cursor-based or offset pagination
    Impact: Better performance with large datasets
    Estimated effort: 2-3 hours
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Would you like to:
 
 A) ✅ Address these during build (I'll integrate into relevant phases)
@@ -1546,9 +1525,7 @@ Your choice: __
 **If user selects C:**
 
 - Continue without suggestions
-
 ---
-
 ## 0.5 Export Analysis Results
 
 ```
@@ -1708,9 +1685,7 @@ Contains:
 
 You can view/edit this file anytime or share with your team.
 ```
-
 ---
-
 ## 0.6 Load Detected Context & Pre-populate Answers
 
 **If user selected "Use detected information":**
@@ -1771,9 +1746,7 @@ Phase 7 (Operations):
   ❓ Environment setup: [NEED TO ASK]
   ❓ Monitoring: [NEED TO ASK]
   ❓ Logging: [NEED TO ASK]
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 📊 Analysis Summary:
   • Pre-populated: ~45% of answers
   • Need to ask: ~55% (gaps in documentation)
@@ -1783,9 +1756,7 @@ Ready to proceed to Project Scope Selection?
 
 Type 'yes' to continue: __
 ```
-
 ---
-
 ## 0.7 Error Handling & Recovery
 
 **If any layer fails:**
@@ -1839,16 +1810,13 @@ Progress: 24 of 30 files analyzed (80% success rate)
 3. **Out of memory:** Reduce sample size, retry
 4. **Context limit:** Stop analysis, use partial results
 5. **Network timeout:** (if remote files) Retry with backoff
-
 ---
-
 ## 🎯 Summary: Phase 0 Complete
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ CONTEXT DISCOVERY COMPLETE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 📊 Project: ecommerce-api
 🛠️  Stack: TypeScript 5.3 + NestJS 10.2 + Prisma 5.7 + PostgreSQL
 📈 Maturity: Basic documentation
@@ -1872,15 +1840,15 @@ Performance:
   📊 Remaining: 181,300 tokens for phases 1-7
 
 Next Step: Project Scope Selection
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Press Enter to continue to Project Scope Selection...
 ```
-
 ---
-
 **After Phase 0 completes, ALWAYS proceed to Project Scope Selection before Phase 1.**
-
 ---
-
 ## PHASE 1: Discovery & Business (15-20 min)
+
+
+
+
+

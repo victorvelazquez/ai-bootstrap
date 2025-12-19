@@ -3,9 +3,7 @@
 **Duration:** 15-20 minutes
 **Questions:** ~10 questions
 **Output:** project-brief.md, parts of AGENT.md
-
 ---
-
 ## 🎯 Objective
 
 Understand the **user-facing aspects** of the application:
@@ -15,9 +13,7 @@ Understand the **user-facing aspects** of the application:
 3. What are the key user journeys?
 4. What devices and browsers must be supported?
 5. What are the UX priorities?
-
 ---
-
 ## 📋 Questions
 
 ### Question 1.1: Application Type
@@ -55,9 +51,7 @@ E) **Static Site (SSG)**
 - Best for: Blogs, documentation, landing pages
 
 **Your answer:**
-
 ---
-
 ### Question 1.2: Target Users
 
 **Who are your primary target users?**
@@ -79,9 +73,7 @@ Describe your user personas (3-5 bullet points):
 ```
 
 **Your answer:**
-
 ---
-
 ### Question 1.3: Key User Journeys
 
 **What are the 3-5 most critical user flows?**
@@ -98,9 +90,7 @@ List the core journeys users will take through your app.
 ```
 
 **Your answer:**
-
 ---
-
 ### Question 1.4: Device & Browser Support
 
 **What devices and browsers must you support?**
@@ -132,9 +122,7 @@ D) **Desktop-First**
 - Best for: Admin panels, dashboards, B2B tools
 
 **Your answer:**
-
 ---
-
 ### Question 1.5: Responsive Strategy
 
 **How will you handle different screen sizes?**
@@ -162,9 +150,7 @@ D) **Fixed Width (Desktop Only)**
 - Best for: Internal tools, admin panels (desktop-only users)
 
 **Your answer:**
-
 ---
-
 ### Question 1.6: Internationalization (i18n)
 
 **Do you need multi-language support?**
@@ -194,9 +180,7 @@ D) **Right-to-Left (RTL) Support**
 **Your answer:**
 
 **If multi-language selected, list target languages:**
-
 ---
-
 ### Question 1.7: Authentication Requirements
 
 **What authentication method will you use?**
@@ -235,9 +219,7 @@ F) **No Authentication**
 - Best for: Marketing sites, public tools
 
 **Your answer:**
-
 ---
-
 ### Question 1.8: Data Privacy & Compliance
 
 **What data privacy requirements do you have?**
@@ -275,9 +257,7 @@ F) **Multiple Regulations**
 - Most restrictive controls apply
 
 **Your answer:**
-
 ---
-
 ### Question 1.9: Offline Support
 
 **Do users need offline access?**
@@ -307,9 +287,7 @@ D) **Offline-First**
 - Best for: Mobile apps, unreliable networks
 
 **Your answer:**
-
 ---
-
 ### Question 1.10: Performance Priorities
 
 **What are your performance priorities?** (Select top 3)
@@ -349,18 +327,15 @@ F) **Perceived Performance**
 - Best for: User experience
 
 **Your answer (top 3):**
-
 ---
-
 ## 📊 Phase 1 Summary
 
 Before proceeding to Phase 2, confirm the following:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📋 PHASE 1 SUMMARY: DISCOVERY & UX
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Application Type: [Answer from 1.1]
 Target Users: [Answer from 1.2]
 Key User Journeys: [Answer from 1.3]
@@ -378,9 +353,7 @@ Is this correct? (Y/n)
 If **Yes:** Proceed to Phase 2
 
 If **No:** Allow user to correct specific answers
-
 ---
-
 ## 📝 Document Generation (Partial)
 
 At the end of Phase 1, generate or update:
@@ -466,9 +439,7 @@ At the end of Phase 1, generate or update:
 - Authentication: {{AUTH_METHOD}}
 - Compliance: {{DATA_PRIVACY_COMPLIANCE}}
 ```
-
 ---
-
 ## 🚀 Next Steps
 
 ```
@@ -482,9 +453,11 @@ Next: Phase 2 - Components & Framework
 
 Read: .ai-flow/prompts/frontend/flow-build-phase-2-components.md
 ```
-
 ---
-
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.2.0
+
+
+
+

@@ -3,17 +3,13 @@
 **YOU ARE AN EXPERT FRONTEND ARCHITECT AND DOCUMENTATION SPECIALIST.**
 
 Your mission is to detect changes in the frontend codebase and update the project documentation automatically when the user executes `/flow-docs-sync`.
-
 ---
-
 ## Command: `/flow-docs-sync`
 
 ### Objective
 
 Detect changes in the frontend codebase compared to the last documented state (stored in `.ai-flow/cache/docs-analysis.json`) and update all affected documentation files automatically.
-
 ---
-
 ## Execution Flow
 
 ### Step 1: Check for Analysis File
@@ -186,9 +182,7 @@ No updates required.
 ```
 Update cancelled. Run `/flow-docs-sync` when you're ready to update the documentation.
 ```
-
 ---
-
 ## Change Detection Rules
 
 ### Components Detection
@@ -280,9 +274,7 @@ Update cancelled. Run `/flow-docs-sync` when you're ready to update the document
 
 - Add new variables to configuration spec
 - Maintain existing variables
-
 ---
-
 ## Important Rules
 
 1. **Incremental Updates Only:**
@@ -308,9 +300,7 @@ Update cancelled. Run `/flow-docs-sync` when you're ready to update the document
    - Regenerate component architecture diagrams when structure changes
    - Regenerate architecture diagrams when structure changes
    - Use mermaid format for all diagrams
-
 ---
-
 ## 📊 FRONTEND DIAGRAM REGENERATION GUIDELINES
 
 When regenerating frontend diagrams, follow these **critical** formatting rules:
@@ -364,9 +354,7 @@ graph TD
     style Btn fill:#fce4ec
 ```
 ````
-
 ---
-
 ### State Management Diagrams (state-management.md)
 
 **Diagram Types:** `graph LR`, `sequenceDiagram`, `graph TD`
@@ -410,9 +398,7 @@ sequenceDiagram
     Component-->>User: UI Updated
 ```
 ````
-
 ---
-
 ### Routing Diagrams (architecture.md or routing.md)
 
 **Diagram Type:** `graph TD`
@@ -431,9 +417,7 @@ sequenceDiagram
 - [ ] Nested routes show parent-child relationships
 - [ ] Route parameters are documented
 - [ ] Diagram matches actual router configuration
-
 ---
-
 ### Application Architecture Diagram (architecture.md)
 
 **Diagram Type:** `graph TB`
@@ -474,9 +458,7 @@ graph TB
 ````
 
 **Use for:** System architecture overview, integration documentation, onboarding
-
 ---
-
 ### Common Formatting Rules (ALL Frontend Diagrams)
 
 **CRITICAL - Code Fence Syntax:**
@@ -510,16 +492,12 @@ graph TB
 3. Maintain existing styling and layout patterns
 4. Update relationships based on code changes
 5. Verify entire diagram still renders after changes
-
 ---
-
 5. **Error Handling:**
    - If document doesn't exist, create it following template
    - If docs-analysis.json is corrupted, regenerate it
    - If comparison fails, show error and suggest full Phase 0 re-run
-
 ---
-
 ## Example Execution
 
 ```
@@ -553,10 +531,11 @@ AI:
 
 Documentation synchronized successfully.
 ```
-
 ---
-
 **BEGIN EXECUTION when user runs `/flow-docs-sync`**
+
+
+
 
 
 

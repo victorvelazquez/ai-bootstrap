@@ -2,9 +2,7 @@
 
 > **Duration:** 15-20 minutes
 > **Purpose:** Define UI framework, component patterns, and frontend architecture
-
 ---
-
 ## 📋 Context
 
 You are in **Phase 2 of 7** of the frontend build process.
@@ -19,9 +17,7 @@ You are in **Phase 2 of 7** of the frontend build process.
 - `docs/components.md` - Component architecture guide
 - `docs/architecture.md` - Frontend system architecture
 - Updates to `ai-instructions.md` - Tech stack section
-
 ---
-
 ## 🎯 Instructions
 
 Ask questions **one at a time**, wait for user response before next question.
@@ -29,9 +25,7 @@ Ask questions **one at a time**, wait for user response before next question.
 **Progress indicator:** Show "Question X/12" for each question.
 
 **Recommendations:** Mark with ⭐ (recommended), 🔥 (popular), ⚡ (modern), 🏆 (enterprise)
-
 ---
-
 ## Question 2.1: UI Framework
 
 **Question:** Which UI framework will you use?
@@ -93,9 +87,7 @@ E) 🚀 **Solid.js** (Modern - Fine-grained reactivity)
 **Follow-up if E (Solid):**
 - **Meta-framework:** SolidStart / Vite?
 - **Version:** Solid 1.8+ (latest stable)
-
 ---
-
 ## Question 2.2: TypeScript
 
 **Question:** Will you use TypeScript?
@@ -121,9 +113,7 @@ C) **No, JavaScript only**
 **Your choice:** (A/B/C)
 
 **If Yes:** TypeScript 5.3+ (latest stable)
-
 ---
-
 ## Question 2.3: Build Tool
 
 **Question:** Which build tool will you use?
@@ -157,9 +147,7 @@ E) **Framework default**
    - (e.g., Next.js has built-in bundler)
 
 **Your choice:** (A/B/C/D/E)
-
 ---
-
 ## Question 2.4: Component Architecture Pattern
 
 **Question:** How will you organize components?
@@ -214,15 +202,11 @@ D) **Hybrid** (Mix of Atomic + Feature-based)
      ```
 
 **Your choice:** (A/B/C/D)
-
 ---
-
 #### 🎨 MERMAID COMPONENT DIAGRAM FORMATS - CRITICAL
 
 **Use these exact formats** for frontend component diagrams mentioned in documentation:
-
 ---
-
 ##### 1️⃣ Component Hierarchy (Atomic Design)
 
 Use `graph TD` to show component organization from pages down to atoms:
@@ -293,9 +277,7 @@ graph TD
 ````
 
 **Use for:** Showing component organization, Atomic Design hierarchy, composition patterns
-
 ---
-
 ##### 2️⃣ Component Tree with Props/Events
 
 Use `graph LR` to show parent-child relationships and data flow:
@@ -347,9 +329,7 @@ graph LR
 - Group related components in subgraphs
 
 **Use for:** Documenting data flow, props drilling, event handling patterns
-
 ---
-
 ##### 3️⃣ Component File Organization
 
 Use `graph TB` to show file/folder structure:
@@ -393,9 +373,7 @@ graph TB
 ````
 
 **Use for:** Showing folder structure, import relationships, file organization patterns
-
 ---
-
 ##### 4️⃣ Application Routing Structure
 
 Use `graph TD` to show route hierarchy:
@@ -432,9 +410,7 @@ graph TD
 ````
 
 **Use for:** Documenting route structure, showing protected routes, nested routing patterns
-
 ---
-
 **Best Practices for Component Diagrams:**
 
 1. **Color Code by Abstraction Level:**
@@ -453,9 +429,7 @@ graph TD
 - Start Mermaid syntax at column 0 (no indentation before code block)
 - Use consistent colors across diagrams
 - Preview at https://mermaid.live/ before saving
-
 ---
-
 ## Question 2.5: Component Library
 
 **Question:** Will you use a component library?
@@ -498,9 +472,7 @@ B) **Solid UI** - Minimalist component library
 C) **None** - Build custom components
 
 **Your choice:** (specify library or None)
-
 ---
-
 ## Question 2.6: State Management
 
 **Question:** How will you manage global state?
@@ -553,9 +525,7 @@ A) ⭐ **Solid Store** (Built-in, recommended)
 B) **None** - Signals only
 
 **Your choice:** (specify option)
-
 ---
-
 ## Question 2.7: Data Fetching
 
 **Question:** How will you fetch and cache server data?
@@ -591,9 +561,7 @@ F) **Native fetch + useState**
    - Best for: Minimal apps
 
 **Your choice:** (A/B/C/D/E/F)
-
 ---
-
 ## Question 2.8: Routing
 
 **Question:** How will you handle routing?
@@ -637,9 +605,7 @@ A) ⭐ **Solid Router** (Official)
 B) **@solidjs/router**
 
 **Your choice:** (specify router or "meta-framework built-in")
-
 ---
-
 ## Question 2.9: Form Management
 
 **Question:** How will you handle complex forms?
@@ -685,9 +651,7 @@ A) **Solid Forms**
 B) **Native** - Solid signals
 
 **Your choice:** (specify library or native)
-
 ---
-
 ## Question 2.10: Styling Approach
 
 **Question:** How will you style components?
@@ -724,9 +688,7 @@ F) **UnoCSS** (Instant atomic CSS)
 **Your choice:** (A/B/C/D/E/F)
 
 **If Tailwind:** Will you use any Tailwind plugins? (typography, forms, etc.)
-
 ---
-
 ## Question 2.11: Design Tokens / Theming
 
 **Question:** Will you use design tokens for theming?
@@ -761,9 +723,7 @@ D) **No, hardcoded values**
 **If Yes to tokens:**
 - Will you support dark mode? (Yes/No)
 - Will you support multiple themes? (Yes/No/Maybe later)
-
 ---
-
 ## Question 2.12: Testing Strategy
 
 **Question:** What will you test in components?
@@ -804,9 +764,7 @@ D) **Minimal** (Unit only)
 - ⭐ **Playwright** (Recommended - Modern, fast)
 - **Cypress** (Popular, DX-focused)
 - **None** - Skip E2E for now
-
 ---
-
 ## Question 2.13: API Integration Pattern
 
 **Question:** How will you integrate with backend APIs?
@@ -873,9 +831,7 @@ C) **Both** - Services + Hooks
    ```
 
 **Your choice:** (A/B/C)
-
 ---
-
 ## Question 2.14: Error Boundaries / Global Error Handling
 
 **Question:** How will you handle global errors?
@@ -917,18 +873,15 @@ D) **Combined** - Different strategies for different error types
 - **What to log:** [Error message, stack trace, user context, component tree]
 
 **Your answer:**
-
 ---
-
 ## 📝 Phase 2 Summary
 
 After all questions, show summary:
 
 ```
-=================================================
+---
 PHASE 2 SUMMARY: Component Architecture
-=================================================
-
+---
 UI Framework:     {{UI_FRAMEWORK}} {{VERSION}}
 Meta-framework:   {{META_FRAMEWORK}}
 Build Tool:       {{BUILD_TOOL}}
@@ -952,8 +905,7 @@ Testing:
 API Integration:  {{API_INTEGRATION_PATTERN}}
 API Client:       {{API_CLIENT}}
 Error Handling:   {{ERROR_HANDLING_STRATEGY}}
-
-=================================================
+---
 ```
 
 **Ask for confirmation:**
@@ -964,9 +916,7 @@ Error Handling:   {{ERROR_HANDLING_STRATEGY}}
 
 **If No:**
 "Restarting Phase 2..."
-
 ---
-
 ## 🎯 Next Steps
 
 After Phase 2 completion, you will:
@@ -974,11 +924,14 @@ After Phase 2 completion, you will:
 2. Generate `docs/components.md` with component patterns
 3. Generate `docs/architecture.md` with system architecture
 4. Continue to Phase 3: State Management & Data Flow
-
 ---
-
 **Phase:** 2 of 7
 **Estimated time:** 15-20 minutes
 **Documents updated:** ai-instructions.md, docs/components.md, docs/architecture.md
+
+
+
+
+
 
 

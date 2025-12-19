@@ -142,13 +142,9 @@ C) Activity → (User | Organization | Deal) - activities linked to various obje
 D) Other: __
 
 → Your selection (e.g., A, C): __
-
 ---
-
 Your specific relationships (list main ones):
-
 ---
-
 Your specific relationships (list main ones):
 -
 -
@@ -338,9 +334,7 @@ Schema Migrations: [tool + strategy + zero-downtime approach]
 
 Is this correct? (Yes/No)
 ```
-
 ---
-
 ### 📄 Generate Phase 2 Documents
 
 **Before starting generation:**
@@ -357,92 +351,13 @@ Is this correct? (Yes/No)
 - Include entity catalog, relationships, data patterns
 - Generate entity-relationship diagram (ER diagram) in mermaid format showing all entities and their relationships
 - Write to: `docs/data-model.md`
-
 ---
-
 #### 🎨 MERMAID ER DIAGRAM FORMAT - CRITICAL
 
-**Use this exact format** (lowercase `mermaid`, no spaces, three backticks):
+> 📎 **Reference:** See [prompts/shared/mermaid-guidelines.md](../shared/mermaid-guidelines.md) for ER diagram syntax, relationship notation, and common mistakes.
 
-````markdown
-```mermaid
-erDiagram
-    USER ||--o{ ORDER : places
-    USER ||--o{ REVIEW : writes
-    PRODUCT ||--o{ ORDER_ITEM : contains
-    ORDER ||--o{ ORDER_ITEM : includes
-
-    USER {
-        string id PK "Primary Key"
-        string email UK "Unique Key"
-        string name
-        string hashedPassword
-        datetime createdAt
-        datetime updatedAt
-    }
-
-    ORDER {
-        string id PK
-        string userId FK "Foreign Key to USER"
-        decimal total
-        string status "pending, completed, cancelled"
-        datetime createdAt
-    }
-
-    PRODUCT {
-        string id PK
-        string name
-        text description
-        decimal price
-        int stock
-        datetime createdAt
-    }
-
-    ORDER_ITEM {
-        string id PK
-        string orderId FK
-        string productId FK
-        int quantity
-        decimal price
-    }
-
-    REVIEW {
-        string id PK
-        string userId FK
-        string productId FK
-        int rating "1-5 stars"
-        text comment
-        datetime createdAt
-    }
-```
-````
-
-**Relationship Notation:**
-
-- `||--o{` = One-to-Many (one to zero or more)
-- `||--||` = One-to-One (one to exactly one)
-- `}o--o{` = Many-to-Many (requires junction table)
-- `||--|{` = One-to-Many (one to one or more)
-
-**Field Notation:**
-
-- `PK` = Primary Key
-- `FK` = Foreign Key
-- `UK` = Unique Key
-- Add descriptions in quotes after field type for clarity
-
-**Common Mistakes to Avoid:**
-
-- ❌ `​```Mermaid` (capital M - will not render)
-- ❌ `​``` mermaid` (extra space - will not render)
-- ❌ Indenting the entire diagram with spaces/tabs
-- ❌ Missing closing ` ``` ` fence
-- ❌ Invalid entity/relationship syntax
-
-**Validation:** Preview your diagram at https://mermaid.live/ or in VS Code markdown preview
-
+**Example ER Diagram:**
 ---
-
 ```
 ✅ Generated: docs/data-model.md
 
@@ -456,15 +371,12 @@ Document has been created with all Phase 2 information.
 
 **If user edits the file:**
 Execute `read_file('docs/data-model.md')` to refresh context before continuing.
-
 ---
-
 > ⚠️ **CRITICAL:** DO NOT generate README.md in Phase 2. README.md is ONLY generated in Phase 8 (step 8.5) after framework initialization.
-
 ---
-
 **Proceed to Phase 3 after document is generated and optionally reviewed.**
-
 ---
-
 ## PHASE 3: System Architecture (15-20 min)
+
+
+

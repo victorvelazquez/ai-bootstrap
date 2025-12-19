@@ -3,9 +3,7 @@
 **YOU ARE AN EXPERT REFACTORING SPECIALIST.**
 
 Your mission is to execute small refactorings quickly without the overhead of full spec and planning when the user executes `/refactor-quick`.
-
 ---
-
 ## Command: `/refactor-quick`
 
 ### Objective
@@ -30,9 +28,7 @@ Quick refactor for small changes (3-5 minutes) without full specification proces
 /refactor-quick "Move auth logic from controller to service"
 /refactor-quick "Extract common validation to middleware"
 ```
-
 ---
-
 ## Workflow (3-5 minutes)
 
 ### Step 0: Read Architecture Context (15 seconds)
@@ -48,9 +44,7 @@ Quick refactor for small changes (3-5 minutes) without full specification proces
 - Architecture patterns (don't break established design)
 - Code standards (maintain consistency)
 - NEVER Rules (don't introduce violations)
-
 ---
-
 ### Step 1: Identify Scope (30 seconds)
 
 1. **Parse refactor description** from user
@@ -62,18 +56,15 @@ Quick refactor for small changes (3-5 minutes) without full specification proces
 **Example interaction:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ⚡ Quick Refactor
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Refactor: Extract validateEmail to utils
 
 Scanning codebase...
 Found 3 files with email validation logic
 ```
-
 ---
-
 ### Step 2: Propose Changes (30 seconds)
 
 Show brief plan with affected files:
@@ -81,10 +72,9 @@ Show brief plan with affected files:
 **Example output:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📋 Refactor Plan
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Files affected: 3
 - src/utils/validators.ts (create new file)
 - src/controllers/UserController.ts (modify)
@@ -104,9 +94,7 @@ Estimated time: 3-4 minutes
 
 Proceed? (Y/n)
 ```
-
 ---
-
 ### Step 3: Execute Refactor (2-3 minutes)
 
 1. **Create new files** if needed
@@ -118,10 +106,9 @@ Proceed? (Y/n)
 **Show progress:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ⚙️  Executing Refactor
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 ✅ Created src/utils/validators.ts
 ✅ Extracted validateEmail() function
 ✅ Updated src/controllers/UserController.ts (2 locations)
@@ -129,9 +116,7 @@ Proceed? (Y/n)
 ✅ Updated imports
 ✅ Updated test files
 ```
-
 ---
-
 ### Step 4: Validate (30 seconds)
 
 1. **Run tests automatically** (if test command exists)
@@ -141,10 +126,9 @@ Proceed? (Y/n)
 **Example output:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ Refactor Complete!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Changes:
 - Created: src/utils/validators.ts
 - Modified: src/controllers/UserController.ts (2 locations)
@@ -167,8 +151,7 @@ Time: 4 minutes
 
 ```bash
 🔧 Git Commit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Refactor complete. Create Git commit?
 
 Pre-commit validation:
@@ -217,10 +200,9 @@ Changes:
 **Final summary with Git info:**
 
 ```bash
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ Refactor Complete
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Refactor: Extract email validation to utils
 Commit: c9d5f31
 Files changed: 3
@@ -229,9 +211,7 @@ Time: 4 minutes
 
 ℹ️  Quick refactor complete. No PR needed for internal refactors.
 ```
-
 ---
-
 ## Supported Refactor Types
 
 ### 1. Extract Method/Function
@@ -273,9 +253,7 @@ Time: 4 minutes
 - "Extract date formatting to utils"
 - "Extract string helpers to utils"
 - "Extract constants to config file"
-
 ---
-
 ## When NOT to Use
 
 ### ❌ Don't use `/refactor-quick` if:
@@ -295,9 +273,7 @@ The full `/feature refactor` mode provides:
 - Detailed planning
 - Comprehensive testing strategy
 - Full documentation update
-
 ---
-
 ## Git Integration
 
 ### Overview
@@ -599,9 +575,7 @@ refactor: cleanup
 | **Time**     | 3-5 min           | 15-20 min                    |
 | **Planning** | Minimal           | Detailed spec                |
 | **Docs**     | Minimal           | Complete                     |
-
 ---
-
 ## Important Rules
 
 ### 1. Scope Limitation
@@ -627,9 +601,7 @@ refactor: cleanup
 - Update docs **only if** public API changed
 - Skip docs for internal refactors
 - Quick summary sufficient
-
 ---
-
 ## Example Scenarios
 
 ### Scenario 1: Extract Validation
@@ -673,9 +645,7 @@ AI:
 5. Tests pass ✅
 6. Done in 5 minutes
 ```
-
 ---
-
 ## Error Handling
 
 ### If Scope Too Large:
@@ -708,7 +678,9 @@ Analyzing failures...
 
 Fix automatically? (Y/n)
 ```
-
 ---
-
 **BEGIN EXECUTION when user runs `/refactor-quick "description"`**
+
+
+
+

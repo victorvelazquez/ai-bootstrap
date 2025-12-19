@@ -3,9 +3,7 @@
 **Duration:** 15-20 minutes
 **Questions:** ~10 questions
 **Output:** docs/state-management.md, parts of ai-instructions.md
-
 ---
-
 ## 🎯 Objective
 
 Define how your application will manage state across four categories:
@@ -14,9 +12,7 @@ Define how your application will manage state across four categories:
 2. **Client State** - Local UI state
 3. **URL State** - Query params and routes
 4. **Form State** - Form data and validation
-
 ---
-
 ## 📋 Questions
 
 ### Question 3.1: Server State Management
@@ -94,9 +90,7 @@ C) **Apollo Angular**
 - Best for: Angular + GraphQL
 
 **Your answer:**
-
 ---
-
 ### Question 3.2: Client State Management
 
 **How will you manage local UI state?** (modals, themes, UI flags)
@@ -207,9 +201,7 @@ A) ⭐ **Solid Store** (Recommended)
 - Bundle: 0KB (built-in)
 
 **Your answer:**
-
 ---
-
 ### Question 3.3: State Persistence
 
 **Do you need to persist state to localStorage/sessionStorage?**
@@ -233,9 +225,7 @@ C) **Full Persistence**
 **Your answer:**
 
 **If persistence selected, what should be persisted?**
-
 ---
-
 ### Question 3.4: Form State Management
 
 **How will you handle forms?**
@@ -314,9 +304,7 @@ B) **Felte (Svelte) / Modular Forms (Solid)**
 - Best for: Complex validation
 
 **Your answer:**
-
 ---
-
 ### Question 3.5: Form Validation
 
 **What validation strategy will you use?**
@@ -350,9 +338,7 @@ E) **Combined (Client + Server)**
 - Best for: Most production apps
 
 **Your answer:**
-
 ---
-
 ### Question 3.6: Optimistic Updates
 
 **Will you use optimistic UI updates?**
@@ -375,9 +361,7 @@ C) **Selective (case-by-case)**
 - Optimistic for safe actions, wait for critical ones
 
 **Your answer:**
-
 ---
-
 ### Question 3.7: Real-Time Updates
 
 **Do you need real-time data updates?**
@@ -411,9 +395,7 @@ E) **GraphQL Subscriptions**
 - Best for: GraphQL apps with live data
 
 **Your answer:**
-
 ---
-
 ### Question 3.8: State Normalization
 
 **Will you normalize relational data?**
@@ -449,9 +431,7 @@ B) **No, keep data nested**
 - Easier to reason about
 
 **Your answer:**
-
 ---
-
 ### Question 3.9: Global vs Local State
 
 **What's your default strategy for state placement?**
@@ -473,9 +453,7 @@ C) **URL-driven state**
 - Best for: Multi-page apps, shareable state
 
 **Your answer:**
-
 ---
-
 ### Question 3.10: Error Handling Strategy
 
 **How will you handle API errors and failed requests?**
@@ -513,15 +491,11 @@ F) **Combined Approach**
 - Different strategies for different error types
 
 **Your answer:**
-
 ---
-
 #### 🎨 MERMAID STATE MANAGEMENT DIAGRAM FORMATS - CRITICAL
 
 **Use these exact formats** for state management diagrams mentioned in documentation:
-
 ---
-
 ##### 1️⃣ State Categories & Store Organization
 
 Use `graph LR` to show different state types and their tools:
@@ -562,9 +536,7 @@ graph LR
 ````
 
 **Use for:** Deciding where to store state, showing state architecture, documenting state tools
-
 ---
-
 ##### 2️⃣ Data Flow Sequence (API to UI)
 
 Use `sequenceDiagram` to show step-by-step data flow:
@@ -599,9 +571,7 @@ sequenceDiagram
 ````
 
 **Use for:** Showing request/response cycles, async operations, state updates, caching behavior
-
 ---
-
 ##### 3️⃣ State Location Decision Tree
 
 Use `graph TD` to help developers choose where to store state:
@@ -631,9 +601,7 @@ graph TD
 ````
 
 **Use for:** Decision-making guide, onboarding new developers, documenting state strategy
-
 ---
-
 **Best Practices for State Management Diagrams:**
 
 1. **Use Sequence Diagrams for Time-Based Flows:**
@@ -664,16 +632,13 @@ graph TD
 - Use `graph TD` for decision trees
 - Use `graph LR` for category relationships
 - Preview at https://mermaid.live/ before saving
-
 ---
-
 ## 📊 Phase 3 Summary
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📋 PHASE 3 SUMMARY: STATE MANAGEMENT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Server State: [Answer from 3.1]
 Client State: [Answer from 3.2]
 State Persistence: [Answer from 3.3]
@@ -689,9 +654,7 @@ Retry Strategy: [Answer from 3.12]
 
 Is this correct? (Y/n)
 ```
-
 ---
-
 ## 📝 Document Generation
 
 Generate `docs/state-management.md` using the template:
@@ -728,9 +691,7 @@ Also update `ai-instructions.md`:
 - ✅ ALWAYS implement rollback for optimistic updates
   {{/IF_OPTIMISTIC_UPDATES}}
 ```
-
 ---
-
 ## 🚀 Next Steps
 
 ```
@@ -744,9 +705,11 @@ Next: Phase 4 - Styling & Design
 
 Read: .ai-flow/prompts/frontend/flow-build-phase-4-styling.md
 ```
-
 ---
-
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.2.0
+
+
+
+

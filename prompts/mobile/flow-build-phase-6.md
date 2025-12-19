@@ -3,9 +3,7 @@
 **Duration:** 15-25 minutes
 **Questions:** ~12 questions
 **Output:** docs/testing.md, parts of ai-instructions.md
-
 ---
-
 ## 🎯 Objective
 
 Define your mobile testing strategy:
@@ -15,9 +13,7 @@ Define your mobile testing strategy:
 3. How will you test on devices/emulators?
 4. What coverage targets?
 5. How will tests run in CI/CD?
-
 ---
-
 ## 📋 Questions
 
 ### Question 6.1: Unit Testing Framework
@@ -56,9 +52,7 @@ Define your mobile testing strategy:
   - Best for: All Android apps
 
 **Your answer:**
-
 ---
-
 ### Question 6.2: Component/Screen Testing
 
 **How will you test components and screens?**
@@ -89,9 +83,7 @@ Define your mobile testing strategy:
   - Best for: All Android apps
 
 **Your answer:**
-
 ---
-
 ### Question 6.3: E2E Testing Framework
 
 **What E2E testing tool will you use?**
@@ -131,9 +123,7 @@ Define your mobile testing strategy:
   - Best for: Native apps
 
 **Your answer:**
-
 ---
-
 ### Question 6.4: Testing on Physical Devices
 
 **How will you test on physical devices?**
@@ -161,9 +151,7 @@ D) **Manual Testing Only**
 - Best for: Small teams, MVPs
 
 **Your answer:**
-
 ---
-
 ### Question 6.5: Emulator/Simulator Strategy
 
 **How will you use emulators/simulators?**
@@ -185,9 +173,7 @@ C) **Cloud Emulators Only**
 - Best for: Teams without local setup
 
 **Your answer:**
-
 ---
-
 ### Question 6.6: Testing Pyramid Distribution
 
 **What test distribution will you target?**
@@ -214,9 +200,7 @@ C) **Heavy Integration**
 - Best for: UI-heavy apps
 
 **Your answer:**
-
 ---
-
 #### 🎨 MOBILE TESTING PYRAMID VISUALIZATION
 
 **Use this diagram format** to visualize mobile test distribution strategy:
@@ -321,11 +305,8 @@ graph LR
 - Include platform-specific considerations (iOS/Android)
 - Highlight speed/cost trade-offs
 - Update percentages based on selected strategy (A, B, or C)
-
 ---
-
 ---
-
 ### Question 6.7: Code Coverage Targets
 
 **What code coverage targets will you set?**
@@ -354,9 +335,7 @@ D) **No Coverage Target**
 - Best for: Very small projects
 
 **Your answer:**
-
 ---
-
 ### Question 6.8: Snapshot Testing
 
 **Will you use snapshot testing?**
@@ -378,9 +357,7 @@ D) **No Coverage Target**
   - Best for: Widget regression testing
 
 **Your answer:**
-
 ---
-
 ### Question 6.9: Performance Testing
 
 **Will you test app performance?**
@@ -405,9 +382,7 @@ C) **No Performance Testing**
 - Best for: MVPs
 
 **Your answer:**
-
 ---
-
 ### Question 6.10: Accessibility Testing
 
 **Will you test accessibility?**
@@ -431,9 +406,7 @@ C) **No Accessibility Testing**
 - Best for: Internal apps
 
 **Your answer:**
-
 ---
-
 ### Question 6.11: CI/CD Testing Strategy
 
 **How will tests run in CI/CD?**
@@ -457,9 +430,7 @@ C) **Run Tests Manually**
 - Best for: Very small teams
 
 **Your answer:**
-
 ---
-
 ### Question 6.12: Test Data Management
 
 **How will you manage test data?**
@@ -481,18 +452,15 @@ C) **Real API (Staging)**
 - Best for: E2E testing
 
 **Your answer:**
-
 ---
-
 ## ✅ Phase 6 Completion
 
 After answering all questions, summarize:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ Phase 6 Complete: Testing Strategy
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Selected Testing Stack:
 - Unit Tests: Jest (React Native Testing Library)
 - E2E Tests: Detox
@@ -505,24 +473,22 @@ Selected Testing Stack:
 
 Proceed to Phase 7 (Store Deployment)? (Y/n)
 ```
-
 ---
-
 ## 📝 Generated Documents
 
 After Phase 6, generate/update:
 
 - `docs/testing.md` - Testing strategy and setup guide
 - `ai-instructions.md` - Add testing rules
-
 ---
-
 **Next Phase:** Phase 7 - Store Deployment
 
 Read: `.ai-flow/prompts/mobile/flow-build-phase-7-deployment.md`
-
 ---
-
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
+
+
+
+

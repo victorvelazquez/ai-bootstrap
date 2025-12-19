@@ -3,9 +3,7 @@
 **Duration:** 15-20 minutes
 **Questions:** ~10 questions
 **Output:** docs/code-standards.md, parts of ai-instructions.md
-
 ---
-
 ## 🎯 Objective
 
 Define coding conventions and standards for your mobile app:
@@ -15,9 +13,7 @@ Define coding conventions and standards for your mobile app:
 3. Import organization
 4. Commit message standards
 5. Mobile-specific best practices
-
 ---
-
 ## 📋 Questions
 
 ### Question 5.1: File Naming Convention
@@ -52,9 +48,7 @@ Define coding conventions and standards for your mobile app:
   - Files: `UserProfile.kt`, `HomeActivity.kt`
 
 **Your answer:**
-
 ---
-
 ### Question 5.2: Component/Screen Naming Convention
 
 **How will you name components and screens?**
@@ -95,9 +89,7 @@ Define coding conventions and standards for your mobile app:
   ```
 
 **Your answer:**
-
 ---
-
 ### Question 5.3: Linting & Formatting
 
 **What linting/formatting tools will you use?**
@@ -132,9 +124,7 @@ Define coding conventions and standards for your mobile app:
 - A) ⭐ **@react-native-community/eslint-config**
 - B) **eslint-config-airbnb**
 - C) **Custom config**
-
 ---
-
 ### Question 5.4: Import Organization
 
 **How will you organize imports?**
@@ -179,9 +169,7 @@ import 'package:myapp/services/auth_service.dart';
 - `@/` (React Native)
 - `~/` (Alternative)
 - No alias (relative paths only)
-
 ---
-
 ### Question 5.5: TypeScript/Dart Strictness
 
 **How strict should TypeScript/Dart be?**
@@ -216,9 +204,7 @@ import 'package:myapp/services/auth_service.dart';
 - A) ❌ Never allow `any`
 - B) ⚠️ Allow with warning
 - C) ✅ Allow freely (not recommended)
-
 ---
-
 ### Question 5.6: Code Comments
 
 **What's your commenting policy?**
@@ -244,9 +230,7 @@ C) **Minimal comments**
 D) **No comment policy**
 
 **Your answer:**
-
 ---
-
 ### Question 5.7: Component/Screen Structure
 
 **How will you structure components and screens?**
@@ -272,9 +256,7 @@ lib/
 ```
 
 **Your answer:**
-
 ---
-
 ### Question 5.8: Error Handling Patterns
 
 **How will you handle errors?**
@@ -302,9 +284,7 @@ lib/
 - Firebase Crashlytics
 - Sentry
 - Console only (development)
-
 ---
-
 ### Question 5.9: Mobile-Specific Best Practices
 
 **What mobile-specific practices will you enforce?**
@@ -323,9 +303,7 @@ Select all that apply:
 - [ ] **Push Notifications:** Handle notification taps
 
 **Your answer:**
-
 ---
-
 ### Question 5.10: Commit Message Convention
 
 **What commit message format will you use?**
@@ -353,18 +331,15 @@ C) **No convention**
 - commitlint (pre-commit hook)
 - Manual review
 - No enforcement
-
 ---
-
 ## ✅ Phase 5 Completion
 
 After answering all questions, summarize:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ Phase 5 Complete: Code Standards
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Selected Standards:
 - File Naming: PascalCase for components
 - Linting: ESLint + Prettier
@@ -375,24 +350,22 @@ Selected Standards:
 
 Proceed to Phase 6 (Testing Strategy)? (Y/n)
 ```
-
 ---
-
 ## 📝 Generated Documents
 
 After Phase 5, generate/update:
 
 - `docs/code-standards.md` - Code standards and conventions
 - `ai-instructions.md` - Add code standards rules
-
 ---
-
 **Next Phase:** Phase 6 - Testing Strategy
 
 Read: `.ai-flow/prompts/mobile/flow-build-phase-6-testing.md`
-
 ---
-
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
+
+
+
+

@@ -3,9 +3,7 @@
 **YOU ARE AN EXPERT PRODUCT OWNER AND AGILE SPECIALIST.**
 
 Your mission in Phase 10 is to generate detailed, actionable User Stories with acceptance criteria, technical tasks, and test cases from the roadmap generated in Phase 9.
-
 ---
-
 ## 🎯 Phase 10 Objective
 
 Generate executable User Stories following agile best practices with:
@@ -15,17 +13,13 @@ Generate executable User Stories following agile best practices with:
 - **QA test cases** derived from acceptance criteria
 - **Definition of Done** checklist
 - **Story Points** inherited from roadmap
-
 ---
-
 ## Command Modes
 
 - **`/flow-build fase 10`** → Generate all User Stories (or Sprint 1 selection)
 - **`/flow-build fase 10 EP-XXX`** → Generate User Stories for specific Epic
 - **`/flow-build fase 10 HU-XXX-XXX`** → Generate/regenerate specific User Story
-
 ---
-
 ## Prerequisites
 
 Before executing Phase 10, verify:
@@ -33,9 +27,7 @@ Before executing Phase 10, verify:
 - ✅ Phase 9 completed (`docs/roadmap.md` exists)
 - ✅ All Phase 1-8 documentation exists
 - ✅ Roadmap contains Epics, Features, and Tasks
-
 ---
-
 ## Duration
 
 ⏱️ **Estimated Time:**
@@ -43,9 +35,7 @@ Before executing Phase 10, verify:
 - All Epics: 30-60 minutes
 - One Epic: 5-10 minutes
 - One User Story: 2-3 minutes
-
 ---
-
 ## Workflow: 4 Steps
 
 ### Step 10.1: Mode Detection & Context Loading (Automatic)
@@ -80,10 +70,9 @@ if (!args || args.length === 0) {
 **Display mode:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📖 Phase 10: User Stories Generation
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Mode: [ALL | EPIC: EP-001 | STORY: HU-001-001]
 ```
 
@@ -115,22 +104,17 @@ Options:
 
 Your choice (1): _
 ```
-
 ---
-
 ### Step 10.2: Execute Based on Mode
-
 ---
-
 #### **Mode 1: ALL (No parameters)**
 
 **Show scope selection:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📋 Scope Selection
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Found 5 Epics with 18 Features in docs/roadmap.md
 
 Total Story Points: 89 SP (~4-5 weeks for 1 dev)
@@ -158,10 +142,9 @@ Your choice (B): _
 **If choice B (Sprint 1):**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📖 Generating Sprint 1 User Stories
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Selected Epics:
 - EP-001: Autenticación (5 stories, 13 SP)
 - EP-002: Gestión Usuarios (3 stories, 21 SP)
@@ -181,11 +164,9 @@ Generating...
   ✅ HU-002-001.md - CRUD usuarios (8 SP)
   ✅ HU-002-002.md - Perfiles y roles (8 SP)
   ✅ HU-002-003.md - Admin dashboard (5 SP)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ Sprint 1 User Stories Generated
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Created:
 📁 .ai-flow/user-stories/
   ├── EP-001/
@@ -208,16 +189,13 @@ Next steps:
 2. Start implementing: /flow-dev-feature HU-001-001
 3. Generate more Epics later: /flow-build fase 10 EP-003
 ```
-
 ---
-
 #### **Mode 2: EPIC (e.g., /flow-build fase 10 EP-001)**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📖 Generating User Stories for EP-001
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Loading Epic from docs/roadmap.md...
 
 Epic: EP-001 - Autenticación y Seguridad
@@ -243,11 +221,9 @@ Generating...
 ✅ HU-001-003.md created (Recuperación contraseña)
 ✅ HU-001-004.md created (Refresh tokens)
 ✅ HU-001-005.md created (Logout)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ EP-001 User Stories Generated
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Location: .ai-flow/user-stories/EP-001/
 
 Files created:
@@ -261,16 +237,13 @@ Total: 5 User Stories, 13 SP, 19 tasks, 24 test cases
 
 Next: Start implementing with /flow-dev-feature HU-001-001
 ```
-
 ---
-
 #### **Mode 3: STORY (e.g., /flow-build fase 10 HU-001-001)**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📖 Generating User Story: HU-001-001
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Checking if file exists...
 
 ⚠️ .ai-flow/user-stories/EP-001/HU-001-001.md already exists
@@ -287,11 +260,9 @@ Options:
 Your choice (2): _
 
 [If user chooses 1: Regenerate]
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 🔄 Regenerating HU-001-001
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 ⚠️ WARNING: This will overwrite all manual changes!
 
 Backup current file? (Y/n): Y
@@ -345,9 +316,7 @@ Story Points: 5 SP (~6-8h)
 
 Next: Implement with /flow-dev-feature HU-001-001
 ```
-
 ---
-
 ### Step 10.3: Generate User Story Document
 
 **For each User Story, generate complete `.md` file with this structure:**
@@ -371,9 +340,7 @@ EP-{{XXX}}: {{EPIC_NAME}}
 **Como:** {{USER_TYPE}}  
 **Quiero:** {{DESIRED_FUNCTIONALITY}}  
 **Para:** {{USER_BENEFIT}}
-
 ---
-
 ## Criterios de Aceptación
 
 ### Escenario 1: {{SCENARIO_NAME}}
@@ -395,9 +362,7 @@ EP-{{XXX}}: {{EPIC_NAME}}
 **Entonces** {{EXPECTED_RESULT}}
 
 **[Generate 3-5 scenarios covering: happy path, error cases, edge cases]**
-
 ---
-
 ## Tareas Técnicas
 
 > **Source:** Inherited from docs/roadmap.md Feature {{FEATURE_NUMBER}}
@@ -426,9 +391,7 @@ EP-{{XXX}}: {{EPIC_NAME}}
 
 **Total Tasks:** {{N}}  
 **Total SP:** {{TOTAL_SP}} Story Points
-
 ---
-
 ## Casos de Prueba (QA)
 
 > **Derived from:** Acceptance Criteria (1 scenario = 1-2 test cases)
@@ -465,25 +428,19 @@ EP-{{XXX}}: {{EPIC_NAME}}
 - **Tipo:** Límites | Validación
 
 **[Generate 1-2 test cases per acceptance scenario = 3-10 total]**
-
 ---
-
 ## Estimación
 
 - **Story Points:** {{SP}} SP (from roadmap)
 - **Tiempo Estimado:** {{TIME_RANGE}} (e.g., 6-8h, 1-2d)
 - **Complejidad:** Baja | Media | Alta
-
 ---
-
 ## Dependencias
 
 - **Requiere:** {{REQUIRED_STORIES}} (e.g., HU-001-001 completed)
 - **Bloquea:** {{BLOCKED_STORIES}} (e.g., HU-002-003 cannot start)
 - **Relacionado con:** {{RELATED_STORIES}}
-
 ---
-
 ## Definición de Done (DoD)
 
 - [ ] Código implementado siguiendo ai-instructions.md
@@ -495,9 +452,7 @@ EP-{{XXX}}: {{EPIC_NAME}}
 - [ ] Sin errores de lint ni formateo
 - [ ] Deploy a staging exitoso
 - [ ] Product Owner aprobó la funcionalidad
-
 ---
-
 ## Notas Técnicas
 
 > **Context from:**
@@ -521,24 +476,18 @@ EP-{{XXX}}: {{EPIC_NAME}}
 
 - {{SECURITY_CONSIDERATION}}
 - {{PERFORMANCE_OPTIMIZATION}}
-
 ---
-
 ## Diseño/Prototipo
 
 🎨 **Diseño:** {{DESIGN_LINK}} (if provided by user)
-
 ---
-
 ## Historial
 
 - **Creada:** {{DATE}} (Phase 10)
 - **Actualizada:** {{DATE}} (if regenerated)
 - **Estado:** Draft | Ready | In Progress | Done
 ```
-
 ---
-
 ### Step 10.4: Update Roadmap with Links
 
 **After generating User Stories, update docs/roadmap.md to add links:**
@@ -568,9 +517,7 @@ docs/roadmap.md updated successfully!
 - [ ] T002 Create User entity • 1 SP
       ...
 ```
-
 ---
-
 ## 🎯 Generation Rules
 
 ### **1. User Story Format**
@@ -623,9 +570,7 @@ docs/roadmap.md updated successfully!
 - `docs/data-model.md` → Entity schemas, relationships
 - `specs/security.md` → Auth requirements, validations
 - `docs/api.md` → Endpoint details
-
 ---
-
 ## ⚠️ Rules & Constraints
 
 ### **NEVER:**
@@ -646,18 +591,15 @@ docs/roadmap.md updated successfully!
 - ✅ Include technical context from docs
 - ✅ Update docs/roadmap.md with User Story links
 - ✅ Create backup before regenerating
-
 ---
-
 ## 📊 Summary Format
 
 **After generation, show:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ PHASE 10 COMPLETE: USER STORIES GENERATED
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Generated: {{N}} User Stories
 Total Story Points: {{SP}} SP
 Total Tasks: {{TASKS}}
@@ -682,9 +624,7 @@ Next steps:
 
 Happy coding! 🎉
 ```
-
 ---
-
 ## 🔗 Integration with Phase 9
 
 **Phase 9 provides:**
@@ -703,7 +643,9 @@ Happy coding! 🎉
 - Technical context from all docs
 
 **Together they form:** Complete backlog ready for execution
-
 ---
-
 **EXECUTION:** Execute workflow based on detected mode (ALL | EPIC | STORY)
+
+
+
+

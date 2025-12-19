@@ -3,9 +3,7 @@
 **Duration:** 10-15 minutes
 **Questions:** ~10 questions
 **Output:** docs/performance.md, docs/operations.md, specs/configuration.md
-
 ---
-
 ## 🎯 Objective
 
 Define performance targets and deployment strategy:
@@ -14,9 +12,7 @@ Define performance targets and deployment strategy:
 2. What optimization strategies?
 3. Where will you deploy?
 4. What monitoring/analytics tools?
-
 ---
-
 ## 📋 Questions
 
 ### Question 7.1: Core Web Vitals Targets
@@ -55,9 +51,7 @@ D) **No specific targets**
 - Not recommended
 
 **Your answer:**
-
 ---
-
 ### Question 7.2: Bundle Size Target
 
 **What bundle size will you target?**
@@ -91,9 +85,7 @@ C) No
 - `rollup-plugin-visualizer`
 - `vite-plugin-bundle-analyzer`
 - Manual
-
 ---
-
 ### Question 7.3: Code Splitting Strategy
 
 **How will you split your code?**
@@ -133,9 +125,7 @@ E) **No code splitting**
 - [ ] Heavy libraries (charts, editors)
 - [ ] Third-party widgets
 - [ ] Images above the fold (lazy loading)
-
 ---
-
 ### Question 7.4: Image Optimization
 
 **How will you optimize images?**
@@ -177,9 +167,7 @@ D) **No optimization**
 - Vercel Image Optimization
 - Self-hosted
 - No CDN
-
 ---
-
 ### Question 7.5: Caching Strategy
 
 **What caching strategy will you use?**
@@ -211,9 +199,7 @@ D) **No caching**
 - HTML: \_\_\_\_ (e.g., no cache, max-age=3600)
 - CSS/JS (versioned): \_\_\_\_ (e.g., max-age=31536000)
 - Images: \_\_\_\_ (e.g., max-age=86400)
-
 ---
-
 ### Question 7.6: Deployment Platform
 
 **Where will you deploy?**
@@ -260,9 +246,7 @@ G) **Azure Static Web Apps / Google Cloud Run**
 - Best for: Enterprise, existing Azure/GCP infrastructure
 
 **Your answer:**
-
 ---
-
 ### Question 7.7: CI/CD Pipeline
 
 **What CI/CD platform will you use?**
@@ -305,9 +289,7 @@ E) **No CI/CD**
 - [ ] Deploy to production (merge to main)
 - [ ] Run Lighthouse audit
 - [ ] Notify team (Slack, Discord)
-
 ---
-
 ### Question 7.8: Environment Management
 
 **How many environments will you have?**
@@ -338,9 +320,7 @@ C) **2 environments**
 - `.env.staging`
 - `.env.production`
 - Secrets stored in: Vercel/Netlify dashboard / GitHub Secrets / Vault
-
 ---
-
 ### Question 7.9: Monitoring & Analytics
 
 **What monitoring will you use?**
@@ -419,9 +399,7 @@ D) **No monitoring**
 - Not recommended
 
 **Your answer:**
-
 ---
-
 ### Question 7.10: SEO & Meta Tags
 
 **How will you manage SEO?**
@@ -455,16 +433,13 @@ D) **No SEO**
 - [ ] Canonical URLs
 - [ ] Structured data (JSON-LD)
 - [ ] Social media previews (Open Graph, Twitter Cards)
-
 ---
-
 ## 📊 Phase 7 Summary
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📋 PHASE 7 SUMMARY: PERFORMANCE & DEPLOYMENT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Core Web Vitals: [Answer from 7.1]
 Bundle Size Target: [Answer from 7.2]
 Code Splitting: [Answer from 7.3]
@@ -483,9 +458,7 @@ Analytics: [Answer from 7.15]
 
 Is this correct? (Y/n)
 ```
-
 ---
-
 ## 📝 Document Generation
 
 Generate `docs/performance.md` and `docs/operations.md` with these placeholders:
@@ -541,18 +514,15 @@ Update `ai-instructions.md`:
 - ✅ ALWAYS monitor errors with {{ERROR_TRACKING}}
 - ✅ ALWAYS track Core Web Vitals in production
 ```
-
 ---
-
 ## ✅ Phase 7 Completion
 
 After answering all questions, summarize:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ Phase 7 Complete: Performance & Deployment
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Selected Performance & Deployment Strategy:
 - Performance: {{CORE_WEB_VITALS_TARGETS}}
 - Optimization: {{OPTIMIZATION_STRATEGIES}}
@@ -565,9 +535,7 @@ Generated Documents:
 ✅ docs/operations.md
 ✅ specs/configuration.md
 ✅ .env.example
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 📊 Progress Summary:
 
 Phases 1-7 completed:
@@ -584,11 +552,9 @@ Phases 1-7 completed:
 
 Remaining:
 ⏭️  Phase 8: Project setup & final documentation
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 🎯 Next: Phase 8 - Project Setup & Final Documentation
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Phase 8 will:
 - 🔍 Detect project state (new vs existing)
 - 🚀 Initialize framework (optional, for new projects)
@@ -599,9 +565,11 @@ Phase 8 will:
 
 Continue to Phase 8? (yes/no)
 ```
-
 ---
-
 **Last Updated:** 2025-12-09
 
 **Version:** 2.0.0 (Unified workflow with Phase 8)
+
+
+
+

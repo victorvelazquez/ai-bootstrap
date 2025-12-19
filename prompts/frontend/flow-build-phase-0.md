@@ -3,9 +3,7 @@
 **⚡ AUTOMATED ANALYSIS - Minimal User Input Required**
 
 This phase automatically analyzes your existing frontend codebase to pre-populate answers for the build questionnaire.
-
 ---
-
 ## 🎯 Objective
 
 Detect the current frontend stack, architecture patterns, and configuration from existing code to:
@@ -14,9 +12,7 @@ Detect the current frontend stack, architecture patterns, and configuration from
 2. **Validate assumptions** - Confirm detected patterns with user
 3. **Save time** - Reduce questionnaire from ~90 min to ~40 min
 4. **Maintain accuracy** - User can override any detection
-
 ---
-
 ## 📋 Detection Layers (Progressive)
 
 ### Layer 0: Cache Check (0-2 seconds)
@@ -43,9 +39,7 @@ Check if `.ai-flow/cache/frontend-context.json` exists and is fresh (<7 days old
 **If yes:** Skip to validation step
 
 **If no or cache doesn't exist:** Proceed to Layer 1
-
 ---
-
 ### Layer 1: Fast Metadata Scan (10-20 seconds)
 
 **Purpose:** Detect framework, build tool, package manager, TypeScript
@@ -194,9 +188,7 @@ Testing: Vitest + Playwright
 
 Continue to Layer 2 for structural analysis? (Y/n)
 ```
-
 ---
-
 ### Layer 2: Structural Analysis (30-90 seconds)
 
 **Purpose:** Analyze component structure, routing, and architecture patterns
@@ -308,9 +300,7 @@ Example Components:
 
 Continue to Layer 3 for deep analysis? (Y/n)
 ```
-
 ---
-
 ### Layer 3: Selective Deep Analysis (Optional, 60-120 seconds)
 
 **Purpose:** Extract advanced patterns, conventions, and documentation
@@ -417,9 +407,7 @@ Accessibility:
 
 Analysis complete! Proceeding to validation...
 ```
-
 ---
-
 ## ✅ Validation & Confirmation
 
 ### Present Findings
@@ -427,10 +415,9 @@ Analysis complete! Proceeding to validation...
 After detection, show user a summary and ask for confirmation:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 🔍 FRONTEND STACK DETECTED
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 ✅ Framework: React 18.2.0 (with Next.js 14.0.0)
 ✅ Build Tool: Vite 5.0.0
 ✅ TypeScript: Yes
@@ -474,9 +461,7 @@ Please correct any incorrect detections:
 
 ✅ Updated! Proceeding to Phase 1...
 ```
-
 ---
-
 ## 💾 Cache Storage
 
 Save detected context for future use:
@@ -508,9 +493,7 @@ Save detected context for future use:
 ```
 
 **Cache invalidation:** 7 days or when package.json is modified
-
 ---
-
 ## 🚀 Next Steps
 
 After Phase 0 completes:
@@ -522,9 +505,11 @@ Next: Proceed to Phase 1 (Discovery & UX)
 
 Read: .ai-flow/prompts/frontend/flow-build-phase-1-discovery.md
 ```
-
 ---
-
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.2.0
+
+
+
+

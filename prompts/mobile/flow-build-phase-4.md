@@ -3,9 +3,7 @@
 **Duration:** 15-20 minutes
 **Questions:** ~10 questions
 **Output:** docs/permissions.md, docs/native-features.md, parts of ai-instructions.md
-
 ---
-
 ## 🎯 Objective
 
 Define what **native features and permissions** your app will use:
@@ -14,9 +12,7 @@ Define what **native features and permissions** your app will use:
 2. What native features will you integrate?
 3. How will you handle permission requests?
 4. What third-party SDKs will you use?
-
 ---
-
 ## 📋 Questions
 
 ### Question 4.1: Camera Permission
@@ -54,9 +50,7 @@ D) **No Camera Access**
   - React Native: react-native-camera, react-native-vision-camera
   - Flutter: camera, image_picker
   - Native: AVFoundation (iOS), Camera2 (Android)
-
 ---
-
 ### Question 4.2: Location Permission
 
 **Will your app use location services?**
@@ -91,9 +85,7 @@ D) **No Location Access**
   - React Native: @react-native-community/geolocation, react-native-maps
   - Flutter: geolocator, google_maps_flutter
   - Native: CoreLocation (iOS), Location Services (Android)
-
 ---
-
 ### Question 4.3: Push Notifications
 
 **Will your app send push notifications?**
@@ -124,9 +116,7 @@ C) **No Push Notifications**
   - OneSignal
   - Pusher
   - Custom backend
-
 ---
-
 ### Question 4.4: Photo Library Access
 
 **Will your app access the photo library?**
@@ -149,9 +139,7 @@ C) **No Photo Library Access**
 - Best for: Apps that don't need photos
 
 **Your answer:**
-
 ---
-
 ### Question 4.5: Contacts Access
 
 **Will your app access contacts?**
@@ -174,9 +162,7 @@ C) **No Contacts Access**
 - Best for: Most apps
 
 **Your answer:**
-
 ---
-
 ### Question 4.6: Biometric Authentication
 
 **Will your app use biometric authentication?**
@@ -200,9 +186,7 @@ B) **No Biometric Auth**
   - React Native: react-native-biometrics, react-native-touch-id
   - Flutter: local_auth
   - Native: LocalAuthentication (iOS), BiometricPrompt (Android)
-
 ---
-
 ### Question 4.7: File System Access
 
 **Will your app access the file system?**
@@ -225,9 +209,7 @@ C) **No File System Access**
 - Best for: Most apps
 
 **Your answer:**
-
 ---
-
 ### Question 4.8: Microphone Access
 
 **Will your app use the microphone?**
@@ -250,9 +232,7 @@ C) **No Microphone Access**
 - Best for: Most apps
 
 **Your answer:**
-
 ---
-
 ### Question 4.9: Third-Party SDKs
 
 **What third-party SDKs will you integrate?**
@@ -300,9 +280,7 @@ C) **No Microphone Access**
 - D) None
 
 **Your answer:** (Select all that apply)
-
 ---
-
 ### Question 4.10: Permission Request Strategy
 
 **How will you request permissions?**
@@ -325,9 +303,7 @@ C) **Progressive**
 - Best for: Apps with optional features
 
 **Your answer:**
-
 ---
-
 ### Question 4.11: Permission Denial Handling
 
 **How will you handle denied permissions?**
@@ -349,18 +325,15 @@ C) **Block Feature**
 - Best for: Core features
 
 **Your answer:**
-
 ---
-
 ## ✅ Phase 4 Completion
 
 After answering all questions, summarize:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ Phase 4 Complete: Permissions & Native Features
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Selected Permissions:
 - Camera: Photo capture (react-native-vision-camera)
 - Location: When in use (@react-native-community/geolocation)
@@ -378,9 +351,7 @@ Permission Strategy: Just-In-Time requests with graceful degradation
 
 Proceed to Phase 5 (Code Standards)? (Y/n)
 ```
-
 ---
-
 ## 📝 Generated Documents
 
 After Phase 4, generate/update:
@@ -388,15 +359,15 @@ After Phase 4, generate/update:
 - `docs/permissions.md` - Permission handling guide
 - `docs/native-features.md` - Native features integration guide
 - `ai-instructions.md` - Add permission and native feature rules
-
 ---
-
 **Next Phase:** Phase 5 - Code Standards
 
 Read: `.ai-flow/prompts/mobile/flow-build-phase-5-standards.md`
-
 ---
-
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
+
+
+
+

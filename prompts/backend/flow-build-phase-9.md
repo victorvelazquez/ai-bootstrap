@@ -3,15 +3,11 @@
 **YOU ARE AN EXPERT PROJECT MANAGER AND TECHNICAL ARCHITECT.**
 
 Your mission in Phase 9 is to analyze all project documentation and generate a detailed implementation roadmap with Story Point estimations.
-
 ---
-
 ## 🎯 Phase 9 Objective
 
 Generate a complete, prioritized implementation roadmap with Fibonacci-based Story Point estimations, organized into Epics, Features, and Tasks following GitHub Projects format.
-
 ---
-
 ## Prerequisites
 
 Before executing Phase 9, verify:
@@ -19,15 +15,11 @@ Before executing Phase 9, verify:
 - ✅ Phase 8 completed (all documentation generated)
 - ✅ Project initialized with framework (done in Phase 8)
 - ✅ All documentation files exist in `.ai-flow/` directory
-
 ---
-
 ## Duration
 
 ⏱️ **Estimated Time:** 15-30 minutes
-
 ---
-
 ## Workflow: 6 Steps
 
 ### Step 9.1: Documentation Analysis (5-8 minutes - automatic)
@@ -35,10 +27,9 @@ Before executing Phase 9, verify:
 **Read and analyze all generated documentation:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📊 Phase 9/9: Implementation Roadmap Generation
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Step 9.1/6: Analyzing Project Documentation...
 
 ✅ project-brief.md (business objectives, scope, constraints)
@@ -115,10 +106,9 @@ Extracting structured information...
 **Show analysis summary:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📈 Analysis Complete
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 🎯 Business Scope:
    • {{BUSINESS_OBJECTIVES_COUNT}} primary objectives
    • {{USER_TYPES_COUNT}} user types
@@ -142,17 +132,15 @@ Extracting structured information...
 
 Proceeding to Epic definition...
 ```
-
 ---
-
 ### Step 9.2: Epic Definition (3-5 minutes - automatic)
 
 **Organize functionality into high-level Epics:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 🎯 Step 9.2/6: Defining Epics
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ```
 
 **Standard Epic Structure:**
@@ -218,121 +206,24 @@ Epics identified:
 ## 🔧 Epic 10: Operations & Deployment • 13 SP
    Priority: P1 | Est. Time: ~1 week
    CI/CD finalization, monitoring, logging, backups
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📊 Total: 204 SP (~20 weeks with 1 developer)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-```
-
 ---
-
+📊 Total: 204 SP (~20 weeks with 1 developer)
+---
+```
+---
 ### Step 9.3: Feature Breakdown (5-10 minutes - automatic)
 
 **Break down each Epic into Features with Story Points:**
 
-```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+````
+---
 🔨 Step 9.3/6: Breaking Down Features with Story Points
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-```
-
-**Story Points Reference (Fibonacci Scale):**
-
-```
-Story Points | Complexity | Typical Time | Examples
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-1 SP         | Trivial    | 1-2 hours    | Add simple field, update enum
-2 SP         | Very Small | 2-4 hours    | Simple validation, basic test
-3 SP         | Small      | 4-8 hours    | Simple CRUD endpoint, entity
-5 SP         | Medium     | 1-2 days     | Complex endpoint with logic
-8 SP         | Complex    | 2-3 days     | Auth flow, complex business rule
-13 SP        | Large      | 1 week       | Complete module with tests
-21 SP        | Very Large | 2 weeks      | Major feature, integration
-34 SP        | Epic       | 3 weeks      | Multiple related features
-```
-
 ---
-
-### Story Points to Time Conversion (Hybrid Estimation)
-
-**Use this table to add time estimates to each task:**
-
-| Story Points | Time Estimate (solo dev) | Time Range | Example Task                            |
-| ------------ | ------------------------ | ---------- | --------------------------------------- |
-| **1 SP**     | 1-2 hours                | (~1-2h)    | Add enum value, simple config change    |
-| **2 SP**     | 3-4 hours                | (~3-4h)    | Write 5-8 unit tests, basic validation  |
-| **3 SP**     | 4-8 hours                | (~4-8h)    | Simple CRUD endpoint, basic entity      |
-| **5 SP**     | 1-2 days                 | (~1-2d)    | Complex endpoint with business logic    |
-| **8 SP**     | 2-3 days                 | (~2-3d)    | Auth flow, complex validation           |
-| **13 SP**    | 1 week                   | (~1w)      | Complete module with full test coverage |
-| **21 SP**    | 2 weeks                  | (~2w)      | Major feature with integration          |
-| **34 SP**    | 3 weeks                  | (~3w)      | Multiple related features (Epic-level)  |
-
-> **Note:** Time assumes AI-assisted development (GitHub Copilot, Claude, etc.). Without AI assistance, multiply time estimates by 2-3x.
->
-> **Velocity Tracking:** After completing 2-3 features, compare actual time vs estimates to calibrate your team's velocity. Adjust remaining estimates accordingly.
-
-**How to use hybrid estimation:**
-
-- Each task shows **both** Story Points and time: `• 2 SP (~3-4h)`
-- Story Points measure **complexity** (stable across teams)
-- Time estimates measure **effort** (varies by team velocity)
-- Track both to improve estimation accuracy over time
-
+> 📎 **Reference:** See [prompts/shared/story-points.md](../shared/story-points.md) for the canonical Story Points scale and hybrid estimation guidelines.
 ---
-
 ### Task Format Reference (Spec-Kit Inspired)
-
-**Every task must follow this format:**
-
-```markdown
-- [ ] [TaskID] [Optional:P] [Optional:StoryTag] Description • SP (~time)
-      File: exact/path/to/file.ts
-      Dependencies: T001, T002 (or "None")
-```
-
-**Components explained:**
-
-- **[TaskID]**: Sequential ID in execution order (T001, T002, ..., T099, T100)
-- **[P] marker**: ONLY for parallelizable tasks (different files, no blocking deps)
-- **[StoryTag]**: Links task to user story ([US1], [US2]) - only in story phases
-- **Description**: What to implement (specific, LLM-completable without additional context)
-- **• SP (~time)**: Hybrid estimation - Story Points + time (e.g., "2 SP (~3-4h)", "5 SP (~1-2d)")
-- **File path**: Exact file where work happens (REQUIRED)
-- **Dependencies**: Which tasks must complete first (REQUIRED, even if "None")
-
-**Task Sequencing Rules:**
-
-1. **Tests BEFORE implementation** (TDD approach)
-2. **Models → Services → Controllers → Endpoints** (layer dependency order)
-3. **Core utilities BEFORE features** that use them
-4. **Database migrations BEFORE data access code**
-5. **Interfaces BEFORE implementations**
-
-**Parallelization Rules ([P] marker):**
-
-✅ **Use [P] when:**
-
-- Tasks target different files
-- No shared dependencies between tasks
-- Can run simultaneously (e.g., independent entities, different modules)
-
-❌ **Don't use [P] when:**
-
-- Task depends on another incomplete task
-- Same file is modified by multiple tasks
-- Shared resource (DB migration, config file, shared service)
-
-**Example task with all components:**
-
-```markdown
-- [ ] [T042] [P] Write unit tests for Product entity validation (12 tests) • 2 SP (~3-4h)
-      File: tests/unit/entities/Product.entity.spec.ts
-      Tests: price validation, stock constraints, name required, category FK
-      Dependencies: None (can run parallel with other test tasks)
-```
-
 ---
+> 📎 **Reference:** See [prompts/shared/task-format.md](../shared/task-format.md) for the canonical task format and sequencing rules.
 
 **Feature Breakdown Logic:**
 
@@ -371,7 +262,7 @@ For each Epic:
 **Done when:** All endpoints work + tests pass + coverage ≥ {{COVERAGE}}%
 
 **Start:** `/feature new "{{FEATURE_NAME}}"`
-```
+````
 
 `````
 
@@ -397,36 +288,7 @@ For each Epic:
 
 **Done when:** GET/POST/PUT/DELETE /users working + 12 tests pass + coverage ≥ 80%
 `````
-
 ---
-
-**Example (Simplified Format):**
-
-```markdown
-### Feature 2.1: User Entity & Repository • 12 SP (~2-3d)
-
-**Scope:** User entity + CRUD endpoints + 12 tests
-
-**Tasks:**
-
-- [ ] T001 [P] Write User entity validation tests • 2 SP (~3-4h) → tests/unit/User.entity.spec.ts
-- [ ] T002 Create User entity (email, password, role) • 2 SP (~3-4h) → src/entities/User.entity.ts
-- [ ] T003 Create IUserRepository interface • 1 SP (~1-2h) → src/repositories/IUserRepository.ts
-- [ ] T004 Implement UserRepository with Prisma • 2 SP (~3-4h) → src/repositories/UserRepository.ts (after T002, T003)
-- [ ] T005 Implement UserService business logic • 3 SP (~4-8h) → src/services/UserService.ts (after T004)
-- [ ] T006 Create UserController (CRUD endpoints) • 2 SP (~3-4h) → src/controllers/UserController.ts (after T005)
-- [ ] T007 [P] Write integration tests (4 tests) • 2 SP (~3-4h) → tests/integration/UserController.spec.ts
-- [ ] T008 [P] Update API docs • 1 SP (~1h) → docs/api.md
-
-**Parallel tasks:** T001, T007, T008 (different files)
-
-**Done when:** GET/POST/PUT/DELETE /users working + 12 tests pass + coverage ≥ 80%
-
-**Start:** `/feature new "User Entity & Repository"`
-```
-
----
-
 **Original Feature Breakdown Example:**
 
 ```markdown
@@ -514,9 +376,7 @@ T001 [P] ──┐
 ```bash
 /feature new "User Entity & Repository"
 ````
-
 ---
-
 ### Feature 2.2: Product Entity & Repository • 8 SP
 
 ⏱️ **Est. Time:** 2-3 days (~16-24h total)
@@ -524,91 +384,26 @@ T001 [P] ──┐
 📋 **Dependencies:** Feature 2.4 (Category entity - needs Category FK)
 🏷️ **User Story:** [US2] As a store owner, I need to manage product catalog with search
 
-**Scope:**
+**Scope:** Entity + Repository + Search/Filter + Inventory + 22 tests
 
-- Entity: Product (id, name, description, price, stock, categoryId, images, createdAt, updatedAt)
-- Repository: IProductRepository with CRUD + search/filter
-- Validation: Price > 0, stock ≥ 0, name required
-- Relationships: belongsTo Category
-- Tests: 12 unit tests, 6 integration tests
-
-**Tasks:** (Test-First, execution order, hybrid estimation)
+**Tasks:** (Follow [task-format.md](../shared/task-format.md) pattern)
 
 - [ ] [T008] [P] Write unit tests for Product entity validation (12 tests) • 3 SP (~4-8h)
-      File: tests/unit/entities/Product.entity.spec.ts
-      Tests: price validation, stock constraints, name required, category FK, images array
-      Dependencies: T007 (Category entity exists for FK testing)
-
 - [ ] [T009] Create Product entity with validation + Category FK • 3 SP (~4-8h)
-      File: src/entities/Product.entity.ts
-      Implements: Price > 0, stock ≥ 0, name required, belongs to Category relationship
-      Dependencies: T007 (Category entity), T008 (tests)
-
 - [ ] [T010] Create IProductRepository interface • 1 SP (~1-2h)
-      File: src/repositories/interfaces/IProductRepository.ts
-      Methods: CRUD + search(query), filterByCategory(categoryId), updateStock(id, quantity)
-      Dependencies: T009 (Product entity)
-
 - [ ] [T011] Implement ProductRepository with search/filter methods • 2 SP (~3-4h)
-      File: src/repositories/ProductRepository.ts
-      Implements: All CRUD + search (case-insensitive name), filter by category
-      Dependencies: T009 (entity), T010 (interface)
-
 - [ ] [T012] Add database migration for products table • 1 SP (~1-2h)
-      File: migrations/002_create_products_table.ts
-      Schema: All Product fields + FK to categories + indexes (categoryId, name)
-      Dependencies: T009 (Product entity schema)
-
 - [ ] [T013] Implement inventory tracking logic • 2 SP (~3-4h)
-      File: src/repositories/ProductRepository.ts (extend)
-      Logic: Atomic stock decrements, prevent negative stock, transaction support
-      Dependencies: T011 (ProductRepository base)
-
 - [ ] [T014] Write integration tests for ProductRepository (6 tests) • 2 SP (~3-4h)
-      File: tests/integration/repositories/ProductRepository.spec.ts
-      Tests: CRUD, search, filter by category, stock updates, FK constraints
-      Dependencies: T011, T012, T013
-
 - [ ] [T015] Write tests for search/filter functionality (4 tests) • 2 SP (~3-4h)
-      File: tests/integration/repositories/ProductRepository.search.spec.ts
-      Tests: Case-insensitive search, partial match, filter by category, pagination
-      Dependencies: T011 (search implementation)
-
 - [ ] [T016] Update data model documentation • 1 SP (~1h)
-      File: docs/data-model.md
-      Add: Product entity schema, Category relationship, search indexes
-      Dependencies: T009 (Product entity complete)
 
 **Acceptance Criteria:**
 
-- [ ] Product validates price > 0 and stock ≥ 0
 - [ ] Search by name works (case-insensitive, partial match)
 - [ ] Filter by category returns only products in that category
 - [ ] Inventory decrements correctly with atomic operations
-- [ ] Stock cannot go negative (validation error)
-- [ ] Migration includes FK constraint to categories + indexes
 - [ ] Test coverage ≥ 80%
-- [ ] All 22 tests passing (12 unit + 6 integration + 4 search)
-
-**Task Execution Graph:**
-
-```
-T007 (Category) ──> T008 [P] (tests) ──> T009 (entity) ──┬──> T010 (interface) ──> T011 (repo) ──> T013 (inventory)
-                                                          │                                            │
-                                                          └──> T012 (migration) ─────────────────────┬─┤
-                                                                                                     │ │
-                                                T014 <──────────────────────────────────────────────┤ │
-                                                T015 <────────────────────────────────────────────────┘
-                                                T016 <── T009
-
-[P] = Can run parallel with other test tasks
-```
-
-**Parallelization Notes:**
-
-- T008 (tests) can run parallel to other entity test tasks
-- T014 (integration tests) and T015 (search tests) can run in parallel (different test files)
-- T016 (docs) can run while tests are executing
 
 **Ready-to-execute command:**
 
@@ -619,19 +414,15 @@ T007 (Category) ──> T008 [P] (tests) ──> T009 (entity) ──┬──> 
 [Continue for all features in Epic 2...]
 
 ```
-
 ---
-
 ### Step 9.4: Dependency Graph & Execution Order (2-3 minutes - automatic)
 
 **Generate dependency graph and determine optimal execution order:**
 
 ```
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 🔗 Step 9.4/6: Analyzing Dependencies
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 ````
 
 **Dependency Analysis:**
@@ -698,9 +489,7 @@ Feature 2.3: Product Entity (8 SP) [BLOCKS on Feature 2.2 - needs Category FK]
 - With 1 dev: Features run sequentially → ~16 hours (Feature 2.1) + ~8 hours (Feature 2.2) + ~16 hours (Feature 2.3) = 40 hours total
 - With 2 devs: Feature 2.1 + 2.2 parallel → ~16 hours + ~16 hours (Product) = 32 hours total (20% save)
 - With 3 devs: Task-level parallelization within features → ~28 hours total (30% save)
-
 ---
-
 **Generate Mermaid Dependency Graph:**
 
 ```mermaid
@@ -746,10 +535,9 @@ graph TD
 **Execution Order Recommendation:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📅 Recommended Execution Order
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 **Phase 1: Foundation (Weeks 1-2) • 21 SP**
 ├─ Epic 1: Foundation & Infrastructure
 └─ Can start Epic 2 and Epic 3 in parallel after Foundation
@@ -772,8 +560,7 @@ graph TD
 
 **Phase 6: Production Readiness (Weeks 16-17) • 13 SP**
 └─ Epic 10: Operations & Deployment
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ⚡ Parallelization Opportunities:
   • Week 3-5: Data Layer + Auth (2 devs)
   • Week 6-8: User Mgmt + Product Catalog (2 devs)
@@ -781,20 +568,17 @@ graph TD
 
 With 2 developers: ~12 weeks (40% time savings)
 With 3 developers: ~9 weeks (47% time savings)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-```
-
 ---
-
+```
+---
 ### Step 9.5: Generate Roadmap Document (2-5 minutes - automatic)
 
 **Generate `docs/roadmap.md` with complete implementation plan:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📝 Step 9.5/6: Generating Roadmap Document
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Writing to docs/roadmap.md...
 ```
 
@@ -805,9 +589,7 @@ Writing to docs/roadmap.md...
 
 > **Generated:** {{DATE}} > **Based on:** Documentation v1.0 (Phases 0-8 complete)
 > **Total Estimated:** {{TOTAL_WEEKS}} weeks • {{TOTAL_SP}} SP
-
 ---
-
 ## 📊 Project Overview
 
 **Problem:** {{PROBLEM_STATEMENT}}
@@ -824,29 +606,11 @@ Writing to docs/roadmap.md...
 - **Database:** {{DATABASE}} + {{ORM}}
 - **Architecture:** {{ARCHITECTURE_PATTERN}}
 - **Deployment:** {{DEPLOYMENT_PLATFORM}}
-
 ---
-
 ## 📈 Story Points Reference
 
-Use this table to translate Story Points to time estimates:
-
-| Story Points | Complexity | Typical Time | Description                                   |
-| ------------ | ---------- | ------------ | --------------------------------------------- |
-| **1 SP**     | Trivial    | 1-2 hours    | Simple config change, add enum value          |
-| **2 SP**     | Very Small | 2-4 hours    | Basic validation, simple test                 |
-| **3 SP**     | Small      | 4-8 hours    | Simple CRUD endpoint, basic entity            |
-| **5 SP**     | Medium     | 1-2 days     | Complex endpoint with business logic          |
-| **8 SP**     | Complex    | 2-3 days     | Auth flow, complex validation, multiple tests |
-| **13 SP**    | Large      | 1 week       | Complete module with full test coverage       |
-| **21 SP**    | Very Large | 2 weeks      | Major feature with integration                |
-| **34 SP**    | Epic       | 3 weeks      | Multiple related features                     |
-
-> **Note:** Times assume experienced developer with AI assistance (GitHub Copilot, Claude, etc.)
-> Without AI assistance, multiply time estimates by 2-3x.
-
+> 📎 **Reference:** See [prompts/shared/story-points.md](../shared/story-points.md) for the canonical Story Points scale and hybrid estimation guidelines.
 ---
-
 ## 🎯 Epic Overview
 
 {{EPIC_TABLE}}
@@ -856,9 +620,7 @@ Use this table to translate Story Points to time estimates:
 - **1 Developer:** {{SOLO_WEEKS}} weeks ({{SOLO_MONTHS}} months)
 - **2 Developers:** {{TWO_DEV_WEEKS}} weeks ({{TWO_DEV_MONTHS}} months)
 - **3 Developers:** {{THREE_DEV_WEEKS}} weeks ({{THREE_DEV_MONTHS}} months)
-
 ---
-
 ## 🔄 5-Phase Execution Model (Spec-Kit Inspired)
 
 Our roadmap follows a battle-tested 5-phase approach for predictable, incremental delivery:
@@ -941,9 +703,7 @@ Our roadmap follows a battle-tested 5-phase approach for predictable, incrementa
 3. **Team Scaling**: Multiple stories run in parallel
 4. **Predictable Velocity**: Story points per sprint stabilize
 5. **Quality Gates**: Each phase has clear exit criteria
-
 ---
-
 ## 🔗 Dependency Graph
 
 ```mermaid
@@ -957,9 +717,7 @@ Our roadmap follows a battle-tested 5-phase approach for predictable, incrementa
 - 🔵 **Medium Priority** (important)
 - 🟢 **Low Priority** (nice-to-have)
 - ⚪ **Operations** (ongoing)
-
 ---
-
 ## 📅 Implementation Phases
 
 ### Phase 1: Foundation (Weeks 1-2) • 21 SP
@@ -1020,13 +778,9 @@ Our roadmap follows a battle-tested 5-phase approach for predictable, incrementa
 ```bash
 /feature new "Base application configuration with environment validation"
 ```
-
 ---
-
 [Continue with all features for all epics...]
-
 ---
-
 ## ✅ Production Readiness Checklist
 
 Before deploying to production, ensure all items are completed:
@@ -1090,9 +844,7 @@ Before deploying to production, ensure all items are completed:
 - [ ] API response times < {{RESPONSE_TIME_TARGET}}ms
 - [ ] Static assets optimized and CDN configured
 - [ ] Connection pooling configured
-
 ---
-
 ## 🚀 Getting Started
 
 ### Step 1: Review This Roadmap
@@ -1133,9 +885,7 @@ Update this roadmap as you complete features:
 - Change `- [ ]` to `- [x]` for completed tasks
 - Track actual time vs estimated
 - Adjust remaining estimates based on velocity
-
 ---
-
 ## 📞 Support
 
 **Questions about this roadmap?**
@@ -1148,9 +898,7 @@ Update this roadmap as you complete features:
 
 - Update documentation first (`/flow-build` or `/flow-docs-sync`)
 - Re-run Phase 9 to regenerate roadmap
-
 ---
-
 **Generated by:** AI Flow v1.1.0
 **Last Updated:** {{TIMESTAMP}}
 ````
@@ -1163,19 +911,15 @@ Update this roadmap as you complete features:
 ✅ Total: {{TOTAL_EPICS}} Epics, {{TOTAL_FEATURES}} Features, {{TOTAL_TASKS}} Tasks
 ✅ Estimated: {{TOTAL_SP}} Story Points (~{{TOTAL_WEEKS}} weeks)
 ```
-
 ---
-
 ### Step 9.6: Summary & Next Steps (1 minute)
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ PHASE 9 COMPLETE: ROADMAP GENERATED
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 📊 Summary
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 ✅ Documentation analyzed: {{DOCS_COUNT}} files
 ✅ Epics defined: {{EPICS_COUNT}}
 ✅ Features identified: {{FEATURES_COUNT}}
@@ -1185,11 +929,9 @@ Update this roadmap as you complete features:
 ✅ Dependency graph: Generated
 ✅ Execution order: Optimized for parallelization
 ✅ Roadmap document: docs/roadmap.md
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 🎯 What This Roadmap Guarantees
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 ✅ **100% Coverage:** Every entity, endpoint, flow, and requirement from
    documentation is included in the roadmap.
 
@@ -1207,11 +949,9 @@ Update this roadmap as you complete features:
 
 ✅ **Checkpoints:** Production readiness checklist ensures nothing
    is forgotten before deployment.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 🚀 Next Steps
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 1. **Open the roadmap**
    └─ Open docs/roadmap.md in your editor
 
@@ -1237,11 +977,9 @@ Update this roadmap as you complete features:
    └─ Run tests after each feature
    └─ Use /review for code quality checks
    └─ Update docs with /flow-docs-sync when needed
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 💡 Pro Tips
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 • **Parallelization:** If you have 2+ devs, check the roadmap for
   Epics marked "Can run in PARALLEL"
 
@@ -1253,14 +991,11 @@ Update this roadmap as you complete features:
 
 • **Re-generate:** If documentation changes significantly, run
   /flow-build again (Phases 0-9) to update everything.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Ready to start building? 🚀
 
 Open docs/roadmap.md and let's ship this! 💪
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ```
 
 **ASK USER:**
@@ -1283,9 +1018,7 @@ D) ✏️ Customize roadmap
 
 Your choice (A/B/C/D): __
 ```
-
 ---
-
 ## Important Notes
 
 ### Story Point Calibration
@@ -1347,9 +1080,7 @@ Incomplete documentation:
 
 Please fix documentation and re-run Phase 9
 ```
-
 ---
-
 ## Checklist for Phase 9
 
 **9.1 Documentation Analysis:**
@@ -1436,9 +1167,12 @@ Please fix documentation and re-run Phase 9
 - 9.5: Generate roadmap - 2-5 min
 - 9.6: Summary & next steps - 1 min
 - **Total: 15-30 minutes**
-
 ---
-
 **CONTINUE TO:** Phase 10 (User Stories) - OPTIONAL
 
 **SUCCESS:** Complete implementation roadmap with Story Points generated! Ready to start building or continue to Phase 10 for detailed User Stories! 🚀
+
+
+
+
+

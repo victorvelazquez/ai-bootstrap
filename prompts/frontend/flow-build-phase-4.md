@@ -3,9 +3,7 @@
 **Duration:** 15-20 minutes
 **Questions:** ~11 questions
 **Output:** docs/styling.md, parts of ai-instructions.md
-
 ---
-
 ## 🎯 Objective
 
 Define your styling architecture and design system:
@@ -15,9 +13,7 @@ Define your styling architecture and design system:
 3. Will you support theming?
 4. What's your responsive strategy?
 5. How will you organize styles?
-
 ---
-
 ## 📋 Questions
 
 ### Question 4.1: Styling Approach
@@ -81,9 +77,7 @@ G) **UnoCSS**
 - Bundle: ~5KB
 
 **Your answer:**
-
 ---
-
 ### Question 4.2: Component Library / UI Kit
 
 **Will you use a pre-built component library?**
@@ -140,9 +134,7 @@ C) **PrimeNG** - Rich component library
 D) **NG-ZORRO** - Ant Design for Angular
 
 **Your answer:**
-
 ---
-
 ### Question 4.3: Design Tokens
 
 **Will you use design tokens?**
@@ -176,9 +168,7 @@ C) **No tokens**
 - Border radius
 - Transitions/animations
 - Breakpoints
-
 ---
-
 ### Question 4.4: Color System
 
 **How will you define your color palette?**
@@ -208,9 +198,7 @@ C) **Custom color system**
 - Primary: #**\_\_**
 - Secondary (optional): #**\_\_**
 - Accent (optional): #**\_\_**
-
 ---
-
 ### Question 4.5: Typography System
 
 **How will you handle typography?**
@@ -242,9 +230,7 @@ C) **Custom scale**
 A) Google Fonts CDN
 B) Self-hosted fonts (better performance)
 C) System fonts only (fastest)
-
 ---
-
 ### Question 4.6: Theming Support
 
 **Do you need theme support (dark mode, multiple themes)?**
@@ -278,9 +264,7 @@ C) Both (respect system, allow override)
 A) localStorage
 B) User account setting (backend)
 C) No persistence (reset on reload)
-
 ---
-
 ### Question 4.7: Responsive Breakpoints
 
 **What breakpoint strategy will you use?**
@@ -310,9 +294,7 @@ D) **No breakpoints (fluid)**
 - Use relative units only (%, vw, etc.)
 
 **Your answer:**
-
 ---
-
 ### Question 4.8: Spacing System
 
 **What spacing scale will you use?**
@@ -332,9 +314,7 @@ C) **Custom scale**
 - Your own spacing values
 
 **Your answer:**
-
 ---
-
 ### Question 4.9: Animation & Transitions
 
 **How will you handle animations?**
@@ -368,9 +348,7 @@ D) **Minimal animations**
 **Respect prefers-reduced-motion?**
 A) Yes (disable/reduce animations for users who prefer it)
 B) No
-
 ---
-
 ### Question 4.10: CSS Organization
 
 **How will you organize your stylesheets?**
@@ -398,9 +376,7 @@ D) **Feature-based**
 - Best for: Larger apps
 
 **Your answer:**
-
 ---
-
 ### Question 4.11: Accessibility (A11y) Styling
 
 **What accessibility level will you target?**
@@ -435,16 +411,13 @@ D) **No specific target**
 - [ ] Text resizing support (up to 200%)
 - [ ] Screen reader optimizations
 - [ ] Reduced motion support
-
 ---
-
 ## 📊 Phase 4 Summary
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📋 PHASE 4 SUMMARY: STYLING & DESIGN
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Styling Approach: [Answer from 4.1]
 Component Library: [Answer from 4.2]
 Design Tokens: [Answer from 4.3]
@@ -459,9 +432,7 @@ Accessibility: [Answer from 4.11]
 
 Is this correct? (Y/n)
 ```
-
 ---
-
 ## 📝 Document Generation
 
 Generate `docs/styling.md` using the template with these placeholders:
@@ -503,9 +474,7 @@ Update `ai-instructions.md`:
 - ✅ ALWAYS test components in both light and dark modes
   {{/IF_DARK_MODE}}
 ```
-
 ---
-
 ## 🚀 Next Steps
 
 ```
@@ -519,9 +488,11 @@ Next: Phase 5 - Code Standards
 
 Read: .ai-flow/prompts/frontend/flow-build-phase-5-standards.md
 ```
-
 ---
-
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.2.0
+
+
+
+

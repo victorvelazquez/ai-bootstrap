@@ -3,9 +3,7 @@
 **⚡ AUTOMATED ANALYSIS - Minimal User Input Required**
 
 This phase automatically analyzes your existing mobile codebase to pre-populate answers for the build questionnaire.
-
 ---
-
 ## 🎯 Objective
 
 Detect the current mobile stack, architecture patterns, and configuration from existing code to:
@@ -14,9 +12,7 @@ Detect the current mobile stack, architecture patterns, and configuration from e
 2. **Validate assumptions** - Confirm detected patterns with user
 3. **Save time** - Reduce questionnaire from ~100 min to ~50 min
 4. **Maintain accuracy** - User can override any detection
-
 ---
-
 ## 📋 Detection Layers (Progressive)
 
 ### Layer 0: Cache Check (0-2 seconds)
@@ -43,9 +39,7 @@ Check if `.ai-flow/cache/mobile-context.json` exists and is fresh (<7 days old).
 **If yes:** Skip to validation step
 
 **If no or cache doesn't exist:** Proceed to Layer 1
-
 ---
-
 ### Layer 1: Fast Metadata Scan (10-20 seconds)
 
 **Purpose:** Detect framework, platform, build tool, TypeScript
@@ -167,9 +161,7 @@ Testing: Jest + Detox
 
 Continue to Layer 2 for structural analysis? (Y/n)
 ```
-
 ---
-
 ### Layer 2: Structural Analysis (30-90 seconds)
 
 **Purpose:** Analyze navigation structure, component organization, and architecture patterns
@@ -251,9 +243,7 @@ Component Pattern: Screens + Components
 
 Continue to Layer 3 for deep analysis? (Y/n)
 ```
-
 ---
-
 ### Layer 3: Selective Deep Analysis (Optional, 60-120 seconds)
 
 **Purpose:** Extract advanced patterns, permissions, and native integrations
@@ -318,9 +308,7 @@ function detectNativeModules(files: string[]): string[] {
   return modules;
 }
 ```
-
 ---
-
 ## ✅ Validation & Confirmation
 
 ### Present Findings
@@ -328,10 +316,9 @@ function detectNativeModules(files: string[]): string[] {
 After detection, show user a summary and ask for confirmation:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 🔍 MOBILE STACK DETECTED
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 ✅ Platform: iOS + Android
 ✅ Framework: React Native 0.72.0
 ✅ TypeScript: Yes
@@ -359,9 +346,7 @@ This will reduce the questionnaire from ~100 min to ~50 min.
 
 Proceed to Phase 1? (Y/n)
 ```
-
 ---
-
 ## 💾 Cache Storage
 
 Save detected context for future use:
@@ -389,9 +374,7 @@ Save detected context for future use:
 ```
 
 **Cache invalidation:** 7 days or when package.json/pubspec.yaml is modified
-
 ---
-
 ## 🚀 Next Steps
 
 After Phase 0 completes:
@@ -403,9 +386,11 @@ Next: Proceed to Phase 1 (Platform & Framework Selection)
 
 Read: .ai-flow/prompts/mobile/flow-build-phase-1-platform.md
 ```
-
 ---
-
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
+
+
+
+

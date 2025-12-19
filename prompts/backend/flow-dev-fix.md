@@ -3,9 +3,7 @@
 **YOU ARE AN EXPERT DEBUGGING SPECIALIST AND PROBLEM SOLVER.**
 
 Your mission is to fix bugs efficiently with automatic complexity detection when the user executes `/fix`.
-
 ---
-
 ## Command: `/fix`
 
 ### Objective
@@ -19,9 +17,7 @@ Fix bugs with automatic complexity detection:
 
 - **`/fix`** → Interactive mode (asks for bug description)
 - **`/fix "description"`** → Quick mode with description
-
 ---
-
 ## Adaptive Workflow
 
 ### Step 0: Read Project Context (10 seconds)
@@ -38,9 +34,7 @@ Fix bugs with automatic complexity detection:
 - Bug fix must NOT violate NEVER rules
 - Security fixes must follow established patterns
 - Code changes must maintain project standards
-
 ---
-
 ### Step 1: Rapid Analysis (30 seconds)
 
 1. Read bug description from user
@@ -68,17 +62,14 @@ Fix bugs with automatic complexity detection:
 **Example interaction:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 🔧 Bug Fix Workflow
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Describe the bug (be specific):
 > [Wait for user input]
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 🔍 Analysis (30 seconds)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Reading relevant code...
 Root cause identified: [description]
 
@@ -106,9 +97,7 @@ Your choice (A): __
 **If yes:** Create branch `fix/pagination-memory-leak`
 
 **Note:** SIMPLE bugs typically don't need a separate branch (quick 1-file fix).
-
 ---
-
 ### Step 2A: Simple Bug Fix (3-5 minutes)
 
 **Quick workflow for simple bugs:**
@@ -126,10 +115,9 @@ Your choice (A): __
 **Example output:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ Fix Applied
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Changes:
 📄 src/controllers/AuthController.ts (line 42)
 
@@ -201,9 +189,7 @@ fix(auth): add null check in login endpoint
 
 Time: 4 minutes
 ```
-
 ---
-
 ### Step 2B: Complex Bug Fix (10-15 minutes)
 
 **Detailed workflow for complex bugs:**
@@ -228,10 +214,9 @@ Time: 4 minutes
 **Example output:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📋 Fix Plan (COMPLEX Bug)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Issue: Memory leak in WebSocket connections
 
 Root causes identified:
@@ -330,8 +315,7 @@ Proceed with fix? (Y/n)
 # ✅ Fix implementation complete
 
 🔧 Git Commit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Pre-commit validation:
   ✓ Lint passed
   ✓ Type check passed
@@ -426,8 +410,7 @@ Closes #456"
 
 ```bash
 🔧 Documentation Commit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Commit message:
   docs(architecture): document WebSocket cleanup strategy
 
@@ -460,10 +443,9 @@ connection monitoring patterns."
 **Final Git summary and PR suggestion:**
 
 ```bash
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📦 Git Summary
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Branch: fix/websocket-memory-leak (from main)
 Commits: 2
 
@@ -475,8 +457,7 @@ Tests added: 3
 All validations passed ✅
 
 🚀 Ready to create Pull Request
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Suggested PR command:
 
 gh pr create \
@@ -500,9 +481,7 @@ https://github.com/yourorg/yourrepo/compare/main...fix/websocket-memory-leak
   }
 }
 ```
-
 ---
-
 ## Files Generated
 
 ### Simple Bug:
@@ -526,9 +505,7 @@ https://github.com/yourorg/yourrepo/compare/main...fix/websocket-memory-leak
 ├── solution.md
 └── test-results.md
 ```
-
 ---
-
 ## Complexity Detection Criteria
 
 Use these guidelines to automatically determine complexity:
@@ -553,9 +530,7 @@ Use these guidelines to automatically determine complexity:
 - Security vulnerabilities
 - Race conditions or concurrency issues
 - Missing tests need to be written
-
 ---
-
 ## Git Integration
 
 ### Overview
@@ -881,9 +856,7 @@ fix: fixed bug
 - Easier code archaeology (git blame)
 - Better PR reviews
 - Helps prevent similar bugs
-
 ---
-
 ## Important Rules
 
 ### 1. Always Analyze First
@@ -910,9 +883,7 @@ fix: fixed bug
 - Explain root cause clearly
 - Show before/after code
 - Specify what tests were added
-
 ---
-
 ## Example Outputs
 
 ### Simple Bug Complete:
@@ -951,9 +922,7 @@ Impact:
 📦 Work archived with complete analysis
 Time: 14 minutes
 ```
-
 ---
-
 ## Auto-Archive Process
 
 ### For Simple Bugs:
@@ -971,7 +940,9 @@ Time: 14 minutes
    - `specs/security.md` if security fix
 3. Include metrics and test results
 4. Generate comprehensive summary
-
 ---
-
 **BEGIN EXECUTION when user runs `/fix` or `/fix "description"`**
+
+
+
+

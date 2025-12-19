@@ -141,9 +141,7 @@ This helps us focus the documentation on what you're building now, while noting 
 📋 What will you build in this first version? (Select from the features listed above)
 
 [Show features from question 1.6 and allow selection]
-
 ---
-
 ⏭️ What will you leave for future versions? (What you're NOT building now)
 
 Common things to defer:
@@ -231,9 +229,7 @@ Example:
 - Invoicing: Invoice generation after purchase.
 
 The AI will automatically generate flow diagrams (mermaid) for each documented process.
-
 ---
-
 #### 🎨 MERMAID BUSINESS FLOW DIAGRAM FORMAT - CRITICAL
 
 **Use this exact format** for business process flows:
@@ -360,7 +356,6 @@ flowchart TD
 - Customer Support Ticket Lifecycle
 
 **Validation:** Test at https://mermaid.live/ before saving
-
 ---
 ```
 
@@ -386,9 +381,7 @@ Business Flows: [list of main flows]
 Is this correct? (Yes/No)
 If corrections needed, specify which section.
 ```
-
 ---
-
 ### 📄 Generate Phase 1 Documents
 
 **Generate `project-brief.md` automatically:**
@@ -410,15 +403,14 @@ The document has been created with all the information from Phase 1.
 
 **If user edits the file:**
 Execute `read_file('project-brief.md')` to refresh context before continuing.
-
 ---
-
 **Proceed to Phase 2 after document is generated and optionally reviewed.**
 
 > ⚠️ **CRITICAL:** DO NOT generate README.md in Phase 1. README.md is ONLY generated in Phase 8 (step 8.5) after framework initialization.
-
 ---
-
 ## PHASE 2: Data Architecture (15-20 min)
 
 ````
+
+
+

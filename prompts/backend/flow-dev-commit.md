@@ -3,9 +3,7 @@
 **YOU ARE AN EXPERT GIT WORKFLOW SPECIALIST.**
 
 Your mission is to analyze changes, group them intelligently, and create atomic commits following Conventional Commits standard when the user executes `/flow-dev-commit`.
-
 ---
-
 ## Command: `/flow-dev-commit`
 
 ### Objective
@@ -21,9 +19,7 @@ Automate commit creation with:
 ### Usage Modes
 
 - **`/flow-dev-commit`** → Full auto workflow (detect → group → commit → push)
-
 ---
-
 ## Workflow: 4 Steps (3-5 minutes)
 
 ### Step 1: Detect Changes (Automatic - NO confirmation needed)
@@ -31,9 +27,9 @@ Automate commit creation with:
 **Display:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 🔍 Step 1/4: Detecting Changes
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ```
 
 **CRITICAL: Execute ALL detection methods in parallel to catch:**
@@ -151,17 +147,15 @@ A  package.json (added, staged)
 ```
 
 **IMPORTANT:** Untracked files (`??`) are NEW files that must be detected with `git status --porcelain` because `get_changed_files()` does NOT see them.
-
 ---
-
 ### Step 2: Intelligent Grouping (Automatic)
 
 **Display:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ⚡ Step 2/4: Intelligent Grouping
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ```
 
 **Analyze files and group by functional relationship.**
@@ -394,18 +388,15 @@ docs/api.md (only this file, no related code)
    ✓ src/modules/users/dto/create-user.dto.ts
    ✓ src/modules/products/dto/create-product.dto.ts
 ```
-
 ---
-
 ### Step 3: Generate Commits (Requires Allow per commit)
 
 **Display:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ Step 3/4: Creating Commits
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 [N] commits will be created following Conventional Commits standard.
 
 You will need to click "Allow" for each commit.
@@ -494,10 +485,9 @@ function validateCommitMessage(message: string): boolean {
 **Show each command with `run_in_terminal` and wait for Allow:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 Commit 1/3: Feature Complete
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 git add src/modules/users/entities/user.entity.ts src/modules/users/dto/create-user.dto.ts src/modules/users/users.service.ts src/modules/users/users.controller.ts src/modules/users/__tests__/users.service.spec.ts docs/api.md && git commit -m "feat(users): implement user management with CRUD operations"
 
 Click "Allow" to execute →
@@ -508,17 +498,15 @@ Click "Allow" to execute →
 ```
 ✅ Commit created: feat(users): implement user management with CRUD operations
 ```
-
 ---
-
 ### Step 4: Finalize (Automatic log + Manual push)
 
 **Display:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 🚀 Step 4/4: Summary & Push
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ```
 
 **Automatic (NO confirmation):**
@@ -570,7 +558,6 @@ Error: [error message]
 
 **CRITICAL:** Always run `git status --porcelain` in Step 1 to detect untracked files (`??`) that `get_changed_files()` cannot see.
 ---
-
 ## 🎯 Execution Model
 
 | Step   | Actions                                                 | User Interaction       |
@@ -579,9 +566,7 @@ Error: [error message]
 | Step 2 | Analyze and group files                                 | Automatic              |
 | Step 3 | `git add` + `git commit` (per group)                    | Click Allow per commit |
 | Step 4 | `git log` (automatic) + `git push` (manual)             | Auto log / Allow push  |
-
 ---
-
 ## 🔍 Pattern Detection Table
 
 Universal patterns that work across languages/frameworks:
@@ -603,9 +588,7 @@ Universal patterns that work across languages/frameworks:
 | **Docs Only**          | Docs (no related code changes)               | `docs`     | doc-topic        | `update [doc-name] documentation`     |
 | **Dependency Update**  | package.json/requirements/go.mod             | `chore`    | deps             | `upgrade [package] to [version]`      |
 | **Build Scripts**      | Makefile/scripts/build config                | `chore`    | build            | `update [build-aspect]`               |
-
 ---
-
 ## 💡 Complex Examples
 
 ### Example 1: Full Feature with Documentation
@@ -714,9 +697,7 @@ spec/models/order_spec.rb
 spec/requests/orders_spec.rb
 → Commit: feat(orders): implement order processing system
 ```
-
 ---
-
 ## ⚠️ Rules & Constraints
 
 ### NEVER
@@ -750,9 +731,7 @@ spec/requests/orders_spec.rb
 - ✅ Show `git push` command and wait for "Allow"
 - ✅ Validate commit messages before executing
 - ✅ Detect project type and adapt scope naming accordingly
-
 ---
-
 ## 📊 Workflow Diagram
 
 ```mermaid
@@ -779,9 +758,7 @@ graph TD
     Q --> S[Done]
     R --> S
 ```
-
 ---
-
 ## 🚀 Error Handling
 
 ### No Changes Detected
@@ -832,17 +809,17 @@ Suggestions:
 3. Try again:
    /flow-dev-commit
 ```
-
 ---
-
 ## 📚 References
 
 - **Conventional Commits:** https://www.conventionalcommits.org/
 - **Git Best Practices:** https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project
 - **Atomic Commits:** https://www.freshconsulting.com/insights/blog/atomic-commits/
-
 ---
-
 **Last Updated:** December 11, 2025  
 **Version:** 1.0.0  
 **Maintained by:** AI Flow Team
+
+
+
+

@@ -3,9 +3,7 @@
 **Duration:** 20-25 minutes
 **Questions:** ~13 questions
 **Output:** docs/state-management.md, docs/offline-strategy.md, parts of ai-instructions.md
-
 ---
-
 ## 🎯 Objective
 
 Define how your mobile app will manage state and handle data:
@@ -14,9 +12,7 @@ Define how your mobile app will manage state and handle data:
 2. How will you fetch server data?
 3. What offline strategy will you use?
 4. How will you synchronize data?
-
 ---
-
 ## 📋 Questions
 
 ### Question 3.1: App State Management
@@ -73,9 +69,7 @@ Define how your mobile app will manage state and handle data:
 - **Observable Pattern** (RxSwift/RxJava)
 
 **Your answer:**
-
 ---
-
 ### Question 3.2: HTTP Client Library
 
 **What HTTP client library will you use to fetch data from your backend?**
@@ -136,9 +130,7 @@ Define how your mobile app will manage state and handle data:
   - React Native: Apollo Client, urql
   - Flutter: graphql_flutter, ferry
   - What GraphQL endpoint URL?
-
 ---
-
 ### Question 3.3: Offline Strategy
 
 **How will your app work offline?**
@@ -163,9 +155,7 @@ C) **No Offline Support**
 - Best for: Real-time apps, streaming
 
 **Your answer:**
-
 ---
-
 ### Question 3.4: Local Storage Solution
 
 **What will you use for local data storage?**
@@ -208,9 +198,7 @@ C) **No Offline Support**
 - C) **DataStore** (Modern, type-safe)
 
 **Your answer:**
-
 ---
-
 ### Question 3.5: Data Synchronization
 
 **How will you sync data between local and server?**
@@ -241,9 +229,7 @@ D) **Real-time Sync**
 - Best for: Collaborative apps, chat
 
 **Your answer:**
-
 ---
-
 ### Question 3.6: Conflict Resolution
 
 **How will you handle data conflicts when syncing?**
@@ -269,9 +255,7 @@ D) **User Resolution**
 - Best for: Critical conflicts
 
 **Your answer:**
-
 ---
-
 ### Question 3.7: Caching Strategy
 
 **How will you cache API responses?**
@@ -299,9 +283,7 @@ D) **No Caching**
 - Best for: Real-time data
 
 **Your answer:**
-
 ---
-
 ### Question 3.8: Form State Management
 
 **How will you handle form state?**
@@ -321,9 +303,7 @@ D) **No Caching**
 - B) **Built-in Form widgets**
 
 **Your answer:**
-
 ---
-
 ### Question 3.9: Error Handling Strategy
 
 **How will you handle API errors?**
@@ -347,9 +327,7 @@ C) **Error Boundary Pattern**
 - Best for: React Native
 
 **Your answer:**
-
 ---
-
 ### Question 3.10: Network Error Handling (Mobile-Specific)
 
 **How will you handle mobile-specific network errors?**
@@ -389,9 +367,7 @@ C) **Error Boundary Pattern**
   - Exponential backoff
   - Fixed interval
   - User-triggered retry
-
 ---
-
 ### Question 3.11: Loading States
 
 **How will you handle loading states?**
@@ -414,9 +390,7 @@ C) **Progressive Loading**
 - Best for: Complex screens
 
 **Your answer:**
-
 ---
-
 ### Question 3.12: Data Validation
 
 **How will you validate data?**
@@ -438,9 +412,7 @@ C) **Server Validation Only**
 - Not recommended (poor UX)
 
 **Your answer:**
-
 ---
-
 ### Question 3.13: Background Data Refresh
 
 **How will you refresh data in the background?**
@@ -464,15 +436,11 @@ C) **No Background Refresh**
 - Best for: Simple apps
 
 **Your answer:**
-
 ---
-
 #### 🎨 MERMAID STATE MANAGEMENT DIAGRAM FORMATS - CRITICAL
 
 **Use these exact formats** for mobile state management diagrams:
-
 ---
-
 ##### 1️⃣ Mobile State Architecture (Server + Client + Local)
 
 Use `graph LR` to show different state types:
@@ -508,9 +476,7 @@ graph LR
 ```
 
 **Use for:** Mobile apps with offline-first strategy
-
 ---
-
 ##### 2️⃣ Data Flow with Offline Support
 
 Use `sequenceDiagram` to show complete data sync cycle:
@@ -561,9 +527,7 @@ sequenceDiagram
 ```
 
 **Use for:** Apps with offline support and data synchronization
-
 ---
-
 ##### 3️⃣ State Decision Tree (Mobile-Specific)
 
 Use `graph TD` to help developers choose state strategy:
@@ -594,9 +558,7 @@ graph TD
 ```
 
 **Use for:** Decision-making guide for mobile state strategy
-
 ---
-
 ##### 4️⃣ Redux Architecture (Mobile Pattern)
 
 Use `graph TB` to show Redux structure for mobile:
@@ -643,9 +605,7 @@ graph TB
 ```
 
 **Use for:** Redux-based mobile apps with persistence
-
 ---
-
 **Diagram Guidelines:**
 
 - Show offline/online paths clearly
@@ -653,18 +613,15 @@ graph TB
 - Use sequence diagrams for sync flows
 - Color code: Server=blue, Client=orange, Local=green, Cache=purple
 - Include mobile-specific considerations (slow networks, offline-first)
-
 ---
-
 ## ✅ Phase 3 Completion
 
 After answering all questions, summarize:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ Phase 3 Complete: State & Data Management
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Selected Stack:
 - State Management: Redux Toolkit
 - HTTP Client: Axios
@@ -677,9 +634,7 @@ Selected Stack:
 
 Proceed to Phase 4 (Permissions & Native Features)? (Y/n)
 ```
-
 ---
-
 ## 📝 Generated Documents
 
 After Phase 3, generate/update:
@@ -687,15 +642,15 @@ After Phase 3, generate/update:
 - `docs/state-management.md` - State management patterns and setup
 - `docs/offline-strategy.md` - Offline and sync strategy
 - `ai-instructions.md` - Add state management rules
-
 ---
-
 **Next Phase:** Phase 4 - Permissions & Native Features
 
 Read: `.ai-flow/prompts/mobile/flow-build-phase-4-permissions.md`
-
 ---
-
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
+
+
+
+

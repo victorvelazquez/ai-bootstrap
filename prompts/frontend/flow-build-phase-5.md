@@ -3,9 +3,7 @@
 **Duration:** 15-20 minutes
 **Questions:** ~10 questions
 **Output:** docs/code-standards.md, parts of ai-instructions.md
-
 ---
-
 ## 🎯 Objective
 
 Define coding conventions and standards:
@@ -15,9 +13,7 @@ Define coding conventions and standards:
 3. Import organization
 4. Commit message standards
 5. Code review practices
-
 ---
-
 ## 📋 Questions
 
 ### Question 5.1: File Naming Convention
@@ -71,9 +67,7 @@ A) ⭐ **PascalCase for components**
 - Components: `UserProfile.svelte`, `Button.svelte`
 
 **Your answer:**
-
 ---
-
 ### Question 5.2: Component Naming Convention
 
 **How will you name components in code?**
@@ -108,9 +102,7 @@ export default function Button() { ... }
 - Cons: Can rename on import, harder to refactor
 
 **Your answer:**
-
 ---
-
 ### Question 5.3: Linting & Formatting
 
 **What linting/formatting tools will you use?**
@@ -163,9 +155,7 @@ A) ⭐ **@angular-eslint** (Official Angular ESLint)
 - Semicolons: Yes / No (default: Yes)
 - Single quotes: Yes / No (default: No)
 - Trailing commas: es5 / all / none (default: es5)
-
 ---
-
 ### Question 5.4: Import Organization
 
 **How will you organize imports?**
@@ -213,9 +203,7 @@ C) **No specific order**
 - `eslint-plugin-import` + `import/order` rule
 - `prettier-plugin-organize-imports`
 - Manual
-
 ---
-
 ### Question 5.5: TypeScript Strictness
 
 **How strict should TypeScript be?**
@@ -255,9 +243,7 @@ C) **Lenient**
 A) ❌ Never allow `any` (use `unknown` instead)
 B) ⚠️ Allow `any` with eslint warning
 C) ✅ Allow `any` freely (not recommended)
-
 ---
-
 ### Question 5.6: Code Comments
 
 **What's your commenting policy?**
@@ -296,9 +282,7 @@ D) **No comment policy**
 - Up to developers
 
 **Your answer:**
-
 ---
-
 ### Question 5.7: Component Structure
 
 **How will you structure components?**
@@ -341,9 +325,7 @@ C) **Single file components** (Vue SFC style)
 - Best for: Vue, Svelte
 
 **Your answer:**
-
 ---
-
 ### Question 5.8: Error Handling Patterns
 
 **How will you handle errors in components?**
@@ -374,9 +356,7 @@ C) **Try-Catch everywhere**
 - DataDog
 - Console only (development)
 - No logging
-
 ---
-
 ### Question 5.9: Code Review Standards
 
 **What's required for code review approval?**
@@ -401,9 +381,7 @@ B) Senior/Lead developer
 C) Code owner (GitHub CODEOWNERS)
 
 **Your answer:**
-
 ---
-
 ### Question 5.10: Commit Message Convention
 
 **What commit message format will you use?**
@@ -443,16 +421,13 @@ C) **No convention**
 A) All commits
 B) Only breaking changes
 C) Never required
-
 ---
-
 ## 📊 Phase 5 Summary
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📋 PHASE 5 SUMMARY: CODE STANDARDS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 File Naming: [Answer from 5.1]
 Component Naming: [Answer from 5.2]
 Linting/Formatting: [Answer from 5.3]
@@ -468,9 +443,7 @@ Documentation Tools: [Answer from 5.12]
 
 Is this correct? (Y/n)
 ```
-
 ---
-
 ## 📝 Document Generation
 
 Generate `docs/code-standards.md` with these placeholders:
@@ -509,9 +482,7 @@ Update `ai-instructions.md`:
 - ✅ ALWAYS use Conventional Commits format
   {{/IF_CONVENTIONAL_COMMITS}}
 ```
-
 ---
-
 ## 🚀 Next Steps
 
 ```
@@ -525,9 +496,11 @@ Next: Phase 6 - Testing Strategy
 
 Read: .ai-flow/prompts/frontend/flow-build-phase-6-testing.md
 ```
-
 ---
-
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.2.0
+
+
+
+

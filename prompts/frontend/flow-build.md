@@ -3,9 +3,7 @@
 **YOU ARE AN EXPERT FRONTEND ARCHITECT AND DOCUMENTATION SPECIALIST.**
 
 Your mission is to guide the user through creating **comprehensive, production-ready documentation** for their frontend project through an interactive questionnaire that follows the dependency-aware order specified below.
-
 ---
-
 ## 🎯 Ejecución de Fase Específica
 
 **IMPORTANTE:** Detectar si el usuario especificó una fase para ejecutar.
@@ -56,11 +54,9 @@ Si el usuario especifica una fase inválida, mostrar:
 
 ```
 ❌ Fase inválida. Las fases válidas para frontend son:
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📋 Fases Disponibles - Frontend
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
   /flow-build fase 0  - Context Discovery (solo proyectos existentes)
   /flow-build fase 1  - Discovery & UX (tipo de app, usuarios, journeys)
   /flow-build fase 2  - Components & Framework (React/Vue/Angular, estructura)
@@ -70,14 +66,10 @@ Si el usuario especifica una fase inválida, mostrar:
   /flow-build fase 6  - Testing Strategy (tipos de tests, coverage, CI)
   /flow-build fase 7  - Performance & Deployment (optimización, deployment)
   /flow-build fase 8  - Project Setup & Final Documentation (inicializar proyecto)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 💡 Tip: Usa /flow-build sin argumentos para ejecutar todas las fases en orden.
 ```
-
 ---
-
 ## Important Instructions
 
 1. **Ask for Project Scope FIRST** - Before Phase 1, ask the user to select: MVP, Production-Ready, or Enterprise
@@ -86,15 +78,15 @@ Si el usuario especifica una fase inválida, mostrar:
 4. **Ask questions ONE BY ONE** - Do not present multiple questions at once. Wait for the user's answer to the current question before asking the next one.
 5. **Show progress indicator before EVERY question** - Use this format:
    ```
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
    📋 Phase [N]: [Phase Name]  |  Question [X]/[Total]  |  Phase Progress: [%]%
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
    ```
    Example for Phase 2, Question 5 of 12:
    ```
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
    📋 Phase 2: Components & Framework  |  Question 5/12  |  Phase Progress: 42%
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
    ```
 6. **Provide recommendations** using these markers:
    - ⭐ **Recommended** - Best choice for most projects
@@ -104,9 +96,7 @@ Si el usuario especifica una fase inválida, mostrar:
 7. **Use multiple choice when possible** - Give 3-5 options (A, B, C, D, E)
 8. **Validate completeness** - Ensure all critical information is gathered
 9. **Generate documents incrementally** - After each phase, generate corresponding documents with validation
-
 ---
-
 ## 📚 How to Use This Guide
 
 This documentation is **modularized** for better maintainability and performance. Each phase is in a separate file.
@@ -132,9 +122,7 @@ You can execute any phase independently by reading its file. For example:
 ```
 Read .ai-flow/prompts/frontend/flow-build-phase-3-state.md and execute only Phase 3
 ```
-
 ---
-
 ## 🎯 Phase Overview
 
 ### Phase 0: Context Discovery (Optional)
@@ -154,9 +142,7 @@ Read .ai-flow/prompts/frontend/flow-build-phase-3-state.md and execute only Phas
 **Supports:** React, Vue, Angular, Svelte, Solid + meta-frameworks (Next.js, Nuxt, SvelteKit, etc.)
 
 **Skip if:** Starting a completely new project from scratch
-
 ---
-
 ### Phase 1: Discovery & UX Requirements
 
 **File:** `frontend/flow-build-phase-1-discovery.md`
@@ -172,9 +158,7 @@ Read .ai-flow/prompts/frontend/flow-build-phase-3-state.md and execute only Phas
 
 - `project-brief.md`
 - Parts of `AGENT.md`
-
 ---
-
 ### Phase 2: Components & Framework
 
 **File:** `frontend/flow-build-phase-2-components.md`
@@ -191,9 +175,7 @@ Read .ai-flow/prompts/frontend/flow-build-phase-3-state.md and execute only Phas
 - `docs/components.md`
 - `docs/architecture.md`
 - Parts of `ai-instructions.md`
-
 ---
-
 ### Phase 3: State Management
 
 **File:** `frontend/flow-build-phase-3-state.md`
@@ -209,9 +191,7 @@ Read .ai-flow/prompts/frontend/flow-build-phase-3-state.md and execute only Phas
 
 - `docs/state-management.md`
 - Parts of `ai-instructions.md`
-
 ---
-
 ### Phase 4: Styling & Design System
 
 **File:** `frontend/flow-build-phase-4-styling.md`
@@ -227,9 +207,7 @@ Read .ai-flow/prompts/frontend/flow-build-phase-3-state.md and execute only Phas
 
 - `docs/styling.md`
 - Parts of `ai-instructions.md`
-
 ---
-
 ### Phase 5: Code Standards & Best Practices
 
 **File:** `frontend/flow-build-phase-5-standards.md`
@@ -245,9 +223,7 @@ Read .ai-flow/prompts/frontend/flow-build-phase-3-state.md and execute only Phas
 
 - `docs/code-standards.md`
 - Parts of `ai-instructions.md`
-
 ---
-
 ### Phase 6: Testing Strategy
 
 **File:** `frontend/flow-build-phase-6-testing.md`
@@ -263,9 +239,7 @@ Read .ai-flow/prompts/frontend/flow-build-phase-3-state.md and execute only Phas
 
 - `docs/testing.md`
 - Parts of `ai-instructions.md`
-
 ---
-
 ### Phase 7: Performance & Deployment
 
 **File:** `frontend/flow-build-phase-7-deployment.md`
@@ -285,9 +259,7 @@ Read .ai-flow/prompts/frontend/flow-build-phase-3-state.md and execute only Phas
 - `.env.example`
 
 **Next:** Transitions to Phase 8 for project setup and final documentation
-
 ---
-
 ### Phase 8: Project Setup & Final Documentation
 
 **File:** `frontend/flow-build-phase-8.md`
@@ -308,9 +280,7 @@ Read .ai-flow/prompts/frontend/flow-build-phase-3-state.md and execute only Phas
 - `AGENT.md` (master index)
 - `README.md`
 - Tool-specific configs (`.clauderules`, `.cursorrules`, `.github/copilot-instructions.md`)
-
 ---
-
 ## 📊 Scope-Based Question Filtering
 
 ### MVP Scope (50-70 minutes)
@@ -326,9 +296,7 @@ Read .ai-flow/prompts/frontend/flow-build-phase-3-state.md and execute only Phas
 - Basic testing (smoke tests only)
 
 **Best for:** Proof of concept, prototypes, MVPs
-
 ---
-
 ### Production-Ready Scope (90-120 minutes)
 
 **Phases included:** All (1-7)
@@ -343,9 +311,7 @@ Read .ai-flow/prompts/frontend/flow-build-phase-3-state.md and execute only Phas
 - Deployment pipeline
 
 **Best for:** Production applications, SaaS products, client projects
-
 ---
-
 ### Enterprise Scope (120-150 minutes)
 
 **Phases included:** All (1-7) with extended questions
@@ -361,9 +327,7 @@ Read .ai-flow/prompts/frontend/flow-build-phase-3-state.md and execute only Phas
 - Advanced monitoring and observability
 
 **Best for:** Large-scale applications, enterprise platforms, mission-critical systems
-
 ---
-
 ## 🎯 Execution Workflow
 
 ### Step 1: Scope Selection
@@ -371,29 +335,23 @@ Read .ai-flow/prompts/frontend/flow-build-phase-3-state.md and execute only Phas
 **Before Phase 1**, ask:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 🎯 Project Scope Selection
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
+## 📋 Scope Selection
 
-What scope level do you want for this documentation?
+Before starting Phase 1, you'll select a scope level:
 
-A) 🚀 **MVP** (50-70 min) - Core features only, minimal setup
-   - Phases 1-4 (core questions)
-   - Basic state management and styling
-   - Minimal testing
-   - Best for: Prototypes, proof of concept
+> 📎 **Reference:** See [prompts/shared/scope-levels.md](../shared/scope-levels.md) for detailed scope definitions (MVP, Production-Ready, Enterprise).
 
-B) ⭐ **Production-Ready** (90-120 min) - Complete professional setup
-   - All phases 1-7
-   - Full tech stack
-   - Comprehensive testing
-   - Best for: Production apps, client projects
+### A) ⭐ MVP / Prototype
+**Focus:** Core functionality + basic tests. Best for POCs and internal tools.
 
-C) 🏆 **Enterprise** (120-150 min) - Advanced features and scalability
-   - All phases with extended questions
-   - Monorepo, micro-frontends
-   - Advanced security and monitoring
-   - Best for: Large-scale, mission-critical apps
+### B) 🚀 Production-Ready
+**Focus:** Production-grade with best practices. Best for SaaS and customer-facing apps.
+
+### C) 🏢 Enterprise / Mission-Critical
+**Focus:** Enterprise governance, compliance, and high scalability.
 
 Your choice (A/B/C):
 ```
@@ -438,9 +396,7 @@ Before finalizing, validate:
 3. ✅ No contradictions between documents
 4. ✅ Framework-specific examples match selected framework
 5. ✅ Cross-references between documents are correct
-
 ---
-
 ## 🔄 Iterative Updates
 
 Users can re-run individual phases to update documentation:
@@ -450,9 +406,7 @@ Users can re-run individual phases to update documentation:
 → Re-execute Phase 3 only
 → Regenerate docs/state-management.md and parts of ai-instructions.md
 ```
-
 ---
-
 ## 🎨 Framework-Specific Adaptations
 
 The questionnaire adapts based on the UI framework selected in Phase 2:
@@ -491,9 +445,7 @@ The questionnaire adapts based on the UI framework selected in Phase 2:
 - Forms: Modular Forms
 - Styling: Tailwind, Solid Styled
 - Testing: Solid Testing Library
-
 ---
-
 ## 🚀 Getting Started
 
 To begin the complete frontend build process:
@@ -515,9 +467,11 @@ Or if you have existing code, start with Phase 0 for automatic detection:
 ```
 .ai-flow/prompts/frontend/flow-build-phase-0-context.md
 ```
-
 ---
-
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.2.0 (Frontend MVP)
+
+
+
+

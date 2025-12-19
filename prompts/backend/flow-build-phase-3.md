@@ -15,71 +15,12 @@
 Define the technical stack, architecture patterns, and system design.
 
 > **Note:** At the end of this phase, the AI will automatically generate a system architecture diagram in mermaid format, based on your answers. This diagram will be included in the docs/architecture.md document.
-
 ---
-
 #### 🎨 MERMAID ARCHITECTURE DIAGRAM FORMAT - CRITICAL
 
-**Use this exact format** for system architecture diagrams:
+> 📎 **Reference:** See [prompts/shared/mermaid-guidelines.md](../shared/mermaid-guidelines.md) for architecture diagram syntax, node shapes, and styling.
 
-````markdown
-```mermaid
-graph TD
-    Client[Client Application<br/>React/Mobile/Web]
-    LB[Load Balancer<br/>Nginx/ALB]
-    API[API Gateway<br/>Node.js/Express]
-    Auth[Auth Service<br/>JWT/OAuth]
-    Business[Business Logic Layer]
-    DB[(Primary Database<br/>PostgreSQL)]
-    Cache[(Redis Cache<br/>Session & Data)]
-    Queue[Message Queue<br/>RabbitMQ/SQS]
-    Storage[File Storage<br/>S3/MinIO]
-    Email[Email Service<br/>SendGrid/SES]
-    Monitor[Monitoring<br/>Prometheus/DataDog]
-
-    Client -->|HTTPS| LB
-    LB -->|Forward| API
-    API -->|Verify Token| Auth
-    API -->|Business Rules| Business
-    Business -->|Query/Write| DB
-    Business -->|Cache Check| Cache
-    Business -->|Async Tasks| Queue
-    Business -->|Upload/Download| Storage
-    Queue -->|Send Email| Email
-    API -->|Metrics| Monitor
-    Business -->|Logs| Monitor
-
-    style Client fill:#e1f5ff
-    style API fill:#fff4e1
-    style Auth fill:#ffe1e1
-    style DB fill:#e1ffe1
-    style Cache fill:#f0e1ff
-    style Queue fill:#ffe1f5
-```
-````
-
-**Diagram Types:**
-
-- `graph TD` = Top-Down flow (recommended for most architectures)
-- `graph LR` = Left-Right flow (good for linear pipelines)
-- `graph BT` = Bottom-Top (less common)
-- `graph RL` = Right-Left (less common)
-
-**Node Shapes:**
-
-- `[Square Brackets]` = Services, applications, components
-- `[(Cylinder)]` = Databases, persistent storage
-- `([Rounded])` = Start/End points
-- `{Diamond}` = Decision points
-- `[[Double Square]]` = Subroutines
-- `[/Parallelogram/]` = Input/Output
-
-**Styling:**
-
-- Use `<br/>` for line breaks in node labels
-- Apply styles with: `style NodeName fill:#colorcode`
-- Label connections: `A -->|Label Text| B`
-- Use consistent colors for component types
+**Example Architecture Diagram:**
 
 **Common Architecture Patterns:**
 
@@ -128,9 +69,7 @@ graph TD
 - Use consistent naming conventions
 
 **Validation:** Preview at https://mermaid.live/ before committing
-
 ---
-
 **3.1 Backend Framework**
 
 ```
@@ -329,9 +268,7 @@ Please answer the following questions to define the global API conventions (thes
 10. If you want to customize an endpoint (e.g., add special logic, validations, or unique parameters), describe the case here:
 
 - [Brief description, example endpoint, parameters, special logic]
-
 ---
-
 The AI will use these conventions to automatically document all CRUD endpoints for each entity in api.md. If you need additional or custom endpoints, you can add them manually later.
 ````
 
@@ -598,9 +535,7 @@ D) Accounting (QuickBooks, Xero)
 E) Other: __
 
 → Your selection (e.g., A, B, C): __
-
 ---
-
 For each selected, briefly describe the use case:
 D) Other: __
 
@@ -610,9 +545,7 @@ B) Calendar (Google/Outlook)
 C) CRM (Salesforce, HubSpot)
 D) Accounting (QuickBooks, Xero)
 E) Other: __
-
 ---
-
 For each selected, briefly describe the use case:
 
 Example:
@@ -648,9 +581,7 @@ External Services: [list with use cases]
 
 Is this correct? (Yes/No)
 ```
-
 ---
-
 ### 📄 Generate Phase 3 Documents
 
 **Before starting generation:**
@@ -692,13 +623,12 @@ Documents have been created with all Phase 3 information.
 
 **If user edits files:**
 Execute `read_file()` for both documents to refresh context before continuing.
-
 ---
-
 **Proceed to Phase 4 only after documents are validated.**
 
 > ⚠️ **CRITICAL:** DO NOT generate README.md in this phase. README.md is ONLY generated in Phase 8 (step 8.5) after framework initialization.
-
 ---
-
 ## PHASE 4: Security & Authentication (15-20 min)
+
+
+

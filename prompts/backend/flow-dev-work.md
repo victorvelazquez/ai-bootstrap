@@ -3,9 +3,7 @@
 **YOU ARE AN EXPERT PROJECT MANAGER AND WORKFLOW COORDINATOR.**
 
 Your mission is to manage work in progress, resume interrupted work, and archive completed work when the user executes `/work`.
-
 ---
-
 ## Command: `/work`
 
 ### Objective
@@ -23,9 +21,7 @@ Manage work in progress efficiently:
 - **`/work show [name]`** → Show details of specific task
 - **`/work resume [name]`** → Resume paused work
 - **`/work archive [name]`** → Archive completed work
-
 ---
-
 ## Workflow: `/work` (List Active Work)
 
 ### Step 1: Scan Work Directory
@@ -56,10 +52,9 @@ E) Exit
 **Example output:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📋 Work Management
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Active work in .ai-flow/work/:
 
 1. 🚀 feature-notifications
@@ -87,9 +82,7 @@ Active work in .ai-flow/work/:
    Branch: refactor/auth-cleanup
    Started: 2025-01-20 11:00
    Last updated: 2025-01-20 11:05
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 What would you like to do?
 A) Show details of a task
 B) Resume a task
@@ -97,9 +90,7 @@ C) Archive a task
 D) Clean up (archive all completed)
 E) Exit
 ```
-
 ---
-
 ## Workflow: `/work show [name]`
 
 ### Step 1: Read Task Files
@@ -134,10 +125,9 @@ C) Back to list
 **Example output:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📄 Task Details: feature-notifications
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 **Overview:**
 Real-time notification system using WebSockets
 
@@ -181,17 +171,13 @@ Real-time notification system using WebSockets
 - src/routes/index.ts (registered routes)
 
 **Next step:** Update API documentation (task 13/18)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 What would you like to do?
 A) Resume this task
 B) Archive this task
 C) Back to list
 ```
-
 ---
-
 ## Workflow: `/work resume [name]`
 
 ### Step 1: Load Complete Context
@@ -249,10 +235,9 @@ git checkout feature/notifications-websocket
 **Read previous mode from `status.json` and suggest as default:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ⚙️  Resume Implementation Mode
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Previous mode: Phase-by-phase
 Progress: 12/18 tasks (67%)
 Remaining: 6 tasks (Phase 2: 3 tasks left, Phase 3: 3 tasks)
@@ -282,10 +267,9 @@ Execute based on selected mode:
 Continue automatically until all tasks complete:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ⚙️  Resuming: feature-notifications (Auto Mode)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Loading context...
 ✅ Read spec.md, plan.md, tasks.md
 ✅ Analyzed completed code (12/18 tasks done)
@@ -307,10 +291,9 @@ All tasks completed! ✅
 Continue phase by phase with pauses:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ⚙️  Resuming: feature-notifications (Phase-by-phase Mode)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Loading context...
 ✅ Read spec.md, plan.md, tasks.md
 ✅ Phase 1 already complete (10/10 tasks)
@@ -321,11 +304,9 @@ Task 2.3: Create EmailService ✅
 Task 2.4: Implement password hashing ✅
 ...
 Task 2.15: Add error handling ✅
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ Phase 2 Complete (15/15 tasks)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Continue to Phase 3? (Y/n/pause)
 > Y
 ```
@@ -335,10 +316,9 @@ Continue to Phase 3? (Y/n/pause)
 Ask for confirmation before each task:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ⚙️  Resuming: feature-notifications (Task-by-task Mode)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Loading context...
 ✅ Loaded context (12/18 tasks complete)
 
@@ -354,10 +334,9 @@ Proceed? (Y/n/skip/pause)
 Save progress and exit without changes:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 💾 Progress Saved
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Current progress: 12/18 tasks (67%)
 Status: Paused
 
@@ -372,9 +351,7 @@ No changes made. To resume: /work resume feature-notifications
   - Current progress
   - Last task completed
   - Reason for pause (if paused)
-
 ---
-
 ## Workflow: `/work archive [name]`
 
 ### Step 1: Verify Completion
@@ -465,10 +442,9 @@ Create final summary with:
 **Example output:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 🗄️  Archiving: feature-notifications
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 ✅ All 18 tasks completed
 ✅ All tests passed
 ✅ All changes committed
@@ -480,11 +456,9 @@ Updating documentation...
 ✅ Updated docs/api.md (added 3 endpoints)
 ✅ Updated docs/data-model.md (added Notification entity)
 ✅ Updated .env.example (added REDIS_URL)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📦 Git Summary
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Branch: feature/notifications-websocket (from main)
 Commits: 4
 
@@ -498,8 +472,7 @@ Tests added: 24
 All validations passed ✅
 
 🚀 Ready to create Pull Request
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Suggested PR command:
 
 gh pr create \
@@ -511,11 +484,9 @@ Or open in browser:
 https://github.com/yourorg/yourrepo/compare/main...feature/notifications-websocket
 
 ⚠️  Note: PR creation is manual. Review commits before creating PR.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ Archive Complete!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Summary:
 - Feature: Real-time notifications with WebSockets
 - 8 files created, 2 modified
@@ -526,9 +497,7 @@ Summary:
 
 Archived: .ai-flow/archive/2025-01/feature-notifications/
 ```
-
 ---
-
 ## Clean Up (Archive All Completed)
 
 When user selects "D) Clean up":
@@ -542,10 +511,9 @@ When user selects "D) Clean up":
 **Example output:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 🗄️  Cleanup: Archive All Completed
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Found 2 completed tasks:
 - feature-user-profile (18/18 tasks)
 - fix-validation-error (6/6 tasks)
@@ -561,17 +529,13 @@ Archiving feature-user-profile...
 Archiving fix-validation-error...
 ✅ Moved to archive
 ✅ No docs to update (bug fix)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ Cleanup Complete!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Archived 2 tasks
 .ai-flow/work/ is now clean
 ```
-
 ---
-
 ## Git Integration
 
 ### Overview
@@ -725,8 +689,7 @@ What would you like to do? (1/2/3/4)
 
 ```bash
 🔧 Commit remaining changes
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Pre-commit validation:
   ✓ Lint passed
   ✓ Type check passed
@@ -763,10 +726,9 @@ Proceeding with archive...
 When archiving, show comprehensive Git summary:
 
 ```bash
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 📦 Git Summary
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Branch: feature/notifications-websocket
 Source: main
 Commits: 5 (all committed ✅)
@@ -787,8 +749,7 @@ All validations passed ✅
 No uncommitted changes ✅
 
 🚀 Ready to create Pull Request
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Suggested PR command:
 
 gh pr create \
@@ -933,11 +894,9 @@ git checkout feature/notifications-websocket
 # Switched to branch 'feature/notifications-websocket'
 
 ✅ On correct branch. Loading context...
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ⚙️  Resume Implementation Mode
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Feature: Real-time notifications
 Progress: 12/18 tasks (67%)
 Previous mode: Phase-by-phase
@@ -989,9 +948,7 @@ Work management inherits Git strategy from original command:
 | `/refactor-quick` | Single commit at end, current branch, no PR                  |
 
 **Key principle:** Resume doesn't change strategy, only continues it.
-
 ---
-
 ## Important Rules
 
 ### 1. Context Preservation
@@ -1039,20 +996,16 @@ When archiving:
 - After archiving, work/ should only have active work
 - Archive/ organizes by year-month
 - Easy to find historical work
-
 ---
-
 ## Example: Complete Resume Flow
 
 ### User paused a complex feature after Phase 1:
 
 ```
 User runs: /work resume feature-auth-system
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ⚙️  Resume Implementation Mode
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Loading context...
 ✅ Read spec.md, plan.md, tasks.md, status.json
 ✅ Analyzed completed code
@@ -1072,11 +1025,9 @@ How do you want to continue?
 4. 💾 Save progress and exit again
 
 Your choice (2): 2
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ⚙️  Resuming: feature-auth-system (Phase-by-phase Mode)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 PHASE 2/5: Business Logic
 
 Task 2.1: Create AuthService ✅
@@ -1094,11 +1045,9 @@ Task 2.12: Error handling for auth ✅
 Task 2.13: Input validation schemas ✅
 Task 2.14: Business rule enforcement ✅
 Task 2.15: Service integration tests ✅
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 ✅ Phase 2 Complete (15/15 tasks)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 📁 Files created:
 - src/services/AuthService.ts
 - src/services/TokenService.ts
@@ -1110,11 +1059,9 @@ Overall progress: 25/52 tasks (48%)
 
 Continue to Phase 3? (Y/n/pause)
 > pause
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 💾 Progress Saved
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+---
 Current progress: 25/52 tasks (48%)
 Completed: Phases 1-2
 Next: Phase 3 - API Layer
@@ -1122,7 +1069,9 @@ Status: Paused after Phase 2 completion
 
 To resume: /work resume feature-auth-system
 ```
-
 ---
-
 **BEGIN EXECUTION when user runs `/work`, `/work show [name]`, `/work resume [name]`, or `/work archive [name]`**
+
+
+
+
