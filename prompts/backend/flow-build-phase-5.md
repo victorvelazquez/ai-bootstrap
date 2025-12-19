@@ -611,7 +611,9 @@ Custom Rules: [NEVER rules count, ALWAYS rules count]
 
 Is this correct? (Yes/No)
 ```
+
 ---
+
 ### 📄 Generate Phase 5 Documents
 
 **Before starting generation:**
@@ -651,12 +653,13 @@ Documents have been created with all Phase 5 information.
 
 **If user edits files:**
 Re-read files to refresh context before continuing.
+
 ---
+
 **Proceed to Phase 6 only after documents are validated.**
 
 > ⚠️ **CRITICAL:** DO NOT generate README.md in this phase. README.md is ONLY generated in Phase 8 (step 8.5) after framework initialization.
+
 ---
+
 ## PHASE 6: Testing Strategy (10 min)
-
-
-

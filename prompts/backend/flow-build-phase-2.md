@@ -241,7 +241,7 @@ Entities with SOFT delete (keep record, mark as deleted):
 
 Entities with HARD delete (permanent removal):
 - Session tokens
-- Temporary files  
+- Temporary files
 - Cart items after checkout
 - [List yours...]
 
@@ -483,7 +483,9 @@ Schema Migrations: [tool + strategy + zero-downtime approach]
 
 Is this correct? (Yes/No)
 ```
+
 ---
+
 ### 📄 Generate Phase 2 Documents
 
 **Before starting generation:**
@@ -500,13 +502,15 @@ Is this correct? (Yes/No)
 - Include entity catalog, relationships, data patterns
 - Generate entity-relationship diagram (ER diagram) in mermaid format showing all entities and their relationships
 - Write to: `docs/data-model.md`
+
 ---
+
 #### 🎨 MERMAID ER DIAGRAM FORMAT - CRITICAL
 
 > 📎 **Reference:** See [prompts/shared/mermaid-guidelines.md](../shared/mermaid-guidelines.md) for ER diagram syntax, relationship notation, and common mistakes.
 
-**Example ER Diagram:**
----
+## **Example ER Diagram:**
+
 ```
 ✅ Generated: docs/data-model.md
 
@@ -520,12 +524,13 @@ Document has been created with all Phase 2 information.
 
 **If user edits the file:**
 Execute `read_file('docs/data-model.md')` to refresh context before continuing.
+
 ---
+
 > ⚠️ **CRITICAL:** DO NOT generate README.md in Phase 2. README.md is ONLY generated in Phase 8 (step 8.5) after framework initialization.
+
 ---
-**Proceed to Phase 3 after document is generated and optionally reviewed.**
----
+
+## **Proceed to Phase 3 after document is generated and optionally reviewed.**
+
 ## PHASE 3: System Architecture (15-20 min)
-
-
-

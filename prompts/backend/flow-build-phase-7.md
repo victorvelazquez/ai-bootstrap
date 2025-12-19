@@ -604,11 +604,13 @@ C) 📄 Manual
 - Hard to keep in sync (Not recommended)
 
 ```
+
 ---
+
 #### 🎨 MERMAID OPERATIONS DIAGRAM FORMATS - CRITICAL
 
-**Use these exact formats** for operational and infrastructure diagrams mentioned in question 7.10:
----
+## **Use these exact formats** for operational and infrastructure diagrams mentioned in question 7.10:
+
 ##### 1️⃣ System Architecture Diagram (Deployment View)
 
 Use `graph TD` to show deployed system components with scaling and redundancy:
@@ -673,8 +675,8 @@ graph TD
 ```
 ````
 
-**Use for:** Showing deployed infrastructure, scaling configuration, redundancy, high availability
----
+## **Use for:** Showing deployed infrastructure, scaling configuration, redundancy, high availability
+
 ##### 2️⃣ Data Flow Diagram (Request Flow)
 
 Use `flowchart LR` to show how data moves through the system step-by-step:
@@ -708,8 +710,8 @@ flowchart LR
 ```
 ````
 
-**Use for:** Documenting request/response cycles, async processing flows, numbered execution steps
----
+## **Use for:** Documenting request/response cycles, async processing flows, numbered execution steps
+
 ##### 3️⃣ Infrastructure Diagram (Cloud Resources)
 
 Use `graph TB` with subgraphs to show cloud infrastructure and network topology:
@@ -779,8 +781,8 @@ graph TB
 ```
 ````
 
-**Use for:** Documenting cloud architecture, network topology, AWS/GCP/Azure resources, VPC design
----
+## **Use for:** Documenting cloud architecture, network topology, AWS/GCP/Azure resources, VPC design
+
 ##### 4️⃣ Monitoring & Observability Diagram (Optional)
 
 Use `graph TD` to show monitoring, logging, and alerting stack:
@@ -836,8 +838,8 @@ graph TD
 ```
 ````
 
-**Use for:** Documenting observability strategy, monitoring infrastructure, alerting workflows
----
+## **Use for:** Documenting observability strategy, monitoring infrastructure, alerting workflows
+
 **Best Practices for Operations Diagrams:**
 
 1. **Include Resource Specs:** Add CPU/RAM/disk info to nodes (e.g., `[API Server<br/>4 vCPU, 8GB RAM]`)
@@ -865,8 +867,8 @@ graph TD
 - For Serverless: Show Lambda functions, API Gateway, S3 triggers, event sources
 - For VMs: Show instances, security groups, load balancers, auto-scaling groups
 
-**Validation:** Test diagrams at https://mermaid.live/ before saving to ensure syntax is correct
----
+## **Validation:** Test diagrams at https://mermaid.live/ before saving to ensure syntax is correct
+
 ### Phase 7 Output
 
 ```
@@ -890,7 +892,9 @@ Documentation & Runbooks: [what will be created (deployment guide/runbooks/archi
 
 Is this correct? (Yes/No)
 ```
+
 ---
+
 ### 📄 Generate Phase 7 Documents
 
 **Before starting generation:**
@@ -936,9 +940,11 @@ Documents have been created with all Phase 7 information.
 
 **If user edits files:**
 Re-read files to refresh context before continuing.
+
 ---
-**Proceed to final generation only after documents are validated.**
----
+
+## **Proceed to final generation only after documents are validated.**
+
 ## FINAL STEP: Generate Remaining Documents & Tool Configs
 
 ### ⏸️ CHECKPOINT: Final Document Review
@@ -974,8 +980,8 @@ When you're done, type "ready" and I'll re-read ALL documents
 to ensure the final generation uses the most up-to-date information.
 ```
 
-Then execute `read_file()` for ALL previously generated documents.
----
+## Then execute `read_file()` for ALL previously generated documents.
+
 ### 📖 Loading Complete Context for Final Generation
 
 ```
@@ -1065,7 +1071,9 @@ Phase 8 will:
 
 Continue to Phase 8? (yes/no)
 ```
+
 ---
+
 ## EXECUTION CHECKLIST FOR AI ASSISTANT
 
 When executing this master prompt:
@@ -1186,8 +1194,8 @@ When executing this master prompt:
 - Phases 1-7: 30-60 min (only missing questions)
 - **Total: 40-80 minutes** (40-60% time saved!)
 
-This is an investment that will save 10-20 hours over the project lifecycle.
----
+## This is an investment that will save 10-20 hours over the project lifecycle.
+
 **EXECUTION FLOW:**
 
 1. **START:** User runs `/flow-build`
@@ -1203,12 +1211,11 @@ This is an investment that will save 10-20 hours over the project lifecycle.
    - Integrate suggestions from Phase 0 into relevant phases if user selected option A
 4. **GENERATE:** Create documents incrementally with validation
 5. **COMPLETE:** Final checkpoint and remaining documents
+
 ---
+
 **BEGIN EXECUTION when user runs `/flow-build`**
 
 ```
 
 ```
-
-
-

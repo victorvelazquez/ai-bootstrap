@@ -15,7 +15,9 @@
 Define the technical stack, architecture patterns, and system design.
 
 > **Note:** At the end of this phase, the AI will automatically generate a system architecture diagram in mermaid format, based on your answers. This diagram will be included in the docs/architecture.md document.
+
 ---
+
 #### 🎨 MERMAID ARCHITECTURE DIAGRAM FORMAT - CRITICAL
 
 > 📎 **Reference:** See [prompts/shared/mermaid-guidelines.md](../shared/mermaid-guidelines.md) for architecture diagram syntax, node shapes, and styling.
@@ -68,8 +70,8 @@ graph TD
 - Label protocols on connections (HTTPS, gRPC, WebSocket)
 - Use consistent naming conventions
 
-**Validation:** Preview at https://mermaid.live/ before committing
----
+## **Validation:** Preview at https://mermaid.live/ before committing
+
 **3.1 Backend Framework**
 
 ```
@@ -282,7 +284,7 @@ B) No - HTTP status codes only
 
 If yes, define your error code format:
 
-Format: 
+Format:
 A) ⭐ Prefixed by domain: USER_001, ORDER_003, PAYMENT_005
 B) Numeric ranges: 1000-1999 (Users), 2000-2999 (Orders)
 C) Other: __
@@ -686,7 +688,9 @@ External Services: [list with use cases]
 
 Is this correct? (Yes/No)
 ```
+
 ---
+
 ### 📄 Generate Phase 3 Documents
 
 **Before starting generation:**
@@ -728,12 +732,13 @@ Documents have been created with all Phase 3 information.
 
 **If user edits files:**
 Execute `read_file()` for both documents to refresh context before continuing.
+
 ---
+
 **Proceed to Phase 4 only after documents are validated.**
 
 > ⚠️ **CRITICAL:** DO NOT generate README.md in this phase. README.md is ONLY generated in Phase 8 (step 8.5) after framework initialization.
+
 ---
+
 ## PHASE 4: Security & Authentication (15-20 min)
-
-
-
