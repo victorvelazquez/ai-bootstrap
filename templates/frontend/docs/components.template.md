@@ -1,17 +1,13 @@
 # Component Architecture
 
 > Component organization, patterns, and best practices for {{PROJECT_NAME}}
-
 ---
-
 ## 📐 Component Pattern
 
 **Pattern:** {{COMPONENT_PATTERN}}
 
 {{COMPONENT_PATTERN_DESCRIPTION}}
-
 ---
-
 ## 🏗️ Component Hierarchy
 
 ### Atomic Design (if using)
@@ -41,9 +37,7 @@ features/
     hooks/
     services/
 ```
-
 ---
-
 ## 📁 File Structure
 
 ### Component File Organization
@@ -86,9 +80,7 @@ src/
 ├── utils/               # Utility functions
 └── types/               # TypeScript types
 ```
-
 ---
-
 ## 🧩 Component Types
 
 ### 1. Presentational Components (Atoms/Molecules)
@@ -196,9 +188,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
   );
 };
 ```
-
 ---
-
 ## 🎯 Component Design Principles
 
 ### 1. Single Responsibility
@@ -252,9 +242,7 @@ const auth = useAuth();
 ### 4. Keep It Simple
 
 Avoid premature abstraction. Extract only when pattern emerges 3+ times.
-
 ---
-
 ## 🔧 Component Patterns
 
 ### Pattern: Compound Components
@@ -358,9 +346,7 @@ const SearchInput = () => {
   return <input value={query} onChange={e => setQuery(e.target.value)} />;
 };
 ```
-
 ---
-
 ## 🎨 Styling Strategy
 
 **Approach:** {{STYLING_APPROACH}}
@@ -373,9 +359,7 @@ const SearchInput = () => {
 // Using {{STYLING_APPROACH}}
 {{STYLING_EXAMPLE}}
 ```
-
 ---
-
 ## 🧪 Component Testing
 
 ### What to Test
@@ -417,9 +401,7 @@ describe('Button', () => {
   });
 });
 ```
-
 ---
-
 ## 📦 Component Library
 
 {{#IF_COMPONENT_LIBRARY}}
@@ -437,9 +419,7 @@ describe('Button', () => {
 - ✅ Simple components (Button, Input)
 - ✅ Performance-critical components
 {{/IF_COMPONENT_LIBRARY}}
-
 ---
-
 ## 🚀 Performance Optimization
 
 ### Code Splitting
@@ -481,9 +461,7 @@ import { FixedSizeList } from 'react-window';
   )}
 </FixedSizeList>
 ```
-
 ---
-
 ## ♿ Accessibility Guidelines
 
 ### Semantic HTML
@@ -520,9 +498,7 @@ const handleKeyDown = (e: KeyboardEvent) => {
   }
 };
 ```
-
 ---
-
 ## 📚 Component Documentation
 
 ### JSDoc Comments
@@ -547,9 +523,7 @@ Each feature directory should have a README explaining:
 - Key components
 - Data flow
 - API dependencies
-
 ---
-
 ## 🔗 Related Documents
 
 - [AI Instructions](../ai-instructions.md) - Development guidelines
@@ -557,11 +531,11 @@ Each feature directory should have a README explaining:
 - [Styling Guide](styling.md) - Styling conventions
 - [Testing Strategy](testing.md) - Testing approach
 - [Performance](performance.md) - Optimization techniques
-
 ---
-
 **Last Updated:** {{GENERATION_DATE}}
 
 **Pattern:** {{COMPONENT_PATTERN}}
 
 **Framework:** {{UI_FRAMEWORK}} {{UI_FRAMEWORK_VERSION}}
+
+

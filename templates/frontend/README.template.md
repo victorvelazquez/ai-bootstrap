@@ -1,9 +1,7 @@
 # {{PROJECT_NAME}}
 
 > {{PROJECT_DESCRIPTION}}
-
 ---
-
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -34,17 +32,13 @@ cp .env.example .env
 ```
 
 See `specs/configuration.md` for all environment variables.
-
 ---
-
 ## 📁 Project Structure
 
 ```
 {{FOLDER_STRUCTURE}}
 ```
-
 ---
-
 ## 🛠️ Development
 
 ### Available Scripts
@@ -65,9 +59,7 @@ See `specs/configuration.md` for all environment variables.
 - **Testing:** {{UNIT_TEST_FRAMEWORK}}, {{E2E_FRAMEWORK}}
 
 See `ai-instructions.md` for complete tech stack.
-
 ---
-
 ## 📚 Documentation
 
 **For AI Assistants:**
@@ -80,9 +72,7 @@ See `ai-instructions.md` for complete tech stack.
 - `docs/styling.md` - Styling guidelines
 - `docs/testing.md` - Testing strategy
 - `specs/accessibility.md` - A11y requirements
-
 ---
-
 ## 🧪 Testing
 
 ```bash
@@ -95,27 +85,21 @@ See `ai-instructions.md` for complete tech stack.
 # Run E2E tests
 {{PACKAGE_MANAGER}} run test:e2e
 ```
-
 ---
-
 ## 🚢 Deployment
 
 {{DEPLOYMENT_INSTRUCTIONS}}
 
 See `docs/operations.md` for detailed deployment procedures.
-
 ---
-
 ## 🤝 Contributing
 
 See `docs/contributing.md` for contribution guidelines.
-
 ---
-
 ## 📄 License
 
 {{LICENSE}}
-
 ---
-
 **Last Updated:** {{GENERATION_DATE}}
+
+

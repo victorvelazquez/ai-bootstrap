@@ -1,17 +1,13 @@
 # Operations & Deployment
 
 > Deployment procedures and operational guidelines for {{PROJECT_NAME}}
-
 ---
-
 ## 🚀 Deployment Platform
 
 **Platform:** {{DEPLOYMENT_PLATFORM}}
 **CI/CD:** {{CI_CD_PLATFORM}}
 **Environments:** {{ENVIRONMENTS}}
-
 ---
-
 ## 📦 Build Process
 
 ### Production Build
@@ -36,9 +32,7 @@ dist/
 VITE_API_BASE_URL=https://api.example.com
 VITE_APP_ENV=production
 ```
-
 ---
-
 ## 🔄 CI/CD Pipeline
 
 ### GitHub Actions Example
@@ -67,9 +61,7 @@ jobs:
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
 ```
-
 ---
-
 ## 📊 Monitoring
 
 ### Error Tracking
@@ -107,17 +99,15 @@ onCLS(console.log);
 onFID(console.log);
 onLCP(console.log);
 ```
-
 ---
-
 ## 🔗 Related Documents
 
 - [Performance](performance.md) - Performance optimization
 - [Configuration](../specs/configuration.md) - Environment configuration
-
 ---
-
 **Last Updated:** {{GENERATION_DATE}}
 
 **Deployment Platform:** {{DEPLOYMENT_PLATFORM}}
+
+
 

@@ -1,9 +1,7 @@
 # Styling & Design System
 
 > CSS architecture, theming, and design patterns for {{PROJECT_NAME}}
-
 ---
-
 ## 🎨 Styling Approach
 
 **Solution:** {{STYLING_APPROACH}}
@@ -14,9 +12,7 @@
 - **Design Tokens:** {{DESIGN_TOKENS}}
 - **Theme Support:** {{THEME_SUPPORT}}
 - **Responsive Strategy:** {{RESPONSIVE_STRATEGY}}
-
 ---
-
 ## 📐 CSS Architecture
 
 ### Styling Solutions Comparison
@@ -37,9 +33,7 @@
 
 **Why this approach:**
 {{STYLING_RATIONALE}}
-
 ---
-
 ## 🎨 Design Tokens
 
 {{#IF_DESIGN_TOKENS}}
@@ -159,9 +153,7 @@ const Button = styled.button`
 ```
 
 {{/IF_DESIGN_TOKENS}}
-
 ---
-
 ## 🌗 Theming
 
 ### Theme Implementation: {{THEME_SUPPORT}}
@@ -260,9 +252,7 @@ useEffect(() => {
 ```
 
 {{/IF_DARK_MODE}}
-
 ---
-
 ## 📱 Responsive Design
 
 ### Breakpoint Strategy
@@ -339,9 +329,7 @@ export const breakpoints = {
   }
 }
 ```
-
 ---
-
 ## 🧩 Component Styling Patterns
 
 ### Pattern 1: Compound Variants (Recommended)
@@ -449,9 +437,7 @@ const Button = styled.button<{ $variant?: 'primary' | 'secondary'; $size?: 'sm' 
   }
 `;
 ```
-
 ---
-
 ## ⚡ Performance Optimization
 
 ### 1. Critical CSS
@@ -520,9 +506,7 @@ elements.forEach((el, i) => {
   el.style.height = heights[i] + 10 + 'px'; // Write all
 });
 ```
-
 ---
-
 ## ♿ Accessibility in Styling
 
 ### 1. Focus Indicators
@@ -569,9 +553,7 @@ const ratio = contrast(textColor, bgColor);
   }
 }
 ```
-
 ---
-
 ## 🎯 Common Patterns
 
 ### Layout Patterns
@@ -665,9 +647,7 @@ const ratio = contrast(textColor, bgColor);
   animation: spin 1s linear infinite;
 }
 ```
-
 ---
-
 ## ⚠️ Common Pitfalls
 
 ### 1. Over-Specificity
@@ -731,9 +711,7 @@ div.container > ul.list > li.item > a.link {
   Content
 </div>
 ```
-
 ---
-
 ## 🧪 Testing Styles
 
 ### Visual Regression Testing
@@ -762,18 +740,16 @@ test('button has no a11y violations', async () => {
   expect(results).toHaveNoViolations();
 });
 ```
-
 ---
-
 ## 🔗 Related Documents
 
 - [Component Architecture](components.md) - Component structure
 - [AI Instructions](../ai-instructions.md) - Styling rules
 - [Accessibility Spec](../specs/accessibility.md) - A11y requirements
 - [Testing Strategy](testing.md) - Visual regression tests
-
 ---
-
 **Last Updated:** {{GENERATION_DATE}}
 
 **Styling Approach:** {{STYLING_APPROACH}}
+
+

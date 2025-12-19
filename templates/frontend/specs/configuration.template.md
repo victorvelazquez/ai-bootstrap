@@ -1,9 +1,7 @@
 # Configuration Specification
 
 > Environment variables, feature flags, and configuration management for {{PROJECT_NAME}}
-
 ---
-
 ## 🎯 Configuration Strategy
 
 **Approach:** {{CONFIGURATION_APPROACH}}
@@ -13,9 +11,7 @@
 2. **Security First** - Never expose secrets to client
 3. **Type Safety** - Validate and type all config
 4. **Environment Parity** - Consistent config across environments
-
 ---
-
 ## 📁 Configuration Files
 
 ### File Structure
@@ -42,9 +38,7 @@
 ```
 
 **Note:** {{BUILD_TOOL}} automatically loads these files in priority order.
-
 ---
-
 ## 🔐 Environment Variables
 
 ### .env.example Template
@@ -120,9 +114,7 @@ VITE_SOURCE_MAPS=true
 - `VITE_ANALYTICS_*` - Analytics services
 
 **Important:** Only variables prefixed with `VITE_` (or your build tool's prefix) are exposed to the client.
-
 ---
-
 ## ⚙️ Configuration Loader
 
 ### src/config/index.ts
@@ -232,9 +224,7 @@ export const configSchema = z.object({
 
 export type Config = z.infer<typeof configSchema>;
 ```
-
 ---
-
 ## 🏗️ Build-Time vs Runtime Config
 
 ### Build-Time Configuration
@@ -284,9 +274,7 @@ export async function loadRuntimeConfig() {
 - Dynamic feature flags
 - A/B testing variants
 - Per-customer configs
-
 ---
-
 ## 🚩 Feature Flags
 
 ### Implementation Strategies
@@ -357,9 +345,7 @@ export function isFeatureEnabled(
 // Usage
 const showNewFeature = isFeatureEnabled('new-dashboard', user.id, 25); // 25% rollout
 ```
-
 ---
-
 ## 🔒 Security Best Practices
 
 ### 1. Never Expose Secrets
@@ -402,9 +388,7 @@ if (isNaN(port) || port < 1 || port > 65535) {
   throw new Error('Invalid port number');
 }
 ```
-
 ---
-
 ## 🌍 Environment-Specific Config
 
 ### Development (.env.development)
@@ -435,9 +419,7 @@ VITE_SOURCE_MAPS=false
 VITE_ENABLE_DEVTOOLS=false
 VITE_SENTRY_ENVIRONMENT=production
 ```
-
 ---
-
 ## 🧪 Testing Configuration
 
 ### Mocking Config in Tests
@@ -462,9 +444,7 @@ test('feature flag enabled', () => {
 
 vi.unstubAllEnvs();
 ```
-
 ---
-
 ## 📊 Configuration Monitoring
 
 ### Log Config on Startup (Development Only)
@@ -504,17 +484,15 @@ if (isProduction && config.analytics.sentryDsn) {
   });
 }
 ```
-
 ---
-
 ## 🔗 Related Documents
 
 - [AI Instructions](../ai-instructions.md) - Configuration rules
 - [Security Specification](security.md) - Security requirements
 - [Deployment Guide](../docs/operations.md) - Environment setup
-
 ---
-
 **Last Updated:** {{GENERATION_DATE}}
 
 **Configuration Approach:** {{CONFIGURATION_APPROACH}}
+
+

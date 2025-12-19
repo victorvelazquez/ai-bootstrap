@@ -1,9 +1,7 @@
 # Testing Strategy
 
 > Testing approach and best practices for {{PROJECT_NAME}}
-
 ---
-
 ## 🎯 Testing Philosophy
 
 **Goal:** Ship with confidence through comprehensive automated testing
@@ -13,9 +11,7 @@
 2. **Write tests that give confidence** - Focus on tests that catch real bugs
 3. **Avoid testing implementation details** - Refactors shouldn't break tests
 4. **Fast feedback loops** - Unit tests run in milliseconds, E2E in seconds
-
 ---
-
 ## 🏗️ Testing Pyramid
 
 ```
@@ -32,9 +28,7 @@
 - **70%** Unit Tests (fast, isolated)
 - **20%** Integration Tests (component + hooks + API)
 - **10%** E2E Tests (full user flows)
-
 ---
-
 ## 🧪 Testing Stack
 
 ### Test Frameworks
@@ -48,9 +42,7 @@
 - **Mocking:** {{MOCKING_LIBRARY}}
 - **Code Coverage:** {{COVERAGE_TOOL}}
 - **Visual Regression:** {{VISUAL_REGRESSION_TOOL}}
-
 ---
-
 ## 📦 Unit Testing
 
 ### What to Unit Test
@@ -146,9 +138,7 @@ describe('useCounter', () => {
   });
 });
 ```
-
 ---
-
 ## 🔗 Integration Testing
 
 ### What to Integration Test
@@ -301,9 +291,7 @@ describe('LoginForm', () => {
   });
 });
 ```
-
 ---
-
 ## 🌐 E2E Testing
 
 ### What to E2E Test
@@ -406,9 +394,7 @@ test('displays dashboard with mocked data', async ({ page }) => {
   await expect(page.locator('[data-testid="total-orders"]')).toHaveText('234');
 });
 ```
-
 ---
-
 ## 🎨 Visual Regression Testing
 
 ### Strategy: {{VISUAL_REGRESSION_TOOL}}
@@ -428,9 +414,7 @@ test('button variants', async ({ page }) => {
   await expect(page.locator('.button-secondary')).toHaveScreenshot('button-secondary.png');
 });
 ```
-
 ---
-
 ## 🧩 Testing Best Practices
 
 ### 1. Query Priorities (Testing Library)
@@ -509,9 +493,7 @@ describe('UserDashboard', () => {
   });
 });
 ```
-
 ---
-
 ## 📊 Code Coverage
 
 ### Coverage Targets
@@ -557,9 +539,7 @@ export default defineConfig({
   }
 });
 ```
-
 ---
-
 ## 🔧 Mocking Strategies
 
 ### 1. Mock Service Worker (API Mocking)
@@ -627,9 +607,7 @@ test('renders dashboard', () => {
   expect(screen.getByText('Chart Mock')).toBeInTheDocument();
 });
 ```
-
 ---
-
 ## ⚠️ Common Testing Pitfalls
 
 ### 1. Testing Implementation Details
@@ -677,9 +655,7 @@ vi.mock('./Form', () => ({ Form: () => <div>Form</div> }));
 // ✅ Good - Only mock external dependencies
 vi.mock('./api', () => ({ fetchData: vi.fn() }));
 ```
-
 ---
-
 ## 🚀 CI/CD Integration
 
 ### GitHub Actions Example
@@ -719,18 +695,16 @@ jobs:
           name: playwright-screenshots
           path: test-results/
 ```
-
 ---
-
 ## 🔗 Related Documents
 
 - [Component Architecture](components.md) - Component structure to test
 - [State Management](state-management.md) - Testing stores and hooks
 - [AI Instructions](../ai-instructions.md) - Testing requirements
 - [Contributing](contributing.md) - How to write tests
-
 ---
-
 **Last Updated:** {{GENERATION_DATE}}
 
 **Testing Stack:** {{UNIT_TEST_FRAMEWORK}} + {{COMPONENT_TEST_LIBRARY}} + {{E2E_FRAMEWORK}}
+
+

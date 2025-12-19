@@ -1,9 +1,7 @@
 # AI Instructions - Mobile
 
 > **CRITICAL:** Every AI assistant MUST read and follow this document before any work.
-
 ---
-
 ## 🎯 Project Overview
 
 **Name:** {{PROJECT_NAME}}
@@ -13,9 +11,7 @@
 **Purpose:** {{PROBLEM_STATEMENT}}
 
 **Target Users:** {{TARGET_USERS}}
-
 ---
-
 ## 🏗️ Tech Stack
 
 ### Mobile Platform
@@ -67,9 +63,7 @@
 - **Versioning:** {{VERSIONING_STRATEGY}}
 - **Analytics:** {{ANALYTICS_TOOL}}
 - **Crash Reporting:** {{CRASH_REPORTING_TOOL}}
-
 ---
-
 ## 🏛️ Architecture
 
 **Architecture Pattern:** {{ARCHITECTURE_PATTERN}}
@@ -82,9 +76,7 @@
 ```
 {{FOLDER_STRUCTURE}}
 ```
-
 ---
-
 ## ❌ NEVER Rules
 
 **YOU MUST NEVER:**
@@ -119,9 +111,7 @@
 - ❌ Assume iOS and Android are identical - Handle platform-specific code
 - ❌ Use platform-specific APIs without checks - Check platform before using
 - ❌ Ignore platform guidelines - Follow iOS Human Interface Guidelines and Material Design
-
 ---
-
 ## ✅ ALWAYS Rules
 
 **YOU MUST ALWAYS:**
@@ -161,9 +151,7 @@
 - ✅ Test on multiple screen sizes
 - ✅ Test offline scenarios
 - ✅ Test permission flows
-
 ---
-
 ## 📱 Mobile-Specific Guidelines
 
 ### iOS
@@ -188,9 +176,7 @@
 - ✅ Test on both platforms
 - ✅ Handle platform differences gracefully
 - ✅ Use platform detection utilities
-
 ---
-
 ## 🔄 Development Workflow
 
 1. **Read this file first** - Understand tech stack and rules
@@ -199,9 +185,7 @@
 4. **Test on devices** - Not just simulators
 5. **Handle errors** - Graceful error handling
 6. **Optimize performance** - Monitor and optimize
-
 ---
-
 ## 📚 Key Documentation
 
 - `AGENT.md` - Universal AI context
@@ -212,10 +196,10 @@
 - `docs/permissions.md` - Permissions handling
 - `docs/testing.md` - Testing strategy
 - `docs/app-store.md` - App Store deployment
-
 ---
-
 **Last Updated:** {{LAST_UPDATED}}
 
 **Version:** {{PROJECT_VERSION}}
+
+
 

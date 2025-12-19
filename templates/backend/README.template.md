@@ -1,35 +1,27 @@
 # {{PROJECT_NAME}}
 
 > {{PROJECT_DESCRIPTION}}
-
 ---
-
 ## 📋 Overview
 
 {{PROBLEM_STATEMENT}}
 
 **Target Users:** {{TARGET_USERS_SUMMARY}}
-
 ---
-
 ## ✨ Features
 
 {{#EACH FEATURE}}
 
 - **{{FEATURE_NAME}}**: {{FEATURE_DESCRIPTION}}
   {{/EACH}}
-
 ---
-
 ## 🏗️ Tech Stack
 
 - **Framework:** {{FRAMEWORK}} {{FRAMEWORK_VERSION}}
 - **Language:** {{LANGUAGE}} {{LANGUAGE_VERSION}}
 - **Database:** {{DATABASE}}
 - **Authentication:** {{AUTH_METHOD}}
-
 ---
-
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -66,9 +58,7 @@ cp .env.example .env
 ```
 
 The application will be available at `{{DEV_URL}}`
-
 ---
-
 ## 🧪 Testing
 
 ```bash
@@ -81,9 +71,7 @@ The application will be available at `{{DEV_URL}}`
 # Run specific tests
 {{TEST_SPECIFIC_COMMAND}}
 ```
-
 ---
-
 ## 📦 Building
 
 ```bash
@@ -93,9 +81,7 @@ The application will be available at `{{DEV_URL}}`
 # Start production server
 {{PROD_COMMAND}}
 ```
-
 ---
-
 ## 🔧 Available Scripts
 
 ```bash
@@ -105,17 +91,13 @@ The application will be available at `{{DEV_URL}}`
 
 {{/EACH}}
 ```
-
 ---
-
 ## 📁 Project Structure
 
 ```
 {{PROJECT_STRUCTURE}}
 ```
-
 ---
-
 ## 📚 Documentation
 
 - [Architecture](docs/architecture.md) - System architecture and design patterns
@@ -133,9 +115,7 @@ The application will be available at `{{DEV_URL}}`
 
 - [AGENT.md](AGENT.md) - Universal AI configuration
 - [AI Instructions](ai-instructions.md) - AI development rules and workflow
-
 ---
-
 ## 🔐 Environment Variables
 
 See `.env.example` for all required environment variables.
@@ -145,9 +125,7 @@ Critical variables:
 
 - `{{VAR_NAME}}` - {{VAR_DESCRIPTION}}
   {{/EACH}}
-
 ---
-
 ## 🚀 Deployment
 
 See [docs/operations.md](docs/operations.md) for deployment procedures.
@@ -159,9 +137,7 @@ See [docs/operations.md](docs/operations.md) for deployment procedures.
 - Development: {{DEV_URL}}
 - Staging: {{STAGING_URL}}
 - Production: {{PRODUCTION_URL}}
-
 ---
-
 ## 🤝 Contributing
 
 See [docs/contributing.md](docs/contributing.md) for contribution guidelines.
@@ -171,30 +147,24 @@ See [docs/contributing.md](docs/contributing.md) for contribution guidelines.
 3. Commit changes (`git commit -m 'feat: add amazing feature'`)
 4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open Pull Request
-
 ---
-
 ## 📝 License
 
 {{LICENSE}}
-
 ---
-
 ## 👥 Team
 
 {{#EACH TEAM_MEMBER}}
 
 - **{{MEMBER_NAME}}** - {{MEMBER_ROLE}}
   {{/EACH}}
-
 ---
-
 ## 📞 Support
 
 {{#IF SUPPORT_EMAIL}}- Email: {{SUPPORT_EMAIL}}{{/IF}}
 {{#IF SUPPORT_SLACK}}- Slack: {{SUPPORT_SLACK}}{{/IF}}
 {{#IF ISSUE_TRACKER}}- Issues: {{ISSUE_TRACKER}}{{/IF}}
-
 ---
-
 **Generated with** [AI Flow](https://github.com/victorvelazquez/ai-flow) | `npm i -g ai-flow-dev` 🚀
+
+

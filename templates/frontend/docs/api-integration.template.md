@@ -1,17 +1,13 @@
 # API Integration
 
 > API communication patterns and best practices for {{PROJECT_NAME}}
-
 ---
-
 ## 🎯 API Integration Strategy
 
 **Pattern:** {{API_INTEGRATION_PATTERN}}
 **Client:** {{API_CLIENT}}
 **Base URL:** {{API_BASE_URL}}
-
 ---
-
 ## 📡 API Client Setup
 
 ### Base Configuration
@@ -56,9 +52,7 @@ apiClient.interceptors.response.use(
 
 export default apiClient;
 ```
-
 ---
-
 ## 🏗️ API Layer Pattern
 
 ### Service Layer (Recommended)
@@ -149,9 +143,7 @@ export const useUsers = () => {
   return { getById, create };
 };
 ```
-
 ---
-
 ## 🔄 Error Handling
 
 ### Error Types
@@ -219,9 +211,7 @@ export function handleApiError(error: unknown): string {
   return 'An unexpected error occurred.';
 }
 ```
-
 ---
-
 ## 🔁 Retry Strategy
 
 ### Automatic Retry
@@ -259,9 +249,7 @@ const { data } = useQuery({
   retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
 });
 ```
-
 ---
-
 ## 🔐 Authentication
 
 ### Token Management
@@ -314,9 +302,7 @@ export async function refreshAuthToken(): Promise<string> {
   return refreshTokenPromise;
 }
 ```
-
 ---
-
 ## 📊 Request/Response Transformation
 
 ### Request Transformation
@@ -344,9 +330,7 @@ apiClient.interceptors.response.use((response) => {
   return response;
 });
 ```
-
 ---
-
 ## 🧪 Testing API Integration
 
 ### Mocking API Calls
@@ -372,19 +356,17 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 ```
-
 ---
-
 ## 🔗 Related Documents
 
 - [State Management](state-management.md) - Server state patterns
 - [Error Handling](error-handling.md) - Error handling strategies
 - [Security](security.md) - Security best practices
-
 ---
-
 **Last Updated:** {{GENERATION_DATE}}
 
 **API Pattern:** {{API_INTEGRATION_PATTERN}}
 **Client:** {{API_CLIENT}}
+
+
 

@@ -1,9 +1,7 @@
 # AI Instructions - Frontend
 
 > **CRITICAL:** Every AI assistant MUST read and follow this document before any work.
-
 ---
-
 ## 🎯 Project Overview
 
 **Name:** {{PROJECT_NAME}}
@@ -13,9 +11,7 @@
 **Purpose:** {{PROBLEM_STATEMENT}}
 
 **Target Users:** {{TARGET_USERS}}
-
 ---
-
 ## 🏗️ Tech Stack
 
 ### Frontend
@@ -64,9 +60,7 @@
 - **CI/CD:** {{CICD_PLATFORM}}
 - **CDN:** {{CDN_PROVIDER}}
 - **Analytics:** {{ANALYTICS_TOOL}}
-
 ---
-
 ## 🏛️ Architecture
 
 **Component Pattern:** {{COMPONENT_PATTERN}}
@@ -79,9 +73,7 @@
 ```
 {{FOLDER_STRUCTURE}}
 ```
-
 ---
-
 ## ❌ NEVER Rules
 
 **YOU MUST NEVER:**
@@ -174,9 +166,7 @@
 - ❌ Forget responsive design - Mobile-first approach
 - ❌ Ignore dark mode support (if {{THEME_SUPPORT}} includes dark mode)
 - ❌ Use RGB hex colors directly - Use CSS variables or design tokens
-
 ---
-
 ## ✅ ALWAYS Rules
 
 **YOU MUST ALWAYS:**
@@ -273,9 +263,7 @@
 - ✅ Implement proper error messages
 - ✅ Cache responses when appropriate
 - ✅ Cancel requests on component unmount
-
 ---
-
 ## 🎨 Code Style
 
 ### Naming Conventions
@@ -299,9 +287,7 @@
 3. Relative imports (./Button, ../utils)
 4. Styles
 5. Types (if separate file)
-
 ---
-
 ## 🚀 Development Workflow
 
 ### Before Starting Any Task
@@ -335,9 +321,7 @@
 - ✅ Build succeeds: `npm run build`
 - ✅ No console.log statements
 - ✅ No commented code
-
 ---
-
 ## 📊 Performance Targets
 
 **Core Web Vitals:**
@@ -348,9 +332,7 @@
 **Bundle Size:**
 - Initial bundle: {{INITIAL_BUNDLE_TARGET}}
 - Route bundles: {{ROUTE_BUNDLE_TARGET}}
-
 ---
-
 ## 🔗 Related Documents
 
 - [Component Architecture](docs/components.md) - Component patterns and structure
@@ -360,9 +342,9 @@
 - [API Integration](docs/api-integration.md) - API communication patterns
 - [Performance](docs/performance.md) - Performance optimization
 - [Accessibility](specs/accessibility.md) - WCAG compliance details
-
 ---
-
 **Last Updated:** {{GENERATION_DATE}}
 
 **Framework:** {{UI_FRAMEWORK}} {{UI_FRAMEWORK_VERSION}}
+
+

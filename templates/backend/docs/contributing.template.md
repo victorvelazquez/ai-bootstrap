@@ -1,9 +1,7 @@
 # Contributing Guide
 
 > How to contribute to {{PROJECT_NAME}}
-
 ---
-
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -35,9 +33,7 @@ cp .env.example .env
 # Start development server
 {{DEV_COMMAND}}
 ```
-
 ---
-
 ## 🔄 Development Workflow
 
 1. Create feature branch from `main`
@@ -48,9 +44,7 @@ cp .env.example .env
 6. Push and create pull request
 7. Address review comments
 8. Merge after approval
-
 ---
-
 ## 🌿 Branch Strategy
 
 **Main Branches:**
@@ -71,9 +65,7 @@ feature/add-user-authentication
 bugfix/fix-login-redirect
 hotfix/patch-security-vulnerability
 ```
-
 ---
-
 ## ✅ Before Committing
 
 ```bash
@@ -86,9 +78,7 @@ hotfix/patch-security-vulnerability
 # Check coverage
 {{COVERAGE_COMMAND}}
 ```
-
 ---
-
 ## 📝 Commit Standards
 
 **Format:** {{COMMIT_FORMAT}}
@@ -107,9 +97,7 @@ Closes #123
 ```
 
 {{/IF}}
-
 ---
-
 ## 🔍 Code Review
 
 ### Review Checklist
@@ -120,9 +108,7 @@ Closes #123
 - [ ] No console.logs
 - [ ] No security vulnerabilities
 - [ ] Performance acceptable
-
 ---
-
 ## 📚 Documentation
 
 {{#EACH DOC_LOCATION}}
@@ -156,8 +142,8 @@ The command will:
 4. Automatically update affected documents
 
 **For more information:** See the AI Flow README for detailed usage instructions.
-
 ---
-
 **Last Updated:** {{GENERATION_DATE}}
+
+
 

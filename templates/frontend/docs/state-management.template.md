@@ -1,17 +1,13 @@
 # State Management
 
 > State management patterns and best practices for {{PROJECT_NAME}}
-
 ---
-
 ## 🎯 State Management Solution
 
 **Solution:** {{STATE_MANAGEMENT}}
 
 {{STATE_MANAGEMENT_DESCRIPTION}}
-
 ---
-
 ## 📊 State Categories
 
 ### 1. Server State (Remote Data)
@@ -42,9 +38,7 @@ if (error) return <Error message={error.message} />;
 
 return <UserProfile user={data} />;
 ```
-
 ---
-
 ### 2. Client State (Local UI State)
 
 **Managed by:** {{STATE_MANAGEMENT}}
@@ -65,9 +59,7 @@ return <UserProfile user={data} />;
 // Using {{STATE_MANAGEMENT}}
 {{CLIENT_STATE_EXAMPLE}}
 ```
-
 ---
-
 ### 3. URL State (Query Params & Routes)
 
 **Managed by:** Router + URL
@@ -93,9 +85,7 @@ const query = searchParams.get('q') || '';
 const route = useRoute();
 const query = route.query.q || '';
 ```
-
 ---
-
 ### 4. Form State
 
 **Managed by:** {{FORM_LIBRARY}}
@@ -110,9 +100,7 @@ const query = route.query.q || '';
 // Using {{FORM_LIBRARY}}
 {{FORM_STATE_EXAMPLE}}
 ```
-
 ---
-
 ## 🏗️ State Architecture
 
 ### State Location Decision Tree
@@ -126,9 +114,7 @@ Is data from server?
         ├─ YES → Use router/query params (URL state)
         └─ NO → Use local component state
 ```
-
 ---
-
 ## 🎨 {{STATE_MANAGEMENT}} Patterns
 
 ### Store Structure
@@ -148,9 +134,7 @@ Is data from server?
 ```typescript
 {{UPDATE_STATE_EXAMPLE}}
 ```
-
 ---
-
 ## 🔄 Data Flow
 
 ### Unidirectional Data Flow
@@ -191,9 +175,7 @@ const addTodo = (text: string) => {
 
 // 3. State updated → Component re-renders
 ```
-
 ---
-
 ## 🚀 Performance Optimization
 
 ### 1. Avoid Over-Rendering
@@ -259,9 +241,7 @@ const state = {
   }
 };
 ```
-
 ---
-
 ## 🔐 State Persistence
 
 ### Local Storage
@@ -289,9 +269,7 @@ const useThemeStore = create(
   )
 );
 ```
-
 ---
-
 ## 🧪 Testing State
 
 ### Unit Testing Store Logic
@@ -329,9 +307,7 @@ test('displays todos from store', () => {
   expect(screen.getByText('Todo 2')).toBeInTheDocument();
 });
 ```
-
 ---
-
 ## ⚠️ Common Pitfalls
 
 ### 1. Storing Derived Data
@@ -377,18 +353,16 @@ const globalState = {
   notifications: [...]
 };
 ```
-
 ---
-
 ## 🔗 Related Documents
 
 - [AI Instructions](../ai-instructions.md) - State management rules
 - [Component Architecture](components.md) - Component/state interaction
 - [API Integration](api-integration.md) - Server state patterns
 - [Testing Strategy](testing.md) - Testing state logic
-
 ---
-
 **Last Updated:** {{GENERATION_DATE}}
 
 **Solution:** {{STATE_MANAGEMENT}}
+
+

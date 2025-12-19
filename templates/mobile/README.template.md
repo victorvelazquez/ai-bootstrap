@@ -1,9 +1,7 @@
 # {{PROJECT_NAME}}
 
 > {{PROJECT_DESCRIPTION}}
-
 ---
-
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -56,17 +54,13 @@ cp .env.example .env
 ```
 
 See `specs/configuration.md` for all environment variables.
-
 ---
-
 ## 📁 Project Structure
 
 ```
 {{FOLDER_STRUCTURE}}
 ```
-
 ---
-
 ## 🛠️ Development
 
 ### Available Scripts
@@ -89,9 +83,7 @@ See `specs/configuration.md` for all environment variables.
 - **Testing:** {{UNIT_TEST_FRAMEWORK}}, {{E2E_FRAMEWORK}}
 
 See `ai-instructions.md` for complete tech stack.
-
 ---
-
 ## 📚 Documentation
 
 **For AI Assistants:**
@@ -109,9 +101,7 @@ See `ai-instructions.md` for complete tech stack.
 - `docs/app-store.md` - App Store configuration
 - `specs/build-configuration.md` - Build configuration
 - `specs/deployment.md` - Deployment procedures
-
 ---
-
 ## 🧪 Testing
 
 ```bash
@@ -128,9 +118,7 @@ See `ai-instructions.md` for complete tech stack.
 {{PACKAGE_MANAGER}} run ios --device
 {{PACKAGE_MANAGER}} run android --device
 ```
-
 ---
-
 ## 📱 Building for Production
 
 ### iOS
@@ -156,9 +144,7 @@ See `ai-instructions.md` for complete tech stack.
 ```
 
 See `specs/deployment.md` for detailed deployment instructions.
-
 ---
-
 ## 🚀 Deployment
 
 ### App Store (iOS)
@@ -176,20 +162,16 @@ See `docs/app-store.md` for detailed instructions.
 3. Submit for review
 
 See `docs/app-store.md` for detailed instructions.
-
 ---
-
 ## 📄 License
 
 {{LICENSE}}
-
 ---
-
 ## 🤝 Contributing
 
 See `docs/contributing.md` for contribution guidelines.
-
 ---
-
 **Last Updated:** {{LAST_UPDATED}}
+
+
 

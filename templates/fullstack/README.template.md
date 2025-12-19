@@ -1,26 +1,20 @@
 # {{PROJECT_NAME}}
 
 > {{PROJECT_DESCRIPTION}}
-
 ---
-
 ## 📋 Overview
 
 {{PROBLEM_STATEMENT}}
 
 **Target Users:** {{TARGET_USERS_SUMMARY}}
-
 ---
-
 ## ✨ Features
 
 {{#EACH FEATURE}}
 
 - **{{FEATURE_NAME}}**: {{FEATURE_DESCRIPTION}}
   {{/EACH}}
-
 ---
-
 ## 🏗️ Tech Stack
 
 ### Backend
@@ -37,9 +31,7 @@
 - **Styling:** {{STYLING_APPROACH}}
 - **State Management:** {{STATE_MANAGEMENT}}
 - **Testing:** {{UNIT_TEST_FRAMEWORK}}, {{E2E_FRAMEWORK}}
-
 ---
-
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -94,9 +86,7 @@ cd frontend
 ```
 
 The frontend application will be available at `{{FRONTEND_DEV_URL}}`
-
 ---
-
 ## 🧪 Testing
 
 **Backend:**
@@ -121,9 +111,7 @@ cd frontend
 # Run E2E tests
 {{PACKAGE_MANAGER}} run test:e2e
 ```
-
 ---
-
 ## 📦 Building
 
 **Backend:**
@@ -145,9 +133,7 @@ cd frontend
 # Preview production build
 {{PACKAGE_MANAGER}} run preview
 ```
-
 ---
-
 ## 🔧 Available Scripts
 
 **Backend:**
@@ -168,17 +154,13 @@ cd frontend
 - {{PACKAGE_MANAGER}} run lint - Run linter
 - {{PACKAGE_MANAGER}} run format - Format code
 ```
-
 ---
-
 ## 📁 Project Structure
 
 ```
 {{PROJECT_STRUCTURE}}
 ```
-
 ---
-
 ## 📚 Documentation
 
 ### Backend Documentation
@@ -206,9 +188,7 @@ cd frontend
 
 - [AGENT.md](AGENT.md) - Universal AI configuration
 - [AI Instructions](ai-instructions.md) - AI development rules and workflow
-
 ---
-
 ## 🔐 Environment Variables
 
 See `.env.example` files in both `backend/` and `frontend/` directories for all required environment variables.
@@ -224,9 +204,7 @@ See `.env.example` files in both `backend/` and `frontend/` directories for all 
 
 - `{{VAR_NAME}}` - {{VAR_DESCRIPTION}}
   {{/EACH}}
-
 ---
-
 ## 🚀 Deployment
 
 See [docs/operations.md](docs/operations.md) for deployment procedures.
@@ -240,9 +218,7 @@ See [docs/operations.md](docs/operations.md) for deployment procedures.
 - Development: Backend `{{DEV_URL}}` | Frontend `{{FRONTEND_DEV_URL}}`
 - Staging: Backend `{{STAGING_URL}}` | Frontend `{{FRONTEND_STAGING_URL}}`
 - Production: Backend `{{PRODUCTION_URL}}` | Frontend `{{FRONTEND_PRODUCTION_URL}}`
-
 ---
-
 ## 🤝 Contributing
 
 See [docs/contributing.md](docs/contributing.md) for contribution guidelines.
@@ -252,31 +228,25 @@ See [docs/contributing.md](docs/contributing.md) for contribution guidelines.
 3. Commit changes (`git commit -m 'feat: add amazing feature'`)
 4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open Pull Request
-
 ---
-
 ## 📝 License
 
 {{LICENSE}}
-
 ---
-
 ## 👥 Team
 
 {{#EACH TEAM_MEMBER}}
 
 - **{{MEMBER_NAME}}** - {{MEMBER_ROLE}}
   {{/EACH}}
-
 ---
-
 ## 📞 Support
 
 {{#IF SUPPORT_EMAIL}}- Email: {{SUPPORT_EMAIL}}{{/IF}}
 {{#IF SUPPORT_SLACK}}- Slack: {{SUPPORT_SLACK}}{{/IF}}
 {{#IF ISSUE_TRACKER}}- Issues: {{ISSUE_TRACKER}}{{/IF}}
-
 ---
-
 **Generated with** [AI Flow](https://github.com/victorvelazquez/ai-flow) | `npm i -g ai-flow-dev` 🚀
+
+
 
