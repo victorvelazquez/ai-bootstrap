@@ -213,7 +213,7 @@ After answering, you'll see:
 
 After completion, you'll have professional documentation:
 
-**Backend projects** (18 documents):
+**Backend projects** (17 documents):
 
 ```
 my-awesome-api/
@@ -236,7 +236,7 @@ my-awesome-api/
 └── README.md                 # Project overview
 ```
 
-**Frontend projects** (16 documents), **Mobile projects** (14 documents), **Fullstack projects** (5 documents) - see [Project Type Comparison](#project-type-comparison) for details.
+**Frontend projects** (15 documents), **Mobile projects** (13 documents), **Fullstack projects** (4 documents) - see [Project Type Comparison](#project-type-comparison) for details.
 
 #### Step 6: Phase 8 - Project Setup (Automatic)
 
@@ -972,7 +972,7 @@ Sets up configuration for **all 4 AI tools** simultaneously. Perfect for:
 
 The number and type of documents varies by project type.
 
-#### Backend Projects (18 documents)
+#### Backend Projects (17 documents)
 
 **Core Documents (4):**
 
@@ -1002,7 +1002,7 @@ The number and type of documents varies by project type.
 - `.env.example` - Environment variable template
 - Tool-specific configs (`.clauderules`, `.cursorrules`, `copilot-instructions.md`)
 
-#### Frontend Projects (16 documents)
+#### Frontend Projects (15 documents)
 
 **Core Documents (4):**
 
@@ -1026,7 +1026,7 @@ The number and type of documents varies by project type.
 - `specs/accessibility.md` - A11y requirements
 - `specs/security.md` - Security specs
 
-#### Mobile Projects (14 documents)
+#### Mobile Projects (13 documents)
 
 **Core Documents (4):**
 
@@ -1048,7 +1048,7 @@ The number and type of documents varies by project type.
 - `specs/build-configuration.md` - Build configs, CI/CD
 - `specs/deployment.md` - Deployment procedures
 
-#### Fullstack Projects (5 documents)
+#### Fullstack Projects (4 documents)
 
 Combines backend + frontend documentation with fullstack-specific templates for shared files.
 
@@ -2147,7 +2147,7 @@ Complete list of all available commands organized by category.
 ```bash
 ai-flow init [path] [options]   # Initialize project
 ai-flow check                    # Verify initialization
-ai-flow --version               # Show version (2.1.2)
+ai-flow --version               # Show version (2.1.3)
 ai-flow --help                  # Show help
 ```
 
@@ -2210,7 +2210,7 @@ ai-flow --help                  # Show help
 
 | Feature                 | Backend        | Frontend       | Mobile       | Fullstack   |
 | ----------------------- | -------------- | -------------- | ------------ | ----------- |
-| **Documents Generated** | 17             | 12             | 15           | ~20         |
+| **Documents Generated** | 17             | 15             | 13           | ~20         |
 | **Build Phases**        | 8 (0-8)        | 8 (0-8)        | 8 (0-8)      | 16 (both)   |
 | **Workflow Commands**   | ✅ 5           | ❌ None        | ❌ None      | ✅ 5        |
 | **Context Detection**   | ✅ 3-layer     | ✅ 3-layer     | ✅ 3-layer   | ✅ 3-layer  |
