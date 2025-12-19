@@ -27,41 +27,48 @@ Define coding conventions and standards:
 #### React/Solid
 
 A) ⭐ **PascalCase for components** (Recommended)
-   - Components: `UserProfile.tsx`, `Button.tsx`
-   - Hooks: `useAuth.ts`, `useLocalStorage.ts`
-   - Utils: `formatDate.ts`, `apiClient.ts`
-   - Best for: React ecosystem standard
+
+- Components: `UserProfile.tsx`, `Button.tsx`
+- Hooks: `useAuth.ts`, `useLocalStorage.ts`
+- Utils: `formatDate.ts`, `apiClient.ts`
+- Best for: React ecosystem standard
 
 B) **kebab-case for all files**
-   - Components: `user-profile.tsx`, `button.tsx`
-   - Best for: Consistency with Vue/Angular
+
+- Components: `user-profile.tsx`, `button.tsx`
+- Best for: Consistency with Vue/Angular
 
 C) **camelCase for all files**
-   - Components: `userProfile.tsx`, `button.tsx`
-   - Best for: JavaScript naming conventions
+
+- Components: `userProfile.tsx`, `button.tsx`
+- Best for: JavaScript naming conventions
 
 #### Vue
 
 A) ⭐ **PascalCase for components** (Vue 3 recommended)
-   - Components: `UserProfile.vue`, `BaseButton.vue`
-   - Composables: `useAuth.ts`, `useLocalStorage.ts`
-   - Utils: `formatDate.ts`
+
+- Components: `UserProfile.vue`, `BaseButton.vue`
+- Composables: `useAuth.ts`, `useLocalStorage.ts`
+- Utils: `formatDate.ts`
 
 B) **kebab-case (Vue 2 style)**
-   - Components: `user-profile.vue`, `base-button.vue`
+
+- Components: `user-profile.vue`, `base-button.vue`
 
 #### Angular
 
 A) ⭐ **kebab-case with suffixes** (Angular standard)
-   - Components: `user-profile.component.ts`
-   - Services: `auth.service.ts`
-   - Modules: `user.module.ts`
-   - Guards: `auth.guard.ts`
+
+- Components: `user-profile.component.ts`
+- Services: `auth.service.ts`
+- Modules: `user.module.ts`
+- Guards: `auth.guard.ts`
 
 #### Svelte
 
 A) ⭐ **PascalCase for components**
-   - Components: `UserProfile.svelte`, `Button.svelte`
+
+- Components: `UserProfile.svelte`, `Button.svelte`
 
 **Your answer:**
 
@@ -72,28 +79,33 @@ A) ⭐ **PascalCase for components**
 **How will you name components in code?**
 
 A) ⭐ **PascalCase** (All frameworks recommend)
-   - Example: `<UserProfile />`, `<Button />`
-   - Best for: Standard practice
+
+- Example: `<UserProfile />`, `<Button />`
+- Best for: Standard practice
 
 B) **Named exports vs default exports?**
 
 #### React/Vue/Solid
 
 A) ⭐ **Named exports** (Recommended)
-   ```typescript
-   export const Button = () => { ... }
-   // Usage: import { Button } from './Button'
-   ```
-   - Pros: Better IDE support, easier refactoring, explicit names
-   - Cons: Slightly more verbose
+
+```typescript
+export const Button = () => { ... }
+// Usage: import { Button } from './Button'
+```
+
+- Pros: Better IDE support, easier refactoring, explicit names
+- Cons: Slightly more verbose
 
 B) **Default exports**
-   ```typescript
-   export default function Button() { ... }
-   // Usage: import Button from './Button'
-   ```
-   - Pros: Shorter imports
-   - Cons: Can rename on import, harder to refactor
+
+```typescript
+export default function Button() { ... }
+// Usage: import Button from './Button'
+```
+
+- Pros: Shorter imports
+- Cons: Can rename on import, harder to refactor
 
 **Your answer:**
 
@@ -104,21 +116,25 @@ B) **Default exports**
 **What linting/formatting tools will you use?**
 
 A) ⭐ **ESLint + Prettier** (Recommended)
-   - ESLint: Code quality rules
-   - Prettier: Code formatting
-   - Best for: Most JavaScript/TypeScript projects
+
+- ESLint: Code quality rules
+- Prettier: Code formatting
+- Best for: Most JavaScript/TypeScript projects
 
 B) **ESLint only**
-   - Configure ESLint for both linting and formatting
-   - Best for: Simpler setup
+
+- Configure ESLint for both linting and formatting
+- Best for: Simpler setup
 
 C) **Biome**
-   - All-in-one linter and formatter (faster than ESLint+Prettier)
-   - Best for: Monorepos, performance-critical projects
+
+- All-in-one linter and formatter (faster than ESLint+Prettier)
+- Best for: Monorepos, performance-critical projects
 
 D) **No linting/formatting**
-   - Manual code review only
-   - Not recommended
+
+- Manual code review only
+- Not recommended
 
 **Your answer:**
 
@@ -141,8 +157,9 @@ B) **@vue/eslint-config-typescript** (Vue + TypeScript)
 A) ⭐ **@angular-eslint** (Official Angular ESLint)
 
 **Prettier config:**
-- Print width: _____ (default: 80)
-- Tabs or spaces: _____ (default: 2 spaces)
+
+- Print width: **\_** (default: 80)
+- Tabs or spaces: **\_** (default: 2 spaces)
 - Semicolons: Yes / No (default: Yes)
 - Single quotes: Yes / No (default: No)
 - Trailing commas: es5 / all / none (default: es5)
@@ -154,40 +171,45 @@ A) ⭐ **@angular-eslint** (Official Angular ESLint)
 **How will you organize imports?**
 
 A) ⭐ **Grouped by type** (Recommended)
-   ```typescript
-   // 1. External libraries
-   import React from 'react';
-   import { useQuery } from '@tanstack/react-query';
 
-   // 2. Internal modules
-   import { Button } from '@/components/Button';
-   import { useAuth } from '@/hooks/useAuth';
+```typescript
+// 1. External libraries
+import React from 'react';
+import { useQuery } from '@tanstack/react-query';
 
-   // 3. Relative imports
-   import { UserCard } from './UserCard';
+// 2. Internal modules
+import { Button } from '@/components/Button';
+import { useAuth } from '@/hooks/useAuth';
 
-   // 4. Types
-   import type { User } from '@/types';
+// 3. Relative imports
+import { UserCard } from './UserCard';
 
-   // 5. Styles
-   import styles from './styles.module.css';
-   ```
+// 4. Types
+import type { User } from '@/types';
+
+// 5. Styles
+import styles from './styles.module.css';
+```
 
 B) **Alphabetical only**
-   - All imports alphabetically sorted
-   - Best for: Simpler rule
+
+- All imports alphabetically sorted
+- Best for: Simpler rule
 
 C) **No specific order**
-   - Not recommended
+
+- Not recommended
 
 **Your answer:**
 
 **Import alias for src/?**
+
 - `@/` (e.g., `import { Button } from '@/components/Button'`)
 - `~/` (e.g., `import { Button } from '~/components/Button'`)
 - No alias (relative paths only)
 
 **Auto-import sorting tool:**
+
 - `eslint-plugin-import` + `import/order` rule
 - `prettier-plugin-organize-imports`
 - Manual
@@ -199,28 +221,33 @@ C) **No specific order**
 **How strict should TypeScript be?**
 
 A) ⭐ **Strict mode** (Recommended)
-   ```json
-   {
-     "strict": true,
-     "noUncheckedIndexedAccess": true,
-     "noImplicitOverride": true
-   }
-   ```
-   - Catches most type errors
-   - Best for: New projects, type safety
+
+```json
+{
+  "strict": true,
+  "noUncheckedIndexedAccess": true,
+  "noImplicitOverride": true
+}
+```
+
+- Catches most type errors
+- Best for: New projects, type safety
 
 B) **Moderate**
-   ```json
-   {
-     "strict": true,
-     "noUncheckedIndexedAccess": false
-   }
-   ```
-   - Strict but allows some flexibility
+
+```json
+{
+  "strict": true,
+  "noUncheckedIndexedAccess": false
+}
+```
+
+- Strict but allows some flexibility
 
 C) **Lenient**
-   - Minimal type checking
-   - Best for: Migration from JavaScript
+
+- Minimal type checking
+- Best for: Migration from JavaScript
 
 **Your answer:**
 
@@ -236,32 +263,37 @@ C) ✅ Allow `any` freely (not recommended)
 **What's your commenting policy?**
 
 A) ⭐ **JSDoc for public APIs, inline for complex logic**
-   ```typescript
-   /**
-    * Fetches user data from the API
-    * @param userId - The user's unique identifier
-    * @returns User object or null if not found
-    */
-   export async function fetchUser(userId: string): Promise<User | null> {
-     // Check cache first to avoid unnecessary API call
-     const cached = cache.get(userId);
-     if (cached) return cached;
 
-     return api.get(`/users/${userId}`);
-   }
-   ```
-   - Best for: Most projects
+```typescript
+/**
+ * Fetches user data from the API
+ * @param userId - The user's unique identifier
+ * @returns User object or null if not found
+ */
+export async function fetchUser(userId: string): Promise<User | null> {
+  // Check cache first to avoid unnecessary API call
+  const cached = cache.get(userId);
+  if (cached) return cached;
+
+  return api.get(`/users/${userId}`);
+}
+```
+
+- Best for: Most projects
 
 B) **JSDoc everywhere**
-   - Comment all functions, even private ones
-   - Best for: Libraries, public APIs
+
+- Comment all functions, even private ones
+- Best for: Libraries, public APIs
 
 C) **Minimal comments**
-   - Self-documenting code only
-   - Comments only for "why", not "what"
+
+- Self-documenting code only
+- Comments only for "why", not "what"
 
 D) **No comment policy**
-   - Up to developers
+
+- Up to developers
 
 **Your answer:**
 
@@ -272,31 +304,41 @@ D) **No comment policy**
 **How will you structure components?**
 
 A) ⭐ **Collocated files** (Recommended)
-   ```
-   Button/
-   ├── Button.tsx
-   ├── Button.test.tsx
-   ├── Button.stories.tsx
-   ├── Button.module.css
-   └── index.ts (re-export)
-   ```
-   - Best for: Modularity, easy to move/delete
+
+```
+Button/
+├── Button.tsx
+├── Button.test.tsx
+├── Button.stories.tsx
+├── Button.module.css
+└── index.ts (re-export)
+```
+
+- Best for: Modularity, easy to move/delete
 
 B) **Separate folders**
-   ```
-   components/Button.tsx
-   styles/Button.module.css
-   tests/Button.test.tsx
-   ```
-   - Best for: Simpler structure, smaller projects
+
+```
+components/Button.tsx
+styles/Button.module.css
+tests/Button.test.tsx
+```
+
+- Best for: Simpler structure, smaller projects
 
 C) **Single file components** (Vue SFC style)
-   ```vue
-   <template>...</template>
-   <script>...</script>
-   <style>...</style>
-   ```
-   - Best for: Vue, Svelte
+
+```vue
+<template>...</template>
+<script>
+...
+</script>
+<style>
+...
+</style>
+```
+
+- Best for: Vue, Svelte
 
 **Your answer:**
 
@@ -307,22 +349,26 @@ C) **Single file components** (Vue SFC style)
 **How will you handle errors in components?**
 
 A) ⭐ **Error Boundaries + Try-Catch**
-   - Error Boundaries: Catch render errors
-   - Try-Catch: Catch async errors
-   - Best for: React, robust error handling
+
+- Error Boundaries: Catch render errors
+- Try-Catch: Catch async errors
+- Best for: React, robust error handling
 
 B) **Global error handler**
-   - Vue: `app.config.errorHandler`
-   - Angular: `ErrorHandler`
-   - Best for: Centralized error logging
+
+- Vue: `app.config.errorHandler`
+- Angular: `ErrorHandler`
+- Best for: Centralized error logging
 
 C) **Try-Catch everywhere**
-   - Manual error handling in each function
-   - Best for: Fine-grained control
+
+- Manual error handling in each function
+- Best for: Fine-grained control
 
 **Your answer:**
 
 **Error logging:**
+
 - Sentry
 - LogRocket
 - DataDog
@@ -339,7 +385,7 @@ Select all that apply:
 
 - [ ] Linting passes (no ESLint errors)
 - [ ] Tests pass (unit + integration)
-- [ ] Code coverage meets threshold (specify: ___%)
+- [ ] Code coverage meets threshold (specify: \_\_\_%)
 - [ ] No TypeScript errors
 - [ ] At least 1 approval from team member
 - [ ] Self-review (author reviews their own PR)
@@ -347,7 +393,7 @@ Select all that apply:
 - [ ] No console.log statements
 - [ ] Accessibility review (for UI changes)
 
-**Minimum approvals required:** _____
+**Minimum approvals required:** **\_**
 
 **Approval required from:**
 A) Any team member
@@ -363,27 +409,32 @@ C) Code owner (GitHub CODEOWNERS)
 **What commit message format will you use?**
 
 A) ⭐ **Conventional Commits** (Recommended)
-   ```
-   <type>(<scope>): <subject>
 
-   <body>
+```
+<type>(<scope>): <subject>
 
-   <footer>
-   ```
-   - Types: feat, fix, docs, style, refactor, test, chore
-   - Example: `feat(auth): add Google OAuth login`
-   - Best for: Automated changelogs, semantic versioning
+<body>
+
+<footer>
+```
+
+- Types: feat, fix, docs, style, refactor, test, chore
+- Example: `feat(auth): add Google OAuth login`
+- Best for: Automated changelogs, semantic versioning
 
 B) **Simple descriptive**
-   - Example: "Add Google OAuth login"
-   - Best for: Small teams, simple projects
+
+- Example: "Add Google OAuth login"
+- Best for: Small teams, simple projects
 
 C) **No convention**
-   - Free-form commit messages
+
+- Free-form commit messages
 
 **Your answer:**
 
 **If Conventional Commits, enforce with:**
+
 - commitlint (pre-commit hook)
 - Manual review
 - No enforcement
@@ -398,9 +449,9 @@ C) Never required
 ## 📊 Phase 5 Summary
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📋 PHASE 5 SUMMARY: CODE STANDARDS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 File Naming: [Answer from 5.1]
 Component Naming: [Answer from 5.2]
@@ -454,9 +505,9 @@ Update `ai-instructions.md`:
 - ❌ NEVER use `any` type (use `unknown` instead)
 - ✅ ALWAYS write JSDoc for exported functions
 - ✅ ALWAYS use {{IMPORT_ORGANIZATION}} for imports
-{{#IF_CONVENTIONAL_COMMITS}}
+  {{#IF_CONVENTIONAL_COMMITS}}
 - ✅ ALWAYS use Conventional Commits format
-{{/IF_CONVENTIONAL_COMMITS}}
+  {{/IF_CONVENTIONAL_COMMITS}}
 ```
 
 ---
@@ -480,6 +531,3 @@ Read: .ai-flow/prompts/frontend/flow-build-phase-6-testing.md
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.2.0
-
-
-

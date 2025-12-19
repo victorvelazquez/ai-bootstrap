@@ -25,6 +25,7 @@ Define coding conventions and standards for your mobile app:
 **How will you name your files?**
 
 **If React Native:**
+
 - A) ⭐ **PascalCase for components** (Recommended)
   - Components: `UserProfile.tsx`, `Button.tsx`
   - Screens: `HomeScreen.tsx`, `ProfileScreen.tsx`
@@ -35,15 +36,18 @@ Define coding conventions and standards for your mobile app:
   - Components: `user-profile.tsx`, `button.tsx`
 
 **If Flutter:**
+
 - A) ⭐ **snake_case** (Dart convention)
   - Files: `user_profile.dart`, `home_screen.dart`
   - Classes: `UserProfile`, `HomeScreen`
 
 **If Native iOS:**
+
 - A) ⭐ **PascalCase** (Swift convention)
   - Files: `UserProfile.swift`, `HomeViewController.swift`
 
 **If Native Android:**
+
 - A) ⭐ **PascalCase for classes, camelCase for files** (Kotlin convention)
   - Files: `UserProfile.kt`, `HomeActivity.kt`
 
@@ -56,15 +60,18 @@ Define coding conventions and standards for your mobile app:
 **How will you name components and screens?**
 
 **If React Native:**
+
 - A) ⭐ **PascalCase** (Recommended)
   - Components: `<UserProfile />`, `<Button />`
   - Screens: `<HomeScreen />`, `<ProfileScreen />`
 
 **If Flutter:**
+
 - A) ⭐ **PascalCase for widgets**
   - Widgets: `UserProfile`, `HomeScreen`
 
 **If Native:**
+
 - A) ⭐ **PascalCase for classes**
   - iOS: `UserProfileViewController`
   - Android: `UserProfileActivity`
@@ -74,7 +81,9 @@ Define coding conventions and standards for your mobile app:
 **Named exports vs default exports?**
 
 **If React Native:**
+
 - A) ⭐ **Named exports** (Recommended)
+
   ```typescript
   export const Button = () => { ... }
   // Usage: import { Button } from './Button'
@@ -94,6 +103,7 @@ Define coding conventions and standards for your mobile app:
 **What linting/formatting tools will you use?**
 
 **If React Native:**
+
 - A) ⭐ **ESLint + Prettier** (Recommended)
   - ESLint: Code quality rules
   - Prettier: Code formatting
@@ -101,20 +111,24 @@ Define coding conventions and standards for your mobile app:
 - B) **Biome** (All-in-one, faster)
 
 **If Flutter:**
+
 - A) ⭐ **dart format** (Built-in)
 - B) **dart analyze** (Linting)
 
 **If Native iOS:**
+
 - A) ⭐ **SwiftLint** (Recommended)
 - B) **SwiftFormat**
 
 **If Native Android:**
+
 - A) ⭐ **ktlint** (Recommended)
 - B) **Detekt**
 
 **Your answer:**
 
 **ESLint config (if React Native):**
+
 - A) ⭐ **@react-native-community/eslint-config**
 - B) **eslint-config-airbnb**
 - C) **Custom config**
@@ -126,6 +140,7 @@ Define coding conventions and standards for your mobile app:
 **How will you organize imports?**
 
 **If React Native:**
+
 ```typescript
 // 1. External libraries
 import React from 'react';
@@ -143,6 +158,7 @@ import type { User } from '@/types';
 ```
 
 **If Flutter:**
+
 ```dart
 // 1. Dart SDK
 import 'dart:async';
@@ -159,6 +175,7 @@ import 'package:myapp/services/auth_service.dart';
 **Your answer:**
 
 **Import alias for src/?**
+
 - `@/` (React Native)
 - `~/` (Alternative)
 - No alias (relative paths only)
@@ -170,7 +187,9 @@ import 'package:myapp/services/auth_service.dart';
 **How strict should TypeScript/Dart be?**
 
 **If React Native (TypeScript):**
+
 - A) ⭐ **Strict mode** (Recommended)
+
   ```json
   {
     "strict": true,
@@ -182,6 +201,7 @@ import 'package:myapp/services/auth_service.dart';
 - C) **Lenient**
 
 **If Flutter (Dart):**
+
 - A) ⭐ **Strict analysis** (Recommended)
   ```yaml
   analyzer:
@@ -192,6 +212,7 @@ import 'package:myapp/services/auth_service.dart';
 **Your answer:**
 
 **`any` type policy (TypeScript):**
+
 - A) ❌ Never allow `any`
 - B) ⚠️ Allow with warning
 - C) ✅ Allow freely (not recommended)
@@ -203,19 +224,20 @@ import 'package:myapp/services/auth_service.dart';
 **What's your commenting policy?**
 
 A) ⭐ **JSDoc for public APIs, inline for complex logic** (Recommended)
-   ```typescript
-   /**
-    * Fetches user data from the API
-    * @param userId - The user's unique identifier
-    * @returns User object or null if not found
-    */
-   export async function fetchUser(userId: string): Promise<User | null> {
-     // Check cache first
-     const cached = cache.get(userId);
-     if (cached) return cached;
-     return api.get(`/users/${userId}`);
-   }
-   ```
+
+```typescript
+/**
+ * Fetches user data from the API
+ * @param userId - The user's unique identifier
+ * @returns User object or null if not found
+ */
+export async function fetchUser(userId: string): Promise<User | null> {
+  // Check cache first
+  const cached = cache.get(userId);
+  if (cached) return cached;
+  return api.get(`/users/${userId}`);
+}
+```
 
 B) **JSDoc everywhere**
 C) **Minimal comments**
@@ -230,6 +252,7 @@ D) **No comment policy**
 **How will you structure components and screens?**
 
 **If React Native:**
+
 ```
 screens/
 ├── HomeScreen/
@@ -240,6 +263,7 @@ screens/
 ```
 
 **If Flutter:**
+
 ```
 lib/
 ├── screens/
@@ -256,21 +280,25 @@ lib/
 **How will you handle errors?**
 
 **If React Native:**
+
 - A) ⭐ **Error Boundaries + Try-Catch**
   - Error Boundaries for render errors
   - Try-Catch for async errors
 
 **If Flutter:**
+
 - A) ⭐ **Try-Catch + Global Error Handler**
   - FlutterError.onError for global errors
 
 **If Native:**
+
 - A) ⭐ **Try-Catch + Crash Reporting**
   - Sentry, Firebase Crashlytics
 
 **Your answer:**
 
 **Error logging:**
+
 - Firebase Crashlytics
 - Sentry
 - Console only (development)
@@ -303,15 +331,17 @@ Select all that apply:
 **What commit message format will you use?**
 
 A) ⭐ **Conventional Commits** (Recommended)
-   ```
-   <type>(<scope>): <subject>
-   
-   <body>
-   
-   <footer>
-   ```
-   - Types: feat, fix, docs, style, refactor, test, chore
-   - Example: `feat(auth): add biometric login`
+
+```
+<type>(<scope>): <subject>
+
+<body>
+
+<footer>
+```
+
+- Types: feat, fix, docs, style, refactor, test, chore
+- Example: `feat(auth): add biometric login`
 
 B) **Simple descriptive**
 C) **No convention**
@@ -319,6 +349,7 @@ C) **No convention**
 **Your answer:**
 
 **Enforce with:**
+
 - commitlint (pre-commit hook)
 - Manual review
 - No enforcement
@@ -330,9 +361,9 @@ C) **No convention**
 After answering all questions, summarize:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ Phase 5 Complete: Code Standards
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Selected Standards:
 - File Naming: PascalCase for components
@@ -365,7 +396,3 @@ Read: `.ai-flow/prompts/mobile/flow-build-phase-6-testing.md`
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
-
-
-
-

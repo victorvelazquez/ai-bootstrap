@@ -25,29 +25,34 @@ Understand the **user-facing aspects** of the application:
 **What type of frontend application are you building?**
 
 A) ⭐ **Single Page Application (SPA)**
-   - Example: Gmail, Notion, Figma
-   - Characteristics: Client-side routing, dynamic updates, minimal page reloads
-   - Best for: Web apps, dashboards, admin panels
+
+- Example: Gmail, Notion, Figma
+- Characteristics: Client-side routing, dynamic updates, minimal page reloads
+- Best for: Web apps, dashboards, admin panels
 
 B) 🔥 **Multi-Page Application (MPA)**
-   - Example: E-commerce sites, blogs, marketing sites
-   - Characteristics: Server-rendered pages, traditional navigation
-   - Best for: Content-heavy sites, SEO-critical apps
+
+- Example: E-commerce sites, blogs, marketing sites
+- Characteristics: Server-rendered pages, traditional navigation
+- Best for: Content-heavy sites, SEO-critical apps
 
 C) ⚡ **Progressive Web App (PWA)**
-   - Example: Twitter Lite, Starbucks PWA
-   - Characteristics: Offline support, installable, push notifications
-   - Best for: Mobile-first apps, offline-first experiences
+
+- Example: Twitter Lite, Starbucks PWA
+- Characteristics: Offline support, installable, push notifications
+- Best for: Mobile-first apps, offline-first experiences
 
 D) 🏆 **Server-Side Rendered (SSR) App**
-   - Example: Next.js apps, Nuxt apps
-   - Characteristics: Initial server render, hydration, SEO-friendly
-   - Best for: Hybrid apps, dynamic content with SEO needs
+
+- Example: Next.js apps, Nuxt apps
+- Characteristics: Initial server render, hydration, SEO-friendly
+- Best for: Hybrid apps, dynamic content with SEO needs
 
 E) **Static Site (SSG)**
-   - Example: Documentation sites, portfolios
-   - Characteristics: Pre-rendered at build time, fast, CDN-friendly
-   - Best for: Blogs, documentation, landing pages
+
+- Example: Documentation sites, portfolios
+- Characteristics: Pre-rendered at build time, fast, CDN-friendly
+- Best for: Blogs, documentation, landing pages
 
 **Your answer:**
 
@@ -58,12 +63,14 @@ E) **Static Site (SSG)**
 **Who are your primary target users?**
 
 Describe your user personas (3-5 bullet points):
+
 - Demographics (age, tech-savviness, etc.)
 - Use cases / goals
 - Device preferences
 - Accessibility needs
 
 **Example:**
+
 ```
 - Small business owners (30-50 years old, moderate tech skills)
 - Goal: Manage inventory and track sales
@@ -82,6 +89,7 @@ Describe your user personas (3-5 bullet points):
 List the core journeys users will take through your app.
 
 **Example:**
+
 ```
 1. Sign up → Email verification → Onboarding wizard → Dashboard
 2. Create new project → Add team members → Set up integrations
@@ -98,26 +106,30 @@ List the core journeys users will take through your app.
 **What devices and browsers must you support?**
 
 A) ⭐ **Modern Browsers Only** (Last 2 versions)
-   - Chrome, Firefox, Safari, Edge
-   - Mobile: iOS Safari 14+, Chrome Android
-   - Pros: Use latest web features, smaller bundle size
-   - Cons: May exclude <5% of users
+
+- Chrome, Firefox, Safari, Edge
+- Mobile: iOS Safari 14+, Chrome Android
+- Pros: Use latest web features, smaller bundle size
+- Cons: May exclude <5% of users
 
 B) 🔥 **Broad Compatibility** (Last 3-4 years)
-   - Include IE11, older Safari versions
-   - Requires polyfills and transpilation
-   - Pros: Wider audience reach
-   - Cons: Larger bundle, limited features
+
+- Include IE11, older Safari versions
+- Requires polyfills and transpilation
+- Pros: Wider audience reach
+- Cons: Larger bundle, limited features
 
 C) **Mobile-First**
-   - Prioritize iOS Safari and Chrome Android
-   - Responsive design for desktop
-   - Best for: Consumer apps, e-commerce
+
+- Prioritize iOS Safari and Chrome Android
+- Responsive design for desktop
+- Best for: Consumer apps, e-commerce
 
 D) **Desktop-First**
-   - Optimize for desktop browsers
-   - Mobile as secondary experience
-   - Best for: Admin panels, dashboards, B2B tools
+
+- Optimize for desktop browsers
+- Mobile as secondary experience
+- Best for: Admin panels, dashboards, B2B tools
 
 **Your answer:**
 
@@ -128,22 +140,26 @@ D) **Desktop-First**
 **How will you handle different screen sizes?**
 
 A) ⭐ **Mobile-First Responsive** (Recommended)
-   - Design for mobile first, scale up for desktop
-   - Breakpoints: 640px (mobile), 768px (tablet), 1024px (desktop)
-   - Best for: Most modern apps
+
+- Design for mobile first, scale up for desktop
+- Breakpoints: 640px (mobile), 768px (tablet), 1024px (desktop)
+- Best for: Most modern apps
 
 B) **Desktop-First Responsive**
-   - Design for desktop, scale down for mobile
-   - Best for: Complex dashboards with dense data
+
+- Design for desktop, scale down for mobile
+- Best for: Complex dashboards with dense data
 
 C) **Adaptive (Multiple Designs)**
-   - Separate designs for mobile vs desktop
-   - Example: Different layouts/features per breakpoint
-   - Best for: Apps with very different mobile/desktop experiences
+
+- Separate designs for mobile vs desktop
+- Example: Different layouts/features per breakpoint
+- Best for: Apps with very different mobile/desktop experiences
 
 D) **Fixed Width (Desktop Only)**
-   - No mobile optimization
-   - Best for: Internal tools, admin panels (desktop-only users)
+
+- No mobile optimization
+- Best for: Internal tools, admin panels (desktop-only users)
 
 **Your answer:**
 
@@ -154,22 +170,26 @@ D) **Fixed Width (Desktop Only)**
 **Do you need multi-language support?**
 
 A) ⭐ **Single Language Only**
-   - No i18n needed
-   - Fastest development
+
+- No i18n needed
+- Fastest development
 
 B) **Multi-Language (Static)**
-   - Support 2-5 languages
-   - Translations managed in code (JSON files)
-   - Example: English, Spanish, French
+
+- Support 2-5 languages
+- Translations managed in code (JSON files)
+- Example: English, Spanish, French
 
 C) 🌍 **Multi-Language (Dynamic)**
-   - Support 10+ languages
-   - CMS-driven translations or API-based
-   - Example: Crowdin, Phrase integration
+
+- Support 10+ languages
+- CMS-driven translations or API-based
+- Example: Crowdin, Phrase integration
 
 D) **Right-to-Left (RTL) Support**
-   - Include Arabic, Hebrew, etc.
-   - Requires bidirectional layout support
+
+- Include Arabic, Hebrew, etc.
+- Requires bidirectional layout support
 
 **Your answer:**
 
@@ -182,31 +202,37 @@ D) **Right-to-Left (RTL) Support**
 **What authentication method will you use?**
 
 A) ⭐ **Email/Password (Traditional)**
-   - Users sign up with email and password
-   - Requires password reset flow
-   - Best for: Most apps
+
+- Users sign up with email and password
+- Requires password reset flow
+- Best for: Most apps
 
 B) 🔥 **Social Login (OAuth)**
-   - Google, GitHub, Facebook, etc.
-   - Faster signup, lower friction
-   - Best for: Consumer apps
+
+- Google, GitHub, Facebook, etc.
+- Faster signup, lower friction
+- Best for: Consumer apps
 
 C) **Magic Link / Passwordless**
-   - Email-based login link
-   - No password management
-   - Best for: B2B SaaS, low-security apps
+
+- Email-based login link
+- No password management
+- Best for: B2B SaaS, low-security apps
 
 D) **SSO / SAML (Enterprise)**
-   - Okta, Auth0, Azure AD integration
-   - Best for: Enterprise B2B apps
+
+- Okta, Auth0, Azure AD integration
+- Best for: Enterprise B2B apps
 
 E) **Multi-Factor Authentication (MFA)**
-   - SMS, authenticator app, WebAuthn
-   - Best for: High-security apps (finance, healthcare)
+
+- SMS, authenticator app, WebAuthn
+- Best for: High-security apps (finance, healthcare)
 
 F) **No Authentication**
-   - Public app, no user accounts
-   - Best for: Marketing sites, public tools
+
+- Public app, no user accounts
+- Best for: Marketing sites, public tools
 
 **Your answer:**
 
@@ -217,30 +243,36 @@ F) **No Authentication**
 **What data privacy requirements do you have?**
 
 A) ⭐ **Standard (No Special Requirements)**
-   - Basic privacy policy
-   - No regulated data
+
+- Basic privacy policy
+- No regulated data
 
 B) **GDPR Compliance (EU)**
-   - Cookie consent banner
-   - Right to be forgotten
-   - Data export capabilities
+
+- Cookie consent banner
+- Right to be forgotten
+- Data export capabilities
 
 C) **CCPA Compliance (California)**
-   - "Do Not Sell" option
-   - Data deletion requests
+
+- "Do Not Sell" option
+- Data deletion requests
 
 D) 🏆 **HIPAA Compliance (Healthcare)**
-   - Encrypted data transmission
-   - Audit logs
-   - Strict access controls
+
+- Encrypted data transmission
+- Audit logs
+- Strict access controls
 
 E) **SOC 2 / ISO 27001 (Enterprise)**
-   - Security audit requirements
-   - Detailed logging and monitoring
+
+- Security audit requirements
+- Detailed logging and monitoring
 
 F) **Multiple Regulations**
-   - Combine GDPR + CCPA + others
-   - Most restrictive controls apply
+
+- Combine GDPR + CCPA + others
+- Most restrictive controls apply
 
 **Your answer:**
 
@@ -251,24 +283,28 @@ F) **Multiple Regulations**
 **Do users need offline access?**
 
 A) ⭐ **Online Only**
-   - Requires internet connection
-   - Simplest implementation
+
+- Requires internet connection
+- Simplest implementation
 
 B) **Basic Offline (Read-Only)**
-   - Cache data for offline viewing
-   - No offline editing
-   - Example: News apps, documentation
+
+- Cache data for offline viewing
+- No offline editing
+- Example: News apps, documentation
 
 C) 🔥 **Full Offline (Sync)**
-   - Offline editing with sync when online
-   - Requires conflict resolution
-   - Example: Note apps, task managers
-   - Technologies: Service Workers, IndexedDB
+
+- Offline editing with sync when online
+- Requires conflict resolution
+- Example: Note apps, task managers
+- Technologies: Service Workers, IndexedDB
 
 D) **Offline-First**
-   - Works offline by default
-   - Syncs in background
-   - Best for: Mobile apps, unreliable networks
+
+- Works offline by default
+- Syncs in background
+- Best for: Mobile apps, unreliable networks
 
 **Your answer:**
 
@@ -279,32 +315,38 @@ D) **Offline-First**
 **What are your performance priorities?** (Select top 3)
 
 A) ⭐ **Fast Initial Load (LCP < 2.5s)**
-   - Optimize Core Web Vitals
-   - Code splitting, lazy loading
-   - Best for: SEO, user retention
+
+- Optimize Core Web Vitals
+- Code splitting, lazy loading
+- Best for: SEO, user retention
 
 B) **Smooth Interactions (FID < 100ms)**
-   - Debounce inputs, optimize re-renders
-   - Best for: Interactive apps, dashboards
+
+- Debounce inputs, optimize re-renders
+- Best for: Interactive apps, dashboards
 
 C) **Visual Stability (CLS < 0.1)**
-   - Prevent layout shifts
-   - Reserve space for dynamic content
-   - Best for: Content-heavy sites
+
+- Prevent layout shifts
+- Reserve space for dynamic content
+- Best for: Content-heavy sites
 
 D) **Low Bundle Size**
-   - Minimize JavaScript payload
-   - Tree shaking, compression
-   - Best for: Mobile users, slow networks
+
+- Minimize JavaScript payload
+- Tree shaking, compression
+- Best for: Mobile users, slow networks
 
 E) **Fast Time to Interactive (TTI)**
-   - Hydration optimization
-   - Critical CSS inlining
-   - Best for: SSR apps
+
+- Hydration optimization
+- Critical CSS inlining
+- Best for: SSR apps
 
 F) **Perceived Performance**
-   - Skeleton screens, optimistic UI
-   - Best for: User experience
+
+- Skeleton screens, optimistic UI
+- Best for: User experience
 
 **Your answer (top 3):**
 
@@ -315,9 +357,9 @@ F) **Perceived Performance**
 Before proceeding to Phase 2, confirm the following:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📋 PHASE 1 SUMMARY: DISCOVERY & UX
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Application Type: [Answer from 1.1]
 Target Users: [Answer from 1.2]
@@ -446,6 +488,3 @@ Read: .ai-flow/prompts/frontend/flow-build-phase-2-components.md
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.2.0
-
-
-

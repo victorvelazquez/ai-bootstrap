@@ -24,27 +24,32 @@ Define what **native features and permissions** your app will use:
 **Will your app use the camera?**
 
 A) ⭐ **Yes - Photo Capture**
-   - Take photos within app
-   - Requires: Camera permission
-   - Best for: Social apps, productivity apps
+
+- Take photos within app
+- Requires: Camera permission
+- Best for: Social apps, productivity apps
 
 B) **Yes - Video Recording**
-   - Record videos
-   - Requires: Camera + Microphone permissions
-   - Best for: Video apps, social media
+
+- Record videos
+- Requires: Camera + Microphone permissions
+- Best for: Video apps, social media
 
 C) **Yes - QR Code Scanning**
-   - Scan QR codes
-   - Requires: Camera permission
-   - Best for: Payment apps, utilities
+
+- Scan QR codes
+- Requires: Camera permission
+- Best for: Payment apps, utilities
 
 D) **No Camera Access**
-   - No camera features
-   - Best for: Most apps
+
+- No camera features
+- Best for: Most apps
 
 **Your answer:**
 
 **If camera selected, ask:**
+
 - What library will you use?
   - React Native: react-native-camera, react-native-vision-camera
   - Flutter: camera, image_picker
@@ -57,26 +62,31 @@ D) **No Camera Access**
 **Will your app use location services?**
 
 A) ⭐ **Yes - When In Use** (Recommended)
-   - Location only when app is active
-   - Requires: Location When In Use permission
-   - Best for: Most location-based apps
+
+- Location only when app is active
+- Requires: Location When In Use permission
+- Best for: Most location-based apps
 
 B) **Yes - Always**
-   - Location even when app is backgrounded
-   - Requires: Always permission (harder to get approved)
-   - Best for: Navigation, fitness tracking
+
+- Location even when app is backgrounded
+- Requires: Always permission (harder to get approved)
+- Best for: Navigation, fitness tracking
 
 C) **Yes - Approximate Location**
-   - Approximate location only (less privacy-invasive)
-   - Best for: Location-based content
+
+- Approximate location only (less privacy-invasive)
+- Best for: Location-based content
 
 D) **No Location Access**
-   - No location features
-   - Best for: Most apps
+
+- No location features
+- Best for: Most apps
 
 **Your answer:**
 
 **If location selected, ask:**
+
 - What library will you use?
   - React Native: @react-native-community/geolocation, react-native-maps
   - Flutter: geolocator, google_maps_flutter
@@ -89,22 +99,26 @@ D) **No Location Access**
 **Will your app send push notifications?**
 
 A) ⭐ **Yes - User Notifications** (Recommended)
-   - Notify users of important events
-   - Requires: Notification permission
-   - Best for: Most apps
+
+- Notify users of important events
+- Requires: Notification permission
+- Best for: Most apps
 
 B) **Yes - Background Notifications**
-   - Notify even when app is closed
-   - Requires: Background modes
-   - Best for: Real-time apps
+
+- Notify even when app is closed
+- Requires: Background modes
+- Best for: Real-time apps
 
 C) **No Push Notifications**
-   - No notifications
-   - Best for: Simple apps, privacy-focused apps
+
+- No notifications
+- Best for: Simple apps, privacy-focused apps
 
 **Your answer:**
 
 **If notifications selected, ask:**
+
 - What service will you use?
   - Firebase Cloud Messaging (FCM)
   - OneSignal
@@ -118,18 +132,21 @@ C) **No Push Notifications**
 **Will your app access the photo library?**
 
 A) ⭐ **Yes - Read Only**
-   - Select photos from library
-   - Requires: Photo Library Read permission
-   - Best for: Most apps that need photos
+
+- Select photos from library
+- Requires: Photo Library Read permission
+- Best for: Most apps that need photos
 
 B) **Yes - Read & Write**
-   - Save photos to library
-   - Requires: Photo Library Write permission
-   - Best for: Photo editing apps
+
+- Save photos to library
+- Requires: Photo Library Write permission
+- Best for: Photo editing apps
 
 C) **No Photo Library Access**
-   - No photo library features
-   - Best for: Apps that don't need photos
+
+- No photo library features
+- Best for: Apps that don't need photos
 
 **Your answer:**
 
@@ -140,18 +157,21 @@ C) **No Photo Library Access**
 **Will your app access contacts?**
 
 A) ⭐ **Yes - Read Contacts**
-   - Import contacts
-   - Requires: Contacts Read permission
-   - Best for: Social apps, messaging apps
+
+- Import contacts
+- Requires: Contacts Read permission
+- Best for: Social apps, messaging apps
 
 B) **Yes - Read & Write**
-   - Add contacts
-   - Requires: Contacts Write permission
-   - Best for: Contact management apps
+
+- Add contacts
+- Requires: Contacts Write permission
+- Best for: Contact management apps
 
 C) **No Contacts Access**
-   - No contact features
-   - Best for: Most apps
+
+- No contact features
+- Best for: Most apps
 
 **Your answer:**
 
@@ -162,17 +182,20 @@ C) **No Contacts Access**
 **Will your app use biometric authentication?**
 
 A) ⭐ **Yes - Face ID / Touch ID / Fingerprint** (Recommended)
-   - Secure authentication
-   - Requires: Face ID / Touch ID permission
-   - Best for: Secure apps, banking apps
+
+- Secure authentication
+- Requires: Face ID / Touch ID permission
+- Best for: Secure apps, banking apps
 
 B) **No Biometric Auth**
-   - Traditional password/PIN only
-   - Best for: Simple apps
+
+- Traditional password/PIN only
+- Best for: Simple apps
 
 **Your answer:**
 
 **If biometric selected, ask:**
+
 - What library will you use?
   - React Native: react-native-biometrics, react-native-touch-id
   - Flutter: local_auth
@@ -185,18 +208,21 @@ B) **No Biometric Auth**
 **Will your app access the file system?**
 
 A) ⭐ **Yes - Document Picker**
-   - Let users select files
-   - Requires: File access permission
-   - Best for: Document apps, file managers
+
+- Let users select files
+- Requires: File access permission
+- Best for: Document apps, file managers
 
 B) **Yes - File Storage**
-   - Save files to device
-   - Requires: Storage permission
-   - Best for: File management apps
+
+- Save files to device
+- Requires: Storage permission
+- Best for: File management apps
 
 C) **No File System Access**
-   - No file features
-   - Best for: Most apps
+
+- No file features
+- Best for: Most apps
 
 **Your answer:**
 
@@ -207,18 +233,21 @@ C) **No File System Access**
 **Will your app use the microphone?**
 
 A) ⭐ **Yes - Audio Recording**
-   - Record audio
-   - Requires: Microphone permission
-   - Best for: Voice notes, recording apps
+
+- Record audio
+- Requires: Microphone permission
+- Best for: Voice notes, recording apps
 
 B) **Yes - Voice Calls**
-   - Make voice/video calls
-   - Requires: Microphone permission
-   - Best for: Communication apps
+
+- Make voice/video calls
+- Requires: Microphone permission
+- Best for: Communication apps
 
 C) **No Microphone Access**
-   - No audio recording
-   - Best for: Most apps
+
+- No audio recording
+- Best for: Most apps
 
 **Your answer:**
 
@@ -229,36 +258,42 @@ C) **No Microphone Access**
 **What third-party SDKs will you integrate?**
 
 **Analytics:**
+
 - A) Firebase Analytics
 - B) Mixpanel
 - C) Amplitude
 - D) None
 
 **Crash Reporting:**
+
 - A) Firebase Crashlytics
 - B) Sentry
 - C) Bugsnag
 - D) None
 
 **Authentication:**
+
 - A) Firebase Auth
 - B) Auth0
 - C) AWS Cognito
 - D) Custom backend
 
 **Maps:**
+
 - A) Google Maps
 - B) Mapbox
 - C) Apple Maps (iOS only)
 - D) None
 
 **Payments:**
+
 - A) Stripe
 - B) PayPal
 - C) Apple Pay / Google Pay
 - D) None
 
 **Social Login:**
+
 - A) Firebase Auth (Google, Facebook, Apple)
 - B) Auth0 Social Connections
 - C) Custom OAuth
@@ -273,18 +308,21 @@ C) **No Microphone Access**
 **How will you request permissions?**
 
 A) ⭐ **Just-In-Time** (Recommended)
-   - Request when feature is needed
-   - Explain why permission is needed
-   - Best for: Better user experience
+
+- Request when feature is needed
+- Explain why permission is needed
+- Best for: Better user experience
 
 B) **On First Launch**
-   - Request all permissions upfront
-   - Less ideal (can overwhelm users)
-   - Best for: Apps that need all permissions
+
+- Request all permissions upfront
+- Less ideal (can overwhelm users)
+- Best for: Apps that need all permissions
 
 C) **Progressive**
-   - Request permissions as features are discovered
-   - Best for: Apps with optional features
+
+- Request permissions as features are discovered
+- Best for: Apps with optional features
 
 **Your answer:**
 
@@ -295,17 +333,20 @@ C) **Progressive**
 **How will you handle denied permissions?**
 
 A) ⭐ **Graceful Degradation** (Recommended)
-   - App works without permission
-   - Show alternative options
-   - Best for: Better UX
+
+- App works without permission
+- Show alternative options
+- Best for: Better UX
 
 B) **Show Settings Prompt**
-   - Guide user to enable in settings
-   - Best for: Critical permissions
+
+- Guide user to enable in settings
+- Best for: Critical permissions
 
 C) **Block Feature**
-   - Feature unavailable if permission denied
-   - Best for: Core features
+
+- Feature unavailable if permission denied
+- Best for: Core features
 
 **Your answer:**
 
@@ -316,9 +357,9 @@ C) **Block Feature**
 After answering all questions, summarize:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ Phase 4 Complete: Permissions & Native Features
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Selected Permissions:
 - Camera: Photo capture (react-native-vision-camera)
@@ -359,7 +400,3 @@ Read: `.ai-flow/prompts/mobile/flow-build-phase-5-standards.md`
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
-
-
-
-

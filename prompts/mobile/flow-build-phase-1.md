@@ -24,24 +24,28 @@ Determine the **technical foundation** for your mobile application:
 **What platforms will your app support?**
 
 A) ⭐ **iOS Only**
-   - Apple App Store only
-   - Swift or React Native iOS
-   - Best for: Apple-focused products, faster initial launch
+
+- Apple App Store only
+- Swift or React Native iOS
+- Best for: Apple-focused products, faster initial launch
 
 B) ⭐ **Android Only**
-   - Google Play Store only
-   - Kotlin or React Native Android
-   - Best for: Android-focused products, wider market reach
+
+- Google Play Store only
+- Kotlin or React Native Android
+- Best for: Android-focused products, wider market reach
 
 C) 🔥 **iOS + Android (Cross-Platform)** (Recommended)
-   - Both App Store and Play Store
-   - React Native, Flutter, or Ionic
-   - Best for: Maximum reach, shared codebase
+
+- Both App Store and Play Store
+- React Native, Flutter, or Ionic
+- Best for: Maximum reach, shared codebase
 
 D) **iOS + Android + Web (Universal)**
-   - Mobile apps + web version
-   - React Native Web, Flutter Web, or PWA
-   - Best for: Multi-platform presence
+
+- Mobile apps + web version
+- React Native Web, Flutter Web, or PWA
+- Best for: Multi-platform presence
 
 **Your answer:**
 
@@ -52,18 +56,21 @@ D) **iOS + Android + Web (Universal)**
 **What framework will you use to build your mobile app?**
 
 **If iOS Only:**
+
 - A) ⭐ **Native iOS (Swift)** - Best performance, full native features
 - B) **Native iOS (Objective-C)** - Legacy support
 - C) **React Native** - Cross-platform, JavaScript
 - D) **Flutter** - Cross-platform, Dart
 
 **If Android Only:**
+
 - A) ⭐ **Native Android (Kotlin)** - Best performance, full native features
 - B) **Native Android (Java)** - Legacy support
 - C) **React Native** - Cross-platform, JavaScript
 - D) **Flutter** - Cross-platform, Dart
 
 **If Cross-Platform:**
+
 - A) ⭐ **React Native** (Recommended)
   - JavaScript/TypeScript
   - Large ecosystem
@@ -89,12 +96,14 @@ D) **iOS + Android + Web (Universal)**
 **Your answer:**
 
 **If React Native selected, ask:**
+
 - What React Native version? (Latest stable recommended)
 - Will you use Expo? (Y/n)
   - Expo: Faster development, managed workflow
   - Bare React Native: More control, custom native code
 
 **If Flutter selected, ask:**
+
 - What Flutter version? (Latest stable recommended)
 - Will you use Flutter for Web/Desktop too? (Y/n)
 
@@ -105,6 +114,7 @@ D) **iOS + Android + Web (Universal)**
 **What minimum OS versions will you support?**
 
 **For iOS:**
+
 - A) ⭐ **iOS 15+** (Recommended)
   - Covers ~95% of active devices
   - Modern APIs available
@@ -126,6 +136,7 @@ D) **iOS + Android + Web (Universal)**
   - Best for: Premium apps, latest tech
 
 **For Android:**
+
 - A) ⭐ **Android 8.0 (API 26)+** (Recommended)
   - Covers ~95% of active devices
   - Modern APIs available
@@ -155,6 +166,7 @@ D) **iOS + Android + Web (Universal)**
 **What programming language will you use?**
 
 **If React Native:**
+
 - A) ⭐ **TypeScript** (Recommended)
   - Type safety
   - Better IDE support
@@ -166,9 +178,11 @@ D) **iOS + Android + Web (Universal)**
   - Best for: Small projects, rapid prototyping
 
 **If Flutter:**
+
 - **Dart** (Required - Flutter uses Dart)
 
 **If Native iOS:**
+
 - A) ⭐ **Swift** (Recommended)
   - Modern, safe language
   - Apple's preferred language
@@ -178,6 +192,7 @@ D) **iOS + Android + Web (Universal)**
   - Best for: Maintaining existing apps
 
 **If Native Android:**
+
 - A) ⭐ **Kotlin** (Recommended)
   - Modern, concise language
   - Google's preferred language
@@ -195,21 +210,25 @@ D) **iOS + Android + Web (Universal)**
 **What development tools will you use?**
 
 **For iOS Development:**
+
 - A) ⭐ **Xcode** (Required for iOS)
   - Version: Latest stable (15.x)
   - Includes iOS Simulator
   - Interface Builder, Instruments
 
 **For Android Development:**
+
 - A) ⭐ **Android Studio** (Required for Android)
   - Version: Latest stable
   - Includes Android Emulator
   - Gradle build system
 
 **For Cross-Platform:**
+
 - **VS Code** or **Android Studio** / **Xcode** (for native modules)
 
 **Additional Tools:**
+
 - **Flipper** - Debugging tool (React Native)
 - **React Native Debugger** - Debugging (React Native)
 - **Dart DevTools** - Debugging (Flutter)
@@ -223,17 +242,21 @@ D) **iOS + Android + Web (Universal)**
 **What package manager will you use?**
 
 **If React Native:**
+
 - A) ⭐ **npm** (Recommended)
 - B) **yarn**
 - C) **pnpm**
 
 **If Flutter:**
+
 - **pub** (Flutter's built-in package manager)
 
 **If Native iOS:**
+
 - **CocoaPods** or **Swift Package Manager**
 
 **If Native Android:**
+
 - **Gradle** (built-in)
 
 **Your answer:**
@@ -245,25 +268,30 @@ D) **iOS + Android + Web (Universal)**
 **What build and deployment tools will you use?**
 
 A) ⭐ **Fastlane** (Recommended for iOS/Android)
-   - Automates builds, screenshots, deployment
-   - Works with React Native, Flutter, Native
-   - Best for: Most projects
+
+- Automates builds, screenshots, deployment
+- Works with React Native, Flutter, Native
+- Best for: Most projects
 
 B) **Codemagic**
-   - Cloud-based CI/CD for Flutter/React Native
-   - Easy setup, good for small teams
+
+- Cloud-based CI/CD for Flutter/React Native
+- Easy setup, good for small teams
 
 C) **GitHub Actions**
-   - Flexible, free for public repos
-   - Custom workflows
+
+- Flexible, free for public repos
+- Custom workflows
 
 D) **Bitrise**
-   - Mobile-focused CI/CD
-   - Good for complex workflows
+
+- Mobile-focused CI/CD
+- Good for complex workflows
 
 E) **Manual Builds**
-   - Build locally, upload manually
-   - Best for: Learning, small projects
+
+- Build locally, upload manually
+- Best for: Learning, small projects
 
 **Your answer:**
 
@@ -274,6 +302,7 @@ E) **Manual Builds**
 **How will you handle code signing?**
 
 **For iOS:**
+
 - A) ⭐ **Automatic Signing** (Recommended)
   - Xcode manages certificates
   - Easier for most developers
@@ -283,6 +312,7 @@ E) **Manual Builds**
   - Required for enterprise apps
 
 **For Android:**
+
 - A) ⭐ **Automatic Signing** (Recommended)
   - Gradle manages keystores
   - Easier for most developers
@@ -300,11 +330,13 @@ E) **Manual Builds**
 **Do you have App Store accounts set up?**
 
 **For iOS:**
+
 - A) ✅ **Yes, Apple Developer Account** ($99/year)
 - B) ❌ **No, will set up later**
 - C) **Enterprise Account** ($299/year)
 
 **For Android:**
+
 - A) ✅ **Yes, Google Play Developer Account** ($25 one-time)
 - B) ❌ **No, will set up later**
 
@@ -317,20 +349,24 @@ E) **Manual Builds**
 **How will you handle beta testing?**
 
 A) ⭐ **TestFlight (iOS) + Firebase App Distribution (Android)**
-   - Free, easy to use
-   - Best for: Most projects
+
+- Free, easy to use
+- Best for: Most projects
 
 B) **TestFlight (iOS) + Google Play Internal Testing (Android)**
-   - Official store channels
-   - Best for: Store-focused testing
+
+- Official store channels
+- Best for: Store-focused testing
 
 C) **HockeyApp / App Center**
-   - Microsoft's solution
-   - Good for enterprise
+
+- Microsoft's solution
+- Good for enterprise
 
 D) **No Beta Testing**
-   - Direct to production
-   - Best for: MVPs, internal apps
+
+- Direct to production
+- Best for: MVPs, internal apps
 
 **Your answer:**
 
@@ -341,21 +377,25 @@ D) **No Beta Testing**
 **What analytics and crash reporting will you use?**
 
 A) ⭐ **Firebase Analytics + Crashlytics** (Recommended)
-   - Free, comprehensive
-   - Works with iOS and Android
-   - Best for: Most projects
+
+- Free, comprehensive
+- Works with iOS and Android
+- Best for: Most projects
 
 B) **Sentry**
-   - Excellent error tracking
-   - Good for: Production apps
+
+- Excellent error tracking
+- Good for: Production apps
 
 C) **Mixpanel / Amplitude**
-   - Advanced analytics
-   - Best for: Product analytics focus
+
+- Advanced analytics
+- Best for: Product analytics focus
 
 D) **No Analytics**
-   - Privacy-focused
-   - Best for: Privacy-critical apps
+
+- Privacy-focused
+- Best for: Privacy-critical apps
 
 **Your answer:**
 
@@ -366,6 +406,7 @@ D) **No Analytics**
 **What UI/UX framework or design system will you use?**
 
 **If React Native:**
+
 - A) ⭐ **React Native Paper** (Material Design)
   - Material Design components
   - Best for: Android-first apps
@@ -380,6 +421,7 @@ D) **No Analytics**
   - Best for: Brand-specific design
 
 **If Flutter:**
+
 - A) ⭐ **Material Design 3** (Default)
   - Google's Material Design
   - Best for: Most apps
@@ -391,16 +433,19 @@ D) **No Analytics**
   - Best for: Brand-specific design
 
 **If Native iOS:**
+
 - A) ⭐ **UIKit** (Standard)
 - B) **SwiftUI** (Modern)
 
 **If Native Android:**
+
 - A) ⭐ **Material Design Components**
 - B) **Jetpack Compose**
 
 **Your answer:**
 
 **If cross-platform, ask:**
+
 - Will you use platform-specific UI? (iOS uses Cupertino, Android uses Material)
 - Or unified design across platforms?
 
@@ -411,16 +456,19 @@ D) **No Analytics**
 **Will your app support dark mode?**
 
 A) ⭐ **Yes - System Theme** (Recommended)
-   - Follows system dark/light mode
-   - Best for: Most apps
+
+- Follows system dark/light mode
+- Best for: Most apps
 
 B) **Yes - Manual Toggle**
-   - User can toggle dark/light mode
-   - Best for: Apps with theme customization
+
+- User can toggle dark/light mode
+- Best for: Apps with theme customization
 
 C) **No Dark Mode**
-   - Light mode only
-   - Best for: Simple apps
+
+- Light mode only
+- Best for: Simple apps
 
 **Your answer:**
 
@@ -431,20 +479,24 @@ C) **No Dark Mode**
 **Will your app support multiple languages?**
 
 A) ⭐ **Yes - Multiple Languages** (Recommended)
-   - Support 2+ languages
-   - Best for: Global apps
+
+- Support 2+ languages
+- Best for: Global apps
 
 B) **Yes - English Only (for now)**
-   - Single language, but i18n-ready
-   - Best for: MVPs planning expansion
+
+- Single language, but i18n-ready
+- Best for: MVPs planning expansion
 
 C) **No Internationalization**
-   - Single language only
-   - Best for: Local apps
+
+- Single language only
+- Best for: Local apps
 
 **Your answer:**
 
 **If multiple languages selected, ask:**
+
 - What i18n library?
   - React Native: react-i18next, react-native-localize
   - Flutter: intl, easy_localization
@@ -457,21 +509,25 @@ C) **No Internationalization**
 **How will you handle images and assets?**
 
 A) ⭐ **Local Assets + Remote Images** (Recommended)
-   - Local assets for icons/logos
-   - Remote images for content
-   - Best for: Most apps
+
+- Local assets for icons/logos
+- Remote images for content
+- Best for: Most apps
 
 B) **All Local Assets**
-   - All images bundled with app
-   - Best for: Small apps, offline-first
+
+- All images bundled with app
+- Best for: Small apps, offline-first
 
 C) **All Remote Images**
-   - All images from CDN/server
-   - Best for: Content-heavy apps
+
+- All images from CDN/server
+- Best for: Content-heavy apps
 
 **Your answer:**
 
 **If remote images selected, ask:**
+
 - What image optimization library?
   - React Native: react-native-fast-image, react-native-image-caching
   - Flutter: cached_network_image
@@ -484,9 +540,9 @@ C) **All Remote Images**
 After answering all questions, summarize:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ Phase 1 Complete: Platform & Framework Selection
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Selected Stack:
 - Platforms: iOS + Android
@@ -526,7 +582,3 @@ Read: `.ai-flow/prompts/mobile/flow-build-phase-2-navigation.md`
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
-
-
-
-

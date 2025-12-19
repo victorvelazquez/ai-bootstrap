@@ -132,7 +132,6 @@ C) **Build Number Only**
 **For iOS:**
 
 - A) ⭐ **Automatic Signing** (Recommended)
-
   - Xcode manages certificates
   - Easier for most developers
   - Best for: Most apps
@@ -145,7 +144,6 @@ C) **Build Number Only**
 **For Android:**
 
 - A) ⭐ **Automatic Signing** (Recommended)
-
   - Gradle manages keystores
   - Easier for most developers
   - Best for: Most apps
@@ -160,7 +158,6 @@ C) **Build Number Only**
 **Keystore management:**
 
 - A) ⭐ **Store in CI/CD secrets** (Recommended)
-
   - GitHub Secrets, Bitrise Secrets, etc.
   - Secure, automated
 
@@ -389,9 +386,9 @@ D) **Custom Analytics**
 After answering all questions, summarize:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ Phase 7 Complete: Store Deployment
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Selected Deployment Strategy:
 - Stores: {{TARGET_STORES}}
@@ -408,7 +405,7 @@ Generated Documents:
 ✅ specs/deployment.md
 ✅ .env.example
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 📊 Progress Summary:
 
@@ -427,9 +424,9 @@ Phases 1-7 completed:
 Remaining:
 ⏭️  Phase 8: Project setup & final documentation
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🎯 Next: Phase 8 - Project Setup & Final Documentation
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Phase 8 will:
 - 🔍 Detect project state (new vs existing)

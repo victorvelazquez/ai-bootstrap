@@ -24,6 +24,7 @@ Detect the current frontend stack, architecture patterns, and configuration from
 Check if `.ai-flow/cache/frontend-context.json` exists and is fresh (<7 days old).
 
 **If found:**
+
 ```json
 {
   "framework": "React",
@@ -52,9 +53,9 @@ Check if `.ai-flow/cache/frontend-context.json` exists and is fresh (<7 days old
 #### Files to Check
 
 1. **package.json** (REQUIRED)
-2. **vite.config.* / webpack.config.* / angular.json** (build tool)
+2. **vite.config._ / webpack.config._ / angular.json** (build tool)
 3. **tsconfig.json** (TypeScript)
-4. **tailwind.config.* / postcss.config.*** (styling)
+4. **tailwind.config._ / postcss.config._** (styling)
 
 #### Detection Logic
 
@@ -63,83 +64,118 @@ Check if `.ai-flow/cache/frontend-context.json` exists and is fresh (<7 days old
 const pkg = JSON.parse(await fs.readFile('package.json', 'utf-8'));
 
 // 2. Detect UI Framework
-const framework =
-  pkg.dependencies?.react ? 'React' :
-  pkg.dependencies?.vue ? 'Vue' :
-  pkg.dependencies?.['@angular/core'] ? 'Angular' :
-  pkg.dependencies?.svelte ? 'Svelte' :
-  pkg.dependencies?.['solid-js'] ? 'Solid' :
-  null;
+const framework = pkg.dependencies?.react
+  ? 'React'
+  : pkg.dependencies?.vue
+    ? 'Vue'
+    : pkg.dependencies?.['@angular/core']
+      ? 'Angular'
+      : pkg.dependencies?.svelte
+        ? 'Svelte'
+        : pkg.dependencies?.['solid-js']
+          ? 'Solid'
+          : null;
 
 // 3. Detect Meta-Framework
-const metaFramework =
-  pkg.dependencies?.next ? 'Next.js' :
-  pkg.dependencies?.nuxt ? 'Nuxt' :
-  pkg.dependencies?.['@analogjs/platform'] ? 'Analog' :
-  pkg.dependencies?.['@sveltejs/kit'] ? 'SvelteKit' :
-  pkg.dependencies?.['solid-start'] ? 'Solid Start' :
-  null;
+const metaFramework = pkg.dependencies?.next
+  ? 'Next.js'
+  : pkg.dependencies?.nuxt
+    ? 'Nuxt'
+    : pkg.dependencies?.['@analogjs/platform']
+      ? 'Analog'
+      : pkg.dependencies?.['@sveltejs/kit']
+        ? 'SvelteKit'
+        : pkg.dependencies?.['solid-start']
+          ? 'Solid Start'
+          : null;
 
 // 4. Detect Build Tool
 const buildTool =
-  await fs.exists('vite.config.ts') || await fs.exists('vite.config.js') ? 'Vite' :
-  await fs.exists('webpack.config.js') ? 'Webpack' :
-  await fs.exists('angular.json') ? 'Angular CLI' :
-  await fs.exists('rollup.config.js') ? 'Rollup' :
-  metaFramework ? `${metaFramework} (built-in)` :
-  'Unknown';
+  (await fs.exists('vite.config.ts')) || (await fs.exists('vite.config.js'))
+    ? 'Vite'
+    : (await fs.exists('webpack.config.js'))
+      ? 'Webpack'
+      : (await fs.exists('angular.json'))
+        ? 'Angular CLI'
+        : (await fs.exists('rollup.config.js'))
+          ? 'Rollup'
+          : metaFramework
+            ? `${metaFramework} (built-in)`
+            : 'Unknown';
 
 // 5. Detect TypeScript
 const typescript = await fs.exists('tsconfig.json');
 
 // 6. Detect State Management
-const stateManagement =
-  pkg.dependencies?.zustand ? 'Zustand' :
-  pkg.dependencies?.['@reduxjs/toolkit'] ? 'Redux Toolkit' :
-  pkg.dependencies?.pinia ? 'Pinia' :
-  pkg.dependencies?.['@ngrx/store'] ? 'NgRx' :
-  pkg.dependencies?.xstate ? 'XState' :
-  null;
+const stateManagement = pkg.dependencies?.zustand
+  ? 'Zustand'
+  : pkg.dependencies?.['@reduxjs/toolkit']
+    ? 'Redux Toolkit'
+    : pkg.dependencies?.pinia
+      ? 'Pinia'
+      : pkg.dependencies?.['@ngrx/store']
+        ? 'NgRx'
+        : pkg.dependencies?.xstate
+          ? 'XState'
+          : null;
 
 // 7. Detect Data Fetching
 const dataFetching =
-  pkg.dependencies?.['@tanstack/react-query'] || pkg.dependencies?.['@tanstack/vue-query'] ? 'TanStack Query' :
-  pkg.dependencies?.swr ? 'SWR' :
-  pkg.dependencies?.['@apollo/client'] ? 'Apollo Client' :
-  pkg.dependencies?.['@urql/core'] ? 'urql' :
-  null;
+  pkg.dependencies?.['@tanstack/react-query'] || pkg.dependencies?.['@tanstack/vue-query']
+    ? 'TanStack Query'
+    : pkg.dependencies?.swr
+      ? 'SWR'
+      : pkg.dependencies?.['@apollo/client']
+        ? 'Apollo Client'
+        : pkg.dependencies?.['@urql/core']
+          ? 'urql'
+          : null;
 
 // 8. Detect Styling
 const styling =
-  pkg.devDependencies?.tailwindcss || pkg.dependencies?.tailwindcss ? 'Tailwind CSS' :
-  pkg.dependencies?.['styled-components'] ? 'Styled Components' :
-  pkg.dependencies?.['@emotion/react'] ? 'Emotion' :
-  await fs.exists('*.module.css') ? 'CSS Modules' :
-  pkg.dependencies?.sass || pkg.devDependencies?.sass ? 'Sass/SCSS' :
-  null;
+  pkg.devDependencies?.tailwindcss || pkg.dependencies?.tailwindcss
+    ? 'Tailwind CSS'
+    : pkg.dependencies?.['styled-components']
+      ? 'Styled Components'
+      : pkg.dependencies?.['@emotion/react']
+        ? 'Emotion'
+        : (await fs.exists('*.module.css'))
+          ? 'CSS Modules'
+          : pkg.dependencies?.sass || pkg.devDependencies?.sass
+            ? 'Sass/SCSS'
+            : null;
 
 // 9. Detect Component Library
-const componentLibrary =
-  pkg.dependencies?.['@mui/material'] ? 'Material UI' :
-  pkg.dependencies?.['@chakra-ui/react'] ? 'Chakra UI' :
-  pkg.dependencies?.antd ? 'Ant Design' :
-  pkg.dependencies?.vuetify ? 'Vuetify' :
-  pkg.dependencies?.['@angular/material'] ? 'Angular Material' :
-  pkg.dependencies?.['@shadcn/ui'] ? 'shadcn/ui' :
-  null;
+const componentLibrary = pkg.dependencies?.['@mui/material']
+  ? 'Material UI'
+  : pkg.dependencies?.['@chakra-ui/react']
+    ? 'Chakra UI'
+    : pkg.dependencies?.antd
+      ? 'Ant Design'
+      : pkg.dependencies?.vuetify
+        ? 'Vuetify'
+        : pkg.dependencies?.['@angular/material']
+          ? 'Angular Material'
+          : pkg.dependencies?.['@shadcn/ui']
+            ? 'shadcn/ui'
+            : null;
 
 // 10. Detect Testing
-const unitTest =
-  pkg.devDependencies?.vitest ? 'Vitest' :
-  pkg.devDependencies?.jest ? 'Jest' :
-  pkg.devDependencies?.['@jest/core'] ? 'Jest' :
-  null;
+const unitTest = pkg.devDependencies?.vitest
+  ? 'Vitest'
+  : pkg.devDependencies?.jest
+    ? 'Jest'
+    : pkg.devDependencies?.['@jest/core']
+      ? 'Jest'
+      : null;
 
-const e2eTest =
-  pkg.devDependencies?.['@playwright/test'] ? 'Playwright' :
-  pkg.devDependencies?.cypress ? 'Cypress' :
-  pkg.devDependencies?.puppeteer ? 'Puppeteer' :
-  null;
+const e2eTest = pkg.devDependencies?.['@playwright/test']
+  ? 'Playwright'
+  : pkg.devDependencies?.cypress
+    ? 'Cypress'
+    : pkg.devDependencies?.puppeteer
+      ? 'Puppeteer'
+      : null;
 ```
 
 #### Layer 1 Output
@@ -179,12 +215,12 @@ Continue to Layer 2 for structural analysis? (Y/n)
 const componentPattern = detectComponentPattern(srcFiles);
 
 function detectComponentPattern(files: string[]): string {
-  const hasAtomic = files.some(f =>
-    f.includes('/atoms/') || f.includes('/molecules/') || f.includes('/organisms/')
+  const hasAtomic = files.some(
+    (f) => f.includes('/atoms/') || f.includes('/molecules/') || f.includes('/organisms/')
   );
-  const hasFeatures = files.some(f => f.includes('/features/'));
-  const hasDomains = files.some(f => f.includes('/domains/'));
-  const hasPages = files.some(f => f.includes('/pages/'));
+  const hasFeatures = files.some((f) => f.includes('/features/'));
+  const hasDomains = files.some((f) => f.includes('/domains/'));
+  const hasPages = files.some((f) => f.includes('/pages/'));
 
   if (hasAtomic) return 'Atomic Design';
   if (hasFeatures) return 'Feature-based';
@@ -197,16 +233,16 @@ function detectComponentPattern(files: string[]): string {
 const routingStrategy = detectRouting(srcFiles);
 
 function detectRouting(files: string[]): string {
-  const hasAppDir = files.some(f => f.startsWith('app/'));
-  const hasPagesDir = files.some(f => f.startsWith('pages/'));
-  const hasSrcRoutes = files.some(f => f.includes('/routes/'));
+  const hasAppDir = files.some((f) => f.startsWith('app/'));
+  const hasPagesDir = files.some((f) => f.startsWith('pages/'));
+  const hasSrcRoutes = files.some((f) => f.includes('/routes/'));
 
   if (hasAppDir) return 'App Router (Next.js 13+)';
   if (hasPagesDir) return 'Pages Router';
   if (hasSrcRoutes) return 'File-based routing';
 
   // Check for react-router/vue-router in code
-  const hasReactRouter = files.some(f => {
+  const hasReactRouter = files.some((f) => {
     const content = fs.readFileSync(f, 'utf-8');
     return content.includes('react-router-dom');
   });
@@ -219,9 +255,9 @@ function detectRouting(files: string[]): string {
 const apiPattern = detectAPIPattern(srcFiles);
 
 function detectAPIPattern(files: string[]): string {
-  const hasApiDir = files.some(f => f.includes('/api/'));
-  const hasServicesDir = files.some(f => f.includes('/services/'));
-  const hasHooksDir = files.some(f => f.includes('/hooks/use') && f.includes('query'));
+  const hasApiDir = files.some((f) => f.includes('/api/'));
+  const hasServicesDir = files.some((f) => f.includes('/services/'));
+  const hasHooksDir = files.some((f) => f.includes('/hooks/use') && f.includes('query'));
 
   if (hasHooksDir) return 'Custom hooks with TanStack Query';
   if (hasServicesDir) return 'Service layer pattern';
@@ -234,15 +270,15 @@ const componentExamples = extractComponentExamples(srcFiles);
 
 function extractComponentExamples(files: string[]): Component[] {
   // Find 2-3 well-structured components
-  const candidates = files.filter(f => {
+  const candidates = files.filter((f) => {
     const content = fs.readFileSync(f, 'utf-8');
     return content.includes('export') && content.length > 50 && content.length < 500;
   });
 
-  return candidates.slice(0, 3).map(file => ({
+  return candidates.slice(0, 3).map((file) => ({
     name: path.basename(file, path.extname(file)),
     path: file,
-    snippet: fs.readFileSync(file, 'utf-8').slice(0, 200)
+    snippet: fs.readFileSync(file, 'utf-8').slice(0, 200),
   }));
 }
 ```
@@ -280,6 +316,7 @@ Continue to Layer 3 for deep analysis? (Y/n)
 **Purpose:** Extract advanced patterns, conventions, and documentation
 
 **Only proceed if:**
+
 - User confirms (not automatic)
 - Project is large (>50 components)
 - Accuracy is critical
@@ -291,18 +328,18 @@ Continue to Layer 3 for deep analysis? (Y/n)
 const namingConvention = analyzeNamingPatterns(srcFiles);
 
 function analyzeNamingPatterns(files: string[]): NamingConvention {
-  const componentNames = files.map(f => path.basename(f, path.extname(f)));
+  const componentNames = files.map((f) => path.basename(f, path.extname(f)));
 
-  const pascalCase = componentNames.filter(n => /^[A-Z][a-zA-Z0-9]*$/.test(n)).length;
-  const camelCase = componentNames.filter(n => /^[a-z][a-zA-Z0-9]*$/.test(n)).length;
-  const kebabCase = componentNames.filter(n => /^[a-z][a-z0-9-]*$/.test(n)).length;
+  const pascalCase = componentNames.filter((n) => /^[A-Z][a-zA-Z0-9]*$/.test(n)).length;
+  const camelCase = componentNames.filter((n) => /^[a-z][a-zA-Z0-9]*$/.test(n)).length;
+  const kebabCase = componentNames.filter((n) => /^[a-z][a-z0-9-]*$/.test(n)).length;
 
   const dominant = Math.max(pascalCase, camelCase, kebabCase);
 
   return {
     files: dominant === kebabCase ? 'kebab-case' : 'PascalCase',
     components: dominant === pascalCase ? 'PascalCase' : 'camelCase',
-    hooks: files.some(f => f.includes('use')) ? 'use* (hooks)' : 'N/A'
+    hooks: files.some((f) => f.includes('use')) ? 'use* (hooks)' : 'N/A',
   };
 }
 
@@ -315,23 +352,23 @@ function analyzeQualityPatterns(files: string[]): QualityPatterns {
   let hasTests = 0;
   let hasStories = 0;
 
-  files.forEach(file => {
+  files.forEach((file) => {
     if (file.endsWith('.ts') || file.endsWith('.tsx')) hasTypeScript++;
     const content = fs.readFileSync(file, 'utf-8');
     if (content.includes('PropTypes')) hasPropTypes++;
   });
 
-  const testFiles = files.filter(f => f.includes('.test.') || f.includes('.spec.'));
+  const testFiles = files.filter((f) => f.includes('.test.') || f.includes('.spec.'));
   hasTests = testFiles.length;
 
-  const storyFiles = files.filter(f => f.includes('.stories.'));
+  const storyFiles = files.filter((f) => f.includes('.stories.'));
   hasStories = storyFiles.length;
 
   return {
     typeScriptCoverage: (hasTypeScript / files.length) * 100,
     propTypesUsage: hasPropTypes > 0,
     testCoverage: `${hasTests} test files`,
-    storybookUsage: hasStories > 0
+    storybookUsage: hasStories > 0,
   };
 }
 
@@ -342,7 +379,7 @@ function analyzeAccessibility(files: string[]): A11yPatterns {
   let ariaUsage = 0;
   let semanticHTML = 0;
 
-  files.forEach(file => {
+  files.forEach((file) => {
     const content = fs.readFileSync(file, 'utf-8');
     if (content.includes('aria-')) ariaUsage++;
     if (content.includes('<button') || content.includes('<nav') || content.includes('<header')) {
@@ -352,7 +389,7 @@ function analyzeAccessibility(files: string[]): A11yPatterns {
 
   return {
     ariaAttributesUsage: ariaUsage > files.length * 0.2 ? 'Frequent' : 'Rare',
-    semanticHTMLUsage: semanticHTML > files.length * 0.5 ? 'Good' : 'Needs improvement'
+    semanticHTMLUsage: semanticHTML > files.length * 0.5 ? 'Good' : 'Needs improvement',
   };
 }
 ```
@@ -390,9 +427,9 @@ Analysis complete! Proceeding to validation...
 After detection, show user a summary and ask for confirmation:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🔍 FRONTEND STACK DETECTED
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ✅ Framework: React 18.2.0 (with Next.js 14.0.0)
 ✅ Build Tool: Vite 5.0.0
@@ -491,6 +528,3 @@ Read: .ai-flow/prompts/frontend/flow-build-phase-1-discovery.md
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.2.0
-
-
-

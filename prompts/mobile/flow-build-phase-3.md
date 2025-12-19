@@ -24,6 +24,7 @@ Define how your mobile app will manage state and handle data:
 **How will you manage global app state?**
 
 **If React Native:**
+
 - A) ⭐ **Redux Toolkit** (Recommended)
   - Predictable state management
   - DevTools support
@@ -49,6 +50,7 @@ Define how your mobile app will manage state and handle data:
   - Best for: Fine-grained reactivity
 
 **If Flutter:**
+
 - A) ⭐ **Provider** (Recommended)
   - Simple, official recommendation
   - Best for: Most apps
@@ -66,6 +68,7 @@ Define how your mobile app will manage state and handle data:
   - Best for: Rapid development
 
 **If Native:**
+
 - **MVVM Pattern** with ViewModels
 - **Observable Pattern** (RxSwift/RxJava)
 
@@ -78,6 +81,7 @@ Define how your mobile app will manage state and handle data:
 **What HTTP client library will you use to fetch data from your backend?**
 
 **If React Native:**
+
 - A) ⭐ **Axios** (Recommended)
   - Promise-based HTTP client
   - Interceptors, automatic JSON parsing
@@ -94,6 +98,7 @@ Define how your mobile app will manage state and handle data:
   - Best for: Complex data needs
 
 **If Flutter:**
+
 - A) ⭐ **Dio** (Recommended)
   - Powerful HTTP client
   - Interceptors, form data
@@ -105,11 +110,13 @@ Define how your mobile app will manage state and handle data:
   - Best for: Simple apps
 
 **If Native iOS:**
+
 - A) ⭐ **URLSession** (Built-in)
 - B) **Alamofire**
   - Popular third-party library
 
 **If Native Android:**
+
 - A) ⭐ **OkHttp** (Recommended)
 - B) **Retrofit**
   - Type-safe HTTP client
@@ -117,12 +124,14 @@ Define how your mobile app will manage state and handle data:
 **Your answer:**
 
 **If using REST API, ask:**
+
 - What API base URL structure?
   - Single base URL
   - Multiple endpoints
   - Environment-based URLs (dev/staging/prod)
 
 **If using GraphQL, ask:**
+
 - What GraphQL client?
   - React Native: Apollo Client, urql
   - Flutter: graphql_flutter, ferry
@@ -135,20 +144,23 @@ Define how your mobile app will manage state and handle data:
 **How will your app work offline?**
 
 A) ⭐ **Read-Only Offline** (Recommended)
-   - Cache data for reading
-   - Show cached data when offline
-   - Queue writes for when online
-   - Best for: Most apps
+
+- Cache data for reading
+- Show cached data when offline
+- Queue writes for when online
+- Best for: Most apps
 
 B) **Full Offline Support**
-   - Complete CRUD offline
-   - Sync when online
-   - Best for: Productivity apps, note-taking
+
+- Complete CRUD offline
+- Sync when online
+- Best for: Productivity apps, note-taking
 
 C) **No Offline Support**
-   - Require internet connection
-   - Show error when offline
-   - Best for: Real-time apps, streaming
+
+- Require internet connection
+- Show error when offline
+- Best for: Real-time apps, streaming
 
 **Your answer:**
 
@@ -159,6 +171,7 @@ C) **No Offline Support**
 **What will you use for local data storage?**
 
 **If React Native:**
+
 - A) ⭐ **AsyncStorage** (Recommended)
   - Simple key-value storage
   - Best for: Small data, settings
@@ -176,17 +189,20 @@ C) **No Offline Support**
   - Best for: Complex data models
 
 **If Flutter:**
+
 - A) ⭐ **SharedPreferences** (Simple data)
 - B) **Hive** (Fast, NoSQL)
 - C) **Isar** (Fast, NoSQL)
 - D) **SQLite (sqflite)** (Relational data)
 
 **If Native iOS:**
+
 - A) **UserDefaults** (Simple data)
 - B) **Core Data** (Complex relational data)
 - C) **Realm** (Object database)
 
 **If Native Android:**
+
 - A) **SharedPreferences** (Simple data)
 - B) **Room** (SQLite abstraction)
 - C) **DataStore** (Modern, type-safe)
@@ -200,25 +216,29 @@ C) **No Offline Support**
 **How will you sync data between local and server?**
 
 A) ⭐ **Optimistic Updates + Background Sync** (Recommended)
-   - Update UI immediately
-   - Sync in background
-   - Handle conflicts gracefully
-   - Best for: Most apps
+
+- Update UI immediately
+- Sync in background
+- Handle conflicts gracefully
+- Best for: Most apps
 
 B) **Pessimistic Updates**
-   - Wait for server confirmation
-   - Show loading states
-   - Best for: Critical data (payments, etc.)
+
+- Wait for server confirmation
+- Show loading states
+- Best for: Critical data (payments, etc.)
 
 C) **Manual Sync**
-   - User-triggered sync
-   - Pull-to-refresh pattern
-   - Best for: Simple apps
+
+- User-triggered sync
+- Pull-to-refresh pattern
+- Best for: Simple apps
 
 D) **Real-time Sync**
-   - WebSockets or Server-Sent Events
-   - Instant updates
-   - Best for: Collaborative apps, chat
+
+- WebSockets or Server-Sent Events
+- Instant updates
+- Best for: Collaborative apps, chat
 
 **Your answer:**
 
@@ -229,20 +249,24 @@ D) **Real-time Sync**
 **How will you handle data conflicts when syncing?**
 
 A) ⭐ **Last Write Wins** (Recommended)
-   - Simple, most recent update wins
-   - Best for: Most apps
+
+- Simple, most recent update wins
+- Best for: Most apps
 
 B) **Server Wins**
-   - Always use server version
-   - Best for: Authoritative server data
+
+- Always use server version
+- Best for: Authoritative server data
 
 C) **Merge Strategy**
-   - Intelligent merging
-   - Best for: Collaborative editing
+
+- Intelligent merging
+- Best for: Collaborative editing
 
 D) **User Resolution**
-   - Ask user to choose
-   - Best for: Critical conflicts
+
+- Ask user to choose
+- Best for: Critical conflicts
 
 **Your answer:**
 
@@ -253,22 +277,26 @@ D) **User Resolution**
 **How will you cache API responses?**
 
 A) ⭐ **Time-based Cache** (Recommended)
-   - Cache for X minutes/hours
-   - Refresh after expiry
-   - Best for: Most data
+
+- Cache for X minutes/hours
+- Refresh after expiry
+- Best for: Most data
 
 B) **Stale-While-Revalidate**
-   - Show cached data immediately
-   - Fetch fresh data in background
-   - Best for: Good UX
+
+- Show cached data immediately
+- Fetch fresh data in background
+- Best for: Good UX
 
 C) **Cache Forever**
-   - Cache until app update
-   - Best for: Static data
+
+- Cache until app update
+- Best for: Static data
 
 D) **No Caching**
-   - Always fetch fresh
-   - Best for: Real-time data
+
+- Always fetch fresh
+- Best for: Real-time data
 
 **Your answer:**
 
@@ -279,6 +307,7 @@ D) **No Caching**
 **How will you handle form state?**
 
 **If React Native:**
+
 - A) ⭐ **React Hook Form** (Recommended)
   - Minimal re-renders
   - Good performance
@@ -287,6 +316,7 @@ D) **No Caching**
   - Popular, well-documented
 
 **If Flutter:**
+
 - A) ⭐ **FormBuilder** (Recommended)
 - B) **Built-in Form widgets**
 
@@ -299,19 +329,22 @@ D) **No Caching**
 **How will you handle API errors?**
 
 A) ⭐ **Centralized Error Handler** (Recommended)
-   - Global error handling
-   - Consistent error messages
-   - Best for: Most apps
+
+- Global error handling
+- Consistent error messages
+- Best for: Most apps
 
 B) **Per-Request Handling**
-   - Handle errors in components
-   - More granular control
-   - Best for: Complex error scenarios
+
+- Handle errors in components
+- More granular control
+- Best for: Complex error scenarios
 
 C) **Error Boundary Pattern**
-   - Catch errors at component level
-   - Show fallback UI
-   - Best for: React Native
+
+- Catch errors at component level
+- Show fallback UI
+- Best for: React Native
 
 **Your answer:**
 
@@ -351,6 +384,7 @@ C) **Error Boundary Pattern**
 **Your answer:**
 
 **If retry logic selected, ask:**
+
 - What retry strategy?
   - Exponential backoff
   - Fixed interval
@@ -363,18 +397,21 @@ C) **Error Boundary Pattern**
 **How will you handle loading states?**
 
 A) ⭐ **Skeleton Screens** (Recommended)
-   - Show content structure while loading
-   - Better UX than spinners
-   - Best for: Most screens
+
+- Show content structure while loading
+- Better UX than spinners
+- Best for: Most screens
 
 B) **Loading Spinners**
-   - Simple, universal
-   - Best for: Quick loads
+
+- Simple, universal
+- Best for: Quick loads
 
 C) **Progressive Loading**
-   - Load critical data first
-   - Load secondary data after
-   - Best for: Complex screens
+
+- Load critical data first
+- Load secondary data after
+- Best for: Complex screens
 
 **Your answer:**
 
@@ -385,17 +422,20 @@ C) **Progressive Loading**
 **How will you validate data?**
 
 A) ⭐ **Client-side Validation** (Required)
-   - Validate before sending to server
-   - Better UX, less server load
+
+- Validate before sending to server
+- Better UX, less server load
 
 B) **Schema Validation**
-   - Use Zod, Yup, or similar
-   - Type-safe validation
+
+- Use Zod, Yup, or similar
+- Type-safe validation
 
 C) **Server Validation Only**
-   - Validate on server
-   - Show errors after submission
-   - Not recommended (poor UX)
+
+- Validate on server
+- Show errors after submission
+- Not recommended (poor UX)
 
 **Your answer:**
 
@@ -406,19 +446,22 @@ C) **Server Validation Only**
 **How will you refresh data in the background?**
 
 A) ⭐ **Background Fetch** (Recommended)
-   - Refresh when app is backgrounded
-   - iOS: Background App Refresh
-   - Android: WorkManager
-   - Best for: Most apps
+
+- Refresh when app is backgrounded
+- iOS: Background App Refresh
+- Android: WorkManager
+- Best for: Most apps
 
 B) **Push Notifications**
-   - Server pushes updates
-   - App refreshes on notification
-   - Best for: Real-time updates
+
+- Server pushes updates
+- App refreshes on notification
+- Best for: Real-time updates
 
 C) **No Background Refresh**
-   - Refresh only when app opens
-   - Best for: Simple apps
+
+- Refresh only when app opens
+- Best for: Simple apps
 
 **Your answer:**
 
@@ -604,6 +647,7 @@ graph TB
 ---
 
 **Diagram Guidelines:**
+
 - Show offline/online paths clearly
 - Include cache layers (AsyncStorage, MMKV, WatermelonDB)
 - Use sequence diagrams for sync flows
@@ -617,9 +661,9 @@ graph TB
 After answering all questions, summarize:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ Phase 3 Complete: State & Data Management
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Selected Stack:
 - State Management: Redux Toolkit
@@ -655,7 +699,3 @@ Read: `.ai-flow/prompts/mobile/flow-build-phase-4-permissions.md`
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
-
-
-
-

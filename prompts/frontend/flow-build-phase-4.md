@@ -25,53 +25,60 @@ Define your styling architecture and design system:
 **What CSS architecture will you use?**
 
 A) ⭐ **Tailwind CSS** (Recommended for most)
-   - Features: Utility-first, rapid development, small production bundle
-   - Pros: Fast prototyping, consistent design, great DX
-   - Cons: Verbose HTML, learning curve
-   - Best for: Most modern apps
-   - Bundle: ~10KB (purged)
+
+- Features: Utility-first, rapid development, small production bundle
+- Pros: Fast prototyping, consistent design, great DX
+- Cons: Verbose HTML, learning curve
+- Best for: Most modern apps
+- Bundle: ~10KB (purged)
 
 B) 🔥 **CSS Modules**
-   - Features: Scoped CSS, traditional CSS syntax
-   - Pros: Familiar, type-safe (TypeScript), no runtime
-   - Cons: More manual work, no design system out of box
-   - Best for: Teams preferring traditional CSS
-   - Bundle: Variable (your CSS only)
+
+- Features: Scoped CSS, traditional CSS syntax
+- Pros: Familiar, type-safe (TypeScript), no runtime
+- Cons: More manual work, no design system out of box
+- Best for: Teams preferring traditional CSS
+- Bundle: Variable (your CSS only)
 
 C) **Styled Components**
-   - Features: CSS-in-JS, component-scoped styles
-   - Pros: Dynamic styling, props-based theming, scoped by default
-   - Cons: Runtime cost, larger bundle
-   - Best for: Component libraries, dynamic themes
-   - Bundle: ~16KB
+
+- Features: CSS-in-JS, component-scoped styles
+- Pros: Dynamic styling, props-based theming, scoped by default
+- Cons: Runtime cost, larger bundle
+- Best for: Component libraries, dynamic themes
+- Bundle: ~16KB
 
 D) **Emotion**
-   - Features: CSS-in-JS, faster than Styled Components
-   - Pros: Better performance than SC, both runtime and compile-time
-   - Cons: Still has runtime overhead
-   - Best for: Performance-critical CSS-in-JS
-   - Bundle: ~11KB
+
+- Features: CSS-in-JS, faster than Styled Components
+- Pros: Better performance than SC, both runtime and compile-time
+- Cons: Still has runtime overhead
+- Best for: Performance-critical CSS-in-JS
+- Bundle: ~11KB
 
 E) **Sass/SCSS**
-   - Features: CSS preprocessor, variables, mixins
-   - Pros: Mature, powerful, compile-time
-   - Cons: Global scope (without modules), manual optimization
-   - Best for: Legacy projects, traditional workflows
-   - Bundle: Variable
+
+- Features: CSS preprocessor, variables, mixins
+- Pros: Mature, powerful, compile-time
+- Cons: Global scope (without modules), manual optimization
+- Best for: Legacy projects, traditional workflows
+- Bundle: Variable
 
 F) **Vanilla Extract**
-   - Features: Zero-runtime CSS-in-TS
-   - Pros: Type-safe, no runtime, great DX
-   - Cons: Newer, smaller ecosystem
-   - Best for: Type safety + performance
-   - Bundle: 0KB runtime
+
+- Features: Zero-runtime CSS-in-TS
+- Pros: Type-safe, no runtime, great DX
+- Cons: Newer, smaller ecosystem
+- Best for: Type safety + performance
+- Bundle: 0KB runtime
 
 G) **UnoCSS**
-   - Features: Atomic CSS engine, faster than Tailwind
-   - Pros: Extremely fast, flexible, smaller bundle
-   - Cons: Newer, smaller community
-   - Best for: Performance-critical apps
-   - Bundle: ~5KB
+
+- Features: Atomic CSS engine, faster than Tailwind
+- Pros: Extremely fast, flexible, smaller bundle
+- Cons: Newer, smaller community
+- Best for: Performance-critical apps
+- Bundle: ~5KB
 
 **Your answer:**
 
@@ -84,32 +91,38 @@ G) **UnoCSS**
 #### React Options
 
 A) ⭐ **None (Custom Components)**
-   - Build everything from scratch
-   - Best for: Full design control, unique designs
+
+- Build everything from scratch
+- Best for: Full design control, unique designs
 
 B) 🔥 **shadcn/ui** (Unstyled, customizable)
-   - Features: Copy-paste components, Radix UI primitives
-   - Best for: Tailwind users, full customization
+
+- Features: Copy-paste components, Radix UI primitives
+- Best for: Tailwind users, full customization
 
 C) **Material UI (MUI)**
-   - Features: Material Design, comprehensive, mature
-   - Best for: Google Material Design aesthetic
-   - Bundle: ~90KB
+
+- Features: Material Design, comprehensive, mature
+- Best for: Google Material Design aesthetic
+- Bundle: ~90KB
 
 D) **Chakra UI**
-   - Features: Accessible, composable, themeable
-   - Best for: Rapid development, accessibility
-   - Bundle: ~50KB
+
+- Features: Accessible, composable, themeable
+- Best for: Rapid development, accessibility
+- Bundle: ~50KB
 
 E) **Ant Design**
-   - Features: Enterprise-focused, comprehensive
-   - Best for: Admin panels, dashboards, Chinese market
-   - Bundle: ~120KB
+
+- Features: Enterprise-focused, comprehensive
+- Best for: Admin panels, dashboards, Chinese market
+- Bundle: ~120KB
 
 F) **Mantine**
-   - Features: Modern, hooks-based, feature-rich
-   - Best for: Developer experience, rapid prototyping
-   - Bundle: ~40KB
+
+- Features: Modern, hooks-based, feature-rich
+- Best for: Developer experience, rapid prototyping
+- Bundle: ~40KB
 
 #### Vue Options
 
@@ -137,21 +150,25 @@ D) **NG-ZORRO** - Ant Design for Angular
 Design tokens = Single source of truth for colors, spacing, typography, etc.
 
 A) ⭐ **Yes, comprehensive design tokens** (Recommended)
-   - Define colors, spacing, typography, shadows, etc.
-   - Best for: Design consistency, theming support
-   - Example: Tailwind config, CSS variables, TypeScript constants
+
+- Define colors, spacing, typography, shadows, etc.
+- Best for: Design consistency, theming support
+- Example: Tailwind config, CSS variables, TypeScript constants
 
 B) **Yes, basic tokens only**
-   - Just colors and spacing
-   - Best for: Simple apps
+
+- Just colors and spacing
+- Best for: Simple apps
 
 C) **No tokens**
-   - Hardcoded values
-   - Best for: Prototypes, MVPs
+
+- Hardcoded values
+- Best for: Prototypes, MVPs
 
 **Your answer:**
 
 **If yes, what will be tokenized?** (Select all that apply)
+
 - Colors
 - Spacing (padding, margin, gaps)
 - Typography (fonts, sizes, weights)
@@ -167,26 +184,30 @@ C) **No tokens**
 **How will you define your color palette?**
 
 A) ⭐ **Tailwind-style scales** (50-900)
-   - Example: `gray-50`, `gray-100`, ..., `gray-900`
-   - Example: `blue-500`, `blue-600`, etc.
-   - Best for: Tailwind CSS, comprehensive palettes
-   - Generates: 10 shades per color
+
+- Example: `gray-50`, `gray-100`, ..., `gray-900`
+- Example: `blue-500`, `blue-600`, etc.
+- Best for: Tailwind CSS, comprehensive palettes
+- Generates: 10 shades per color
 
 B) **Semantic colors**
-   - Example: `primary`, `secondary`, `success`, `error`, `warning`
-   - Best for: Simple apps, component libraries
-   - Generates: 5-7 colors
+
+- Example: `primary`, `secondary`, `success`, `error`, `warning`
+- Best for: Simple apps, component libraries
+- Generates: 5-7 colors
 
 C) **Custom color system**
-   - Your own naming and structure
-   - Best for: Unique design systems
+
+- Your own naming and structure
+- Best for: Unique design systems
 
 **Your answer:**
 
 **Primary brand colors (hex codes):**
-- Primary: #______
-- Secondary (optional): #______
-- Accent (optional): #______
+
+- Primary: #**\_\_**
+- Secondary (optional): #**\_\_**
+- Accent (optional): #**\_\_**
 
 ---
 
@@ -195,23 +216,27 @@ C) **Custom color system**
 **How will you handle typography?**
 
 A) ⭐ **Type scale (Tailwind-style)**
-   - Sizes: xs, sm, base, lg, xl, 2xl, 3xl, 4xl, 5xl, 6xl, 7xl, 8xl, 9xl
-   - Best for: Responsive, scalable typography
-   - Example: `text-sm`, `text-lg`
+
+- Sizes: xs, sm, base, lg, xl, 2xl, 3xl, 4xl, 5xl, 6xl, 7xl, 8xl, 9xl
+- Best for: Responsive, scalable typography
+- Example: `text-sm`, `text-lg`
 
 B) **Semantic headings**
-   - Sizes: h1, h2, h3, h4, h5, h6, body, caption
-   - Best for: Content-heavy sites, traditional hierarchy
+
+- Sizes: h1, h2, h3, h4, h5, h6, body, caption
+- Best for: Content-heavy sites, traditional hierarchy
 
 C) **Custom scale**
-   - Your own naming and sizes
+
+- Your own naming and sizes
 
 **Your answer:**
 
 **Font families:**
-- Heading font: _______________ (e.g., Inter, Poppins)
-- Body font: _________________ (e.g., Inter, Roboto)
-- Mono font (optional): _______ (e.g., Fira Code)
+
+- Heading font: ******\_\_\_****** (e.g., Inter, Poppins)
+- Body font: ********\_******** (e.g., Inter, Roboto)
+- Mono font (optional): **\_\_\_** (e.g., Fira Code)
 
 **Font loading strategy:**
 A) Google Fonts CDN
@@ -225,17 +250,20 @@ C) System fonts only (fastest)
 **Do you need theme support (dark mode, multiple themes)?**
 
 A) ⭐ **Dark mode only**
-   - Light + Dark themes
-   - Best for: Modern apps, user preference
-   - Implementation: CSS variables, class toggle
+
+- Light + Dark themes
+- Best for: Modern apps, user preference
+- Implementation: CSS variables, class toggle
 
 B) **Multiple themes**
-   - Example: Default, Dark, High Contrast, Brand A, Brand B
-   - Best for: White-label apps, multi-tenant
+
+- Example: Default, Dark, High Contrast, Brand A, Brand B
+- Best for: White-label apps, multi-tenant
 
 C) **No theming**
-   - Single theme only
-   - Best for: MVPs, simpler implementation
+
+- Single theme only
+- Best for: MVPs, simpler implementation
 
 **Your answer:**
 
@@ -258,24 +286,28 @@ C) No persistence (reset on reload)
 **What breakpoint strategy will you use?**
 
 A) ⭐ **Tailwind defaults** (Recommended)
-   - sm: 640px
-   - md: 768px
-   - lg: 1024px
-   - xl: 1280px
-   - 2xl: 1536px
+
+- sm: 640px
+- md: 768px
+- lg: 1024px
+- xl: 1280px
+- 2xl: 1536px
 
 B) **build-style**
-   - xs: 0px
-   - sm: 576px
-   - md: 768px
-   - lg: 992px
-   - xl: 1200px
+
+- xs: 0px
+- sm: 576px
+- md: 768px
+- lg: 992px
+- xl: 1200px
 
 C) **Custom breakpoints**
-   - Define your own
+
+- Define your own
 
 D) **No breakpoints (fluid)**
-   - Use relative units only (%, vw, etc.)
+
+- Use relative units only (%, vw, etc.)
 
 **Your answer:**
 
@@ -286,15 +318,18 @@ D) **No breakpoints (fluid)**
 **What spacing scale will you use?**
 
 A) ⭐ **4px grid (Tailwind-style)**
-   - 0, 1 (4px), 2 (8px), 3 (12px), 4 (16px), 5 (20px), 6 (24px), 8 (32px), etc.
-   - Best for: Most apps, consistent spacing
+
+- 0, 1 (4px), 2 (8px), 3 (12px), 4 (16px), 5 (20px), 6 (24px), 8 (32px), etc.
+- Best for: Most apps, consistent spacing
 
 B) **8px grid**
-   - 0, 8, 16, 24, 32, 40, 48, 56, 64...
-   - Best for: Simpler scale, larger spacing
+
+- 0, 8, 16, 24, 32, 40, 48, 56, 64...
+- Best for: Simpler scale, larger spacing
 
 C) **Custom scale**
-   - Your own spacing values
+
+- Your own spacing values
 
 **Your answer:**
 
@@ -305,22 +340,26 @@ C) **Custom scale**
 **How will you handle animations?**
 
 A) ⭐ **CSS transitions only**
-   - Simple hover effects, state changes
-   - Best for: Most apps, good performance
-   - Example: `transition-colors`, `transition-all`
+
+- Simple hover effects, state changes
+- Best for: Most apps, good performance
+- Example: `transition-colors`, `transition-all`
 
 B) **CSS transitions + keyframe animations**
-   - Add loading spinners, fade-ins, etc.
-   - Best for: Modern UX
+
+- Add loading spinners, fade-ins, etc.
+- Best for: Modern UX
 
 C) **Animation library** (Framer Motion, GSAP, etc.)
-   - Complex animations, gestures, page transitions
-   - Best for: Animation-heavy apps, marketing sites
-   - Example: Framer Motion for React
+
+- Complex animations, gestures, page transitions
+- Best for: Animation-heavy apps, marketing sites
+- Example: Framer Motion for React
 
 D) **Minimal animations**
-   - Accessibility-first, respect prefers-reduced-motion
-   - Best for: Accessibility-critical apps
+
+- Accessibility-first, respect prefers-reduced-motion
+- Best for: Accessibility-critical apps
 
 **Your answer:**
 
@@ -337,22 +376,26 @@ B) No
 **How will you organize your stylesheets?**
 
 A) ⭐ **Component-scoped styles**
-   - Each component has its own style file
-   - Example: `Button.tsx` + `Button.module.css`
-   - Best for: Component libraries, modularity
+
+- Each component has its own style file
+- Example: `Button.tsx` + `Button.module.css`
+- Best for: Component libraries, modularity
 
 B) **Utility-first (Tailwind)**
-   - No separate stylesheets, classes in JSX
-   - Best for: Tailwind CSS users
+
+- No separate stylesheets, classes in JSX
+- Best for: Tailwind CSS users
 
 C) **Global + Component**
-   - Global base styles + component styles
-   - Best for: Hybrid approach
+
+- Global base styles + component styles
+- Best for: Hybrid approach
 
 D) **Feature-based**
-   - Styles organized by feature/page
-   - Example: `features/auth/styles.css`
-   - Best for: Larger apps
+
+- Styles organized by feature/page
+- Example: `features/auth/styles.css`
+- Best for: Larger apps
 
 **Your answer:**
 
@@ -363,25 +406,30 @@ D) **Feature-based**
 **What accessibility level will you target?**
 
 A) ⭐ **WCAG 2.1 Level AA** (Recommended)
-   - Color contrast ratio: 4.5:1 (normal text), 3:1 (large text)
-   - Focus indicators visible
-   - Best for: Most apps, legal compliance
+
+- Color contrast ratio: 4.5:1 (normal text), 3:1 (large text)
+- Focus indicators visible
+- Best for: Most apps, legal compliance
 
 B) **WCAG 2.1 Level AAA**
-   - Color contrast ratio: 7:1 (normal text), 4.5:1 (large text)
-   - More stringent requirements
-   - Best for: Government, healthcare, education
+
+- Color contrast ratio: 7:1 (normal text), 4.5:1 (large text)
+- More stringent requirements
+- Best for: Government, healthcare, education
 
 C) **Basic accessibility**
-   - Semantic HTML, keyboard navigation
-   - Best for: MVPs, internal tools
+
+- Semantic HTML, keyboard navigation
+- Best for: MVPs, internal tools
 
 D) **No specific target**
-   - Best effort only
+
+- Best effort only
 
 **Your answer:**
 
 **A11y features to include:**
+
 - [ ] Focus indicators (outline on keyboard focus)
 - [ ] High contrast mode support
 - [ ] Text resizing support (up to 200%)
@@ -393,9 +441,9 @@ D) **No specific target**
 ## 📊 Phase 4 Summary
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📋 PHASE 4 SUMMARY: STYLING & DESIGN
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Styling Approach: [Answer from 4.1]
 Component Library: [Answer from 4.2]
@@ -447,13 +495,13 @@ Update `ai-instructions.md`:
 - ✅ ALWAYS include focus indicators for keyboard navigation
 - ❌ NEVER hardcode colors or spacing values
 - ❌ NEVER ignore prefers-reduced-motion
-{{#IF_TAILWIND}}
+  {{#IF_TAILWIND}}
 - ✅ ALWAYS use Tailwind utility classes, avoid custom CSS
 - ❌ NEVER use arbitrary values excessively (e.g., `w-[127px]`)
-{{/IF_TAILWIND}}
-{{#IF_DARK_MODE}}
+  {{/IF_TAILWIND}}
+  {{#IF_DARK_MODE}}
 - ✅ ALWAYS test components in both light and dark modes
-{{/IF_DARK_MODE}}
+  {{/IF_DARK_MODE}}
 ```
 
 ---
@@ -477,7 +525,3 @@ Read: .ai-flow/prompts/frontend/flow-build-phase-5-standards.md
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.2.0
-
-
-
-

@@ -24,6 +24,7 @@ Define the **navigation structure and architecture** for your mobile app:
 **What navigation pattern will your app use?**
 
 **For React Native:**
+
 - A) ⭐ **Stack Navigation** (Recommended)
   - Hierarchical navigation (push/pop)
   - Best for: Most apps, detail screens
@@ -45,6 +46,7 @@ Define the **navigation structure and architecture** for your mobile app:
   - Example: Instagram, Twitter
 
 **For Flutter:**
+
 - A) ⭐ **Navigator 2.0 / GoRouter** (Recommended)
   - Declarative routing
   - Best for: Modern Flutter apps
@@ -58,17 +60,20 @@ Define the **navigation structure and architecture** for your mobile app:
   - Best for: Simple apps
 
 **For Native iOS:**
+
 - A) ⭐ **UINavigationController** (Standard)
 - B) **UITabBarController** (Tabs)
 - C) **Coordinator Pattern** (Advanced)
 
 **For Native Android:**
+
 - A) ⭐ **Navigation Component** (Recommended)
 - B) **Jetpack Compose Navigation** (If using Compose)
 
 **Your answer:**
 
 **If Combined selected, ask:**
+
 - How many bottom tabs? (3-5 recommended)
 - What are the main sections? (e.g., Home, Search, Profile, Settings)
 
@@ -79,24 +84,28 @@ Define the **navigation structure and architecture** for your mobile app:
 **How will you organize your screens?**
 
 A) ⭐ **Feature-based** (Recommended)
-   - Group by feature/domain
-   - Example: `screens/auth/`, `screens/home/`, `screens/profile/`
-   - Best for: Medium to large apps
+
+- Group by feature/domain
+- Example: `screens/auth/`, `screens/home/`, `screens/profile/`
+- Best for: Medium to large apps
 
 B) **Flat Structure**
-   - All screens in one folder
-   - Example: `screens/LoginScreen.tsx`, `screens/HomeScreen.tsx`
-   - Best for: Small apps (<10 screens)
+
+- All screens in one folder
+- Example: `screens/LoginScreen.tsx`, `screens/HomeScreen.tsx`
+- Best for: Small apps (<10 screens)
 
 C) **Domain-driven**
-   - Group by business domain
-   - Example: `screens/user/`, `screens/product/`, `screens/order/`
-   - Best for: Large, complex apps
+
+- Group by business domain
+- Example: `screens/user/`, `screens/product/`, `screens/order/`
+- Best for: Large, complex apps
 
 D) **Route-based**
-   - Match folder structure to routes
-   - Example: `screens/(tabs)/home/`, `screens/(tabs)/profile/`
-   - Best for: File-based routing (Expo Router)
+
+- Match folder structure to routes
+- Example: `screens/(tabs)/home/`, `screens/(tabs)/profile/`
+- Best for: File-based routing (Expo Router)
 
 **Your answer:**
 
@@ -107,21 +116,25 @@ D) **Route-based**
 **How will you organize your components?**
 
 A) ⭐ **Atomic Design** (Recommended)
-   - atoms/, molecules/, organisms/, templates/
-   - Best for: Design system consistency
+
+- atoms/, molecules/, organisms/, templates/
+- Best for: Design system consistency
 
 B) **Feature-based Components**
-   - components/ shared across features
-   - features/[feature]/components/ for feature-specific
-   - Best for: Feature isolation
+
+- components/ shared across features
+- features/[feature]/components/ for feature-specific
+- Best for: Feature isolation
 
 C) **Flat Structure**
-   - All components in components/
-   - Best for: Small apps
+
+- All components in components/
+- Best for: Small apps
 
 D) **Type-based**
-   - components/buttons/, components/cards/, components/forms/
-   - Best for: Component library approach
+
+- components/buttons/, components/cards/, components/forms/
+- Best for: Component library approach
 
 **Your answer:**
 
@@ -132,25 +145,30 @@ D) **Type-based**
 **What architecture pattern will you follow?**
 
 A) ⭐ **Feature-based Architecture** (Recommended)
-   - Each feature is self-contained
-   - Example: features/auth/, features/home/
-   - Best for: Most React Native/Flutter apps
+
+- Each feature is self-contained
+- Example: features/auth/, features/home/
+- Best for: Most React Native/Flutter apps
 
 B) 🔥 **Clean Architecture** (Popular)
-   - Separation: Presentation / Domain / Data layers
-   - Best for: Complex apps, testability
+
+- Separation: Presentation / Domain / Data layers
+- Best for: Complex apps, testability
 
 C) **MVVM (Model-View-ViewModel)**
-   - Common in Flutter and Native
-   - Best for: State-heavy apps
+
+- Common in Flutter and Native
+- Best for: State-heavy apps
 
 D) **MVI (Model-View-Intent)**
-   - Unidirectional data flow
-   - Best for: Predictable state management
+
+- Unidirectional data flow
+- Best for: Predictable state management
 
 E) **Simple (No strict pattern)**
-   - Organize as needed
-   - Best for: Small apps, MVPs
+
+- Organize as needed
+- Best for: Small apps, MVPs
 
 **Your answer:**
 
@@ -161,6 +179,7 @@ E) **Simple (No strict pattern)**
 **What folder structure will you use?**
 
 **Example for Feature-based:**
+
 ```
 src/
 ├── features/
@@ -179,6 +198,7 @@ src/
 ```
 
 **Example for Clean Architecture:**
+
 ```
 lib/
 ├── presentation/
@@ -204,6 +224,7 @@ lib/
 **Which navigation library will you use?**
 
 **If React Native:**
+
 - A) ⭐ **React Navigation** (Recommended)
   - Most popular, well-maintained
   - Works with Expo and bare React Native
@@ -215,6 +236,7 @@ lib/
   - Best for: Performance-critical apps
 
 **If Flutter:**
+
 - A) ⭐ **GoRouter** (Recommended)
   - Declarative, type-safe
   - Best for: Modern Flutter apps
@@ -232,22 +254,26 @@ lib/
 **How will you handle deep links?**
 
 A) ⭐ **Universal Links (iOS) + App Links (Android)** (Recommended)
-   - Standard deep linking
-   - Opens app directly
-   - Best for: Most apps
+
+- Standard deep linking
+- Opens app directly
+- Best for: Most apps
 
 B) **Custom URL Scheme**
-   - myapp://path/to/screen
-   - Simpler but less secure
-   - Best for: Internal links
+
+- myapp://path/to/screen
+- Simpler but less secure
+- Best for: Internal links
 
 C) **No Deep Linking**
-   - App only, no external links
-   - Best for: Standalone apps
+
+- App only, no external links
+- Best for: Standalone apps
 
 **Your answer:**
 
 **If deep linking selected, ask:**
+
 - What URL scheme? (e.g., `myapp://`, `https://myapp.com`)
 - What screens need deep links? (e.g., product details, user profiles)
 
@@ -258,17 +284,20 @@ C) **No Deep Linking**
 **How will you manage navigation state?**
 
 A) ⭐ **Navigation Library Built-in** (Recommended)
-   - React Navigation manages its own state
-   - Flutter Navigator manages its own state
-   - Best for: Most apps
+
+- React Navigation manages its own state
+- Flutter Navigator manages its own state
+- Best for: Most apps
 
 B) **Redux / State Management Library**
-   - Centralized navigation state
-   - Best for: Complex navigation flows
+
+- Centralized navigation state
+- Best for: Complex navigation flows
 
 C) **Custom State Management**
-   - Your own navigation state
-   - Best for: Advanced use cases
+
+- Your own navigation state
+- Best for: Advanced use cases
 
 **Your answer:**
 
@@ -279,18 +308,21 @@ C) **Custom State Management**
 **What screen transition animations will you use?**
 
 A) ⭐ **Default Transitions** (Recommended)
-   - Platform-native transitions
-   - iOS: Slide from right
-   - Android: Slide up/fade
-   - Best for: Most apps
+
+- Platform-native transitions
+- iOS: Slide from right
+- Android: Slide up/fade
+- Best for: Most apps
 
 B) **Custom Transitions**
-   - Fade, scale, slide custom directions
-   - Best for: Branded experience
+
+- Fade, scale, slide custom directions
+- Best for: Branded experience
 
 C) **No Animations**
-   - Instant transitions
-   - Best for: Performance-critical apps
+
+- Instant transitions
+- Best for: Performance-critical apps
 
 **Your answer:**
 
@@ -301,19 +333,22 @@ C) **No Animations**
 **How will you handle protected routes?**
 
 A) ⭐ **Navigation Guards** (Recommended)
-   - Check auth state before navigation
-   - Redirect to login if not authenticated
-   - Best for: Most apps
+
+- Check auth state before navigation
+- Redirect to login if not authenticated
+- Best for: Most apps
 
 B) **Separate Navigation Stacks**
-   - Auth stack vs App stack
-   - Switch between stacks based on auth state
-   - Best for: Clear separation
+
+- Auth stack vs App stack
+- Switch between stacks based on auth state
+- Best for: Clear separation
 
 C) **No Protection**
-   - All screens accessible
-   - Handle auth in components
-   - Best for: Simple apps
+
+- All screens accessible
+- Handle auth in components
+- Best for: Simple apps
 
 **Your answer:**
 
@@ -530,6 +565,7 @@ graph TB
 ---
 
 **Diagram Guidelines:**
+
 - Color code by level (Root=light blue, Tabs=blue, Stacks=orange, Screens=default)
 - Use subgraphs to group related screens
 - Show authentication checks with decision diamonds
@@ -543,9 +579,9 @@ graph TB
 After answering all questions, summarize:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ Phase 2 Complete: Navigation & Architecture
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Selected Architecture:
 - Navigation: Tab + Stack Navigation
@@ -580,7 +616,3 @@ Read: `.ai-flow/prompts/mobile/flow-build-phase-3-state.md`
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
-
-
-
-

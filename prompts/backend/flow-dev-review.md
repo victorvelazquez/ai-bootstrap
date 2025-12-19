@@ -38,9 +38,9 @@ Review code like a professional code reviewer:
 **Example output:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🔍 Code Review
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Reviewing: feature-notifications
 Files to review: 8 files (536 lines changed)
@@ -140,9 +140,9 @@ Analyze code from **5 perspectives:**
 **Example output:**
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📊 REVIEW SUMMARY
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Analyzing code...
 ✅ Security check complete
@@ -151,9 +151,9 @@ Analyzing code...
 📐 Architecture check complete
 🎨 Code quality check complete
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🔍 RESULTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 🔴 Critical Issues: 1
 🟡 Warnings: 2
@@ -183,19 +183,14 @@ Report saved: .ai-flow/reviews/2025-01-20-15-30/
 **Code:**
 
 ```typescript
-const notifications = await db.query(
-  `SELECT * FROM notifications WHERE userId = ${userId}`,
-);
+const notifications = await db.query(`SELECT * FROM notifications WHERE userId = ${userId}`);
 ```
 ````
 
 **Fix:** Use parameterized queries
 
 ```typescript
-const notifications = await db.query(
-  'SELECT * FROM notifications WHERE userId = $1',
-  [userId],
-);
+const notifications = await db.query('SELECT * FROM notifications WHERE userId = $1', [userId]);
 ```
 
 **Impact:** HIGH - SQL injection vulnerability allows malicious users to execute arbitrary SQL
@@ -287,7 +282,7 @@ socket.on('markRead', async (notificationId) => {
 **Ask for action:**
 ```
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 What would you like to do?
 A) Fix critical issues now
 B) Fix all warnings + critical issues
@@ -359,9 +354,9 @@ D) Show detailed explanations
 ### All Clear:
 ```
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ REVIEW COMPLETE: No Issues Found
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Code quality: Excellent
 All aspects reviewed: ✅
@@ -380,9 +375,9 @@ Report saved: .ai-flow/reviews/2025-01-20-15-30/
 ### Issues Found:
 ```
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚠️ REVIEW COMPLETE: Issues Found
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 🔴 Critical: 1
 🟡 Warnings: 2
@@ -398,4 +393,3 @@ Fix critical issues now? (Y/n)
 
 **BEGIN EXECUTION when user runs `/review`, `/review feature-[name]`, or `/review --full`**
 ```
-

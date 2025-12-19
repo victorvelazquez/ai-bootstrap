@@ -24,6 +24,7 @@ Detect the current mobile stack, architecture patterns, and configuration from e
 Check if `.ai-flow/cache/mobile-context.json` exists and is fresh (<7 days old).
 
 **If found:**
+
 ```json
 {
   "platform": "iOS + Android",
@@ -65,15 +66,21 @@ Check if `.ai-flow/cache/mobile-context.json` exists and is fresh (<7 days old).
 const pkg = await detectPackageFile();
 
 // 2. Detect Mobile Framework
-const framework =
-  pkg.dependencies?.['react-native'] ? 'React Native' :
-  await fs.exists('pubspec.yaml') ? 'Flutter' :
-  await fs.exists('ios/') && await fs.exists('android/') ? 'Native (iOS + Android)' :
-  await fs.exists('ios/') ? 'Native iOS (Swift)' :
-  await fs.exists('android/') ? 'Native Android (Kotlin)' :
-  pkg.dependencies?.['@ionic/core'] ? 'Ionic' :
-  pkg.dependencies?.['@capacitor/core'] ? 'Capacitor' :
-  null;
+const framework = pkg.dependencies?.['react-native']
+  ? 'React Native'
+  : (await fs.exists('pubspec.yaml'))
+    ? 'Flutter'
+    : (await fs.exists('ios/')) && (await fs.exists('android/'))
+      ? 'Native (iOS + Android)'
+      : (await fs.exists('ios/'))
+        ? 'Native iOS (Swift)'
+        : (await fs.exists('android/'))
+          ? 'Native Android (Kotlin)'
+          : pkg.dependencies?.['@ionic/core']
+            ? 'Ionic'
+            : pkg.dependencies?.['@capacitor/core']
+              ? 'Capacitor'
+              : null;
 
 // 3. Detect Platform Support
 const platforms = [];
@@ -81,50 +88,68 @@ if (await fs.exists('ios/')) platforms.push('iOS');
 if (await fs.exists('android/')) platforms.push('Android');
 
 // 4. Detect Navigation Library
-const navigation =
-  pkg.dependencies?.['@react-navigation/native'] ? 'React Navigation' :
-  pkg.dependencies?.['react-native-navigation'] ? 'React Native Navigation' :
-  pkg.dependencies?.['go_router'] ? 'GoRouter' :
-  pkg.dependencies?.['auto_route'] ? 'AutoRoute' :
-  null;
+const navigation = pkg.dependencies?.['@react-navigation/native']
+  ? 'React Navigation'
+  : pkg.dependencies?.['react-native-navigation']
+    ? 'React Native Navigation'
+    : pkg.dependencies?.['go_router']
+      ? 'GoRouter'
+      : pkg.dependencies?.['auto_route']
+        ? 'AutoRoute'
+        : null;
 
 // 5. Detect State Management
-const stateManagement =
-  pkg.dependencies?.['@reduxjs/toolkit'] ? 'Redux Toolkit' :
-  pkg.dependencies?.zustand ? 'Zustand' :
-  pkg.dependencies?.mobx ? 'MobX' :
-  pkg.dependencies?.provider ? 'Provider' :
-  pkg.dependencies?.['flutter_riverpod'] ? 'Riverpod' :
-  pkg.dependencies?.['flutter_bloc'] ? 'Bloc' :
-  null;
+const stateManagement = pkg.dependencies?.['@reduxjs/toolkit']
+  ? 'Redux Toolkit'
+  : pkg.dependencies?.zustand
+    ? 'Zustand'
+    : pkg.dependencies?.mobx
+      ? 'MobX'
+      : pkg.dependencies?.provider
+        ? 'Provider'
+        : pkg.dependencies?.['flutter_riverpod']
+          ? 'Riverpod'
+          : pkg.dependencies?.['flutter_bloc']
+            ? 'Bloc'
+            : null;
 
 // 6. Detect Storage Solution
-const storage =
-  pkg.dependencies?.['@react-native-async-storage/async-storage'] ? 'AsyncStorage' :
-  pkg.dependencies?.['react-native-mmkv'] ? 'MMKV' :
-  pkg.dependencies?.['@nozbe/watermelondb'] ? 'WatermelonDB' :
-  pkg.dependencies?.realm ? 'Realm' :
-  pkg.dependencies?.hive ? 'Hive' :
-  await fs.exists('ios/DataModel.xcdatamodeld') ? 'Core Data' :
-  await fs.exists('android/app/src/main/java/**/RoomDatabase.kt') ? 'Room' :
-  null;
+const storage = pkg.dependencies?.['@react-native-async-storage/async-storage']
+  ? 'AsyncStorage'
+  : pkg.dependencies?.['react-native-mmkv']
+    ? 'MMKV'
+    : pkg.dependencies?.['@nozbe/watermelondb']
+      ? 'WatermelonDB'
+      : pkg.dependencies?.realm
+        ? 'Realm'
+        : pkg.dependencies?.hive
+          ? 'Hive'
+          : (await fs.exists('ios/DataModel.xcdatamodeld'))
+            ? 'Core Data'
+            : (await fs.exists('android/app/src/main/java/**/RoomDatabase.kt'))
+              ? 'Room'
+              : null;
 
 // 7. Detect TypeScript/Dart
 const typescript = await fs.exists('tsconfig.json');
 const dart = await fs.exists('pubspec.yaml');
 
 // 8. Detect Testing Framework
-const unitTest =
-  pkg.devDependencies?.jest ? 'Jest' :
-  pkg.devDependencies?.vitest ? 'Vitest' :
-  await fs.exists('test/') && dart ? 'Flutter Test' :
-  null;
+const unitTest = pkg.devDependencies?.jest
+  ? 'Jest'
+  : pkg.devDependencies?.vitest
+    ? 'Vitest'
+    : (await fs.exists('test/')) && dart
+      ? 'Flutter Test'
+      : null;
 
-const e2eTest =
-  pkg.devDependencies?.['detox'] ? 'Detox' :
-  pkg.devDependencies?.['@maestrohq/cli'] ? 'Maestro' :
-  pkg.devDependencies?.appium ? 'Appium' :
-  null;
+const e2eTest = pkg.devDependencies?.['detox']
+  ? 'Detox'
+  : pkg.devDependencies?.['@maestrohq/cli']
+    ? 'Maestro'
+    : pkg.devDependencies?.appium
+      ? 'Appium'
+      : null;
 ```
 
 #### Layer 1 Output
@@ -163,10 +188,10 @@ Continue to Layer 2 for structural analysis? (Y/n)
 const navigationPattern = detectNavigationPattern(srcFiles);
 
 function detectNavigationPattern(files: string[]): string {
-  const hasStack = files.some(f => f.includes('Stack') || f.includes('createStackNavigator'));
-  const hasTab = files.some(f => f.includes('Tab') || f.includes('createBottomTabNavigator'));
-  const hasDrawer = files.some(f => f.includes('Drawer') || f.includes('createDrawerNavigator'));
-  
+  const hasStack = files.some((f) => f.includes('Stack') || f.includes('createStackNavigator'));
+  const hasTab = files.some((f) => f.includes('Tab') || f.includes('createBottomTabNavigator'));
+  const hasDrawer = files.some((f) => f.includes('Drawer') || f.includes('createDrawerNavigator'));
+
   if (hasTab && hasStack) return 'Tab + Stack Navigation';
   if (hasDrawer && hasStack) return 'Drawer + Stack Navigation';
   if (hasStack) return 'Stack Navigation';
@@ -178,11 +203,11 @@ function detectNavigationPattern(files: string[]): string {
 const architecturePattern = detectArchitecture(srcFiles);
 
 function detectArchitecture(files: string[]): string {
-  const hasFeatures = files.some(f => f.includes('/features/'));
-  const hasDomains = files.some(f => f.includes('/domain/'));
-  const hasPresentation = files.some(f => f.includes('/presentation/'));
-  const hasClean = files.some(f => f.includes('/data/') && f.includes('/domain/'));
-  
+  const hasFeatures = files.some((f) => f.includes('/features/'));
+  const hasDomains = files.some((f) => f.includes('/domain/'));
+  const hasPresentation = files.some((f) => f.includes('/presentation/'));
+  const hasClean = files.some((f) => f.includes('/data/') && f.includes('/domain/'));
+
   if (hasClean) return 'Clean Architecture';
   if (hasFeatures) return 'Feature-based';
   if (hasDomains) return 'Domain-driven';
@@ -194,12 +219,12 @@ function detectArchitecture(files: string[]): string {
 const componentPattern = detectComponentPattern(srcFiles);
 
 function detectComponentPattern(files: string[]): string {
-  const hasAtomic = files.some(f =>
-    f.includes('/atoms/') || f.includes('/molecules/') || f.includes('/organisms/')
+  const hasAtomic = files.some(
+    (f) => f.includes('/atoms/') || f.includes('/molecules/') || f.includes('/organisms/')
   );
-  const hasScreens = files.some(f => f.includes('/screens/'));
-  const hasWidgets = files.some(f => f.includes('/widgets/'));
-  
+  const hasScreens = files.some((f) => f.includes('/screens/'));
+  const hasWidgets = files.some((f) => f.includes('/widgets/'));
+
   if (hasAtomic) return 'Atomic Design';
   if (hasScreens && hasWidgets) return 'Screens + Widgets';
   if (hasScreens) return 'Screens-based';
@@ -234,6 +259,7 @@ Continue to Layer 3 for deep analysis? (Y/n)
 **Purpose:** Extract advanced patterns, permissions, and native integrations
 
 **Only proceed if:**
+
 - User confirms (not automatic)
 - Project is large (>20 screens)
 - Accuracy is critical
@@ -246,32 +272,32 @@ const permissions = detectPermissions(srcFiles, platformFiles);
 
 function detectPermissions(srcFiles: string[], platformFiles: string[]): string[] {
   const detected = [];
-  
+
   // Check Info.plist (iOS)
-  const infoPlist = platformFiles.find(f => f.includes('Info.plist'));
+  const infoPlist = platformFiles.find((f) => f.includes('Info.plist'));
   if (infoPlist) {
     const content = fs.readFileSync(infoPlist, 'utf-8');
     if (content.includes('NSCameraUsageDescription')) detected.push('Camera');
     if (content.includes('NSLocationWhenInUseUsageDescription')) detected.push('Location');
     if (content.includes('NSPhotoLibraryUsageDescription')) detected.push('Photo Library');
   }
-  
+
   // Check AndroidManifest.xml (Android)
-  const manifest = platformFiles.find(f => f.includes('AndroidManifest.xml'));
+  const manifest = platformFiles.find((f) => f.includes('AndroidManifest.xml'));
   if (manifest) {
     const content = fs.readFileSync(manifest, 'utf-8');
     if (content.includes('android.permission.CAMERA')) detected.push('Camera');
     if (content.includes('android.permission.ACCESS_FINE_LOCATION')) detected.push('Location');
   }
-  
+
   // Check code for permission requests
-  srcFiles.forEach(file => {
+  srcFiles.forEach((file) => {
     const content = fs.readFileSync(file, 'utf-8');
     if (content.includes('requestPermission') || content.includes('Permissions.')) {
       // Extract permission type from context
     }
   });
-  
+
   return detected;
 }
 
@@ -280,15 +306,15 @@ const nativeModules = detectNativeModules(srcFiles);
 
 function detectNativeModules(files: string[]): string[] {
   const modules = [];
-  
-  files.forEach(file => {
+
+  files.forEach((file) => {
     const content = fs.readFileSync(file, 'utf-8');
     if (content.includes('react-native-camera')) modules.push('Camera');
     if (content.includes('@react-native-async-storage')) modules.push('AsyncStorage');
     if (content.includes('react-native-maps')) modules.push('Maps');
     if (content.includes('@react-native-firebase')) modules.push('Firebase');
   });
-  
+
   return modules;
 }
 ```
@@ -302,9 +328,9 @@ function detectNativeModules(files: string[]): string[] {
 After detection, show user a summary and ask for confirmation:
 
 ```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🔍 MOBILE STACK DETECTED
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ✅ Platform: iOS + Android
 ✅ Framework: React Native 0.72.0
@@ -383,7 +409,3 @@ Read: .ai-flow/prompts/mobile/flow-build-phase-1-platform.md
 **Last Updated:** 2025-01-XX
 
 **Version:** 1.4.0
-
-
-
-
