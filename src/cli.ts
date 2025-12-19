@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import inquirer from 'inquirer';
+import { select, input, confirm } from '@inquirer/prompts';
 import chalk from 'chalk';
 import ora from 'ora';
 import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import ejs from 'ejs';
 import { assertDirWritable } from './fs-utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -96,6 +95,11 @@ async function selectAITool(providedTool?: string): Promise<string[]> {
     return providedTool === 'all' ? ['claude', 'cursor', 'copilot', 'gemini'] : [providedTool];
   }
 
+  // If no TTY available (non-interactive mode, e.g., in tests), default to copilot
+  if (!process.stdin.isTTY) {
+    return ['copilot'];
+  }
+
   // Display banner
   console.log('\n');
   console.log(
@@ -175,18 +179,14 @@ async function selectAITool(providedTool?: string): Promise<string[]> {
     chalk.gray('    ────────────────────────────────────────────────────────────────────')
   );
 
-  const { selectedTool } = await inquirer.prompt([
-    {
-      type: 'rawlist',
-      name: 'selectedTool',
-      message: 'Select your AI tool:',
-      choices: AI_TOOLS.map((tool) => ({
-        name: tool.name,
-        value: tool.value,
-      })),
-      default: 1,
-    },
-  ]);
+  const selectedTool = await select({
+    message: 'Select your AI tool:',
+    choices: AI_TOOLS.map((tool) => ({
+      name: tool.name,
+      value: tool.value,
+    })),
+    default: 'copilot',
+  });
 
   return selectedTool === 'all' ? ['claude', 'cursor', 'copilot', 'gemini'] : [selectedTool];
 }
@@ -206,27 +206,22 @@ async function selectProjectType(
   }
 
   // If no TTY available (non-interactive mode, e.g., in tests), default to backend
-  // This maintains backward compatibility with existing tests and scripts
   if (!process.stdin.isTTY) {
     return 'backend';
   }
 
   // v1.4.0: Interactive selection for backend/frontend/fullstack/mobile
-  const answer = await inquirer.prompt([
-    {
-      type: 'rawlist',
-      name: 'projectType',
-      message: 'What type of project are you building?',
-      choices: [
-        { name: '🔧 Backend API/Service', value: 'backend' },
-        { name: '🎨 Frontend Application', value: 'frontend' },
-        { name: '🚀 Full Stack Application', value: 'fullstack' },
-        { name: '📱 Mobile Application', value: 'mobile' },
-      ],
-      default: 1,
-    },
-  ]);
-  return answer.projectType;
+  const projectType = await select({
+    message: 'What type of project are you building?',
+    choices: [
+      { name: '🔧 Backend API/Service', value: 'backend' },
+      { name: '🎨 Frontend Application', value: 'frontend' },
+      { name: '🚀 Full Stack Application', value: 'fullstack' },
+      { name: '📱 Mobile Application', value: 'mobile' },
+    ],
+    default: 'backend',
+  });
+  return projectType as 'backend' | 'frontend' | 'fullstack' | 'mobile';
 }
 
 async function checkIfInitialized(targetPath: string): Promise<boolean> {
@@ -543,14 +538,15 @@ async function initializeProject(
     const isInitialized = await checkIfInitialized(targetPath);
     if (isInitialized) {
       console.log(chalk.yellow('\n⚠️  Project already initialized with AI Flow'));
-      const { reinitialize } = await inquirer.prompt([
-        {
-          type: 'confirm',
-          name: 'reinitialize',
+
+      let reinitialize = false;
+      if (process.stdin.isTTY) {
+        reinitialize = await confirm({
           message: 'Do you want to reinitialize?',
           default: false,
-        },
-      ]);
+        });
+      }
+
       if (!reinitialize) {
         console.log(chalk.blue('Initialization cancelled'));
         return;
@@ -580,20 +576,18 @@ async function initializeProject(
       process.exit(EXIT.INVALID_ARGS);
     }
     let finalProjectName = projectName;
-    let finalProjectDescription = projectDescription || 'TBD - Run /flow-build to define';
 
     if (!finalProjectName) {
-      const answers = await inquirer.prompt([
-        {
-          type: 'input',
-          name: 'projectName',
+      if (process.stdin.isTTY) {
+        finalProjectName = await input({
           message: 'Project name (you can refine it in /flow-build):',
           default: inferredName,
           validate: (input: string) =>
             isValidName(input) || 'Enter 2-100 chars: letters, numbers, space, - _ .',
-        },
-      ]);
-      finalProjectName = answers.projectName;
+        });
+      } else {
+        finalProjectName = inferredName;
+      }
     }
 
     console.log(chalk.cyan('\n📦 Initializing AI Flow...\n'));
