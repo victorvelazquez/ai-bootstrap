@@ -1,0 +1,209 @@
+# Antigravity Configuration for AI Flow
+
+## 📋 Quick Start
+
+**IMPORTANT:** Read `AGENT.md` first for complete project context.
+
+This file contains Antigravity-specific preferences and workflows for the ai-flow project.
+
+---
+
+## 🎯 Project Summary
+
+**Name:** AI Flow
+**Description:** Interactive CLI tool to build AI-ready projects with comprehensive documentation
+**Stack:** Node.js 18+ + TypeScript + Commander.js + Inquirer
+**Version:** 2.1.3
+
+---
+
+## 📚 Documentation
+
+Read these files in order:
+
+1. `AGENT.md` - Universal AI configuration (⭐ START HERE)
+2. `CLAUDE.md` - Detailed project architecture and development guide
+3. `.github/copilot-instructions.md` - GitHub Copilot playbook
+4. `README.md` - User-facing documentation
+5. `CONTRIBUTING.md` - Contribution guidelines
+6. `package.json` - Dependencies and scripts
+7. `src/cli.ts` - Main CLI implementation
+
+---
+
+## ❌ NEVER
+
+- Hardcode secrets or API keys
+- Use `any` types without explicit justification
+- Skip reading files before editing (Read → Edit, never Write over existing)
+- Modify templates without understanding their purpose (they generate docs for users)
+- Break the Conventional Commits format
+- Commit without running tests (`npm test`)
+- Use ESM-only packages in this CommonJS project
+- Skip TypeScript strict mode checks
+
+---
+
+## ✅ ALWAYS
+
+- Read `AGENT.md` first for complete context
+- Read files before editing (use Read → Edit pattern)
+- Follow TypeScript strict mode
+- Use explicit return types for functions
+- Use interfaces for object shapes
+- Run `npm run build` before committing
+- Run `npm test` before committing
+- Use Conventional Commits format: `<type>(<scope>): <subject>`
+- Preserve `{{PLACEHOLDER}}` tokens in templates (downstream AI agents expand them)
+- Test CLI changes with: `npm run dev init test-folder --ai antigravity`
+- Use `chalk` for consistent logging (info=cyan/white, warnings=yellow, failures=red)
+- Validate cross-platform behavior (Windows keeps script perms untouched)
+
+---
+
+## 🏗️ Architecture
+
+**Pattern:** Single-file CLI with modular helper functions
+**Organization:**
+
+- `src/cli.ts` - All CLI logic (Commander.js + Inquirer)
+- `templates/` - Document templates (for user projects, not this project)
+- `prompts/` - Build prompts (for user projects)
+- `dist/` - Compiled output (CommonJS)
+- `.github/prompts/` - Development workflow commands
+
+**Module System:** CommonJS (`module: "commonjs"` in tsconfig.json)
+**Path Resolution:** Uses `__dirname` relative to `dist/cli.js` to copy assets from installed package
+
+---
+
+## 🎨 Code Style
+
+- **Indentation:** 2 spaces
+- **Quotes:** Single quotes for strings
+- **Formatter:** None configured (consider adding Prettier)
+- **Linter:** ESLint configured (`npm run lint`)
+- **File naming:** `kebab-case.ts`
+- **Function naming:** `camelCase`
+- **Constants:** `UPPER_SNAKE_CASE`
+- **TypeScript:** Strict mode enabled
+
+---
+
+## 🧪 Testing
+
+- **Coverage:** Tests in `__tests__/` directory
+- **Framework:** Jest
+- **Command:** `npm test`
+- **Before commit:** Always run `npm test` and `npm run build`
+
+---
+
+## 📝 Commits
+
+Use Conventional Commits format:
+
+```
+<type>(<scope>): <subject>
+
+<body>
+
+<footer>
+```
+
+**Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `ci`, `perf`, `revert`
+**Scopes:** `cli`, `templates`, `prompts`, `commands`, `docs`, `deps`, `config`, `readme`
+
+---
+
+## 🔒 Security
+
+- Never hardcode secrets or API keys
+- Use environment variables for sensitive data
+- Validate all user input
+- Keep dependencies updated (`npm audit`)
+- Check for hardcoded secrets before committing
+
+---
+
+## 💡 Antigravity Tips
+
+- Use `@AGENT.md` to reference project context
+- Use `@CLAUDE.md` for detailed architecture
+- Use `@src/cli.ts` for CLI implementation details
+- Use `@package.json` for dependencies and scripts
+- Run `/flow1-commit` for automated conventional commits
+- Run `/flow2-check` for pre-PR quality checks
+- Run `/flow3-docs` for documentation gap analysis and auto-update
+- Run `/flow4-release` for version publishing/build flow
+
+---
+
+## 🚀 Development Workflow
+
+### Before Making Changes
+
+1. Read `AGENT.md` for project context
+2. Read `CLAUDE.md` for architecture details
+3. Understand the feature/bug request
+4. Review affected code areas
+
+### While Coding
+
+1. Follow TypeScript strict mode
+2. Add JSDoc comments for exported functions
+3. Test locally with `npm run dev`
+4. Check compilation with `npm run build`
+5. Run linter: `npm run lint`
+
+### Testing Changes
+
+**For CLI Changes:**
+
+```bash
+npm run build
+npm run dev init test-folder --ai antigravity
+cd test-folder
+ls -la .ai-flow
+ls -la .agent/workflows/
+cd ..
+rm -rf test-folder
+```
+
+### Before Committing
+
+```bash
+npm run build
+npm test
+npm run lint
+```
+
+---
+
+## 🔍 Key Implementation Details
+
+**Path Resolution:**
+
+- CLI installed globally but needs to copy files from package
+- Uses `__dirname` relative to `dist/cli.js`
+- `ROOT_DIR = path.resolve(__dirname, "..")`
+
+**File Operations:**
+
+- Uses `fs-extra` library
+- `fs.pathExists()` - Check existence
+- `fs.ensureDir()` - Create directories recursively
+- `fs.copy()` - Copy files/folders
+- `fs.writeJSON()` - Write formatted JSON
+
+**AI Tool Mapping:**
+
+- `antigravity` → `.agent/workflows/`
+- Commands copied from `prompts/backend/` to `.agent/workflows/` (or frontend/mobile if applicable)
+
+---
+
+**Always reference `AGENT.md` for complete project understanding.**
+
+**Generated for:** AI Flow development
+**Last Updated:** 2025-12-19
