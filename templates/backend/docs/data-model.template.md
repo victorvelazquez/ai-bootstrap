@@ -1,7 +1,9 @@
 # Data Model
 
 > Structured view of the entities, relationships, and data contracts that power {{PROJECT_NAME}}
+
 ---
+
 ## 📘 Overview
 
 **Database Type:** {{DATABASE_TYPE}}
@@ -12,8 +14,8 @@
 
 **Data Access Layer:** {{DATA_ACCESS_LAYER}}
 
-**Data Ownership:** {{DATA_OWNERSHIP}}
----
+## **Data Ownership:** {{DATA_OWNERSHIP}}
+
 ## 📊 Entity Catalog
 
 {{#EACH ENTITIES}}
@@ -60,7 +62,9 @@
 
 - No derived fields defined.
   {{/IF}}
+
 ---
+
 {{/EACH}}
 
 ## 🔗 Relationships & Contracts
@@ -83,7 +87,9 @@
   - Enforced By: {{ENFORCED_BY}}
   - Failure Handling: {{FAILURE_HANDLING}}
     {{/EACH}}
+
 ---
+
 ## 📇 Database Indexes
 
 ### Index Strategy
@@ -106,8 +112,9 @@
 {{/EACH}}
 
 {{ELSE}}
+
 - No indexes explicitly defined yet. Indexes will be created based on query patterns and foreign keys.
-{{/IF}}
+  {{/IF}}
 
 ### Index Guidelines
 
@@ -117,7 +124,9 @@
 - ✅ Consider composite indexes for multi-column queries
 - ❌ Don't over-index (each index slows writes)
 - ❌ Don't index low-cardinality columns (unless frequently filtered)
+
 ---
+
 ## 🔄 Transaction Management
 
 ### Transaction Isolation Level
@@ -126,12 +135,14 @@
 
 **Supported Levels:**
 {{#EACH ISOLATION_LEVEL}}
+
 - **{{LEVEL_NAME}}**: {{LEVEL_DESCRIPTION}}
-{{/EACH}}
+  {{/EACH}}
 
 ### Transaction Strategy
 
 **When to use transactions:**
+
 - ✅ Multi-step operations that must succeed or fail together
 - ✅ Updates affecting multiple tables
 - ✅ Operations requiring consistency guarantees
@@ -141,11 +152,13 @@
 
 {{#IF TRANSACTION_PATTERNS}}
 {{#EACH TRANSACTION_PATTERN}}
+
 #### {{PATTERN_NAME}}
 
 **Use Case:** {{PATTERN_USE_CASE}}
 
 **Implementation:**
+
 ```{{LANGUAGE}}
 {{PATTERN_EXAMPLE}}
 ```
@@ -154,13 +167,15 @@
 
 {{/EACH}}
 {{ELSE}}
+
 - Transaction patterns to be defined based on business requirements.
-{{/IF}}
+  {{/IF}}
 
 ### Transaction Boundaries (Atomic Operations)
 
 {{#IF TRANSACTION_BOUNDARIES}}
 {{#EACH TRANSACTION_BOUNDARY}}
+
 #### {{OPERATION_NAME}}
 
 **Description:** {{DESCRIPTION}}
@@ -176,8 +191,9 @@
 
 {{/EACH}}
 {{ELSE}}
+
 - No explicit transaction boundaries defined. Individual operations are atomic by default.
-{{/IF}}
+  {{/IF}}
 
 ### Consistency Model
 
@@ -185,18 +201,22 @@
 
 {{#IF EVENTUAL_CONSISTENCY}}
 **Eventual Consistency:**
+
 - Acceptable delay: {{CONSISTENCY_DELAY}}
 - Replication lag tolerance: {{REPLICATION_LAG}}
 - Conflict resolution: {{CONFLICT_RESOLUTION}}
-{{/IF}}
+  {{/IF}}
 
 {{#IF STRONG_CONSISTENCY}}
 **Strong Consistency:**
+
 - All reads see latest writes
 - Synchronous replication required
 - Higher latency, lower throughput
-{{/IF}}
+  {{/IF}}
+
 ---
+
 ## 🔧 Schema Migrations
 
 ### Migration Tool
@@ -205,26 +225,29 @@
 
 {{#IF PRISMA_MIGRATE}}
 **Prisma Migrate:**
+
 - Location: `prisma/migrations/`
 - Generate migration: `npx prisma migrate dev --name migration_name`
 - Apply migration: `npx prisma migrate deploy`
-{{/IF}}
+  {{/IF}}
 
 {{#IF TYPEORM_MIGRATIONS}}
 **TypeORM Migrations:**
+
 - Location: `src/migrations/`
 - Generate migration: `npm run migration:generate -- -n MigrationName`
 - Run migration: `npm run migration:run`
 - Revert migration: `npm run migration:revert`
-{{/IF}}
+  {{/IF}}
 
 {{#IF ALEMBIC}}
 **Alembic (Python):**
+
 - Location: `alembic/versions/`
 - Generate migration: `alembic revision --autogenerate -m "migration_name"`
 - Apply migration: `alembic upgrade head`
 - Rollback: `alembic downgrade -1`
-{{/IF}}
+  {{/IF}}
 
 ### Migration Strategy
 
@@ -260,9 +283,12 @@
 | {{VERSION}} | {{DESCRIPTION}} | {{APPLIED_DATE}} | {{#IF ROLLBACK_AVAILABLE}}Yes{{ELSE}}No{{/IF}} |
 {{/EACH}}
 {{ELSE}}
+
 - Migration history will be tracked by the migration tool.
-{{/IF}}
+  {{/IF}}
+
 ---
+
 ## 🧩 Domain Logic & Aggregates
 
 ### Aggregate Roots
@@ -293,7 +319,9 @@
 
 - No domain events defined.
   {{/IF}}
+
 ---
+
 ## �️ Soft Delete & Data Lifecycle
 
 ### Deletion Strategy
@@ -305,7 +333,8 @@
 ### Entity Deletion Rules
 
 | Entity | Delete Type | Field | Cleanup Policy |
-|--------|-------------|-------|----------------|
+| ------ | ----------- | ----- | -------------- |
+
 {{#EACH ENTITY_DELETE_RULE}}
 | {{ENTITY}} | {{DELETE_TYPE}} | {{FIELD}} | {{CLEANUP_POLICY}} |
 {{/EACH}}
@@ -319,9 +348,12 @@
 ### Cascade Delete Behavior
 
 {{#EACH CASCADE_DELETE}}
+
 - **{{PARENT_ENTITY}}** → **{{CHILD_ENTITY}}**: {{BEHAVIOR}}
-{{/EACH}}
+  {{/EACH}}
+
 ---
+
 ## 🔄 State Machines
 
 {{#IF STATE_MACHINES}}
@@ -342,8 +374,9 @@ stateDiagram-v2
 
 #### Valid Transitions
 
-| From | To | Action | Guards | Side Effects |
-|------|----|--------|--------|--------------|
+| From | To  | Action | Guards | Side Effects |
+| ---- | --- | ------ | ------ | ------------ |
+
 {{#EACH TRANSITION}}
 | {{FROM}} | {{TO}} | {{ACTION}} | {{GUARDS}} | {{SIDE_EFFECTS}} |
 {{/EACH}}
@@ -351,14 +384,18 @@ stateDiagram-v2
 #### Invalid Transitions (Explicitly Forbidden)
 
 {{#EACH INVALID_TRANSITION}}
+
 - `{{FROM}}` → `{{TO}}`: {{REASON}}
-{{/EACH}}
+  {{/EACH}}
 
 {{/EACH}}
 {{ELSE}}
+
 - No state machines defined. Entities use simple status fields without formal transition rules.
-{{/IF}}
+  {{/IF}}
+
 ---
+
 ## �📦 Serialization Contracts
 
 ### API Representations
@@ -383,8 +420,8 @@ stateDiagram-v2
 {{RESPONSE_SCHEMA}}
 ```
 
-**Notes:** {{NOTES}}
----
+## **Notes:** {{NOTES}}
+
 {{/EACH}}
 
 ### Message Queue Payloads
@@ -397,13 +434,15 @@ stateDiagram-v2
   - Consumers: {{CONSUMERS}}
   - Schema:
     `json
-    {{SCHEMA}}
-    `
+{{SCHEMA}}
+`
     {{/EACH}}
     {{ELSE}}
 - No asynchronous payloads defined.
   {{/IF}}
+
 ---
+
 ## 🗂️ Reference Data & Seed Values
 
 {{#IF REFERENCE_DATA}}
@@ -416,7 +455,9 @@ stateDiagram-v2
 
 - No reference datasets recorded.
   {{/IF}}
+
 ---
+
 ## 🔐 Data Governance
 
 **Data Sensitivity Classification:** {{DATA_SENSITIVITY}}
@@ -427,8 +468,8 @@ stateDiagram-v2
 
 **Retention Policy:** {{RETENTION_POLICY}}
 
-**Compliance Scope:** {{COMPLIANCE_SCOPE}}
----
+## **Compliance Scope:** {{COMPLIANCE_SCOPE}}
+
 ## 🧪 Testing & Quality Gates
 
 ### Test Coverage by Entity
@@ -454,7 +495,9 @@ stateDiagram-v2
   {{ELSE}}
 - Fixtures and factories to be defined.
   {{/IF}}
+
 ---
+
 ## 🚀 Future Enhancements
 
 {{#IF ROADMAP_ITEMS}}
@@ -467,11 +510,11 @@ stateDiagram-v2
     {{ELSE}}
 - No future enhancements planned yet.
   {{/IF}}
+
 ---
+
 **Document Version:** 1.0
 
 **Last Updated:** {{GENERATION_DATE}}
 
 **Generated by:** AI Flow v1.0.0
-
-

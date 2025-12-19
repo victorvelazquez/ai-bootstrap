@@ -1,15 +1,17 @@
 # System Architecture
 
 > Technical architecture and design patterns for {{PROJECT_NAME}}
+
 ---
+
 ## 🏗️ Architecture Pattern
 
 **Pattern:** {{ARCHITECTURE_PATTERN}}
 
 ### Why This Pattern?
 
-{{ARCHITECTURE_RATIONALE}}
----
+## {{ARCHITECTURE_RATIONALE}}
+
 ## 🧱 System Components
 
 ### High-Level Architecture
@@ -21,72 +23,85 @@
 ### Component Overview
 
 {{#EACH COMPONENT}}
+
 #### {{COMPONENT_NAME}}
 
 **Purpose:** {{COMPONENT_PURPOSE}}
 
 **Responsibilities:**
 {{#EACH RESPONSIBILITY}}
+
 - {{RESPONSIBILITY_DESCRIPTION}}
-{{/EACH}}
+  {{/EACH}}
 
 **Dependencies:**
 {{#EACH DEPENDENCY}}
-- {{DEPENDENCY_NAME}}
-{{/EACH}}
 
-{{/EACH}}
----
+- {{DEPENDENCY_NAME}}
+  {{/EACH}}
+
+## {{/EACH}}
+
 ## 📊 Layer Structure
 
 {{#IF LAYERED_ARCHITECTURE}}
+
 ### Presentation Layer
+
 **Location:** `{{PRESENTATION_LAYER_PATH}}`
 
 **Responsibilities:**
+
 - HTTP request/response handling
 - Input validation
 - Route definitions
 - Middleware integration
 
 **Rules:**
+
 - ❌ No business logic
 - ❌ No direct database access
 - ✅ Thin controllers
 - ✅ Delegate to services
 
 ### Business Logic Layer
+
 **Location:** `{{BUSINESS_LAYER_PATH}}`
 
 **Responsibilities:**
+
 - Core business rules
 - Use case orchestration
 - Transaction management
 - Domain logic
 
 **Rules:**
+
 - ❌ No HTTP concerns
 - ❌ No database-specific code
 - ✅ Framework-agnostic
 - ✅ Testable in isolation
 
 ### Data Access Layer
+
 **Location:** `{{DATA_LAYER_PATH}}`
 
 **Responsibilities:**
+
 - Database operations
 - Query construction
 - Data mapping
 - Cache management
 
 **Rules:**
+
 - ❌ No business logic
 - ✅ Repository pattern
 - ✅ ORM abstraction
 - ✅ Transaction support
 
-{{/IF}}
----
+## {{/IF}}
+
 ## 🔄 Request Flow
 
 ### Typical Request Lifecycle
@@ -99,14 +114,18 @@
 
 {{#EACH FLOW_STEP}}
 {{STEP_NUMBER}}. **{{STEP_NAME}}**
-   - Component: {{COMPONENT}}
-   - Action: {{ACTION_DESCRIPTION}}
-   - Output: {{OUTPUT}}
-{{/EACH}}
+
+- Component: {{COMPONENT}}
+- Action: {{ACTION_DESCRIPTION}}
+- Output: {{OUTPUT}}
+  {{/EACH}}
+
 ---
+
 ## 🎯 Design Patterns
 
 {{#EACH DESIGN_PATTERN}}
+
 ### {{PATTERN_NAME}}
 
 **Purpose:** {{PATTERN_PURPOSE}}
@@ -114,12 +133,13 @@
 **Used In:** {{PATTERN_USAGE}}
 
 **Example:**
+
 ```{{LANGUAGE}}
 {{PATTERN_EXAMPLE}}
 ```
 
-{{/EACH}}
----
+## {{/EACH}}
+
 ## 📁 Project Structure
 
 ```
@@ -129,14 +149,18 @@
 ### Directory Descriptions
 
 {{#EACH DIRECTORY}}
+
 - **`{{DIR_PATH}}`** - {{DIR_DESCRIPTION}}
-{{/EACH}}
+  {{/EACH}}
+
 ---
+
 ## 🔌 Module Organization
 
 **Strategy:** {{MODULE_ORGANIZATION_STRATEGY}}
 
 {{#IF FEATURE_BASED}}
+
 ### Feature Modules
 
 Each feature is self-contained:
@@ -154,6 +178,7 @@ src/
 ```
 
 **Benefits:**
+
 - Clear boundaries
 - Easy to find related code
 - Supports team ownership
@@ -162,6 +187,7 @@ src/
 {{/IF}}
 
 {{#IF LAYER_BASED}}
+
 ### Layer-Based Organization
 
 Organized by technical layer:
@@ -176,8 +202,8 @@ src/
     {{ENTITY_EXAMPLE}}.repository.ts
 ```
 
-{{/IF}}
----
+## {{/IF}}
+
 ## 🔗 Dependency Management
 
 ### Dependency Injection
@@ -185,11 +211,13 @@ src/
 **Container:** {{DI_CONTAINER}}
 
 **Registration:**
+
 ```{{LANGUAGE}}
 {{DI_REGISTRATION_EXAMPLE}}
 ```
 
 **Usage:**
+
 ```{{LANGUAGE}}
 {{DI_USAGE_EXAMPLE}}
 ```
@@ -203,7 +231,9 @@ Both should depend on abstractions.
 Allowed: Controller → Service → Repository
 Not Allowed: Controller → Repository (bypasses service)
 ```
+
 ---
+
 ## 🌐 API Structure
 
 **Style:** {{API_STYLE}}
@@ -218,6 +248,7 @@ Not Allowed: Controller → Repository (bypasses service)
 **Purpose:** {{API_GATEWAY_PURPOSE}}
 
 **Configuration:**
+
 - Rate limiting: {{GATEWAY_RATE_LIMITING}}
 - Authentication: {{GATEWAY_AUTHENTICATION}}
 - Request routing: {{GATEWAY_ROUTING}}
@@ -225,8 +256,9 @@ Not Allowed: Controller → Repository (bypasses service)
 
 **Routes:**
 {{#EACH GATEWAY_ROUTE}}
+
 - **{{ROUTE_PATH}}** → {{TARGET_SERVICE}} ({{ROUTE_METHODS}})
-{{/EACH}}
+  {{/EACH}}
 
 {{ELSE}}
 **API Gateway:** Not used - Direct API access
@@ -238,6 +270,7 @@ Not Allowed: Controller → Repository (bypasses service)
 
 {{#IF SWAGGER_OPENAPI}}
 **Swagger/OpenAPI:**
+
 - Specification: `{{OPENAPI_SPEC_PATH}}`
 - UI endpoint: `{{SWAGGER_UI_URL}}`
 - Strategy: {{API_DOC_STRATEGY}} ({{#IF CODE_FIRST}}Code-First{{ELSE}}Design-First{{/IF}})
@@ -246,55 +279,63 @@ Not Allowed: Controller → Repository (bypasses service)
 
 {{#IF AUTO_GENERATE_DOCS}}
 **Example:**
+
 ```{{LANGUAGE}}
 {{API_DOC_EXAMPLE}}
 ```
+
 {{/IF}}
 {{/IF}}
 
 ### Endpoint Patterns
 
 {{#IF REST_API}}
+
 #### REST Conventions
 
-| Resource | Method | Endpoint | Description |
-|----------|--------|----------|-------------|
-| {{RESOURCE_NAME}} | GET | /{{API_VERSION}}/{{RESOURCE_PLURAL}} | List all |
-| {{RESOURCE_NAME}} | GET | /{{API_VERSION}}/{{RESOURCE_PLURAL}}/:id | Get one |
-| {{RESOURCE_NAME}} | POST | /{{API_VERSION}}/{{RESOURCE_PLURAL}} | Create |
-| {{RESOURCE_NAME}} | PUT/PATCH | /{{API_VERSION}}/{{RESOURCE_PLURAL}}/:id | Update |
-| {{RESOURCE_NAME}} | DELETE | /{{API_VERSION}}/{{RESOURCE_PLURAL}}/:id | Delete |
+| Resource          | Method    | Endpoint                                 | Description |
+| ----------------- | --------- | ---------------------------------------- | ----------- |
+| {{RESOURCE_NAME}} | GET       | /{{API_VERSION}}/{{RESOURCE_PLURAL}}     | List all    |
+| {{RESOURCE_NAME}} | GET       | /{{API_VERSION}}/{{RESOURCE_PLURAL}}/:id | Get one     |
+| {{RESOURCE_NAME}} | POST      | /{{API_VERSION}}/{{RESOURCE_PLURAL}}     | Create      |
+| {{RESOURCE_NAME}} | PUT/PATCH | /{{API_VERSION}}/{{RESOURCE_PLURAL}}/:id | Update      |
+| {{RESOURCE_NAME}} | DELETE    | /{{API_VERSION}}/{{RESOURCE_PLURAL}}/:id | Delete      |
 
 {{/IF}}
 
 {{#IF GRAPHQL}}
+
 #### GraphQL Schema
 
 ```graphql
 {{GRAPHQL_SCHEMA_EXAMPLE}}
 ```
 
-{{/IF}}
----
+## {{/IF}}
+
 ## 📦 External Dependencies
 
 ### Core Libraries
 
 {{#EACH CORE_LIBRARY}}
+
 - **{{LIBRARY_NAME}}** ({{LIBRARY_VERSION}})
   - Purpose: {{LIBRARY_PURPOSE}}
   - Critical: {{IS_CRITICAL}}
-{{/EACH}}
+    {{/EACH}}
 
 ### External Services
 
 {{#EACH EXTERNAL_SERVICE}}
+
 - **{{SERVICE_NAME}}**
   - Purpose: {{SERVICE_PURPOSE}}
   - Integration: {{INTEGRATION_METHOD}}
   - Fallback: {{FALLBACK_STRATEGY}}
-{{/EACH}}
+    {{/EACH}}
+
 ---
+
 ## ⚙️ Background Processing
 
 {{#IF BACKGROUND_JOBS_ENABLED}}
@@ -302,6 +343,7 @@ Not Allowed: Controller → Repository (bypasses service)
 
 **Job Types:**
 {{#EACH JOB_TYPE}}
+
 ### {{JOB_NAME}}
 
 - **Purpose:** {{JOB_PURPOSE}}
@@ -315,10 +357,12 @@ Not Allowed: Controller → Repository (bypasses service)
 **Dead Letter Queue:** {{#IF DLQ_ENABLED}}Enabled{{ELSE}}Disabled{{/IF}}
 
 **Monitoring:**
+
 - Dashboard: {{QUEUE_DASHBOARD}}
 - Alerts: {{QUEUE_ALERTS}}
 
 **Example:**
+
 ```{{LANGUAGE}}
 {{BACKGROUND_JOB_EXAMPLE}}
 ```
@@ -326,30 +370,37 @@ Not Allowed: Controller → Repository (bypasses service)
 {{ELSE}}
 **Background Processing:** Not implemented - All operations are synchronous
 {{/IF}}
+
 ---
+
 ## 🔌 Real-time Communication
 
 {{#IF REALTIME_ENABLED}}
+
 ### WebSockets
 
 **Enabled:** Yes
 
 **Use Cases:**
 {{#EACH WEBSOCKET_USE_CASE}}
+
 - {{USE_CASE_DESCRIPTION}}
-{{/EACH}}
+  {{/EACH}}
 
 **Implementation:**
+
 - Library: {{WEBSOCKET_LIBRARY}}
 - Protocol: {{WEBSOCKET_PROTOCOL}}
 - Authentication: {{WEBSOCKET_AUTH}}
 
 **Connection Management:**
+
 - Max connections: {{WEBSOCKET_MAX_CONNECTIONS}}
 - Heartbeat interval: {{WEBSOCKET_HEARTBEAT}}s
 - Reconnection strategy: {{WEBSOCKET_RECONNECTION}}
 
 **Example:**
+
 ```{{LANGUAGE}}
 {{WEBSOCKET_EXAMPLE}}
 ```
@@ -361,13 +412,16 @@ Not Allowed: Controller → Repository (bypasses service)
 
 **Use Cases:**
 {{#EACH SSE_USE_CASE}}
+
 - {{USE_CASE_DESCRIPTION}}
-{{/EACH}}
+  {{/EACH}}
 
 **Implementation:**
+
 ```{{LANGUAGE}}
 {{SSE_EXAMPLE}}
 ```
+
 {{ELSE}}
 **Enabled:** No
 {{/IF}}
@@ -375,7 +429,9 @@ Not Allowed: Controller → Repository (bypasses service)
 {{ELSE}}
 **Real-time Communication:** Not implemented
 {{/IF}}
+
 ---
+
 ## � File Storage
 
 {{#IF FILE_STORAGE_ENABLED}}
@@ -384,24 +440,28 @@ Not Allowed: Controller → Repository (bypasses service)
 **Provider:** {{FILE_STORAGE_PROVIDER}}
 
 **Configuration:**
+
 - Bucket/Container: {{FILE_STORAGE_BUCKET}}
 - Region: {{FILE_STORAGE_REGION}}
 - CDN: {{FILE_CDN_ENABLED}}
 
 **Allowed File Types:**
 {{#EACH ALLOWED_FILE_TYPE}}
+
 - {{FILE_TYPE}} (max: {{MAX_SIZE}})
-{{/EACH}}
+  {{/EACH}}
 
 **Max File Size:** {{MAX_FILE_SIZE}} MB
 
 **Upload Process:**
+
 1. Client requests presigned URL / upload endpoint
 2. File uploaded to {{FILE_STORAGE_PROVIDER}}
 3. Metadata stored in database
 4. {{#IF FILE_CDN_ENABLED}}CDN URL returned{{ELSE}}Direct URL returned{{/IF}}
 
 **Security:**
+
 - Presigned URLs: {{PRESIGNED_URL_EXPIRY}} expiry
 - Access control: {{FILE_ACCESS_CONTROL}}
 - Virus scanning: {{VIRUS_SCANNING_ENABLED}}
@@ -409,7 +469,9 @@ Not Allowed: Controller → Repository (bypasses service)
 {{ELSE}}
 **File Storage:** Not implemented
 {{/IF}}
+
 ---
+
 ## �📨 Message Broker Patterns
 
 {{#IF MESSAGE_BROKER}}
@@ -417,6 +479,7 @@ Not Allowed: Controller → Repository (bypasses service)
 
 **Patterns Used:**
 {{#EACH MESSAGE_PATTERN}}
+
 ### {{PATTERN_NAME}}
 
 **Type:** {{PATTERN_TYPE}} ({{#IF PUB_SUB}}Pub/Sub{{ELSE}}Queue{{/IF}})
@@ -425,15 +488,17 @@ Not Allowed: Controller → Repository (bypasses service)
 
 **Topics/Queues:**
 {{#EACH TOPIC_QUEUE}}
+
 - **{{NAME}}**: {{DESCRIPTION}}
   - Producers: {{PRODUCERS}}
   - Consumers: {{CONSUMERS}}
   - Retention: {{RETENTION}}
-{{/EACH}}
+    {{/EACH}}
 
 **Delivery Guarantees:** {{DELIVERY_GUARANTEES}} ({{#IF AT_LEAST_ONCE}}At-least-once{{ELSE}}{{#IF EXACTLY_ONCE}}Exactly-once{{ELSE}}At-most-once{{/IF}}{{/IF}})
 
 **Implementation:**
+
 ```{{LANGUAGE}}
 {{PATTERN_EXAMPLE}}
 ```
@@ -441,6 +506,7 @@ Not Allowed: Controller → Repository (bypasses service)
 {{/EACH}}
 
 **Error Handling:**
+
 - Dead letter queue: {{#IF DLQ_ENABLED}}Enabled{{ELSE}}Disabled{{/IF}}
 - Retry strategy: {{RETRY_STRATEGY}}
 - Max retries: {{MAX_RETRIES}}
@@ -448,7 +514,9 @@ Not Allowed: Controller → Repository (bypasses service)
 {{ELSE}}
 **Message Broker:** Not used
 {{/IF}}
+
 ---
+
 ## 🕸️ Service Mesh
 
 {{#IF SERVICE_MESH}}
@@ -457,6 +525,7 @@ Not Allowed: Controller → Repository (bypasses service)
 **Purpose:** {{SERVICE_MESH_PURPOSE}}
 
 **Features:**
+
 - Service discovery: {{SERVICE_DISCOVERY}}
 - Load balancing: {{MESH_LOAD_BALANCING}}
 - Traffic management: {{TRAFFIC_MANAGEMENT}}
@@ -464,14 +533,17 @@ Not Allowed: Controller → Repository (bypasses service)
 - Observability: {{MESH_OBSERVABILITY}}
 
 **Configuration:**
+
 ```yaml
-{{SERVICE_MESH_CONFIG_EXAMPLE}}
+{ { SERVICE_MESH_CONFIG_EXAMPLE } }
 ```
 
 {{ELSE}}
 **Service Mesh:** Not used (monolith or simple microservices)
 {{/IF}}
+
 ---
+
 ## 🔐 Security Architecture
 
 ### Authentication Flow
@@ -484,8 +556,8 @@ Not Allowed: Controller → Repository (bypasses service)
 
 **Type:** {{AUTHORIZATION_MODEL}}
 
-**Implementation:** See `specs/security.md` for details.
----
+## **Implementation:** See `specs/security.md` for details.
+
 ## 💾 Data Flow
 
 ### Create Operation
@@ -511,7 +583,9 @@ Not Allowed: Controller → Repository (bypasses service)
 ```
 {{DELETE_FLOW_DIAGRAM}}
 ```
+
 ---
+
 ## ⚡ Performance Considerations
 
 ### Caching Strategy
@@ -521,8 +595,9 @@ Not Allowed: Controller → Repository (bypasses service)
 
 **What We Cache:**
 {{#EACH CACHED_ITEM}}
+
 - {{ITEM_DESCRIPTION}} (TTL: {{TTL}})
-{{/EACH}}
+  {{/EACH}}
 
 **Invalidation:**
 {{CACHE_INVALIDATION_STRATEGY}}
@@ -534,23 +609,30 @@ No caching implemented yet.
 ### Database Optimization
 
 {{#EACH DB_OPTIMIZATION}}
+
 - {{OPTIMIZATION_DESCRIPTION}}
-{{/EACH}}
+  {{/EACH}}
+
 ---
+
 ## 🔧 Configuration Management
 
 **Strategy:** {{CONFIG_STRATEGY}}
 
 **Configuration Loaded From:**
 {{#EACH CONFIG_SOURCE}}
+
 - {{CONFIG_SOURCE_DESCRIPTION}}
-{{/EACH}}
+  {{/EACH}}
 
 **Per Environment:**
+
 - Development: {{DEV_CONFIG}}
 - Staging: {{STAGING_CONFIG}}
 - Production: {{PROD_CONFIG}}
+
 ---
+
 ## 📝 Error Handling Architecture
 
 ### Error Hierarchy
@@ -564,17 +646,22 @@ No caching implemented yet.
 ```
 {{ERROR_FLOW_DIAGRAM}}
 ```
+
 ---
+
 ## 🧪 Testing Architecture
 
 **Strategy:** See `docs/testing.md`
 
 **Testability Features:**
+
 - Dependency injection enables mocking
 - Services isolated from framework
 - Repository pattern abstracts database
 - DTOs validate at boundaries
+
 ---
+
 ## 📈 Scalability
 
 ### Horizontal Scaling
@@ -588,45 +675,50 @@ No caching implemented yet.
 ### Bottlenecks
 
 {{#EACH BOTTLENECK}}
+
 - **{{BOTTLENECK_NAME}}**: {{MITIGATION_STRATEGY}}
-{{/EACH}}
+  {{/EACH}}
+
 ---
+
 ## 🚀 Deployment Architecture
 
 See `docs/operations.md` for full deployment details.
 
 **Deployment Model:** {{DEPLOYMENT_MODEL}}
 
-**Infrastructure:** {{INFRASTRUCTURE}}
----
+## **Infrastructure:** {{INFRASTRUCTURE}}
+
 ## 📚 Architecture Decision Records (ADRs)
 
 {{#IF ADR_ENABLED}}
 Location: `specs/adr/`
 
 {{#EACH ADR}}
+
 - [ADR-{{ADR_NUMBER}}: {{ADR_TITLE}}](../specs/adr/{{ADR_FILE}})
-{{/EACH}}
+  {{/EACH}}
 
 {{ELSE}}
 ADRs will be added as significant architectural decisions are made.
 {{/IF}}
+
 ---
+
 ## 🔄 Future Considerations
 
 {{#EACH FUTURE_CONSIDERATION}}
+
 ### {{CONSIDERATION_TITLE}}
 
 {{CONSIDERATION_DESCRIPTION}}
 
 **When:** {{CONSIDERATION_TIMELINE}}
 
-{{/EACH}}
----
+## {{/EACH}}
+
 **Document Version:** 1.0
 
 **Last Updated:** {{GENERATION_DATE}}
 
 **Generated by:** AI Flow v1.0.0
-
-
