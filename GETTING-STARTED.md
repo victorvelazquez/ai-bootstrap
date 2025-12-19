@@ -59,7 +59,7 @@ Verify installation:
 
 ```bash
 ai-flow --version
-# Output: 2.1.2
+# Output: 2.1.3
 ```
 
 _Note: Package name is `ai-flow-dev`, but the CLI command remains `ai-flow`_
@@ -214,7 +214,7 @@ After answering, you'll see:
 
 After completion, you'll have professional documentation:
 
-**Backend projects** (17 documents):
+**Backend projects** (18 documents):
 
 ```
 my-awesome-api/
@@ -237,7 +237,7 @@ my-awesome-api/
 └── README.md                 # Project overview
 ```
 
-**Frontend projects** (12 documents), **Mobile projects** (15 documents), **Fullstack projects** (~20 documents) - see [Project Type Comparison](#project-type-comparison) for details.
+**Frontend projects** (16 documents), **Mobile projects** (14 documents), **Fullstack projects** (5 documents) - see [Project Type Comparison](#project-type-comparison) for details.
 
 #### Step 6: Phase 8 - Project Setup (Automatic)
 
@@ -975,7 +975,7 @@ Sets up configuration for **all 4 AI tools** simultaneously. Perfect for:
 
 The number and type of documents varies by project type.
 
-#### Backend Projects (17 documents)
+#### Backend Projects (18 documents)
 
 **Core Documents (4):**
 
@@ -984,7 +984,7 @@ The number and type of documents varies by project type.
 - `project-brief.md` - Business context, objectives
 - `README.md` - Project overview, setup
 
-**Technical Docs (9):**
+**Technical Docs (8):**
 
 - `docs/architecture.md` - System architecture, design patterns
 - `docs/data-model.md` - Entity catalog, ownership rules, relationships
@@ -1000,32 +1000,12 @@ The number and type of documents varies by project type.
 - `specs/security.md` - Authentication, authorization, compliance
 - `specs/configuration.md` - Environment variables, external services
 
-**Configuration (2):**
+**Configuration (4):**
 
 - `.env.example` - Environment variable template
-- Tool-specific configs (`.clauderules`, `.cursorrules`, etc.)
+- Tool-specific configs (`.clauderules`, `.cursorrules`, `copilot-instructions.md`)
 
-#### Frontend Projects (12 documents)
-
-**Core Documents (4):**
-
-- `AGENT.md`, `ai-instructions.md`, `project-brief.md`, `README.md`
-
-**Technical Docs (6):**
-
-- `docs/components.md` - Component architecture and patterns
-- `docs/state-management.md` - State patterns (Redux, Zustand, Context, etc.)
-- `docs/styling.md` - Styling guidelines, design system
-- `docs/api-integration.md` - API client, data fetching patterns
-- `docs/testing.md` - Testing strategy (unit, integration, e2e)
-- `docs/operations.md` - Build, deployment, performance
-
-**Specifications (2):**
-
-- `specs/configuration.md` - Environment config
-- `specs/accessibility.md` - A11y requirements
-
-#### Mobile Projects (15 documents)
+#### Frontend Projects (16 documents)
 
 **Core Documents (4):**
 
@@ -1033,13 +1013,36 @@ The number and type of documents varies by project type.
 
 **Technical Docs (9):**
 
+- `docs/components.md` - Component architecture and patterns
+- `docs/state-management.md` - State patterns (Redux, Zustand, Context, etc.)
+- `docs/styling.md` - Styling guidelines, design system
+- `docs/api-integration.md` - API client, data fetching patterns
+- `docs/testing.md` - Testing strategy (unit, integration, e2e)
+- `docs/operations.md` - Build, deployment, performance
+- `docs/error-handling.md` - Error strategy
+- `docs/pwa.md` - PWA configuration
+- `docs/performance.md` - Performance optimization
+
+**Specifications (3):**
+
+- `specs/configuration.md` - Environment config
+- `specs/accessibility.md` - A11y requirements
+- `specs/security.md` - Security specs
+
+#### Mobile Projects (14 documents)
+
+**Core Documents (4):**
+
+- `AGENT.md`, `ai-instructions.md`, `project-brief.md`, `README.md`
+
+**Technical Docs (8):**
+
 - `docs/architecture.md` - App architecture patterns
 - `docs/navigation.md` - Navigation structure (React Navigation, etc.)
 - `docs/state-management.md` - State patterns
 - `docs/offline-strategy.md` - Offline sync, caching
 - `docs/permissions.md` - Runtime permissions handling
 - `docs/native-features.md` - Native modules integration
-- `docs/code-standards.md` - Code conventions
 - `docs/testing.md` - Testing strategy
 - `docs/app-store.md` - App store configuration
 
@@ -1048,7 +1051,7 @@ The number and type of documents varies by project type.
 - `specs/build-configuration.md` - Build configs, CI/CD
 - `specs/deployment.md` - Deployment procedures
 
-#### Fullstack Projects (~20 documents)
+#### Fullstack Projects (5 documents)
 
 Combines backend + frontend documentation with fullstack-specific templates for shared files.
 
@@ -1057,6 +1060,10 @@ Combines backend + frontend documentation with fullstack-specific templates for 
 - Combined tech stack in `ai-instructions.md`
 - Combined business context in `project-brief.md`
 - Unified `AGENT.md` and `README.md`
+
+**Specifications (1):**
+
+- `specs/configuration.md` - Environment config
 
 **Backend + Frontend Docs:**
 

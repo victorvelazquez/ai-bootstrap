@@ -10,7 +10,7 @@ AI Flow is an interactive CLI that creates comprehensive professional documentat
 
 **Key Features:**
 
-- 🚀 Complete professional documentation (Backend: 14 docs, Frontend: 15 docs, Mobile: 13 docs, Fullstack: 4 docs)
+- 🚀 Complete professional documentation (Backend: 18 docs, Frontend: 16 docs, Mobile: 14 docs, Fullstack: 5 docs)
 - ⚡ **Two modes:** Interactive (90-120 min, full control) or Smart Auto-Suggest (15-25 min, 6 questions)
 - 🌍 Universal support - 12 languages, 60+ frameworks, 35+ ORMs (98% coverage)
 - 🤖 Multi-AI support with slash commands
@@ -37,7 +37,7 @@ Transforma tu idea en un proyecto listo para producción y documentado para IA e
 
 **Características:**
 
-- 🚀 Documentación profesional completa (Backend: 14 docs, Frontend: 15 docs, Mobile: 13 docs, Fullstack: 4 docs)
+- 🚀 Documentación profesional completa (Backend: 18 docs, Frontend: 16 docs, Mobile: 14 docs, Fullstack: 5 docs)
 - ⚡ **Dos modos:** Interactivo (90-120 min, control total) o Auto-Sugerido (15-25 min, 6 preguntas)
 - 🌍 Soporte universal - 12 lenguajes, 60+ frameworks, 35+ ORMs
 - 🤖 Compatible con Claude, Copilot, Cursor, Gemini
@@ -63,12 +63,11 @@ ai-flow init .
 Transforme sua ideia em um projeto pronto para produção e documentado para IA em minutos.
 **Características:**
 
-- 🚀 Documentação profissional completa (Backend: 14, Frontend: 15, Mobile: 13, Fullstack: 4 docs)
-- ⚡ **Dois modos:** Interativo (90-120 min, controle total) ou Auto-Sugestão (15-25 min, 6 perguntas)
+- 🚀 Documentação profissional completa (Backend: 18, Frontend: 16, Mobile: 14, Fullstack: 5 docs)
+- ⚡ **Dois modos:** Interactivo (90-120 min, controle total) ou Auto-Sugestão (15-25 min, 6 perguntas)
 - 🌍 Suporte universal - 12 linguagens, 60+ frameworks, 35+ ORMs
 - 🤖 Compatível com Claude, Copilot, Cursor, Gemini
 - 🔍 Detecção inteligente para projetos existentes (50-94% mais rápido)
-- ⏱️ Economize 10-20 horas por projetos existentes (50-94% mais rápido)
 - ⏱️ Economize 10-20 horas por projeto
 
 **Início Rápido:**
@@ -103,7 +102,7 @@ The result is interconnected documentation that guides AI assistants and human d
 
 - 🌍 **Universal Support** - 12 languages, 60+ frameworks, 35+ ORMs (98% coverage)
 - 🤖 **AI-Agnostic** - Claude, Copilot, Cursor, Gemini, any AI tool
-- 📚 **Professional Documentation** - Backend: 14, Frontend: 15, Mobile: 13, Fullstack: 4 docs
+- 📚 **Professional Documentation** - Backend: 18, Frontend: 16, Mobile: 14, Fullstack: 5 docs
 - ⚡ **Two Questionnaire Modes:**
   - **Interactive Mode:** Full control, 71 questions (90-120 min)
   - **Smart Auto-Suggest:** Only 6 critical questions, AI suggests best practices (15-25 min)
@@ -133,7 +132,7 @@ Or using uv (Python tool manager):
 uv tool install ai-flow-dev
 ```
 
-**Current version:** 2.1.2
+**Current version:** 2.1.3
 
 ---
 
@@ -339,13 +338,13 @@ After initialization, use these slash commands in your AI tool:
 
 ## 🎯 Generated Documentation
 
-**Backend** (14 docs): AGENT.md, ai-instructions.md, copilot-instructions.md, project-brief.md, README.md, plus 8 technical docs and 1 spec
+**Backend** (18 docs): AGENT.md, ai-instructions.md, copilot-instructions.md, project-brief.md, README.md, plus 11 technical docs and 2 specs
 
-**Frontend** (15 docs): AGENT.md, ai-instructions.md, project-brief.md, plus 9 technical docs and 3 specs
+**Frontend** (16 docs): AGENT.md, ai-instructions.md, project-brief.md, plus 10 technical docs and 3 specs
 
-**Mobile** (13 docs): AGENT.md, ai-instructions.md, project-brief.md, plus 8 technical docs and 2 specs
+**Mobile** (14 docs): AGENT.md, ai-instructions.md, project-brief.md, plus 8 technical docs and 3 specs
 
-**Fullstack** (4 docs): AGENT.md, ai-instructions.md, project-brief.md, README.md
+**Fullstack** (5 docs): AGENT.md, ai-instructions.md, project-brief.md, README.md, plus 1 spec
 
 ### 📁 Generated Structure
 
