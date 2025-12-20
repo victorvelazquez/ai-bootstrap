@@ -10,7 +10,7 @@ AI Flow is an interactive CLI that creates comprehensive professional documentat
 
 **Key Features:**
 
-- 🚀 Complete professional documentation (Backend: 15 docs, Frontend: 16 docs, Mobile: 14 docs, Fullstack: 4 docs)
+- 🚀 Complete professional documentation (Backend: 17 docs, Frontend: 16 docs, Mobile: 14 docs, Fullstack: 4 docs)
 - 🧠 **Smart Description Refinement:** Detects ambiguity and iteratively guides you to a professional project definition.
 - ⚡ **Two modes:** Interactive (90-120 min, full control) or Smart Auto-Suggest (15-25 min, 6 questions)
 - 🌍 Universal support - 12 languages, 60+ frameworks, 35+ ORMs (98% coverage)
@@ -38,7 +38,7 @@ Transforma tu idea en un proyecto listo para producción y documentado para IA e
 
 **Características:**
 
-- 🚀 Documentación profesional completa (Backend: 15 docs, Frontend: 16 docs, Mobile: 14 docs, Fullstack: 4 docs)
+- 🚀 Documentación profesional completa (Backend: 17 docs, Frontend: 16 docs, Mobile: 14 docs, Fullstack: 4 docs)
 - 🧠 **Refinamiento Inteligente:** Detecta ambigüedad y te guía iterativamente hacia una descripción profesional.
 - ⚡ **Dos modos:** Interactivo (90-120 min, control total) o Auto-Sugerido (15-25 min, 6 preguntas)
 - 🌍 Soporte universal - 12 lenguajes, 60+ frameworks, 35+ ORMs
@@ -65,7 +65,7 @@ ai-flow init .
 Transforme sua ideia em um projeto pronto para produção e documentado para IA em minutos.
 **Características:**
 
-- 🚀 Documentação profissional completa (Backend: 15, Frontend: 16, Mobile: 14, Fullstack: 4 docs)
+- 🚀 Documentação profissional completa (Backend: 17, Frontend: 16, Mobile: 14, Fullstack: 4 docs)
 - 🧠 **Refinamento Inteligente:** Detecta ambiguidade e guia você para uma descrição profissional.
 - ⚡ **Dois modos:** Interactivo (90-120 min, controle total) ou Auto-Sugestão (15-25 min, 6 perguntas)
 - 🌍 Suporte universal - 12 linguagens, 60+ frameworks, 35+ ORMs
@@ -105,7 +105,7 @@ The result is interconnected documentation that guides AI assistants and human d
 
 - 🌍 **Universal Support** - 12 languages, 60+ frameworks, 35+ ORMs (98% coverage)
 - 🤖 **AI-Agnostic** - Claude, Copilot, Cursor, Gemini, Antigravity, any AI tool
-- 📚 **Professional Documentation** - Backend: 15, Frontend: 16, Mobile: 14, Fullstack: 4 docs
+- 📚 **Professional Documentation** - Backend: 17, Frontend: 16, Mobile: 14, Fullstack: 4 docs
 - 🧠 **Smart Description Refinement** - AI detects vague inputs and helps you rich the context (WHO, WHAT, WHY).
 - ⚡ **Two Questionnaire Modes:**
   - **Interactive Mode:** Full control, all phases (90-120 min)
@@ -136,7 +136,7 @@ Or using uv (Python tool manager):
 uv tool install ai-flow-dev
 ```
 
-## **Current version:** 2.1.7
+## **Current version:** 2.1.8
 
 ## 🚀 Quick Start
 
@@ -338,7 +338,7 @@ After initialization, use these slash commands in your AI tool:
 
 ## 🎯 Generated Documentation
 
-**Backend** (15 docs): AGENT.md, ai-instructions.md, project-brief.md, plus 12 technical docs/specs.
+**Backend** (17 docs): AGENT.md, ai-instructions.md, project-brief.md, plus 14 technical docs/specs.
 
 **Frontend** (16 docs): AGENT.md, ai-instructions.md, project-brief.md, plus 13 technical docs/specs.
 

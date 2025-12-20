@@ -59,7 +59,7 @@ Verify installation:
 
 ```bash
 ai-flow --version
-# Output: 2.1.7
+# Output: 2.1.8
 ```
 
 _Note: Package name is `ai-flow-dev`, but the CLI command remains `ai-flow`_
@@ -236,7 +236,7 @@ my-awesome-api/
 └── README.md                 # Project overview
 ```
 
-**Backend projects** (15 documents), **Frontend projects** (16 documents), **Mobile projects** (14 documents), **Fullstack projects** (4 documents) - see [Project Type Comparison](#project-type-comparison) for details.
+**Backend projects** (17 documents), **Frontend projects** (16 documents), **Mobile projects** (14 documents), **Fullstack projects** (4 documents) - see [Project Type Comparison](#project-type-comparison) for details.
 
 #### Step 6: Phase 8 - Project Setup (Automatic)
 
