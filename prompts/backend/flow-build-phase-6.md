@@ -1,4 +1,4 @@
-## PHASE 6: Testing Strategy (15-25 min)
+## PHASE 6: Testing Strategy (15-20 min)
 
 > **Order for this phase:**
 >
@@ -482,11 +482,24 @@ Re-read file to refresh context before continuing.
 > ⚠️ **CRITICAL:** DO NOT generate README.md in this phase. README.md is ONLY generated in Phase 8 (step 8.5) after framework initialization.
 ---
 
+## 📝 Generated Documents
+
+After Phase 6, generate/update:
+- `docs/testing.md` - Testing strategy and quality gates
+
+---
+
+**Next Phase:** Phase 7 - Operations & Deployment (10-15 min)
+
+Read: `.ai-flow/prompts/backend/flow-build-phase-7.md`
+
+---
+
 **Last Updated:** 2025-12-20
 **Version:** 2.1.8
 
 ---
 
-## PHASE 7: Operations & Deployment (10 min)
+## PHASE 7: Operations & Deployment (10-15 min)
 
 ````

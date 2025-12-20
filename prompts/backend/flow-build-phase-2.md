@@ -533,6 +533,19 @@ Execute `read_file('docs/data-model.md')` to refresh context before continuing.
 
 ---
 
+## 📝 Generated Documents
+
+After Phase 2, generate/update:
+- `docs/data-model.md` - Database schema and entity relationships
+
+---
+
+**Next Phase:** Phase 3 - System Architecture (15-20 min)
+
+Read: `.ai-flow/prompts/backend/flow-build-phase-3.md`
+
+---
+
 **Last Updated:** 2025-12-20
 **Version:** 2.1.8
 

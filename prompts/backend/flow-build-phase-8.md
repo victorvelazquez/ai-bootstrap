@@ -26,18 +26,26 @@ This final phase will:
 🔍 Detecting current project state...
 ```
 
-**Auto-detect:**
+**⚠️ CRITICAL: Ignore AI Flow documentation files during detection:**
+- Files: `project-brief.md`, `ai-instructions.md`, `.env.example`
+- Directories: `.ai-flow/`, `docs/`, `specs/`
 
-- [ ] Check for existing source code (`src/`, `app/`, `lib/`, etc.)
-- [ ] Check for framework files (`nest-cli.json`, `manage.py`, `go.mod`, etc.)
-- [ ] Check for package managers (`package.json`, `requirements.txt`, `go.mod`, etc.)
-- [ ] Check for existing README.md (framework-generated or custom)
+**Auto-detect Checklist:**
 
-**Classification:**
+- [ ] **Functional Source Code:** Check for business logic files (`.ts`, `.py`, `.go`, `.js`, etc.) in `src/`, `app/`, `internal/` or root.
+- [ ] **Framework Configuration:** Check for `nest-cli.json`, `manage.py`, `go.mod`, `pom.xml`, `package.json`, etc.
+- [ ] **Package Manager Lockfiles:** Check for `package-lock.json`, `pnpm-lock.yaml`, `poetry.lock`, etc.
+- [ ] **Existing README.md:** Is there a README.md that was NOT created by AI Flow?
 
-- **New Project**: No source code, no framework files
-- **Initialized Framework**: Has framework files, has source code
-- **Existing Project**: Has source code but AI Flow docs were just created
+**Classification Rules (Strict Order):**
+
+1.  **New Project** (Offer Initialization): 
+    - root contains ONLY AI Flow docs and/or hidden folders like `.git`, `.github`, `.vscode`.
+    - NO `package.json`, NO `src/`, NO functional code files.
+2.  **Initialized Framework** (Skip Initialization):
+    - Root contains framework configs (`package.json`, `go.mod`, etc.) but `src/` is empty or only contains framework boilerplate.
+3.  **Existing Project** (Skip Initialization):
+    - Substantial functional source code already exists in the project.
 
 **Present Detection Results:**
 
@@ -47,7 +55,7 @@ This final phase will:
 Type: [New Project | Initialized Framework | Existing Project]
 
 Found:
-- Source directories: [list or none]
+- Functional code: [list non-AI Flow source files or none]
 - Framework files: [list or none]
 - Package manager: [npm/pip/go/etc. or none]
 - README.md: [exists: yes/no]

@@ -508,6 +508,21 @@ Re-read files to refresh context before continuing.
 ---
 ---
 
+---
+
+## 📝 Generated Documents
+
+After Phase 4, generate/update:
+- `specs/security.md` - Security policies and authentication details
+
+---
+
+**Next Phase:** Phase 5 - Development Standards (15-20 min)
+
+Read: `.ai-flow/prompts/backend/flow-build-phase-5.md`
+
+---
+
 **Last Updated:** 2025-12-20
 **Version:** 2.1.8
 

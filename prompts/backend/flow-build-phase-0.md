@@ -12,11 +12,9 @@
 
 Efficiently analyze existing projects using a **layered, incremental approach** that:
 
-- ✅ Minimizes context usage (50-75% reduction)
-- ✅ Supports ALL major backend languages and frameworks
-- ✅ Provides smart caching for instant re-runs
-- ✅ Allows selective deep analysis
 - ✅ Handles errors gracefully
+
+> ⚠️ **CRITICAL:** DO NOT generate README.md in this phase. README.md is ONLY generated in Phase 8 (step 8.5) after framework initialization.
 
 ### 🏗️ Analysis Architecture
 
@@ -1850,8 +1848,20 @@ Next Step: Project Scope Selection
 Press Enter to continue to Project Scope Selection...
 ```
 ---
-**After Phase 0 completes, ALWAYS proceed to Project Scope Selection before Phase 1.**
+
+## 📝 Generated Documents
+
+After Phase 0, generate/update:
+- `.ai-flow/cache/docs-analysis.json` - Cached analysis results (if existing project)
+
 ---
+
+**Next Phase:** Project Scope Selection (Transition to Phase 1)
+
+Read: `.ai-flow/prompts/backend/flow-build-phase-1.md`
+
+---
+
 **Last Updated:** 2025-12-20
 **Version:** 2.1.8
 

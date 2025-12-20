@@ -662,10 +662,23 @@ Re-read files to refresh context before continuing.
 
 ---
 
+## 📝 Generated Documents
+
+After Phase 5, generate/update:
+- `docs/code-standards.md` - Development practices and quality rules
+
+---
+
+**Next Phase:** Phase 6 - Testing Strategy (15-20 min)
+
+Read: `.ai-flow/prompts/backend/flow-build-phase-6.md`
+
+---
+
 **Last Updated:** 2025-12-20
 **Version:** 2.1.8
 
 ---
 
-## PHASE 6: Testing Strategy (10 min)
+## PHASE 6: Testing Strategy (15-20 min)
 

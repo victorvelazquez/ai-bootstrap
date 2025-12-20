@@ -580,9 +580,18 @@ The document has been created with all the information from Phase 1.
 **If user edits the file:**
 Execute `read_file('project-brief.md')` to refresh context before continuing.
 ---
-**Proceed to Phase 2 after document is generated and optionally reviewed.**
 
-> ⚠️ **CRITICAL:** DO NOT generate README.md in Phase 1. README.md is ONLY generated in Phase 8 (step 8.5) after framework initialization.
+## 📝 Generated Documents
+
+After Phase 1, generate/update:
+- `project-brief.md` - Core project discovery and requirements
+
+---
+
+**Next Phase:** Phase 2 - Data Architecture (15-20 min)
+
+Read: `.ai-flow/prompts/backend/flow-build-phase-2.md`
+
 ---
 
 **Last Updated:** 2025-12-20

@@ -741,6 +741,20 @@ Execute `read_file()` for both documents to refresh context before continuing.
 
 ---
 
+## 📝 Generated Documents
+
+After Phase 3, generate/update:
+- `docs/architecture.md` - Technical stack and patterns
+- `ai-instructions.md` - Instructions for AI agents
+
+---
+
+**Next Phase:** Phase 4 - Security & Authentication (15-20 min)
+
+Read: `.ai-flow/prompts/backend/flow-build-phase-4.md`
+
+---
+
 **Last Updated:** 2025-12-20
 **Version:** 2.1.8
 

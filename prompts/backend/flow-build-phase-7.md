@@ -1,4 +1,4 @@
-## PHASE 7: Operations & Deployment (10 min)
+## PHASE 7: Operations & Deployment (10-15 min)
 
 > **Order for this phase:** 7.1 → 7.2 → 7.3 → 7.4 → 7.4.1 → 7.5 → 7.6 → 7.7 → 7.7.1 → 7.7.2 → 7.8 → 7.9 → 7.9.1 → 7.9.2 → 7.9.3 → 7.9.4 → 7.10
 
@@ -943,134 +943,20 @@ Re-read files to refresh context before continuing.
 
 ---
 
-## **Proceed to final generation only after documents are validated.**
-
-## FINAL STEP: Generate Remaining Documents & Tool Configs
-
-### ⏸️ CHECKPOINT: Final Document Review
-
-```
-⏸️ CHECKPOINT: Review Generated Documents
-
-We have successfully generated the following documents across all phases:
-
-✅ project-brief.md (Phase 1)
-✅ docs/data-model.md (Phase 2)
-✅ docs/architecture.md (Phase 3)
-✅ ai-instructions.md (Phase 3)
-✅ specs/security.md (Phase 4)
-✅ docs/code-standards.md (Phase 5)
-✅ docs/testing.md (Phase 6)
-✅ docs/operations.md (Phase 7)
-✅ specs/configuration.md (Phase 7)
-✅ .env.example (Phase 7)
-
-Before generating the final documents (AGENT.md, README.md, API docs, etc.),
-do you want to review or edit any of these documents?
-
-A) ✅ All documents are correct, proceed with final generation
-B) 📝 I need to review/edit some documents (I'll wait)
-```
-
-**If user selects B:**
-
-```
-Perfect. Please review and edit any documents you need to change.
-When you're done, type "ready" and I'll re-read ALL documents
-to ensure the final generation uses the most up-to-date information.
-```
-
-## Then execute `read_file()` for ALL previously generated documents.
-
-### 📖 Loading Complete Context for Final Generation
-
-```
-📖 Re-reading all generated documents to ensure accuracy...
-
-✅ Re-reading project-brief.md
-✅ Re-reading docs/data-model.md
-✅ Re-reading docs/architecture.md
-✅ Re-reading ai-instructions.md
-✅ Re-reading specs/security.md
-✅ Re-reading docs/code-standards.md
-✅ Re-reading docs/testing.md
-✅ Re-reading docs/operations.md
-✅ Re-reading specs/configuration.md
-✅ Re-reading .env.example
-
-✅ Context fully loaded and updated!
-
-🎉 Now generating final 5 documents:
-
-1. docs/business-flows.md - Business process flows and mermaid diagrams
-2. docs/api.md - API endpoints and conventions reference
-3. docs/contributing.md - Contribution guidelines
-4. README.md - Project overview (requires all previous context)
-5. AGENT.md - Universal AI configuration (aggregates all docs)
-
-Plus tool-specific configurations:
-- .clauderules (if Claude selected)
-- .cursorrules (if Cursor selected)
-- .github/copilot-instructions.md (if Copilot selected)
-- .antigravityrules (if Antigravity selected)
-
-Generating...
-```
-
-### Transition to Phase 8
-
-All information from Phases 1-7 has been collected and documented.
-
-Phase 8 will handle:
-
-- Project state detection
-- Framework initialization (if needed)
-- Final documentation generation
-- README.md creation with intelligent merge
-- Tool-specific configurations
-
-**Phase 8 will be executed next to complete the AI Flow process.**
+### Phase 7 Completion
 
 ```
 ✅ Phase 7 Complete!
 
-Generated 3 documents successfully:
-
-Phase 7:
+Generated documents:
 ✅ docs/operations.md
 ✅ specs/configuration.md
 ✅ .env.example
----
-📊 Progress Summary:
 
-Phases 1-7 completed:
-✅ project-brief.md (Phase 1)
-✅ docs/data-model.md (Phase 2)
-✅ docs/architecture.md (Phase 3)
-✅ ai-instructions.md (Phase 3)
-✅ specs/security.md (Phase 4)
-✅ docs/code-standards.md (Phase 5)
-✅ docs/testing.md (Phase 6)
-✅ docs/operations.md (Phase 7)
-✅ specs/configuration.md (Phase 7)
-✅ .env.example (Phase 7)
+📝 Would you like to review these documents before proceeding to Phase 8?
 
-Remaining:
-⏭️  Phase 8: Project setup & final documentation
----
-🎯 Next: Phase 8 - Project Setup & Final Documentation
-
-Phase 8 will:
-- 🔍 Detect project state (new vs existing)
-- 🚀 Initialize framework (optional, for new projects)
-- 📝 Generate final docs (business-flows.md, api.md, contributing.md)
-- 📖 Generate AGENT.md (master documentation index)
-- 📄 Generate README.md (with intelligent merge if needed)
-- 🤖 Create tool-specific configs (based on AI selection)
-
-> ⚠️ **CRITICAL:** README.md MUST NOT exist yet. It will be generated in Phase 8 step 8.5 AFTER framework initialization to avoid conflicts.
-
-Continue to Phase 8? (yes/no)
+→ If yes: Edit the files and type "ready" when done.
+→ If no: Type "continue" to proceed to Phase 8.
 ```
 
 ---
