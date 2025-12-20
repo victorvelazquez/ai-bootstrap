@@ -16,14 +16,14 @@ Your mission is to guide the user through creating **comprehensive, production-r
 
 Buscar en el mensaje del usuario patrones como:
 
-- "fase 0", "fase 1", "fase 2", ..., "fase 9"
+- "fase 0", "fase 1", "fase 2", ..., "fase 10"
 - "phase 0", "phase 1", etc.
 - "ejecutar fase N"
 - "run phase N"
 
 ### Comportamiento
 
-**Si se detecta "fase N" (donde N = 0-9):**
+**Si se detecta "fase N" (donde N = 0-10):**
 
 1. **Validar que la fase existe para backend:**
    - Fase 0: Context Discovery (opcional, solo proyectos existentes)
@@ -36,6 +36,7 @@ Buscar en el mensaje del usuario patrones como:
    - Fase 7: Operations & Deployment
    - Fase 8: Project Setup & Final Documentation
    - Fase 9: Implementation Roadmap (opcional)
+   - Fase 10: User Stories Generation (opcional)
 
 2. **Si la fase es válida:**
    - Leer el archivo: `.ai-flow/prompts/backend/flow-build-phase-N.md`
@@ -45,14 +46,14 @@ Buscar en el mensaje del usuario patrones como:
 
 3. **Si la fase es inválida:**
    - Mostrar mensaje de error amigable
-   - Listar las fases válidas (0-9) con descripción de una línea
+   - Listar las fases válidas (0-10) con descripción de una línea
 
 **Si NO se detecta "fase N":**
 
 - Ejecutar el flujo completo normal (todas las fases en orden)
 - Comenzar con Mode Selection (Interactive vs Smart Auto-Suggest)
 - Continuar con Scope Selection (MVP/Production-Ready/Enterprise)
-- Ejecutar Phases 0-9 según corresponda
+- Ejecutar Phases 0-10 según corresponda
 
 ### Ejemplo de Lista de Fases Válidas
 
@@ -73,6 +74,7 @@ Si el usuario especifica una fase inválida, mostrar:
   /flow-build fase 7  - Operations & Deployment (deployment, monitoreo, logging)
   /flow-build fase 8  - Project Setup & Final Documentation (inicializar proyecto)
   /flow-build fase 9  - Implementation Roadmap (plan con Story Points - opcional)
+  /flow-build fase 10 - User Stories Generation (Gherkin AC & Test Cases - opcional)
 ---
 💡 Tip: Usa /flow-build sin argumentos para ejecutar todas las fases en orden.
 ```
@@ -368,6 +370,8 @@ Execute phases sequentially by reading each file in order:
 7. **Phase 6 (Testing Strategy):** Read `.ai-flow/prompts/backend/flow-build-phase-6-testing.md`
 8. **Phase 7 (Operations & Deployment):** Read `.ai-flow/prompts/backend/flow-build-phase-7-operations.md`
 9. **Phase 8 (Project Setup & Final Documentation):** Read `.ai-flow/prompts/backend/flow-build-phase-8.md`
+10. **Phase 9 (Implementation Roadmap):** Read `.ai-flow/prompts/backend/flow-build-phase-9.md`
+11. **Phase 10 (User Stories Generation):** Read `.ai-flow/prompts/backend/flow-build-phase-10.md`
 
 ### For Individual Phases
 
@@ -564,6 +568,26 @@ Read .ai-flow/prompts/backend/flow-build-phase-4-security.md and execute only Ph
 - Time estimates (1 dev, 2 devs, 3 devs)
 
 **Skip if:** You prefer to start coding immediately without a detailed roadmap
+---
+### Phase 10: User Stories Generation (Optional)
+
+**File:** `backend/flow-build-phase-10.md`
+**Duration:** 30-60 minutes
+**Key Steps:**
+
+- Load context from Phase 9 roadmap
+- Generate detailed User Stories for selected Epics/Features
+- Create Gherkin-style Acceptance Criteria (Given/When/Then)
+- Inherit technical tasks from roadmap
+- Generate QA Test Cases with specific data
+- Update roadmap with links to User Stories
+
+**Generates:**
+
+- `docs/user-stories/EP-XXX/HU-XXX-YYY.md` (User Story)
+- `docs/user-stories/EP-XXX/tests/TC-XXX-YYY.md` (Test Cases)
+
+**Skip if:** You don't need detailed user stories or Gherkin AC for your workflow
 ---
 ## 🚀 Quick Start Guide
 
@@ -842,7 +866,7 @@ Continue with Phase 8?
 
 A) ✅ Yes, continue to Phase 8 (recommended) - 10-15 min
    → Initialize project + Generate final docs
-   → Then option to continue to Phase 9 (roadmap)
+   → Then option to continue to Phase 9 (roadmap) and Phase 10 (user stories)
 
 B) No, I'll review documentation first
 
@@ -868,15 +892,18 @@ Your choice (A): __
 3. (Optional) Continue to Phase 9: Implementation Roadmap (15-30 min)
    → Generates complete implementation plan with Story Points
    → Includes Epics, Features, Tasks, and execution order
-4. Start implementing: /feature <feature-name>
+4. (Optional) Continue to Phase 10: User Stories Generation (30-60 min)
+   → Generates Gherkin AC, technical details, and QA test cases
+5. Start implementing: /feature <feature-name>
    → Implements features following your architecture
 
 💡 Tip: All phases are independent and re-executable.
 ---
 ```
 ---
+_Version: 4.1 (Phase 10 integrated - User Stories Generation with Gherkin AC)_
+_Last Updated: 2025-12-20_
 _Version: 4.0 (Phase 9 integrated - Implementation Roadmap with Story Points)_
-_Last Updated: 2025-12-09_
 _Version: 3.0 (Unified workflow: Phase 8 integrates project setup + final docs generation)_
 _AI Flow - Transform your idea into production-ready code in minutes_
 

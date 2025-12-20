@@ -409,5 +409,40 @@ PHASE 9 COMPLETE
 ├── Coverage: 100% (all components have [E][R][S][C][T][D])
 └── Ready for: /flow-dev-feature
 
-Next: Open docs/roadmap.md and start with EP-000
+Next: Open docs/roadmap.md and start with EP-000, or continue to Phase 10 for detailed User Stories.
+
+**OFFER PHASE 10:**
+
+```
+---
+✅ PHASE 9 COMPLETE: IMPLEMENTATION ROADMAP GENERATED
+---
+🎯 Roadmap created in docs/roadmap.md
+📊 Total Story Points: {{SP}}
+🏗️ Epics defined: {{EPICS_COUNT}}
+---
+🚀 Optional: Generate Detailed User Stories?
+---
+Phase 10 will convert your roadmap features into detailed User Stories with:
+
+✅ Gherkin-style Acceptance Criteria (Given/When/Then)
+✅ Functional, Error, Edge, and Security scenarios
+✅ Technical details inherited from patterns
+✅ Ready-to-use QA Test Cases with data
+✅ Definition of Done (DoD) checklist
+
+⏱️ Estimated time: 30-60 minutes
+
+Would you like to continue to Phase 10?
+
+A) ✅ Yes, generate User Stories now (recommended)
+   → Best for Sprint planning and QA alignment
+   → Will generate {{FEATURES_COUNT}} User Stories
+
+B) ⏭️ Skip for now (you can run Phase 10 later)
+   → You can start coding directly from roadmap
+   → Run Phase 10 anytime: /flow-build fase 10
+
+Your choice (A/B): __
+```
 ```

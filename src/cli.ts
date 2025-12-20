@@ -116,61 +116,61 @@ async function selectAITool(providedTool?: string): Promise<string[]> {
   );
   console.log(
     chalk.cyan('    ║') +
-      '                                                                   ' +
-      chalk.cyan('║')
+    '                                                                   ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      chalk.bold.cyan('          █████╗ ██╗    ███████╗██╗      ██████╗ ██╗    ██╗') +
-      '        ' +
-      chalk.cyan('║')
+    chalk.bold.cyan('          █████╗ ██╗    ███████╗██╗      ██████╗ ██╗    ██╗') +
+    '        ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      chalk.bold.cyan('         ██╔══██╗██║    ██╔════╝██║     ██╔═══██╗██║    ██║') +
-      '        ' +
-      chalk.cyan('║')
+    chalk.bold.cyan('         ██╔══██╗██║    ██╔════╝██║     ██╔═══██╗██║    ██║') +
+    '        ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      chalk.bold.cyan('         ███████║██║    █████╗  ██║     ██║   ██║██║ █╗ ██║') +
-      '        ' +
-      chalk.cyan('║')
+    chalk.bold.cyan('         ███████║██║    █████╗  ██║     ██║   ██║██║ █╗ ██║') +
+    '        ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      chalk.bold.cyan('         ██╔══██║██║    ██╔══╝  ██║     ██║   ██║██║███╗██║') +
-      '        ' +
-      chalk.cyan('║')
+    chalk.bold.cyan('         ██╔══██║██║    ██╔══╝  ██║     ██║   ██║██║███╗██║') +
+    '        ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      chalk.bold.cyan('         ██║  ██║██║    ██║     ███████╗╚██████╔╝╚███╔███╔╝') +
-      '        ' +
-      chalk.cyan('║')
+    chalk.bold.cyan('         ██║  ██║██║    ██║     ███████╗╚██████╔╝╚███╔███╔╝') +
+    '        ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      chalk.cyan('         ╚═╝  ╚═╝╚═╝    ╚═╝     ╚══════╝ ╚═════╝  ╚══╝╚══╝') +
-      '         ' +
-      chalk.cyan('║')
+    chalk.cyan('         ╚═╝  ╚═╝╚═╝    ╚═╝     ╚══════╝ ╚═════╝  ╚══╝╚══╝') +
+    '         ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      '                                                                   ' +
-      chalk.cyan('║')
+    '                                                                   ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      '           ' +
-      chalk.white('✨ From Idea to Production with AI Guidance') +
-      '             ' +
-      chalk.cyan('║')
+    '           ' +
+    chalk.white('✨ From Idea to Production with AI Guidance') +
+    '             ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      '                                                                   ' +
-      chalk.cyan('║')
+    '                                                                   ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ╚═══════════════════════════════════════════════════════════════════╝')
@@ -750,6 +750,7 @@ async function initializeProject(
         console.log(chalk.gray('    fase 7: Operations + Tools'));
         console.log(chalk.gray('    fase 8: Project Setup & Final Docs'));
         console.log(chalk.gray('    fase 9: Implementation Roadmap (opcional)'));
+        console.log(chalk.gray('    fase 10: User Stories Generation (opcional)'));
       } else {
         console.log(chalk.gray('\n  Fases disponibles (Frontend):'));
         console.log(chalk.gray('    fase 0: Context Discovery (proyectos existentes)'));
@@ -909,9 +910,8 @@ program
           const toolsText =
             config.aiTools.length === 1
               ? config.aiTools[0]
-              : `${config.aiTools.slice(0, -1).join(', ')} and ${
-                  config.aiTools[config.aiTools.length - 1]
-                }`;
+              : `${config.aiTools.slice(0, -1).join(', ')} and ${config.aiTools[config.aiTools.length - 1]
+              }`;
           console.log(chalk.cyan(`  1. Open your AI tool (${toolsText})`));
           console.log(chalk.cyan('  2. Run: /backend-flow-build (for backend documentation)'));
           console.log(chalk.cyan('  3. Run: /frontend-flow-build (for frontend documentation)'));
@@ -927,9 +927,8 @@ program
           const toolsText =
             config.aiTools.length === 1
               ? config.aiTools[0]
-              : `${config.aiTools.slice(0, -1).join(', ')} and ${
-                  config.aiTools[config.aiTools.length - 1]
-                }`;
+              : `${config.aiTools.slice(0, -1).join(', ')} and ${config.aiTools[config.aiTools.length - 1]
+              }`;
           console.log(chalk.cyan(`  1. Open your AI tool (${toolsText})`));
           console.log(chalk.cyan('  2. Run: /flow-build'));
         }
