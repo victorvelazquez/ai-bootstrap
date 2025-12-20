@@ -10,7 +10,7 @@ AI Flow is an interactive CLI that creates comprehensive professional documentat
 
 **Key Features:**
 
-- 🚀 Complete professional documentation (Backend: 17 docs, Frontend: 16 docs, Mobile: 14 docs, Fullstack: 4 docs)
+- 🚀 Complete professional documentation (Backend: 17 docs, Frontend: 15 docs, Mobile: 14 docs, Fullstack: 4 docs)
 - 🧠 **Smart Description Refinement:** Detects ambiguity and iteratively guides you to a professional project definition.
 - ⚡ **Two modes:** Interactive (90-120 min, full control) or Smart Auto-Suggest (15-25 min, 6 questions)
 - 🌍 Universal support - 12 languages, 60+ frameworks, 35+ ORMs (98% coverage)
@@ -38,7 +38,7 @@ Transforma tu idea en un proyecto listo para producción y documentado para IA e
 
 **Características:**
 
-- 🚀 Documentación profesional completa (Backend: 17 docs, Frontend: 16 docs, Mobile: 14 docs, Fullstack: 4 docs)
+- 🚀 Documentación profesional completa (Backend: 17 docs, Frontend: 15 docs, Mobile: 14 docs, Fullstack: 4 docs)
 - 🧠 **Refinamiento Inteligente:** Detecta ambigüedad y te guía iterativamente hacia una descripción profesional.
 - ⚡ **Dos modos:** Interactivo (90-120 min, control total) o Auto-Sugerido (15-25 min, 6 preguntas)
 - 🌍 Soporte universal - 12 lenguajes, 60+ frameworks, 35+ ORMs
@@ -65,7 +65,7 @@ ai-flow init .
 Transforme sua ideia em um projeto pronto para produção e documentado para IA em minutos.
 **Características:**
 
-- 🚀 Documentação profissional completa (Backend: 17, Frontend: 16, Mobile: 14, Fullstack: 4 docs)
+- 🚀 Documentação profissional completa (Backend: 17, Frontend: 15, Mobile: 14, Fullstack: 4 docs)
 - 🧠 **Refinamento Inteligente:** Detecta ambiguidade e guia você para uma descrição profissional.
 - ⚡ **Dois modos:** Interactivo (90-120 min, controle total) ou Auto-Sugestão (15-25 min, 6 perguntas)
 - 🌍 Suporte universal - 12 linguagens, 60+ frameworks, 35+ ORMs
@@ -372,6 +372,7 @@ project-root/
 ├── .claude/commands/           # Claude commands (if selected)
 ├── .cursor/commands/           # Cursor commands (if selected)
 ├── .gemini/commands/           # Gemini commands (if selected)
+├── .agent/workflows/           # Antigravity commands (if selected)
 └── ... (your project files)
 ```
 

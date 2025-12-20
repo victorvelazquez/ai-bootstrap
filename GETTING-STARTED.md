@@ -252,7 +252,7 @@ my-awesome-api/
    - `docs/contributing.md` - Git workflow and contribution guidelines
 4. 📖 **Creates AGENT.md** - Master documentation index (single source of truth for AI)
 5. 📄 **Generates README.md** - Comprehensive project overview (merges with framework README if exists)
-6. 🤖 **Creates AI tool configs** - `.clauderules`, `.cursorrules`, `.github/copilot-instructions.md`
+6. 🤖 **Creates AI tool configs** - `.clauderules`, `.cursorrules`, `.github/copilot-instructions.md`, `.antigravityrules`
 7. 🗺️ **Offers Phase 9** - Optional: Generate implementation roadmap with Story Points
 
 **Time:** 10-15 minutes (automated)
@@ -278,6 +278,7 @@ my-awesome-api/
 │   └── configuration.md
 ├── .clauderules         🤖 AI tool configs
 ├── .cursorrules
+├── .antigravityrules
 └── .ai-flow/            📦 Templates and prompts (internal)
 ```
 
@@ -805,6 +806,9 @@ You can also run phases individually:
 /flow-build fase 5 # Code Standards
 /flow-build fase 6 # Testing Strategy
 /flow-build fase 7 # Operations & Deployment
+/flow-build fase 8 # Project Setup & Final Docs
+/flow-build fase 9 # Implementation Roadmap (optional)
+/flow-build fase 10 # User Stories (optional)
 
 ```
 
@@ -846,7 +850,7 @@ You can also run phases individually:
 
 ### 2.3 Working with Different AI Tools
 
-AI Flow supports 4 AI tools with tool-specific configurations.
+AI Flow supports 5 AI tools with tool-specific configurations.
 
 #### Claude Code
 
@@ -956,13 +960,40 @@ ai-flow init . --ai gemini
 /flow-dev-work resume feature-notifications
 ```
 
+#### Antigravity
+
+**Setup:**
+
+```bash
+ai-flow init . --ai antigravity
+```
+
+**Generated files:**
+
+- `.antigravityrules` - Antigravity-specific configuration
+- `.agent/workflows/*.md` - Slash commands (workflow format)
+- `AGENT.md` - Universal config
+
+**Features:**
+
+- ✅ Workflow-based automation
+- ✅ Agentic task execution
+- ✅ Multi-step command chains
+
+**Usage:**
+
+```
+/flow-build                    # In Antigravity chat
+/flow-dev-feature "notification system"
+```
+
 #### All AI Tools (Maximum Compatibility)
 
 ```bash
 ai-flow init . --ai all
 ```
 
-Sets up configuration for **all 4 AI tools** simultaneously. Perfect for:
+Sets up configuration for **all 5 AI tools** simultaneously. Perfect for:
 
 - 🤝 Teams using different AI tools
 - 🔄 Experimenting with multiple tools
@@ -1000,7 +1031,7 @@ The number and type of documents varies by project type.
 **Configuration (4):**
 
 - `.env.example` - Environment variable template
-- Tool-specific configs (`.clauderules`, `.cursorrules`, `copilot-instructions.md`)
+- Tool-specific configs (`.clauderules`, `.cursorrules`, `copilot-instructions.md`, `.antigravityrules`)
 
 #### Frontend Projects (15 documents)
 
