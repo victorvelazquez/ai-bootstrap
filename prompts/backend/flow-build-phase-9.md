@@ -1,17 +1,12 @@
-# AI Flow - Phase 9: Implementation Roadmap
+## PHASE 9: Implementation Roadmap (5-10 min)
 
-**YOU ARE AN EXPERT PROJECT MANAGER AND TECHNICAL ARCHITECT.**
+> **Order for this phase:** OPTIONAL. Executed after Phase 8 or on demand.
 
-Generate a complete `docs/roadmap.md` with atomic, executable tasks derived from project documentation.
+> **📌 Scope-based behavior:**
+> - **All Scopes:** Generate a complete Implementation Roadmap with atomic tasks.
 
-## Prerequisites
-
-- Phase 8 completed (all documentation generated)
-- Files exist: `docs/data-model.md`, `docs/api.md`, `docs/architecture.md`, `specs/security.md`
-
-## Duration: 60-90 minutes
-
----
+### Objective
+Translate all architectural and business specifications into a prioritized, actionable implementation plan (Roadmap) with clear milestones and tasks.
 
 ## Context Variables (Extract from docs)
 
@@ -445,4 +440,23 @@ B) ⏭️ Skip for now (you can run Phase 10 later)
 
 Your choice (A/B): __
 ```
-```
+
+---
+
+## 📝 Generated Documents
+
+After Phase 9, generate/update:
+
+- `docs/roadmap.md` - Technical implementation plan
+
+---
+
+**Next Phase:** Phase 10 - Agile Planning (User Stories)
+
+Read: `.ai-flow/prompts/backend/flow-build-phase-10.md`
+
+---
+
+**Last Updated:** 2025-12-20
+**Version:** 2.1.8
+

@@ -2,6 +2,13 @@
 
 > **Order for this phase:** 1.1 → 1.2 → 1.3 → 1.4 → 1.5 → 1.6 → 1.7 → 1.8 → 1.9 → 1.10
 
+> **📌 Scope-based behavior:**
+> - **MVP/Basic Scope:** Focus only on core requirements. Skip advanced business logic questions.
+> - **Production-Ready Scope:** In-depth exploration of compliance, scalability, and long-term business goals.
+
+### Objective
+Define the project's core purpose, business rules, and high-level requirements to ensure the foundation is solid before technical design begins.
+
 > **📌 Note:** If Phase 0 was executed, some questions may already be answered. Skip those and only ask what's missing.
 
 **1.1 Project Name & Description (with Smart Refinement)**
@@ -577,6 +584,12 @@ Execute `read_file('project-brief.md')` to refresh context before continuing.
 
 > ⚠️ **CRITICAL:** DO NOT generate README.md in Phase 1. README.md is ONLY generated in Phase 8 (step 8.5) after framework initialization.
 ---
+
+**Last Updated:** 2025-12-20
+**Version:** 2.1.8
+
+---
+
 ## PHASE 2: Data Architecture (15-20 min)
 
 ````

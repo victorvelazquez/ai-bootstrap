@@ -1,15 +1,12 @@
-# AI Flow - Phase 10: User Stories Generation
+## PHASE 10: Agile Planning - User Stories (5-10 min)
 
-**YOU ARE AN EXPERT PRODUCT OWNER AND AGILE SPECIALIST.**
+> **Order for this phase:** OPTIONAL. Executed after Phase 9 or on demand.
 
-Generate detailed User Stories from the roadmap created in Phase 9.
+> **📌 Scope-based behavior:**
+> - **All Scopes:** Generate detailed User Stories for each milestone in the Roadmap.
 
-## Prerequisites
-
-- Phase 9 completed (`docs/roadmap.md` exists with context variables)
-- All Phase 1-8 documentation exists
-
-## Duration
+### Objective
+Break down technical roadmap tasks into user-centric Agile requirements (User Stories) to facilitate development, testing, and acceptance criteria definition.
 
 - All Epics: 30-60 minutes
 - One Epic: 5-10 minutes
@@ -321,3 +318,22 @@ Next steps:
 2. Start implementing: /flow-dev-feature HU-001-001
 3. Generate more: /flow-build fase 10 EP-XXX
 ```
+
+---
+
+## 📝 Generated Documents
+
+After Phase 10, generate/update:
+
+- `docs/user-stories/*.md` - Detailed Agile requirements
+- `docs/roadmap.md` - (updated with story links)
+
+---
+
+**CONGRATULATIONS!** Project documentation and planning are complete. 🚀
+
+---
+
+**Last Updated:** 2025-12-20
+**Version:** 2.1.8
+

@@ -481,5 +481,12 @@ Re-read file to refresh context before continuing.
 
 > ⚠️ **CRITICAL:** DO NOT generate README.md in this phase. README.md is ONLY generated in Phase 8 (step 8.5) after framework initialization.
 ---
+
+**Last Updated:** 2025-12-20
+**Version:** 2.1.8
+
+---
+
 ## PHASE 7: Operations & Deployment (10 min)
+
 ````

@@ -2,7 +2,9 @@
 
 > **Order for this phase:** 2.1 → 2.2 → 2.3 → 2.4 → 2.5 → 2.6 → 2.7
 
-> **📌 Note:** If Phase 0 detected database/entities from code, those will be pre-filled. Review and confirm.
+> **📌 Scope-based behavior:**
+> - **MVP/Basic Scope:** Focus only on essential entities and basic relationships.
+> - **Production-Ready Scope:** In-depth modeling including indexes, constraints, and audit fields.
 
 ### Objective
 
@@ -531,6 +533,9 @@ Execute `read_file('docs/data-model.md')` to refresh context before continuing.
 
 ---
 
-## **Proceed to Phase 3 after document is generated and optionally reviewed.**
+**Last Updated:** 2025-12-20
+**Version:** 2.1.8
+
+---
 
 ## PHASE 3: System Architecture (15-20 min)

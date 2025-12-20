@@ -1,9 +1,14 @@
-## PHASE 0: Context Discovery (Optional - Existing Projects)
+## PHASE 0: Context Discovery (2-5 min)
 
-> **This phase is ONLY for existing projects that already have code/documentation.**
-> **If starting a new project from scratch, skip directly to Project Scope Selection.**
 
-### 🎯 Objective
+> **Order for this phase:** ALWAYS executed FIRST if an existing project is detected. Skip ONLY for new projects.
+
+> **📌 Scope-based behavior:**
+> - **Interactive Mode:** Ask user for permission to scan files layer by layer.
+> - **Autonomous Mode:** Scan all layers automatically and present the final report.
+
+### Objective
+
 
 Efficiently analyze existing projects using a **layered, incremental approach** that:
 
@@ -1811,7 +1816,8 @@ Progress: 24 of 30 files analyzed (80% success rate)
 4. **Context limit:** Stop analysis, use partial results
 5. **Network timeout:** (if remote files) Retry with backoff
 ---
-## 🎯 Summary: Phase 0 Complete
+### Phase 0 Output
+
 
 ```
 ---
@@ -1846,7 +1852,9 @@ Press Enter to continue to Project Scope Selection...
 ---
 **After Phase 0 completes, ALWAYS proceed to Project Scope Selection before Phase 1.**
 ---
-## PHASE 1: Discovery & Business (15-20 min)
+**Last Updated:** 2025-12-20
+**Version:** 2.1.8
+
 
 
 

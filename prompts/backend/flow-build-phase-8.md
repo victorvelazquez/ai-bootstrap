@@ -1,11 +1,12 @@
-# 🏆 Phase 8: Project Setup & Final Documentation
+## PHASE 8: Project Setup & Final Documentation (10-15 min)
 
-**Context:** Phases 1-7 have collected all project information. Now we'll initialize the framework (if needed) and generate all final documentation.
+> **Order for this phase:** MUST be executed after Phase 7.
 
-**Duration:** 10-15 minutes
+> **📌 Scope-based behavior:**
+> - **All Scopes:** Detect project state, initialize optional framework, and generate final documentation.
 
-**Goal:** Set up the project structure and create comprehensive documentation that consolidates all information from previous phases.
----
+### Objective
+Initialize the project structure (if starting from scratch) and consolidate all collected information into comprehensive documentation (README, API specs, contributing guides).
 ## 📋 Phase 8 Overview
 
 This final phase will:
@@ -1377,11 +1378,23 @@ Happy coding! 🚀
 ---
 ```
 ---
-**CONTINUE TO:** Phase 9 (optional) or End
 
-**SUCCESS:** Project fully documented and ready for development! 🚀
-```
+## 📝 Generated Documents
 
+After Phase 8, generate/update:
 
+- `README.md` - Main project documentation
+- `docs/api.md` - API reference
+- `docs/contributing.md` - Contribution guidelines
+- `docs/business-flows.md` - Visualized business logic
 
+---
 
+**Next Phase:** Phase 9 - Project Roadmap (Post-Documentation)
+
+Read: `.ai-flow/prompts/backend/flow-build-phase-9.md`
+
+---
+
+**Last Updated:** 2025-12-20
+**Version:** 2.1.8
