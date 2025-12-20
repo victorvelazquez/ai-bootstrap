@@ -236,7 +236,7 @@ my-awesome-api/
 └── README.md                 # Project overview
 ```
 
-**Backend projects** (17 documents), **Frontend projects** (16 documents), **Mobile projects** (14 documents), **Fullstack projects** (4 documents) - see [Project Type Comparison](#project-type-comparison) for details.
+**Backend projects** (17 documents), **Frontend projects** (16 documents), **Mobile projects** (14 documents), **Fullstack projects** (5 documents) - see [Project Type Comparison](#project-type-comparison) for details.
 
 #### Step 6: Phase 8 - Project Setup (Automatic)
 
