@@ -1,12 +1,12 @@
 ## PHASE 7: Operations & Deployment (10 min)
 
-> **Order for this phase:** 7.1 → 7.2 → 7.3 → 7.4 → 7.4.1 → 7.5 → 7.6 → 7.7 → 7.7.1 → 7.7.2 → 7.8 → 7.9 → 7.9.1 → 7.9.2 → 7.9.3 → 7.9.4 → 7.10 → 7.11
+> **Order for this phase:** 7.1 → 7.2 → 7.3 → 7.4 → 7.4.1 → 7.5 → 7.6 → 7.7 → 7.7.1 → 7.7.2 → 7.8 → 7.9 → 7.9.1 → 7.9.2 → 7.9.3 → 7.9.4 → 7.10
 
 > **📌 Scope-based behavior:**
 >
-> - **MVP:** Ask 7.1-7.4 only (deployment basics), skip 7.5-7.11 (monitoring, scaling, backups), mark as "TBD"
-> - **Production-Ready:** Ask 7.1-7.8, simplify 7.9-7.11 (advanced monitoring and scaling)
-> - **Enterprise:** Ask all questions 7.1-7.11 with emphasis on reliability and disaster recovery
+> - **MVP:** Ask 7.1-7.4 only (deployment basics), skip 7.5-7.10 (monitoring, scaling, backups), mark as "TBD"
+> - **Production-Ready:** Ask 7.1-7.8, simplify 7.9-7.10 (advanced monitoring and resilience)
+> - **Enterprise:** Ask all questions 7.1-7.10 with emphasis on reliability and disaster recovery
 
 ### Objective
 
@@ -1012,6 +1012,7 @@ Plus tool-specific configurations:
 - .clauderules (if Claude selected)
 - .cursorrules (if Cursor selected)
 - .github/copilot-instructions.md (if Copilot selected)
+- .antigravityrules (if Antigravity selected)
 
 Generating...
 ```
@@ -1074,148 +1075,22 @@ Continue to Phase 8? (yes/no)
 
 ---
 
-## EXECUTION CHECKLIST FOR AI ASSISTANT
+## 📝 Generated Documents
 
-When executing this master prompt:
+After Phase 7, generate/update:
 
-**PHASE 0 (Existing Projects Only):**
-
-- [ ] Check if project has existing code/documentation
-- [ ] Search for AI instruction files (copilot-instructions.md, .clauderules, .cursorrules, AGENT.md, etc.)
-- [ ] Search for README.md, package.json, and config files
-- [ ] **Perform deep code analysis:**
-  - [ ] Recursively scan source directories (src/, app/, lib/, modules/)
-  - [ ] Count files by type (controllers, services, entities, DTOs, etc.)
-  - [ ] Identify architecture pattern (feature-based, layer-based, modular, hybrid)
-  - [ ] **Parse source code files for AST-based analysis:**
-    - [ ] Detect decorators (@Controller, @Get, @Post for NestJS; @app.get() for FastAPI)
-    - [ ] Extract API endpoints (method, path, parameters, middleware)
-    - [ ] Identify services and dependency injection patterns
-    - [ ] Detect error handling patterns
-  - [ ] **Analyze database schemas:**
-    - [ ] Parse Prisma schema.prisma (models, relationships, indexes)
-    - [ ] Parse TypeORM entities (@Entity, @Column, relationships)
-    - [ ] Parse SQLAlchemy models
-    - [ ] Extract complete entity definitions with fields and relationships
-  - [ ] **Analyze dependencies:**
-    - [ ] Extract exact versions from package.json/requirements.txt/etc.
-    - [ ] Identify framework, ORM, validation, auth, testing libraries
-    - [ ] Detect security-related packages
-  - [ ] **Detect code patterns:**
-    - [ ] Dependency injection usage
-    - [ ] Error handling implementation
-    - [ ] Validation patterns (DTOs, schemas)
-    - [ ] Logging setup
-    - [ ] Testing configuration
-    - [ ] Caching strategies
-    - [ ] Background job systems
-- [ ] Present detailed detection results (0.2) including:
-  - [ ] Architecture pattern detected
-  - [ ] Complete list of API endpoints with details
-  - [ ] All entities with schemas and relationships
-  - [ ] Dependencies with versions
-  - [ ] Code quality indicators
-- [ ] **Generate proactive suggestions (0.2.1):**
-  - [ ] Analyze code for security gaps (validation, rate limiting, CORS, etc.)
-  - [ ] Identify architecture improvements
-  - [ ] Detect documentation gaps
-  - [ ] Suggest testing improvements
-  - [ ] Recommend performance optimizations
-  - [ ] Present suggestions with actions and impacts
-- [ ] **Offer export option (0.3):**
-  - [ ] Ask if user wants to export analysis to JSON
-  - [ ] If yes, create .ai-flow/cache/docs-analysis.json with complete analysis
-- [ ] Let user choose: A) Use detected info, B) Start fresh, C) Review/edit detected info
-- [ ] **Handle suggestions:**
-  - [ ] If user selected A (address during build), integrate suggestions into relevant phases
-  - [ ] If user selected B (save for later), create suggestions.md file
-  - [ ] If user selected C (skip), continue without changes
-- [ ] Pre-populate answers based on detected information
-- [ ] Mark questions that still need answers
-
-**PHASES 1-7 (All Projects):**
-
-- [ ] Execute phases 1-7 in exact order
-- [ ] **SKIP questions already answered** from Phase 0 detection (existing projects)
-- [ ] Ask remaining questions ONE BY ONE (wait for answer)
-- [ ] Wait for user response before proceeding
-- [ ] Provide recommendations (⭐🔥⚡🏆)
-- [ ] Offer multiple choice where applicable
-- [ ] Summarize each phase for confirmation
-- [ ] Collect ALL required information
-- [ ] Generate documents **incrementally** after each phase
-- [ ] Ask for user validation after each document generation
-- [ ] Re-read generated documents at start of each new phase
-- [ ] Perform final checkpoint before generating AGENT.md and README.md
-- [ ] Re-read ALL documents before final generation to ensure accuracy
-- [ ] Use templates from `.ai-flow/templates/`
-- [ ] Create tool-specific configs based on AI selection
-- [ ] Validate no placeholders remain
-- [ ] Provide clear next steps
-
-**DO NOT:**
-
-- ❌ Skip Phase 0 detection for existing projects
-- ❌ Skip deep code analysis - always perform comprehensive AST-based parsing when code exists
-- ❌ Present superficial analysis - include detailed endpoints, entities, and patterns
-- ❌ Ignore proactive suggestions - always generate and present improvement opportunities
-- ❌ Ask questions already answered by detected files or code analysis
-- ❌ Ignore existing AI instruction files
-- ❌ Skip questions or phases
-- ❌ Assume answers without asking (when info is not detected)
-- ❌ Generate ALL documents at the end (generate incrementally!)
-- ❌ Skip document validation after generation
-- ❌ Forget to re-read documents before using their info
-- ❌ Generate final documents without re-reading all previous docs
-- ❌ Leave placeholder text in final documents
-- ❌ Skip exporting analysis JSON if user requested it
-- ❌ Rush through the analysis - thoroughness saves time later
-
-**ESTIMATED TIME:**
-
-**New Projects:**
-
-- Phase 1: 15-20 min
-- Phase 2: 15-20 min
-- Phase 3: 15-20 min
-- Phase 4: 15-20 min
-- Phase 5: 15-20 min
-- Phase 6: 10 min
-- Phase 7: 10 min
-- **Total: 90-120 minutes**
-
-**Existing Projects (with Phase 0 detection):**
-
-- Phase 0: 10-20 min (deep code analysis + suggestions + review)
-  - File detection: 2-3 min
-  - Deep code analysis (AST parsing, schema extraction): 5-10 min
-  - Generating suggestions: 2-3 min
-  - User review and export: 1-4 min
-- Phases 1-7: 30-60 min (only missing questions)
-- **Total: 40-80 minutes** (40-60% time saved!)
-
-## This is an investment that will save 10-20 hours over the project lifecycle.
-
-**EXECUTION FLOW:**
-
-1. **START:** User runs `/flow-build`
-2. **DETECT:** Check for existing project files (Phase 0)
-   - If existing files found → Run Phase 0 deep analysis:
-     - 0.1: Deep Code Analysis (file structure, AST parsing, schema extraction, pattern detection)
-     - 0.2: Present Detailed Detection Results (architecture, endpoints, entities, dependencies, code quality)
-     - 0.2.1: Generate Proactive Suggestions (security, architecture, documentation, testing, performance)
-     - 0.3: Export Analysis Results (optional JSON export)
-     - 0.4: Load Existing Context (pre-populate answers)
-   - If no files found → Skip to Phase 1
-3. **EXECUTE:** Run Phases 1-7 with pre-populated answers (if any)
-   - Integrate suggestions from Phase 0 into relevant phases if user selected option A
-4. **GENERATE:** Create documents incrementally with validation
-5. **COMPLETE:** Final checkpoint and remaining documents
+- `docs/operations.md` - Operations and deployment guide
+- `specs/configuration.md` - Configuration specification  
+- `.env.example` - Environment variables template
 
 ---
 
-**BEGIN EXECUTION when user runs `/flow-build`**
+**Next Phase:** Phase 8 - Project Setup & Final Documentation
 
-```
+Read: `.ai-flow/prompts/backend/flow-build-phase-8.md`
 
-```
+---
+
+**Last Updated:** 2025-12-20
+
+**Version:** 2.1.8

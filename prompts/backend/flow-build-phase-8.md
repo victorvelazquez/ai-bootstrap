@@ -916,10 +916,10 @@ The API will be available at `http://localhost:3000`
 
 ````
 
-**📝 Action:** Write the complete file to `.ai-flow/README.md`
+**📝 Action:** Write the complete file to `README.md` (project root)
 
 ```
-✅ Generated: .ai-flow/README.md
+✅ Generated: README.md
    [If merged] Merged with framework's setup instructions
 ```
 ---
@@ -1062,12 +1062,49 @@ Master index: `.ai-flow/AGENT.md`
 [Extract from code-standards.md]
 ```
 
+### If Antigravity selected:
+
+**Create `.antigravityrules`:**
+
+```markdown
+# Antigravity AI Configuration
+
+Project uses AI Flow documentation in `.ai-flow/` directory.
+
+## Documentation Index
+
+See `.ai-flow/AGENT.md` for complete document list.
+
+## Quick Reference
+
+- Tech Stack: [from Phase 3]
+- Architecture: `docs/architecture.md`
+- Code Standards: `docs/code-standards.md`
+- API Conventions: `docs/api.md`
+
+## Workflow Commands
+
+- `/flow-build` - Generate documentation
+- `/flow-dev-feature` - Create new features
+- `/flow-dev-fix` - Fix bugs
+- `/flow-dev-commit` - Automate commits
+
+## Code Generation Rules
+
+[Extract key rules from ai-instructions.md]
+
+## Testing Requirements
+
+[Extract from docs/testing.md]
+```
+
 **📝 Action:** Generate the tool-specific config files based on selection:
 
 - If Claude → Write `.clauderules`
 - If Cursor → Write `.cursorrules`
 - If Copilot → Write `.github/copilot-instructions.md`
-- If "All" → Write all three files
+- If Antigravity → Write `.antigravityrules`
+- If "All" → Write all four files
 
 ```
 ✅ Generated tool-specific configs:
@@ -1133,7 +1170,7 @@ Phase 8:
 ✅ README.md merged with framework's setup instructions
 
 Tool-specific configs:
-✅ [List generated configs: .clauderules, .cursorrules, .github/copilot-instructions.md]
+✅ [List generated configs: .clauderules, .cursorrules, .github/copilot-instructions.md, .antigravityrules]
 ---
 📁 Project Structure:
 ```
@@ -1183,7 +1220,7 @@ Next steps:
 - AGENT.md is the **single source of truth** for AI context
 
 🤖 **AI Assistant Usage:**
-Your AI assistant (Claude, Cursor, Copilot) will now:
+Your AI assistant (Claude, Cursor, Copilot, Antigravity) will now:
 
 - ✅ Understand complete project context
 - ✅ Follow your architecture patterns
@@ -1248,7 +1285,8 @@ When executing Phase 8:
 - [ ] Create .clauderules (if Claude)
 - [ ] Create .cursorrules (if Cursor)
 - [ ] Create .github/copilot-instructions.md (if Copilot)
-- [ ] Create all three (if "All")
+- [ ] Create .antigravityrules (if Antigravity)
+- [ ] Create all four (if "All")
 
 **8.7 Final Validation:**
 
