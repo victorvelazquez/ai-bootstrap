@@ -181,7 +181,7 @@ async function selectAITool(providedTool?: string): Promise<string[]> {
     chalk.gray('    ────────────────────────────────────────────────────────────────────')
   );
   console.log(chalk.gray(`    Working Directory: ${process.cwd()}`));
-  console.log(chalk.gray(`    Version: 2.1.9`));
+  console.log(chalk.gray('    Version: 2.1.9'));
   console.log('\n');
   console.log(chalk.white('    🤖 Select your AI development tool:'));
   console.log(
@@ -796,7 +796,7 @@ program
   .command('init')
   .description('Initialize AI Flow in current directory')
   .argument('[path]', 'Target directory (defaults to current directory)', '.')
-  .option('--ai <tool>', 'AI tool to use (claude, cursor, copilot, gemini, all)')
+  .option('--ai <tool>', 'AI tool to use (claude, cursor, copilot, gemini, antigravity, all)')
   .option('--type <type>', 'Project type (backend, frontend, fullstack, mobile)')
   .option('--name <name>', 'Project name (skip interactive prompt)')
   .option('--description <desc>', 'Project description (skip interactive prompt)')
