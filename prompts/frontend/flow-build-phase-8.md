@@ -17,10 +17,15 @@ This final phase will:
 5. **Generate README.md** (with intelligent merge if needed)
 6. **Create tool-specific configs** (based on AI tool selection)
 ---
+// turbo
 ## 8.1: Project State Detection
 
 ```
 🔍 Detecting current project state...
+
+**⚠️ CRITICAL: Ignore AI Flow documentation and Meta files during detection:**
+- Files: project-brief.md, ai-instructions.md, AGENT.md, .env.example, .cursorrules, .clauderules, .geminirules
+- Directories: .ai-flow/, .agent/, docs/, specs/
 ```
 
 **Auto-detect:**
@@ -853,9 +858,15 @@ When executing Phase 8:
 
 **ESTIMATED TIME:** 10-15 minutes
 ---
-**CONTINUE TO:** End (Phase 8 is final phase)
+**Next Phase:** Phase 9 - Project Roadmap (Post-Documentation)
 
-**SUCCESS:** Project fully documented and ready for development! 🚀
+Read: `.ai-flow/prompts/frontend/flow-build-phase-9.md`
+
+---
+
+**Last Updated:** 2025-12-21
+**Version:** 2.1.9
+
 
 
 
