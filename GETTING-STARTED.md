@@ -59,7 +59,7 @@ Verify installation:
 
 ```bash
 ai-flow --version
-# Output: 2.2.0
+# Output: 2.2.3
 ```
 
 _Note: Package name is `ai-flow-dev`, but the CLI command remains `ai-flow`_
@@ -236,7 +236,7 @@ my-awesome-api/
 └── README.md                 # Project overview
 ```
 
-**Backend projects** (17 documents), **Frontend projects** (15 documents), **Mobile projects** (13 documents), **Fullstack projects** (4 documents) - see [Project Type Comparison](#project-type-comparison) for details.
+**Backend projects** (17 documents), **Frontend projects** (15 documents), **Mobile projects** (13 documents), **Fullstack projects** (30+ documents) - see [Project Type Comparison](#project-type-comparison) for details.
 
 #### Step 6: Phase 8 - Project Setup (Automatic)
 
@@ -680,7 +680,16 @@ After initialization, you have access to **16+ slash commands**:
 > **Target Audience:** Regular users, project maintainers
 > **Goal:** Master everyday AI Flow workflows
 
-### 2.1 New vs Existing Projects
+### 1.4 Agent Mode: Proactive Execution 🚀
+
+Starting with v2.2.3, AI Flow enforces **Agent Mode** across all workflows. This means:
+- **No more planning loops:** Assistants won't ask "Would you like me to start Step 1?". They will just do it.
+- **Tool-First:** Assistants are strictly instructed to use tools (`read_file`, `write_file`, `run_command`) immediately.
+- **Workflow-Driven:** The interaction is driven by our master prompts, ensuring the AI stays on track without human micro-management.
+
+---
+
+### Part 2: Working with Existing Projects 🔍
 
 AI Flow adapts to your project state with **3-layer smart detection**.
 

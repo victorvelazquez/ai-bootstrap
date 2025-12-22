@@ -10,13 +10,14 @@ AI Flow is an interactive CLI that creates comprehensive professional documentat
 
 **Key Features:**
 
-- 🚀 Complete professional documentation (Backend: 17 docs, Frontend: 15 docs, Mobile: 13 docs, Fullstack: 4 docs)
+- 🚀 Complete professional documentation (Backend: 17 docs, Frontend: 15 docs, Mobile: 13 docs, Fullstack: 30+ docs)
 - 🧠 **Smart Description Refinement:** Detects ambiguity and iteratively guides you to a professional project definition.
 - ⚡ **Two modes:** Interactive (90-120 min, full control) or Smart Auto-Suggest (15-25 min, 6 questions)
 - 🌍 Universal support - 12 languages, 60+ frameworks, 35+ ORMs (98% coverage)
 - 🤖 Multi-AI support with slash commands
 - 🔍 Smart 3-layer detection for existing projects (50-94% faster)
-- 🎯 **Smart Skip Logic:** Intelligently skips documentation phases for existing projects (15-20 min vs 90 min for ≥95% consistency)
+- 🎯 **Smart Skip Logic:** Intelligently skips documentation phases for existing projects (15-20 min vs 90 min for ≥95% consistency).
+- 🚀 **Agent Mode Enforcement:** AI assistants now prioritize proactive tool usage and immediate execution for all `/flow-` commands (No more redundant planning).
 - ⏱️ Save 10-20 hours per project
 
 **Quick Start:**
@@ -39,12 +40,13 @@ Transforma tu idea en un proyecto listo para producción y documentado para IA e
 
 **Características:**
 
-- 🚀 Documentación profesional completa (Backend: 17 docs, Frontend: 15 docs, Mobile: 13 docs, Fullstack: 4 docs)
+- 🚀 Documentación profesional completa (Backend: 17 docs, Frontend: 15 docs, Mobile: 13 docs, Fullstack: 30+ docs)
 - 🧠 **Refinamiento Inteligente:** Detecta ambigüedad y te guía iterativamente hacia una descripción profesional.
 - ⚡ **Dos modos:** Interactivo (90-120 min, control total) o Auto-Sugerido (15-25 min, 6 preguntas)
 - 🌍 Soporte universal - 12 lenguajes, 60+ frameworks, 35+ ORMs
 - 🤖 Compatible with Claude, Copilot, Cursor, Gemini, Antigravity
 - 🔍 Detección inteligente para proyectos existentes (50-94% más rápido)
+- 🚀 **Modo Agente:** Los asistentes de IA ahora priorizan la ejecución proactiva para todos los comandos `/flow-`.
 - ⏱️ Ahorra 10-20 horas por proyecto
 
 **Inicio rápido:**
@@ -66,7 +68,8 @@ ai-flow init .
 Transforme sua ideia em um projeto pronto para produção e documentado para IA em minutos.
 **Características:**
 
-- 🚀 Documentação profissional completa (Backend: 17, Frontend: 15, Mobile: 13, Fullstack: 4 docs)
+- 🚀 Documentação profissional completa (Backend: 17, Frontend: 15, Mobile: 13, Fullstack: 30+ docs)
+- 🚀 **Modo Agente:** Os assistentes de IA agora priorizam a execução proativa para todos os comandos `/flow-`.
 - 🧠 **Refinamento Inteligente:** Detecta ambiguidade e guia você para uma descrição profissional.
 - ⚡ **Dois modos:** Interactivo (90-120 min, controle total) ou Auto-Sugestão (15-25 min, 6 perguntas)
 - 🌍 Suporte universal - 12 linguagens, 60+ frameworks, 35+ ORMs
@@ -105,14 +108,15 @@ The result is interconnected documentation that guides AI assistants and human d
 
 - 🌍 **Universal Support** - 12 languages, 60+ frameworks, 35+ ORMs (98% coverage)
 - 🤖 **AI-Agnostic** - Claude, Copilot, Cursor, Gemini, Antigravity, any AI tool
-- 📚 **Professional Documentation** - Backend: 17, Frontend: 15, Mobile: 13, Fullstack: 4 docs
+- 📚 **Professional Documentation** - Backend: 17, Frontend: 15, Mobile: 13, Fullstack: 30+ docs
 - 🧠 **Smart Description Refinement** - AI detects vague inputs and helps you rich the context (WHO, WHAT, WHY).
 - ⚡ **Two Questionnaire Modes:**
   - **Interactive Mode:** Full control, all phases (90-120 min)
   - **Smart Auto-Suggest:** Only 6 critical questions, AI suggests best practices (15-25 min)
 - 🔍 **Smart 3-Layer Detection** - Analyzes existing projects in 15s-5min
 - 💾 **Intelligent Caching** - 0 seconds on re-runs with no changes
-- 💡 **Slash Commands** - Easy execution with `/flow-build`, `/flow-dev-feature`, `/flow-dev-commit`
+- 🚀 **Agent Mode** - Immediate, proactive execution for all AI workflows
+- 💡 **Slash Commands** - Easy execution with `/flow-build`, `/flow-work`, `/flow-check`, `/flow-commit`
 - ⏱️ **Time Efficient** - Save 10-20 hours per project
 
 ---
@@ -172,7 +176,7 @@ $ ai-flow check
 
 ✓ .ai-flow/core/config.json found
 ✓ AI tools configured: antigravity
-✓ Project type: backend
+✓ Project Type: Backend (backend)
 ✓ Documentation complete: 17 files
 ✓ Slash commands installed: .agent/workflows/
 
@@ -271,6 +275,9 @@ After initialization, use these slash commands in your AI tool:
 
 - `/flow-build` - Flujo completo: todas las fases en orden (11 fases backend, 11 frontend/mobile)
 - `/flow-build fase N` - Ejecutar fase específica (ver lista de fases abajo)
+- `/flow-work` - Development orchestrator (feature, refactor, fix, resume)
+- `/flow-check` - Combined code review & testing workflow
+- `/flow-commit` - Atomic commits (Conventional Commits)
 - `/flow-docs-sync` - Update documentation when code changes
 
 **Fases disponibles (Backend):**
@@ -303,9 +310,10 @@ After initialization, use these slash commands in your AI tool:
 
 **Workflows (All project types):**
 
-- `/flow-work` - **Unified orchestrator** for Features/Refactors/Fixes with smart detection (HU-XXX, EP-XXX, Feature names, Tasks)
+- `/flow-work` - **Unified orchestrator** for Features/Refactors/Fixes with smart detection
 - `/flow-check` - **Combined validation**: Tests + Code Review in one command
 - `/flow-commit` - Automate commits with Conventional Commits (3-5 min)
+- `/flow-docs-sync` - **Sync documentation** when code changes occur
 
 ## **📚 See [GETTING-STARTED.md](GETTING-STARTED.md) for complete command reference**
 
@@ -341,7 +349,7 @@ After initialization, use these slash commands in your AI tool:
 
 **Mobile** (13 docs): AGENT.md, ai-instructions.md, project-brief.md, plus 10 technical docs/specs.
 
-**Fullstack** (4 docs): AGENT.md, ai-instructions.md, project-brief.md, plus 1 spec
+**Fullstack** (30+ docs): Combined Backend + Frontend documentation structures.
 
 ### 📁 Generated Structure
 
