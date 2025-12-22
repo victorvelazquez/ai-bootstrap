@@ -14,12 +14,16 @@ Automate version publishing following semantic versioning, syncing package.json,
 
 Read current version from `package.json` and determine next version using semver.
 
+// turbo
+```bash
+node -p "require('./package.json').version"
+```
+
 ---
 
 ## ✏️ Step 2/5: Update Version References
 
-// turbo
-Update version string in all relevant files:
+Update version string in all relevant files (Manual check):
 - `package.json`
 - `src/cli.ts`
 - `templates/AGENT.template.md`

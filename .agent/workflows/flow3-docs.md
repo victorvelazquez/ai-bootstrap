@@ -24,8 +24,11 @@ cat cache/docs-analysis.json
 Analyze source code to extract all user-facing CLI elements.
 
 ### Actions
+// turbo
+```bash
+cat package.json
+```
 - Read `src/cli.ts` completely.
-- Read `package.json`.
 
 ---
 
