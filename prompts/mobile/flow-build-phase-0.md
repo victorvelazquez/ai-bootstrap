@@ -300,6 +300,30 @@ C) Cancel /flow-build (fix manually first)
       "recommendation": "HYBRID",
       "gaps": ["monitoring_strategy", "incident_runbooks"],
       "reason": "Deployment documented but missing operational details"
+    },
+    "phase8": {
+      "file": "AGENT.md",
+      "exists": true,
+      "consistencyScore": 95,
+      "recommendation": "SKIP",
+      "gaps": [],
+      "reason": "Final documentation complete and up-to-date"
+    },
+    "phase9": {
+      "file": "docs/roadmap.md",
+      "exists": true,
+      "consistencyScore": 88,
+      "recommendation": "HYBRID",
+      "gaps": ["outdated_tasks", "missing_coverage"],
+      "reason": "Roadmap exists but some tasks may be outdated"
+    },
+    "phase10": {
+      "file": "docs/user-stories/",
+      "exists": true,
+      "consistencyScore": 85,
+      "recommendation": "HYBRID",
+      "gaps": ["missing_stories", "outdated_criteria"],
+      "reason": "User stories exist but may need updates"
     }
   }
 }
