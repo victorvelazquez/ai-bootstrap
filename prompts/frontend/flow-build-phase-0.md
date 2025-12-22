@@ -230,6 +230,18 @@ C) Cancel /flow-build (fix manually first)
 
 ### 0.4.7 Save Audit Data
 
+> **📌 IMPORTANT - Phases 9-10 for Existing Projects:**
+> 
+> If the project has **substantial functional code already implemented** (detected in Layer 1-3):
+> - Set `phase9.recommendation = "SKIP"` with reason: "Project already implemented - roadmap not needed"
+> - Set `phase10.recommendation = "SKIP"` with reason: "Project already implemented - user stories not needed"
+> 
+> **Phases 9-10 are only useful for:**
+> - New projects (no code yet)
+> - Projects in early development (< 30% features implemented)
+> 
+> **For existing projects**, focus on Phases 1-8 (documentation sync) instead.
+
 **Save to:** `.ai-flow/cache/audit-data.json`
 
 ```json
@@ -311,19 +323,19 @@ C) Cancel /flow-build (fix manually first)
     },
     "phase9": {
       "file": "docs/roadmap.md",
-      "exists": true,
-      "consistencyScore": 88,
-      "recommendation": "HYBRID",
-      "gaps": ["outdated_tasks", "missing_coverage"],
-      "reason": "Roadmap exists but some tasks may be outdated"
+      "exists": false,
+      "consistencyScore": 0,
+      "recommendation": "SKIP",
+      "gaps": [],
+      "reason": "Project already implemented - roadmap not needed for existing code"
     },
     "phase10": {
       "file": "docs/user-stories/",
-      "exists": true,
-      "consistencyScore": 85,
-      "recommendation": "HYBRID",
-      "gaps": ["missing_stories", "outdated_criteria"],
-      "reason": "User stories exist but may need updates"
+      "exists": false,
+      "consistencyScore": 0,
+      "recommendation": "SKIP",
+      "gaps": [],
+      "reason": "Project already implemented - user stories not needed for existing features"
     }
   }
 }
