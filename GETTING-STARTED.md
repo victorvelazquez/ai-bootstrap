@@ -236,7 +236,7 @@ my-awesome-api/
 └── README.md                 # Project overview
 ```
 
-**Backend projects** (17 documents), **Frontend projects** (18 documents), **Mobile projects** (16 documents), **Fullstack projects** (5 documents) - see [Project Type Comparison](#project-type-comparison) for details.
+**Backend projects** (17 documents), **Frontend projects** (15 documents), **Mobile projects** (13 documents), **Fullstack projects** (4 documents) - see [Project Type Comparison](#project-type-comparison) for details.
 
 #### Step 6: Phase 8 - Project Setup (Automatic)
 
@@ -694,7 +694,7 @@ For brand-new projects, AI Flow guides you through all phases with no assumption
 - ✅ You answer every question from scratch
 - ✅ You design architecture, data models, and standards
 - ✅ Time: **90-120 minutes** for production-ready docs
-- ✅ Generates: 12-17 documents depending on project type
+- ✅ Generates: 13-17 documents depending on project type
 
 **Best for:** Greenfield projects, MVPs, new microservices
 

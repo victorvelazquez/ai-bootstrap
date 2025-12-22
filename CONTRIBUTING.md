@@ -338,7 +338,7 @@ ai-flow/
 │   └── build.test.js
 ├── templates/              # Document templates
 │   ├── AGENT.template.md
-│   ├── backend/            # Backend templates (14 files)
+│   ├── backend/            # Backend templates (17 files)
 │   ├── frontend/           # Frontend templates (15 files)
 │   ├── mobile/             # Mobile templates (13 files)
 │   ├── fullstack/          # Fullstack templates (4 files)
@@ -349,8 +349,8 @@ ai-flow/
 │   │   ├── flow-build.md   # Master prompt
 │   │   ├── flow-build-phase-*.md  # Phase files (0-10)
 │   │   └── flow-dev-*.md   # Workflow commands
-│   ├── frontend/           # Frontend prompts (11 files)
-│   └── mobile/             # Mobile prompts (11 files)
+│   ├── frontend/           # Frontend prompts (13 files)
+│   └── mobile/             # Mobile prompts (13 files)
 ```
 
 ## 🧪 Testing Guidelines
