@@ -408,6 +408,7 @@ You will need to click "Allow" for each commit.
 
 **For each group, generate ONE command:**
 
+// turbo
 ```bash
 git add [file1] [file2] [file3] && git commit -m "<type>(<scope>): <description>"
 ```
@@ -532,6 +533,7 @@ git log --oneline --graph --decorate -n [number_of_commits]
 
 **Prepare push command (REQUIRES Allow):**
 
+// turbo
 ```bash
 git push origin [current-branch]
 ```

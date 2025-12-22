@@ -59,7 +59,7 @@ Verify installation:
 
 ```bash
 ai-flow --version
-# Output: 2.1.9
+# Output: 2.2.0
 ```
 
 _Note: Package name is `ai-flow-dev`, but the CLI command remains `ai-flow`_
@@ -145,8 +145,8 @@ Your choice (A/B): __
 - **Phase 6:** Testing Strategy (test types, coverage)
 - **Phase 7:** Operations & Deployment (CI/CD, monitoring)
 - **Phase 8:** Project Setup & Final Documentation (framework init, AGENT.md, README.md)
-- **Phase 9:** Implementation Roadmap (Backend only, optional - Story Points, Epics, Features)
-- **Phase 10:** User Stories (Backend only, optional - Acceptance Criteria, Test Cases, DoD)
+- **Phase 9:** Implementation Roadmap (Optional - Story Points, Epics, Features)
+- **Phase 10:** User Stories (Optional - Acceptance Criteria, Test Cases, DoD)
 
 **Mode B - Smart Auto-Suggest (6 critical questions only):**
 
@@ -236,7 +236,7 @@ my-awesome-api/
 └── README.md                 # Project overview
 ```
 
-**Backend projects** (17 documents), **Frontend projects** (16 documents), **Mobile projects** (14 documents), **Fullstack projects** (5 documents) - see [Project Type Comparison](#project-type-comparison) for details.
+**Backend projects** (17 documents), **Frontend projects** (15 documents), **Mobile projects** (13 documents), **Fullstack projects** (4 documents) - see [Project Type Comparison](#project-type-comparison) for details.
 
 #### Step 6: Phase 8 - Project Setup (Automatic)
 
@@ -284,9 +284,9 @@ my-awesome-api/
 
 **Note:** Framework initialization does NOT create your architecture layers - those are built incrementally with `/flow-dev-feature` commands.
 
-#### Step 7: Phase 9 - Implementation Roadmap (Backend only, Optional)
+#### Step 7: Phase 9 - Implementation Roadmap (Optional)
 
-**Phase 9 is OPTIONAL** - offered at the end of Phase 8 for backend projects!
+**Phase 9 is OPTIONAL** - offered at the end of Phase 8!
 
 **What Phase 9 does:**
 
@@ -312,7 +312,7 @@ my-awesome-api/
 
 ---
 
-#### Step 8: Phase 10 - User Stories Generation (Backend only, Optional)
+#### Step 8: Phase 10 - User Stories Generation (Optional)
 
 **Phase 10 is OPTIONAL** - requires Phase 9 (roadmap) to be completed!
 
@@ -694,7 +694,7 @@ For brand-new projects, AI Flow guides you through all phases with no assumption
 - ✅ You answer every question from scratch
 - ✅ You design architecture, data models, and standards
 - ✅ Time: **90-120 minutes** for production-ready docs
-- ✅ Generates: 12-17 documents depending on project type
+- ✅ Generates: 13-17 documents depending on project type
 
 **Best for:** Greenfield projects, MVPs, new microservices
 

@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2025-12-21
+
+### Added
+- **Workflow Automation:** Introduced `// turbo` directive support across all workflows (`flow1-commit`, `flow2-check`, `flow3-docs`, `flow4-release`) to enable seamless, automated execution in agentic AI environments.
+- **Automated Verification:** New automated read-only steps in `flow3-docs` and `flow4-release` to programmatically extract project context.
+
+### Changed
+- **Synchronization:** Finalized inventory and count synchronization for **Frontend** (15 docs), **Mobile** (13 docs), and **Fullstack** (4 docs) across all main documentation files.
+- **Prompt Refinement:** Updated tool-specific slash-commands (Claude, Cursor, Copilot) to include `CHANGELOG.md` in documentation analysis.
+- **UX:** Improved project banner and status reporting in the CLI.
+
+## [2.1.9] - 2025-12-21
+
+### Changed
+
+- **Prompt Optimization (Antigravity):** Massive refactor of all Phase 0 prompts (Backend, Frontend, Mobile) to use declarative layer-based project detection and strict exclusion rules (`.ai-flow/`, `.agent/`, etc.)
+- **Consolidation of Mode B:** Successfully removed separate `flow-build-phase-b.md` files; "Smart Auto-Suggest" logic is now integrated directly into Master Prompts using declarative instructions
+- **Phase Expansion:** Phase 9 (Implementation Roadmap) and Phase 10 (User Stories) are now fully supported for **Frontend** and **Mobile** projects, mirroring Backend capabilities
+- **CLI Improvements:** Updated `--help` descriptions and fixed linting in version display logic
+- **Version bump:** Synchronized all project components to version 2.1.9
+
 ## [2.1.1] - 2025-12-11
 
 ### Fixed

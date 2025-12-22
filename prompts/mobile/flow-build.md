@@ -14,19 +14,20 @@ Your mission is to guide the user through creating **comprehensive, production-r
 
 ### Detectar Argumento de Fase
 
+// turbo
 Buscar en el mensaje del usuario patrones como:
 
-- "fase 0", "fase 1", "fase 2", ..., "fase 8"
+- "fase 0", "fase 1", "fase 2", ..., "fase 10"
 - "phase 0", "phase 1", etc.
 - "ejecutar fase N"
 - "run phase N"
 
 ### Comportamiento
 
-**Si se detecta "fase N" (donde N = 0-8):**
+**Si se detecta "fase N" (donde N = 0-10):**
 
 1. **Validar que la fase existe para mobile:**
-   - Fase 0: Context Discovery (opcional, solo proyectos existentes)
+   - Fase 0: Context Discovery
    - Fase 1: Platform & Framework Selection
    - Fase 2: Navigation & Architecture
    - Fase 3: State & Data Management
@@ -35,458 +36,98 @@ Buscar en el mensaje del usuario patrones como:
    - Fase 6: Testing Strategy
    - Fase 7: Store Deployment
    - Fase 8: Project Setup & Final Documentation
+   - Fase 9: Implementation Roadmap
+   - Fase 10: User Stories Generation
 
 2. **Si la fase es válida:**
    - Leer el archivo: `.ai-flow/prompts/mobile/flow-build-phase-N.md`
-   - Ejecutar SOLO esa fase
-   - NO continuar con otras fases
-   - Al finalizar, informar al usuario que puede continuar con la siguiente fase usando `/flow-build fase N+1`
+   - Ejecutar SOLO esa fase y seguir sus instrucciones internas.
+   - Al finalizar, informar que puede continuar con la siguiente fase usando `/flow-build fase N+1`.
 
 3. **Si la fase es inválida:**
-   - Mostrar mensaje de error amigable
-   - Listar las fases válidas (0-8) con descripción de una línea
+   - Listar las fases válidas (0-10) con descripción de una línea.
 
 **Si NO se detecta "fase N":**
-
-- Ejecutar el flujo completo normal (todas las fases en orden)
-- Comenzar con Scope Selection (MVP/Production-Ready/Enterprise)
-- Ejecutar Phases 0-8 según corresponda
-
-### Ejemplo de Lista de Fases Válidas
-
-Si el usuario especifica una fase inválida, mostrar:
-
-```
-❌ Fase inválida. Las fases válidas para mobile son:
----
-📋 Fases Disponibles - Mobile
----
-  /flow-build fase 0  - Context Discovery (solo proyectos existentes)
-  /flow-build fase 1  - Platform & Framework (iOS/Android, React Native/Flutter)
-  /flow-build fase 2  - Navigation & Architecture (navegación, estructura)
-  /flow-build fase 3  - State & Data Management (estado, storage, sync)
-  /flow-build fase 4  - Permissions & Native Features (permisos, cámara, GPS)
-  /flow-build fase 5  - Code Standards (convenciones, formato, git workflow)
-  /flow-build fase 6  - Testing Strategy (tipos de tests, coverage, CI)
-  /flow-build fase 7  - Store Deployment (App Store, Play Store, signing)
-  /flow-build fase 8  - Project Setup & Final Documentation (inicializar proyecto)
----
-💡 Tip: Usa /flow-build sin argumentos para ejecutar todas las fases en orden.
-```
+- Ejecutar el flujo completo comenzando por la Selección de Modo (A/B).
 ---
 ## Important Instructions
 
-1. **Ask for Project Scope FIRST** - Before Phase 1, ask the user to select: MVP, Production-Ready, or Enterprise
-2. **Adapt questions based on scope** - Skip or simplify questions according to the selected scope level
-3. **Execute ALL applicable phases in order** - Do not skip phases, but adjust depth based on scope
-4. **Ask questions ONE BY ONE** - Do not present multiple questions at once. Wait for the user's answer to the current question before asking the next one.
-5. **Show progress indicator before EVERY question** - Use this format:
-   ```
+1. **Ask for Questionnaire Mode FIRST** (Interactive vs Smart Auto-Suggest).
+2. **Ask for Project Scope SECOND** (MVP, Production-Ready, or Enterprise).
+3. **Execute ALL applicable phases in order**.
+4. **Ask questions ONE BY ONE**. Wait for the user's answer.
+5. **Show progress indicator before EVERY question**.
+6. **Provide recommendations** using markers: ⭐ **Recommended**, 🔥 **Popular**, ⚡ **Modern**, 🏆 **Enterprise**.
+7. **Generate documents incrementally** after each phase.
 ---
-   📋 Phase [N]: [Phase Name]  |  Question [X]/[Total]  |  Phase Progress: [%]%
+## 🚀 Mode Selection
+
+**BEFORE STARTING ANY PHASE**, ask the user to select the questionnaire mode:
+
+A) ⭐ **Interactive Mode (Recommended)**
+   • Full control, step-by-step questions. (100-130 min)
+
+B) ⚡ **Smart Auto-Suggest Mode**
+   • AI suggests best practices, you answer 6 critical questions. (20-30 min)
+
+Your choice (A/B): __
+
+**Based on the selection:**
+- **Mode A (Interactive):** Proceed with normal sequential flow (Phases 0-10).
+- **Mode B (Smart Auto-Suggest):** Ask the following 6 critical questions one by one, then auto-generate all suggestions based on industry standards and the app type:
+
+  1. **Project Name & Description** (Skip if Phase 0 detected context)
+  2. **Target Platform:** iOS, Android, or Cross-platform (iOS + Android)?
+  3. **Application Type:** E-commerce, Utility, Social, Healthcare, Fintech, Management, etc.
+  4. **Framework Foundation:** React Native, Flutter, Native Swift, Native Kotlin.
+  5. **Core Native Features:** Camera, GPS, Biometrics, Push Notifications, Bluetooth, etc.
+  6. **Offline & Data Persistence:** Full offline sync or basic local caching.
+
+  **AI Logic for Auto-Suggest:**
+  - Generate comprehensive suggestions for all phases (1-10).
+  - Use modern tools matching the framework (e.g., RN -> MMKV/Zustand).
+  - Adjust complexity based on scope (MVP vs Enterprise).
+  - Present a summary for confirmation before generating documentation.
 ---
-   ```
-   Example for Phase 2, Question 5 of 12:
-   ```
+
+## 📚 Flow Overview & Modular Phases
+
+| Phase | Description | File |
+|-------|-------------|------|
+| **Phase 0** | Context Discovery | `mobile/flow-build-phase-0.md` |
+| **Phase 1** | Platform & Framework | `mobile/flow-build-phase-1.md` |
+| **Phase 2** | Navigation & Architecture| `mobile/flow-build-phase-2.md` |
+| **Phase 3** | State & Data Mgmt | `mobile/flow-build-phase-3.md` |
+| **Phase 4** | Permissions & Native | `mobile/flow-build-phase-4.md` |
+| **Phase 5** | Code Standards | `mobile/flow-build-phase-5.md` |
+| **Phase 6** | Testing Strategy | `mobile/flow-build-phase-6.md` |
+| **Phase 7** | Store Deployment | `mobile/flow-build-phase-7.md` |
+| **Phase 8** | Setup & Final Docs | `mobile/flow-build-phase-8.md` |
+| **Phase 9** | Roadmap (Optional) | `mobile/flow-build-phase-9.md` |
+| **Phase 10** | User Stories (Optional)| `mobile/flow-build-phase-10.md` |
+
 ---
-   📋 Phase 2: Navigation & Architecture  |  Question 5/12  |  Phase Progress: 42%
+## 📋 Scope Selection (MVP / Production / Enterprise)
+
+Before starting Phase 1, ask the user to select the Project Scope.
+> 📎 **Reference:** See [shared/scope-levels.md](../shared/scope-levels.md)
+
 ---
-   ```
-6. **Provide recommendations** using these markers:
-   - ⭐ **Recommended** - Best choice for most projects
-   - 🔥 **Popular** - Widely used in industry
-   - ⚡ **Modern** - Cutting-edge, newer approach
-   - 🏆 **Enterprise** - Best for large-scale projects
-7. **Use multiple choice when possible** - Give 3-5 options (A, B, C, D, E)
-8. **Validate completeness** - Ensure all critical information is gathered
-9. **Generate documents incrementally** - After each phase, generate corresponding documents with validation
+## 🔄 Documentation Sync
+
+As your project grows, use the following to keep docs updated:
+**Command:** `/flow-docs-sync`
+**Logic:** Read `.ai-flow/prompts/mobile/flow-docs-sync.md`.
+
 ---
-## 📚 How to Use This Guide
+## 🎯 After Completion
 
-This documentation is **modularized** for better maintainability and performance. Each phase is in a separate file.
+ALWAYS present a final summary:
+1. **Quick Summary:** 1 paragraph overview.
+2. **Extended Report:** Key decisions by phase.
+3. **Scaffolding:** Offer to initialize or commit changes.
 
-### For Complete Build (All Phases)
-
-Execute phases sequentially by reading each file in order:
-
-1. **Phase 0 (Optional - Existing Projects Only):** Read `.ai-flow/prompts/mobile/flow-build-phase-0-context.md`
-2. **Phase 1 (Platform & Framework Selection):** Read `.ai-flow/prompts/mobile/flow-build-phase-1-platform.md`
-3. **Phase 2 (Navigation & Architecture):** Read `.ai-flow/prompts/mobile/flow-build-phase-2-navigation.md`
-4. **Phase 3 (State & Data Management):** Read `.ai-flow/prompts/mobile/flow-build-phase-3-state.md`
-5. **Phase 4 (Permissions & Native Features):** Read `.ai-flow/prompts/mobile/flow-build-phase-4-permissions.md`
-6. **Phase 5 (Code Standards):** Read `.ai-flow/prompts/mobile/flow-build-phase-5-standards.md`
-7. **Phase 6 (Testing Strategy):** Read `.ai-flow/prompts/mobile/flow-build-phase-6-testing.md`
-8. **Phase 7 (Store Deployment):** Read `.ai-flow/prompts/mobile/flow-build-phase-7-deployment.md`
-9. **Phase 8 (Project Setup & Final Documentation):** Read `.ai-flow/prompts/mobile/flow-build-phase-8.md`
-
-### For Individual Phases
-
-You can execute any phase independently by reading its file. For example:
-
-```
-Read .ai-flow/prompts/mobile/flow-build-phase-3-state.md and execute only Phase 3
-```
 ---
-## 🎯 Phase Overview
-
-### Phase 0: Context Discovery (Optional)
-
-**File:** `mobile/flow-build-phase-0-context.md`
-**For:** Existing projects with code/documentation
-**Duration:** 1-5 minutes (automated analysis)
-**Output:** Pre-populated answers, project analysis
-
-**What it does:**
-
-- **Layer 0:** Checks cache (0-2 seconds)
-- **Layer 1:** Fast metadata scan (10-20 seconds) - Detects framework, platform, build tool
-- **Layer 2:** Structural analysis (30-90 seconds) - Analyzes navigation, components, state management
-- **Layer 3:** Selective deep analysis (optional) - Extracts navigation patterns, API integrations
-
-**Supports:** React Native, Flutter, Native iOS (Swift), Native Android (Kotlin), Ionic, Xamarin
-
-**Skip if:** Starting a completely new project from scratch
----
-### Phase 1: Platform & Framework Selection
-
-**File:** `mobile/flow-build-phase-1-platform.md`
-**Duration:** 20-25 minutes
-**Key Questions:**
-
-- What platforms will you target? (iOS, Android, or both)
-- What framework will you use? (React Native, Flutter, Native, Ionic, etc.)
-- What minimum OS versions will you support?
-- Will you use TypeScript/Dart?
-- What UI/UX framework? (Material Design, Cupertino, custom)
-- Will you support dark mode?
-- Will you support multiple languages (i18n)?
-- How will you handle images and assets?
-
-**Generates:**
-
-- `project-brief.md`
-- Parts of `AGENT.md`
-- Parts of `ai-instructions.md`
----
-### Phase 2: Navigation & Architecture
-
-**File:** `mobile/flow-build-phase-2-navigation.md`
-**Duration:** 15-20 minutes
-**Key Questions:**
-
-- What navigation pattern? (Stack, Tab, Drawer, Bottom Tabs)
-- What architecture pattern? (Feature-based, Layer-based, Clean Architecture)
-- How will you structure screens/components?
-- Will you use a navigation library?
-
-**Generates:**
-
-- `docs/navigation.md`
-- `docs/architecture.md`
-- Parts of `ai-instructions.md`
----
-### Phase 3: State & Data Management
-
-**File:** `mobile/flow-build-phase-3-state.md`
-**Duration:** 15-20 minutes
-**Key Questions:**
-
-- How will you manage app state? (Redux, MobX, Zustand, Provider, etc.)
-- How will you fetch server data? (REST, GraphQL, gRPC)
-- What offline strategy? (Local storage, SQLite, Realm, etc.)
-- How will you handle data synchronization?
-
-**Generates:**
-
-- `docs/state-management.md`
-- `docs/offline-strategy.md`
-- Parts of `ai-instructions.md`
----
-### Phase 4: Permissions & Native Features
-
-**File:** `mobile/flow-build-phase-4-permissions.md`
-**Duration:** 15-20 minutes
-**Key Questions:**
-
-- What permissions will you need? (Camera, Location, Push Notifications, etc.)
-- What native features? (Biometrics, File System, Contacts, etc.)
-- How will you handle permission requests?
-- What third-party SDKs will you integrate?
-
-**Generates:**
-
-- `docs/permissions.md`
-- `docs/native-features.md`
-- Parts of `ai-instructions.md`
----
-### Phase 5: Code Standards & Best Practices
-
-**File:** `mobile/flow-build-phase-5-standards.md`
-**Duration:** 15-20 minutes
-**Key Questions:**
-
-- What naming conventions for files/components?
-- What linting/formatting rules?
-- What code organization pattern?
-- What accessibility standards? (WCAG Mobile)
-
-**Generates:**
-
-- `docs/code-standards.md`
-- Parts of `ai-instructions.md`
----
-### Phase 6: Testing Strategy
-
-**File:** `mobile/flow-build-phase-6-testing.md`
-**Duration:** 15-25 minutes
-**Key Questions:**
-
-- What unit testing framework?
-- What integration testing approach?
-- What E2E testing tool? (Detox, Appium, Maestro, etc.)
-- How will you test on physical devices?
-- What coverage targets?
-
-**Generates:**
-
-- `docs/testing.md`
-- Parts of `ai-instructions.md`
----
-### Phase 7: Store Deployment
-
-**File:** `mobile/flow-build-phase-7-deployment.md`
-**Duration:** 15-20 minutes
-**Key Questions:**
-
-- Which app stores? (App Store, Google Play, both)
-- What CI/CD pipeline? (Fastlane, Codemagic, GitHub Actions, etc.)
-- How will you handle versioning?
-- What code signing strategy?
-- What beta testing approach? (TestFlight, Firebase App Distribution, etc.)
-
-**Generates:**
-
-- `docs/app-store.md`
-- `specs/build-configuration.md`
-- `specs/deployment.md`
-- `.env.example`
-
-**Next:** Transitions to Phase 8 for project setup and final documentation
----
-### Phase 8: Project Setup & Final Documentation
-
-**File:** `mobile/flow-build-phase-8.md`
-**Duration:** 10-15 minutes
-**Key Steps:**
-
-- Detect project state (new vs existing)
-- Initialize framework (optional, for new projects)
-- Generate final documentation
-- Create master index (AGENT.md)
-- Generate README.md with intelligent merge
-
-**Generates:**
-
-- `docs/platform-guides.md`
-- `docs/navigation-guide.md`
-- `docs/contributing.md`
-- `AGENT.md` (master index)
-- `README.md`
-- Tool-specific configs (`.clauderules`, `.cursorrules`, `.github/copilot-instructions.md`)
----
-## 📊 Scope-Based Question Filtering
-
-### MVP Scope (60-80 minutes)
-
-**Phases included:** 1, 2, 3, 4 (core only)
-
-**What's simplified:**
-
-- Single platform (iOS or Android)
-- Basic navigation (Stack only)
-- Simple state management (Context API or Provider)
-- Basic offline support (AsyncStorage)
-- Minimal permissions (only essential)
-- Basic testing (unit tests only)
-- Manual deployment
-
-**Best for:** Prototypes, MVPs, proof of concept
----
-### Production-Ready Scope (100-130 minutes)
-
-**Phases included:** All (1-7)
-
-**What's included:**
-
-- Multi-platform support (iOS + Android)
-- Complete navigation system
-- Comprehensive state management
-- Full offline strategy
-- All required permissions
-- Complete testing strategy (unit, integration, E2E)
-- Automated CI/CD pipeline
-- Store deployment configuration
-
-**Best for:** Production applications, client projects, published apps
----
-### Enterprise Scope (130-160 minutes)
-
-**Phases included:** All (1-7) with extended questions
-
-**Additional coverage:**
-
-- Cross-platform optimization
-- Advanced architecture patterns (Clean Architecture, MVVM)
-- Complex offline synchronization
-- Advanced security (certificate pinning, obfuscation)
-- Comprehensive accessibility (WCAG 2.1 AAA)
-- Advanced monitoring and crash reporting
-- Multi-tenant support
-- A/B testing infrastructure
-
-**Best for:** Large-scale applications, enterprise platforms, mission-critical apps
----
-## 🎯 Execution Workflow
-
-### Step 1: Scope Selection
-
-**Before Phase 1**, ask:
-
-```
----
-🎯 Project Scope Selection
----
-## 📋 Scope Selection
-
-Before starting Phase 1, you'll select a scope level:
-
-> 📎 **Reference:** See [prompts/shared/scope-levels.md](../shared/scope-levels.md) for detailed scope definitions (MVP, Production-Ready, Enterprise).
-
-### A) ⭐ MVP / Prototype
-**Focus:** Core functionality + basic tests. Best for POCs and internal tools.
-
-### B) 🚀 Production-Ready
-**Focus:** Production-grade with best practices. Best for SaaS and customer-facing apps.
-
-### C) 🏢 Enterprise / Mission-Critical
-**Focus:** Enterprise governance, compliance, and high scalability.
-
-Your choice (A/B/C):
-```
-
-### Step 2: Execute Phases
-
-Based on scope selection, execute applicable phase files in order.
-
-### Step 3: Generate Documents
-
-After completing all phases, generate the complete documentation set:
-
-**Core Documents (All Scopes):**
-
-- `AGENT.md` - Universal AI assistant configuration
-- `ai-instructions.md` - Tech stack and development rules
-- `project-brief.md` - Project overview and objectives
-- `README.md` - Quick start guide
-
-**Documentation (Production/Enterprise):**
-
-- `docs/architecture.md` - System architecture
-- `docs/navigation.md` - Navigation patterns
-- `docs/state-management.md` - State management guide
-- `docs/offline-strategy.md` - Offline and sync strategy
-- `docs/permissions.md` - Permissions handling
-- `docs/native-features.md` - Native features integration
-- `docs/code-standards.md` - Code standards and conventions
-- `docs/testing.md` - Testing strategy
-- `docs/app-store.md` - App Store configuration
-- `docs/contributing.md` - Contribution guidelines
-
-**Specifications (Enterprise):**
-
-- `specs/build-configuration.md` - Build and CI/CD configuration
-- `specs/deployment.md` - Deployment procedures
-- `specs/configuration.md` - Environment and configuration
-
-### Step 4: Validation
-
-Before finalizing, validate:
-
-1. ✅ All placeholders filled with real data
-2. ✅ Tech stack consistency across all documents
-3. ✅ No contradictions between documents
-4. ✅ Framework-specific examples match selected framework
-5. ✅ Cross-references between documents are correct
-6. ✅ Platform-specific considerations documented (iOS vs Android)
----
-## 🔄 Iterative Updates
-
-Users can re-run individual phases to update documentation:
-
-```
-"I want to switch from Redux to Zustand"
-→ Re-execute Phase 3 only
-→ Regenerate docs/state-management.md and parts of ai-instructions.md
-```
----
-## 🎨 Framework-Specific Adaptations
-
-The questionnaire adapts based on the framework selected in Phase 1:
-
-**React Native:**
-
-- State: Redux Toolkit, Zustand, MobX, Context API
-- Navigation: React Navigation, React Native Navigation
-- Storage: AsyncStorage, MMKV, WatermelonDB
-- Testing: Jest, React Native Testing Library, Detox
-
-**Flutter:**
-
-- State: Provider, Riverpod, Bloc, GetX
-- Navigation: Navigator 2.0, GoRouter, AutoRoute
-- Storage: SharedPreferences, Hive, Isar, SQLite
-- Testing: Flutter Test, Integration Test, Maestro
-
-**Native iOS (Swift):**
-
-- Architecture: MVVM, VIPER, Clean Architecture
-- Navigation: UINavigationController, Coordinator Pattern
-- Storage: Core Data, Realm, UserDefaults
-- Testing: XCTest, Quick/Nimble
-
-**Native Android (Kotlin):**
-
-- Architecture: MVVM, MVI, Clean Architecture
-- Navigation: Navigation Component, Jetpack Compose Navigation
-- Storage: Room, DataStore, SharedPreferences
-- Testing: JUnit, Espresso, UI Automator
----
-## 🚀 Getting Started
-
-To begin the complete mobile build process:
-
-1. Ensure you're in your project directory
-2. Run this prompt (or individual phase files)
-3. Answer questions thoughtfully
-4. Review generated documentation
-5. Iterate as needed
-
-**Ready to start?** Proceed to Phase 1 by reading:
-
-```
-.ai-flow/prompts/mobile/flow-build-phase-1-platform.md
-```
-
-Or if you have existing code, start with Phase 0 for automatic detection:
-
-```
-.ai-flow/prompts/mobile/flow-build-phase-0-context.md
-```
----
-**Last Updated:** 2025-01-XX
-
-**Version:** 1.4.0 (Mobile MVP)
-
-
-
-
+_Version: 4.2 (v2.1.9) (Antigravity Optimized - Modularized & Turbo-Enabled)_
+_Last Updated: 2025-12-21_
+_AI Flow - Transform your mobile idea into reality_

@@ -28,6 +28,7 @@ Execute all steps sequentially. Stop only if critical issues are found.
 
 ## 🔍 Step 1/6: Lint
 
+// turbo
 ```bash
 npm run lint
 ```
@@ -41,6 +42,7 @@ npm run lint
 
 ## 🎨 Step 2/6: Format
 
+// turbo
 ```bash
 npm run format:check
 ```
@@ -54,6 +56,7 @@ npm run format:check
 
 ## 🏗️ Step 3/6: Build
 
+// turbo
 ```bash
 npm run build
 ```
@@ -67,6 +70,7 @@ npm run build
 
 ## 📦 Step 4/6: Deps
 
+// turbo
 ```bash
 npm outdated
 npm audit
@@ -81,6 +85,7 @@ npm audit
 
 ## 🧪 Step 5/6: Tests
 
+// turbo
 ```bash
 npm test
 ```
@@ -91,6 +96,7 @@ npm test
 - Failed test names
 
 **Additional validation:**
+// turbo
 ```bash
 node dist/cli.js --version
 ```

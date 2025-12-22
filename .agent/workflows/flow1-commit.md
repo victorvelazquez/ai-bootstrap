@@ -8,6 +8,9 @@ Automate atomic commits following Conventional Commits standard. Execute steps s
 
 **Display Behavior:** Show step title (`## Step N/4: Name`) in your response BEFORE executing commands in that step.
 
+// turbo-all
+Execute all steps sequentially. Group changes and create atomic commits automatically.
+
 ---
 
 ## 🔍 Step 1/4: Detect Changes
@@ -77,6 +80,7 @@ For each group from Step 2, execute via `run_command`. **User must approve each 
 
 ### Command Pattern
 
+// turbo
 ```bash
 git add <files> && git commit -m "<type>(<scope>): <description>"
 ```
@@ -120,6 +124,7 @@ git log --oneline --graph --decorate -n 10
 
 ### Push to remote (requires approval)
 
+// turbo
 ```bash
 git push origin main
 ```

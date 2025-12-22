@@ -10,7 +10,7 @@ AI Flow is an interactive CLI that creates comprehensive professional documentat
 
 **Key Features:**
 
-- 🚀 Complete professional documentation (Backend: 17 docs, Frontend: 16 docs, Mobile: 14 docs, Fullstack: 5 docs)
+- 🚀 Complete professional documentation (Backend: 17 docs, Frontend: 15 docs, Mobile: 13 docs, Fullstack: 4 docs)
 - 🧠 **Smart Description Refinement:** Detects ambiguity and iteratively guides you to a professional project definition.
 - ⚡ **Two modes:** Interactive (90-120 min, full control) or Smart Auto-Suggest (15-25 min, 6 questions)
 - 🌍 Universal support - 12 languages, 60+ frameworks, 35+ ORMs (98% coverage)
@@ -38,7 +38,7 @@ Transforma tu idea en un proyecto listo para producción y documentado para IA e
 
 **Características:**
 
-- 🚀 Documentación profesional completa (Backend: 17 docs, Frontend: 16 docs, Mobile: 14 docs, Fullstack: 5 docs)
+- 🚀 Documentación profesional completa (Backend: 17 docs, Frontend: 15 docs, Mobile: 13 docs, Fullstack: 4 docs)
 - 🧠 **Refinamiento Inteligente:** Detecta ambigüedad y te guía iterativamente hacia una descripción profesional.
 - ⚡ **Dos modos:** Interactivo (90-120 min, control total) o Auto-Sugerido (15-25 min, 6 preguntas)
 - 🌍 Soporte universal - 12 lenguajes, 60+ frameworks, 35+ ORMs
@@ -65,7 +65,7 @@ ai-flow init .
 Transforme sua ideia em um projeto pronto para produção e documentado para IA em minutos.
 **Características:**
 
-- 🚀 Documentação profissional completa (Backend: 17, Frontend: 16, Mobile: 14, Fullstack: 5 docs)
+- 🚀 Documentação profissional completa (Backend: 17, Frontend: 15, Mobile: 13, Fullstack: 4 docs)
 - 🧠 **Refinamento Inteligente:** Detecta ambiguidade e guia você para uma descrição profissional.
 - ⚡ **Dois modos:** Interactivo (90-120 min, controle total) ou Auto-Sugestão (15-25 min, 6 perguntas)
 - 🌍 Suporte universal - 12 linguagens, 60+ frameworks, 35+ ORMs
@@ -99,13 +99,12 @@ AI Flow is an interactive CLI tool that generates comprehensive professional doc
 - **Smart Detection:** Analyzes existing projects to pre-populate answers (50-60% faster)
 
 The result is interconnected documentation that guides AI assistants and human developers throughout your project lifecycle.
-The result is interconnected documentation that guides AI assistants and human developers throughout your project lifecycle.
 
 ---
 
 - 🌍 **Universal Support** - 12 languages, 60+ frameworks, 35+ ORMs (98% coverage)
 - 🤖 **AI-Agnostic** - Claude, Copilot, Cursor, Gemini, Antigravity, any AI tool
-- 📚 **Professional Documentation** - Backend: 17, Frontend: 16, Mobile: 14, Fullstack: 5 docs
+- 📚 **Professional Documentation** - Backend: 17, Frontend: 15, Mobile: 13, Fullstack: 4 docs
 - 🧠 **Smart Description Refinement** - AI detects vague inputs and helps you rich the context (WHO, WHAT, WHY).
 - ⚡ **Two Questionnaire Modes:**
   - **Interactive Mode:** Full control, all phases (90-120 min)
@@ -136,7 +135,7 @@ Or using uv (Python tool manager):
 uv tool install ai-flow-dev
 ```
 
-## **Current version:** 2.1.9
+## **Current version:** 2.2.0
 
 ## 🚀 Quick Start
 
@@ -263,13 +262,13 @@ After initialization, use these slash commands in your AI tool:
 > **Note:** Command prefix may vary by AI tool. Examples use `/flow-` (GitHub Copilot), but Claude may use `/` alone, Cursor may use `@`, etc. Check your tool's documentation.
 
 **Backend Projects:** 19 commands  
-**Frontend Projects:** 11 commands  
-**Mobile Projects:** 11 commands  
+**Frontend Projects:** 13 commands  
+**Mobile Projects:** 13 commands  
 **Fullstack Projects:** Combined backend + frontend commands
 
 **Documentation & Build:**
 
-- `/flow-build` - Flujo completo: todas las fases en orden (9 fases backend, 8 frontend/mobile)
+- `/flow-build` - Flujo completo: todas las fases en orden (11 fases backend, 11 frontend/mobile)
 - `/flow-build fase N` - Ejecutar fase específica (ver lista de fases abajo)
 - `/flow-docs-sync` - Update documentation when code changes
 
@@ -298,6 +297,8 @@ After initialization, use these slash commands in your AI tool:
 - `/flow-build fase 6` - Testing Strategy
 - `/flow-build fase 7` - Performance & Deployment / Store Deployment
 - `/flow-build fase 8` - Project Setup & Final Documentation
+- `/flow-build fase 9` - Implementation Roadmap (opcional)
+- `/flow-build fase 10` - User Stories Generation (opcional)
 
 **Workflows (Backend only):**
 
@@ -316,7 +317,7 @@ After initialization, use these slash commands in your AI tool:
 
 1. **Smart Detection** - Analyzes existing projects in 3 layers (15s to 5min)
 2. **Interactive Questionnaire** - Guides you through 8-9 phases (choose mode)
-3. **Template Generation** - Creates 15-17 professional documents per project type
+3. **Template Generation** - Creates 13-17 professional documents per project type
 4. **Implementation Roadmap** - Optional Phase 9 generates Story Point estimates
 5. **AI Integration** - Configures your AI tool with project context
 6. **Slash Command Setup** - Installs prompts to tool-specific paths (.github/prompts/, .claude/commands/, etc.)
@@ -340,11 +341,11 @@ After initialization, use these slash commands in your AI tool:
 
 **Backend** (17 docs): AGENT.md, ai-instructions.md, project-brief.md, plus 14 technical docs/specs.
 
-**Frontend** (16 docs): AGENT.md, ai-instructions.md, project-brief.md, plus 13 technical docs/specs.
+**Frontend** (15 docs): AGENT.md, ai-instructions.md, project-brief.md, plus 12 technical docs/specs.
 
-**Mobile** (14 docs): AGENT.md, ai-instructions.md, project-brief.md, plus 11 technical docs/specs.
+**Mobile** (13 docs): AGENT.md, ai-instructions.md, project-brief.md, plus 10 technical docs/specs.
 
-**Fullstack** (5 docs): AGENT.md, ai-instructions.md, project-brief.md, plus 2 specs
+**Fullstack** (4 docs): AGENT.md, ai-instructions.md, project-brief.md, plus 1 spec
 
 ### 📁 Generated Structure
 
