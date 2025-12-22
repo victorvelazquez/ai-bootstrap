@@ -8,6 +8,9 @@ Analyze and automatically update project documentation (README.md, GETTING-START
 
 **Display Behavior:** Show step title (`## Step N/7: Name`) in your response BEFORE executing actions in that step.
 
+// turbo-all
+Analyze and update documentation automatically.
+
 ---
 
 ## ⚡ Step 0/7: Cache Check
@@ -35,6 +38,15 @@ cat package.json
 ## 📦 Step 2/7: Inventory Generated Artifacts
 
 Count and verify templates, prompts, and generated structures programmatically.
+
+// turbo
+```bash
+ls -R templates
+```
+// turbo
+```bash
+ls -R prompts
+```
 
 ---
 

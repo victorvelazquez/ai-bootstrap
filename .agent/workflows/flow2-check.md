@@ -96,6 +96,7 @@ npm test
 - Failed test names
 
 **Additional validation:**
+// turbo
 ```bash
 node dist/cli.js --version
 ```
