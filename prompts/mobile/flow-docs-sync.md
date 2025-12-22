@@ -18,31 +18,33 @@ Detect changes in the mobile codebase compared to the last documented state (sto
 
 ### Step 1: Check for Analysis File
 
+// turbo
+```bash
+cat .ai-flow/cache/docs-analysis.json
 ```
-First, check if `.ai-flow/cache/docs-analysis.json` exists:
 
 - ✅ If exists → Proceed to Step 2 (Compare Changes)
 - ❌ If NOT exists → Execute full Phase 0 analysis first:
-  - Run complete mobile code analysis (as described in Phase 0)
+  - Run complete mobile code analysis (Project Discovery)
   - Create `.ai-flow/cache/docs-analysis.json` with current state
   - Then proceed to Step 2
-```
 
 ### Step 2: Detect Changes
 
 **Reuse Phase 0 Analysis Logic:**
 
 1. **Perform Current Code Analysis:**
-
-   - Execute the same analysis as Phase 0 (mobile/flow-build-phase-0-context.md):
-     - File structure analysis
-     - Screen and component detection
-     - Navigation pattern detection
-     - State management pattern detection
-     - Permission detection (iOS Info.plist, Android AndroidManifest.xml)
-     - Native module detection
-     - Build configuration analysis
-     - Dependency analysis
+   - Execute project-wide discovery using cross-platform commands:
+     // turbo
+     ```bash
+     ls -R . --exclude-standard
+     ```
+   - Analyze current state for:
+     - View structures (Screens, Components, Layouts)
+     - Navigation hierarchies and routing patterns
+     - State management and data flow (Stores, Providers, Hooks)
+     - Platform-specific manifestations (Permissions, Native bridges, Config files)
+     - Manifest changes (build.gradle, Podfile, pubspec.yaml, package.json)
    - Generate current state snapshot
 
 2. **Compare with Previous State:**
@@ -50,15 +52,12 @@ First, check if `.ai-flow/cache/docs-analysis.json` exists:
    - Load `.ai-flow/cache/docs-analysis.json`
    - Compare current state vs previous state
    - Detect changes in:
-     - **Screens:** New, modified, or deleted screens
-     - **Navigation:** New routes, navigation pattern changes
-     - **State Management:** New stores, hooks, or state patterns
-     - **Permissions:** New permissions requested
-     - **Native Features:** New native modules or integrations
-     - **Dependencies:** New libraries, updated versions
-     - **Architecture:** New modules, changed patterns
-     - **Build Configuration:** Changes in build.gradle, Podfile, app.json
-     - **Configuration:** New environment variables, external services
+     - **Interfaces:** New, modified, or deleted "entry points" (Screens, Routes)
+     - **State Logic:** New, modified, or deleted state containers/logic
+     - **Capabilities:** New permissions or native feature integrations
+     - **Dependencies:** Manifest changes (version bumps, new packages)
+     - **Architecture:** Structural changes (new modules, moved folders)
+     - **Configuration:** New environment keys or build settings
 
 3. **Generate Change Report:**
    - Categorize changes by type
@@ -221,35 +220,33 @@ Update cancelled. Run `/flow-docs-sync` when you're ready to update the document
 ---
 ## Change Detection Rules
 
-### Screens Detection
+### View & Interface Detection (Agnostic)
 
-**What triggers `docs/navigation.md` update:**
+**What triggers document update (e.g., `docs/navigation.md`):**
 
-- New screen files (`.tsx`, `.jsx`, `.dart`, `.swift`, `.kt`)
-- New screen directories (`screens/`, `pages/`)
-- Modified navigation structure
-- Deleted screens
-
-**How to update:**
-
-- Add new screens following existing navigation conventions from Phase 2
-- Use same format, navigation patterns as existing screens
-- Maintain all existing screens unchanged
-
-### Permissions Detection
-
-**What triggers `docs/permissions.md` update:**
-
-- New permissions in `Info.plist` (iOS)
-- New permissions in `AndroidManifest.xml` (Android)
-- Modified permission descriptions
-- Deleted permissions
+- New view markers (e.g., Screen definitions, route mappings, or public component exports)
+- Modified navigation paths, hierarchies, or routing logic
+- Deleted views or screens
 
 **How to update:**
 
-- Add new permissions to permissions documentation
-- Update permission descriptions if changed
-- Maintain all existing permissions
+- Add new views following the established patterns in the project
+- Update navigation diagrams (Mermaid) to reflect new hierarchies
+- Maintain existing documentation for unchanged segments
+
+### Capabilities & Native Detection (Agnostic)
+
+**What triggers document update (e.g., `docs/permissions.md`, `docs/native-features.md`):**
+
+- New platform capabilities requested (e.g., Info.plist keys, AndroidManifest permissions, or native package declarations)
+- New native bridges or modules detected in codebase
+- Modified permission usage or descriptions
+
+**How to update:**
+
+- Document new capabilities and their usage rationale
+- Update native integration guides if patterns changed
+- Maintain existing documentation for stable features
 
 ### Native Features Detection
 
