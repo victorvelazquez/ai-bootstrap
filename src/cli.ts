@@ -90,9 +90,9 @@ const PROJECT_PHASES: Record<string, { label: string; phases: string[] }> = {
   },
 };
 
-// Read package.json for version
-const packageJsonPath = path.join(__dirname, '..', 'package.json');
-const packageJson = JSON.parse(await fs.readFile(packageJsonPath, 'utf-8'));
+// Read package.json for version (Sync for top-level usage)
+const packageJsonPath = path.join(ROOT_DIR, 'package.json');
+const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
 const PKG_VERSION: string = packageJson.version;
 
 const EXIT = {
@@ -124,23 +124,92 @@ function fsErrorMessage(e: unknown): string {
   return `${code}: ${msg}`;
 }
 
+function getProjectTypeLabel(type: string): string {
+  switch (type) {
+    case 'backend':
+      return 'Backend';
+    case 'frontend':
+      return 'Frontend';
+    case 'fullstack':
+      return 'Full Stack';
+    case 'mobile':
+      return 'Mobile';
+    default:
+      return type;
+  }
+}
+
 function printBanner() {
   console.log('\n');
-  console.log(chalk.cyan('    ╔═══════════════════════════════════════════════════════════════════╗'));
-  console.log(chalk.cyan('    ║') + '                                                                   ' + chalk.cyan('║'));
-  console.log(chalk.cyan('    ║') + chalk.bold.cyan('          █████╗ ██╗    ███████╗██╗      ██████╗ ██╗    ██╗') + '        ' + chalk.cyan('║'));
-  console.log(chalk.cyan('    ║') + chalk.bold.cyan('         ██╔══██╗██║    ██╔════╝██║     ██╔═══██╗██║    ██║') + '        ' + chalk.cyan('║'));
-  console.log(chalk.cyan('    ║') + chalk.bold.cyan('         ███████║██║    █████╗  ██║     ██║   ██║██║ █╗ ██║') + '        ' + chalk.cyan('║'));
-  console.log(chalk.cyan('    ║') + chalk.bold.cyan('         ██╔══██║██║    ██╔══╝  ██║     ██║   ██║██║███╗██║') + '        ' + chalk.cyan('║'));
-  console.log(chalk.cyan('    ║') + chalk.bold.cyan('         ██║  ██║██║    ██║     ███████╗╚██████╔╝╚███╔███╔╝') + '        ' + chalk.cyan('║'));
-  console.log(chalk.cyan('    ║') + chalk.cyan('         ╚═╝  ╚═╝╚═╝    ╚═╝     ╚══════╝ ╚═════╝  ╚══╝╚══╝') + '         ' + chalk.cyan('║'));
-  console.log(chalk.cyan('    ║') + '                                                                   ' + chalk.cyan('║'));
-  console.log(chalk.cyan('    ║') + '           ' + chalk.white('✨ From Idea to Production with AI Guidance') + '             ' + chalk.cyan('║'));
-  console.log(chalk.cyan('    ║') + '                                                                   ' + chalk.cyan('║'));
-  console.log(chalk.cyan('    ╚═══════════════════════════════════════════════════════════════════╝'));
+  console.log(
+    chalk.cyan('    ╔═══════════════════════════════════════════════════════════════════╗')
+  );
+  console.log(
+    chalk.cyan('    ║') +
+      '                                                                   ' +
+      chalk.cyan('║')
+  );
+  console.log(
+    chalk.cyan('    ║') +
+      chalk.bold.cyan('          █████╗ ██╗    ███████╗██╗      ██████╗ ██╗    ██╗') +
+      '        ' +
+      chalk.cyan('║')
+  );
+  console.log(
+    chalk.cyan('    ║') +
+      chalk.bold.cyan('         ██╔══██╗██║    ██╔════╝██║     ██╔═══██╗██║    ██║') +
+      '        ' +
+      chalk.cyan('║')
+  );
+  console.log(
+    chalk.cyan('    ║') +
+      chalk.bold.cyan('         ███████║██║    █████╗  ██║     ██║   ██║██║ █╗ ██║') +
+      '        ' +
+      chalk.cyan('║')
+  );
+  console.log(
+    chalk.cyan('    ║') +
+      chalk.bold.cyan('         ██╔══██║██║    ██╔══╝  ██║     ██║   ██║██║███╗██║') +
+      '        ' +
+      chalk.cyan('║')
+  );
+  console.log(
+    chalk.cyan('    ║') +
+      chalk.bold.cyan('         ██║  ██║██║    ██║     ███████╗╚██████╔╝╚███╔███╔╝') +
+      '        ' +
+      chalk.cyan('║')
+  );
+  console.log(
+    chalk.cyan('    ║') +
+      chalk.cyan('         ╚═╝  ╚═╝╚═╝    ╚═╝     ╚══════╝ ╚═════╝  ╚══╝╚══╝') +
+      '         ' +
+      chalk.cyan('║')
+  );
+  console.log(
+    chalk.cyan('    ║') +
+      '                                                                   ' +
+      chalk.cyan('║')
+  );
+  console.log(
+    chalk.cyan('    ║') +
+      '           ' +
+      chalk.white('✨ From Idea to Production with AI Guidance') +
+      '             ' +
+      chalk.cyan('║')
+  );
+  console.log(
+    chalk.cyan('    ║') +
+      '                                                                   ' +
+      chalk.cyan('║')
+  );
+  console.log(
+    chalk.cyan('    ╚═══════════════════════════════════════════════════════════════════╝')
+  );
   console.log('\n');
   console.log(chalk.white('    📂 Project Context'));
-  console.log(chalk.gray('    ────────────────────────────────────────────────────────────────────'));
+  console.log(
+    chalk.gray('    ────────────────────────────────────────────────────────────────────')
+  );
   console.log(chalk.gray(`    Working Directory: ${process.cwd()}`));
   console.log(chalk.gray(`    Version: ${PKG_VERSION}`));
   console.log('\n');
@@ -177,8 +246,8 @@ function printNextSteps(config: { aiTools: string[]; projectType: string }) {
         : toolsText;
 
     console.log(chalk.cyan(`  1. Open your AI tool (${aiToolName})`));
-    console.log(chalk.cyan('  2. Run: /backend-flow-build (for backend documentation)'));
-    console.log(chalk.cyan('  3. Run: /frontend-flow-build (for frontend documentation)'));
+    console.log(chalk.cyan('  2. Backend Prompts:  /backend-flow-build'));
+    console.log(chalk.cyan('  3. Frontend Prompts: /frontend-flow-build'));
     console.log(chalk.gray('     Each will guide you through up to 11 phases (0-10)\n'));
   } else {
     const aiToolName = config.aiTools.includes('claude')
@@ -202,17 +271,23 @@ async function selectAITool(providedTool?: string): Promise<string[]> {
     const tool = AI_TOOLS.find((t) => t.value === providedTool);
     if (!tool) {
       console.error(chalk.red(`❌ Invalid AI tool: ${providedTool}`));
-      console.log(chalk.yellow('Available options: claude, cursor, copilot, gemini, antigravity, all'));
+      console.log(
+        chalk.yellow('Available options: claude, cursor, copilot, gemini, antigravity, all')
+      );
       process.exit(EXIT.INVALID_ARGS);
     }
-    return providedTool === 'all' ? ['claude', 'cursor', 'copilot', 'gemini', 'antigravity'] : [providedTool];
+    return providedTool === 'all'
+      ? ['claude', 'cursor', 'copilot', 'gemini', 'antigravity']
+      : [providedTool];
   }
 
   if (!process.stdin.isTTY) return ['copilot'];
 
   printBanner();
   console.log(chalk.white('    🤖 Select your AI development tool:'));
-  console.log(chalk.gray('    ────────────────────────────────────────────────────────────────────'));
+  console.log(
+    chalk.gray('    ────────────────────────────────────────────────────────────────────')
+  );
 
   const selectedTool = await select({
     message: 'Select your AI tool:',
@@ -220,10 +295,14 @@ async function selectAITool(providedTool?: string): Promise<string[]> {
     default: 'copilot',
   });
 
-  return selectedTool === 'all' ? ['claude', 'cursor', 'copilot', 'gemini', 'antigravity'] : [selectedTool];
+  return selectedTool === 'all'
+    ? ['claude', 'cursor', 'copilot', 'gemini', 'antigravity']
+    : [selectedTool];
 }
 
-async function selectProjectType(providedType?: string): Promise<'backend' | 'frontend' | 'fullstack' | 'mobile'> {
+async function selectProjectType(
+  providedType?: string
+): Promise<'backend' | 'frontend' | 'fullstack' | 'mobile'> {
   if (providedType) {
     const valid = ['backend', 'frontend', 'fullstack', 'mobile'];
     if (!valid.includes(providedType)) {
@@ -311,7 +390,8 @@ async function copyTemplates(
         const fullPath = path.join(dir, entry);
         const stat = await fs.stat(fullPath);
         if (stat.isDirectory()) files = files.concat(await walk(fullPath));
-        else if (entry.endsWith('.template.md') || entry.endsWith('.template')) files.push(fullPath);
+        else if (entry.endsWith('.template.md') || entry.endsWith('.template'))
+          files.push(fullPath);
       }
       return files;
     };
@@ -327,14 +407,33 @@ async function copyTemplates(
       }
     }
 
-    if (projectType === 'backend') templateSources.push({ source: path.join(ROOT_DIR, 'templates', 'backend'), base: path.join(ROOT_DIR, 'templates', 'backend') });
-    else if (projectType === 'frontend') templateSources.push({ source: path.join(ROOT_DIR, 'templates', 'frontend'), base: path.join(ROOT_DIR, 'templates', 'frontend') });
+    if (projectType === 'backend')
+      templateSources.push({
+        source: path.join(ROOT_DIR, 'templates', 'backend'),
+        base: path.join(ROOT_DIR, 'templates', 'backend'),
+      });
+    else if (projectType === 'frontend')
+      templateSources.push({
+        source: path.join(ROOT_DIR, 'templates', 'frontend'),
+        base: path.join(ROOT_DIR, 'templates', 'frontend'),
+      });
     else if (projectType === 'fullstack') {
       const fullstackSource = path.join(ROOT_DIR, 'templates', 'fullstack');
-      if (await fs.pathExists(fullstackSource)) templateSources.push({ source: fullstackSource, base: fullstackSource });
-      templateSources.push({ source: path.join(ROOT_DIR, 'templates', 'backend'), base: path.join(ROOT_DIR, 'templates', 'backend') });
-      templateSources.push({ source: path.join(ROOT_DIR, 'templates', 'frontend'), base: path.join(ROOT_DIR, 'templates', 'frontend') });
-    } else if (projectType === 'mobile') templateSources.push({ source: path.join(ROOT_DIR, 'templates', 'mobile'), base: path.join(ROOT_DIR, 'templates', 'mobile') });
+      if (await fs.pathExists(fullstackSource))
+        templateSources.push({ source: fullstackSource, base: fullstackSource });
+      templateSources.push({
+        source: path.join(ROOT_DIR, 'templates', 'backend'),
+        base: path.join(ROOT_DIR, 'templates', 'backend'),
+      });
+      templateSources.push({
+        source: path.join(ROOT_DIR, 'templates', 'frontend'),
+        base: path.join(ROOT_DIR, 'templates', 'frontend'),
+      });
+    } else if (projectType === 'mobile')
+      templateSources.push({
+        source: path.join(ROOT_DIR, 'templates', 'mobile'),
+        base: path.join(ROOT_DIR, 'templates', 'mobile'),
+      });
 
     for (const { source, base } of templateSources) {
       for (const file of await walk(source)) {
@@ -345,8 +444,18 @@ async function copyTemplates(
 
     for (const [relPath, { file: templateFile }] of processedFiles) {
       const fileName = path.basename(relPath);
-      if (fileName === '.clauderules.template' && !aiTools.includes('claude') && !aiTools.includes('all')) continue;
-      if (fileName === '.cursorrules.template' && !aiTools.includes('cursor') && !aiTools.includes('all')) continue;
+      if (
+        fileName === '.clauderules.template' &&
+        !aiTools.includes('claude') &&
+        !aiTools.includes('all')
+      )
+        continue;
+      if (
+        fileName === '.cursorrules.template' &&
+        !aiTools.includes('cursor') &&
+        !aiTools.includes('all')
+      )
+        continue;
       const destPath = path.join(destTemplatesPath, relPath);
       await fs.ensureDir(path.dirname(destPath));
       await fs.copy(templateFile, destPath);
@@ -391,7 +500,9 @@ async function setupSlashCommands(
     else if (projectType === 'fullstack') {
       promptSources.push({ dir: 'backend', prefix: 'backend-' });
       promptSources.push({ dir: 'frontend', prefix: 'frontend-' });
-    } else if (projectType === 'mobile') promptSources.push({ dir: 'mobile' });
+    } else if (projectType === 'mobile') {
+      promptSources.push({ dir: 'mobile' });
+    }
 
     for (const { dir, prefix } of promptSources) {
       const promptsSource = path.join(ROOT_DIR, 'prompts', dir);
@@ -413,7 +524,8 @@ async function setupSlashCommands(
         } else if (tool === 'claude') commandsTarget = path.join(targetPath, '.claude', 'commands');
         else if (tool === 'cursor') commandsTarget = path.join(targetPath, '.cursor', 'commands');
         else if (tool === 'gemini') commandsTarget = path.join(targetPath, '.gemini', 'commands');
-        else if (tool === 'antigravity') commandsTarget = path.join(targetPath, '.agent', 'workflows');
+        else if (tool === 'antigravity')
+          commandsTarget = path.join(targetPath, '.agent', 'workflows');
 
         if (!dryRun && commandsTarget) {
           await assertDirWritable(commandsTarget);
@@ -448,7 +560,8 @@ async function initializeProject(
     if (await checkIfInitialized(targetPath)) {
       console.log(chalk.yellow('\n⚠️  Project already initialized with AI Flow'));
       let reinitialize = false;
-      if (process.stdin.isTTY) reinitialize = await confirm({ message: 'Do you want to reinitialize?', default: false });
+      if (process.stdin.isTTY)
+        reinitialize = await confirm({ message: 'Do you want to reinitialize?', default: false });
       if (!reinitialize) {
         console.log(chalk.blue('Initialization cancelled'));
         return;
@@ -457,7 +570,11 @@ async function initializeProject(
 
     const aiTools = await selectAITool(aiTool);
     const selectedProjectType = await selectProjectType(projectType);
-    const inferredName = path.basename(targetPath).split('-').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    const inferredName = path
+      .basename(targetPath)
+      .split('-')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
 
     if (projectName && !isValidName(projectName)) {
       console.error(chalk.red('Invalid project name'));
@@ -470,17 +587,30 @@ async function initializeProject(
         finalProjectName = await input({
           message: 'Project name (you can refine it in /flow-build):',
           default: inferredName,
-          validate: (input: string) => isValidName(input) || 'Enter 2-100 chars: letters, numbers, space, - _ .',
+          validate: (input: string) =>
+            isValidName(input) || 'Enter 2-100 chars: letters, numbers, space, - _ .',
         });
       } else finalProjectName = inferredName;
     }
 
     console.log(chalk.cyan('\n📦 Initializing AI Flow...\n'));
 
-    await createBootstrapStructure(targetPath, aiTools, selectedProjectType, flags?.dryRun, flags?.verbose);
+    await createBootstrapStructure(
+      targetPath,
+      aiTools,
+      selectedProjectType,
+      flags?.dryRun,
+      flags?.verbose
+    );
     await copyTemplates(targetPath, selectedProjectType, aiTools, flags?.dryRun, flags?.verbose);
     await copyPrompts(targetPath, flags?.dryRun, flags?.verbose);
-    await setupSlashCommands(targetPath, aiTools, selectedProjectType, flags?.dryRun, flags?.verbose);
+    await setupSlashCommands(
+      targetPath,
+      aiTools,
+      selectedProjectType,
+      flags?.dryRun,
+      flags?.verbose
+    );
 
     console.log(chalk.green('\n✅ AI Flow initialized successfully!'));
     console.log(chalk.white('\nSummary:'));
@@ -488,15 +618,25 @@ async function initializeProject(
     console.log(chalk.gray(`  Version:   ${PKG_VERSION}`));
     console.log(chalk.gray(`  Directory: ${targetPath}`));
     console.log(chalk.gray(`  Tools:     ${aiTools.join(', ')}`));
-    console.log(chalk.gray(`  Type:      ${selectedProjectType}`));
+    console.log(
+      chalk.gray(
+        `  Type:      ${getProjectTypeLabel(selectedProjectType)} (${selectedProjectType})`
+      )
+    );
     console.log(chalk.gray(`  Mode:      ${flags?.dryRun ? 'DRY-RUN' : 'WRITE'}`));
 
     printNextSteps({ aiTools, projectType: selectedProjectType });
 
     if (flags?.dryRun) {
-      console.log(chalk.yellow('⚠️ Dry-run: no files were written. Run again without --dry-run to apply changes.\n'));
+      console.log(
+        chalk.yellow(
+          '⚠️ Dry-run: no files were written. Run again without --dry-run to apply changes.\n'
+        )
+      );
     }
-    console.log(chalk.yellow('💡 Tip: You can run individual phases if you want to work step-by-step\n'));
+    console.log(
+      chalk.yellow('💡 Tip: You can run individual phases if you want to work step-by-step\n')
+    );
   } catch (error) {
     console.error(chalk.red('\n❌ Initialization failed:'), fsErrorMessage(error));
     process.exit(EXIT.FS_ERROR);
@@ -504,7 +644,10 @@ async function initializeProject(
 }
 
 // CLI Commands
-program.name('ai-flow').description('AI-powered development workflow from idea to production.').version(PKG_VERSION);
+program
+  .name('ai-flow')
+  .description('AI-powered development workflow from idea to production.')
+  .version(PKG_VERSION);
 
 program
   .command('init')
@@ -513,9 +656,17 @@ program
   .option('--ai <tool>', 'AI tool to use')
   .option('--type <type>', 'Project type')
   .option('--name <name>', 'Project name')
+  .option('--description <desc>', 'Project description')
   .option('--dry-run', 'Simulate without writing files')
   .action(async (targetPath: string, options: any) => {
-    await initializeProject(path.resolve(targetPath), options.ai, options.type, options.name, undefined, { dryRun: !!options.dryRun });
+    await initializeProject(
+      path.resolve(targetPath),
+      options.ai,
+      options.type,
+      options.name,
+      options.description,
+      { dryRun: !!options.dryRun }
+    );
   });
 
 program
@@ -526,10 +677,20 @@ program
       console.log(chalk.green('✅ Project is initialized with AI Flow'));
       const configPath = path.join(process.cwd(), '.ai-flow', 'core', 'config.json');
       const config = await fs.readJSON(configPath);
-      const projectType = config.projectType || (config.backend && !config.frontend ? 'backend' : config.frontend && !config.backend ? 'frontend' : config.mobile ? 'mobile' : 'backend');
+      const projectType =
+        config.projectType ||
+        (config.backend && !config.frontend
+          ? 'backend'
+          : config.frontend && !config.backend
+            ? 'frontend'
+            : config.mobile
+              ? 'mobile'
+              : 'backend');
       console.log(chalk.white('\nConfiguration:'));
       console.log(chalk.gray(`  Version: ${config.version}`));
-      console.log(chalk.gray(`  Project Type: ${projectType}`));
+      console.log(
+        chalk.gray(`  Project Type: ${getProjectTypeLabel(projectType)} (${projectType})`)
+      );
       console.log(chalk.gray(`  AI Tools: ${config.aiTools.join(', ')}`));
       console.log(chalk.gray(`  Created: ${new Date(config.createdAt).toLocaleString()}`));
       printNextSteps({ aiTools: config.aiTools, projectType });
