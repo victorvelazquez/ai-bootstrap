@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [2.2.3] - 2025-12-22
+### Refactor
+- Significant refactoring of `src/cli.ts` for better maintainability and modularity.
+- Extracted static data (banner, slash commands, project phases) into centralized constants.
+- Modularized `initializeProject` and unified help output logic across commands.
+- Removed duplicated code and improved ASCII banner display logic.
+
 ## [2.2.2] - 2025-12-22
 
 ### Fixed
