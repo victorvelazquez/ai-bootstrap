@@ -116,61 +116,61 @@ async function selectAITool(providedTool?: string): Promise<string[]> {
   );
   console.log(
     chalk.cyan('    ║') +
-      '                                                                   ' +
-      chalk.cyan('║')
+    '                                                                   ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      chalk.bold.cyan('          █████╗ ██╗    ███████╗██╗      ██████╗ ██╗    ██╗') +
-      '        ' +
-      chalk.cyan('║')
+    chalk.bold.cyan('          █████╗ ██╗    ███████╗██╗      ██████╗ ██╗    ██╗') +
+    '        ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      chalk.bold.cyan('         ██╔══██╗██║    ██╔════╝██║     ██╔═══██╗██║    ██║') +
-      '        ' +
-      chalk.cyan('║')
+    chalk.bold.cyan('         ██╔══██╗██║    ██╔════╝██║     ██╔═══██╗██║    ██║') +
+    '        ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      chalk.bold.cyan('         ███████║██║    █████╗  ██║     ██║   ██║██║ █╗ ██║') +
-      '        ' +
-      chalk.cyan('║')
+    chalk.bold.cyan('         ███████║██║    █████╗  ██║     ██║   ██║██║ █╗ ██║') +
+    '        ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      chalk.bold.cyan('         ██╔══██║██║    ██╔══╝  ██║     ██║   ██║██║███╗██║') +
-      '        ' +
-      chalk.cyan('║')
+    chalk.bold.cyan('         ██╔══██║██║    ██╔══╝  ██║     ██║   ██║██║███╗██║') +
+    '        ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      chalk.bold.cyan('         ██║  ██║██║    ██║     ███████╗╚██████╔╝╚███╔███╔╝') +
-      '        ' +
-      chalk.cyan('║')
+    chalk.bold.cyan('         ██║  ██║██║    ██║     ███████╗╚██████╔╝╚███╔███╔╝') +
+    '        ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      chalk.cyan('         ╚═╝  ╚═╝╚═╝    ╚═╝     ╚══════╝ ╚═════╝  ╚══╝╚══╝') +
-      '         ' +
-      chalk.cyan('║')
+    chalk.cyan('         ╚═╝  ╚═╝╚═╝    ╚═╝     ╚══════╝ ╚═════╝  ╚══╝╚══╝') +
+    '         ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      '                                                                   ' +
-      chalk.cyan('║')
+    '                                                                   ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      '           ' +
-      chalk.white('✨ From Idea to Production with AI Guidance') +
-      '             ' +
-      chalk.cyan('║')
+    '           ' +
+    chalk.white('✨ From Idea to Production with AI Guidance') +
+    '             ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      '                                                                   ' +
-      chalk.cyan('║')
+    '                                                                   ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ╚═══════════════════════════════════════════════════════════════════╝')
@@ -704,11 +704,20 @@ async function initializeProject(
       }
 
       console.log(chalk.white('Available slash commands:'));
-      console.log(chalk.gray('  /flow-build                - Flujo completo (8 fases en orden)'));
       console.log(
-        chalk.gray(
-          '  /flow-build fase N         - Fase específica (0-8: Discovery, Platform, Navigation, State, Permissions, Standards, Testing, Deployment)'
-        )
+        chalk.gray('  /flow-build                - Flujo completo (todas las fases en orden)')
+      );
+      console.log(
+        chalk.gray('  /flow-build fase N         - Fase específica (0-8: Discovery, Navigation, etc.)')
+      );
+      console.log(
+        chalk.gray('  /flow-work                 - Development orchestrator (feature, refactor, fix)')
+      );
+      console.log(
+        chalk.gray('  /flow-check                - Combined code review & testing workflow')
+      );
+      console.log(
+        chalk.gray('  /flow-commit               - Atomic commits following Conventional Commits')
       );
       console.log(
         chalk.gray('  /flow-docs-sync            - Update documentation when code changes\n')
@@ -740,6 +749,15 @@ async function initializeProject(
         chalk.gray('  /flow-build fase N         - Fase específica (ver lista de fases abajo)')
       );
       console.log(
+        chalk.gray('  /flow-work                 - Development orchestrator (feature, refactor, fix)')
+      );
+      console.log(
+        chalk.gray('  /flow-check                - Combined code review & testing workflow')
+      );
+      console.log(
+        chalk.gray('  /flow-commit               - Atomic commits following Conventional Commits')
+      );
+      console.log(
         chalk.gray('  /flow-docs-sync            - Update documentation when code changes\n')
       );
       if (selectedProjectType === 'backend') {
@@ -755,7 +773,7 @@ async function initializeProject(
         console.log(chalk.gray('    fase 8: Project Setup & Final Docs'));
         console.log(chalk.gray('    fase 9: Implementation Roadmap (opcional)'));
         console.log(chalk.gray('    fase 10: User Stories Generation (opcional)'));
-      } else {
+      } else if (selectedProjectType === 'frontend') {
         console.log(chalk.gray('\n  Fases disponibles (Frontend):'));
         console.log(chalk.gray('    fase 0: Context Discovery (proyectos existentes)'));
         console.log(chalk.gray('    fase 1: Discovery & UX'));
@@ -766,10 +784,23 @@ async function initializeProject(
         console.log(chalk.gray('    fase 6: Testing'));
         console.log(chalk.gray('    fase 7: Deployment'));
         console.log(chalk.gray('    fase 8: Project Setup & Final Docs'));
+        console.log(chalk.gray('    fase 9: Implementation Roadmap (opcional)'));
+        console.log(chalk.gray('    fase 10: User Stories Generation (opcional)'));
+      } else if (selectedProjectType === 'mobile') {
+        console.log(chalk.gray('\n  Fases disponibles (Mobile):'));
+        console.log(chalk.gray('    fase 0: Context Discovery (proyectos existentes)'));
+        console.log(chalk.gray('    fase 1: Platform & Framework Selection'));
+        console.log(chalk.gray('    fase 2: Navigation & Architecture'));
+        console.log(chalk.gray('    fase 3: State & Data Management'));
+        console.log(chalk.gray('    fase 4: Permissions & Native Features'));
+        console.log(chalk.gray('    fase 5: Code Standards'));
+        console.log(chalk.gray('    fase 6: Testing Strategy'));
+        console.log(chalk.gray('    fase 7: Store Deployment'));
+        console.log(chalk.gray('    fase 8: Project Setup & Final Documentation'));
+        console.log(chalk.gray('    fase 9: Implementation Roadmap (opcional)'));
+        console.log(chalk.gray('    fase 10: User Stories Generation (opcional)'));
       }
-      console.log(
-        chalk.gray('  /flow-docs-sync                  - Update documentation when code changes\n')
-      );
+      console.log('\n');
     }
 
     if (flags?.dryRun) {
@@ -914,9 +945,8 @@ program
           const toolsText =
             config.aiTools.length === 1
               ? config.aiTools[0]
-              : `${config.aiTools.slice(0, -1).join(', ')} and ${
-                  config.aiTools[config.aiTools.length - 1]
-                }`;
+              : `${config.aiTools.slice(0, -1).join(', ')} and ${config.aiTools[config.aiTools.length - 1]
+              }`;
           console.log(chalk.cyan(`  1. Open your AI tool (${toolsText})`));
           console.log(chalk.cyan('  2. Run: /backend-flow-build (for backend documentation)'));
           console.log(chalk.cyan('  3. Run: /frontend-flow-build (for frontend documentation)'));
@@ -932,9 +962,8 @@ program
           const toolsText =
             config.aiTools.length === 1
               ? config.aiTools[0]
-              : `${config.aiTools.slice(0, -1).join(', ')} and ${
-                  config.aiTools[config.aiTools.length - 1]
-                }`;
+              : `${config.aiTools.slice(0, -1).join(', ')} and ${config.aiTools[config.aiTools.length - 1]
+              }`;
           console.log(chalk.cyan(`  1. Open your AI tool (${toolsText})`));
           console.log(chalk.cyan('  2. Run: /flow-build'));
         }

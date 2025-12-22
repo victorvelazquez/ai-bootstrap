@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [2.2.2] - 2025-12-22
+
+### Fixed
+- **CLI Help Improvements:**
+  - Added missing `/flow-work`, `/flow-check`, and `/flow-commit` to help output.
+  - Fixed "Fases disponibles" for Mobile applications (previously showed Frontend phases).
+  - Grouped slash commands for better readability.
+  - Eliminated duplicated `/flow-docs-sync` in help output.
+
 ## [2.2.1] - 2025-12-22
 
 ### Added
