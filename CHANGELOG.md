@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
+## [2.2.1] - 2025-12-22
+
+### Added
+- **Smart Skip Logic:** Intelligent phase skipping for Phases 1-10 with 3 scenarios
+  - Shared template system (`prompts/shared/smart-skip-preflight.md`)
+  - Phase 0 Layer 4: Documentation audit with consistency scoring
+  - `audit-data.json` generation for smart skip decisions
+  - SKIP scenario (≥95% consistency): Skip entire phase
+  - HYBRID scenario (80-94%): Ask only missing questions
+  - FULL scenario (<80%): Complete phase with pre-filled answers
+  - Reduces documentation time for existing projects: 90min → 15-20min (≥95% consistency)
+
+### Changed
+- Phases 1-8 now support smart skip for existing projects (backend, frontend, mobile)
+- Phases 9-10 auto-skip for projects with implemented code
+- All 34 phase files updated with Pre-Flight Check references
+
+### Technical Details
+- 10 commits implementing Smart Skip Logic system
+- Phases 1-7: Full smart skip with Pre-Flight Check
+- Phase 8: Final documentation generation (AGENT.md, README.md, api.md, etc.)
+- Phases 9-10: Optional for new projects, auto-skip for existing
+
 ## [2.2.0] - 2025-12-21
 
 ### Added

@@ -16,6 +16,7 @@ AI Flow is an interactive CLI that creates comprehensive professional documentat
 - 🌍 Universal support - 12 languages, 60+ frameworks, 35+ ORMs (98% coverage)
 - 🤖 Multi-AI support with slash commands
 - 🔍 Smart 3-layer detection for existing projects (50-94% faster)
+- 🎯 **Smart Skip Logic:** Intelligently skips documentation phases for existing projects (15-20 min vs 90 min for ≥95% consistency)
 - ⏱️ Save 10-20 hours per project
 
 **Quick Start:**
@@ -135,7 +136,7 @@ Or using uv (Python tool manager):
 uv tool install ai-flow-dev
 ```
 
-## **Current version:** 2.2.0
+## **Current version:** 2.2.1
 
 ## 🚀 Quick Start
 
