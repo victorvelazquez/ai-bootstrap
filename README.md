@@ -26,8 +26,8 @@ AI Flow is an interactive CLI that creates comprehensive professional documentat
 npm install -g ai-flow-dev
 ai-flow init .
 # Then open your AI tool and run:
-# /flow-build       - To generate all documentation
-# /flow-dev-feature - To start building features
+# /flow-build  - To generate all documentation
+# /flow-work   - To start building features
 ```
 
 ## 📚 **[Complete Guide →](GETTING-STARTED.md)**
@@ -54,8 +54,8 @@ Transforma tu idea en un proyecto listo para producción y documentado para IA e
 npm install -g ai-flow-dev
 ai-flow init .
 # Luego en tu herramienta IA:
-# /flow-build       - Para generar toda la documentación
-# /flow-dev-feature - Para comenzar a construir funcionalidades
+# /flow-build  - Para generar toda la documentación
+# /flow-work   - Para comenzar a construir funcionalidades
 ```
 
 ## 📚 **[Guía Completa →](GETTING-STARTED.md)**
@@ -81,8 +81,8 @@ Transforme sua ideia em um projeto pronto para produção e documentado para IA 
 npm install -g ai-flow-dev
 ai-flow init .
 # Em seguida, na sua ferramenta de IA:
-# /flow-build       - Para gerar toda a documentação
-# /flow-dev-feature - Para começar a construir funcionalidades
+# /flow-build  - Para gerar toda a documentação
+# /flow-work   - Para começar a construir funcionalidades
 ```
 
 ## 📚 **[Guia Completo →](GETTING-STARTED.md)**
@@ -261,7 +261,7 @@ After initialization, use these slash commands in your AI tool:
 
 > **Note:** Command prefix may vary by AI tool. Examples use `/flow-` (GitHub Copilot), but Claude may use `/` alone, Cursor may use `@`, etc. Check your tool's documentation.
 
-**Backend Projects:** 19 commands  
+**Backend Projects:** 16 commands  
 **Frontend Projects:** 13 commands  
 **Mobile Projects:** 13 commands  
 **Fullstack Projects:** Combined backend + frontend commands
@@ -300,16 +300,11 @@ After initialization, use these slash commands in your AI tool:
 - `/flow-build fase 9` - Implementation Roadmap (opcional)
 - `/flow-build fase 10` - User Stories Generation (opcional)
 
-**Workflows (Backend only):**
+**Workflows (All project types):**
 
-- `/flow-dev-feature` - Create/modify features (15-20 min)
-- `/flow-dev-fix` - Fix bugs (3-15 min, adaptive)
-- `/flow-dev-commit` - Automate commits with Conventional Commits (3-5 min)
-- `/flow-dev-work` - Manage work in progress
-- `/flow-dev-review` - Multi-aspect code review (5 min)
-- `/flow-dev-refactor` - Quick refactorings (3-5 min)
-
-> **Note:** Frontend and Mobile projects include build commands (`/flow-build`, phases, `/flow-docs-sync`) but not workflow commands.
+- `/flow-work` - **Unified orchestrator** for Features/Refactors/Fixes with smart detection (HU-XXX, EP-XXX, Feature names, Tasks)
+- `/flow-check` - **Combined validation**: Tests + Code Review in one command
+- `/flow-commit` - Automate commits with Conventional Commits (3-5 min)
 
 ## **📚 See [GETTING-STARTED.md](GETTING-STARTED.md) for complete command reference**
 

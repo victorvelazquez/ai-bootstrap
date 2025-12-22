@@ -20,8 +20,8 @@
 | --------------------------------------------- | ---------------------------------------------------------------------------- |
 | [Build Modes](#15-understanding-build-modes)  | Interactive vs Smart Auto-Suggest                                            |
 | [CLI Flags Reference](#cli-flags-reference)   | All `init` command flags                                                     |
-| [Commands Cheat Sheet](#commands-cheat-sheet) | All 26+ commands organized                                                   |
-| [Workflow Commands](#33-workflow-commands)    | `/flow-dev-feature`, `/flow-dev-fix`, `/flow-dev-commit`, `/flow-dev-review` |
+| [Commands Cheat Sheet](#commands-cheat-sheet) | All 16+ commands organized                                                   |
+| [Workflow Commands](#33-workflow-commands)    | `/flow-work`, `/flow-check`, `/flow-commit` (unified orchestrator)           |
 | [Troubleshooting](#troubleshooting)           | Common issues and solutions                                                  |
 | [Best Practices](#best-practices)             | Expert tips and recommendations                                              |
 
@@ -651,7 +651,7 @@ C) ❌ Switch to Interactive Mode
 
 #### Using Slash Commands
 
-After initialization, you have access to **26+ slash commands**:
+After initialization, you have access to **16+ slash commands**:
 
 **Basic commands:**
 
@@ -663,16 +663,13 @@ After initialization, you have access to **26+ slash commands**:
 
 ```
 
-**Workflow commands** (backend only):
+**Workflow commands** (all project types):
 
 ```
 
-/flow-dev-feature # Create/modify features (15-20 min)
-/flow-dev-fix # Fix bugs (3-15 min, adaptive)
-/flow-dev-commit # Automate commits with Conventional Commits (3-5 min)
-/flow-dev-work # Manage work in progress
-/flow-dev-review # Multi-aspect code review (5 min)
-/flow-dev-refactor # Quick refactorings (3-5 min)
+/flow-work   # Unified orchestrator: Features/Refactors/Fixes with smart detection
+/flow-check  # Combined validation: Tests + Code Review
+/flow-commit # Automate commits with Conventional Commits (3-5 min)
 
 ```
 
