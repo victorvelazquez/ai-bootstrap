@@ -20,8 +20,8 @@
 | --------------------------------------------- | ---------------------------------------------------------------------------- |
 | [Build Modes](#15-understanding-build-modes)  | Interactive vs Smart Auto-Suggest                                            |
 | [CLI Flags Reference](#cli-flags-reference)   | All `init` command flags                                                     |
-| [Commands Cheat Sheet](#commands-cheat-sheet) | All 26+ commands organized                                                   |
-| [Workflow Commands](#33-workflow-commands)    | `/flow-dev-feature`, `/flow-dev-fix`, `/flow-dev-commit`, `/flow-dev-review` |
+| [Commands Cheat Sheet](#commands-cheat-sheet) | All 16+ commands organized                                                   |
+| [Workflow Commands](#33-workflow-commands)    | `/flow-work`, `/flow-check`, `/flow-commit` (unified orchestrator)           |
 | [Troubleshooting](#troubleshooting)           | Common issues and solutions                                                  |
 | [Best Practices](#best-practices)             | Expert tips and recommendations                                              |
 
@@ -59,7 +59,7 @@ Verify installation:
 
 ```bash
 ai-flow --version
-# Output: 2.2.0
+# Output: 2.4.1
 ```
 
 _Note: Package name is `ai-flow-dev`, but the CLI command remains `ai-flow`_
@@ -213,7 +213,7 @@ After answering, you'll see:
 
 After completion, you'll have professional documentation:
 
-**Backend projects** (17 documents):
+**Backend projects** (14 documents):
 
 ```
 my-awesome-api/
@@ -236,7 +236,7 @@ my-awesome-api/
 └── README.md                 # Project overview
 ```
 
-**Backend projects** (17 documents), **Frontend projects** (15 documents), **Mobile projects** (13 documents), **Fullstack projects** (4 documents) - see [Project Type Comparison](#project-type-comparison) for details.
+**Backend projects** (14 documents), **Frontend projects** (15 documents), **Mobile projects** (13 documents), **Fullstack projects** (4 documents) - see [Project Type Comparison](#project-type-comparison) for details.
 
 #### Step 6: Phase 8 - Project Setup (Automatic)
 
@@ -301,7 +301,7 @@ my-awesome-api/
 
 **Time:** 15-30 minutes (automated)
 
-**Output:** `docs/roadmap.md` with complete implementation plan (strategic level)
+**Output:** `planning/roadmap.md` with complete implementation plan (strategic level)
 
 **When to use:**
 
@@ -318,7 +318,7 @@ my-awesome-api/
 
 **What Phase 10 does:**
 
-- ✅ Reads docs/roadmap.md Features and converts them to detailed User Stories
+- ✅ Reads planning/roadmap.md Features and converts them to detailed User Stories
 - ✅ Generates Gherkin-style acceptance criteria (Given/When/Then)
 - ✅ Creates technical task breakdown (Backend/Frontend/Testing)
 - ✅ Derives QA test cases from acceptance criteria
@@ -331,7 +331,7 @@ my-awesome-api/
 - One Epic: 5-10 minutes
 - One User Story: 2-3 minutes
 
-**Output:** `.ai-flow/user-stories/EP-XXX/HU-XXX-XXX.md` files
+**Output:** `planning/user-stories/EP-XXX/HU-XXX-XXX.md` files
 
 **3 execution modes:**
 
@@ -351,7 +351,7 @@ my-awesome-api/
 - ✅ You want detailed User Stories with acceptance criteria before coding
 - ✅ You're working with QA and need test case specifications
 - ✅ You follow Scrum/Agile with User Story format
-- ❌ Skip if docs/roadmap.md is enough for your workflow
+- ❌ Skip if planning/roadmap.md is enough for your workflow
 
 **Example User Story structure:**
 
@@ -478,7 +478,7 @@ EP-001: Autenticación y Seguridad
 **Folder structure after Phase 10:**
 
 ```
-.ai-flow/user-stories/
+planning/user-stories/
 ├── EP-001/              (Authentication)
 │   ├── HU-001-001.md   (Login básico)
 │   ├── HU-001-002.md   (OAuth login)
@@ -497,7 +497,7 @@ EP-001: Autenticación y Seguridad
 **With roadmap only (Phase 9):**
 
 ```bash
-# Use Feature names from docs/roadmap.md
+# Use Feature names from planning/roadmap.md
 /flow-dev-feature Base application configuration
 ```
 
@@ -651,7 +651,7 @@ C) ❌ Switch to Interactive Mode
 
 #### Using Slash Commands
 
-After initialization, you have access to **26+ slash commands**:
+After initialization, you have access to **16+ slash commands**:
 
 **Basic commands:**
 
@@ -663,18 +663,33 @@ After initialization, you have access to **26+ slash commands**:
 
 ```
 
-**Workflow commands** (backend only):
+**Workflow commands** (all project types):
 
 ```
 
-/flow-dev-feature # Create/modify features (15-20 min)
-/flow-dev-fix # Fix bugs (3-15 min, adaptive)
-/flow-dev-commit # Automate commits with Conventional Commits (3-5 min)
-/flow-dev-work # Manage work in progress
-/flow-dev-review # Multi-aspect code review (5 min)
-/flow-dev-refactor # Quick refactorings (3-5 min)
+/flow-work   # Unified orchestrator: Features/Refactors/Fixes with smart detection
+/flow-check  # Combined validation: Tests + Code Review
+/flow-commit # Automate commits with Conventional Commits (3-5 min)
 
 ```
+
+> **Automatic Completion Tracking:** When you complete work with `/flow-work`, the system automatically updates `planning/roadmap.md` (marks Feature checkboxes) and `planning/user-stories/` files (marks DoD checklist items). This keeps your documentation synchronized with actual implementation progress.
+
+> **Consolidated Planning:** `/flow-work` generates a single consolidated `work.md` file (~30-40 lines) that includes context, objectives, documentation constraints, approach, tasks, and validation. This reduces context window usage and makes it easier to review and resume work.
+
+**Generated Project Structure:**
+
+After running `/flow-build`, your project will have:
+
+- `docs/` - Descriptive documentation (architecture, data-model, api, testing)
+- `specs/` - Technical specifications (security.md, configuration.md)
+- `planning/` - Requirements (roadmap.md, user-stories/)
+- `.ai-flow/` - Workflow state (work/, archive/) - can be gitignored
+  - `.ai-flow/cache/` - Analysis cache (docs-analysis.json, audit-data.json)
+
+> **Cache Location:**
+> - In **your projects**: `.ai-flow/cache/` stores analysis data
+> - In **AI Flow repo**: `cache/` at root (for self-analysis only)
 
 ## See [Commands Cheat Sheet](#commands-cheat-sheet) for the complete list.
 
@@ -683,7 +698,16 @@ After initialization, you have access to **26+ slash commands**:
 > **Target Audience:** Regular users, project maintainers
 > **Goal:** Master everyday AI Flow workflows
 
-### 2.1 New vs Existing Projects
+### 1.4 Agent Mode: Proactive Execution 🚀
+
+Starting with v2.2.3, AI Flow enforces **Agent Mode** across all workflows. This means:
+- **No more planning loops:** Assistants won't ask "Would you like me to start Step 1?". They will just do it.
+- **Tool-First:** Assistants are strictly instructed to use tools (`read_file`, `write_file`, `run_command`) immediately.
+- **Workflow-Driven:** The interaction is driven by our master prompts, ensuring the AI stays on track without human micro-management.
+
+---
+
+### Part 2: Working with Existing Projects 🔍
 
 AI Flow adapts to your project state with **3-layer smart detection**.
 
