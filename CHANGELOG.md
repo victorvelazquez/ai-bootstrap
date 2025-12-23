@@ -6,6 +6,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [2.3.0] - 2025-12-23
+### Added
+- **Consolidated work.md Structure:** `/flow-work` now generates a single consolidated `work.md` file for planning and task management
+  - Concise format: ~30-40 lines per work item
+  - Improves context window efficiency (~30% reduction in tokens)
+  - Easier to review and resume work
+  - Includes: Context, Objective, Documentation Constraints, Approach, Tasks, Validation
+- **Interactive Refinement for Manual Inputs:** Added detail detection and conditional refinement flow
+  - Analyzes description detail level (HIGH/MEDIUM/LOW)
+  - Skips refinement questions if description is sufficiently detailed
+  - Asks 1-2 targeted questions for MEDIUM detail
+  - Full refinement (3-5 questions) for LOW detail
+- **Documentation Compliance Checking:** Automatic validation against existing documentation
+  - Detects deviations from ai-instructions.md, architecture.md, security.md, etc.
+  - Warns user and requires explicit confirmation for overrides
+  - Marks deviations in work.md for visibility
+- **Smart Task Generation Logic:** Intelligent decision on when to generate vs reference tasks
+  - References User Story/Roadmap tasks if already detailed
+  - Expands tasks only when needed
+  - Criteria: file path, constraints, SP, dependencies
+
+### Changed
+- Updated all 15 flow-work prompt files (backend, frontend, mobile) to use work.md
+- Updated flow-work-resume.md to load work.md for context restoration
+- Phase 1 now includes detail detection and conditional refinement
+- Phase 2 now generates consolidated work.md with task decision logic
+- README.md and GETTING-STARTED.md updated with work.md documentation
+
 ## [2.2.5] - 2025-12-23
 ### Added
 - **Automatic Completion Tracking:** `/flow-work` now automatically marks tasks as complete in `docs/roadmap.md` and user story DoD checklists when implementation finishes
