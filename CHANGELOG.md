@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [2.4.0] - 2025-12-23
+
+### Changed
+- **Project Structure Reorganization:** Improved separation of concerns for better clarity
+  - Moved `docs/roadmap.md` → `planning/roadmap.md` (requirements, not documentation)
+  - Moved `docs/user-stories/` → `planning/user-stories/` (requirements, not documentation)
+  - Moved `specs/ai-flow/` → `.ai-flow/` (temporary state, not specification)
+  - Updated 70+ files (prompts + templates) with new paths
+  - Added `.ai-flow/` to `.gitignore` (optional)
+
+### Added
+- New `planning/` directory for requirements and roadmap
+- New `.ai-flow/` directory for temporary workflow state
+- Project structure documentation in README.md and GETTING-STARTED.md
+
+### Documentation
+- **`docs/`** - Descriptive documentation (WHAT the project IS)
+- **`specs/`** - Technical specifications (HOW to IMPLEMENT)  
+- **`planning/`** - Requirements and roadmap (WHAT to DO)
+- **`.ai-flow/`** - Temporary development state
+
 ## [2.3.0] - 2025-12-23
 ### Added
 - **Consolidated work.md Structure:** `/flow-work` now generates a single consolidated `work.md` file for planning and task management

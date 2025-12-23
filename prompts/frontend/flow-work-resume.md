@@ -10,7 +10,7 @@ This file contains the logic for detecting and resuming paused work items, impor
 ## ⏸️ Resume Workflow
 
 ### 1. Work Detection
-- Scan `specs/ai-flow/work/` for any directories
+- Scan `.ai-flow/work/` for any directories
 - Group by type and last updated timestamp
 
 ### 2. Selection Menu

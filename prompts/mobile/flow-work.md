@@ -29,19 +29,19 @@ Provide a single, intelligent entry point for all development work (New Features
 
 | Input Pattern | Mode | Source / Action |
 |---------------|------|-----------------|
-| `HU-\d{3}-\d{3}` | `USER_STORY` | Load from `docs/user-stories/**/HU-XXX-XXX.md` |
+| `HU-\d{3}-\d{3}` | `USER_STORY` | Load from `planning/user-stories/**/HU-XXX-XXX.md` |
 | `EP-\d{3}` | `EPIC` | Analyze/List User Stories for Epic `EP-XXX` |
 | `T\d{3}(-T\d{3})?` | `TASKS` | Target specific task or range (e.g., `T025-T030`) |
 | `HU-XXX-XXX TXXX-TXXX`| `STORY_TASKS` | Targeted tasks within a specific User Story |
-| Matches `docs/roadmap.md` | `ROADMAP_FEATURE`| Extract section from `docs/roadmap.md` (Partial matches allowed) |
+| Matches `planning/roadmap.md` | `ROADMAP_FEATURE`| Extract section from `planning/roadmap.md` (Partial matches allowed) |
 | "refactor", "move", "extract" | `REFACTOR` | Use `flow-work-refactor.md` |
 | "fix", "bug", "error", "falla" | `FIX` | Detect complexity (Quick vs Complex) |
 | "implement", "create", "new" | `FEATURE` | Use `flow-work-feature.md` |
-| No arguments | `RESUME` | Search for paused work in `specs/ai-flow/work/` |
+| No arguments | `RESUME` | Search for paused work in `.ai-flow/work/` |
 
 **2. Detection Logic Details:**
-- **USER_STORY / EPIC**: Load metadata from `docs/user-stories/` or `docs/roadmap.md`.
-- **ROADMAP_FEATURE**: Fuzzy search in `docs/roadmap.md` for titles like "User Management" or "Feature 2.2".
+- **USER_STORY / EPIC**: Load metadata from `planning/user-stories/` or `planning/roadmap.md`.
+- **ROADMAP_FEATURE**: Fuzzy search in `planning/roadmap.md` for titles like "User Management" or "Feature 2.2".
 - **TASK RANGES**: If `T025-T030` is provided, find the parent Story or Feature in current context or roadmap.
 - **SIMPLE FIX**: Affects 1 file, obvious cause, <10 lines fix. → Use `flow-work-fix.md` (Quick).
 - **COMPLEX FIX**: Multi-file, architectural, performance/security. → Use `flow-work-fix.md` (Deep).
@@ -52,8 +52,8 @@ Provide a single, intelligent entry point for all development work (New Features
 **1. Context Loading (Multi-Source):**
 
 **CRITICAL**: Regardless of whether a `USER_STORY` ID or a `ROADMAP_FEATURE` name is provided, you MUST attempt to load context from **BOTH** sources:
-- **`docs/roadmap.md`**: To understand high-level scope, epic relationships, and technical dependencies.
-- **`docs/user-stories/**/HU-XXX-XXX.md`**: To get granular details (Acceptance Criteria, Gherkin Scenarios, QA cases).
+- **`planning/roadmap.md`**: To understand high-level scope, epic relationships, and technical dependencies.
+- **`planning/user-stories/**/HU-XXX-XXX.md`**: To get granular details (Acceptance Criteria, Gherkin Scenarios, QA cases).
 
 **2. Detail Level Detection (if Manual input):**
 
@@ -190,7 +190,7 @@ Find similar features/patterns in codebase:
 
 **3. Generate work.md**
 
-Create single consolidated file: `specs/ai-flow/work/[task-name]/work.md`
+Create single consolidated file: `.ai-flow/work/[task-name]/work.md`
 
 **Structure** (~30-40 lines):
 
@@ -242,7 +242,7 @@ Create single consolidated file: `specs/ai-flow/work/[task-name]/work.md`
 tasks = read_user_story_tasks()
 if tasks.are_detailed():  # Has: path, constraints, SP, deps
     work_md.tasks = """
-**Source**: docs/user-stories/EP-XXX/HU-XXX-XXX.md
+**Source**: planning/user-stories/EP-XXX/HU-XXX-XXX.md
 
 Tasks already detailed in User Story (see linked file).
 
@@ -258,7 +258,7 @@ else:
 feature = read_roadmap_feature()
 if feature.has_detailed_tasks():
     work_md.tasks = """
-**Source**: docs/roadmap.md Feature X.X
+**Source**: planning/roadmap.md Feature X.X
 
 Tasks already detailed in Roadmap (see linked file).
 
@@ -294,7 +294,7 @@ Generate detailed tasks with this format:
 
 **4. Generate status.json**
 
-Create: `specs/ai-flow/work/[task-name]/status.json`
+Create: `.ai-flow/work/[task-name]/status.json`
 
 ```json
 {
@@ -325,7 +325,7 @@ Create: `specs/ai-flow/work/[task-name]/status.json`
 
 Show work.md for review:
 ```
-📄 Generated: specs/ai-flow/work/[task-name]/work.md
+📄 Generated: .ai-flow/work/[task-name]/work.md
 
 Review work.md? (Yes/Edit/No): _
 ```
@@ -360,15 +360,15 @@ Review work.md? (Yes/Edit/No): _
    **Step 1a: Check and Update User Story (if exists)**
    - Look for User Story reference in `status.json` or work context
    - IF User Story `HU-XXX-XXX` exists:
-     - Read `docs/user-stories/EP-XXX/HU-XXX-XXX.md`
+     - Read `planning/user-stories/EP-XXX/HU-XXX-XXX.md`
      - Mark ALL DoD checklist items as complete: `- [ ]` → `- [x]`
      - Add completion timestamp comment: `<!-- Completed: YYYY-MM-DD HH:MM -->`
      - Save file
    
    **Step 1b: Check and Update Roadmap (if exists)**
    - Look for Feature reference in `status.json` or work context
-   - IF Feature exists in `docs/roadmap.md`:
-     - Read `docs/roadmap.md`
+   - IF Feature exists in `planning/roadmap.md`:
+     - Read `planning/roadmap.md`
      - Find the Feature section by name/number
      - Mark Feature checkbox as complete: `- [ ]` → `- [x]`
      - Save file
@@ -391,7 +391,7 @@ Review work.md? (Yes/Edit/No): _
 
 3. **Proceso de Archivado (Automático tras aprobación)**:
    - Una vez el usuario confirma que el trabajo está listo para ser cerrado:
-   - **Mover**: `specs/ai-flow/work/[task-name]/` → `specs/ai-flow/archive/YYYY-MM/[task-name]/`.
+   - **Mover**: `.ai-flow/work/[task-name]/` → `.ai-flow/archive/YYYY-MM/[task-name]/`.
    - **Actualizar `status.json`**: Cambiar `status` a `"COMPLETED"` y registrar `timestamps.completed`.
    - **Cleanup**: Mantener limpia la carpeta `work` para que `/flow-work` detecte solo tareas activas.
 
@@ -407,7 +407,7 @@ Review work.md? (Yes/Edit/No): _
   - Detailed Refactor logic → `@flow-work-refactor.md`
   - Detailed Fix logic → `@flow-work-fix.md`
   - Resume logic → `@flow-work-resume.md`
-- **State Persistence**: Always read/write to `specs/ai-flow/work/[name]/status.json` to maintain state across sessions.
+- **State Persistence**: Always read/write to `.ai-flow/work/[name]/status.json` to maintain state across sessions.
 
 ---
 **BEGIN EXECUTION when user runs `/flow-work [args]`**

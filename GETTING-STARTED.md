@@ -677,6 +677,15 @@ After initialization, you have access to **16+ slash commands**:
 
 > **Consolidated Planning:** `/flow-work` generates a single consolidated `work.md` file (~30-40 lines) that includes context, objectives, documentation constraints, approach, tasks, and validation. This reduces context window usage and makes it easier to review and resume work.
 
+**Generated Project Structure:**
+
+After running `/flow-build`, your project will have:
+
+- `docs/` - Descriptive documentation (architecture, data-model, api, testing)
+- `specs/` - Technical specifications (security.md, configuration.md)
+- `planning/` - Requirements (roadmap.md, user-stories/)
+- `.ai-flow/` - Workflow state (work/, archive/) - can be gitignored
+
 ## See [Commands Cheat Sheet](#commands-cheat-sheet) for the complete list.
 
 ## 📚 Part 2: Core Workflows

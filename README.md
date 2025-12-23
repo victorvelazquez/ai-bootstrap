@@ -319,6 +319,36 @@ After initialization, use these slash commands in your AI tool:
 
 ## **📚 See [GETTING-STARTED.md](GETTING-STARTED.md) for complete command reference**
 
+---
+
+## 📁 Project Structure
+
+AI Flow organizes your project with clear separation of concerns:
+
+### Documentation & Specifications
+
+- **`docs/`** - Descriptive documentation (WHAT the project IS)
+  - `architecture.md` - System architecture and design patterns
+  - `data-model.md` - Entities, relationships, database schema
+  - `api.md` - Available endpoints and contracts
+  - `testing.md` - Testing strategy and guidelines
+
+- **`specs/`** - Technical specifications (HOW to IMPLEMENT)
+  - `security.md` - Security rules and constraints (MUST/NEVER)
+  - `configuration.md` - Environment variables and settings
+
+### Planning & Requirements
+
+- **`planning/`** - Requirements and roadmap (WHAT to DO)
+  - `roadmap.md` - Technical implementation roadmap with Story Points
+  - `user-stories/` - Agile user stories with acceptance criteria
+
+### Development State
+
+- **`.ai-flow/`** - AI workflow state (temporary, can be gitignored)
+  - `work/` - Active development tasks
+  - `archive/` - Completed tasks (organized by month)
+
 ## 💡 How It Works
 
 1. **Smart Detection** - Analyzes existing projects in 3 layers (15s to 5min)

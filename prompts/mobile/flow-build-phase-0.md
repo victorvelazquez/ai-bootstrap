@@ -322,7 +322,7 @@ C) Cancel /flow-build (fix manually first)
       "reason": "Final documentation complete and up-to-date"
     },
     "phase9": {
-      "file": "docs/roadmap.md",
+      "file": "planning/roadmap.md",
       "exists": false,
       "consistencyScore": 0,
       "recommendation": "SKIP",
@@ -330,7 +330,7 @@ C) Cancel /flow-build (fix manually first)
       "reason": "Project already implemented - roadmap not needed for existing code"
     },
     "phase10": {
-      "file": "docs/user-stories/",
+      "file": "planning/user-stories/",
       "exists": false,
       "consistencyScore": 0,
       "recommendation": "SKIP",

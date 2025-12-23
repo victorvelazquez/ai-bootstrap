@@ -312,7 +312,7 @@ COVERAGE VALIDATION
 
 ---
 
-**Write `docs/roadmap.md` with this structure:**
+**Write `planning/roadmap.md` with this structure:**
 
 ```markdown
 # Implementation Roadmap: {{PROJECT_NAME}}
@@ -419,7 +419,7 @@ PHASE 9 COMPLETE
 ├── Coverage: 100% (all components have [E][R][S][C][T][D])
 └── Ready for: /flow-dev-feature
 
-Next: Open docs/roadmap.md and start with EP-000, or continue to Phase 10 for detailed User Stories.
+Next: Open planning/roadmap.md and start with EP-000, or continue to Phase 10 for detailed User Stories.
 
 **OFFER PHASE 10:**
 
@@ -427,7 +427,7 @@ Next: Open docs/roadmap.md and start with EP-000, or continue to Phase 10 for de
 ---
 ✅ PHASE 9 COMPLETE: IMPLEMENTATION ROADMAP GENERATED
 ---
-🎯 Roadmap created in docs/roadmap.md
+🎯 Roadmap created in planning/roadmap.md
 📊 Total Story Points: {{SP}}
 🏗️ Epics defined: {{EPICS_COUNT}}
 ---
@@ -462,7 +462,7 @@ Your choice (A/B): __
 
 After Phase 9, generate/update:
 
-- `docs/roadmap.md` - Technical implementation plan
+- `planning/roadmap.md` - Technical implementation plan
 
 ---
 

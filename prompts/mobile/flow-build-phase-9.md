@@ -83,7 +83,7 @@ EP-ZZZ: Store Preparation & Deployment
 
 ---
 
-### Step 9.6: Generate Document (docs/roadmap.md)
+### Step 9.6: Generate Document (planning/roadmap.md)
 
 ---
 _Version: 4.2 (Antigravity Optimized)_
