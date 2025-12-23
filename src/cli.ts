@@ -101,20 +101,10 @@ const EXIT = {
   FS_ERROR: 3,
 } as const;
 
-function logVerbose(message: string, verbose?: boolean) {
-  if (verbose) console.log(chalk.gray(message));
-}
-
 function isValidName(value: string): boolean {
   const v = value.trim();
   if (v.length < 2 || v.length > 100) return false;
   return /^[A-Za-z0-9 _\-\.]+$/.test(v);
-}
-
-function isValidDescription(value: string): boolean {
-  const v = value.trim();
-  if (v.length < 2 || v.length > 500) return false;
-  return /^[\p{L}\p{N} \-_,.!?:()]+$/u.test(v);
 }
 
 function fsErrorMessage(e: unknown): string {
@@ -146,61 +136,61 @@ function printBanner() {
   );
   console.log(
     chalk.cyan('    ║') +
-      '                                                                   ' +
-      chalk.cyan('║')
+    '                                                                   ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      chalk.bold.cyan('          █████╗ ██╗    ███████╗██╗      ██████╗ ██╗    ██╗') +
-      '        ' +
-      chalk.cyan('║')
+    chalk.bold.cyan('          █████╗ ██╗    ███████╗██╗      ██████╗ ██╗    ██╗') +
+    '        ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      chalk.bold.cyan('         ██╔══██╗██║    ██╔════╝██║     ██╔═══██╗██║    ██║') +
-      '        ' +
-      chalk.cyan('║')
+    chalk.bold.cyan('         ██╔══██╗██║    ██╔════╝██║     ██╔═══██╗██║    ██║') +
+    '        ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      chalk.bold.cyan('         ███████║██║    █████╗  ██║     ██║   ██║██║ █╗ ██║') +
-      '        ' +
-      chalk.cyan('║')
+    chalk.bold.cyan('         ███████║██║    █████╗  ██║     ██║   ██║██║ █╗ ██║') +
+    '        ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      chalk.bold.cyan('         ██╔══██║██║    ██╔══╝  ██║     ██║   ██║██║███╗██║') +
-      '        ' +
-      chalk.cyan('║')
+    chalk.bold.cyan('         ██╔══██║██║    ██╔══╝  ██║     ██║   ██║██║███╗██║') +
+    '        ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      chalk.bold.cyan('         ██║  ██║██║    ██║     ███████╗╚██████╔╝╚███╔███╔╝') +
-      '        ' +
-      chalk.cyan('║')
+    chalk.bold.cyan('         ██║  ██║██║    ██║     ███████╗╚██████╔╝╚███╔███╔╝') +
+    '        ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      chalk.cyan('         ╚═╝  ╚═╝╚═╝    ╚═╝     ╚══════╝ ╚═════╝  ╚══╝╚══╝') +
-      '         ' +
-      chalk.cyan('║')
+    chalk.cyan('         ╚═╝  ╚═╝╚═╝    ╚═╝     ╚══════╝ ╚═════╝  ╚══╝╚══╝') +
+    '         ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      '                                                                   ' +
-      chalk.cyan('║')
+    '                                                                   ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      '           ' +
-      chalk.white('✨ From Idea to Production with AI Guidance') +
-      '             ' +
-      chalk.cyan('║')
+    '           ' +
+    chalk.white('✨ From Idea to Production with AI Guidance') +
+    '             ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ║') +
-      '                                                                   ' +
-      chalk.cyan('║')
+    '                                                                   ' +
+    chalk.cyan('║')
   );
   console.log(
     chalk.cyan('    ╚═══════════════════════════════════════════════════════════════════╝')
@@ -337,7 +327,6 @@ async function createBootstrapStructure(
   aiTools: string[],
   projectType: 'backend' | 'frontend' | 'fullstack' | 'mobile' = 'backend',
   dryRun?: boolean,
-  verbose?: boolean
 ): Promise<void> {
   const spinner = ora('Creating .ai-flow structure...').start();
   try {
@@ -374,8 +363,7 @@ async function copyTemplates(
   targetPath: string,
   projectType: 'backend' | 'frontend' | 'fullstack' | 'mobile' = 'backend',
   aiTools: string[] = [],
-  dryRun?: boolean,
-  verbose?: boolean
+  dryRun?: boolean
 ): Promise<void> {
   const spinner = ora('Copying templates to .ai-flow/templates/...').start();
   try {
@@ -467,7 +455,7 @@ async function copyTemplates(
   }
 }
 
-async function copyPrompts(targetPath: string, dryRun?: boolean, verbose?: boolean): Promise<void> {
+async function copyPrompts(targetPath: string, dryRun?: boolean): Promise<void> {
   const spinner = ora('Copying master prompts...').start();
   try {
     const promptsSource = path.join(ROOT_DIR, 'prompts');
@@ -490,7 +478,6 @@ async function setupSlashCommands(
   aiTools: string[],
   projectType: 'backend' | 'frontend' | 'fullstack' | 'mobile' = 'backend',
   dryRun?: boolean,
-  verbose?: boolean
 ): Promise<void> {
   const spinner = ora('Setting up slash commands...').start();
   try {
@@ -599,17 +586,15 @@ async function initializeProject(
       targetPath,
       aiTools,
       selectedProjectType,
-      flags?.dryRun,
-      flags?.verbose
+      flags?.dryRun
     );
-    await copyTemplates(targetPath, selectedProjectType, aiTools, flags?.dryRun, flags?.verbose);
-    await copyPrompts(targetPath, flags?.dryRun, flags?.verbose);
+    await copyTemplates(targetPath, selectedProjectType, aiTools, flags?.dryRun);
+    await copyPrompts(targetPath, flags?.dryRun);
     await setupSlashCommands(
       targetPath,
       aiTools,
       selectedProjectType,
-      flags?.dryRun,
-      flags?.verbose
+      flags?.dryRun
     );
 
     console.log(chalk.green('\n✅ AI Flow initialized successfully!'));
