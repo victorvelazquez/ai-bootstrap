@@ -26,7 +26,7 @@ To avoid false-positive detections, **IGNORE** the following folders and files d
 
 ## 0.0 Check for Existing Analysis (Layer 0)
 
-Check if `cache/docs-analysis.json` exists and is fresh.
+Check if `.ai-flow/cache/docs-analysis.json` exists and is fresh.
 
 **If found:**
 Ask user to use cached analysis or re-analyze.
@@ -102,7 +102,13 @@ Use stratified sampling to read only the most relevant files (e.g., core control
 Show the final "🔍 BACKEND STACK DETECTED" report and ask for confirmation.
 
 ### 💾 Cache & Pre-populate
-1. **Export:** Save results to `cache/docs-analysis.json`.
+
+**Create directory structure (if not exists):**
+```bash
+mkdir -p .ai-flow/cache
+```
+
+1. **Export:** Save results to `.ai-flow/cache/docs-analysis.json`.
 2. **Pre-populate:** Fill answers for Phases 1-7 based on detected data.
 
 ---
@@ -135,7 +141,7 @@ B) No, skip audit (continue to Phase 1)
 - `docs/api.md` → Endpoints and methods
 - `specs/requirements.md` → Business requirements
 
-**Save to:** `cache/docs-snapshot.json`
+**Save to:** `.ai-flow/cache/docs-snapshot.json`
 
 ### 0.4.3 Compare Code vs Documentation
 
@@ -244,7 +250,7 @@ C) Cancel /flow-build (fix manually first)
 > 
 > **For existing projects**, focus on Phases 1-8 (documentation sync) instead.
 
-**Save to:** `cache/audit-data.json`
+**Save to:** `.ai-flow/cache/audit-data.json`
 
 ```json
 {
@@ -372,8 +378,13 @@ Ask for confirmation to proceed to Phase 1.
 
 ### 💾 Cache & Pre-populate
 
-1. **Export code analysis:** `cache/docs-analysis.json`
-2. **Export audit data:** `cache/audit-data.json` (if Layer 4 executed)
+**Create directory structure (if not exists):**
+```bash
+mkdir -p .ai-flow/cache .ai-flow/work .ai-flow/archive
+```
+
+1. **Export code analysis:** `.ai-flow/cache/docs-analysis.json`
+2. **Export audit data:** `.ai-flow/cache/audit-data.json` (if Layer 4 executed)
 3. **Pre-populate:** Fill answers for Phases 1-7 based on detected data
 
 ### 🎯 Set Flags for Phase 8
@@ -394,7 +405,7 @@ If documentation audit was performed:
 ### Phase Summary
 - Pre-populated detected tech stack values.
 - Architectural patterns identified.
-- Context cached in `cache/docs-analysis.json`.
+- Context cached in `.ai-flow/cache/docs-analysis.json`.
 - **Documentation audit completed** (if existing docs found).
 - **Inconsistencies flagged** for Phase 8 resolution.
 
